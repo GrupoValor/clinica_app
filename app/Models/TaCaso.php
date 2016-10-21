@@ -36,7 +36,11 @@ class TaCaso extends Eloquent
 		'cli_id' => 'int',
 		'tipcas_id' => 'int'
 	];
-
+	
+	protected $guarded = [
+		'cas_id', //ID del caso
+	];
+	
 	protected $fillable = [
 		'usu_id',
 		'cst_id',
