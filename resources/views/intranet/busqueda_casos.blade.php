@@ -424,7 +424,7 @@
 
                 <ul class="submenu">
                     <li class="">
-                        <a href="registro_casos.html">
+                        <a href="casosregistro">
                             <i class="menu-icon fa fa-caret-right"></i>
                             Registro
                         </a>
@@ -433,7 +433,7 @@
                     </li>
 
                     <li class="active">
-                        <a href="busqueda_casos.html">
+                        <a href="casosbusqueda">
                             <i class="menu-icon fa fa-caret-right"></i>
                             Busqueda
                         </a>
