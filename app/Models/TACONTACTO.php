@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 21 Oct 2016 01:04:27 +0000
+ * Date: Fri, 21 Oct 2016 22:03:52 +0000
  */
 
 namespace App\Models;
@@ -10,7 +10,7 @@ namespace App\Models;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class TACONTACTO
+ * Class TaContacto
  * 
  * @property int $con_id
  * @property int $cln_id
@@ -24,9 +24,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  *
  * @package App\Models
  */
-class TACONTACTO extends Eloquent
+class TaContacto extends Eloquent
 {
-	protected $table = 'TA_CONTACTO';
+	protected $table = 'ta_contacto';
 	protected $primaryKey = 'con_id';
 	public $timestamps = false;
 
