@@ -48,6 +48,8 @@ class TaCaso extends Eloquent
 		'cli_id',
 		'tipcas_id',
 		'cas_estado',
-		'cas_fecate'
+		'cas_fecate',
+		'cas_observ',
+		'cas_object'
 	];
 }

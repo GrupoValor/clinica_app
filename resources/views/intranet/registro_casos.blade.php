@@ -1,7 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="csrf_token" content="{{ csrf_token() }}" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta charset="utf-8"/>
     <title>Registro de casos</title>
@@ -73,7 +73,73 @@
 
         <div class="navbar-buttons navbar-header pull-right" role="navigation">
             <ul class="nav ace-nav">
-               
+                <!--<li class="grey dropdown-modal">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="ace-icon fa fa-tasks"></i>
+                        <span class="badge badge-grey">4</span>
+                    </a>
+                    <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+                        <li class="dropdown-header">
+                            <i class="ace-icon fa fa-check"></i>
+                            4 Tasks to complete
+                        </li>
+                        <li class="dropdown-content">
+                            <ul class="dropdown-menu dropdown-navbar">
+                                <li>
+                                    <a href="#">
+                                        <div class="clearfix">
+                                            <span class="pull-left">Software Update</span>
+                                            <span class="pull-right">65%</span>
+                                        </div>
+                                        <div class="progress progress-mini">
+                                            <div style="width:65%" class="progress-bar"></div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="clearfix">
+                                            <span class="pull-left">Hardware Upgrade</span>
+                                            <span class="pull-right">35%</span>
+                                        </div>
+                                        <div class="progress progress-mini">
+                                            <div style="width:35%" class="progress-bar progress-bar-danger"></div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="clearfix">
+                                            <span class="pull-left">Unit Testing</span>
+                                            <span class="pull-right">15%</span>
+                                        </div>
+                                        <div class="progress progress-mini">
+                                            <div style="width:15%" class="progress-bar progress-bar-warning"></div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <div class="clearfix">
+                                            <span class="pull-left">Bug Fixes</span>
+                                            <span class="pull-right">90%</span>
+                                        </div>
+                                        <div class="progress progress-mini progress-striped active">
+                                            <div style="width:90%" class="progress-bar progress-bar-success"></div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-footer">
+                            <a href="#">
+                                See tasks with details
+                                <i class="ace-icon fa fa-arrow-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>-->
+
                 <li class="purple dropdown-modal">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <i class="ace-icon fa fa-bell icon-animated-bell"></i>
@@ -91,10 +157,10 @@
                                 <li>
                                     <a href="#">
                                         <div class="clearfix">
-													<span class="pull-left">
-														<i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
-														New Comments
-													</span>
+                                                    <span class="pull-left">
+                                                        <i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
+                                                        New Comments
+                                                    </span>
                                             <span class="pull-right badge badge-info">+12</span>
                                         </div>
                                     </a>
@@ -110,10 +176,10 @@
                                 <li>
                                     <a href="#">
                                         <div class="clearfix">
-													<span class="pull-left">
-														<i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
-														New Orders
-													</span>
+                                                    <span class="pull-left">
+                                                        <i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
+                                                        New Orders
+                                                    </span>
                                             <span class="pull-right badge badge-success">+8</span>
                                         </div>
                                     </a>
@@ -122,10 +188,10 @@
                                 <li>
                                     <a href="#">
                                         <div class="clearfix">
-													<span class="pull-left">
-														<i class="btn btn-xs no-hover btn-info fa fa-twitter"></i>
-														Followers
-													</span>
+                                                    <span class="pull-left">
+                                                        <i class="btn btn-xs no-hover btn-info fa fa-twitter"></i>
+                                                        Followers
+                                                    </span>
                                             <span class="pull-right badge badge-info">+11</span>
                                         </div>
                                     </a>
@@ -142,14 +208,123 @@
                     </ul>
                 </li>
 
-               
+                <!--<li class="green dropdown-modal">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+                        <span class="badge badge-success">5</span>
+                    </a>
+
+                    <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+                        <li class="dropdown-header">
+                            <i class="ace-icon fa fa-envelope-o"></i>
+                            5 Messages
+                        </li>
+
+                        <li class="dropdown-content">
+                            <ul class="dropdown-menu dropdown-navbar">
+                                <li>
+                                    <a href="#" class="clearfix">
+                                        <img src="assets/images/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+                                        <span class="msg-body">
+                                            <span class="msg-title">
+                                                <span class="blue">Alex:</span>
+                                                Ciao sociis natoque penatibus et auctor ...
+                                            </span>
+
+                                            <span class="msg-time">
+                                                <i class="ace-icon fa fa-clock-o"></i>
+                                                <span>a moment ago</span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="clearfix">
+                                        <img src="assets/images/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
+                                        <span class="msg-body">
+                                            <span class="msg-title">
+                                                <span class="blue">Susan:</span>
+                                                Vestibulum id ligula porta felis euismod ...
+                                            </span>
+
+                                            <span class="msg-time">
+                                                <i class="ace-icon fa fa-clock-o"></i>
+                                                <span>20 minutes ago</span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="clearfix">
+                                        <img src="assets/images/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
+                                        <span class="msg-body">
+                                            <span class="msg-title">
+                                                <span class="blue">Bob:</span>
+                                                Nullam quis risus eget urna mollis ornare ...
+                                            </span>
+
+                                            <span class="msg-time">
+                                                <i class="ace-icon fa fa-clock-o"></i>
+                                                <span>3:15 pm</span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="clearfix">
+                                        <img src="assets/images/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
+                                        <span class="msg-body">
+                                            <span class="msg-title">
+                                                <span class="blue">Kate:</span>
+                                                Ciao sociis natoque eget urna mollis ornare ...
+                                            </span>
+
+                                            <span class="msg-time">
+                                                <i class="ace-icon fa fa-clock-o"></i>
+                                                <span>1:33 pm</span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#" class="clearfix">
+                                        <img src="assets/images/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
+                                        <span class="msg-body">
+                                            <span class="msg-title">
+                                                <span class="blue">Fred:</span>
+                                                Vestibulum id penatibus et auctor  ...
+                                            </span>
+
+                                            <span class="msg-time">
+                                                <i class="ace-icon fa fa-clock-o"></i>
+                                                <span>10:09 am</span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown-footer">
+                            <a href="inbox.html">
+                                See all messages
+                                <i class="ace-icon fa fa-arrow-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>-->
+
                 <li class="light-blue dropdown-modal">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                         <img class="nav-user-photo" src="assets/images/avatars/user.jpg" alt="Jason's Photo"/>
                         <span class="user-info">
-									<small>Bienvenido,</small>
-									Luis
-								</span>
+                                    <small>Bienvenido,</small>
+                                    Luis
+                                </span>
 
                         <i class="ace-icon fa fa-caret-down"></i>
                     </a>
@@ -200,7 +375,35 @@
             }
         </script>
 
-       
+        <!--<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+            <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                <button class="btn btn-success">
+                    <i class="ace-icon fa fa-signal"></i>
+                </button>
+
+                <button class="btn btn-info">
+                    <i class="ace-icon fa fa-pencil"></i>
+                </button>
+
+                <button class="btn btn-warning">
+                    <i class="ace-icon fa fa-users"></i>
+                </button>
+
+                <button class="btn btn-danger">
+                    <i class="ace-icon fa fa-cogs"></i>
+                </button>
+            </div>
+
+            <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                <span class="btn btn-success"></span>
+
+                <span class="btn btn-info"></span>
+
+                <span class="btn btn-warning"></span>
+
+                <span class="btn btn-danger"></span>
+            </div>
+        </div><!-- /.sidebar-shortcuts -->
 
         <ul class="nav nav-list">
             <li class="">
@@ -226,8 +429,8 @@
                 <a href="#" class="dropdown-toggle">
                     <i class="menu-icon fa fa-desktop"></i>
                     <span class="menu-text">
-								UI &amp; Elements
-							</span>
+                                UI &amp; Elements
+                            </span>
 
                     <b class="arrow fa fa-angle-down"></b>
                 </a>
@@ -432,7 +635,7 @@
 
                 <ul class="submenu">
                     <li class="active">
-                        <a href="casosregistro">
+                        <a href="registro_casos.html">
                             <i class="menu-icon fa fa-caret-right"></i>
                             Registro
                         </a>
@@ -441,60 +644,81 @@
                     </li>
 
                     <li class="">
-                        <a href="casosbusqueda">
+                        <a href="busqueda_casos.html">
                             <i class="menu-icon fa fa-caret-right"></i>
                             Busqueda
                         </a>
 
                         <b class="arrow"></b>
                     </li>
-                   
+                    <!--
+                    <li class="">
+                        <a href="form-wizard.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            Wizard &amp; Validation
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="">
+                        <a href="wysiwyg.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            Wysiwyg &amp; Markdown
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                    <li class="">
+                        <a href="dropzone.html">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            Dropzone File Upload
+                        </a>
+                        <b class="arrow"></b>
+                    </li>-->
                 </ul>
             </li>
 
             <li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-list-alt"></i>
-							<span class="menu-text"> Tareas acad&eacute;micas </span>
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-						<b class="arrow"></b>
-						<ul class="submenu">
-							<li class="">
-								<a href="ta_alumno.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Alumno
-								</a>
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="ta_rubricas.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Mantenimiento de r&uacute;bricas
-								</a>
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="ta_notas.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Registro de notas
-								</a>
-								<b class="arrow"></b>
-							</li>
-						</ul>
-					</li>
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-list-alt"></i>
+                            <span class="menu-text"> Tareas acad&eacute;micas </span>
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
+                        <b class="arrow"></b>
+                        <ul class="submenu">
+                            <li class="">
+                                <a href="ta_alumno.html">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Alumno
+                                </a>
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="">
+                                <a href="ta_rubricas.html">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Mantenimiento de r&uacute;bricas
+                                </a>
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="">
+                                <a href="ta_notas.html">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Registro de notas
+                                </a>
+                                <b class="arrow"></b>
+                            </li>
+                        </ul>
+                    </li>
 
             <li class="hidden">
                 <a href="calendar.html">
                     <i class="menu-icon fa fa-calendar"></i>
 
                     <span class="menu-text">
-								Calendar
+                                Calendar
 
-								<span class="badge badge-transparent tooltip-error" title="2 Important Events">
-									<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
-								</span>
-							</span>
+                                <span class="badge badge-transparent tooltip-error" title="2 Important Events">
+                                    <i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
+                                </span>
+                            </span>
                 </a>
 
                 <b class="arrow"></b>
@@ -599,10 +823,10 @@
                     <i class="menu-icon fa fa-file-o"></i>
 
                     <span class="menu-text">
-								Other Pages
+                                Other Pages
 
-								<span class="badge badge-primary">5</span>
-							</span>
+                                <span class="badge badge-primary">5</span>
+                            </span>
 
                     <b class="arrow fa fa-angle-down"></b>
                 </a>
@@ -706,175 +930,175 @@
 
                 <b class="arrow"></b>
             </li>
-							<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-desktop"></i>
-							<span class="menu-text">
-								Mantenimientos
-							</span>
+                            <li class="">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-desktop"></i>
+                            <span class="menu-text">
+                                Mantenimientos
+                            </span>
 
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
 
-						<b class="arrow"></b>
+                        <b class="arrow"></b>
 
-						<ul class="submenu">
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Profesor
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
+                        <ul class="submenu">
+                            <li class="">
+                                <a href="#" class="dropdown-toggle">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Profesor
+                                    <b class="arrow fa fa-angle-down"></b>
+                                </a>
 
-								<b class="arrow"></b>
+                                <b class="arrow"></b>
 
-								<ul class="submenu">
-									<li class="">
-										<a href="mantenimientoProfesor.html">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Registrar
-										</a>
+                                <ul class="submenu">
+                                    <li class="">
+                                        <a href="mantenimientoProfesor.html">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            Registrar
+                                        </a>
 
-										<b class="arrow"></b>
-									</li>
+                                        <b class="arrow"></b>
+                                    </li>
 
-									<li class="">
-										<a href="mantProfModificar.html">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Modificar
-										</a>
+                                    <li class="">
+                                        <a href="mantProfModificar.html">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            Modificar
+                                        </a>
 
-										<b class="arrow"></b>
-									</li>
-								</ul>
-							</li>
+                                        <b class="arrow"></b>
+                                    </li>
+                                </ul>
+                            </li>
 
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Jefe de Practica
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
+                            <li class="">
+                                <a href="#" class="dropdown-toggle">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Jefe de Practica
+                                    <b class="arrow fa fa-angle-down"></b>
+                                </a>
 
-								<b class="arrow"></b>
+                                <b class="arrow"></b>
 
-								<ul class="submenu">
-									<li class="">
-										<a href="mantenimientoJP.html">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Registrar
-										</a>
+                                <ul class="submenu">
+                                    <li class="">
+                                        <a href="mantenimientoJP.html">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            Registrar
+                                        </a>
 
-										<b class="arrow"></b>
-									</li>
+                                        <b class="arrow"></b>
+                                    </li>
 
-									<li class="">
-										<a href="mantJPModificar.html">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Modificar
-										</a>
+                                    <li class="">
+                                        <a href="mantJPModificar.html">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            Modificar
+                                        </a>
 
-										<b class="arrow"></b>
-									</li>
-								</ul>
-							</li>
+                                        <b class="arrow"></b>
+                                    </li>
+                                </ul>
+                            </li>
 
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Alumno
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
+                            <li class="">
+                                <a href="#" class="dropdown-toggle">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Alumno
+                                    <b class="arrow fa fa-angle-down"></b>
+                                </a>
 
-								<b class="arrow"></b>
+                                <b class="arrow"></b>
 
-								<ul class="submenu">
-									<li class="">
-										<a href="mantenimientoAlumno.html">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Registrar
-										</a>
+                                <ul class="submenu">
+                                    <li class="">
+                                        <a href="mantenimientoAlumno.html">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            Registrar
+                                        </a>
 
-										<b class="arrow"></b>
-									</li>
+                                        <b class="arrow"></b>
+                                    </li>
 
-									<li class="">
-										<a href="mantAlumModificar.html">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Modificar
-										</a>
+                                    <li class="">
+                                        <a href="mantAlumModificar.html">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            Modificar
+                                        </a>
 
-										<b class="arrow"></b>
-									</li>
-								</ul>
-							</li>
+                                        <b class="arrow"></b>
+                                    </li>
+                                </ul>
+                            </li>
 
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Cliente
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
+                            <li class="">
+                                <a href="#" class="dropdown-toggle">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Cliente
+                                    <b class="arrow fa fa-angle-down"></b>
+                                </a>
 
-								<b class="arrow"></b>
+                                <b class="arrow"></b>
 
-								<ul class="submenu">
-									<li class="">
-										<a href="mantenimientoCliente.html">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Registrar
-										</a>
+                                <ul class="submenu">
+                                    <li class="">
+                                        <a href="mantenimientoCliente.html">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            Registrar
+                                        </a>
 
-										<b class="arrow"></b>
-									</li>
+                                        <b class="arrow"></b>
+                                    </li>
 
-									<li class="">
-										<a href="mantClieModificar.html">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Modificar
-										</a>
+                                    <li class="">
+                                        <a href="mantClieModificar.html">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            Modificar
+                                        </a>
 
-										<b class="arrow"></b>
-									</li>
-								</ul>
-							</li>
-							
-						</ul>
-					</li> 
+                                        <b class="arrow"></b>
+                                    </li>
+                                </ul>
+                            </li>
+                            
+                        </ul>
+                    </li> 
                     <li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-file-o"></i>
-							<span class="menu-text">
-								Reportes
-							</span>
+                        <a href="#" class="dropdown-toggle">
+                            <i class="menu-icon fa fa-file-o"></i>
+                            <span class="menu-text">
+                                Reportes
+                            </span>
 
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
 
-						<b class="arrow"></b>
+                        <b class="arrow"></b>
 
-						<ul class="submenu">
-							<li class="">
-								<a href="reporte1.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Reporte por alumno
-								</a>
-								<b class="arrow"></b>
-							</li>
+                        <ul class="submenu">
                             <li class="">
-								<a href="reporte2.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Reporte por caso
-								</a>
-								<b class="arrow"></b>
-							</li>
+                                <a href="reporte1.html">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Reporte por alumno
+                                </a>
+                                <b class="arrow"></b>
+                            </li>
                             <li class="">
-								<a href="reporte3.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Reporte 3
-								</a>
-								<b class="arrow"></b>
-							</li>
+                                <a href="reporte2.html">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Reporte por caso
+                                </a>
+                                <b class="arrow"></b>
+                            </li>
+                            <li class="">
+                                <a href="reporte3.html">
+                                    <i class="menu-icon fa fa-caret-right"></i>
+                                    Reporte 3
+                                </a>
+                                <b class="arrow"></b>
+                            </li>
                         </ul>
                     </li>
             <li class=""> <!--Gestor de contenidos-->
@@ -882,7 +1106,7 @@
                     <i class="menu-icon fa fa-cog"></i>
                     <span class="menu-text">
                                 <small>Gestor de contenidos</small>
-							</span>
+                            </span>
 
                     <b class="arrow fa fa-angle-down"></b>
                 </a>
@@ -938,6 +1162,7 @@
         </div>
     </div>
 
+
     <div class="main-content">
         <div class="main-content-inner">
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -953,10 +1178,83 @@
                     <li class="active">Registro</li>
                 </ul><!-- /.breadcrumb -->
 
+                <!--<div class="nav-search" id="nav-search">
+                    <form class="form-search">
+                        <span class="input-icon">
+                            <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                            <i class="ace-icon fa fa-search nav-search-icon"></i>
+                        </span>
+                    </form>
+                </div><!-- /.nav-search -->
             </div>
 
             <div class="page-content">
-                
+                <!--<div class="ace-settings-container" id="ace-settings-container">
+                    <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+                        <i class="ace-icon fa fa-cog bigger-130"></i>
+                    </div>
+
+                    <div class="ace-settings-box clearfix" id="ace-settings-box">
+                        <div class="pull-left width-50">
+                            <div class="ace-settings-item">
+                                <div class="pull-left">
+                                    <select id="skin-colorpicker" class="hide">
+                                        <option data-skin="no-skin" value="#438EB9">#438EB9</option>
+                                        <option data-skin="skin-1" value="#222A2D">#222A2D</option>
+                                        <option data-skin="skin-2" value="#C6487E">#C6487E</option>
+                                        <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
+                                    </select>
+                                </div>
+                                <span>&nbsp; Choose Skin</span>
+                            </div>
+
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-navbar" autocomplete="off" />
+                                <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
+                            </div>
+
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-sidebar" autocomplete="off" />
+                                <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
+                            </div>
+
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-breadcrumbs" autocomplete="off" />
+                                <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
+                            </div>
+
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" autocomplete="off" />
+                                <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
+                            </div>
+
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-add-container" autocomplete="off" />
+                                <label class="lbl" for="ace-settings-add-container">
+                                    Inside
+                                    <b>.container</b>
+                                </label>
+                            </div>
+                        </div><!-- /.pull-left -->
+
+                <!--<div class="pull-left width-50">
+                    <div class="ace-settings-item">
+                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" autocomplete="off" />
+                        <label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
+                    </div>
+
+                    <div class="ace-settings-item">
+                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact" autocomplete="off" />
+                        <label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
+                    </div>
+
+                    <div class="ace-settings-item">
+                        <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" autocomplete="off" />
+                        <label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
+                    </div>
+                </div>--><!-- /.pull-left -->
+                <!--</div>--><!-- /.ace-settings-box -->
+                <!--</div>--><!-- /.ace-settings-container -->
 
                 <div class="page-header">
                     <h1>
@@ -973,7 +1271,7 @@
                         <!-- PAGE CONTENT BEGINS -->
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Codigo del
+                                <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Código del
                                     caso</label>
 
                                 <div class="col-sm-9">
@@ -984,211 +1282,95 @@
                             </div>
 
                             <div class="form-group">
+                                
                                 <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Fecha de
                                     atencion</label>
+                                
                                 <div class="col-sm-4">
                                     <div class="col-sm-4">
                                         <div class="input-group">
                                             <input class="form-control date-picker" id="id-date-picker-2" type="text"
                                                    data-date-format="dd-mm-yyyy"/>
                                             <span class="input-group-addon">
-											    <i class="fa fa-calendar bigger-110"></i>
+                                                <i class="fa fa-calendar bigger-110"></i>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Nombre</label>
+                            <div align="center">        
+                                       <!-- form del boton -->
+                                    
+                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#boton">Buscar Cliente</button>
+                                    
+                                <div class="modal fade" id="boton" role="dialog">
+                                        
+                                        
+                                    <div class="modal-dialog">
+                                        
+                                          
+                                        <!-- Modal content-->
+                                          
+                                        <div class="modal-content">
+                                            
+                                            <div class="modal-header">
+                                              <h1 type="button" class="close" data-dismiss="modal">
+                                                
+                                                </h1>
+                                                <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                        <tr>
+                                            
+                                            <th>Nombre</th>
+                                            <th>Teléfono</th>
+                                            <th>E-mail</th>
+                                            <th>Dirección</th>
+                                            
+                                        </tr>
+                                        </thead>
 
-                                <div class="col-sm-9">
-                                    <input type="text" id="form-field-1" placeholder="Nombre"
-                                           class="col-xs-10 col-sm-5"/>
-                                </div>
-                            </div>
+                                        <tbody id ="tbodycontent">
+                                        
 
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-4">DNI</label>
-
-                                <div class="col-sm-9">
-                                    <input class="input-sm" type="text" id="form-field-9" placeholder="DNI"/>
-                                    <div class="space-2"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right"
-                                       for="form-field-4">Nacimiento</label>
-                                <div class="col-sm-4">
-                                    <div class="col-sm-4">
-                                        <div class="input-group">
-                                            <input class="form-control date-picker" id="id-date-picker-1" type="text"
-                                                   data-date-format="dd-mm-yyyy"/>
-                                            <span class="input-group-addon">
-																		<i class="fa fa-calendar bigger-110"></i>
-																	</span>
+                                    
+                                        </tbody>
+                                    </table>
+                                                
+                                            </div>                                  
+                                            
+                                              <div class="modal-footer">
+                                                 <div align="center">
+                                                  <button id="botonCliente" type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+                                                 </div>
+                                            </div>
+                                          </div>
+                                          
                                         </div>
+                                     </div>
+                                        
+                                    <!-- fin del form -->
                                     </div>
-                                </div>
-                            </div>
-
-
+                            
+                            <div class="space-6"></div>
+                            <div class="space-6"></div>
+                            <div class="space-6"></div>
+                            <div class="space-6"></div>
+                            
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right">Sexo</label>
+                            
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Nombre del Cliente</label>
 
-                                <div class="radio">
-                                    <label>
-                                        <input name="form-field-radio" type="radio" class="ace"/>
-                                        <span class="lbl">Femenino</span>
-                                    </label>
-                                    <label>
-                                        <input name="form-field-radio" type="radio" class="ace"/>
-                                        <span class="lbl">Masculino</span>
-                                    </label>
-                                </div>
-
+                                
+                            <div class="col-sm-9">
+                            
+                                <input class="input-sm" type="text" id="cliente" value="" disabled />
+                                
+                                <div class="space-2"></div>
+                                
                             </div>
-
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Nivel
-                                    educativo</label>
-
-                                <select class="col-sm-4" id="form-field-select-1">
-                                    <option value=""></option>
-                                    <option value="AL">Primaria</option>
-                                    <option value="AL">Secundaria</option>
-                                    <option value="AL">Superior</option>
-                                </select>
-
                             </div>
-
-                            <div class="form-group">
-
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-4">N&uacute;mero
-                                    de hijos</label>
-                                <div class="col-sm-9">
-                                    <input type="text" id="spinner4"/>
-                                    <div class="space-6"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Ocupaci&oacute;n</label>
-
-                                <div class="col-sm-9">
-                                    <input class="input-sm" type="text" id="form-field-4" placeholder="Ocupacion"/>
-                                    <div class="space-2"></div>
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-
-                                <label class="col-sm-3 control-label no-padding-right"
-                                       for="form-field-4">Dependientes</label>
-                                <div class="col-sm-9">
-                                    <input type="text" id="spinner3"/>
-                                    <div class="space-6"></div>
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Tel&eacute;fono</label>
-
-                                <div class="col-sm-9">
-                                    <input class="input-sm" type="text" id="form-field-10" placeholder="Telefono"/>
-                                    <div class="space-2"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Correo</label>
-
-                                <div class="col-sm-9">
-                                    <input type="text" id="form-field-3" placeholder="Correo"
-                                           class="col-xs-10 col-sm-5"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right"
-                                       for="form-field-1">Domicilio</label>
-
-                                <div class="col-sm-9">
-                                    <input type="text" id="form-field-6" placeholder="Domicilio"
-                                           class="col-xs-10 col-sm-5"/>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Población
-                                    vulnerable</label>
-
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="form-field-checkbox" type="checkbox" class="ace"/>
-                                        <span class="lbl">Desplazado</span>
-                                    </label>
-
-                                    <label>
-                                        <input name="form-field-checkbox" type="checkbox" class="ace"/>
-                                        <span class="lbl">Menor de edad</span>
-                                    </label>
-                                    <label>
-                                        <input name="form-field-checkbox" type="checkbox" class="ace"/>
-                                        <span class="lbl">Anciano</span>
-                                    </label>
-                                    <label>
-                                        <input name="form-field-checkbox" type="checkbox" class="ace"/>
-                                        <span class="lbl">Discapacitado</span>
-                                    </label>
-                                    <label>
-                                        <input name="form-field-checkbox" type="checkbox" class="ace"/>
-                                        <span class="lbl">Otros</span>
-                                    </label>
-                                </div>
-
-                            </div>
-                            <div class="control-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Tipo de actuación requerida</label>
-
-                                <div class="radio">
-                                    <label>
-                                        <input name="form-field-checkbox" type="radio" class="ace"/>
-                                        <span class="lbl">Asesoría jurídica</span>
-                                    </label>
-                                    <label>
-                                        <input name="form-field-checkbox" type="radio" class="ace"/>
-                                        <span class="lbl">Tipo1</span>
-                                    </label>
-                                    <label>
-                                        <input name="form-field-checkbox" type="radio" class="ace"/>
-                                        <span class="lbl">Tipo2</span>
-                                    </label>
-
-                                    <label>
-                                        <input name="form-field-checkbox" type="radio" class="ace"/>
-                                        <span class="lbl">Otro</span>
-                                    </label>
-                                </div>
-
-                            </div>
-				<div class="control-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Etapa</label>
-
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="form-field-checkbox" type="checkbox" class="ace"/>
-                                        <span class="lbl">Juzgado</span>
-                                    </label>
-
-                                    <label>
-                                        <input name="form-field-checkbox" type="checkbox" class="ace"/>
-                                        <span class="lbl">Sala</span>
-                                    </label>
-                                </div>
-                            </div>
+                            
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right"
                                        for="form-field-4">Objetivo de la actuación</label>
@@ -1196,7 +1378,7 @@
                                 <div class="col-sm-4">
                                     <!--<input class="input-sm" type="text" id="form-field-4" placeholder="Observaciones" />
                                     <div class="space-2"></div>-->
-                                    <textarea class="form-control" rows="4"></textarea>
+                                    <textarea id="objetivo" class="form-control" rows="4"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -1206,10 +1388,11 @@
                                 <div class="col-sm-4">
                                     <!--<input class="input-sm" type="text" id="form-field-4" placeholder="Observaciones" />
                                     <div class="space-2"></div>-->
-                                    <textarea class="form-control" rows="8"></textarea>
+                                    <textarea id="observaciones"class="form-control" rows="8"></textarea>
                                 </div>
                             </div>
-
+                            
+                            <div class="hidden">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right"
                                        for="form-field-4">Archivos</label>
@@ -1217,9 +1400,10 @@
                                     <input type="file" id="id-input-file-2"/>
                                 </div>
                             </div>
+                            </div>
 
                             <div align="center">
-                                <button id = "click_button"class="btn btn-info" type="button" >
+                                <button id="click_button"class="btn btn-info" type="button">
                                     <i class="ace-icon fa fa-check bigger-110"></i>
                                     Registrar Caso
                                 </button>
@@ -1237,25 +1421,25 @@
 <div class="footer">
     <div class="footer-inner">
         <div class="footer-content">
-						<span class="bigger-120">
-							<span class="blue bolder">Ace</span>
-							Application &copy; 2013-2014
-						</span>
+                        <span class="bigger-120">
+                            <span class="blue bolder">Ace</span>
+                            Application &copy; 2013-2014
+                        </span>
 
             &nbsp; &nbsp;
             <span class="action-buttons">
-							<a href="#">
-								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-							</a>
+                            <a href="#">
+                                <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+                            </a>
 
-							<a href="#">
-								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
-							</a>
+                            <a href="#">
+                                <i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+                            </a>
 
-							<a href="#">
-								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
-							</a>
-						</span>
+                            <a href="#">
+                                <i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+                            </a>
+                        </span>
         </div>
     </div>
 </div>
@@ -1300,6 +1484,15 @@
 <script src="assets/js/jquery.inputlimiter.min.js"></script>
 <script src="assets/js/jquery.maskedinput.min.js"></script>
 <script src="assets/js/bootstrap-tag.min.js"></script>
+<script src="assets/js/jquery.dataTables.min.js"></script>
+<script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
+<script src="assets/js/dataTables.buttons.min.js"></script>
+<script src="assets/js/buttons.flash.min.js"></script>
+<script src="assets/js/buttons.html5.min.js"></script>
+<script src="assets/js/buttons.print.min.js"></script>
+<script src="assets/js/buttons.colVis.min.js"></script>
+<script src="assets/js/dataTables.select.min.js"></script>    
+    
 
 <!-- ace scripts -->
 <script src="assets/js/ace-elements.min.js"></script>
@@ -1309,7 +1502,7 @@
         $(document).ready(function(){
             $('#click_button').click(function(){
                 $.ajax({
-                    type:"GET",
+                    type:"POST",
                     url:'casos',
                     beforeSend: function (xhr) {
                         var token = $('meta[name="csrf_token"]').attr('content');
@@ -1320,7 +1513,9 @@
                     },
                     data: {
                            usu_id: 1,
-                           con_tipcon : 'p'},
+                           con_nombre: $('#observaciones').val(),
+                           con_apell: $('#objetivo').val(),
+                        },
                     success: function(Response){
                         alert(Response);
                     }
@@ -1328,9 +1523,263 @@
             });
         });
         </script>
+
+
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
+    function a_onClick( hola) {
+               alert(hola);
+              }
+    
+        $(document).ready(function(){
+              
+                var myTable =
+                $('#dynamic-table')
+                //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+                        .DataTable({
+                            bAutoWidth: false,
+                    
+                            "aoColumns": [
+                                null, null, null, null
+                            ],
+                            "aaSorting": [],
+
+
+
+
+                            select: {
+                                style: 'multi'
+                            }
+                        });
+
+       
+        $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
+
+        new $.fn.dataTable.Buttons(myTable, {
+            buttons: [
+                {
+                    "extend": "colvis",
+                    "text": "<i class='fa fa-search bigger-110 blue'></i> <span class='hidden'>Show/hide columns</span>",
+                    "className": "btn btn-white btn-primary btn-bold",
+                    columns: ':not(:first):not(:last)'
+                },
+                {
+                    "extend": "copy",
+                    "text": "<i class='fa fa-copy bigger-110 pink'></i> <span class='hidden'>Copy to clipboard</span>",
+                    "className": "btn btn-white btn-primary btn-bold"
+                },
+                {
+                    "extend": "csv",
+                    "text": "<i class='fa fa-database bigger-110 orange'></i> <span class='hidden'>Export to CSV</span>",
+                    "className": "btn btn-white btn-primary btn-bold"
+                },
+                {
+                    "extend": "excel",
+                    "text": "<i class='fa fa-file-excel-o bigger-110 green'></i> <span class='hidden'>Export to Excel</span>",
+                    "className": "btn btn-white btn-primary btn-bold"
+                },
+                {
+                    "extend": "pdf",
+                    "text": "<i class='fa fa-file-pdf-o bigger-110 red'></i> <span class='hidden'>Export to PDF</span>",
+                    "className": "btn btn-white btn-primary btn-bold"
+                },
+                {
+                    "extend": "print",
+                    "text": "<i class='fa fa-print bigger-110 grey'></i> <span class='hidden'>Print</span>",
+                    "className": "btn btn-white btn-primary btn-bold",
+                    autoPrint: false,
+                    message: 'This print was produced using the Print button for DataTables'
+                }
+            ]
+        });
+        myTable.buttons().container().appendTo($('.tableTools-container'));
+
+        //style the message box
+        var defaultCopyAction = myTable.button(1).action();
+        myTable.button(1).action(function (e, dt, button, config) {
+            defaultCopyAction(e, dt, button, config);
+            $('.dt-button-info').addClass('gritter-item-wrapper gritter-info gritter-center white');
+        });
+
+
+        var defaultColvisAction = myTable.button(0).action();
+        myTable.button(0).action(function (e, dt, button, config) {
+
+            defaultColvisAction(e, dt, button, config);
+
+
+            if ($('.dt-button-collection > .dropdown-menu').length == 0) {
+                $('.dt-button-collection')
+                        .wrapInner('<ul class="dropdown-menu dropdown-light dropdown-caret dropdown-caret" />')
+                        .find('a').attr('href', '#').wrap("<li />")
+            }
+            $('.dt-button-collection').appendTo('.tableTools-container .dt-buttons')
+        });
+
+        ////
+
+        setTimeout(function () {
+            $($('.tableTools-container')).find('a.dt-button').each(function () {
+                var div = $(this).find(' > div').first();
+                if (div.length == 1) div.tooltip({container: 'body', title: div.parent().text()});
+                else $(this).tooltip({container: 'body', title: $(this).text()});
+            });
+        }, 500);
+
+
+        myTable.on('select', function (e, dt, type, index) {
+            if (type === 'row') {
+                $(myTable.row(index).node()).find('input:checkbox').prop('checked', true);
+            }
+        });
+        myTable.on('deselect', function (e, dt, type, index) {
+            if (type === 'row') {
+                $(myTable.row(index).node()).find('input:checkbox').prop('checked', false);
+            }
+        });
+
+
+        /////////////////////////////////
+        //table checkboxes
+        $('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
+
+        //select/deselect all rows according to table header checkbox
+        $('#dynamic-table > thead > tr > th input[type=checkbox], #dynamic-table_wrapper input[type=checkbox]').eq(0).on('click', function () {
+            var th_checked = this.checked;//checkbox inside "TH" table header
+
+            $('#dynamic-table').find('tbody > tr').each(function () {
+                var row = this;
+                if (th_checked) myTable.row(row).select();
+                else  myTable.row(row).deselect();
+            });
+        });
+
+        //select/deselect a row when the checkbox is checked/unchecked
+        $('#dynamic-table').on('click', 'td input[type=checkbox]', function () {
+            var row = $(this).closest('tr').get(0);
+            if (this.checked) myTable.row(row).deselect();
+            else myTable.row(row).select();
+        });
+
+
+        $(document).on('click', '#dynamic-table .dropdown-toggle', function (e) {
+            e.stopImmediatePropagation();
+            e.stopPropagation();
+            e.preventDefault();
+        });
+
+
+        //And for the first simple table, which doesn't have TableTools or dataTables
+        //select/deselect all rows according to table header checkbox
+        var active_class = 'active';
+        $('#simple-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function () {
+            var th_checked = this.checked;//checkbox inside "TH" table header
+
+            $(this).closest('table').find('tbody > tr').each(function () {
+                var row = this;
+                if (th_checked) $(row).addClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', true);
+                else $(row).removeClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', false);
+            });
+        });
+
+        //select/deselect a row when the checkbox is checked/unchecked
+        $('#simple-table').on('click', 'td input[type=checkbox]', function () {
+            var $row = $(this).closest('tr');
+            if ($row.is('.detail-row ')) return;
+            if (this.checked) $row.addClass(active_class);
+            else $row.removeClass(active_class);
+        });
+
+
+        /********************************/
+        //add tooltip for small view action buttons in dropdown menu
+        $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+
+        //tooltip placement on right or left
+        function tooltip_placement(context, source) {
+            var $source = $(source);
+            var $parent = $source.closest('table')
+            var off1 = $parent.offset();
+            var w1 = $parent.width();
+
+            var off2 = $source.offset();
+            //var w2 = $source.width();
+
+            if (parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2)) return 'right';
+            return 'left';
+        }
+
+        $("#botonCliente").on('click', function (e){
+                    //alert("mostareaas");
+                   $("#cliente").val("Jose Perez");               
+                              
+        });
+        /***************/
+        $('.show-details-btn').on('click', function (e) {
+            e.preventDefault();
+            $(this).closest('tr').next().toggleClass('open');
+            $(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
+        });
+            
+            var butons = '<div class="hidden-sm hidden-xs action-buttons">'+
+                                                    
+                                                    '<a onClick="a_onClick(\'editar\')" class="green" ">'+
+                                                        '<i class="ace-icon fa fa-pencil bigger-130">'+'</i>'+
+                                                    '</a>'+
+
+                                                    '<a onClick="a_onClick(\'borrar\')" class="red" href="#">'+
+                                                        '<i class="ace-icon fa fa-trash-o bigger-130">'+'</i>'+
+                                                    '</a>'+
+                                                '</div>';
+                $.ajax({
+                   
+                    /*type: "GET",
+                    url:'../directorio',
+                    success: function(result){
+                        
+                        
+                        var data = jQuery.parseJSON(result);
+                        var rows = "";
+                        $("#tbodycontent").html(rows);
+                        
+                        for(var i = 0; i<data.length ;i++)
+                        {
+                            myTable.row.add( [
+                            data[i].con_nombre,
+                            data[i].con_correo,
+                            data[i].con_nrotel,
+                            data[i].con_descri,
+                            butons
+                            
+                        ] ).draw( false );
+                        
+                        } 
+                        
+                       // $("#tbodycontent").html (rows);
+                    }*/
+                        
+            
+                        //alert(Response);
+                         
+            
+                });
+            myTable.row.add( [
+                            "Jose",
+                            "Peña",
+                            "98784525",
+                            "av. calle nueva 798"
+                            
+                            
+                        ] ).draw( false );
+            
+        });
+</script>    
+    
+    
+<script type="text/javascript">
     jQuery(function ($) {
+        
+        
         $('#id-disable-check').on('click', function () {
             var inp = $('#form-input-readonly').get(0);
             if (inp.hasAttribute('disabled')) {
@@ -1492,13 +1941,13 @@
             thumbnail: 'small'//large | fit
             //,icon_remove:null//set null, to hide remove/reset button
             /**,before_change:function(files, dropped) {
-						//Check an example below
-						//or examples/file-upload.html
-						return true;
-					}*/
+                        //Check an example below
+                        //or examples/file-upload.html
+                        return true;
+                    }*/
             /**,before_remove : function() {
-						return true;
-					}*/
+                        return true;
+                    }*/
             ,
             preview_error: function (filename, error_code) {
                 //name of the file that failed
@@ -1570,10 +2019,10 @@
 
                         /**
                          if( !info.dropped ) {
-							//perhapse reset file field if files have been selected, and there are invalid files among them
-							//when files are dropped, only valid files will be added to our file array
-							e.preventDefault();//it will rest input
-						}
+                            //perhapse reset file field if files have been selected, and there are invalid files among them
+                            //when files are dropped, only valid files will be added to our file array
+                            e.preventDefault();//it will rest input
+                        }
                          */
 
 
@@ -1589,10 +2038,10 @@
              file_input
              .off('file.preview.ace')
              .on('file.preview.ace', function(e, info) {
-						console.log(info.file.width);
-						console.log(info.file.height);
-						e.preventDefault();//to prevent preview
-					});
+                        console.log(info.file.width);
+                        console.log(info.file.height);
+                        e.preventDefault();//to prevent preview
+                    });
              */
 
         });
@@ -1733,11 +2182,11 @@
                         /**
                          //or fetch data from database, fetch those that match "query"
                          source: function(query, process) {
-						  $.ajax({url: 'remote_source.php?q='+encodeURIComponent(query)})
-						  .done(function(result_items){
-							process(result_items);
-						  });
-						}
+                          $.ajax({url: 'remote_source.php?q='+encodeURIComponent(query)})
+                          .done(function(result_items){
+                            process(result_items);
+                          });
+                        }
                          */
                     }
             )
@@ -1782,8 +2231,8 @@
          //or you can activate the chosen plugin after modal is shown
          //this way select element becomes visible with dimensions and chosen works as expected
          $('#modal-form').on('shown', function () {
-					$(this).find('.modal-chosen').chosen();
-				})
+                    $(this).find('.modal-chosen').chosen();
+                })
          */
 
 
