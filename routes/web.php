@@ -33,3 +33,5 @@ Route::get('/casosbusqueda', function () {
 
 Route::resource('directorio','directorioController');
 Route::resource('casos','casosController');
+Route::resource('test','testController');
+
