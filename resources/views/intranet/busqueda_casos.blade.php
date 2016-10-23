@@ -981,10 +981,12 @@
                                         <tr>
                                             
                                             <th>Codigo</th>
-                                            <th>Nombre</th>
-                                            <th>Tipo caso</th>
-                                            <th>Fecha</th>
-                                            <th>Estado</th>
+                                            <th>Fecha Registro</th>
+                                            <th>Nombre Cliente</th>
+                                            
+                                            <th>Direccion Cliente</th>
+                                             <th>Registrado </th>
+                                            <th>Estado </th>
                                             <th>Modificar</th>
                                         </tr>
                                         </thead>
@@ -1180,7 +1182,7 @@
                             bAutoWidth: false,
                     
                             "aoColumns": [
-                                null, null, null, null,
+                                null, null, null, null,null,null,
                                 {"bSortable": false}
                             ],
                             "aaSorting": [],
@@ -1379,14 +1381,16 @@
                         var rows = "";
                         $("#tbodycontent").html(rows);
                         
+                    
                         for(var i = 0; i<data.length ;i++)
                         {
                             myTable.row.add( [
                             data[i].cas_id,
-                            "Cristhian",
-                            data[i].cas_estado,
                             data[i].cas_fecate,
-                            data[i].tipcas_detalle,
+                            data[i].clinom+" "+data[i].cliapp,
+                            data[i].cli_direcc,
+                            data[i].regnom+" "+data[i].regape,
+                            data[i].estcas_detalle,
                             butons
                             
                         ] ).draw( false );

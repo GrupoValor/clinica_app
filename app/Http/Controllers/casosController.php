@@ -19,10 +19,9 @@ class casosController extends Controller
     {
       
 
-        $casos = DB::table('TA_CASO')
-            ->join('TA_ESTADOCASO', 'TA_CASO.tipcas_id', '=', 'TA_ESTADOCASO.tipcas_id')
-            ->select('TA_CASO.cas_id','TA_CASO.cas_estado','TA_CASO.cas_fecate','TA_ESTADOCASO.tipcas_detalle')
-            ->get();
+
+        $casos =DB::select('SELECT A.cas_id,A.cas_fecate, E.usu_appate as "cliapp",B.cli_direcc,C.usu_nombre as "regnom",C.usu_appate as "regape",D.estcas_detalle, E.usu_nombre as "clinom" FROM TA_CASO A, TA_CLIENTE B, TA_USUARIO C, TA_ESTADOCASO D,TA_USUARIO E WHERE  A.cli_id = B.cli_id AND A.usu_id = C.usu_id AND A.estcas_id = D.estcas_id AND B.usu_id = E.usu_id');
+
 
 
         $data = array();

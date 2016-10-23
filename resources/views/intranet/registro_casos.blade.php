@@ -1289,6 +1289,28 @@
                            
                             </div>
 
+                            <div class="form-group">
+                            
+                          
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Nombre del Docente</label>
+
+                                
+                            <div class="col-sm-6">
+                            
+                                <button type="button" style="font-size: 12px" class="btn btn-info btn-lg" data-toggle="modal" data-target="#boton">Buscar</button>
+                                
+                                 <div class="col-sm-6">
+                            
+                                 
+                                <input class="input-sm" type="text" id="cliente" value="" disabled />
+                                
+                                </div>
+                                
+                            </div>
+
+                           
+                            </div>
+
                             
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right"

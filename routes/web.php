@@ -23,6 +23,10 @@ Route::get('/prototipo/busqueda', function () {
     return view('prototipo/dirbusqueda');
 });
 
+Route::resource('directorio','directorioController');
+
+
+
 Route::get('/casosregistro', function () {
     return view('intranet/registro_casos');
 });
@@ -31,7 +35,7 @@ Route::get('/casosbusqueda', function () {
 });
 
 
-Route::resource('directorio','directorioController');
+
 Route::resource('casos','casosController');
 Route::resource('test','testController');
 
