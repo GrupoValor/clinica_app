@@ -44,10 +44,6 @@ CREATE TABLE `TA_CONTACTO` (
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-ALTER TABLE TA_CONTACTO
-    ADD CONSTRAINT fk_contacto_clinica
-    FOREIGN KEY(cln_id)
-    REFERENCES TA_CLINICA(cln_id);
 
 
 
@@ -82,11 +78,6 @@ CREATE TABLE `TA_CASO` (
   
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
- ALTER TABLE TA_CASO
-    ADD CONSTRAINT fk_caso_cliente
-    FOREIGN KEY(cli_id)
-    REFERENCES TA_CLIENTE(cli_id);
-
 
 DROP TABLE IF EXISTS `TA_ESTADOCASO`;
 
@@ -97,12 +88,6 @@ CREATE TABLE `TA_ESTADOCASO` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-
-
- ALTER TABLE TA_CASO
-    ADD CONSTRAINT fk_caso_estadocaso
-    FOREIGN KEY(estcas_id)
-    REFERENCES TA_ESTADOCASO(estcas_id);
 
 
 
@@ -119,11 +104,6 @@ CREATE TABLE `TA_CONSULTA` (
    PRIMARY KEY (`cst_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
- ALTER TABLE TA_CONSULTA
-    ADD CONSTRAINT fk_consulta_caso
-    FOREIGN KEY(cas_id)
-    REFERENCES TA_CASO(cas_id);
 
 
 # Dump of table TA_USUARIO
@@ -161,10 +141,9 @@ CREATE TABLE `TA_ALUMNO` (
   PRIMARY KEY (`alu_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-ALTER TABLE TA_ALUMNO 
-    ADD CONSTRAINT fk_alumno_usuario
-    FOREIGN KEY(usu_id)
-    REFERENCES TA_USUARIO(usu_id);
+
+
+
 
 
 # Dump of table TA_EVALUADOR
@@ -181,10 +160,6 @@ CREATE TABLE `TA_EVALUADOR` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-ALTER TABLE TA_EVALUADOR 
-    ADD CONSTRAINT fk_evaluador_usuario
-    FOREIGN KEY(usu_id)
-    REFERENCES TA_USUARIO(usu_id);
 
 
 DROP TABLE IF EXISTS `TA_USUARIO_CASO`;
@@ -195,19 +170,8 @@ CREATE TABLE `TA_USUARIO_CASO` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
- ALTER TABLE TA_USUARIO_CASO
-    ADD CONSTRAINT fk_usucaso_caso
-    FOREIGN KEY(cas_id)
-    REFERENCES TA_CASO(cas_id),
-  ADD CONSTRAINT fk_usucaso_usuario
-    FOREIGN KEY(usu_id)
-    REFERENCES TA_USUARIO(usu_id);
 
 
-   ALTER TABLE TA_USUARIO
-    ADD CONSTRAINT fk_usuario_clinica
-    FOREIGN KEY(cln_id)
-    REFERENCES TA_CLINICA(cln_id);
 
 
 
@@ -224,10 +188,6 @@ CREATE TABLE `TA_ETAPA` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
- ALTER TABLE TA_ETAPA
-    ADD CONSTRAINT fk_etapa_consulta
-    FOREIGN KEY(cst_id)
-    REFERENCES TA_CONSULTA(cst_id);
 
 
 
@@ -245,10 +205,8 @@ CREATE TABLE `TA_TAREA` (
   PRIMARY KEY (`tar_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
- ALTER TABLE TA_TAREA
-    ADD CONSTRAINT fk_tarea_etapa
-    FOREIGN KEY(eta_id)
-    REFERENCES TA_ETAPA(eta_id);
+
+
 
 
 DROP TABLE IF EXISTS `TA_USUARIO_TAREA`;
@@ -258,13 +216,8 @@ CREATE TABLE `TA_USUARIO_TAREA` (
   `tar_id` int(10) unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-     ALTER TABLE TA_USUARIO_TAREA
-    ADD CONSTRAINT fk_usutarea_tarea
-    FOREIGN KEY(tar_id)
-    REFERENCES TA_TAREA(tar_id),
-  ADD CONSTRAINT fk_usutarea_usuario
-    FOREIGN KEY(usu_id)
-    REFERENCES TA_USUARIO(usu_id);
+    
+
 
 DROP TABLE IF EXISTS `TA_COMENTARIO`;
 
@@ -277,22 +230,8 @@ CREATE TABLE `TA_COMENTARIO` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-ALTER TABLE TA_COMENTARIO 
-    ADD CONSTRAINT fk_comentario_tarea
-    FOREIGN KEY(tar_id)
-    REFERENCES TA_TAREA(tar_id);
-
-ALTER TABLE TA_COMENTARIO 
-    ADD CONSTRAINT fk_comentario_usuario
-    FOREIGN KEY(usu_id)
-    REFERENCES TA_USUARIO(usu_id);
-    
 
 
- ALTER TABLE TA_CLIENTE
-    ADD CONSTRAINT fk_cliente_usuario
-    FOREIGN KEY(usu_id)
-    REFERENCES TA_USUARIO(usu_id)
 
 
 
@@ -307,13 +246,110 @@ CREATE TABLE `TA_LOGIN` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-  ALTER TABLE TA_LOGIN 
+ALTER TABLE TA_LOGIN 
     ADD CONSTRAINT fk_login_usuario
     FOREIGN KEY(usu_id)
     REFERENCES TA_USUARIO(usu_id);
 
+ ALTER TABLE TA_COMENTARIO 
+    ADD CONSTRAINT fk_comentario_tarea
+    FOREIGN KEY(tar_id)
+    REFERENCES TA_TAREA(tar_id);
 
- 
+ALTER TABLE TA_COMENTARIO 
+    ADD CONSTRAINT fk_comentario_usuario
+    FOREIGN KEY(usu_id)
+    REFERENCES TA_USUARIO(usu_id);
+    
+
+
+ ALTER TABLE TA_CLIENTE
+    ADD CONSTRAINT fk_cliente_usuario
+    FOREIGN KEY(usu_id)
+    REFERENCES TA_USUARIO(usu_id);
+
+ALTER TABLE TA_CONTACTO
+    ADD CONSTRAINT fk_contacto_clinica
+    FOREIGN KEY(cln_id)
+    REFERENCES TA_CLINICA(cln_id);
+
+ ALTER TABLE TA_CASO
+    ADD CONSTRAINT fk_caso_cliente
+    FOREIGN KEY(cli_id)
+    REFERENCES TA_CLIENTE(cli_id);
+
+
+ ALTER TABLE TA_CASO
+    ADD CONSTRAINT fk_caso_estadocaso
+    FOREIGN KEY(estcas_id)
+    REFERENCES TA_ESTADOCASO(estcas_id);
+
+ ALTER TABLE TA_CONSULTA
+    ADD CONSTRAINT fk_consulta_caso
+    FOREIGN KEY(cas_id)
+    REFERENCES TA_CASO(cas_id);
+    
+ALTER TABLE TA_ALUMNO 
+    ADD CONSTRAINT fk_alumno_usuario
+    FOREIGN KEY(usu_id)
+    REFERENCES TA_USUARIO(usu_id);
+
+ALTER TABLE TA_EVALUADOR 
+    ADD CONSTRAINT fk_evaluador_usuario
+    FOREIGN KEY(usu_id)
+    REFERENCES TA_USUARIO(usu_id);
+
+ ALTER TABLE TA_USUARIO_CASO
+    ADD CONSTRAINT fk_usucaso_caso
+    FOREIGN KEY(cas_id)
+    REFERENCES TA_CASO(cas_id),
+  ADD CONSTRAINT fk_usucaso_usuario
+    FOREIGN KEY(usu_id)
+    REFERENCES TA_USUARIO(usu_id);
+
+   ALTER TABLE TA_USUARIO
+    ADD CONSTRAINT fk_usuario_clinica
+    FOREIGN KEY(cln_id)
+    REFERENCES TA_CLINICA(cln_id);
+
+ ALTER TABLE TA_ETAPA
+    ADD CONSTRAINT fk_etapa_consulta
+    FOREIGN KEY(cst_id)
+    REFERENCES TA_CONSULTA(cst_id);
+ ALTER TABLE TA_TAREA
+    ADD CONSTRAINT fk_tarea_etapa
+    FOREIGN KEY(eta_id)
+    REFERENCES TA_ETAPA(eta_id);
+
+ ALTER TABLE TA_USUARIO_TAREA
+    ADD CONSTRAINT fk_usutarea_tarea
+    FOREIGN KEY(tar_id)
+    REFERENCES TA_TAREA(tar_id),
+  ADD CONSTRAINT fk_usutarea_usuario
+    FOREIGN KEY(usu_id)
+    REFERENCES TA_USUARIO(usu_id);
+
+
+
+
+ALTER TABLE TA_COMENTARIO DROP FOREIGN KEY fk_comentario_tarea;
+ALTER TABLE TA_COMENTARIO DROP FOREIGN KEY fk_comentario_usuario;
+ALTER TABLE TA_CLIENTE DROP FOREIGN KEY fk_cliente_usuario;
+ALTER TABLE TA_CONTACTO DROP FOREIGN KEY fk_contacto_clinica;
+ALTER TABLE TA_CASO DROP FOREIGN KEY fk_caso_cliente;
+ALTER TABLE TA_CASO DROP FOREIGN KEY fk_caso_estadocaso;
+ALTER TABLE TA_CONSULTA DROP FOREIGN KEY fk_consulta_caso;
+ALTER TABLE TA_ALUMNO DROP FOREIGN KEY fk_alumno_usuario;
+ALTER TABLE TA_EVALUADOR DROP FOREIGN KEY fk_evaluador_usuario;
+ALTER TABLE TA_USUARIO_CASO DROP FOREIGN KEY fk_usucaso_caso;
+ALTER TABLE TA_USUARIO_CASO DROP FOREIGN KEY fk_usucaso_usuario;
+ALTER TABLE TA_USUARIO DROP FOREIGN KEY fk_usuario_clinica;
+ALTER TABLE TA_ETAPA DROP FOREIGN KEY fk_etapa_consulta;
+ALTER TABLE TA_TAREA DROP FOREIGN KEY fk_tarea_etapa;
+ALTER TABLE TA_USUARIO_TAREA DROP FOREIGN KEY fk_usutarea_tarea;
+ALTER TABLE TA_USUARIO_TAREA DROP FOREIGN KEY fk_usutarea_usuario;
+ALTER TABLE TA_LOGIN DROP FOREIGN KEY fk_login_usuario;
+
 
 
 
