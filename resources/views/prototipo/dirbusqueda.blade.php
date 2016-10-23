@@ -1285,11 +1285,12 @@
                                     <table id="dynamic-table" class="table table-striped table-bordered table-hover">
                                         <thead>
                                         <tr>
-                                            
+                                            <th>Tipo</th>
                                             <th>Nombre</th>
                                             <th>Teléfono</th>
                                             <th>E-mail</th>
                                             <th>Dirección</th>
+                                            <th>Dirección Web</th>
                                             <th>Modificar</th>
                                         </tr>
                                         </thead>
@@ -1482,7 +1483,7 @@
                             bAutoWidth: false,
                     
                             "aoColumns": [
-                                null, null, null, null,
+                                null, null, null, null,null, null,
                                 {"bSortable": false}
                             ],
                             "aaSorting": [],
@@ -1680,14 +1681,25 @@
                         var data = jQuery.parseJSON(result);
                         var rows = "";
                         $("#tbodycontent").html(rows);
-                        
+                       
                         for(var i = 0; i<data.length ;i++)
                         {
+                            var tipo ="";
+                            
+                            if (data[i].con_tipcon == 'p') {
+                                tipo = "Persona";
+                            }
+                            else
+                                tipo = "Institucion";
+
+
                             myTable.row.add( [
+                            tipo,
                             data[i].con_nombre,
-                            data[i].con_correo,
                             data[i].con_nrotel,
-                            data[i].con_descri,
+                            data[i].con_correo,
+                            data[i].con_direcc,
+                            data[i].con_dirweb,
                             butons
                             
                         ] ).draw( false );
