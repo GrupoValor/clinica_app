@@ -47,14 +47,16 @@ class directorioController extends Controller
     public function store(Request $request)
     {
         
-        $contact = TACONTACTO::create(['cln_id' => $request['cln_id'],
-                                       'usu_id' => $request['usu_id'],
-                                       'con_imagen' => 'contacto.jpg',
+
+        $contact = TACONTACTO::create(['cln_id' => '1',
                                        'con_tipcon' => $request['con_tipcon'],
-                                       'con_nombre' => ($request['con_nombre'].$request['con_apell']),
-                                       'con_correo' => $request['con_correo'],
+                                       'con_nombre' => $request['con_nombre'],
                                        'con_nrotel' => $request['con_nrotel'],
-                                       'con_descri' => $request['con_descri']]);
+                                       'con_direcc' => $request['con_direcc'],
+                                       'con_dirweb' => $request['con_dirweb'],
+                                       'con_correo' => $request['con_correo']
+                                       
+                                       ]);
         
 
         $contact->save();

@@ -1275,22 +1275,30 @@
 								<!-- PAGE CONTENT BEGINS -->
 								<form class="form-horizontal" role="form">
                                     <div class="space-20" ></div>
+
 									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Nombres </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Tipo </label>
+
+										<div class="col-sm-9">
+											 <select id="dir_tipocon" class="col-xs-10 col-sm-5" data-placeholder="Click para elegir...">
+													<option value="p">Persona</option>
+													<option value="i">Institucion</option>
+		
+												</select>
+									   	
+										</div>
+									</div>
+                                   
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Nombre </label>
 
 										<div class="col-sm-9">
 											<input id="dir_nombre" type="text" id="form-field-3"  class="col-xs-10 col-sm-5" />
 										</div>
 									</div>
                                     <div class="space-4"></div>
-                                    <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Apellidos </label>
-
-										<div class="col-sm-9">
-											<input id="dir_apellido" type="text" id="form-field-2"  class="col-xs-10 col-sm-5" />
-										</div>
-									</div>
-                                    <div class="space-4"></div>
+                                    
+                                    
                                     <div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-4"> Teléfono </label>
 
@@ -1304,6 +1312,14 @@
 
 										<div class="col-sm-9">
 											<input id="dir_email" type="text" id="form-field-5"  class="col-xs-10 col-sm-5" />
+										</div>
+									</div>
+									<div class="space-4"></div>
+                                    <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-5"> Direccion Web</label>
+
+										<div class="col-sm-9">
+											<input id="dir_web" type="text" id="form-field-5"  class="col-xs-10 col-sm-5" />
 										</div>
 									</div>
 									<div class="form-group">
@@ -1413,13 +1429,12 @@
                         }
                     },
                     data: {
-                           usu_id: 1,
-                           con_tipcon : 'p',
+                           con_tipcon : $( "#dir_tipocon option:selected" ).val(),
                            con_nombre: $('#dir_nombre').val(),
-                           con_apell: $('#dir_apellido').val(),
                            con_nrotel: $('#dir_telefono').val(),
                            con_correo: $('#dir_email').val(),
-                           con_descri: $('#dir_direccion').val()},
+                           con_dirweb: $('#dir_web').val(),
+                           con_direcc: $('#dir_direccion').val()},
                     success: function(Response){
                         alert(Response);
                     }
