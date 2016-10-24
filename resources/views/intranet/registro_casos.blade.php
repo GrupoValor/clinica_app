@@ -1442,8 +1442,11 @@
 <script type="text/javascript">
         $(document).ready(function(){
             $('#click_button').click(function(){
-                $.ajax({
-                    type:"POST",
+                
+                 var token = $('meta[name="csrf_token"]').attr('content');
+                 alert (token);
+                /* $.ajax({
+                    type:"PATCH",
                     url:'casos',
                     beforeSend: function (xhr) {
                         var token = $('meta[name="csrf_token"]').attr('content');
@@ -1460,7 +1463,7 @@
                     success: function(Response){
                         alert(Response);
                     }
-                });
+                });*/
             });
         });
         </script>
