@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 
+
 Route::get('/prototipo/registro', function () {
     return view('prototipo/dirregistro');
 });
@@ -42,5 +43,5 @@ Route::get('/directorio', function () {
 
 Route::resource('service_directorio','directorioController');
 Route::resource('service_casos','casosController');
-Route::resource('test','testController');
+//Route::resource('test','testController');
 
