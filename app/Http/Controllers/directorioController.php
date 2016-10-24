@@ -17,7 +17,7 @@ class directorioController extends Controller
      */
     public function index()
     {
-        $contacts = TACONTACTO::all();
+       $contacts = TACONTACTO::all();
         $data = array();
 
         foreach ($contacts as $contact) {
@@ -25,7 +25,6 @@ class directorioController extends Controller
         }
        
         echo json_encode($data);
-        
     }
 
     /**
@@ -35,7 +34,8 @@ class directorioController extends Controller
      */
     public function create()
     {
-        echo "estoy en el create";
+        
+        
     }
 
     /**

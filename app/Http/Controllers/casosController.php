@@ -51,7 +51,7 @@ class casosController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

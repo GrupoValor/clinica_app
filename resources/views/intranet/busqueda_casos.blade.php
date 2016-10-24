@@ -1373,7 +1373,7 @@
                 $.ajax({
                    
                     type: "GET",
-                    url:'casos',
+                    url:'service_casos',
                     success: function(result){
                         
                         

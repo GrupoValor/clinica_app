@@ -1447,7 +1447,7 @@
                  alert (token);
                 /* $.ajax({
                     type:"PATCH",
-                    url:'casos',
+                    url:'service_casos',
                     beforeSend: function (xhr) {
                         var token = $('meta[name="csrf_token"]').attr('content');
 

@@ -1609,7 +1609,7 @@
                 $.ajax({
                    
                     type: "GET",
-                    url:'../directorio',
+                    url:'../service_directorio',
                     success: function(result){
                         
                         
