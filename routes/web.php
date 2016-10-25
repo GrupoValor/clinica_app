@@ -34,6 +34,10 @@ Route::get('/casosbusqueda', function () {
     return view('intranet/busqueda_casos');
 });
 
+Route::get('/perfil', function () {
+    return view('intranet/profile');
+});
+
 
 
 Route::resource('casos','casosController');
