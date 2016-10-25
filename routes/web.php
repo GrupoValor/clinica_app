@@ -46,9 +46,6 @@ Route::get('/directorio', function () {
     return view('intranet/directorio');
 });
 
->>>>>>> origin/master
-
-
 Route::resource('service_directorio','directorioController');
 Route::resource('service_casos','casosController');
 //Route::resource('test','testController');
