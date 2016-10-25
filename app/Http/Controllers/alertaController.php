@@ -6,25 +6,16 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Models\TACONTACTO;
-
-class directorioController extends Controller
+class alertaController extends Controller
 {
-      /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-       $contacts = TACONTACTO::all();
-        $data = array();
-
-        foreach ($contacts as $contact) {
-            array_push($data,$contact['attributes']);
-        }
-       
-        echo json_encode($data);
+        //
     }
 
     /**
@@ -34,8 +25,7 @@ class directorioController extends Controller
      */
     public function create()
     {
-        
-        
+        //
     }
 
     /**
@@ -46,21 +36,7 @@ class directorioController extends Controller
      */
     public function store(Request $request)
     {
-        
-
-        $contact = TACONTACTO::create(['cln_id' => '1',
-                                       'con_tipcon' => $request['con_tipcon'],
-                                       'con_nombre' => $request['con_nombre'],
-                                       'con_nrotel' => $request['con_nrotel'],
-                                       'con_direcc' => $request['con_direcc'],
-                                       'con_dirweb' => $request['con_dirweb'],
-                                       'con_correo' => $request['con_correo']
-                                       
-                                       ]);
-        
-
-        $contact->save();
-         echo "Ingresado";
+        //
     }
 
     /**
@@ -71,7 +47,7 @@ class directorioController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**

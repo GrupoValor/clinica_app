@@ -1420,7 +1420,7 @@
             $('#click_button').click(function(){
                 $.ajax({
                     type: "POST",
-                    url:'../directorio',
+                    url:'../service_directorio',
                     beforeSend: function (xhr) {
                         var token = $('meta[name="csrf_token"]').attr('content');
 

@@ -935,8 +935,8 @@
                                             <th>Fecha Registro</th>
                                             <th>Nombre Cliente</th>
                                             
-                                            <th>Direccion Cliente</th>
-                                             <th>Registrado </th>
+                                            <th>Objetivo</th>
+                                             <th>Responsable</th>
                                             <th>Estado </th>
                                             <th>Modificar</th>
                                         </tr>
@@ -1324,7 +1324,7 @@
                 $.ajax({
                    
                     type: "GET",
-                    url:'casos',
+                    url:'service_casos',
                     success: function(result){
                         
                         
@@ -1333,14 +1333,15 @@
                         $("#tbodycontent").html(rows);
                         
                     
+
                         for(var i = 0; i<data.length ;i++)
                         {
                             myTable.row.add( [
                             data[i].cas_id,
                             data[i].cas_fecate,
-                            data[i].clinom+" "+data[i].cliapp,
-                            data[i].cli_direcc,
-                            data[i].regnom+" "+data[i].regape,
+                            data[i].cli_nombre,
+                            data[i].cas_objact,
+                            data[i].res_nombre,
                             data[i].estcas_detalle,
                             butons
                             

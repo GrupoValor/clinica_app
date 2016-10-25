@@ -20,7 +20,15 @@ class casosController extends Controller
       
 
 
-        $casos =DB::select('SELECT A.cas_id,A.cas_fecate, E.usu_appate as "cliapp",B.cli_direcc,C.usu_nombre as "regnom",C.usu_appate as "regape",D.estcas_detalle, E.usu_nombre as "clinom" FROM TA_CASO A, TA_CLIENTE B, TA_USUARIO C, TA_ESTADOCASO D,TA_USUARIO E WHERE  A.cli_id = B.cli_id AND A.usu_id = C.usu_id AND A.estcas_id = D.estcas_id AND B.usu_id = E.usu_id');
+        $casos =DB::select('SELECT A.cas_id, A.cas_fecate, 
+                    CONCAT(E.usu_nombre," ",E.usu_appate) as "cli_nombre",
+                    A.cas_objact,
+                    CONCAT(C.usu_nombre," ",C.usu_appate) as "res_nombre",
+                    D.estcas_detalle
+                    FROM TA_CASO A, TA_CLIENTE B, TA_USUARIO C, TA_ESTADOCASO D,TA_USUARIO E 
+                    WHERE 
+                    A.cli_id = B.cli_id AND A.usu_id = C.usu_id AND
+                    A.estcas_id = D.estcas_id AND B.usu_id = E.usu_id ');
 
 
 
@@ -43,7 +51,7 @@ class casosController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -55,7 +63,7 @@ class casosController extends Controller
     public function store(Request $request)
     {
         
-
+/*
     $caso = TaCaso::create([
                                        'usu_id' => '1',
                                        'cst_id' => '1',
@@ -69,7 +77,7 @@ class casosController extends Controller
         
 
         $caso->save();
-
+*/
         echo "Ingresado";
     }
 
@@ -81,17 +89,27 @@ class casosController extends Controller
      */
     public function show($id)
     {
-  $caso = TaCaso::create([
-                                       'usu_id' => '1',
-                                       'cst_id' => '1',
-                                       'cln_id' => '1',
-                                       'cli_id' => '2',
-                                       'tipcas_id' =>'1',
-                                       'cas_estado' => '1',
-                                       'cas_fecate' => '2016-10-21']);
-        
 
-        $caso->save();
+
+       $caso =DB::select('SELECT A.cas_id, A.cas_fecate, 
+                            CONCAT(E.usu_nombre," ",E.usu_appate) as "cli_nombre",
+                            B.cli_direcc ,
+                            CONCAT(C.usu_nombre," ",C.usu_appate) as "res_nombre",
+                            A.cas_objact,A.cas_observ,A.cas_result,
+                            D.estcas_detalle 
+                            FROM TA_CASO A, TA_CLIENTE B, TA_USUARIO C, TA_ESTADOCASO D,TA_USUARIO E 
+                            WHERE 
+                            A.cli_id = B.cli_id AND A.usu_id = C.usu_id AND
+                            A.estcas_id = D.estcas_id AND B.usu_id = E.usu_id AND A.cas_id ='.$id);
+
+
+
+        $data = array();
+        array_push($data,json_decode(json_encode($caso), true));
+
+       
+        
+        echo json_encode($data);
     }
 
     /**
@@ -114,7 +132,12 @@ class casosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $new_estado = $request['new_estado'];
+
+        DB::update('UPDATE TA_CASO set estcas_id = :status  where cas_id = :id',['status' => $new_estado,'id' => $id]);
+
+        echo "update caso" . $id;
     }
 
     /**
