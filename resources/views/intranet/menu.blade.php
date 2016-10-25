@@ -12,7 +12,7 @@
 				</button>
 
 				<div class="navbar-header pull-left">
-					<a id="logo-intranet" href="index.html" class="navbar-brand"><!-- logo de la empresa -->						
+					<a id="logo-intranet" href="index" class="navbar-brand"><!-- logo de la empresa -->						
 					</a>
 				</div>
 
@@ -73,16 +73,16 @@
                             <!--lista plegable de Bienvenido, Luis-->
                             <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                                 <li>
-                                    <a href="profile.html">
+                                    <a href="perfil">
                                         <i class="ace-icon fa fa-user"></i>
-                                        Profile
+                                        Perfil
                                     </a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
                                     <a href="#">
                                         <i class="ace-icon fa fa-power-off"></i>
-                                        Logout
+                                        Cerrar sesión
                                     </a>
                                 </li>
                             </ul>
@@ -103,7 +103,7 @@
                 </script>
                 <ul class="nav nav-list"><!-- barra de menu a la izq -->
                     <li class=""> <!-- Principal -->
-                        <a href="index.html">
+                        <a href="index">
                             <i class="menu-icon fa fa-tachometer"></i>
                             <span class="menu-text">Principal </span>
                         </a>
@@ -117,14 +117,14 @@
                         <b class="arrow"></b>
                         <ul class="submenu">
                             <li class="">
-                                <a href="registro_casos.html">
+                                <a href="casos_registro">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Registro
                                 </a>
                                 <b class="arrow"></b>
                             </li>
                             <li class="">
-                                <a href="busqueda_casos.html">
+                                <a href="casos_busqueda">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Búsqueda
                                 </a>
@@ -141,21 +141,21 @@
                         <b class="arrow"></b>
                         <ul class="submenu">
                             <li class="">
-                                <a href="ta_alumno.html">
+                                <a href="ta_alumnos">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Alumno
                                 </a>
                                 <b class="arrow"></b>
                             </li>
                             <li class="">
-                                <a href="ta_rubricas.html">
+                                <a href="ta_rubricas">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Mantenimiento de rúbricas
                                 </a>
                                 <b class="arrow"></b>
                             </li>
                             <li class="">
-                                <a href="ta_notas.html">
+                                <a href="ta_notas">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Registro de notas
                                 </a>
@@ -163,21 +163,21 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="active"><!-- Directorio -->
-                        <a href="directorio.html">
+                    <li class=""><!-- Directorio -->
+                        <a href="directorio">
                             <i class="menu-icon fa fa-book"></i>
                             <span class="menu-text"> Directorio </span>                            
                         </a>                        
                     </li>
 
                     <li class=""> <!-- Mapa -->
-                        <a href="mapa.html">
+                        <a href="mapa">
                             <i class="menu-icon fa fa-map-marker"></i>
                             <span class="menu-text"> Mapa </span>
                         </a>
                         <b class="arrow"></b>
                     </li>
-                    <li class=""> <!-- Mantenimientos -->
+                    <li class=""> <!-- Mantenimientos-->
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-desktop"></i>
                             <span class="menu-text">
@@ -188,109 +188,36 @@
                         <b class="arrow"></b>
                         <ul class="submenu"> 
                             <li class=""> <!-- Profesor -->
-                                <a href="#" class="dropdown-toggle">
+                                <a href="mant_profesor" class="">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Profesor
-                                    <b class="arrow fa fa-angle-down"></b>
-                                </a>
-                                <b class="arrow"></b>
-                                <ul class="submenu">
-                                    <li class="">
-                                        <a href="mantenimientoProfesor.html">
-                                            <i class="menu-icon fa fa-caret-right"></i>
-                                            Registrar
-                                        </a>
-
-                                        <b class="arrow"></b>
-                                    </li>
-                                    <li class="">
-                                        <a href="mantProfModificar.html">
-                                            <i class="menu-icon fa fa-caret-right"></i>
-                                            Modificar
-                                        </a>
-                                        <b class="arrow"></b>
-                                    </li>
-                                </ul>
+                                </a>                                                                
                              </li>
 
                             <li class=""> <!-- Jefe de Practica -->
-                                <a href="#" class="dropdown-toggle">
+                                <a href="mant_jp" class="">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Jefe de práctica
-                                    <b class="arrow fa fa-angle-down"></b>
-                                </a>
-                                <b class="arrow"></b>
-                                <ul class="submenu">
-                                    <li class="">
-                                        <a href="mantenimientoJP.html">
-                                            <i class="menu-icon fa fa-caret-right"></i>
-                                            Registrar
-                                        </a>
-                                        <b class="arrow"></b>
-                                    </li>
-                                    <li class="">
-                                        <a href="mantJPModificar.html">
-                                            <i class="menu-icon fa fa-caret-right"></i>
-                                            Modificar
-                                        </a>
-                                        <b class="arrow"></b>
-                                    </li>
-                                </ul>
+                                </a>                                
                             </li>
 
                             <li class=""> <!-- Alumno -->
-                                <a href="#" class="dropdown-toggle">
+                                <a href="mant_alumno" class="">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Alumno
-                                    <b class="arrow fa fa-angle-down"></b>
                                 </a>
-                                <b class="arrow"></b>
-                                <ul class="submenu">
-                                    <li class="">
-                                        <a href="mantenimientoAlumno.html">
-                                            <i class="menu-icon fa fa-caret-right"></i>
-                                            Registrar
-                                        </a>
-                                        <b class="arrow"></b>
-                                    </li>
-                                    <li class="">
-                                        <a href="mantAlumModificar.html">
-                                            <i class="menu-icon fa fa-caret-right"></i>
-                                            Modificar
-                                        </a>
-                                        <b class="arrow"></b>
-                                    </li>
-                                </ul>
                             </li>
 
                             <li class=""><!-- Cliente -->
-                                <a href="#" class="dropdown-toggle">
+                                <a href="mant_cliente" class="">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Cliente
-                                    <b class="arrow fa fa-angle-down"></b>
-                                </a>
-                                <b class="arrow"></b>
-                                <ul class="submenu">
-                                    <li class="">
-                                        <a href="mantenimientoCliente.html">
-                                            <i class="menu-icon fa fa-caret-right"></i>
-                                            Registrar
-                                        </a>
-                                        <b class="arrow"></b>
-                                    </li>
-                                    <li class="">
-                                        <a href="mantClieModificar.html">
-                                            <i class="menu-icon fa fa-caret-right"></i>
-                                            Modificar
-                                        </a>
-                                        <b class="arrow"></b>
-                                    </li>
-                                </ul>
+                                </a>                                
                             </li>
 
                           </ul>
                     </li>
-                    <li class=""> <!-- Reportes -->
+                    <li class=""> <!-- Reportes FALTA-->
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-file-o"></i>
                             <span class="menu-text">
@@ -342,13 +269,13 @@
                                 <b class="arrow"></b>
                                 <ul class="submenu">
                                     <li class="">
-                                        <a href="gestor_noticias_registro.html">
+                                        <a href="noticias_registro">
                                             <i class="menu-icon fa fa-caret-right"></i>
                                             Registro
                                         </a>
                                         <b class="arrow"></b>
                                     </li>
-                                    <li class="">
+                                    <li class=""> <!--FALTA-->
                                         <a href="gestor_noticias_busqueda.php">
                                             <i class="menu-icon fa fa-caret-right"></i>
                                             Búsqueda
@@ -359,7 +286,7 @@
                                 </ul>
                             </li>
                             <li class=""> <!-- Eventos -->
-                                <a href="gestor_eventos.html">
+                                <a href="eventos">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Eventos
                                 </a>
@@ -372,3 +299,11 @@
                     <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
                 </div>
             </div>
+            <div class="main-content">
+		<div class="main-content-inner">
+			<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+				<ul class="breadcrumb">
+					<li>
+						<i class="ace-icon fa fa-home home-icon"></i>
+						<a href="index">Home</a>
+					</li>
