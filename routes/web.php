@@ -35,7 +35,6 @@ Route::get('/casosbusqueda', function () {
     return view('intranet/busqueda_casos');
 });
 
-<<<<<<< HEAD
 Route::get('/perfil', function () {
     return view('intranet/profile');
 });
@@ -43,7 +42,6 @@ Route::get('/perfil', function () {
 Route::get('/index', function () {
     return view('intranet/index');
 });
-=======
 Route::get('/directorio', function () {
     return view('intranet/directorio');
 });
