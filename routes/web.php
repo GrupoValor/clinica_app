@@ -38,6 +38,9 @@ Route::get('/perfil', function () {
     return view('intranet/profile');
 });
 
+Route::get('/index', function () {
+    return view('intranet/index');
+});
 
 
 Route::resource('casos','casosController');
