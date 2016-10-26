@@ -96,7 +96,8 @@
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 
-
+            jQuery('#limantenimientos').addClass('active open');
+            jQuery('#mant-jp').addClass('active');
 			var grid_data = 
 			[ 
 			];

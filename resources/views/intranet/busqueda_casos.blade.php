@@ -258,6 +258,8 @@
                alert(hola);
               }
         $(document).ready(function(){
+            jQuery('#casos').addClass('active open');
+            jQuery('#casos-busqueda').addClass('active');
               var myTable =
                 $('#dynamic-table')
                 //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)

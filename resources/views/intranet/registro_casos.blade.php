@@ -296,6 +296,8 @@
 
 <script type="text/javascript">
         $(document).ready(function(){
+            jQuery('#casos').addClass('active open');
+            jQuery('#casos-registro').addClass('active');
             $('#click_button').click(function(){
                 
                  var token = $('meta[name="csrf_token"]').attr('content');

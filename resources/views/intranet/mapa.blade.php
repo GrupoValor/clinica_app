@@ -269,7 +269,9 @@
 <!-- ace scripts -->
 <script src="assets/js/ace-elements.min.js"></script>
 <script src="assets/js/ace.min.js"></script>
-
+    <script>
+                jQuery('#limapa').addClass('active');
+    </script>
 <!-- inline scripts related to this page -->
 </body>
 </html>

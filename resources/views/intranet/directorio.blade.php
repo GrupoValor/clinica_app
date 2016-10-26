@@ -340,6 +340,7 @@
 
               }
         $(document).ready(function(){
+                jQuery('#lidirectorio').addClass('active');
                myTable =
                 $('#dynamic-table')
                 //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)

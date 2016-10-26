@@ -351,6 +351,9 @@
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 			jQuery(function($) {
+                jQuery('#litareas').addClass('active open');
+                jQuery('#lirubricas').addClass('active');
+                
 				//initiate dataTables plugin
 				
 				

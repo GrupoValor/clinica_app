@@ -202,6 +202,9 @@
 
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
+    jQuery('#ligestor').addClass('active open');
+    jQuery('#linoticias').addClass('active open');
+    jQuery('#noticias-reg').addClass('active');
     jQuery(function ($) {
         $('#id-disable-check').on('click', function () {
             var inp = $('#form-input-readonly').get(0);

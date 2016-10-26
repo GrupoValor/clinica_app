@@ -495,6 +495,8 @@
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 			jQuery(function($) {
+                jQuery('#litareas').addClass('active open');
+                jQuery('#linotas').addClass('active');
 				//initiate dataTables plugin
 				
 				

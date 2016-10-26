@@ -328,6 +328,8 @@
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
+            jQuery('#ligestor').addClass('active open');
+            jQuery('#lieventos').addClass('active');
 			jQuery(function($) {
 
 /* initialize the external events

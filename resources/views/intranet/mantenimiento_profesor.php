@@ -94,7 +94,8 @@
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
-
+            jQuery('#limantenimientos').addClass('active open');
+            jQuery('#mant-profesor').addClass('active');
 
 			var grid_data = 
 			[ 
