@@ -51,29 +51,146 @@
 
 					<div class="page-content">
 						<div class="page-header"><!-- /.page-header -->
-							<h1>
-								Mantenimiento de jefes de práctica
+							<h1 id = "mytitulo" >
+								Directorio
+								<button type="button" class="btn btn-primary" style="float: right;margin-top: -8px;" onclick="add_onClick()" >Nuevo +</button>
 							</h1>
-						</div>
 
+						</div>
+							
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-								<table id="grid-table">
-									
+								<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 
-									
-								</table>
+                                        <thead>
 
+                                        <tr>
+                                        	<th>ID</th>
+                                            <th>Tipo</th>
+                                            <th>Nombre</th>
+                                            <th>Teléfono</th>
+                                            <th>E-mail</th>
+                                            <th>Dirección</th>
+                                            <th>Dirección Web</th>
+                                            <th>Modificar</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody id ="tbodycontent">
+                                       
+
+                                    
+                                        </tbody>
+                                    </table>
 								<div id="grid-pager"></div>
                                 <!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
 					</div><!-- /.page-content -->
-				</div>
-			</div><!-- /.main-content -->
 
-			<?php  echo view('intranet/footer'); ?>	
+
+
+				</div>
+
+			</div><!-- /.main-content -->
+        
+			<!-- Popup :  Agregar -->
+
+			<div align="center">        
+                <div class="modal fade" id="boton" role="dialog">
+					<div class="modal-dialog" style="width: 500px;">
+					 
+						<div class="modal-content">
+                            <div class="modal-header">
+                                <h1 type="button" class="close" data-dismiss="modal"></h1>
+                            </div>
+                            <!-- Modal content-->
+                            	<div class="page-header"><!-- /.page-header -->
+							<h1 >  Contacto </h1>
+
+							<form class="form-horizontal" role="form" style="padding-left: 66px;">
+                                    <div class="space-20" ></div>
+
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Tipo </label>
+
+										<div class="col-sm-9">
+											 <select id="dir_tipocon" class="col-xs-5 col-sm-7" data-placeholder="Click para elegir...">
+													<option value="p">Persona</option>
+													<option value="i">Institucion</option>
+		
+												</select>
+									   	
+										</div>
+									</div>
+                                   
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Nombre </label>
+
+										<div class="col-sm-9">
+											<input id="dir_nombre" type="text" id="form-field-3"  class="col-xs-5 col-sm-7" />
+										</div>
+									</div>
+                                    <div class="space-4"></div>
+                                    
+                                    
+                                    <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4"> Teléfono </label>
+
+										<div class="col-sm-9">
+											<input id="dir_telefono" type="text" id="form-field-4" class="col-xs-5 col-sm-7" />
+										</div>
+									</div>
+                                    <div class="space-4"></div>
+                                    <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > E-mail </label>
+
+										<div class="col-sm-9">
+											<input id="dir_email" type="text"   class="col-xs-5 col-sm-7"  />
+										</div>
+									</div>
+									<div class="space-4"></div>
+                                    <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-5"> Direccion Web</label>
+
+										<div class="col-sm-9">
+											<input id="dir_web" type="text" id="form-field-5"  class="col-xs-5 col-sm-7" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-5"> Direccion </label>
+
+										<div class="col-sm-9">
+											<input id="dir_direcc" type="text" id="form-field-5"  class="col-xs-5 col-sm-7" />
+										</div>
+									</div>
+									<div class="form-group">
+                                
+                            </div>				
+									
+                                    <div class="space-20"></div>
+
+								
+
+								</form>
+
+
+						</div>
+
+                            <div class="modal-footer">
+                                <div align="center">
+                                    <button id="botonCliente" type="button" class="btn btn-default" data-dismiss="modal" onclick="close();">Aceptar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>            
+                </div>
+            </div>
+			
+		<?php  echo view('intranet/footer'); ?>
+
+		
 
 		<!-- basic scripts -->
 
@@ -86,341 +203,223 @@
 		<script src="assets/js/bootstrap.min.js"></script>
 
 		<!-- page specific plugin scripts -->
-		<script src="assets/js/jquery.jqGrid.min.js"></script>
-		<script src="assets/js/grid.locale-en.js"></script>
+		<script src="../assets/js/jquery.dataTables.min.js"></script>
+		<script src="../assets/js/jquery.dataTables.bootstrap.min.js"></script>
+		<script src="../assets/js/dataTables.buttons.min.js"></script>
+		<script src="../assets/js/buttons.flash.min.js"></script>
+		<script src="../assets/js/buttons.html5.min.js"></script>
+		<script src="../assets/js/buttons.print.min.js"></script>
+		<script src="../assets/js/buttons.colVis.min.js"></script>
+		<script src="../assets/js/dataTables.select.min.js"></script>
 
-		<!-- ace scripts -->
+
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
-
-		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
-
+			
+			
+		</script>
+		<!-- inline scripts related to this page -->
+		
+		<script type="text/javascript">
             jQuery('#limantenimientos').addClass('active open');
             jQuery('#mant-jp').addClass('active open');
             jQuery('#mant-jp-mod').addClass('active');
-			var grid_data = 
-			[ 
-			];
-			
-			$.ajax({
-                   
-                    type: "GET",
-                    url:'service_directorio',
-                    success: function(result){
-                        
-                        
-                        var data = jQuery.parseJSON(result);
-                        
-                       
-                        for(var i = 0; i<data.length ;i++)
-                        {
-                            var mytipo ="";
 
-                            if (data[i].con_tipcon == 'p') {
-                                mytipo = "Persona";
-                            }
-                            else
-                                mytipo = "Institucion";
+       var myTable ;
+       var data_set = [];
+       var editid;
+       var action;
 
-                           
-                            
-                        var myrow = {tipo:mytipo,
-                        	name:data[i].con_nombre,
-                        	 phone: data[i].con_nrotel, 
-                        	 email:data[i].con_correo, 
-                        	 address:data[i].con_direcc,
-                        	 webaddress:data[i].con_dirweb};
-						jQuery("#grid-table").addRowData(i+1, myrow);
-                        
-                        
+        function getButtons(i,con_id){
+
+                    var param = "'"+i+"','"+con_id+"'";
+                    var butons = '<div class="hidden-sm hidden-xs action-buttons">'+
+                                                    
+                                                    '<a  onClick="edit_onClick('+param+')" class="green" ">'+
+                                                        '<i class="ace-icon fa fa-pencil bigger-130">'+'</i>'+
+                                                    '</a>'+
+
+                                                    '<a onClick="edit_onClick(\'borrar\')" class="red" href="#">'+
+                                                        '<i class="ace-icon fa fa-trash-o bigger-130">'+'</i>'+
+                                                    '</a>'+
+                                                '</div>';
+
+                    
+                    return butons;
+            }
+
+
+       function add_onClick(){
+
+       	action="ADD";
+
+       	$("#dir_nombre").val("");
+        $("#dir_telefono").val("");
+        $("#dir_email").val("");
+        $("#dir_web").val("");
+        $("#dir_direcc").val("");
+       	$("#boton").modal()
+       }
+
+      
+       $("#botonCliente").on('click', function (e){
+                    //alert("mostareaas");
+            if (action=="ADD"){
+            	tipo = "Persona";
+            	i = data_set.length;
+            	if ( $('#dir_nombre').val().length < 1)
+            		return;
+            	$.ajax({
+                    type: "POST",
+                    url:'/service_directorio',
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
                         }
-                        
-                       // $("#tbodycontent").html (rows);
+                    },
+                    data: {
+                           con_tipcon : $( "#dir_tipocon option:selected" ).val(),
+                           con_nombre: $('#dir_nombre').val(),
+                           con_nrotel: $('#dir_telefono').val(),
+                           con_correo: $('#dir_email').val(),
+                           con_dirweb: $('#dir_web').val(),
+                           con_direcc: $('#dir_direcc').val()},
+                    success: function(Response){
+                    	data_set.push([
+            					data_set[i-1][0],
+	                            tipo,
+	                            $("#dir_nombre").val(),
+	                            $("#dir_telefono").val(),
+	                            $("#dir_email").val(),
+	                            $("#dir_web").val(),
+	                            $("#dir_direcc").val(),
+	                            getButtons(i,i)
+	                            
+	                        ] );
+                    	 myTable.clear().rows.add(data_set).draw(); 
+                        alert(Response);
                     }
                 });
 
 
-			
-			jQuery(function($) {
+            	
 
 
-				var grid_selector = "#grid-table";
-				var pager_selector = "#grid-pager";
-				
-				
-				var parent_column = $(grid_selector).closest('[class*="col-"]');
-				//resize to fit page size
-				$(window).on('resize.jqGrid', function () {
-					$(grid_selector).jqGrid( 'setGridWidth', parent_column.width() );
-			    })
-				
-				//resize on sidebar collapse/expand
-				$(document).on('settings.ace.jqGrid' , function(ev, event_name, collapsed) {
-					if( event_name === 'sidebar_collapsed' || event_name === 'main_container_fixed' ) {
-						//setTimeout is for webkit only to give time for DOM changes and then redraw!!!
-						setTimeout(function() {
-							$(grid_selector).jqGrid( 'setGridWidth', parent_column.width() );
-						}, 20);
-					}
-			    })	
-			
-				jQuery(grid_selector).jqGrid({			
-					data: grid_data,
-					datatype: "local",
-					height: 'auto',
-					colNames:['Tipo','Nombre', 'Teléfono2', 'Correo electrónico','Dirección','Dirección Web',''],
-					colModel:[
+            }
+            if (action=="UPDATE")
+            {
+
+
+            data_set[editid][2]=$("#dir_nombre").val();
+	        data_set[editid][3]=$("#dir_telefono").val();
+	        data_set[editid][4] =$("#dir_email").val();
+	        data_set[editid][5]=$("#dir_web").val();
+	        data_set[editid][6]=$("#dir_direcc").val();
+             myTable.clear().rows.add(data_set).draw(); 
+            }          
+                              
+        });
+       function edit_onClick(id,con_id) {
+
+       			//alert (id);
+				action="UPDATE";
+                var rows = myTable.rows(id).data();
+                editid = parseInt(id);
+                $("#dir_nombre").val(data_set[editid][2]+"");
+                $("#dir_telefono").val(data_set[editid][3]+"");
+                $("#dir_email").val(data_set[editid][4]+"");
+                $("#dir_web").val(data_set[editid][5]+"");
+                $("#dir_direcc").val(data_set[id][6]+"");
+
+                $("#boton").modal()
+               //alert(rows[0][3]);
+              
+
+              }
+        $(document).ready(function(){
+            //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+                myTable =
+                $('#dynamic-table')                
+                        .DataTable({
+                        	
+                            bAutoWidth: true,
+                    		"columnDefs": [
+							    { "width": "160px", "targets": [2,4] },
+							     { "width": "200px", "targets": [5] },
+							     { "visible": false, "targets": [0] }
+							  ],
+                            "aoColumns": [
+
+                                null,null, null, null, null,null, null,
+                                {"bSortable": false}
+                            ],
+                            "aaSorting": [],
+
+
+
+
+                            select: {
+                                style: 'single'
+                            }
+                        });
+
+
+           
+
+           
+                $.ajax({
+                   
+                    type: "GET",
+                    url:'../service_directorio',
+                    success: function(result){
                         
-						{name:'tipo',index:'tipo', width:50, sortable:true, editable: true, resize:true,edittype:'select', editoptions:{value:{1:'Persona',2:'Institucion'}}},
-						{name:'name',index:'name', width:80, sortable:true, editable: true, resize:true},
-						{name:'phone',index:'phone', width:60, sorttype:"int", editable: true,resize:true},
-						{name:'email',index:'email', width:100, sortable:true, editable: true},
-						{name:'address',index:'address', width:100, sortable:true,resize:true,editable: true,edittype:"textarea", editoptions:{rows:"2",cols:"10"}},
-						{name:'webaddress',index:'webaddress',width:80, sortable:true, editable: true,resize:true},
-                        {name:'',index:'', width:80, fixed:true, sortable:false, resize:false,
-							formatter:'actions', 
-							formatoptions:{ 
-								keys:true,
-								delOptions:{recreateForm: true, beforeShowForm:beforeDeleteCallback},
-								editformbutton:true, editOptions:{recreateForm: true, beforeShowForm:beforeEditCallback},
-                                
-							}
-						},
-					], 
-			
-					viewrecords : true,
-					rowNum:10,
-					rowList:[10,15,20],
-					pager : pager_selector,
-					altRows: true,
-					//toppager: true,
-					
-					multiselect: true,
-					//multikey: "ctrlKey",
-			        multiboxonly: true,
-			
-					loadComplete : function() {
-						var table = this;
-						setTimeout(function(){
-							styleCheckbox(table);
-							
-							updateActionIcons(table);
-							updatePagerIcons(table);
-							enableTooltips(table);
-						}, 0);
-					},
-			
-					editurl: "./dummy.php",//nothing is saved
-					//caption: "jqGrid with inline editing"
-			
-					autowidth: true,
-			
-			
-			
-				});
-                
-                
-				$(window).triggerHandler('resize.jqGrid');//trigger window resize to make the grid get the correct size
-		
-				//switch element when editing inline
-				function aceSwitch( cellvalue, options, cell ) {
-					setTimeout(function(){
-						$(cell) .find('input[type=checkbox]')
-							.addClass('ace ace-switch ace-switch-5')
-							.after('<span class="lbl"></span>');
-					}, 0);
-				}
-				//enable datepicker
-				function pickDate( cellvalue, options, cell ) {
-					setTimeout(function(){
-						$(cell) .find('input[type=text]')
-							.datepicker({format:'yyyy-mm-dd' , autoclose:true}); 
-					}, 0);
-				}
-			
-			
-				//navButtons
-				jQuery(grid_selector).jqGrid('navGrid',pager_selector,
-					{ 	//navbar options
-				        edit: false,
-						editicon : 'ace-icon fa fa-pencil blue',
-						add: true,
-						addicon : 'ace-icon fa fa-plus-circle purple',
-						del: true,
-						delicon : 'ace-icon fa fa-trash-o red',
-						search: true,
-						searchicon : 'ace-icon fa fa-search orange',
-						refresh: true,
-						refreshicon : 'ace-icon fa fa-refresh green',
-						view: false,
-						viewicon : 'ace-icon fa fa-search-plus grey',
-					},
-					{
-						//edit record form
-						//closeAfterEdit: true,
-						//width: 700,
-						recreateForm: true,
-						beforeShowForm : function(e) {
-							var form = $(e[0]);
-							form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
-							style_edit_form(form);
-						}
-					},
-					{
-						//new record form
-						//width: 700,
-						closeAfterAdd: true,
-						recreateForm: true,
-						viewPagerButtons: false,
-						beforeShowForm : function(e) {
-							var form = $(e[0]);
-				
-							form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar')
-							.wrapInner('<div class="widget-header" />')
-							style_edit_form(form);
-						}
-					},
-					{
-						//delete record form
-						recreateForm: true,
-						beforeShowForm : function(e) {
-							var form = $(e[0]);
-							if(form.data('styled')) return false;
-							
-							form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
-							style_delete_form(form);
-							
-							form.data('styled', true);
-						},
-						onClick : function(e) {
-							//alert(1);
-						}
-					},
-					{
-						//search form
-						recreateForm: true,
-						afterShowSearch: function(e){
+                        
+                        var data = jQuery.parseJSON(result);
+                        var rows = "";
+                        $("#tbodycontent").html(rows);
+                       
+                        for(var i = 0; i<data.length ;i++)
+                        {
+                            var tipo ="";
 
-							var form = $(e[0]);
-							form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
-							style_search_form(form);
-						},
-						afterRedraw: function(){
-							style_search_filters($(this));
-						}						
-					},
-					{
-						//view record form
-						recreateForm: true,
-						beforeShowForm: function(e){
-							var form = $(e[0]);
-							form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
-						}
-					}
+                            if (data[i].con_tipcon == 'p') {
+                                tipo = "Persona";
+                            }
+                            else
+                                tipo = "Institucion";
 
-
-				)
-                
-          
-			
-			
-				
-				function style_edit_form(form) {
-					//enable datepicker on "sdate" field and switches for "stock" field			
-					
-					form.find('input[name=stock]').addClass('ace ace-switch ace-switch-5').after('<span class="lbl"></span>');
-							   //don't wrap inside a label element, the checkbox value won't be submitted (POST'ed)
-							  //.addClass('ace ace-switch ace-switch-5').wrap('<label class="inline" />').after('<span class="lbl"></span>');
-			
-							
-					//update buttons classes
-					var buttons = form.next().find('.EditButton .fm-button');
-					buttons.addClass('btn btn-sm').find('[class*="-icon"]').hide();//ui-icon, s-icon
-					buttons.eq(0).addClass('btn-primary').prepend('<i class="ace-icon fa fa-check"></i>');
-					buttons.eq(1).prepend('<i class="ace-icon fa fa-times"></i>')					
-				}
-			
-				function style_delete_form(form) {
-					var buttons = form.next().find('.EditButton .fm-button');
-					buttons.addClass('btn btn-sm btn-white btn-round').find('[class*="-icon"]').hide();//ui-icon, s-icon
-					buttons.eq(0).addClass('btn-danger').prepend('<i class="ace-icon fa fa-trash-o"></i>');
-					buttons.eq(1).addClass('btn-default').prepend('<i class="ace-icon fa fa-times"></i>')
-				}
-				
-				function style_search_filters(form) {
-					form.find('.delete-rule').val('X');
-					form.find('.add-rule').addClass('btn btn-xs btn-primary');
-					form.find('.add-group').addClass('btn btn-xs btn-success');
-					form.find('.delete-group').addClass('btn btn-xs btn-danger');
-				}
-				function style_search_form(form) {
-					var dialog = form.closest('.ui-jqdialog');
-					var buttons = dialog.find('.EditTable')
-					buttons.find('.EditButton a[id*="_reset"]').addClass('btn btn-sm btn-info').find('.ui-icon').attr('class', 'ace-icon fa fa-retweet');
-					buttons.find('.EditButton a[id*="_query"]').addClass('btn btn-sm btn-inverse').find('.ui-icon').attr('class', 'ace-icon fa fa-comment-o');
-					buttons.find('.EditButton a[id*="_search"]').addClass('btn btn-sm btn-purple').find('.ui-icon').attr('class', 'ace-icon fa fa-search');
-				}
-				
-				function beforeDeleteCallback(e) {
-					var form = $(e[0]);
-					if(form.data('styled')) return false;
-					
-					form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
-					style_delete_form(form);
-					
-					form.data('styled', true);
-				}
-				
-				function beforeEditCallback(e) {
-					var form = $(e[0]);
-					form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
-					style_edit_form(form);
-				}
-			
-			
-			
-				function styleCheckbox(table) {
-	
-				}
-				
-				function updateActionIcons(table) {
-				
-				}
-				
-				//replace icons with FontAwesome icons like above
-				function updatePagerIcons(table) {
-					var replacement = 
-					{
-						'ui-icon-seek-first' : 'ace-icon fa fa-angle-double-left bigger-140',
-						'ui-icon-seek-prev' : 'ace-icon fa fa-angle-left bigger-140',
-						'ui-icon-seek-next' : 'ace-icon fa fa-angle-right bigger-140',
-						'ui-icon-seek-end' : 'ace-icon fa fa-angle-double-right bigger-140'
-					};
-					$('.ui-pg-table:not(.navtable) > tbody > tr > .ui-pg-button > .ui-icon').each(function(){
-						var icon = $(this);
-						var $class = $.trim(icon.attr('class').replace('ui-icon', ''));
-						
-						if($class in replacement) icon.attr('class', 'ui-icon '+replacement[$class]);
-					})
-				}
-			
-				function enableTooltips(table) {
-					$('.navtable .ui-pg-button').tooltip({container:'body'});
-					$(table).find('.ui-pg-div').tooltip({container:'body'});
-				}
-			
-				//var selr = jQuery(grid_selector).jqGrid('getGridParam','selrow');
-			
-				$(document).one('ajaxloadstart.page', function(e) {
-					$.jgrid.gridDestroy(grid_selector);
-					$('.ui-jqdialog').remove();
-                });
-                                
-                jQuery('#grid-pager_left').insertBefore('#gview_grid-table');
+	                            data_set.push([
+	                            data[i].con_id,
+	                            tipo,
+	                            data[i].con_nombre,
+	                            data[i].con_nrotel,
+	                            data[i].con_correo,
+	                            data[i].con_direcc,
+	                            data[i].con_dirweb,
+	                            getButtons(i)
+	                            
+	                        ] )
+	                        
+                        
+                        }
+                        myTable.clear().rows.add(data_set).draw()
+                      
+                    }
+                        
+                            
             
-               
-            }	);
-		</script>
+                 
+            
+                });
+            
+        });
+</script>  
+
+
+
+
 	</body>
 </html>
