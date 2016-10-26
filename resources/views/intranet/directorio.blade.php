@@ -46,7 +46,7 @@
 							<li>
 								Directorio
 							</li>
-							<li class="active">Registro</li>
+							<!--<li class="active">Registro</li>-->
 						</ul>
 					</div>
 
@@ -340,10 +340,10 @@
 
               }
         $(document).ready(function(){
+            //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
                 jQuery('#lidirectorio').addClass('active');
-               myTable =
-                $('#dynamic-table')
-                //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+                myTable =
+                $('#dynamic-table')                
                         .DataTable({
                         	
                             bAutoWidth: true,

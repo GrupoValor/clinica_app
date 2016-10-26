@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Intranet | Directorio</title>
+		<title>Intranet | Mantenimientos - Clientes</title>
 
 		<meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -43,16 +43,16 @@
 								<a href="index.html">Home</a>
 							</li>
 							<li>
-								Directorio
+								Mantenimientos
 							</li>
-							<li class="active">Registro</li>
+							<li class="active">Clientes</li>
 						</ul>
 					</div>
 
 					<div class="page-content">
 						<div class="page-header"><!-- /.page-header -->
 							<h1>
-								Directorio de usuarios
+								Mantenimiento de clientes
 							</h1>
 						</div>
 
