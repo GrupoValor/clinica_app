@@ -1145,6 +1145,7 @@
 
                                 <!-- div.dataTables_borderWrap -->
                                 <div>
+
                                     <table id="dynamic-table" class="table table-striped table-bordered table-hover">
                                         <thead>
                                         <tr>
@@ -1351,6 +1352,7 @@ var myTable ;
                             bAutoWidth: false,
                     
                             "aoColumns": [
+                            { "width": "20%" },
                                 null, null, null, null,null, null,
                                 {"bSortable": false}
                             ],

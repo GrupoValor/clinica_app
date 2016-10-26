@@ -16,13 +16,9 @@ Route::get('/', function () {
 });
 
 
-<<<<<<< Updated upstream
+
 //prototipo
-=======
 
-
-
->>>>>>> Stashed changes
 Route::get('/prototipo/registro', function () {
     return view('prototipo/dirregistro');
 });
@@ -64,6 +60,7 @@ Route::get('/ta_rubricas', function () {
 Route::get('/directorio', function () {
     return view('intranet/directorio');
 });
+
 
 //mapa
 Route::get('/mapa', function () {

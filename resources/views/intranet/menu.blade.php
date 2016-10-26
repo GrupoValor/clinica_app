@@ -73,16 +73,16 @@
                             <!--lista plegable de Bienvenido, Luis-->
                             <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                                 <li>
-                                    <a href="perfil">
+                                    <a href="profile.html">
                                         <i class="ace-icon fa fa-user"></i>
-                                        Perfil
+                                        Profile
                                     </a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
                                     <a href="#">
                                         <i class="ace-icon fa fa-power-off"></i>
-                                        Cerrar sesión
+                                        Logout
                                     </a>
                                 </li>
                             </ul>
@@ -147,13 +147,8 @@
                                 </a>
                                 <b class="arrow"></b>
                             </li>
-<<<<<<< Updated upstream
-                            <li class="">
-                                <a href="ta_rubricas">
-=======
                             <li id ="linotas" >
-                                <a href="ta_rubricas.html">
->>>>>>> Stashed changes
+                                <a href="ta_rubricas">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Mantenimiento de rúbricas
                                 </a>
@@ -168,13 +163,8 @@
                             </li>
                         </ul>
                     </li>
-<<<<<<< Updated upstream
-                    <li class=""><!-- Directorio -->
-                        <a href="directorio">
-=======
                     <li id="lidirectorio"><!-- Directorio -->
-                        <a href="directorio.html">
->>>>>>> Stashed changes
+                        <a href="directorio">
                             <i class="menu-icon fa fa-book"></i>
                             <span class="menu-text"> Directorio </span>                            
                         </a>                        
@@ -187,7 +177,7 @@
                         </a>
                         <b class="arrow"></b>
                     </li>
-                    <li class=""> <!-- Mantenimientos-->
+                    <li class=""> <!-- Mantenimientos -->
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-desktop"></i>
                             <span class="menu-text">
@@ -198,36 +188,109 @@
                         <b class="arrow"></b>
                         <ul class="submenu"> 
                             <li class=""> <!-- Profesor -->
-                                <a href="mant_profesor" class="">
+                                <a href="#" class="dropdown-toggle">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Profesor
-                                </a>                                                                
+                                    <b class="arrow fa fa-angle-down"></b>
+                                </a>
+                                <b class="arrow"></b>
+                                <ul class="submenu">
+                                    <li class="">
+                                        <a href="mant_profesor">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            Registrar
+                                        </a>
+
+                                        <b class="arrow"></b>
+                                    </li>
+                                    <li class="">
+                                        <a href="mantProfModificar">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            Modificar
+                                        </a>
+                                        <b class="arrow"></b>
+                                    </li>
+                                </ul>
                              </li>
 
                             <li class=""> <!-- Jefe de Practica -->
-                                <a href="mant_jp" class="">
+                                <a href="#" class="dropdown-toggle">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Jefe de práctica
-                                </a>                                
+                                    <b class="arrow fa fa-angle-down"></b>
+                                </a>
+                                <b class="arrow"></b>
+                                <ul class="submenu">
+                                    <li class="">
+                                        <a href="mant_jp">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            Registrar
+                                        </a>
+                                        <b class="arrow"></b>
+                                    </li>
+                                    <li class="">
+                                        <a href="mantJPModificar.html">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            Modificar
+                                        </a>
+                                        <b class="arrow"></b>
+                                    </li>
+                                </ul>
                             </li>
 
                             <li class=""> <!-- Alumno -->
-                                <a href="mant_alumno" class="">
+                                <a href="#" class="dropdown-toggle">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Alumno
+                                    <b class="arrow fa fa-angle-down"></b>
                                 </a>
+                                <b class="arrow"></b>
+                                <ul class="submenu">
+                                    <li class="">
+                                        <a href="mant_alumno.html">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            Registrar
+                                        </a>
+                                        <b class="arrow"></b>
+                                    </li>
+                                    <li class="">
+                                        <a href="mantAlumModificar.html">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            Modificar
+                                        </a>
+                                        <b class="arrow"></b>
+                                    </li>
+                                </ul>
                             </li>
 
                             <li class=""><!-- Cliente -->
-                                <a href="mant_cliente" class="">
+                                <a href="#" class="dropdown-toggle">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Cliente
-                                </a>                                
+                                    <b class="arrow fa fa-angle-down"></b>
+                                </a>
+                                <b class="arrow"></b>
+                                <ul class="submenu">
+                                    <li class="">
+                                        <a href="mant_cliente">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            Registrar
+                                        </a>
+                                        <b class="arrow"></b>
+                                    </li>
+                                    <li class="">
+                                        <a href="mantClieModificar.html">
+                                            <i class="menu-icon fa fa-caret-right"></i>
+                                            Modificar
+                                        </a>
+                                        <b class="arrow"></b>
+                                    </li>
+                                </ul>
                             </li>
 
                           </ul>
                     </li>
-                    <li class=""> <!-- Reportes FALTA-->
+                    <li class=""> <!-- Reportes -->
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-file-o"></i>
                             <span class="menu-text">
@@ -285,7 +348,7 @@
                                         </a>
                                         <b class="arrow"></b>
                                     </li>
-                                    <li class=""> <!--FALTA-->
+                                    <li class="">
                                         <a href="gestor_noticias_busqueda.php">
                                             <i class="menu-icon fa fa-caret-right"></i>
                                             Búsqueda
@@ -309,11 +372,3 @@
                     <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
                 </div>
             </div>
-            <div class="main-content">
-		<div class="main-content-inner">
-			<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-				<ul class="breadcrumb">
-					<li>
-						<i class="ace-icon fa fa-home home-icon"></i>
-						<a href="index">Home</a>
-					</li>
