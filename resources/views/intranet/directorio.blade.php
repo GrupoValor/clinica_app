@@ -106,9 +106,20 @@
 		<!-- ace scripts -->
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
+		<script type="text/javascript">
+			
+			$(document).ready(function(){
+				//$("#litareas").addClass("active open");
+				$("#lidirectorio").addClass("active");
 
+				
+			});
+		</script>
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
+
+
+			
 
 
 			var grid_data = 
@@ -121,6 +132,7 @@
                     url:'service_directorio',
                     success: function(result){
                         
+
                         
                         var data = jQuery.parseJSON(result);
                         
@@ -187,7 +199,7 @@
 						{name:'tipo',index:'tipo', width:50, sortable:true, editable: true, resize:true,edittype:'select', editoptions:{value:{1:'Persona',2:'Institucion'}}},
 						{name:'name',index:'name', width:80, sortable:true, editable: true, resize:true},
 						{name:'phone',index:'phone', width:60, sorttype:"int", editable: true,resize:true},
-						{name:'email',index:'email', width:100, sortable:true, editable: true},
+						{name:'email',index:'email', width:100, sortable:true, editable: true,edittype:'date'},
 						{name:'address',index:'address', width:100, sortable:true,resize:true,editable: true,edittype:"textarea", editoptions:{rows:"2",cols:"10"}},
 						{name:'webaddress',index:'webaddress',width:80, sortable:true, editable: true,resize:true},
                         {name:'',index:'', width:80, fixed:true, sortable:false, resize:false,
@@ -433,6 +445,10 @@
             
                
             }	);
+
+$("#sData").click(function(){
+			        alert("hola");
+			    });
 		</script>
 	</body>
 </html>

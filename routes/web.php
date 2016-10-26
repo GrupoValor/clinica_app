@@ -16,7 +16,13 @@ Route::get('/', function () {
 });
 
 
+<<<<<<< Updated upstream
 //prototipo
+=======
+
+
+
+>>>>>>> Stashed changes
 Route::get('/prototipo/registro', function () {
     return view('prototipo/dirregistro');
 });

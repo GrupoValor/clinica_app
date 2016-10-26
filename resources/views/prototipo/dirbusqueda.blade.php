@@ -46,7 +46,7 @@
 
 <body class="no-skin">
 
-<?php include "menu" ;?>
+
 
 <div id="navbar" class="navbar navbar-default          ace-save-state">
     <div class="navbar-container ace-save-state" id="navbar-container">
@@ -1335,11 +1335,16 @@
 
 
 <script type="text/javascript">
-    function a_onClick( hola) {
-               alert(hola);
+var myTable ;
+    function a_onClick(id,con_id) {
+
+                var rows = myTable.rows(id).data();
+                
+               alert(rows[0][3]);
+
               }
         $(document).ready(function(){
-              var myTable =
+               myTable =
                 $('#dynamic-table')
                 //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
                         .DataTable({
@@ -1524,9 +1529,14 @@
             $(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
         });
             
-            var butons = '<div class="hidden-sm hidden-xs action-buttons">'+
+           
+
+            function getButtons(i,con_id){
+
+                    var param = "'"+i+"','"+con_id+"'";
+                    var butons = '<div class="hidden-sm hidden-xs action-buttons">'+
                                                     
-                                                    '<a onClick="a_onClick(\'editar\')" class="green" ">'+
+                                                    '<a  onClick="a_onClick('+param+')" class="green" ">'+
                                                         '<i class="ace-icon fa fa-pencil bigger-130">'+'</i>'+
                                                     '</a>'+
 
@@ -1534,6 +1544,10 @@
                                                         '<i class="ace-icon fa fa-trash-o bigger-130">'+'</i>'+
                                                     '</a>'+
                                                 '</div>';
+
+                    
+                    return butons;
+            }
                 $.ajax({
                    
                     type: "GET",
@@ -1563,7 +1577,7 @@
                             data[i].con_correo,
                             data[i].con_direcc,
                             data[i].con_dirweb,
-                            butons
+                            getButtons(i,data[i].con_id)
                             
                         ] ).draw( false );
                         

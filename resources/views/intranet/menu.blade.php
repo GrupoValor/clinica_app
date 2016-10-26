@@ -132,7 +132,7 @@
                             </li>					
                         </ul>
                     </li>
-                    <li class=""><!-- Tareas académicas -->
+                    <li id="litareas"><!-- Tareas académicas -->
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-list-alt"></i>
                             <span class="menu-text"> Tareas académicas </span>
@@ -147,8 +147,13 @@
                                 </a>
                                 <b class="arrow"></b>
                             </li>
+<<<<<<< Updated upstream
                             <li class="">
                                 <a href="ta_rubricas">
+=======
+                            <li id ="linotas" >
+                                <a href="ta_rubricas.html">
+>>>>>>> Stashed changes
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Mantenimiento de rúbricas
                                 </a>
@@ -163,8 +168,13 @@
                             </li>
                         </ul>
                     </li>
+<<<<<<< Updated upstream
                     <li class=""><!-- Directorio -->
                         <a href="directorio">
+=======
+                    <li id="lidirectorio"><!-- Directorio -->
+                        <a href="directorio.html">
+>>>>>>> Stashed changes
                             <i class="menu-icon fa fa-book"></i>
                             <span class="menu-text"> Directorio </span>                            
                         </a>                        
