@@ -269,6 +269,12 @@
                     //alert("mostareaas");
             if (action=="ADD"){
             	tipo = "Persona";
+            	if ($( "#dir_tipocon option:selected" ).val() == 'i') {
+                                tipo = "Institucion";
+                            }
+
+                                
+            	
             	i = data_set.length;
             	if ( $('#dir_nombre').val().length < 1)
             		return;
@@ -314,13 +320,45 @@
             if (action=="UPDATE")
             {
 
+            tipo = 'i'
+            if ($( "#dir_tipocon option:selected" ).val() == "Persona"){
+            	tipo = 'p'
+            }
+            $.ajax({
+                    type: "PATCH",
+                    url:'/service_directorio/'+data_set[editid][0],
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
 
-            data_set[editid][2]=$("#dir_nombre").val();
-	        data_set[editid][3]=$("#dir_telefono").val();
-	        data_set[editid][4] =$("#dir_email").val();
-	        data_set[editid][5]=$("#dir_web").val();
-	        data_set[editid][6]=$("#dir_direcc").val();
-             myTable.clear().rows.add(data_set).draw(); 
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                           con_tipcon : tipo,
+                           con_nombre: $('#dir_nombre').val(),
+                           con_nrotel: $('#dir_telefono').val(),
+                           con_correo: $('#dir_email').val(),
+                           con_dirweb: $('#dir_web').val(),
+                           con_direcc: $('#dir_direcc').val()},
+                    success: function(Response){
+
+                    	tipo = "Persona";
+                    	if($("#dir_tipocon option:selected").val()== 'i')
+                    		tipo = "Institucion";
+                    	data_set[editid][1]= tipo;
+                    	data_set[editid][2]=$("#dir_nombre").val();
+				        data_set[editid][3]=$("#dir_telefono").val();
+				        data_set[editid][4] =$("#dir_email").val();
+				        data_set[editid][5]=$("#dir_web").val();
+				        data_set[editid][6]=$("#dir_direcc").val();
+			            myTable.clear().rows.add(data_set).draw(); 
+                    	
+                        alert(Response);
+                    }
+                });
+
+           
             }          
                               
         });
@@ -330,6 +368,12 @@
 				action="UPDATE";
                 var rows = myTable.rows(id).data();
                 editid = parseInt(id);
+                tipo = "p";
+                if (data_set[editid][1] == 'Institucion') {
+                                tipo = "i";
+                            }
+
+                $("#dir_tipocon").val(tipo);
                 $("#dir_nombre").val(data_set[editid][2]+"");
                 $("#dir_telefono").val(data_set[editid][3]+"");
                 $("#dir_email").val(data_set[editid][4]+"");

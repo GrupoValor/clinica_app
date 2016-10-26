@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Models\TACONTACTO;
 
+use Illuminate\Support\Facades\DB;
+
 class directorioController extends Controller
 {
       /**
@@ -94,7 +96,28 @@ class directorioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //$new_estado = $request['new_estado'];
+
+
+        DB::update('UPDATE TA_CONTACTO set 
+            con_tipcon = :tipcon ,
+            con_nombre = :nombre ,
+            con_nrotel = :nrotel ,
+            con_direcc = :direcc ,
+            con_dirweb = :dirweb ,
+            con_correo = :correo 
+
+
+            where con_id = :id',
+            ['tipcon' => $request['con_tipcon'],
+            'nombre' => $request['con_nombre'],
+            'nrotel' => $request['con_nrotel'],
+            'direcc' => $request['con_direcc'],
+            'dirweb' => $request['con_dirweb'],
+            'correo' => $request['con_correo'],
+            'id' => $id]);
+        // print_r($request );
+        echo "Registro actualizado correctamente" ;
     }
 
     /**
