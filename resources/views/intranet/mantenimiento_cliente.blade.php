@@ -66,14 +66,20 @@
                                         <thead>
 
                                         <tr>
-                                        	<th>ID</th>
-                                            <th>Tipo</th>
-                                            <th>Nombre</th>
+                                        	<th class="hidden">ID</th>
+                                            <th>Nombres</th>
+                                            <th>Apellidos</th>
+                                            <th>Tipo de documentación</th>
+                                            <th>N° Identificación</th>
+                                            <th>Fecha de nacimiento</th>
                                             <th>Teléfono</th>
-                                            <th>E-mail</th>
+                                            <th>Nivel educativo</th>
+                                            <th>N° Hijos</th>
+                                            <th>Ocupación</th>
                                             <th>Dirección</th>
-                                            <th>Dirección Web</th>
-                                            <th>Modificar</th>
+                                            <th>Población vulnerable</th>
+                                            <th>Usuario</th>
+                                            <th>Password</th>
                                         </tr>
                                         </thead>
 
