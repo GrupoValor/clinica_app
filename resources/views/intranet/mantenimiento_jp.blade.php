@@ -52,7 +52,7 @@
 					<div class="page-content">
 						<div class="page-header"><!-- /.page-header -->
 							<h1 id = "mytitulo" >
-								Directorio
+								Mantenimiento de jefes de práctica
 								<button type="button" class="btn btn-primary" style="float: right;margin-top: -8px;" onclick="add_onClick()" >Nuevo +</button>
 							</h1>
 
@@ -223,8 +223,7 @@
 		
 		<script type="text/javascript">
             jQuery('#limantenimientos').addClass('active open');
-            jQuery('#mant-jp').addClass('active open');
-            jQuery('#mant-jp-mod').addClass('active');
+            jQuery('#mant-jp').addClass('active');
 
        var myTable ;
        var data_set = [];

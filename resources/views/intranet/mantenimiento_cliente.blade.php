@@ -45,14 +45,14 @@
 							<li>
 								Mantenimientos
 							</li>
-							<li class="active">Clientes</li>
+							<li class="active">Cliente</li>
 						</ul>
 					</div>
 
 					<div class="page-content">
 						<div class="page-header"><!-- /.page-header -->
 							<h1 id = "mytitulo" >
-								Directorio
+								Mantenimiento de clientes
 								<button type="button" class="btn btn-primary" style="float: right;margin-top: -8px;" onclick="add_onClick()" >Nuevo +</button>
 							</h1>
 
@@ -223,8 +223,7 @@
 		
 		<script type="text/javascript">
             jQuery('#limantenimientos').addClass('active open');
-            jQuery('#mant-cli').addClass('active open');
-            jQuery('#mant-cli-mod').addClass('active');
+            jQuery('#mant-cliente').addClass('active');
 
        var myTable ;
        var data_set = [];

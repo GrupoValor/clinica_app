@@ -51,7 +51,7 @@
 					<div class="page-content">
 						<div class="page-header"><!-- /.page-header -->
 							<h1 id = "mytitulo" >
-								Directorio
+								Mantenimiento de alumnos
 								<button type="button" class="btn btn-primary" style="float: right;margin-top: -8px;" onclick="add_onClick()" >Nuevo +</button>
 							</h1>
 
@@ -222,8 +222,7 @@
 		
 		<script type="text/javascript">
             jQuery('#limantenimientos').addClass('active open');
-            jQuery('#mant-alu').addClass('active open');
-            jQuery('#mant-alu-mod').addClass('active');
+            jQuery('#mant-alumno').addClass('active');
 
        var myTable ;
        var data_set = [];
