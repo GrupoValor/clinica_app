@@ -14,6 +14,7 @@
 
 		<!-- page specific plugin styles -->
 		<link rel="stylesheet" href="assets/css/jquery-ui.custom.min.css" />
+        <link rel="stylesheet" href="assets/css/bootstrap-datepicker3.min.css" />
         
         <link rel="stylesheet" href="assets/css/index.css" />
 
@@ -22,194 +23,241 @@
 
 		<!-- ace styles -->
 		<link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+		<![endif]-->
 		<link rel="stylesheet" href="assets/css/ace-skins.min.css" />
 		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
 
+		<!--[if lte IE 9]>
+		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+
 		<!-- ace settings handler -->
 		<script src="assets/js/ace-extra.min.js"></script>
-        
+
+		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+		<!--[if lte IE 8]>
+		<script src="assets/js/html5shiv.min.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
 	</head>
 
 	<body class="no-skin">
-		<?php  echo view('intranet/menu'); ?>			
-            <div class="main-content">
+		<?php  echo view('intranet/menu'); ?>	
+			<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
 						<ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="index.html">Home</a>
+								<a href="#">Home</a>
 							</li>
-							<li class="active">Principal</li>
+
+							<li>
+								<a href="#">Mantenimientos</a>
+							</li>
+                            <li>
+								<a href="#">Profesor</a>
+							</li>
+							<li class="active">Registrar</li>
 						</ul><!-- /.breadcrumb -->
 					</div>
 
 					<div class="page-content">
+						
 						<div class="page-header">
 							<h1>
-								Principal
+								Mantenimiento Profesor
 							</h1>
 						</div><!-- /.page-header -->
 
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-								<div class="alert alert-block alert-danger">
-									<button type="button" class="close" data-dismiss="alert">
-										<i class="ace-icon fa fa-times"></i>
-									</button>
+								<form class="form-horizontal" role="form">
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4">Codigo ID</label>
 
-
-									Bienvenido,
-									<strong class="red">
-										tiene tareas pendientes
-									</strong>
-								</div>
-
-								<div class="row"> <!-- widgets de tareas pendientes-->
-                                    
-                                    <div class="col-sm-6 widget-container-col" id="widget-container-col-12">
-											<div class="widget-box transparent" id="widget-box-12">
-												<div class="widget-header">
-
-                                                    <h5 class="widget-title lighter">
-														<a href="Casos/caso.html">
-															<strong>Actividad Semana 8</strong>
-														</a>
-														<small> vence el 12 de noviembre del 2016</small>
-													</h5>
-
-
-													<div class="widget-toolbar no-border">
-														<a href="#" data-action="collapse">
-															<i class="ace-icon fa fa-chevron-up"></i>
-														</a>
-
-														<a href="#" data-action="close">
-															<i class="ace-icon fa fa-times"></i>
-														</a>
-													</div>
-												</div>
-
-												<div class="widget-body">
-													<div class="widget-main padding-6 no-padding-left no-padding-right" align="justify">
-														Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis. Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit. Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
-													</div>
-												</div>
-											</div>
+										<div class="col-sm-9">
+											<input class="input-sm" type="text" id="form-field-4" placeholder="0001" />
+											<div class="space-2"></div>
 										</div>
-                                    
-                                    <div class="col-sm-6 widget-container-col" id="widget-container-col-15">
-											<div class="widget-box transparent" id="widget-box-15">
-												<div class="widget-header">
-                                                    <h5 class="widget-title lighter"><strong>Actividad Semana 9</strong><small> vence el 12 de noviembre del 2016</small></h5>
-                                                    
+									</div>
+									
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Nombre</label>
 
-													<div class="widget-toolbar no-border">
-														<a href="#" data-action="collapse">
-															<i class="ace-icon fa fa-chevron-up"></i>
-														</a>
-
-														<a href="#" data-action="close">
-															<i class="ace-icon fa fa-times"></i>
-														</a>
-													</div>
-												</div>
-
-												<div class="widget-body">
-													<div class="widget-main padding-6 no-padding-left no-padding-right" align="justify">
-														Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis. Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit. Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
-													</div>
-												</div>
-											</div>
+										<div class="col-sm-9">
+											<input type="text" id="form-field-1" placeholder="Nombre" class="col-xs-10 col-sm-5" />
 										</div>
-                                    
-                                    <div class="col-sm-6 widget-container-col" id="widget-container-col-10">
-											<div class="widget-box transparent" id="widget-box-10">
-												<div class="widget-header">
-                                                    <h5 class="widget-title lighter"><strong>Actividad Semana 10</strong><small> vence el 12 de noviembre del 2016</small></h5>
-                                                    
+									</div>
+									
+										<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4">Apellido Paterno</label>
 
-													<div class="widget-toolbar no-border">
-														<a href="#" data-action="collapse">
-															<i class="ace-icon fa fa-chevron-up"></i>
-														</a>
-
-														<a href="#" data-action="close">
-															<i class="ace-icon fa fa-times"></i>
-														</a>
-													</div>
-												</div>
-
-												<div class="widget-body">
-													<div class="widget-main padding-6 no-padding-left no-padding-right" align="justify">
-														Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis. Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit. Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
-													</div>
-												</div>
-											</div>
+										<div class="col-sm-9">
+											<input class="input-sm" type="text" id="form-field-4" placeholder="Apellido Paterno" />
+											<div class="space-2"></div>
 										</div>
+									   </div>
                                     
-                                    <div class="col-sm-6 widget-container-col" id="widget-container-col-11">
-											<div class="widget-box transparent" id="widget-box-11">
-												<div class="widget-header">
-                                                    <h5 class="widget-title lighter"><strong>Actividad Semana 11</strong><small> vence el 12 de noviembre del 2016</small></h5>
+                                    <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4">Apellido Materno</label>
 
-													<div class="widget-toolbar no-border">
-														<a href="#" data-action="collapse">
-															<i class="ace-icon fa fa-chevron-up"></i>
-														</a>
-
-														<a href="#" data-action="close">
-															<i class="ace-icon fa fa-times"></i>
-														</a>
-													</div>
-												</div>
-
-												<div class="widget-body">
-													<div class="widget-main padding-6 no-padding-left no-padding-right" align="justify">
-														Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis. Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit. Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
-													</div>
-												</div>
-											</div>
+										<div class="col-sm-9">
+											<input class="input-sm" type="text" id="form-field-4" placeholder="Apellido materno" />
+											<div class="space-2"></div>
 										</div>
+								    </div>
                                     
-                                    <div class="col-sm-6 widget-container-col" id="widget-container-col-13">
-											<div class="widget-box transparent" id="widget-box-13">
-												<div class="widget-header">
-                                                    <h5 class="widget-title lighter"><strong>Actividad Semana 13</strong><small> vence el 12 de noviembre del 2016</small></h5>
+                                    
+                                    
+                                    <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4">Tipo de Documento de Identificación          </label>
 
-													<div class="widget-toolbar no-border">
-														<a href="#" data-action="collapse">
-															<i class="ace-icon fa fa-chevron-up"></i>
-														</a>
+															<select class="col-sm-4" id="form-field-select-1">
+																<option value=""></option>
+																<option value="AL">DNI</option>
+																<option value="AL">Libreta militar</option>
+																<option value="AL">documento 1</option>
+                                                                <option value="AL">documento 2</option>
+                                                                <option value="AL">documento 3</option>
+															</select>
+										
+									</div>
+									
+                                    <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4">Número de Identificacion</label>
 
-														<a href="#" data-action="close">
-															<i class="ace-icon fa fa-times"></i>
-														</a>
-													</div>
-												</div>
-
-												<div class="widget-body">
-													<div class="widget-main padding-6 no-padding-left no-padding-right" align="justify">
-														Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis. Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit. Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
-													</div>
-												</div>
-											</div>
+										<div class="col-sm-9">
+											<input class="input-sm" type="text" id="form-field-4" placeholder="Número" />
+											<div class="space-2"></div>
 										</div>
-
+								    </div>
+                                    
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4">Fecha de Nacimiento</label>
+										<div class="col-sm-4">
+															<div class="col-sm-4">
+																<div class="input-group">
+																	<input class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" />
+																	<span class="input-group-addon">
+																		<i class="fa fa-calendar bigger-110"></i>
+																	</span>
+																</div>
+															</div>
+										</div>
+									</div>
 									
 									
-								</div><!-- /.row -->
-								
-								
-								<!-- PAGE CONTENT ENDS -->
+									
+									
+									<div class="form-group">
+										
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4">Telefono 1</label>
+										<div class="col-sm-9">
+											<input type="text" id="spinner3" />
+											<div class="space-5"></div>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4">Telefono 2</label>
+
+										<div class="col-sm-9">
+											<input class="input-sm" type="text" id="form-field-4" />
+											<div class="space-2"></div>
+										</div>
+									</div>
+									
+									
+									<div class="form-group">
+										
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4">Correo Electronico</label>
+										<div class="col-sm-9">
+											<input type="text" id="spinner3" placeholder="Correo electronico"/>
+											<div class="space-6"></div>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4">Clínica Jurídica del Profesor</label>
+
+															<select class="col-sm-4" id="form-field-select-1">
+																<option value=""></option>
+																<option value="AL">clinica 1</option>
+																<option value="AL">clinica 2</option>
+																<option value="AL">clinica 3</option>
+                                                                <option value="AL">clinica 4</option>
+                                                                
+															</select>
+										
+									</div>
+                                    
+                                    <div class="form-group">
+										
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4">Usuario</label>
+										<div class="col-sm-9">
+											<input type="text" id="spinner3" placeholder=""/>
+											<div class="space-6"></div>
+										</div>
+									</div>
+                                    
+                                    <div class="form-group">
+										
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4">Password</label>
+										<div class="col-sm-9">
+											<input type="text" id="spinner3" placeholder=""/>
+											<div class="space-6"></div>
+										</div>
+									</div>
+                                    <div class="space-6"></div>
+                                    <div class="space-6"></div>
+                                    <div class="space-6"></div>
+                                    <div class="space-6"></div>
+                                    <div class="space-6"></div>
+									<div align="center">		
+									
+                                    
+                                        <!-- form del boton -->
+                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#boton">Registrar Profesor</button>
+									<div class="modal fade" id="boton" role="dialog">
+										<div class="modal-dialog">
+										
+										  <!-- Modal content-->
+										  <div class="modal-content">
+											<div class="modal-header">
+											  <h1 type="button" class="close" data-dismiss="modal">Se ha registrado correctamente al Profesor</h1>
+											</div>									
+											
+                                              <div class="modal-footer">
+											     <div align="center">
+                                                  <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+											     </div>
+                                            </div>
+										  </div>
+										  
+										</div>
+									 </div>
+                                        
+                                    <!-- fin del form -->
+                                        
+                                    </div>
+                                     
+									
+							</div>
+									</form>
 							</div><!-- /.col -->
 						</div><!-- /.row -->
 					</div><!-- /.page-content -->
 				</div>
-			</div><!-- /.main-content -->
 
-			<?php  echo view('intranet/footer'); ?>         
+			<?php  echo view('intranet/footer'); ?>	
 
 		<!-- basic scripts -->
 
@@ -233,6 +281,7 @@
 		<![endif]-->
 		<script src="assets/js/jquery-ui.custom.min.js"></script>
 		<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+        <script src="assets/js/bootstrap-datepicker.min.js"></script>
 		<script src="assets/js/jquery.easypiechart.min.js"></script>
 		<script src="assets/js/jquery.sparkline.index.min.js"></script>
 		<script src="assets/js/jquery.flot.min.js"></script>
@@ -245,9 +294,22 @@
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
+            jQuery('#limantenimientos').addClass('active open');
+            jQuery('#mant-profesor').addClass('active open');
+            jQuery('#mant-prof-reg').addClass('active');
 			jQuery(function($) {
-                jQuery('#principal').addClass('active');
-				$('.easy-pie-chart.percentage').each(function(){
+				//datepicker plugin
+				//link
+				$('.date-picker').datepicker({
+					autoclose: true,
+					todayHighlight: true
+				})
+				//show datepicker when clicking on the icon
+				.next().on(ace.click_event, function(){
+					$(this).prev().focus();
+				});
+                
+                $('.easy-pie-chart.percentage').each(function(){
 					var $box = $(this).closest('.infobox');
 					var barColor = $(this).data('color') || (!$box.hasClass('infobox-dark') ? $box.css('color') : 'rgba(255,255,255,0.95)');
 					var trackColor = barColor == 'rgba(255,255,255,0.95)' ? 'rgba(255,255,255,0.25)' : '#E2E2E2';

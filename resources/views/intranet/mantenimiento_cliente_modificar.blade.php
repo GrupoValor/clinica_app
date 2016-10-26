@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta name="csrf_token" content="{{ csrf_token() }}" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Intranet | Directorio</title>
+		<title>Intranet | Mantenimientos - Clientes</title>
 
 		<meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -34,7 +32,8 @@
 	</head>
 
 	<body class="no-skin">
-		<?php  echo view('intranet/menu'); ?>			
+		<?php  echo view('intranet/menu'); ?>
+			
             <div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -42,16 +41,13 @@
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="index.html">Home</a>
-							</li>       
-							<li>
-								Directorio
 							</li>
-							<!--<li class="active">Registro</li>-->
+							<li>
+								Mantenimientos
+							</li>
+							<li class="active">Clientes</li>
 						</ul>
 					</div>
-
-
-
 
 					<div class="page-content">
 						<div class="page-header"><!-- /.page-header -->
@@ -226,6 +222,10 @@
 		<!-- inline scripts related to this page -->
 		
 		<script type="text/javascript">
+            jQuery('#limantenimientos').addClass('active open');
+            jQuery('#mant-cli').addClass('active open');
+            jQuery('#mant-cli-mod').addClass('active');
+
        var myTable ;
        var data_set = [];
        var editid;
@@ -267,12 +267,6 @@
                     //alert("mostareaas");
             if (action=="ADD"){
             	tipo = "Persona";
-            	if ($( "#dir_tipocon option:selected" ).val() == 'i') {
-                                tipo = "Institucion";
-                            }
-
-                                
-            	
             	i = data_set.length;
             	if ( $('#dir_nombre').val().length < 1)
             		return;
@@ -318,45 +312,13 @@
             if (action=="UPDATE")
             {
 
-            tipo = 'i'
-            if ($( "#dir_tipocon option:selected" ).val() == "Persona"){
-            	tipo = 'p'
-            }
-            $.ajax({
-                    type: "PATCH",
-                    url:'/service_directorio/'+data_set[editid][0],
-                    beforeSend: function (xhr) {
-                        var token = $('meta[name="csrf_token"]').attr('content');
 
-                        if (token) {
-                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                        }
-                    },
-                    data: {
-                           con_tipcon : tipo,
-                           con_nombre: $('#dir_nombre').val(),
-                           con_nrotel: $('#dir_telefono').val(),
-                           con_correo: $('#dir_email').val(),
-                           con_dirweb: $('#dir_web').val(),
-                           con_direcc: $('#dir_direcc').val()},
-                    success: function(Response){
-
-                    	tipo = "Persona";
-                    	if($("#dir_tipocon option:selected").val()== 'i')
-                    		tipo = "Institucion";
-                    	data_set[editid][1]= tipo;
-                    	data_set[editid][2]=$("#dir_nombre").val();
-				        data_set[editid][3]=$("#dir_telefono").val();
-				        data_set[editid][4] =$("#dir_email").val();
-				        data_set[editid][5]=$("#dir_web").val();
-				        data_set[editid][6]=$("#dir_direcc").val();
-			            myTable.clear().rows.add(data_set).draw(); 
-                    	
-                        alert(Response);
-                    }
-                });
-
-           
+            data_set[editid][2]=$("#dir_nombre").val();
+	        data_set[editid][3]=$("#dir_telefono").val();
+	        data_set[editid][4] =$("#dir_email").val();
+	        data_set[editid][5]=$("#dir_web").val();
+	        data_set[editid][6]=$("#dir_direcc").val();
+             myTable.clear().rows.add(data_set).draw(); 
             }          
                               
         });
@@ -366,12 +328,6 @@
 				action="UPDATE";
                 var rows = myTable.rows(id).data();
                 editid = parseInt(id);
-                tipo = "p";
-                if (data_set[editid][1] == 'Institucion') {
-                                tipo = "i";
-                            }
-
-                $("#dir_tipocon").val(tipo);
                 $("#dir_nombre").val(data_set[editid][2]+"");
                 $("#dir_telefono").val(data_set[editid][3]+"");
                 $("#dir_email").val(data_set[editid][4]+"");
@@ -385,7 +341,6 @@
               }
         $(document).ready(function(){
             //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-                jQuery('#lidirectorio').addClass('active');
                 myTable =
                 $('#dynamic-table')                
                         .DataTable({
