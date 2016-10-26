@@ -47,508 +47,493 @@
 </head>
 
 <body class="no-skin">
-<?php  echo view('intranet/menu'); ?>
-			
-            <div class="main-content">
-				<div class="main-content-inner">
-					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-						<ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="index.html">Home</a>
-							</li>
-							 <li class="active">Tareas acad&eacute;micas</li>
-                             <li class="active">Alumnos</li>
-						</ul><!-- /.breadcrumb -->
-					</div>
+    <?php  echo view('intranet/menu'); ?>			
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="index.html">Home</a>
+                        </li>
+                         <li class="active">Tareas acad&eacute;micas</li>
+                         <li class="active">Alumnos</li>
+                    </ul><!-- /.breadcrumb -->
+                </div>
 
-					<div class="page-content">
-						<div class="page-header">
-							<h1>Tareas acad&eacute;micas de alumnos</h1>
-						</div><!-- /.page-header -->
+                <div class="page-content">
+                    <div class="page-header">
+                        <h1>Tareas acad&eacute;micas de alumnos</h1>
+                    </div><!-- /.page-header -->
 
-						<p>Aqu&iacute; el alumno puede visualizar su avance en el curso.</p>
-						
-						<div class="row">
-							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<h3 class="header smaller lighter blue">R&uacute;brica de participaci&oacute;n (50%)</h3>
-								
-								<div class="row">
-									<div class="col-xs-12">
-										
-										<table id="simple-table" class="table  table-bordered table-hover">
-											<thead>
-												<tr>
-													<th style="text-align:center"># semana</th>
-													<th class="hidden-480">Puntualidad</th>
-													<th class="hidden-480">Participaci&oacute;n y discusi&oacute;n</th>
-													<th>Suma de notas</th>
-													<th class="detail-col">Comentarios</th>
-												</tr>
-											</thead>
-											<tbody>
-												<!-- PRIMERA SEMANA -->
-												<tr>
-													<td style="text-align:center">1</td>
-													<td class="hidden-480">
-														<span style="color:red">1/5</span>
-													</td>
-													<td class="hidden-480">
-														3/5
-													</td>
-													<td>
-														<span style="color:red">4/10</span>
-													</td>
-													<td class="center">
-														<div class="action-buttons">
-															<a href="#" class="green bigger-140 show-details-btn" title="Ver comentarios">
-																<i class="ace-icon fa fa-angle-double-down"></i>
-																<span class="sr-only">Ver comentarios</span>
-															</a>
-															<a href="#" class="blue bigger-140" title="Nuevo comentario">
-																<i class="ace-icon fa fa-comment"></i>
-																<span class="sr-only">Nuevo comentario</span>
-															</a>
-														</div>
-													</td>
-												</tr>
-												<tr class="detail-row">
-													<td colspan="8">
-														<div class="table-detail">
-															<div class="row">
-																<div class="col-xs-12">
-																	<div class="timeline-items">
-																		<!-- COMENTARIO DE RESPUESTA -->
-																		<div class="widget-box transparent">
-																			<div class="widget-header widget-header-small">
-																				<h5 class="widget-title smaller">Luis Flores</h5>
-																				<span class="widget-toolbar no-border">
-																					<i class="ace-icon fa fa-clock-o bigger-110"></i>
-																					20 set 2016, 10:22
-																				</span>
-																			</div>
-																			<div class="widget-body">
-																				<div class="widget-main">
-																					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.
-																					Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit.
-																					Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
-																					<!-- OPCIONES PARA COMENTARIO DE RESPUESTA -->
-																					<div class="pull-right action-buttons">
-																						<a href="#">
-																							Responder <i class="ace-icon fa fa-reply light-green bigger-130"></i>
-																						</a>
-																					</div>
-																					<div class="space-6"></div>
-																					<div class="space-6"></div>
-																				</div>
-																			</div>
-																		</div>
-																		<!-- COMENTARIO PROPIO -->
-																		<div class="widget-box transparent">
-																			<div class="widget-header widget-header-small">
-																				<h5 class="widget-title smaller">
-																					Anthony Guti&eacute;rrez&nbsp;
-																					<i class="ace-icon fa fa-share"></i>
-																					Luis Flores
-																				</h5>
-																				<span class="widget-toolbar no-border">
-																					<i class="ace-icon fa fa-clock-o bigger-110"></i>
-																					Ayer, 13:16
-																				</span>
-																			</div>
-																			<div class="widget-body">
-																				<div class="widget-main">
-																					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.
-																					Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit.
-																					Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
-																					<!-- OPCIONES PARA COMENTARIO PROPIO -->
-																					<div class="pull-right action-buttons">
-																						<a href="#">
-																							Editar <i class="ace-icon fa fa-comment blue bigger-125"></i>
-																						</a>
-																						<a href="#">
-																							Eliminar <i class="ace-icon fa fa-times red bigger-125"></i>
-																						</a>
-																					</div>
-																					<div class="space-6"></div>
-																				</div>
-																			</div>
-																		</div>
-																		<!-- FIN COMENTARIOS -->
-																	</div>
-																</div>
-															</div>
-														</div>
-													</td>
-												</tr>
-												<!-- SEGUNDA SEMANA -->
-												<tr>
-													<td style="text-align:center">2</td>
-													<td class="hidden-480">
-														4/5
-													</td>
-													<td class="hidden-480">
-														5/5
-													</td>
-													<td>
-														9/10
-													</td>
-													<td class="center">
-														<div class="action-buttons">
-															<a href="#" class="green bigger-140 show-details-btn" title="Ver comentarios">
-																<i class="ace-icon fa fa-angle-double-down"></i>
-																<span class="sr-only">Ver comentarios</span>
-															</a>
-															<a href="#" class="blue bigger-140" title="Nuevo comentario">
-																<i class="ace-icon fa fa-comment"></i>
-																<span class="sr-only">Nuevo comentario</span>
-															</a>
-														</div>
-													</td>
-												</tr>
-												<tr class="detail-row">
-													<td colspan="8">
-														<div class="table-detail">
-															<div class="row">
-																<div class="col-xs-12">
-																	<div class="timeline-items">
-																		<div class="widget-box transparent">
-																			<div class="widget-header widget-header-small">
-																				<h5 class="widget-title smaller">Luis Flores</h5>
-																				<span class="widget-toolbar no-border">
-																					<i class="ace-icon fa fa-clock-o bigger-110"></i>
-																					20 set 2016, 10:22
-																				</span>
-																			</div>
-																			<div class="widget-body">
-																				<div class="widget-main">
-																					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.
-																					Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit.
-																					Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</td>
-												</tr>
-												<!-- TERCERA SEMANA -->
-												<tr>
-													<td style="text-align:center">3</td>
-													<td class="hidden-480">
-														<span style="color:red">2/5</span>
-													</td>
-													<td class="hidden-480">
-														<span style="color:red">0/5</span>
-													</td>
-													<td>
-														<span style="color:red">2/10</span>
-													</td>
-													<td class="center">
-														<div class="action-buttons">
-															<a href="#" class="green bigger-140 show-details-btn" title="Ver comentarios">
-																<i class="ace-icon fa fa-angle-double-down"></i>
-																<span class="sr-only">Ver comentarios</span>
-															</a>
-															<a href="#" class="blue bigger-140" title="Nuevo comentario">
-																<i class="ace-icon fa fa-comment"></i>
-																<span class="sr-only">Nuevo comentario</span>
-															</a>
-														</div>
-													</td>												
-												</tr>
-												<tr class="detail-row">
-													<td colspan="8">
-														<div class="table-detail">
-															<div class="row">
-																<div class="col-xs-12">
-																	<div class="timeline-items">
-																		<div class="widget-box transparent">
-																			<div class="widget-header widget-header-small">
-																				<h5 class="widget-title smaller">Luis Flores</h5>
-																				<span class="widget-toolbar no-border">
-																					<i class="ace-icon fa fa-clock-o bigger-110"></i>
-																					20 set 2016, 10:22
-																				</span>
-																			</div>
-																			<div class="widget-body">
-																				<div class="widget-main">
-																					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.
-																					Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit.
-																					Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</td>
-												</tr>
-												<!-- CUARTA SEMANA -->
-												<tr>
-													<td style="text-align:center">4</td>
-													<td class="hidden-480">
-														<span style="color:gray">Sin nota</span>
-													</td>
-													<td class="hidden-480">
-														<span style="color:gray">Sin nota</span>
-													</td>
-													<td>
-														<span style="color:gray">Sin nota</span>
-													</td>
-													<td class="center"></td>
-												</tr>
-												
-												<!-- FIN TABLA -->
-											</tbody>
-										</table>
-										
-									</div><!-- /.span -->
-								</div><!-- /.row -->
+                    <p>Aqu&iacute; el alumno puede visualizar su avance en el curso.</p>
 
-								<h3 class="header smaller lighter blue">R&uacute;brica de seguimiento de casos (50%)</h3>
-								
-								<div class="row">
-									<div class="col-xs-12">
-										
-										<table class="table  table-bordered table-hover">
-													<thead>
-														<tr>
-															<th class="center"># semana</th>
-															<th class="hidden-480">Relaci&oacute;n abogado-usuario</th>
-															<th class="hidden-480">Ejercicio profesional</th>
-															<th class="hidden-480">Investigaci&oacute;n y redacci&oacute;n</th>
-															<th class="hidden-480">Oralidad</th>
-															<th>Suma de notas</th>
-															<th class="detail-col">Comentarios</th>
-														</tr>
-													</thead>
-														<tbody>
-														<!-- PRIMERA SEMANA -->
-														<tr class="">
-															<td class="center">1</td>
-															<td class="hidden-480">
-																<span style="color:red">1/5</span>
-															</td>
-															<td class="hidden-480">3/5</td>
-															<td class="hidden-480">4/5</td>
-															<td class="hidden-480">3/5</td>
-															<td>11/20</td>
-															<td class="center">
-																<div class="action-buttons">
-																	<a href="#" class="green bigger-140" title="Ver comentarios">
-																		<i class="ace-icon fa fa-angle-double-down"></i>
-																		<span class="sr-only">Ver comentarios</span>
-																	</a>
-																	<a href="#" class="ace-icon fa fa-comment blue bigger-140 show-details-btn" title="Nuevo comentario">
-																		<!-- Si se le pone en formato como el de ver comentarios se reemplaza la imagen, arreglar eso en un futuro -->
-																	</a>
-																</div>
-															</td>
-														</tr>
-														<tr class="detail-row">
-															<td colspan="8">
-																<div class="table-detail">
-																	<div class="row">
-																		<div class="col-xs-12">
-																			<form>
-																				<fieldset>
-																					<textarea class="width-100" resize="none" placeholder="Escribe algo..."></textarea>
-																				</fieldset>
-																				<div class="clearfix">
-																					<button class="pull-right btn btn-sm btn-primary btn-white btn-round" type="button">
-																						Enviar
-																						<i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
-																					</button>
-																				</div>
-																			</form>
-																		</div>
-																	</div>
-																</div>
-															</td>
-														</tr>
-														<!-- SEGUNDA SEMANA -->
-														<tr class="">
-															<td class="center">2</td>
-															<td class="hidden-480">4/5</td>
-															<td class="hidden-480">5/5</td>
-															<td class="hidden-480">3/5</td>
-															<td class="hidden-480">
-																<span style="color:red">2/5</span>
-															</td>
-															<td>14/20</td>
-															<td class="center">
-																<div class="action-buttons">
-																	<a href="#" class="green bigger-140 show-details-btn" title="Ver comentarios">
-																		<i class="ace-icon fa fa-angle-double-down"></i>
-																		<span class="sr-only">Ver comentarios</span>
-																	</a>
-																	<a href="#" class="blue bigger-140" title="Nuevo comentario">
-																		<i class="ace-icon fa fa-comment"></i>
-																		<span class="sr-only">Nuevo comentario</span>
-																	</a>
-																</div>
-															</td>
-														</tr>
-														<tr class="detail-row">
-															<td colspan="8">
-																<div class="table-detail">
-																	<div class="row">
-																		<div class="col-xs-12">
-																			<span style="color:gray">A&uacute;n no hay comentarios.</span>
-																		</div>
-																	</div>
-																</div>
-															</td>
-														</tr>
-														<!-- TERCERA SEMANA -->
-														<tr class="">
-															<td class="center">3</td>
-															<td class="hidden-480">
-																<span style="color:red">2/5</span>
-															</td>
-															<td class="hidden-480">
-																<span style="color:red">0/5</span>
-															</td>
-															<td class="hidden-480">
-																<span style="color:red">1/5</span>
-															</td>
-															<td class="hidden-480">3/5</td>
-															<td>
-																<span style="color:red">6/20</span>
-															</td>
-															<td class="center">
-																<div class="action-buttons">
-																	<a href="#" class="green bigger-140 show-details-btn" title="Ver comentarios">
-																		<i class="ace-icon fa fa-angle-double-down"></i>
-																		<span class="sr-only">Ver comentarios</span>
-																	</a>
-																	<a href="#" class="blue bigger-140" title="Nuevo comentario">
-																		<i class="ace-icon fa fa-comment"></i>
-																		<span class="sr-only">Nuevo comentario</span>
-																	</a>
-																</div>
-															</td>
-														</tr>
-														<tr class="detail-row">
-															<td colspan="8">
-																<div class="table-detail">
-																	<div class="row">
-																		<div class="col-xs-12">
-																			<div class="timeline-items">
-																				<div class="widget-box transparent">
-																					<span style="color:gray">A&uacute;n no hay comentarios.</span>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</td>
-														</tr>
-														<!-- CUARTA SEMANA -->
-														<tr class="">
-															<td class="center">4</td>
-															<td class="hidden-480">
-																<span style="color:gray">Sin nota</span>
-															</td>
-															<td class="hidden-480">
-																<span style="color:gray">Sin nota</span>
-															</td>
-															<td class="hidden-480">
-																<span style="color:gray">Sin nota</span>
-															</td>
-															<td class="hidden-480">
-																<span style="color:gray">Sin nota</span>
-															</td>
-															<td>
-																<span style="color:gray">Sin nota</span>
-															</td>
-															<td class="center"></td>
-														</tr>
-														<!-- FIN -->
-													</tbody>
-											</table>
-										
-									</div>
-								</div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <!-- PAGE CONTENT BEGINS -->
+                            <h3 class="header smaller lighter blue">R&uacute;brica de participaci&oacute;n (50%)</h3>
 
-								<h3 class="header smaller lighter blue">Promedio final</h3>
-								
-								<div class="row">
-									<div class="col-xs-12">
-										
-										<table class="table  table-bordered table-hover">
-													<thead>
-														<tr>
-															<th class="hidden-480 center">Promedio de participaci&oacute;n</th>
-															<th class="hidden-480 center">Promedio de seguimiento de casos</th>
-															<th class="center">Nota final</th>
-															<th class="center">Estado</th>
-															<th class="detail-col">Comentarios</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr class="">
-															<td class="hidden-480 center">
-																<span style="color:red">5/10</span>
-															</td>
-															<td class="hidden-480 center">
-																<span style="color:red">10.3/20</span>
-															</td>
-															<td class="center">
-																<span style="color:red">10.15/20</span>
-															</td>
-															<td class="center">En proceso</td>
-															<td class="center"></td>
-														</tr>
-														<tr class="detail-row">
-															<td colspan="8">
-																<div class="table-detail">
-																	<div class="row">
-																		<div class="col-xs-12">
-																			<div class="timeline-items">
-																				<div class="widget-box transparent">
-																					<span style="color:gray">A&uacute;n no hay comentarios.</span>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</td>
-														</tr>
-														
-													</tbody>
-											</table>
-										
-									</div>
-								</div>
+                            <div class="row">
+                                <div class="col-xs-12">
 
-								<!-- PAGE CONTENT ENDS -->
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div><!-- /.page-content -->
-				</div>
-			</div><!-- /.main-content -->
+                                    <table id="simple-table" class="table  table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align:center"># semana</th>
+                                                <th class="hidden-480">Puntualidad</th>
+                                                <th class="hidden-480">Participaci&oacute;n y discusi&oacute;n</th>
+                                                <th>Suma de notas</th>
+                                                <th class="detail-col">Comentarios</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- PRIMERA SEMANA -->
+                                            <tr>
+                                                <td style="text-align:center">1</td>
+                                                <td class="hidden-480">
+                                                    <span style="color:red">1/5</span>
+                                                </td>
+                                                <td class="hidden-480">
+                                                    3/5
+                                                </td>
+                                                <td>
+                                                    <span style="color:red">4/10</span>
+                                                </td>
+                                                <td class="center">
+                                                    <div class="action-buttons">
+                                                        <a href="#" class="green bigger-140 show-details-btn" title="Ver comentarios">
+                                                            <i class="ace-icon fa fa-angle-double-down"></i>
+                                                            <span class="sr-only">Ver comentarios</span>
+                                                        </a>
+                                                        <a href="#" class="blue bigger-140" title="Nuevo comentario">
+                                                            <i class="ace-icon fa fa-comment"></i>
+                                                            <span class="sr-only">Nuevo comentario</span>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="detail-row">
+                                                <td colspan="8">
+                                                    <div class="table-detail">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="timeline-items">
+                                                                    <!-- COMENTARIO DE RESPUESTA -->
+                                                                    <div class="widget-box transparent">
+                                                                        <div class="widget-header widget-header-small">
+                                                                            <h5 class="widget-title smaller">Luis Flores</h5>
+                                                                            <span class="widget-toolbar no-border">
+                                                                                <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                                                20 set 2016, 10:22
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="widget-body">
+                                                                            <div class="widget-main">
+                                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.
+                                                                                Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit.
+                                                                                Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
+                                                                                <!-- OPCIONES PARA COMENTARIO DE RESPUESTA -->
+                                                                                <div class="pull-right action-buttons">
+                                                                                    <a href="#">
+                                                                                        Responder <i class="ace-icon fa fa-reply light-green bigger-130"></i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="space-6"></div>
+                                                                                <div class="space-6"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- COMENTARIO PROPIO -->
+                                                                    <div class="widget-box transparent">
+                                                                        <div class="widget-header widget-header-small">
+                                                                            <h5 class="widget-title smaller">
+                                                                                Anthony Guti&eacute;rrez&nbsp;
+                                                                                <i class="ace-icon fa fa-share"></i>
+                                                                                Luis Flores
+                                                                            </h5>
+                                                                            <span class="widget-toolbar no-border">
+                                                                                <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                                                Ayer, 13:16
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="widget-body">
+                                                                            <div class="widget-main">
+                                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.
+                                                                                Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit.
+                                                                                Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
+                                                                                <!-- OPCIONES PARA COMENTARIO PROPIO -->
+                                                                                <div class="pull-right action-buttons">
+                                                                                    <a href="#">
+                                                                                        Editar <i class="ace-icon fa fa-comment blue bigger-125"></i>
+                                                                                    </a>
+                                                                                    <a href="#">
+                                                                                        Eliminar <i class="ace-icon fa fa-times red bigger-125"></i>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="space-6"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- FIN COMENTARIOS -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <!-- SEGUNDA SEMANA -->
+                                            <tr>
+                                                <td style="text-align:center">2</td>
+                                                <td class="hidden-480">
+                                                    4/5
+                                                </td>
+                                                <td class="hidden-480">
+                                                    5/5
+                                                </td>
+                                                <td>
+                                                    9/10
+                                                </td>
+                                                <td class="center">
+                                                    <div class="action-buttons">
+                                                        <a href="#" class="green bigger-140 show-details-btn" title="Ver comentarios">
+                                                            <i class="ace-icon fa fa-angle-double-down"></i>
+                                                            <span class="sr-only">Ver comentarios</span>
+                                                        </a>
+                                                        <a href="#" class="blue bigger-140" title="Nuevo comentario">
+                                                            <i class="ace-icon fa fa-comment"></i>
+                                                            <span class="sr-only">Nuevo comentario</span>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="detail-row">
+                                                <td colspan="8">
+                                                    <div class="table-detail">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="timeline-items">
+                                                                    <div class="widget-box transparent">
+                                                                        <div class="widget-header widget-header-small">
+                                                                            <h5 class="widget-title smaller">Luis Flores</h5>
+                                                                            <span class="widget-toolbar no-border">
+                                                                                <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                                                20 set 2016, 10:22
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="widget-body">
+                                                                            <div class="widget-main">
+                                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.
+                                                                                Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit.
+                                                                                Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <!-- TERCERA SEMANA -->
+                                            <tr>
+                                                <td style="text-align:center">3</td>
+                                                <td class="hidden-480">
+                                                    <span style="color:red">2/5</span>
+                                                </td>
+                                                <td class="hidden-480">
+                                                    <span style="color:red">0/5</span>
+                                                </td>
+                                                <td>
+                                                    <span style="color:red">2/10</span>
+                                                </td>
+                                                <td class="center">
+                                                    <div class="action-buttons">
+                                                        <a href="#" class="green bigger-140 show-details-btn" title="Ver comentarios">
+                                                            <i class="ace-icon fa fa-angle-double-down"></i>
+                                                            <span class="sr-only">Ver comentarios</span>
+                                                        </a>
+                                                        <a href="#" class="blue bigger-140" title="Nuevo comentario">
+                                                            <i class="ace-icon fa fa-comment"></i>
+                                                            <span class="sr-only">Nuevo comentario</span>
+                                                        </a>
+                                                    </div>
+                                                </td>												
+                                            </tr>
+                                            <tr class="detail-row">
+                                                <td colspan="8">
+                                                    <div class="table-detail">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="timeline-items">
+                                                                    <div class="widget-box transparent">
+                                                                        <div class="widget-header widget-header-small">
+                                                                            <h5 class="widget-title smaller">Luis Flores</h5>
+                                                                            <span class="widget-toolbar no-border">
+                                                                                <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                                                20 set 2016, 10:22
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="widget-body">
+                                                                            <div class="widget-main">
+                                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.
+                                                                                Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit.
+                                                                                Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <!-- CUARTA SEMANA -->
+                                            <tr>
+                                                <td style="text-align:center">4</td>
+                                                <td class="hidden-480">
+                                                    <span style="color:gray">Sin nota</span>
+                                                </td>
+                                                <td class="hidden-480">
+                                                    <span style="color:gray">Sin nota</span>
+                                                </td>
+                                                <td>
+                                                    <span style="color:gray">Sin nota</span>
+                                                </td>
+                                                <td class="center"></td>
+                                            </tr>
 
-			<div class="footer">
-				<div class="footer-inner">
-					<div class="footer-content">
-						<span class="bigger-120">
-							<span class="blue bolder">Grupo Valor</span>
-							Application &copy; 2016
-						</span>
-					</div>
-				</div>
-			</div>
+                                            <!-- FIN TABLA -->
+                                        </tbody>
+                                    </table>
 
-			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-			</a>
-		</div><!-- /.main-container -->
+                                </div><!-- /.span -->
+                            </div><!-- /.row -->
+
+                            <h3 class="header smaller lighter blue">R&uacute;brica de seguimiento de casos (50%)</h3>
+
+                            <div class="row">
+                                <div class="col-xs-12">
+
+                                    <table class="table  table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="center"># semana</th>
+                                                        <th class="hidden-480">Relaci&oacute;n abogado-usuario</th>
+                                                        <th class="hidden-480">Ejercicio profesional</th>
+                                                        <th class="hidden-480">Investigaci&oacute;n y redacci&oacute;n</th>
+                                                        <th class="hidden-480">Oralidad</th>
+                                                        <th>Suma de notas</th>
+                                                        <th class="detail-col">Comentarios</th>
+                                                    </tr>
+                                                </thead>
+                                                    <tbody>
+                                                    <!-- PRIMERA SEMANA -->
+                                                    <tr class="">
+                                                        <td class="center">1</td>
+                                                        <td class="hidden-480">
+                                                            <span style="color:red">1/5</span>
+                                                        </td>
+                                                        <td class="hidden-480">3/5</td>
+                                                        <td class="hidden-480">4/5</td>
+                                                        <td class="hidden-480">3/5</td>
+                                                        <td>11/20</td>
+                                                        <td class="center">
+                                                            <div class="action-buttons">
+                                                                <a href="#" class="green bigger-140" title="Ver comentarios">
+                                                                    <i class="ace-icon fa fa-angle-double-down"></i>
+                                                                    <span class="sr-only">Ver comentarios</span>
+                                                                </a>
+                                                                <a href="#" class="ace-icon fa fa-comment blue bigger-140 show-details-btn" title="Nuevo comentario">
+                                                                    <!-- Si se le pone en formato como el de ver comentarios se reemplaza la imagen, arreglar eso en un futuro -->
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="detail-row">
+                                                        <td colspan="8">
+                                                            <div class="table-detail">
+                                                                <div class="row">
+                                                                    <div class="col-xs-12">
+                                                                        <form>
+                                                                            <fieldset>
+                                                                                <textarea class="width-100" resize="none" placeholder="Escribe algo..."></textarea>
+                                                                            </fieldset>
+                                                                            <div class="clearfix">
+                                                                                <button class="pull-right btn btn-sm btn-primary btn-white btn-round" type="button">
+                                                                                    Enviar
+                                                                                    <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- SEGUNDA SEMANA -->
+                                                    <tr class="">
+                                                        <td class="center">2</td>
+                                                        <td class="hidden-480">4/5</td>
+                                                        <td class="hidden-480">5/5</td>
+                                                        <td class="hidden-480">3/5</td>
+                                                        <td class="hidden-480">
+                                                            <span style="color:red">2/5</span>
+                                                        </td>
+                                                        <td>14/20</td>
+                                                        <td class="center">
+                                                            <div class="action-buttons">
+                                                                <a href="#" class="green bigger-140 show-details-btn" title="Ver comentarios">
+                                                                    <i class="ace-icon fa fa-angle-double-down"></i>
+                                                                    <span class="sr-only">Ver comentarios</span>
+                                                                </a>
+                                                                <a href="#" class="blue bigger-140" title="Nuevo comentario">
+                                                                    <i class="ace-icon fa fa-comment"></i>
+                                                                    <span class="sr-only">Nuevo comentario</span>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="detail-row">
+                                                        <td colspan="8">
+                                                            <div class="table-detail">
+                                                                <div class="row">
+                                                                    <div class="col-xs-12">
+                                                                        <span style="color:gray">A&uacute;n no hay comentarios.</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- TERCERA SEMANA -->
+                                                    <tr class="">
+                                                        <td class="center">3</td>
+                                                        <td class="hidden-480">
+                                                            <span style="color:red">2/5</span>
+                                                        </td>
+                                                        <td class="hidden-480">
+                                                            <span style="color:red">0/5</span>
+                                                        </td>
+                                                        <td class="hidden-480">
+                                                            <span style="color:red">1/5</span>
+                                                        </td>
+                                                        <td class="hidden-480">3/5</td>
+                                                        <td>
+                                                            <span style="color:red">6/20</span>
+                                                        </td>
+                                                        <td class="center">
+                                                            <div class="action-buttons">
+                                                                <a href="#" class="green bigger-140 show-details-btn" title="Ver comentarios">
+                                                                    <i class="ace-icon fa fa-angle-double-down"></i>
+                                                                    <span class="sr-only">Ver comentarios</span>
+                                                                </a>
+                                                                <a href="#" class="blue bigger-140" title="Nuevo comentario">
+                                                                    <i class="ace-icon fa fa-comment"></i>
+                                                                    <span class="sr-only">Nuevo comentario</span>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="detail-row">
+                                                        <td colspan="8">
+                                                            <div class="table-detail">
+                                                                <div class="row">
+                                                                    <div class="col-xs-12">
+                                                                        <div class="timeline-items">
+                                                                            <div class="widget-box transparent">
+                                                                                <span style="color:gray">A&uacute;n no hay comentarios.</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- CUARTA SEMANA -->
+                                                    <tr class="">
+                                                        <td class="center">4</td>
+                                                        <td class="hidden-480">
+                                                            <span style="color:gray">Sin nota</span>
+                                                        </td>
+                                                        <td class="hidden-480">
+                                                            <span style="color:gray">Sin nota</span>
+                                                        </td>
+                                                        <td class="hidden-480">
+                                                            <span style="color:gray">Sin nota</span>
+                                                        </td>
+                                                        <td class="hidden-480">
+                                                            <span style="color:gray">Sin nota</span>
+                                                        </td>
+                                                        <td>
+                                                            <span style="color:gray">Sin nota</span>
+                                                        </td>
+                                                        <td class="center"></td>
+                                                    </tr>
+                                                    <!-- FIN -->
+                                                </tbody>
+                                        </table>
+
+                                </div>
+                            </div>
+
+                            <h3 class="header smaller lighter blue">Promedio final</h3>
+
+                            <div class="row">
+                                <div class="col-xs-12">
+
+                                    <table class="table  table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="hidden-480 center">Promedio de participaci&oacute;n</th>
+                                                        <th class="hidden-480 center">Promedio de seguimiento de casos</th>
+                                                        <th class="center">Nota final</th>
+                                                        <th class="center">Estado</th>
+                                                        <th class="detail-col">Comentarios</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="">
+                                                        <td class="hidden-480 center">
+                                                            <span style="color:red">5/10</span>
+                                                        </td>
+                                                        <td class="hidden-480 center">
+                                                            <span style="color:red">10.3/20</span>
+                                                        </td>
+                                                        <td class="center">
+                                                            <span style="color:red">10.15/20</span>
+                                                        </td>
+                                                        <td class="center">En proceso</td>
+                                                        <td class="center"></td>
+                                                    </tr>
+                                                    <tr class="detail-row">
+                                                        <td colspan="8">
+                                                            <div class="table-detail">
+                                                                <div class="row">
+                                                                    <div class="col-xs-12">
+                                                                        <div class="timeline-items">
+                                                                            <div class="widget-box transparent">
+                                                                                <span style="color:gray">A&uacute;n no hay comentarios.</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                        </table>
+
+                                </div>
+                            </div>
+
+                            <!-- PAGE CONTENT ENDS -->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.page-content -->
+            </div>
+        </div><!-- /.main-content -->
+
+		<?php  echo view('intranet/footer'); ?>	
 
 		<!-- basic scripts -->
 

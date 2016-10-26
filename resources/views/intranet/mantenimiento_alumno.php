@@ -32,8 +32,7 @@
 	</head>
 
 	<body class="no-skin">
-		<?php  echo view('intranet/menu'); ?>
-			
+		<?php  echo view('intranet/menu'); ?>			
             <div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -73,21 +72,7 @@
 				</div>
 			</div><!-- /.main-content -->
 
-			<div class="footer"><!--pie de pagina-->
-				<div class="footer-inner">
-					<div class="footer-content">
-						<span class="bigger-120">
-							<span class="blue bolder">Grupo Valor</span>
-							Application &copy; 2016
-						</span>
-					</div>
-				</div>
-			</div>
-
-			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse"><!-- flecha para scrollear hasta arriba en moviles-->
-				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-			</a>
-		</div><!-- /.main-container -->
+        <?php  echo view('intranet/footer'); ?>	
 
 		<!-- basic scripts -->
 

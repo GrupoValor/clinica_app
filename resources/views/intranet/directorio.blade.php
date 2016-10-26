@@ -34,8 +34,7 @@
 	</head>
 
 	<body class="no-skin">
-		<?php  echo view('intranet/menu'); ?>
-			
+		<?php  echo view('intranet/menu'); ?>			
             <div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -99,8 +98,7 @@
 				</div>
 
 			</div><!-- /.main-content -->
-
-
+        
 			<!-- Popup :  Agregar -->
 
 			<div align="center">        

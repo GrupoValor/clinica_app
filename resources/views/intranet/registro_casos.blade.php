@@ -53,233 +53,197 @@
 </head>
 
 <body class="no-skin">
-<?php  echo view('intranet/menu'); ?>
+    <?php  echo view('intranet/menu'); ?>
 			
-            <div class="main-content">
-				<div class="main-content-inner">
-					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-						<ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="index.html">Home</a>
-							</li>
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                    <ul class="breadcrumb">
                         <li>
-                            Registro de casos
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="index.html">Home</a>
                         </li>
-                        <li class="active">Registro</li>
-                    </ul><!-- /.breadcrumb -->
+                    <li>
+                        Registro de casos
+                    </li>
+                    <li class="active">Registro</li>
+                </ul><!-- /.breadcrumb -->
 
-                    <!--<div class="nav-search" id="nav-search">
-                        <form class="form-search">
-                            <span class="input-icon">
-                                <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-                                <i class="ace-icon fa fa-search nav-search-icon"></i>
-                            </span>
-                        </form>
-                    </div><!-- /.nav-search -->
-                </div>
+                <!--<div class="nav-search" id="nav-search">
+                    <form class="form-search">
+                        <span class="input-icon">
+                            <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                            <i class="ace-icon fa fa-search nav-search-icon"></i>
+                        </span>
+                    </form>
+                </div><!-- /.nav-search -->
+            </div>
 
-                <div class="page-content">
+            <div class="page-content">
+                <div class="page-header">
+                    <h1>
+                        Registro de casos
+                        <small>
+                            <i class="ace-icon fa fa-angle-double-right"></i>
+                            Registro
+                        </small>
+                    </h1>
+                </div><!-- /.page-header -->
 
-
-                    <div class="page-header">
-                        <h1>
-                            Registro de casos
-                            <small>
-                                <i class="ace-icon fa fa-angle-double-right"></i>
-                                Registro
-                            </small>
-                        </h1>
-                    </div><!-- /.page-header -->
-
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <!-- PAGE CONTENT BEGINS -->
-                            <form class="form-horizontal" role="form">
-
-
-
-
-                                <div align="center">        
-                                           <!-- form del boton -->
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+                        <form class="form-horizontal" role="form">
+                            <div align="center">        
+                                       <!-- form del boton -->
 
 
 
-                                    <div class="modal fade" id="boton" role="dialog">
+                                <div class="modal fade" id="boton" role="dialog">
 
 
-                                        <div class="modal-dialog">
+                                    <div class="modal-dialog">
 
 
-                                            <!-- Modal content-->
+                                        <!-- Modal content-->
 
-                                            <div class="modal-content">
+                                        <div class="modal-content">
 
-                                                <div class="modal-header">
-                                                  <h1 type="button" class="close" data-dismiss="modal">
+                                            <div class="modal-header">
+                                              <h1 type="button" class="close" data-dismiss="modal">
 
-                                                    </h1>
-                                                    <table id="dynamic-table" class="table table-striped table-bordered table-hover">
-                                            <thead>
-                                            <tr>
+                                                </h1>
+                                                <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                        <tr>
 
-                                                <th>Nombre</th>
-                                                <th>Teléfono</th>
-                                                <th>E-mail</th>
-                                                <th>Dirección</th>
+                                            <th>Nombre</th>
+                                            <th>Teléfono</th>
+                                            <th>E-mail</th>
+                                            <th>Dirección</th>
 
-                                            </tr>
-                                            </thead>
+                                        </tr>
+                                        </thead>
 
-                                            <tbody id ="tbodycontent">
+                                        <tbody id ="tbodycontent">
 
 
 
-                                            </tbody>
-                                        </table>
+                                        </tbody>
+                                    </table>
 
-                                                </div>                                  
+                                            </div>                                  
 
-                                                  <div class="modal-footer">
-                                                     <div align="center">
-                                                      <button id="botonCliente" type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-                                                     </div>
-                                                </div>
-                                              </div>
-
+                                              <div class="modal-footer">
+                                                 <div align="center">
+                                                  <button id="botonCliente" type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+                                                 </div>
                                             </div>
-                                         </div>
+                                          </div>
 
-                                        <!-- fin del form -->
                                         </div>
+                                     </div>
 
-                                <div class="space-6"></div>
-                                <div class="space-6"></div>
-                                <div class="space-6"></div>
-                                <div class="space-6"></div>
-
-                                <div class="form-group">
-
-
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Nombre del Cliente</label>
-
-
-                                <div class="col-sm-6">
-
-                                    <button type="button" style="font-size: 12px" class="btn btn-info btn-lg" data-toggle="modal" data-target="#boton">Buscar</button>
-
-                                     <div class="col-sm-6">
-
-
-                                    <input class="input-sm" type="text" id="cliente" value="" disabled />
-
+                                    <!-- fin del form -->
                                     </div>
 
-                                </div>
+                            <div class="space-6"></div>
+                            <div class="space-6"></div>
+                            <div class="space-6"></div>
+                            <div class="space-6"></div>
+
+                            <div class="form-group">
 
 
-                                </div>
-
-                                <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Nombre del Cliente</label>
 
 
-                                <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Nombre del Docente</label>
+                            <div class="col-sm-6">
+
+                                <button type="button" style="font-size: 12px" class="btn btn-info btn-lg" data-toggle="modal" data-target="#boton">Buscar</button>
+
+                                 <div class="col-sm-6">
 
 
-                                <div class="col-sm-6">
-
-                                    <button type="button" style="font-size: 12px" class="btn btn-info btn-lg" data-toggle="modal" data-target="#boton">Buscar</button>
-
-                                     <div class="col-sm-6">
-
-
-                                    <input class="input-sm" type="text" id="cliente" value="" disabled />
-
-                                    </div>
+                                <input class="input-sm" type="text" id="cliente" value="" disabled />
 
                                 </div>
 
+                            </div>
+
+
+                            </div>
+
+                            <div class="form-group">
+
+
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Nombre del Docente</label>
+
+
+                            <div class="col-sm-6">
+
+                                <button type="button" style="font-size: 12px" class="btn btn-info btn-lg" data-toggle="modal" data-target="#boton">Buscar</button>
+
+                                 <div class="col-sm-6">
+
+
+                                <input class="input-sm" type="text" id="cliente" value="" disabled />
 
                                 </div>
 
+                            </div>
 
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right"
-                                           for="form-field-4">Objetivo de la actuación</label>
 
-                                    <div class="col-sm-4">
-                                        <!--<input class="input-sm" type="text" id="form-field-4" placeholder="Observaciones" />
-                                        <div class="space-2"></div>-->
-                                        <textarea id="objetivo" class="form-control" rows="4"></textarea>
-                                    </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"
+                                       for="form-field-4">Objetivo de la actuación</label>
+
+                                <div class="col-sm-4">
+                                    <!--<input class="input-sm" type="text" id="form-field-4" placeholder="Observaciones" />
+                                    <div class="space-2"></div>-->
+                                    <textarea id="objetivo" class="form-control" rows="4"></textarea>
                                 </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right"
-                                           for="form-field-4">Observaciones</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"
+                                       for="form-field-4">Observaciones</label>
 
-                                    <div class="col-sm-4">
-                                        <!--<input class="input-sm" type="text" id="form-field-4" placeholder="Observaciones" />
-                                        <div class="space-2"></div>-->
-                                        <textarea id="observaciones"class="form-control" rows="8"></textarea>
-                                    </div>
+                                <div class="col-sm-4">
+                                    <!--<input class="input-sm" type="text" id="form-field-4" placeholder="Observaciones" />
+                                    <div class="space-2"></div>-->
+                                    <textarea id="observaciones"class="form-control" rows="8"></textarea>
                                 </div>
+                            </div>
 
-                                <div class="hidden">
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label no-padding-right"
-                                           for="form-field-4">Archivos</label>
-                                    <div class="col-sm-4">
-                                        <input type="file" id="id-input-file-2"/>
-                                    </div>
+                            <div class="hidden">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right"
+                                       for="form-field-4">Archivos</label>
+                                <div class="col-sm-4">
+                                    <input type="file" id="id-input-file-2"/>
                                 </div>
-                                </div>
+                            </div>
+                            </div>
 
-                                <div align="center">
-                                    <button id="click_button"class="btn btn-info" type="button">
-                                        <i class="ace-icon fa fa-check bigger-110"></i>
-                                        Registrar Caso
-                                    </button>
-                                </div>
+                            <div align="center">
+                                <button id="click_button"class="btn btn-info" type="button">
+                                    <i class="ace-icon fa fa-check bigger-110"></i>
+                                    Registrar Caso
+                                </button>
+                            </div>
 
 
-                            </form>
-                        </div>
-                    </div><!-- /.col -->
+                        </form>
+                    </div>
                 </div><!-- /.row -->
             </div><!-- /.page-content -->
-        </div>
-    </div><!-- /.main-content -->
-
-    <div class="footer">
-        <div class="footer-inner">
-            <div class="footer-content">
-                            <span class="bigger-120">
-                                <span class="blue bolder">Ace</span>
-                                Application &copy; 2013-2014
-                            </span>
-
-                &nbsp; &nbsp;
-                <span class="action-buttons">
-                                <a href="#">
-                                    <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-                                </a>
-
-                                <a href="#">
-                                    <i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
-                                </a>
-
-                                <a href="#">
-                                    <i class="ace-icon fa fa-rss-square orange bigger-150"></i>
-                                </a>
-                            </span>
             </div>
-        </div>
-    </div>
+        </div><!-- /.main-content -->
 
-    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-    </a>
-    <!-- /.main-container -->
+    <?php  echo view('intranet/footer'); ?>
 
 <!-- basic scripts -->
 

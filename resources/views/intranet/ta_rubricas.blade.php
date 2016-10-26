@@ -47,289 +47,274 @@
 </head>
 
 <body class="no-skin">
-<?php  echo view('intranet/menu'); ?>
-			
-            <div class="main-content">
-				<div class="main-content-inner">
-					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-						<ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="index.html">Home</a>
-							</li>
-							<li>
-								Tareas acad&eacute;micas
-							</li>
-							<li class="active">Mantenimiento de r&uacute;bricas</li>
-						</ul><!-- /.breadcrumb -->
-					</div>
+    <?php  echo view('intranet/menu'); ?>			
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            Tareas acad&eacute;micas
+                        </li>
+                        <li class="active">Mantenimiento de r&uacute;bricas</li>
+                    </ul><!-- /.breadcrumb -->
+                </div>
 
-					<div class="page-content">
-						<div class="page-header">
-							<h1>Mantenimiento de r&uacute;bricas</h1>
-						</div><!-- /.page-header -->
+                <div class="page-content">
+                    <div class="page-header">
+                        <h1>Mantenimiento de r&uacute;bricas</h1>
+                    </div><!-- /.page-header -->
 
-						<p>Aqu&iacute; el profesor puede editar las r&uacute;bricas para registrar el avance de sus alumnos en el curso.</p>
-						
-						<!-- CONTROL DE TABLAS -->
-						<div class="">
-							Se mostrar&aacute;n 
-							<div class="ace-spinner middle" style="width: 115px;">
-								<input type="text" id="spinner1" />
-							</div>
-							tablas de r&uacute;bricas, para un total de 
-							<div class="ace-spinner middle" style="width: 90px;">
-								<input type="text" class="input-sm" id="spinner2" />
-							</div>
-							semanas.
-						</div>
-						
-						<div class="row">
-							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								
-								<h3 class="header smaller lighter blue">
-									R&uacute;brica 1:
-									<input type="text" class="input-xxlarge" value="Participaci&oacute;n" />
-									<div class="form-group" style="float:right">
-										<label>Peso de la r&uacute;brica:</label>
-										<input type="text" class="input-mini" value="1" />
-										<label>de 2 (50%)</label>  
-									</div>
-								</h3>
-								
-								<div class="row">
-									<div class="col-xs-12">
-										<table id="simple-table" class="table  table-bordered table-hover">
-											<thead>
-												<tr>
-													<th class="center">
-														<label class="pos-rel">
-															<input type="checkbox" class="ace" />
-															<span class="lbl"></span>
-														</label>
-													</th>
-													<th>T&iacute;tulo del rubro</th>
-													<th>M&aacute;ximo puntaje</th>
-													<th></th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td class="center">
-														<label class="pos-rel">
-															<input type="checkbox" class="ace">
-															<span class="lbl"></span>
-														</label>
-													</td>
-													<td>
-														<input type="text" class="input-large" value="Puntualidad" />
-													</td>
-													<td>
-														<input type="text" class="input-mini" value="5" />
-													</td>
-													<td class="center">
-														<a href="#" class="ace-icon glyphicon glyphicon-trash red" title="Eliminar fila"></a>
-													</td>
-												</tr>
-												<tr>
-													<td class="center">
-														<label class="pos-rel">
-															<input type="checkbox" class="ace">
-															<span class="lbl"></span>
-														</label>
-													</td>
-													<td>
-														<input type="text" class="input-large" value="Participaci&oacute;n y discusi&oacute;n" />
-													</td>
-													<td>
-														<input type="text" class="input-mini" value="5" />
-													</td>
-													<td class="center">
-														<a href="#" class="ace-icon glyphicon glyphicon-trash red" title="Eliminar fila"></a>
-													</td>
-												</tr>
-												<tr>
-													<td colspan=4 style="background-color:#EFF3F8">
-														<div class="center">
-															<button class="btn btn-white btn-info btn-bold">
-																<i class="ace-icon fa fa-plus-circle bigger-120 blue"></i>
-																A&ntilde;adir fila al final
-															</button>
-															&nbsp;&nbsp;
-															<button class="btn btn-white btn-danger btn-bold">
-																<i class="ace-icon fa fa-trash-o bigger-120 red"></i>
-																Eliminar filas
-															</button>
-														</div>
-													</td>
-												</tr>	
-											</tbody>
-										</table>
-									</div><!-- /.span -->
-								</div><!-- /.row -->
+                    <p>Aqu&iacute; el profesor puede editar las r&uacute;bricas para registrar el avance de sus alumnos en el curso.</p>
 
-								<h3 class="header smaller lighter blue">
-									R&uacute;brica 2:
-									<input type="text" class="input-xxlarge" value="Seguimiento de casos" />
-									<div class="form-group" style="float:right">
-										<label>Peso de la r&uacute;brica:</label>
-										<input type="text" class="input-mini" value="1" />
-										<label>de 2 (50%)</label>
-									</div>
-								</h3>
-								
-								<div class="row">
-									<div class="col-xs-12">
-										<table id="simple-table" class="table  table-bordered table-hover">
-											<thead>
-												<tr>
-													<th class="center">
-														<label class="pos-rel">
-															<input type="checkbox" class="ace" />
-															<span class="lbl"></span>
-														</label>
-													</th>
-													<th>T&iacute;tulo del rubro</th>
-													<th>M&aacute;ximo puntaje</th>
-													<th></th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td class="center">
-														<label class="pos-rel">
-															<input type="checkbox" class="ace">
-															<span class="lbl"></span>
-														</label>
-													</td>
-													<td>
-														<input type="text" class="input-large" value="Relaci&oacute;n abogado-caso" />
-													</td>
-													<td>
-														<input type="text" class="input-mini" value="5" />
-													</td>
-													<td class="center">
-														<a href="#" class="ace-icon glyphicon glyphicon-trash red" title="Eliminar fila"></a>
-													</td>
-												</tr>
-												<tr>
-													<td class="center">
-														<label class="pos-rel">
-															<input type="checkbox" class="ace">
-															<span class="lbl"></span>
-														</label>
-													</td>
-													<td>
-														<input type="text" class="input-large" value="Ejercicio profesional" />
-													</td>
-													<td>
-														<input type="text" class="input-mini" value="5" />
-													</td>
-													<td class="center">
-														<a href="#" class="ace-icon glyphicon glyphicon-trash red" title="Eliminar fila"></a>
-													</td>
-												</tr>
-												<tr>
-													<td class="center">
-														<label class="pos-rel">
-															<input type="checkbox" class="ace">
-															<span class="lbl"></span>
-														</label>
-													</td>
-													<td>
-														<input type="text" class="input-large" value="Investigaci&oacute;n y redacci&oacute;n" />
-													</td>
-													<td>
-														<input type="text" class="input-mini" value="5" />
-													</td>
-													<td class="center">
-														<a href="#" class="ace-icon glyphicon glyphicon-trash red" title="Eliminar fila"></a>
-													</td>
-												</tr>
-												<tr>
-													<td class="center">
-														<label class="pos-rel">
-															<input type="checkbox" class="ace">
-															<span class="lbl"></span>
-														</label>
-													</td>
-													<td>
-														<input type="text" class="input-large" value="Oralidad" />
-													</td>
-													<td>
-														<input type="text" class="input-mini" value="5" />
-													</td>
-													<td class="center">
-														<a href="#" class="ace-icon glyphicon glyphicon-trash red" title="Eliminar fila"></a>
-													</td>
-												</tr>
-												<tr>
-													<td class="center">
-														<label class="pos-rel">
-															<input type="checkbox" class="ace" />
-															<span class="lbl"></span>
-														</label>
-													</td>
-													<td>
-														<input type="text" class="input-large" placeholder="T&iacute;tulo del rubro" />
-													</td>
-													<td>
-														<input type="text" class="input-mini" placeholder="Puntaje" />
-													</td>
-													<td class="center">
-														<a href="#" class="ace-icon glyphicon glyphicon-trash red" title="Eliminar fila"></a>
-													</td>
-												</tr>
-												<tr>
-													<td colspan=4 style="background-color:#EFF3F8">
-														<div class="center">
-															<button class="btn btn-white btn-info btn-bold">
-																<i class="ace-icon fa fa-plus-circle bigger-120 blue"></i>
-																A&ntilde;adir fila al final
-															</button>
-															&nbsp;&nbsp;
-															<button class="btn btn-white btn-danger btn-bold">
-																<i class="ace-icon fa fa-trash-o bigger-120 red"></i>
-																Eliminar filas
-															</button>
-														</div>
-													</td>
-												</tr>
-											</tbody>
-										</table>
-									</div><!-- /.span -->
-								</div><!-- /.row -->
-								
-								<div class="center">		
-									<button class="btn btn-info" type="button">
-										<i class="ace-icon fa fa-check bigger-110"></i>
-										Guardar
-									</button>
-								</div>
-								
-								<!-- PAGE CONTENT ENDS -->
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div><!-- /.page-content -->
-				</div>
-			</div><!-- /.main-content -->
+                    <!-- CONTROL DE TABLAS -->
+                    <div class="">
+                        Se mostrar&aacute;n 
+                        <div class="ace-spinner middle" style="width: 115px;">
+                            <input type="text" id="spinner1" />
+                        </div>
+                        tablas de r&uacute;bricas, para un total de 
+                        <div class="ace-spinner middle" style="width: 90px;">
+                            <input type="text" class="input-sm" id="spinner2" />
+                        </div>
+                        semanas.
+                    </div>
 
-			<div class="footer">
-				<div class="footer-inner">
-					<div class="footer-content">
-						<span class="bigger-120">
-							<span class="blue bolder">Grupo Valor</span>
-							Application &copy; 2016
-						</span>
-					</div>
-				</div>
-			</div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <!-- PAGE CONTENT BEGINS -->
 
-			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-			</a>
-		</div><!-- /.main-container -->
+                            <h3 class="header smaller lighter blue">
+                                R&uacute;brica 1:
+                                <input type="text" class="input-xxlarge" value="Participaci&oacute;n" />
+                                <div class="form-group" style="float:right">
+                                    <label>Peso de la r&uacute;brica:</label>
+                                    <input type="text" class="input-mini" value="1" />
+                                    <label>de 2 (50%)</label>  
+                                </div>
+                            </h3>
+
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <table id="simple-table" class="table  table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="center">
+                                                    <label class="pos-rel">
+                                                        <input type="checkbox" class="ace" />
+                                                        <span class="lbl"></span>
+                                                    </label>
+                                                </th>
+                                                <th>T&iacute;tulo del rubro</th>
+                                                <th>M&aacute;ximo puntaje</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="center">
+                                                    <label class="pos-rel">
+                                                        <input type="checkbox" class="ace">
+                                                        <span class="lbl"></span>
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-large" value="Puntualidad" />
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-mini" value="5" />
+                                                </td>
+                                                <td class="center">
+                                                    <a href="#" class="ace-icon glyphicon glyphicon-trash red" title="Eliminar fila"></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="center">
+                                                    <label class="pos-rel">
+                                                        <input type="checkbox" class="ace">
+                                                        <span class="lbl"></span>
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-large" value="Participaci&oacute;n y discusi&oacute;n" />
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-mini" value="5" />
+                                                </td>
+                                                <td class="center">
+                                                    <a href="#" class="ace-icon glyphicon glyphicon-trash red" title="Eliminar fila"></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan=4 style="background-color:#EFF3F8">
+                                                    <div class="center">
+                                                        <button class="btn btn-white btn-info btn-bold">
+                                                            <i class="ace-icon fa fa-plus-circle bigger-120 blue"></i>
+                                                            A&ntilde;adir fila al final
+                                                        </button>
+                                                        &nbsp;&nbsp;
+                                                        <button class="btn btn-white btn-danger btn-bold">
+                                                            <i class="ace-icon fa fa-trash-o bigger-120 red"></i>
+                                                            Eliminar filas
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>	
+                                        </tbody>
+                                    </table>
+                                </div><!-- /.span -->
+                            </div><!-- /.row -->
+
+                            <h3 class="header smaller lighter blue">
+                                R&uacute;brica 2:
+                                <input type="text" class="input-xxlarge" value="Seguimiento de casos" />
+                                <div class="form-group" style="float:right">
+                                    <label>Peso de la r&uacute;brica:</label>
+                                    <input type="text" class="input-mini" value="1" />
+                                    <label>de 2 (50%)</label>
+                                </div>
+                            </h3>
+
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <table id="simple-table" class="table  table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="center">
+                                                    <label class="pos-rel">
+                                                        <input type="checkbox" class="ace" />
+                                                        <span class="lbl"></span>
+                                                    </label>
+                                                </th>
+                                                <th>T&iacute;tulo del rubro</th>
+                                                <th>M&aacute;ximo puntaje</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="center">
+                                                    <label class="pos-rel">
+                                                        <input type="checkbox" class="ace">
+                                                        <span class="lbl"></span>
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-large" value="Relaci&oacute;n abogado-caso" />
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-mini" value="5" />
+                                                </td>
+                                                <td class="center">
+                                                    <a href="#" class="ace-icon glyphicon glyphicon-trash red" title="Eliminar fila"></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="center">
+                                                    <label class="pos-rel">
+                                                        <input type="checkbox" class="ace">
+                                                        <span class="lbl"></span>
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-large" value="Ejercicio profesional" />
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-mini" value="5" />
+                                                </td>
+                                                <td class="center">
+                                                    <a href="#" class="ace-icon glyphicon glyphicon-trash red" title="Eliminar fila"></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="center">
+                                                    <label class="pos-rel">
+                                                        <input type="checkbox" class="ace">
+                                                        <span class="lbl"></span>
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-large" value="Investigaci&oacute;n y redacci&oacute;n" />
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-mini" value="5" />
+                                                </td>
+                                                <td class="center">
+                                                    <a href="#" class="ace-icon glyphicon glyphicon-trash red" title="Eliminar fila"></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="center">
+                                                    <label class="pos-rel">
+                                                        <input type="checkbox" class="ace">
+                                                        <span class="lbl"></span>
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-large" value="Oralidad" />
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-mini" value="5" />
+                                                </td>
+                                                <td class="center">
+                                                    <a href="#" class="ace-icon glyphicon glyphicon-trash red" title="Eliminar fila"></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="center">
+                                                    <label class="pos-rel">
+                                                        <input type="checkbox" class="ace" />
+                                                        <span class="lbl"></span>
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-large" placeholder="T&iacute;tulo del rubro" />
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-mini" placeholder="Puntaje" />
+                                                </td>
+                                                <td class="center">
+                                                    <a href="#" class="ace-icon glyphicon glyphicon-trash red" title="Eliminar fila"></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan=4 style="background-color:#EFF3F8">
+                                                    <div class="center">
+                                                        <button class="btn btn-white btn-info btn-bold">
+                                                            <i class="ace-icon fa fa-plus-circle bigger-120 blue"></i>
+                                                            A&ntilde;adir fila al final
+                                                        </button>
+                                                        &nbsp;&nbsp;
+                                                        <button class="btn btn-white btn-danger btn-bold">
+                                                            <i class="ace-icon fa fa-trash-o bigger-120 red"></i>
+                                                            Eliminar filas
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!-- /.span -->
+                            </div><!-- /.row -->
+
+                            <div class="center">		
+                                <button class="btn btn-info" type="button">
+                                    <i class="ace-icon fa fa-check bigger-110"></i>
+                                    Guardar
+                                </button>
+                            </div>
+
+                            <!-- PAGE CONTENT ENDS -->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.page-content -->
+            </div>
+        </div><!-- /.main-content -->
+
+    <?php  echo view('intranet/footer'); ?>	
 
 		<!-- basic scripts -->
 

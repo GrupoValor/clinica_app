@@ -47,433 +47,418 @@
 </head>
 
 <body class="no-skin">
-<?php  echo view('intranet/menu'); ?>
-			
-            <div class="main-content">
-				<div class="main-content-inner">
-					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-						<ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="index.html">Home</a>
-							</li>
-							<li class="active">Tareas acad&eacute;micas</li>
-							<li class="active">Registro de notas</li>
-						</ul><!-- /.breadcrumb -->
-					</div>
+    <?php  echo view('intranet/menu'); ?>			
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="active">Tareas acad&eacute;micas</li>
+                        <li class="active">Registro de notas</li>
+                    </ul><!-- /.breadcrumb -->
+                </div>
 
-					<div class="page-content">
-						<div class="page-header">
-							<h1>Registro de notas</h1>
-						</div><!-- /.page-header -->
+                <div class="page-content">
+                    <div class="page-header">
+                        <h1>Registro de notas</h1>
+                    </div><!-- /.page-header -->
 
-						<p>Aqu&iacute; el profesor puede agregar y modificar las notas de sus alumnos por cada r&uacute;brica, semana, y alumno.</p>
-						
-						<div class="row">
-							<div class="col-xs-12">
-							
-								<h3 class="header smaller lighter blue">B&uacute;squeda</h3>
-								<!-- BÚSQUEDA -->
-								
-								<form class="form-horizontal">
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1">R&uacute;brica:</label>
-										<div class="col-sm-6">
-											<select class="input-xlarge" id="ta_notas_busq">
-												<option value="0">Todas</option>
-												<option value="1">Participaci&oacute;n</option>
-												<option value="2">Seguimiento de casos</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"># semana:</label>
-										<div class="col-sm-6">
-											<select class="input-small" id="ta_notas_busq">
-												<option value="0">Todas</option>
-												<option value="1">1</option>
-												<option value="2">2</option>
-												<option value="3">3</option>
-												<option value="4">4</option>
-											</select>
-											&nbsp;de 14&nbsp;
-											<button type="button" class="btn btn-white btn-info btn-sm">
-												Editar # de semanas
-											</button>
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Alumno:</label>
-										<div class="col-sm-6">
-											<select class="input-xxlarge" id="ta_notas_busq">
-												<option value="0">Todos</option>
-												<option value="1">20130095 - Anthony Guti&eacute;rrez Cazorla</option>
-												<option value="2">20121234 - Juan Jes&uacute;s P&eacute;rez D&iacute;az</option>
-												<option value="3">20092009 - Mario Tarazona S&aacute;nchez</option>
-												<option value="4">20153541 - Foo Bar</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-sm-9 center">
-											<button type="button" class="btn btn-purple btn-sm">
-												<span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
-												Buscar
-											</button>
-										</div>
-									</div>
-								</form>
-								<!-- FIN BÚSQUEDA -->
+                    <p>Aqu&iacute; el profesor puede agregar y modificar las notas de sus alumnos por cada r&uacute;brica, semana, y alumno.</p>
 
-								<div class="space-6"></div>
-								
-								<h3 class="header smaller lighter blue">Resultados de la b&uacute;squeda</h3>
-								<p>R&uacute;brica de seguimiento de casos para la semana 4:</p>
-								<!-- CONFIGURACIÓN -->
-								<div class="row">
-									<div class="col-xs-12">
-										<table class="table  table-bordered table-hover">
-											<thead>
-												<tr>
-													<th class="center">C&oacute;digo</th>
-													<th>Alumno</th>
-													<th>Relaci&oacute;n abogado-caso</th>
-													<th>Ejercicio profesional</th>
-													<th>Investigaci&oacute;n y redacci&oacute;n</th>
-													<th>Oralidad</th>
-													<th>Suma de notas</th>
-													<th class="center">Comentarios</th>
-													<th></th>
-												</tr>
-											</thead>
-											<tbody>
-												<!-- PRIMER ALUMNO -->
-												<tr>
-													<td class="center">20130095</td>
-													<td>Anthony Guti&eacute;rrez Cazorla</td>
-													<td>
-														<input type="text" class="input-mini" value="2" />
-														&nbsp;/ 5
-													</td>
-													<td>
-														<input type="text" class="input-mini" value="3" />
-														&nbsp;/ 5
-													</td>
-													<td>
-														<input type="text" class="input-mini" value="4" />
-														&nbsp;/ 5
-													</td>
-													<td>
-														<input type="text" class="input-mini" value="5" />
-														&nbsp;/ 5
-													</td>
-													<td>
-														<input type="text" disabled="true" class="input-mini" value="14" />
-														&nbsp;/ 20
-													</td>
-													<td class="center">
-														<div class="action-buttons">
-															<a href="#" class="green bigger-140 show-details-btn" title="Ver comentarios">
-																<i class="ace-icon fa fa-angle-double-down"></i>
-																<span class="sr-only">Ver comentarios</span>
-															</a>
-															<a href="#" class="blue bigger-125" title="Nuevo comentario">
-																<i class="ace-icon fa fa-comment"></i>
-																<span class="sr-only">Nuevo comentario</span>
-															</a>
-														</div>
-													</td>	
-													<td class="center">
-														<div class="action-buttons">
-															<a href="#" class="ace-icon glyphicon glyphicon-ok green" title="Guardar edici&oacute;n"></a>
-															<a href="#" class="ace-icon glyphicon glyphicon-remove red" title="Desechar edici&oacute;n"></a>
-														</div>
-													</td>
-												</tr>
-												<tr class="detail-row">
-													<td colspan="12">
-														<div class="table-detail">
-															<div class="row">
-																<div class="col-xs-12">
-																	<div class="timeline-items">
-																		<!-- COMENTARIO PROPIO -->
-																		<div class="widget-box transparent">
-																			<div class="widget-header widget-header-small">
-																				<h5 class="widget-title smaller">Luis Flores</h5>
-																				<span class="widget-toolbar no-border">
-																					<i class="ace-icon fa fa-clock-o bigger-110"></i>
-																					20 set 2016, 10:22
-																				</span>
-																			</div>
-																			<div class="widget-body">
-																				<div class="widget-main">
-																					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.
-																					Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit.
-																					Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
-																					<!-- OPCIONES PARA COMENTARIO PROPIO -->
-																					<div class="pull-right action-buttons">
-																						<a href="#">
-																							Editar <i class="ace-icon fa fa-pencil blue bigger-125"></i>
-																						</a>
-																						<a href="#">
-																							Eliminar <i class="ace-icon fa fa-times red bigger-125"></i>
-																						</a>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																		<div class="hr hr-18 dotted hr-double"></div>
-																		<!-- COMENTARIO PROPIO -->
-																		<div class="widget-box transparent">
-																			<div class="widget-header widget-header-small">
-																				<h5 class="widget-title smaller">Anthony Guti&eacute;rrez</h5>
-																				<span class="widget-toolbar no-border">
-																					<i class="ace-icon fa fa-clock-o bigger-110"></i>
-																					Ayer, 13:16
-																				</span>
-																			</div>
-																			<div class="widget-body">
-																				<div class="widget-main">
-																					<strong>Luis Flores</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.
-																					Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit.
-																					Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
-																					<!-- OPCIONES PARA COMENTARIO DE RESPUESTA -->
-																					<div class="pull-right action-buttons">
-																						<a href="#">
-																							Responder <i class="ace-icon fa fa-reply light-green bigger-130"></i>
-																						</a>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																		<!-- FIN COMENTARIOS -->
-																	</div>
-																</div>
-															</div>
-														</div>
-													</td>
-												</tr>
-												<!-- SEGUNDO ALUMNO -->
-												<tr>
-													<td class="center">20121234</td>
-													<td>Juan Jes&uacute;s P&eacute;rez D&iacute;az</td>
-													<td>2 / 5</td>
-													<td>3 / 5</td>
-													<td>4 / 5</td>
-													<td>5 / 5</td>
-													<td>14 / 20</td>
-													<td class="center">
-														<div class="action-buttons">
-															<a href="#" class="green bigger-140 show-details-btn" title="Ver comentarios">
-																<i class="ace-icon fa fa-angle-double-down"></i>
-																<span class="sr-only">Ver comentarios</span>
-															</a>
-															<a href="#" class="blue bigger-125" title="Nuevo comentario">
-																<i class="ace-icon fa fa-comment"></i>
-																<span class="sr-only">Nuevo comentario</span>
-															</a>
-														</div>
-													</td>	
-													<td class="center">
-														<div class="action-buttons">
-															<a href="#" class="ace-icon fa fa-pencil blue bigger-125" title="Editar fila"></a>
-														</div>
-													</td>
-												</tr>
-												<tr class="detail-row">
-													<td colspan="12">
-														<div class="table-detail">
-															<div class="row">
-																<div class="col-xs-12">
-																	<div class="timeline-items">
-																		<!-- COMENTARIO PROPIO -->
-																		<div class="widget-box transparent">
-																			<div class="widget-header widget-header-small">
-																				<h5 class="widget-title smaller">Luis Flores</h5>
-																				<span class="widget-toolbar no-border">
-																					<i class="ace-icon fa fa-clock-o bigger-110"></i>
-																					20 set 2016, 10:22
-																				</span>
-																			</div>
-																			<div class="widget-body">
-																				<div class="widget-main">
-																					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.
-																					Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit.
-																					Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
-																					<!-- OPCIONES PARA COMENTARIO PROPIO -->
-																					<div class="pull-right action-buttons">
-																						<a href="#">
-																							Editar <i class="ace-icon fa fa-pencil blue bigger-125"></i>
-																						</a>
-																						<a href="#">
-																							Eliminar <i class="ace-icon fa fa-times red bigger-125"></i>
-																						</a>
-																					</div>
-																				</div>
-																			</div>
-																		</div>
-																		<!-- FIN COMENTARIOS -->
-																	</div>
-																</div>
-															</div>
-														</div>
-													</td>
-												</tr>
-												<!-- TERCER ALUMNO -->
-												<tr class="">
-													<td class="center">20092009</td>
-													<td>Manuel Tarazona S&aacute;nchez</td>
-													<td class="hidden-480">
-														<span style="color:red">1 / 5</span>
-													</td>
-													<td class="hidden-480">3 / 5</td>
-													<td class="hidden-480">4 / 5</td>
-													<td class="hidden-480">3 / 5</td>
-													<td>11 / 20</td>
-													<td class="center">
-														<div class="action-buttons">
-															<a href="#" class="green bigger-140" title="Ver comentarios">
-																<i class="ace-icon fa fa-angle-double-down"></i>
-																<span class="sr-only">Ver comentarios</span>
-															</a>
-															<a href="#" class="ace-icon fa fa-comment blue bigger-140 show-details-btn" title="Nuevo comentario">
-																<!-- Si se le pone en formato como el de ver comentarios se reemplaza la imagen, arreglar eso en un futuro -->
-															</a>
-														</div>
-													</td>
-													<td class="center">
-														<div class="action-buttons">
-															<a href="#" class="ace-icon fa fa-pencil blue bigger-125" title="Editar fila"></a>
-														</div>
-													</td>
-												</tr>
-												<tr class="detail-row">
-													<td colspan="12">
-														<div class="table-detail">
-															<div class="row">
-																<div class="col-xs-12">
-																	<form>
-																		<fieldset>
-																			<textarea class="width-100" resize="none" placeholder="Escribe algo..."></textarea>
-																		</fieldset>
-																		<div class="clearfix">
-																			<button class="pull-right btn btn-sm btn-primary btn-white btn-round" type="button">
-																				Enviar
-																				<i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
-																			</button>
-																		</div>
-																	</form>
-																</div>
-															</div>
-														</div>
-													</td>
-												</tr>
-												<!-- CUARTO ALUMNO -->
-												<tr>
-													<td class="center">20153541</td>
-													<td>Foo Bar</td>
-													<td>
-														<input type="text" class="input-mini" placeholder="Puntaje" />
-														&nbsp;/ 5
-													</td>
-													<td>
-														<input type="text" class="input-mini" placeholder="Puntaje" />
-														&nbsp;/ 5
-													</td>
-													<td>
-														<input type="text" class="input-mini" placeholder="Puntaje" />
-														&nbsp;/ 5
-													</td>
-													<td>
-														<input type="text" class="input-mini" placeholder="Puntaje" />
-														&nbsp;/ 5
-													</td>
-													<td>
-														<input type="text" disabled="true" class="input-mini" placeholder="Total" />
-														&nbsp;/ 20
-													</td>
-													<td class="center">
-														<div class="action-buttons">
-															<a href="#" class="green bigger-140 show-details-btn" title="Ver comentarios">
-																<i class="ace-icon fa fa-angle-double-down"></i>
-																<span class="sr-only">Ver comentarios</span>
-															</a>
-															<a href="#" class="blue bigger-125" title="Nuevo comentario">
-																<i class="ace-icon fa fa-comment"></i>
-																<span class="sr-only">Nuevo comentario</span>
-															</a>
-														</div>
-													</td>	
-													<td class="center">
-														<div class="action-buttons">
-															<a href="#" class="ace-icon glyphicon glyphicon-ok green" title="Guardar edici&oacute;n"></a>
-															<a href="#" class="ace-icon glyphicon glyphicon-remove red" title="Desechar edici&oacute;n"></a>
-														</div>
-													</td>
-												</tr>
-												<tr class="detail-row">
-													<td colspan="12">
-														<div class="table-detail">
-															<div class="row">
-																<div class="col-xs-12">
-																	<div class="timeline-items">
-																		<!-- COMENTARIO PROPIO -->
-																		A&uacute;n no hay comentarios.
-																		<!-- FIN COMENTARIOS -->
-																	</div>
-																</div>
-															</div>
-														</div>
-													</td>
-												</tr>
-												<!-- OPCIONES -->
-												<tr>
-													<td colspan="12" style="background-color:#EFF3F8">
-														<div class="center">
-															<button class="btn btn-white btn-info btn-bold">
-																<i class="ace-icon fa fa-pencil bigger-120 blue"></i>
-																Editar todas las filas
-															</button>
-															&nbsp;&nbsp;&nbsp;
-															<button class="btn btn-info" type="button">
-																<i class="ace-icon fa fa-check bigger-110"></i>
-																Confirmar
-															</button>
-															&nbsp;&nbsp;&nbsp;
-															<button class="btn" type="reset">
-																<i class="ace-icon fa fa-undo bigger-110"></i>
-																Regresar
-															</button>
-														</div>
-													</td>
-												</tr>	
-											</tbody>
-										</table>
-									</div><!-- /.span -->
-								</div><!-- /.row -->
-								
-								<!-- PAGE CONTENT ENDS -->
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div><!-- /.page-content -->
-				</div>
-			</div><!-- /.main-content -->
+                    <div class="row">
+                        <div class="col-xs-12">
 
-			<div class="footer">
-				<div class="footer-inner">
-					<div class="footer-content">
-						<span class="bigger-120">
-							<span class="blue bolder">Grupo Valor</span>
-							Application &copy; 2016
-						</span>
-					</div>
-				</div>
-			</div>
+                            <h3 class="header smaller lighter blue">B&uacute;squeda</h3>
+                            <!-- BÚSQUEDA -->
 
-			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-			</a>
-		</div><!-- /.main-container -->
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">R&uacute;brica:</label>
+                                    <div class="col-sm-6">
+                                        <select class="input-xlarge" id="ta_notas_busq">
+                                            <option value="0">Todas</option>
+                                            <option value="1">Participaci&oacute;n</option>
+                                            <option value="2">Seguimiento de casos</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1"># semana:</label>
+                                    <div class="col-sm-6">
+                                        <select class="input-small" id="ta_notas_busq">
+                                            <option value="0">Todas</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                        </select>
+                                        &nbsp;de 14&nbsp;
+                                        <button type="button" class="btn btn-white btn-info btn-sm">
+                                            Editar # de semanas
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1-1">Alumno:</label>
+                                    <div class="col-sm-6">
+                                        <select class="input-xxlarge" id="ta_notas_busq">
+                                            <option value="0">Todos</option>
+                                            <option value="1">20130095 - Anthony Guti&eacute;rrez Cazorla</option>
+                                            <option value="2">20121234 - Juan Jes&uacute;s P&eacute;rez D&iacute;az</option>
+                                            <option value="3">20092009 - Mario Tarazona S&aacute;nchez</option>
+                                            <option value="4">20153541 - Foo Bar</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-9 center">
+                                        <button type="button" class="btn btn-purple btn-sm">
+                                            <span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
+                                            Buscar
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- FIN BÚSQUEDA -->
+
+                            <div class="space-6"></div>
+
+                            <h3 class="header smaller lighter blue">Resultados de la b&uacute;squeda</h3>
+                            <p>R&uacute;brica de seguimiento de casos para la semana 4:</p>
+                            <!-- CONFIGURACIÓN -->
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <table class="table  table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th class="center">C&oacute;digo</th>
+                                                <th>Alumno</th>
+                                                <th>Relaci&oacute;n abogado-caso</th>
+                                                <th>Ejercicio profesional</th>
+                                                <th>Investigaci&oacute;n y redacci&oacute;n</th>
+                                                <th>Oralidad</th>
+                                                <th>Suma de notas</th>
+                                                <th class="center">Comentarios</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- PRIMER ALUMNO -->
+                                            <tr>
+                                                <td class="center">20130095</td>
+                                                <td>Anthony Guti&eacute;rrez Cazorla</td>
+                                                <td>
+                                                    <input type="text" class="input-mini" value="2" />
+                                                    &nbsp;/ 5
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-mini" value="3" />
+                                                    &nbsp;/ 5
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-mini" value="4" />
+                                                    &nbsp;/ 5
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-mini" value="5" />
+                                                    &nbsp;/ 5
+                                                </td>
+                                                <td>
+                                                    <input type="text" disabled="true" class="input-mini" value="14" />
+                                                    &nbsp;/ 20
+                                                </td>
+                                                <td class="center">
+                                                    <div class="action-buttons">
+                                                        <a href="#" class="green bigger-140 show-details-btn" title="Ver comentarios">
+                                                            <i class="ace-icon fa fa-angle-double-down"></i>
+                                                            <span class="sr-only">Ver comentarios</span>
+                                                        </a>
+                                                        <a href="#" class="blue bigger-125" title="Nuevo comentario">
+                                                            <i class="ace-icon fa fa-comment"></i>
+                                                            <span class="sr-only">Nuevo comentario</span>
+                                                        </a>
+                                                    </div>
+                                                </td>	
+                                                <td class="center">
+                                                    <div class="action-buttons">
+                                                        <a href="#" class="ace-icon glyphicon glyphicon-ok green" title="Guardar edici&oacute;n"></a>
+                                                        <a href="#" class="ace-icon glyphicon glyphicon-remove red" title="Desechar edici&oacute;n"></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="detail-row">
+                                                <td colspan="12">
+                                                    <div class="table-detail">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="timeline-items">
+                                                                    <!-- COMENTARIO PROPIO -->
+                                                                    <div class="widget-box transparent">
+                                                                        <div class="widget-header widget-header-small">
+                                                                            <h5 class="widget-title smaller">Luis Flores</h5>
+                                                                            <span class="widget-toolbar no-border">
+                                                                                <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                                                20 set 2016, 10:22
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="widget-body">
+                                                                            <div class="widget-main">
+                                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.
+                                                                                Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit.
+                                                                                Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
+                                                                                <!-- OPCIONES PARA COMENTARIO PROPIO -->
+                                                                                <div class="pull-right action-buttons">
+                                                                                    <a href="#">
+                                                                                        Editar <i class="ace-icon fa fa-pencil blue bigger-125"></i>
+                                                                                    </a>
+                                                                                    <a href="#">
+                                                                                        Eliminar <i class="ace-icon fa fa-times red bigger-125"></i>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="hr hr-18 dotted hr-double"></div>
+                                                                    <!-- COMENTARIO PROPIO -->
+                                                                    <div class="widget-box transparent">
+                                                                        <div class="widget-header widget-header-small">
+                                                                            <h5 class="widget-title smaller">Anthony Guti&eacute;rrez</h5>
+                                                                            <span class="widget-toolbar no-border">
+                                                                                <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                                                Ayer, 13:16
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="widget-body">
+                                                                            <div class="widget-main">
+                                                                                <strong>Luis Flores</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.
+                                                                                Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit.
+                                                                                Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
+                                                                                <!-- OPCIONES PARA COMENTARIO DE RESPUESTA -->
+                                                                                <div class="pull-right action-buttons">
+                                                                                    <a href="#">
+                                                                                        Responder <i class="ace-icon fa fa-reply light-green bigger-130"></i>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- FIN COMENTARIOS -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <!-- SEGUNDO ALUMNO -->
+                                            <tr>
+                                                <td class="center">20121234</td>
+                                                <td>Juan Jes&uacute;s P&eacute;rez D&iacute;az</td>
+                                                <td>2 / 5</td>
+                                                <td>3 / 5</td>
+                                                <td>4 / 5</td>
+                                                <td>5 / 5</td>
+                                                <td>14 / 20</td>
+                                                <td class="center">
+                                                    <div class="action-buttons">
+                                                        <a href="#" class="green bigger-140 show-details-btn" title="Ver comentarios">
+                                                            <i class="ace-icon fa fa-angle-double-down"></i>
+                                                            <span class="sr-only">Ver comentarios</span>
+                                                        </a>
+                                                        <a href="#" class="blue bigger-125" title="Nuevo comentario">
+                                                            <i class="ace-icon fa fa-comment"></i>
+                                                            <span class="sr-only">Nuevo comentario</span>
+                                                        </a>
+                                                    </div>
+                                                </td>	
+                                                <td class="center">
+                                                    <div class="action-buttons">
+                                                        <a href="#" class="ace-icon fa fa-pencil blue bigger-125" title="Editar fila"></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="detail-row">
+                                                <td colspan="12">
+                                                    <div class="table-detail">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="timeline-items">
+                                                                    <!-- COMENTARIO PROPIO -->
+                                                                    <div class="widget-box transparent">
+                                                                        <div class="widget-header widget-header-small">
+                                                                            <h5 class="widget-title smaller">Luis Flores</h5>
+                                                                            <span class="widget-toolbar no-border">
+                                                                                <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                                                20 set 2016, 10:22
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="widget-body">
+                                                                            <div class="widget-main">
+                                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis.
+                                                                                Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit.
+                                                                                Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
+                                                                                <!-- OPCIONES PARA COMENTARIO PROPIO -->
+                                                                                <div class="pull-right action-buttons">
+                                                                                    <a href="#">
+                                                                                        Editar <i class="ace-icon fa fa-pencil blue bigger-125"></i>
+                                                                                    </a>
+                                                                                    <a href="#">
+                                                                                        Eliminar <i class="ace-icon fa fa-times red bigger-125"></i>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- FIN COMENTARIOS -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <!-- TERCER ALUMNO -->
+                                            <tr class="">
+                                                <td class="center">20092009</td>
+                                                <td>Manuel Tarazona S&aacute;nchez</td>
+                                                <td class="hidden-480">
+                                                    <span style="color:red">1 / 5</span>
+                                                </td>
+                                                <td class="hidden-480">3 / 5</td>
+                                                <td class="hidden-480">4 / 5</td>
+                                                <td class="hidden-480">3 / 5</td>
+                                                <td>11 / 20</td>
+                                                <td class="center">
+                                                    <div class="action-buttons">
+                                                        <a href="#" class="green bigger-140" title="Ver comentarios">
+                                                            <i class="ace-icon fa fa-angle-double-down"></i>
+                                                            <span class="sr-only">Ver comentarios</span>
+                                                        </a>
+                                                        <a href="#" class="ace-icon fa fa-comment blue bigger-140 show-details-btn" title="Nuevo comentario">
+                                                            <!-- Si se le pone en formato como el de ver comentarios se reemplaza la imagen, arreglar eso en un futuro -->
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                                <td class="center">
+                                                    <div class="action-buttons">
+                                                        <a href="#" class="ace-icon fa fa-pencil blue bigger-125" title="Editar fila"></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="detail-row">
+                                                <td colspan="12">
+                                                    <div class="table-detail">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <form>
+                                                                    <fieldset>
+                                                                        <textarea class="width-100" resize="none" placeholder="Escribe algo..."></textarea>
+                                                                    </fieldset>
+                                                                    <div class="clearfix">
+                                                                        <button class="pull-right btn btn-sm btn-primary btn-white btn-round" type="button">
+                                                                            Enviar
+                                                                            <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <!-- CUARTO ALUMNO -->
+                                            <tr>
+                                                <td class="center">20153541</td>
+                                                <td>Foo Bar</td>
+                                                <td>
+                                                    <input type="text" class="input-mini" placeholder="Puntaje" />
+                                                    &nbsp;/ 5
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-mini" placeholder="Puntaje" />
+                                                    &nbsp;/ 5
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-mini" placeholder="Puntaje" />
+                                                    &nbsp;/ 5
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="input-mini" placeholder="Puntaje" />
+                                                    &nbsp;/ 5
+                                                </td>
+                                                <td>
+                                                    <input type="text" disabled="true" class="input-mini" placeholder="Total" />
+                                                    &nbsp;/ 20
+                                                </td>
+                                                <td class="center">
+                                                    <div class="action-buttons">
+                                                        <a href="#" class="green bigger-140 show-details-btn" title="Ver comentarios">
+                                                            <i class="ace-icon fa fa-angle-double-down"></i>
+                                                            <span class="sr-only">Ver comentarios</span>
+                                                        </a>
+                                                        <a href="#" class="blue bigger-125" title="Nuevo comentario">
+                                                            <i class="ace-icon fa fa-comment"></i>
+                                                            <span class="sr-only">Nuevo comentario</span>
+                                                        </a>
+                                                    </div>
+                                                </td>	
+                                                <td class="center">
+                                                    <div class="action-buttons">
+                                                        <a href="#" class="ace-icon glyphicon glyphicon-ok green" title="Guardar edici&oacute;n"></a>
+                                                        <a href="#" class="ace-icon glyphicon glyphicon-remove red" title="Desechar edici&oacute;n"></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="detail-row">
+                                                <td colspan="12">
+                                                    <div class="table-detail">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="timeline-items">
+                                                                    <!-- COMENTARIO PROPIO -->
+                                                                    A&uacute;n no hay comentarios.
+                                                                    <!-- FIN COMENTARIOS -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <!-- OPCIONES -->
+                                            <tr>
+                                                <td colspan="12" style="background-color:#EFF3F8">
+                                                    <div class="center">
+                                                        <button class="btn btn-white btn-info btn-bold">
+                                                            <i class="ace-icon fa fa-pencil bigger-120 blue"></i>
+                                                            Editar todas las filas
+                                                        </button>
+                                                        &nbsp;&nbsp;&nbsp;
+                                                        <button class="btn btn-info" type="button">
+                                                            <i class="ace-icon fa fa-check bigger-110"></i>
+                                                            Confirmar
+                                                        </button>
+                                                        &nbsp;&nbsp;&nbsp;
+                                                        <button class="btn" type="reset">
+                                                            <i class="ace-icon fa fa-undo bigger-110"></i>
+                                                            Regresar
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>	
+                                        </tbody>
+                                    </table>
+                                </div><!-- /.span -->
+                            </div><!-- /.row -->
+
+                            <!-- PAGE CONTENT ENDS -->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.page-content -->
+            </div>
+        </div><!-- /.main-content -->
+
+    <?php  echo view('intranet/footer'); ?>	
 
 		<!-- basic scripts -->
 

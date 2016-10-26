@@ -32,215 +32,196 @@
 </head>
 
 <body class="no-skin">
-<?php  echo view('intranet/menu'); ?>
-			
-            <div class="main-content">
-				<div class="main-content-inner">
-					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-						<ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="index.html">Home</a>
-							</li>
-                    <li>
-                       Registro de casos
-                    </li>
-                    <li class="active">Búsqueda</li>
-                </ul><!-- /.breadcrumb -->
+    <?php  echo view('intranet/menu'); ?>
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                           Registro de casos
+                        </li>
+                        <li class="active">Búsqueda</li>
+                    </ul><!-- /.breadcrumb -->
+                </div>
 
-            </div>
+                <div class="page-content">
+                    <div class="page-header">
+                <h1>
+                    Registro de casos
+                    <small>
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                        Búsqueda
+                    </small>
+                </h1>
+            </div><!-- /.page-header -->
 
-            <div class="page-content">
+                    <div class="row">
+            <div class="col-xs-12">
+                <!-- PAGE CONTENT BEGINS -->
 
-
-                <div class="page-header">
-                    <h1>
-                        Registro de casos
-                        <small>
-                            <i class="ace-icon fa fa-angle-double-right"></i>
-                            Búsqueda
-                        </small>
-                    </h1>
-                </div><!-- /.page-header -->
+                <!--<div class="hr hr-18 dotted hr-double"></div>-->
 
                 <div class="row">
                     <div class="col-xs-12">
-                        <!-- PAGE CONTENT BEGINS -->
-
-                        <!--<div class="hr hr-18 dotted hr-double"></div>-->
-
-                        <div class="row">
-                            <div class="col-xs-12">
 
 
-                                <!-- div.table-responsive -->
+                        <!-- div.table-responsive -->
 
-                                <!-- div.dataTables_borderWrap -->
-                                <div>
+                        <!-- div.dataTables_borderWrap -->
+                        <div>
 
-                                 <table id="dynamic-table" class="table table-striped table-bordered table-hover">
-                                        <thead>
-                                        <tr>
-                                            
-                                            <th>Codigo</th>
-                                            <th>Fecha Registro</th>
-                                            <th>Nombre Cliente</th>
-                                            
-                                            <th>Objetivo</th>
-                                             <th>Responsable</th>
-                                            <th>Estado </th>
-                                            <th>Modificar</th>
-                                        </tr>
-                                        </thead>
+                         <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                                <thead>
+                                <tr>
 
-                                        <tbody id ="tbodycontent">
-                                        
+                                    <th>Codigo</th>
+                                    <th>Fecha Registro</th>
+                                    <th>Nombre Cliente</th>
 
-                                    
-                                        </tbody>
-                                    </table>
+                                    <th>Objetivo</th>
+                                     <th>Responsable</th>
+                                    <th>Estado </th>
+                                    <th>Modificar</th>
+                                </tr>
+                                </thead>
 
-                                    
+                                <tbody id ="tbodycontent">
+
+
+
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="modal-table" class="modal fade" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header no-padding">
+                                <div class="table-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        <span class="white">&times;</span>
+                                    </button>
+                                    Results for "Latest Registered Domains
                                 </div>
                             </div>
-                        </div>
 
-                        <div id="modal-table" class="modal fade" tabindex="-1">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header no-padding">
-                                        <div class="table-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                <span class="white">&times;</span>
-                                            </button>
-                                            Results for "Latest Registered Domains
-                                        </div>
-                                    </div>
+                            <div class="modal-body no-padding">
+                                <table class="table table-striped table-bordered table-hover no-margin-bottom no-border-top">
+                                    <thead>
 
-                                    <div class="modal-body no-padding">
-                                        <table class="table table-striped table-bordered table-hover no-margin-bottom no-border-top">
-                                            <thead>
+                                    <tr>
+                                        <th class="hidden"></th>
+                                        <th>Codigo</th>
+                                        <th>Nombre</th>
+                                        <th>Tipo caso</th>
+                                        <th>Fecha Ini</th>
+                                        <th>Fecha Fin</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                    </thead>
 
-                                            <tr>
-                                                <th class="hidden"></th>
-                                                <th>Codigo</th>
-                                                <th>Nombre</th>
-                                                <th>Tipo caso</th>
-                                                <th>Fecha Ini</th>
-                                                <th>Fecha Fin</th>
-                                                <th>Estado</th>
-                                            </tr>
-                                            </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <a href="#">ace.com</a>
+                                        </td>
+                                        <td>$45</td>
+                                        <td>3,330</td>
+                                        <td>Feb 12</td>
+                                    </tr>
 
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    <a href="#">ace.com</a>
-                                                </td>
-                                                <td>$45</td>
-                                                <td>3,330</td>
-                                                <td>Feb 12</td>
-                                            </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="#">base.com</a>
+                                        </td>
+                                        <td>$35</td>
+                                        <td>2,595</td>
+                                        <td>Feb 18</td>
+                                    </tr>
 
-                                            <tr>
-                                                <td>
-                                                    <a href="#">base.com</a>
-                                                </td>
-                                                <td>$35</td>
-                                                <td>2,595</td>
-                                                <td>Feb 18</td>
-                                            </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="#">max.com</a>
+                                        </td>
+                                        <td>$60</td>
+                                        <td>4,400</td>
+                                        <td>Mar 11</td>
+                                    </tr>
 
-                                            <tr>
-                                                <td>
-                                                    <a href="#">max.com</a>
-                                                </td>
-                                                <td>$60</td>
-                                                <td>4,400</td>
-                                                <td>Mar 11</td>
-                                            </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="#">best.com</a>
+                                        </td>
+                                        <td>$75</td>
+                                        <td>6,500</td>
+                                        <td>Apr 03</td>
+                                    </tr>
 
-                                            <tr>
-                                                <td>
-                                                    <a href="#">best.com</a>
-                                                </td>
-                                                <td>$75</td>
-                                                <td>6,500</td>
-                                                <td>Apr 03</td>
-                                            </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="#">pro.com</a>
+                                        </td>
+                                        <td>$55</td>
+                                        <td>4,250</td>
+                                        <td>Jan 21</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
 
-                                            <tr>
-                                                <td>
-                                                    <a href="#">pro.com</a>
-                                                </td>
-                                                <td>$55</td>
-                                                <td>4,250</td>
-                                                <td>Jan 21</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                            <div class="modal-footer no-margin-top">
+                                <button class="btn btn-sm btn-danger pull-left" data-dismiss="modal">
+                                    <i class="ace-icon fa fa-times"></i>
+                                    Close
+                                </button>
 
-                                    <div class="modal-footer no-margin-top">
-                                        <button class="btn btn-sm btn-danger pull-left" data-dismiss="modal">
-                                            <i class="ace-icon fa fa-times"></i>
-                                            Close
-                                        </button>
+                                <ul class="pagination pull-right no-margin">
+                                    <li class="prev disabled">
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-angle-double-left"></i>
+                                        </a>
+                                    </li>
 
-                                        <ul class="pagination pull-right no-margin">
-                                            <li class="prev disabled">
-                                                <a href="#">
-                                                    <i class="ace-icon fa fa-angle-double-left"></i>
-                                                </a>
-                                            </li>
+                                    <li class="active">
+                                        <a href="#">1</a>
+                                    </li>
 
-                                            <li class="active">
-                                                <a href="#">1</a>
-                                            </li>
+                                    <li>
+                                        <a href="#">2</a>
+                                    </li>
 
-                                            <li>
-                                                <a href="#">2</a>
-                                            </li>
+                                    <li>
+                                        <a href="#">3</a>
+                                    </li>
 
-                                            <li>
-                                                <a href="#">3</a>
-                                            </li>
+                                    <li class="next">
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-angle-double-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
 
-                                            <li class="next">
-                                                <a href="#">
-                                                    <i class="ace-icon fa fa-angle-double-right"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div>
+                <!-- PAGE CONTENT ENDS -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+                </div><!-- /.page-content -->
+            </div><!-- /.main-content-inner -->
+        </div><!-- /.main-content -->
 
-                        <!-- PAGE CONTENT ENDS -->
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.page-content -->
-        </div>
-    </div><!-- /.main-content -->
+    <?php  echo view('intranet/footer'); ?>
 
-    <div class="footer">
-        <div class="footer-inner">
-            <div class="footer-content">
-						<span class="bigger-120">
-							<span class="blue bolder">Grupo Valor</span>
-							Application &copy; 2016
-						</span>
-
-
-            </div>
-        </div>
-    </div>
-
-    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-    </a>
-</div><!-- /.main-container -->
 
 <!-- basic scripts -->
 
