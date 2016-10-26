@@ -9,6 +9,6 @@
 				</div>
 			</div>
 
-			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse"><!-- flecha para scrollear hasta arriba en moviles-->
+			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse"><!-- flecha para scrollear hasta arriba-->
 				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 			</a>

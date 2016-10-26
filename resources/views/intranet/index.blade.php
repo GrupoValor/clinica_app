@@ -31,7 +31,16 @@
 	</head>
 
 	<body class="no-skin">
-		@include('intranet.menu')
+		<?php  echo view('intranet/menu'); ?>
+			
+            <div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a href="index.html">Home</a>
+							</li>
 							<li class="active">Principal</li>
 						</ul><!-- /.breadcrumb -->
 					</div>

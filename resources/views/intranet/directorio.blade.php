@@ -43,9 +43,9 @@
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="index.html">Home</a>
-							</li>
+							</li>       
 							<li>
-								<a href="#">Directorio</a>
+								Directorio
 							</li>
 							<li class="active">Registro</li>
 						</ul>
