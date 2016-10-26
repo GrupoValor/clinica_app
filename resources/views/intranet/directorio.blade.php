@@ -270,7 +270,8 @@
             if (action=="ADD"){
             	tipo = "Persona";
             	i = data_set.length;
-
+            	if ( $('#dir_nombre').val().length < 1)
+            		return;
             	$.ajax({
                     type: "POST",
                     url:'/service_directorio',
@@ -313,7 +314,7 @@
             if (action=="UPDATE")
             {
 
-            	
+
             data_set[editid][2]=$("#dir_nombre").val();
 	        data_set[editid][3]=$("#dir_telefono").val();
 	        data_set[editid][4] =$("#dir_email").val();
