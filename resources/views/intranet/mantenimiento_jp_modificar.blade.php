@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Intranet | Mantenimientos - Clientes</title>
+		<title>Intranet | Mantenimientos - Jefe de práctica</title>
 
 		<meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -45,14 +45,14 @@
 							<li>
 								Mantenimientos
 							</li>
-							<li class="active">Clientes</li>
+							<li class="active">Jefe de práctica</li>
 						</ul>
 					</div>
 
 					<div class="page-content">
 						<div class="page-header"><!-- /.page-header -->
 							<h1>
-								Mantenimiento de clientes
+								Mantenimiento de jefes de práctica
 							</h1>
 						</div>
 
@@ -95,9 +95,10 @@
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
-            jQuery('#limantenimientos').addClass('active open');
-            jQuery('#mant-cliente').addClass('active');
 
+            jQuery('#limantenimientos').addClass('active open');
+            jQuery('#mant-jp').addClass('active open');
+            jQuery('#mant-jp-mod').addClass('active');
 			var grid_data = 
 			[ 
 			];
