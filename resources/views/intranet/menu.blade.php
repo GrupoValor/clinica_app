@@ -73,16 +73,16 @@
                             <!--lista plegable de Bienvenido, Luis-->
                             <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                                 <li>
-                                    <a href="profile.html">
+                                    <a href="perfil">
                                         <i class="ace-icon fa fa-user"></i>
-                                        Profile
+                                        Perfil
                                     </a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
                                     <a href="#">
                                         <i class="ace-icon fa fa-power-off"></i>
-                                        Logout
+                                        Cerrar sesión
                                     </a>
                                 </li>
                             </ul>
@@ -188,109 +188,36 @@
                         <b class="arrow"></b>
                         <ul class="submenu"> 
                             <li class=""> <!-- Profesor -->
-                                <a href="#" class="dropdown-toggle">
+                                <a href="mant_profesor">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Profesor
-                                    <b class="arrow fa fa-angle-down"></b>
-                                </a>
-                                <b class="arrow"></b>
-                                <ul class="submenu">
-                                    <li class="">
-                                        <a href="mant_profesor">
-                                            <i class="menu-icon fa fa-caret-right"></i>
-                                            Registrar
-                                        </a>
-
-                                        <b class="arrow"></b>
-                                    </li>
-                                    <li class="">
-                                        <a href="mantProfModificar">
-                                            <i class="menu-icon fa fa-caret-right"></i>
-                                            Modificar
-                                        </a>
-                                        <b class="arrow"></b>
-                                    </li>
-                                </ul>
+                                </a>                                
                              </li>
 
                             <li class=""> <!-- Jefe de Practica -->
-                                <a href="#" class="dropdown-toggle">
+                                <a href="mant_jp">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Jefe de práctica
-                                    <b class="arrow fa fa-angle-down"></b>
-                                </a>
-                                <b class="arrow"></b>
-                                <ul class="submenu">
-                                    <li class="">
-                                        <a href="mant_jp">
-                                            <i class="menu-icon fa fa-caret-right"></i>
-                                            Registrar
-                                        </a>
-                                        <b class="arrow"></b>
-                                    </li>
-                                    <li class="">
-                                        <a href="mantJPModificar.html">
-                                            <i class="menu-icon fa fa-caret-right"></i>
-                                            Modificar
-                                        </a>
-                                        <b class="arrow"></b>
-                                    </li>
-                                </ul>
+                                </a>                                
                             </li>
 
                             <li class=""> <!-- Alumno -->
-                                <a href="#" class="dropdown-toggle">
+                                <a href="mant_alumno">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Alumno
-                                    <b class="arrow fa fa-angle-down"></b>
                                 </a>
-                                <b class="arrow"></b>
-                                <ul class="submenu">
-                                    <li class="">
-                                        <a href="mant_alumno.html">
-                                            <i class="menu-icon fa fa-caret-right"></i>
-                                            Registrar
-                                        </a>
-                                        <b class="arrow"></b>
-                                    </li>
-                                    <li class="">
-                                        <a href="mantAlumModificar.html">
-                                            <i class="menu-icon fa fa-caret-right"></i>
-                                            Modificar
-                                        </a>
-                                        <b class="arrow"></b>
-                                    </li>
-                                </ul>
                             </li>
 
                             <li class=""><!-- Cliente -->
-                                <a href="#" class="dropdown-toggle">
+                                <a href="mant_cliente">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Cliente
-                                    <b class="arrow fa fa-angle-down"></b>
-                                </a>
-                                <b class="arrow"></b>
-                                <ul class="submenu">
-                                    <li class="">
-                                        <a href="mant_cliente">
-                                            <i class="menu-icon fa fa-caret-right"></i>
-                                            Registrar
-                                        </a>
-                                        <b class="arrow"></b>
-                                    </li>
-                                    <li class="">
-                                        <a href="mantClieModificar.html">
-                                            <i class="menu-icon fa fa-caret-right"></i>
-                                            Modificar
-                                        </a>
-                                        <b class="arrow"></b>
-                                    </li>
-                                </ul>
+                                </a>                                
                             </li>
 
                           </ul>
                     </li>
-                    <li class=""> <!-- Reportes -->
+                    <li class=""> <!-- Reportes FALTA-->
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-file-o"></i>
                             <span class="menu-text">
@@ -372,3 +299,11 @@
                     <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
                 </div>
             </div>
+            <div class="main-content">
+            <div class="main-content-inner">
+                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="#">Home</a>
+                        </li>
