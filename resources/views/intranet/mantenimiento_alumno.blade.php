@@ -66,12 +66,12 @@
 
                                         <tr>
                                         	<th>ID</th>
-                                            <th>Tipo</th>
                                             <th>Nombre</th>
-                                            <th>Teléfono</th>
-                                            <th>E-mail</th>
-                                            <th>Dirección</th>
-                                            <th>Dirección Web</th>
+                                            <th>Apellido Paterno</th>
+                                            <th>Apellido Materno</th>
+                                            <th>DNI</th>
+                                            <th>Telefono 1</th>
+                                            <th>Correo</th>
                                             <th>Modificar</th>
                                         </tr>
                                         </thead>
@@ -106,62 +106,76 @@
                             </div>
                             <!-- Modal content-->
                             	<div class="page-header"><!-- /.page-header -->
-							<h1 >  Contacto </h1>
+							<h1 >  Alumno </h1>
 
 							<form class="form-horizontal" role="form" style="padding-left: 66px;">
                                     <div class="space-20" ></div>
 
 									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Tipo </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Nombre </label>
 
 										<div class="col-sm-9">
-											 <select id="dir_tipocon" class="col-xs-5 col-sm-7" data-placeholder="Click para elegir...">
-													<option value="p">Persona</option>
-													<option value="i">Institucion</option>
-		
-												</select>
+											 <input id="dir_nombre" type="text" id="form-field-3"  class="col-xs-5 col-sm-7" />
 									   	
 										</div>
 									</div>
                                    
 									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Nombre </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Apellido Paterno </label>
 
 										<div class="col-sm-9">
-											<input id="dir_nombre" type="text" id="form-field-3"  class="col-xs-5 col-sm-7" />
+											<input id="dir_apelPa" type="text" id="form-field-3"  class="col-xs-5 col-sm-7" />
 										</div>
 									</div>
                                     <div class="space-4"></div>
                                     
                                     
                                     <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-4"> Teléfono </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4"> Apellido Materno </label>
 
 										<div class="col-sm-9">
-											<input id="dir_telefono" type="text" id="form-field-4" class="col-xs-5 col-sm-7" />
+											<input id="dir_apelMa" type="text" id="form-field-4" class="col-xs-5 col-sm-7" />
 										</div>
 									</div>
                                     <div class="space-4"></div>
                                     <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > E-mail </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4"> DNI </label>
 
 										<div class="col-sm-9">
-											<input id="dir_email" type="text"   class="col-xs-5 col-sm-7"  />
+											<input id="dir_dni" type="text" id="form-field-4" class="col-xs-5 col-sm-7" />
+										</div>
+									</div>
+                                    
+                                    <div class="space-4"></div>
+                                    <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > codigo Pucp </label>
+
+										<div class="col-sm-9">
+											<input id="dir_codpucp" type="text"   class="col-xs-5 col-sm-7"  />
+										</div>
+									</div>    
+                                
+                                    <div class="space-4"></div>
+                                    <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > Telefono 1 </label>
+
+										<div class="col-sm-9">
+											<input id="dir_tele1" type="text"   class="col-xs-5 col-sm-7"  />
 										</div>
 									</div>
 									<div class="space-4"></div>
                                     <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-5"> Direccion Web</label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-5"> telefono 2   </label>
 
 										<div class="col-sm-9">
-											<input id="dir_web" type="text" id="form-field-5"  class="col-xs-5 col-sm-7" />
+											<input id="dir_tele2" type="text" id="form-field-5"  class="col-xs-5 col-sm-7" />
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-5"> Direccion </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-5"> Correo </label>
 
 										<div class="col-sm-9">
-											<input id="dir_direcc" type="text" id="form-field-5"  class="col-xs-5 col-sm-7" />
+											<input id="dir_correo" type="text" id="form-field-5"  class="col-xs-5 col-sm-7" />
 										</div>
 									</div>
 									<div class="form-group">
@@ -179,7 +193,7 @@
 
                             <div class="modal-footer">
                                 <div align="center">
-                                    <button id="botonCliente" type="button" class="btn btn-default" data-dismiss="modal" onclick="close();">Aceptar</button>
+                                    <button id="botonAlumno" type="button" class="btn btn-default" data-dismiss="modal" onclick="close();">Aceptar</button>
                                 </div>
                             </div>
                         </div>
@@ -229,9 +243,9 @@
        var editid;
        var action;
 
-        function getButtons(i,con_id){
+        function getButtons(i,alu_id){
 
-                    var param = "'"+i+"','"+con_id+"'";
+                    var param = "'"+i+"','"+alu_id+"'";
                     var butons = '<div class="hidden-sm hidden-xs action-buttons">'+
                                                     
                                                     '<a  onClick="edit_onClick('+param+')" class="green" ">'+
@@ -253,24 +267,27 @@
        	action="ADD";
 
        	$("#dir_nombre").val("");
-        $("#dir_telefono").val("");
-        $("#dir_email").val("");
-        $("#dir_web").val("");
-        $("#dir_direcc").val("");
+        $("#dir_apelPa").val("");
+        $("#dir_apelMa").val("");
+        $("#dir_dni").val("");   
+        $("#dir_tel1").val("");
+        $("#dir_tel2").val("");
+        $("#dir_correo").val("");
+           
        	$("#boton").modal()
        }
 
       
-       $("#botonCliente").on('click', function (e){
+       $("#botonAlumno").on('click', function (e){
                     //alert("mostareaas");
             if (action=="ADD"){
-            	tipo = "Persona";
+            	//tipo = "Persona";
             	i = data_set.length;
             	if ( $('#dir_nombre').val().length < 1)
             		return;
             	$.ajax({
                     type: "POST",
-                    url:'/service_directorio',
+                    url:'/service_alumno',
                     beforeSend: function (xhr) {
                         var token = $('meta[name="csrf_token"]').attr('content');
 
@@ -279,21 +296,27 @@
                         }
                     },
                     data: {
-                           con_tipcon : $( "#dir_tipocon option:selected" ).val(),
-                           con_nombre: $('#dir_nombre').val(),
-                           con_nrotel: $('#dir_telefono').val(),
-                           con_correo: $('#dir_email').val(),
-                           con_dirweb: $('#dir_web').val(),
-                           con_direcc: $('#dir_direcc').val()},
+                           //
+                           //con_tipcon : $( "#dir_tipocon option:selected" ).val(),
+                           alu_nombre: $('#dir_nombre').val(),
+                           alu_apepa: $('#dir_apelPa').val(),
+                           alu_apema: $('#dir_apelMa').val(),
+                           alu_nrodoc: $('#dir_dni').val(),
+                           alu_codpuc: $('#dir_codpucp').val(),
+                           alu_telno1: $('#dir_tel1').val(),
+                           alu_telno2: $('#dir_tel2').val(),
+                           alu_correo: $('#dir_correo').val()},
+                           
+                    
                     success: function(Response){
                     	data_set.push([
+                            //para agregar al datatable
             					data_set[i-1][0],
-	                            tipo,
 	                            $("#dir_nombre").val(),
-	                            $("#dir_telefono").val(),
-	                            $("#dir_email").val(),
-	                            $("#dir_web").val(),
-	                            $("#dir_direcc").val(),
+	                            $("#dir_apelPa").val(),
+	                            $("#dir_apelMa").val(),
+	                            $("#dir_tele1").val(),
+	                            $("#dir_correo").val(),
 	                            getButtons(i,i)
 	                            
 	                        ] );
@@ -311,26 +334,26 @@
             {
 
 
-            data_set[editid][2]=$("#dir_nombre").val();
-	        data_set[editid][3]=$("#dir_telefono").val();
-	        data_set[editid][4] =$("#dir_email").val();
-	        data_set[editid][5]=$("#dir_web").val();
-	        data_set[editid][6]=$("#dir_direcc").val();
+            data_set[editid][1]=$("#dir_nombre").val();
+	        data_set[editid][2]=$("#dir_apelPa").val();
+	        data_set[editid][3] =$("#dir_apelMa").val();
+	        data_set[editid][4]=$("#dir_tele1").val();
+	        data_set[editid][5]=$("#dir_correo").val();
              myTable.clear().rows.add(data_set).draw(); 
             }          
                               
         });
-       function edit_onClick(id,con_id) {
+       function edit_onClick(id,alu_id) {
 
        			//alert (id);
 				action="UPDATE";
                 var rows = myTable.rows(id).data();
                 editid = parseInt(id);
-                $("#dir_nombre").val(data_set[editid][2]+"");
-                $("#dir_telefono").val(data_set[editid][3]+"");
-                $("#dir_email").val(data_set[editid][4]+"");
-                $("#dir_web").val(data_set[editid][5]+"");
-                $("#dir_direcc").val(data_set[id][6]+"");
+                $("#dir_nombre").val(data_set[editid][1]+"");
+                $("#dir_apelPa").val(data_set[editid][2]+"");
+                $("#dir_apelMA").val(data_set[editid][3]+"");
+                $("#dir_tele1").val(data_set[editid][4]+"");
+                $("#dir_correo").val(data_set[id][5]+"");
 
                 $("#boton").modal()
                //alert(rows[0][3]);
@@ -371,7 +394,7 @@
                 $.ajax({
                    
                     type: "GET",
-                    url:'../service_directorio',
+                    url:'../service_alumno',
                     success: function(result){
                         
                         
@@ -381,22 +404,21 @@
                        
                         for(var i = 0; i<data.length ;i++)
                         {
-                            var tipo ="";
+                            //var tipo ="";
 
-                            if (data[i].con_tipcon == 'p') {
-                                tipo = "Persona";
-                            }
-                            else
-                                tipo = "Institucion";
+                            //if (data[i].con_tipcon == 'p') {
+                            //    tipo = "Persona";
+                            //}
+                            //else
+                            //    tipo = "Institucion";
 
 	                            data_set.push([
-	                            data[i].con_id,
-	                            tipo,
-	                            data[i].con_nombre,
-	                            data[i].con_nrotel,
-	                            data[i].con_correo,
-	                            data[i].con_direcc,
-	                            data[i].con_dirweb,
+	                            data[i].alu_id,
+	                            data[i].alu_nombre,
+	                            data[i].alu_apepa,
+	                            data[i].alu_apelma,
+	                            data[i].alu_telno1,
+	                            data[i].alu_correo,
 	                            getButtons(i)
 	                            
 	                        ] )
