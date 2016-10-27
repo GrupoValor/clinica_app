@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Intranet | Mantenimientos - Jefe de práctica</title>
+		<title>Intranet | Mantenimientos - Jefe de Práctica</title>
 
 		<meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -32,8 +32,7 @@
 	</head>
 
 	<body class="no-skin">
-		<?php  echo view('intranet/menu'); ?>
-			
+		<?php  echo view('intranet/menu'); ?>			
             <div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -45,14 +44,14 @@
 							<li>
 								Mantenimientos
 							</li>
-							<li class="active">Jefe de práctica</li>
+							<li class="active">Jefe de Práctica</li>
 						</ul>
 					</div>
 
 					<div class="page-content">
 						<div class="page-header"><!-- /.page-header -->
 							<h1 id = "mytitulo" >
-								Mantenimiento de jefes de práctica
+								Mantenimiento de jefe de práctica
 								<button type="button" class="btn btn-primary" style="float: right;margin-top: -8px;" onclick="add_onClick()" >Nuevo +</button>
 							</h1>
 
@@ -67,12 +66,12 @@
 
                                         <tr>
                                         	<th>ID</th>
-                                            <th>Tipo</th>
                                             <th>Nombre</th>
-                                            <th>Teléfono</th>
-                                            <th>E-mail</th>
-                                            <th>Dirección</th>
-                                            <th>Dirección Web</th>
+                                            <th>Apellido Paterno</th>
+                                            <th>Apellido Materno</th>
+                                            <th>DNI</th>
+                                            <th>Telefono 1</th>
+                                            <th>Correo</th>
                                             <th>Modificar</th>
                                         </tr>
                                         </thead>
@@ -107,62 +106,76 @@
                             </div>
                             <!-- Modal content-->
                             	<div class="page-header"><!-- /.page-header -->
-							<h1 >  Contacto </h1>
+							<h1 >  Jefe de Práctica </h1>
 
 							<form class="form-horizontal" role="form" style="padding-left: 66px;">
                                     <div class="space-20" ></div>
 
 									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Tipo </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Nombre </label>
 
 										<div class="col-sm-9">
-											 <select id="dir_tipocon" class="col-xs-5 col-sm-7" data-placeholder="Click para elegir...">
-													<option value="p">Persona</option>
-													<option value="i">Institucion</option>
-		
-												</select>
+											 <input id="dir_nombre" type="text" id="form-field-3"  class="col-xs-5 col-sm-7" />
 									   	
 										</div>
 									</div>
                                    
 									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Nombre </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Apellido Paterno </label>
 
 										<div class="col-sm-9">
-											<input id="dir_nombre" type="text" id="form-field-3"  class="col-xs-5 col-sm-7" />
+											<input id="dir_apelPa" type="text" id="form-field-3"  class="col-xs-5 col-sm-7" />
 										</div>
 									</div>
                                     <div class="space-4"></div>
                                     
                                     
                                     <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-4"> Teléfono </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4"> Apellido Materno </label>
 
 										<div class="col-sm-9">
-											<input id="dir_telefono" type="text" id="form-field-4" class="col-xs-5 col-sm-7" />
+											<input id="dir_apelMa" type="text" id="form-field-4" class="col-xs-5 col-sm-7" />
 										</div>
 									</div>
                                     <div class="space-4"></div>
                                     <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > E-mail </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4"> DNI </label>
 
 										<div class="col-sm-9">
-											<input id="dir_email" type="text"   class="col-xs-5 col-sm-7"  />
+											<input id="dir_dni" type="text" id="form-field-4" class="col-xs-5 col-sm-7" />
+										</div>
+									</div>
+                                    
+                                    <div class="space-4"></div>
+                                    <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > codigo Pucp </label>
+
+										<div class="col-sm-9">
+											<input id="dir_codpucp" type="text"   class="col-xs-5 col-sm-7"  />
+										</div>
+									</div>    
+                                
+                                    <div class="space-4"></div>
+                                    <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > Telefono 1 </label>
+
+										<div class="col-sm-9">
+											<input id="dir_tele1" type="text"   class="col-xs-5 col-sm-7"  />
 										</div>
 									</div>
 									<div class="space-4"></div>
                                     <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-5"> Direccion Web</label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-5"> telefono 2   </label>
 
 										<div class="col-sm-9">
-											<input id="dir_web" type="text" id="form-field-5"  class="col-xs-5 col-sm-7" />
+											<input id="dir_tele2" type="text" id="form-field-5"  class="col-xs-5 col-sm-7" />
 										</div>
 									</div>
 									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-5"> Direccion </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-5"> Correo </label>
 
 										<div class="col-sm-9">
-											<input id="dir_direcc" type="text" id="form-field-5"  class="col-xs-5 col-sm-7" />
+											<input id="dir_correo" type="text" id="form-field-5"  class="col-xs-5 col-sm-7" />
 										</div>
 									</div>
 									<div class="form-group">
@@ -180,7 +193,7 @@
 
                             <div class="modal-footer">
                                 <div align="center">
-                                    <button id="botonCliente" type="button" class="btn btn-default" data-dismiss="modal" onclick="close();">Aceptar</button>
+                                    <button id="botonJP" type="button" class="btn btn-default" data-dismiss="modal" onclick="close();">Aceptar</button>
                                 </div>
                             </div>
                         </div>
@@ -230,9 +243,9 @@
        var editid;
        var action;
 
-        function getButtons(i,con_id){
+        function getButtons(i,jef_id){
 
-                    var param = "'"+i+"','"+con_id+"'";
+                    var param = "'"+i+"','"+jef_id+"'";
                     var butons = '<div class="hidden-sm hidden-xs action-buttons">'+
                                                     
                                                     '<a  onClick="edit_onClick('+param+')" class="green" ">'+
@@ -254,24 +267,27 @@
        	action="ADD";
 
        	$("#dir_nombre").val("");
-        $("#dir_telefono").val("");
-        $("#dir_email").val("");
-        $("#dir_web").val("");
-        $("#dir_direcc").val("");
+        $("#dir_apelPa").val("");
+        $("#dir_apelMa").val("");
+        $("#dir_dni").val("");   
+        $("#dir_tel1").val("");
+        $("#dir_tel2").val("");
+        $("#dir_correo").val("");
+           
        	$("#boton").modal()
        }
 
       
-       $("#botonCliente").on('click', function (e){
+       $("#botonJP").on('click', function (e){
                     //alert("mostareaas");
             if (action=="ADD"){
-            	tipo = "Persona";
+            	//tipo = "Persona";
             	i = data_set.length;
             	if ( $('#dir_nombre').val().length < 1)
             		return;
             	$.ajax({
                     type: "POST",
-                    url:'/service_directorio',
+                    url:'/service_jp',
                     beforeSend: function (xhr) {
                         var token = $('meta[name="csrf_token"]').attr('content');
 
@@ -280,21 +296,27 @@
                         }
                     },
                     data: {
-                           con_tipcon : $( "#dir_tipocon option:selected" ).val(),
-                           con_nombre: $('#dir_nombre').val(),
-                           con_nrotel: $('#dir_telefono').val(),
-                           con_correo: $('#dir_email').val(),
-                           con_dirweb: $('#dir_web').val(),
-                           con_direcc: $('#dir_direcc').val()},
+                           //
+                           //con_tipcon : $( "#dir_tipocon option:selected" ).val(),
+                           jef_nombre: $('#dir_nombre').val(),
+                           jef_apepa: $('#dir_apelPa').val(),
+                           jef_apema: $('#dir_apelMa').val(),
+                           jef_nrodoc: $('#dir_dni').val(),
+                           jef_codpuc: $('#dir_codpucp').val(),
+                           jef_telno1: $('#dir_tel1').val(),
+                           jef_telno2: $('#dir_tel2').val(),
+                           jef_correo: $('#dir_correo').val()},
+                           
+                    
                     success: function(Response){
                     	data_set.push([
+                            //para agregar al datatable
             					data_set[i-1][0],
-	                            tipo,
 	                            $("#dir_nombre").val(),
-	                            $("#dir_telefono").val(),
-	                            $("#dir_email").val(),
-	                            $("#dir_web").val(),
-	                            $("#dir_direcc").val(),
+	                            $("#dir_apelPa").val(),
+	                            $("#dir_apelMa").val(),
+	                            $("#dir_tele1").val(),
+	                            $("#dir_correo").val(),
 	                            getButtons(i,i)
 	                            
 	                        ] );
@@ -312,26 +334,26 @@
             {
 
 
-            data_set[editid][2]=$("#dir_nombre").val();
-	        data_set[editid][3]=$("#dir_telefono").val();
-	        data_set[editid][4] =$("#dir_email").val();
-	        data_set[editid][5]=$("#dir_web").val();
-	        data_set[editid][6]=$("#dir_direcc").val();
+            data_set[editid][1]=$("#dir_nombre").val();
+	        data_set[editid][2]=$("#dir_apelPa").val();
+	        data_set[editid][3] =$("#dir_apelMa").val();
+	        data_set[editid][4]=$("#dir_tele1").val();
+	        data_set[editid][5]=$("#dir_correo").val();
              myTable.clear().rows.add(data_set).draw(); 
             }          
                               
         });
-       function edit_onClick(id,con_id) {
+       function edit_onClick(id,jef_id) {
 
        			//alert (id);
 				action="UPDATE";
                 var rows = myTable.rows(id).data();
                 editid = parseInt(id);
-                $("#dir_nombre").val(data_set[editid][2]+"");
-                $("#dir_telefono").val(data_set[editid][3]+"");
-                $("#dir_email").val(data_set[editid][4]+"");
-                $("#dir_web").val(data_set[editid][5]+"");
-                $("#dir_direcc").val(data_set[id][6]+"");
+                $("#dir_nombre").val(data_set[editid][1]+"");
+                $("#dir_apelPa").val(data_set[editid][2]+"");
+                $("#dir_apelMA").val(data_set[editid][3]+"");
+                $("#dir_tele1").val(data_set[editid][4]+"");
+                $("#dir_correo").val(data_set[id][5]+"");
 
                 $("#boton").modal()
                //alert(rows[0][3]);
@@ -372,7 +394,7 @@
                 $.ajax({
                    
                     type: "GET",
-                    url:'../service_directorio',
+                    url:'../service_jp',
                     success: function(result){
                         
                         
@@ -382,22 +404,21 @@
                        
                         for(var i = 0; i<data.length ;i++)
                         {
-                            var tipo ="";
+                            //var tipo ="";
 
-                            if (data[i].con_tipcon == 'p') {
-                                tipo = "Persona";
-                            }
-                            else
-                                tipo = "Institucion";
+                            //if (data[i].con_tipcon == 'p') {
+                            //    tipo = "Persona";
+                            //}
+                            //else
+                            //    tipo = "Institucion";
 
 	                            data_set.push([
-	                            data[i].con_id,
-	                            tipo,
-	                            data[i].con_nombre,
-	                            data[i].con_nrotel,
-	                            data[i].con_correo,
-	                            data[i].con_direcc,
-	                            data[i].con_dirweb,
+	                            data[i].jef_id,
+	                            data[i].jef_nombre,
+	                            data[i].jef_apepa,
+	                            data[i].jef_apelma,
+	                            data[i].jef_telno1,
+	                            data[i].jef_correo,
 	                            getButtons(i)
 	                            
 	                        ] )
