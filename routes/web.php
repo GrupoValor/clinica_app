@@ -91,7 +91,9 @@ Route::get('/noticias_registro', function () {
     return view('intranet/gestor_noticias_registro');
 });
 
-
+Route::resource('service_alumno','alumnoController');
+Route::resource('service_jp','jpController');
+Route::resource('service_profesor','profesorController');
 Route::resource('service_directorio','directorioController');
 Route::resource('service_casos','casosController');
 //Route::resource('test','testController');
