@@ -318,10 +318,7 @@
             if (action=="UPDATE")
             {
 
-            tipo = 'i'
-            if ($( "#dir_tipocon option:selected" ).val() == "Persona"){
-            	tipo = 'p'
-            }
+            
             $.ajax({
                     type: "PATCH",
                     url:'/service_directorio/'+data_set[editid][0],
@@ -333,7 +330,7 @@
                         }
                     },
                     data: {
-                           con_tipcon : tipo,
+                           con_tipcon : $( "#dir_tipocon option:selected" ).val(),
                            con_nombre: $('#dir_nombre').val(),
                            con_nrotel: $('#dir_telefono').val(),
                            con_correo: $('#dir_email').val(),
