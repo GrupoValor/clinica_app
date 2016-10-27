@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Intranet | Mantenimientos - Jefe de práctica</title>
+		<title>Intranet | Mantenimientos - Alumnos</title>
 
 		<meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -32,8 +32,7 @@
 	</head>
 
 	<body class="no-skin">
-		<?php  echo view('intranet/menu'); ?>
-			
+		<?php  echo view('intranet/menu'); ?>			
             <div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -45,14 +44,14 @@
 							<li>
 								Mantenimientos
 							</li>
-							<li class="active">Jefe de práctica</li>
+							<li class="active">Alumno</li>
 						</ul>
 					</div>
 
 					<div class="page-content">
 						<div class="page-header"><!-- /.page-header -->
 							<h1 id = "mytitulo" >
-								Directorio
+								Mantenimiento de alumnos
 								<button type="button" class="btn btn-primary" style="float: right;margin-top: -8px;" onclick="add_onClick()" >Nuevo +</button>
 							</h1>
 
@@ -223,8 +222,7 @@
 		
 		<script type="text/javascript">
             jQuery('#limantenimientos').addClass('active open');
-            jQuery('#mant-jp').addClass('active open');
-            jQuery('#mant-jp-mod').addClass('active');
+            jQuery('#mant-alumno').addClass('active');
 
        var myTable ;
        var data_set = [];

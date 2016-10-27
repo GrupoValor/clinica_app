@@ -68,29 +68,17 @@ Route::get('/mapa', function () {
 });
 
 //mantenimientos
-Route::get('/mant_prof_reg', function () {
-    return view('intranet/mantenimiento_profesor_registro');
+Route::get('/mant_prof', function () {
+    return view('intranet/mantenimiento_profesor');
 });
-Route::get('/mant_jp_reg', function () {
-    return view('intranet/mantenimiento_jp_registro');
+Route::get('/mant_jp', function () {
+    return view('intranet/mantenimiento_jp');
 });
-Route::get('/mant_alu_reg', function () {
-    return view('intranet/mantenimiento_alumno_registro');
+Route::get('/mant_alu', function () {
+    return view('intranet/mantenimiento_alumno');
 });
-Route::get('/mant_cli_reg', function () {
-    return view('intranet/mantenimiento_cliente_registro');
-});
-Route::get('/mant_prof_mod', function () {
-    return view('intranet/mantenimiento_profesor_modificar');
-});
-Route::get('/mant_jp_mod', function () {
-    return view('intranet/mantenimiento_jp_modificar');
-});
-Route::get('/mant_alu_mod', function () {
-    return view('intranet/mantenimiento_alumno_modificar');
-});
-Route::get('/mant_cli_mod', function () {
-    return view('intranet/mantenimiento_cliente_modificar');
+Route::get('/mant_cli', function () {
+    return view('intranet/mantenimiento_cliente');
 });
 
 //reportes

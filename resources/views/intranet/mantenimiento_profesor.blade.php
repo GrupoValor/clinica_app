@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Intranet | Mantenimientos - Alumnos</title>
+		<title>Intranet | Mantenimientos - Profesores</title>
 
 		<meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -44,14 +44,14 @@
 							<li>
 								Mantenimientos
 							</li>
-							<li class="active">Alumno</li>
+							<li class="active">Profesor</li>
 						</ul>
 					</div>
 
 					<div class="page-content">
 						<div class="page-header"><!-- /.page-header -->
 							<h1 id = "mytitulo" >
-								Directorio
+								Mantenimiento de profesores
 								<button type="button" class="btn btn-primary" style="float: right;margin-top: -8px;" onclick="add_onClick()" >Nuevo +</button>
 							</h1>
 
@@ -222,8 +222,7 @@
 		
 		<script type="text/javascript">
             jQuery('#limantenimientos').addClass('active open');
-            jQuery('#mant-alu').addClass('active open');
-            jQuery('#mant-alu-mod').addClass('active');
+            jQuery('#mant-profesor').addClass('active');
 
        var myTable ;
        var data_set = [];
