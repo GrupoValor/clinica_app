@@ -88,26 +88,50 @@ $(document).ready(function() {
 
         var tarea = this;
 
+        //Primero tenemos que listar todos comentarios, usamos ajax
+        $.get("ajax/lista-comentarios.ajax.php",{'tar_id': this.id}, function(data){
+          /*var $mensajes = JSON.parse(data);
+          for (var i = 0, len = $mensajes.length; i < len; i++) { // OJO AQUI PUEDE HABER UN ERROR MAS ADELANTE
+            ('#lista-comentarios').append('<li class="comentario"> super_user escribio: '+$mensajes[i]+'</li>');
+          } */
+        });
+
+
+        //Obtenemos el nombre de la tarea
         $.get("ajax/nombre-tarea.ajax.php",{'id': this.id},function(data1){
             $('#nombre-detalle-tarea').remove();
             $('#label-nombre-tarea').after('<input type="text" class="form-control" id="nombre-detalle-tarea" disabled placeholder="'+data1+'">');
         });
 
+        //Obtenemos la direccion
         $.get("ajax/detalle-tarea.ajax.php",{'id': this.id},function(data2){
             $('#descripcion-detalle-tarea').remove();
             $('#label-detalle-tarea').after('<textarea class="form-control" rows="3" id="descripcion-detalle-tarea"  disabled placeholder="'+data2+'"</textarea>');
         });
+
+        //mostramos el modal
         $('.bs-detalle-tarea-modal-lg').modal('show');
 
+        //manejo de eventos
         $('#boton-eliminar-tarea').on('click',function(){
             tarea.remove();
             $.get("ajax/elimina-tarea.ajax.php", {'id': tarea.id});
         })
+
+        $('#boton-ingresar-comentario').on('click', function(){
+          $.get("ajax/inserta-comentario.ajax.php",
+            {'tar_id': tarea.id,
+            'com_mensaje': $('#contenido-comentario').val()},function(data){
+            $('#lista-comentarios').append('<li class="comentario" id="'+data+'"> super_user escribio: '+ $('#contenido-comentario').val()+'</li>');
+          });
+
+        });
+
         //<label for="descripcion-detalle-tarea">Titulo:</label>
         //<input type="text" class="form-control" id="descripcion-titulo-tarea" placeholder="" disabled>
     })
 
-
+    //Para conseguir variables de la url
     function getUrlVars() {
       var vars = {};
       var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -126,5 +150,7 @@ $(document).ready(function() {
         $('#backlog').append('<li class="tarea" id="'+ data + '">' + $('#titulo-tarea').val()+'</li>');
       });
     })
+
+
 
 });

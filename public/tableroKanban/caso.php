@@ -21,7 +21,8 @@ $display = new Display($db);
 
     <body>
       <div class="row">
-        <div class="col-md-12"><h1>Seguimieto de caso <?php echo $_GET['id'] ?></h1></div>
+        <div class="col-md-6"><h1>Seguimieto de caso <?php echo $_GET['id'] ?></h1></div>
+        <div class="col-md-2"><button type="button" class="btn btn-default">Estado caso</button></div>
       </div>
       <div class="row">
             <div id="backlog-tablero" class="col-md-2">
@@ -50,15 +51,26 @@ $display = new Display($db);
                 </ul>
             </div>
             <div id="panel-control-tablero" class="col-md-4">
-              <div id="panel-control-tablero-header"></div>
-                <h2>Menú</h2>
-              <div id="panel-control-tablero-interesados"></div>
+              <div id="panel-control-tablero-interesados">
                 <h2>Miembros</h2>
+              </div>
               <div id="panel-control-tablero-actividad">
                 <h2>Registro de actividad</h2>
               </div>
             </div>
       </div>
+      <div class="row">
+          <div id="detalles-caso" class="col-md-6">
+            <h2>Objetivos del caso:</h2>
+            <p><?php echo $display->objetivosCaso($_GET['id']); ?></p>
+            <h2>ObservacionesCaso del caso:</h2>
+            <p><?php echo $display->observacionesCaso($_GET['id']); ?></p>
+            <h2>Resultados del caso:</h2>
+
+
+          </div>
+      </div>
+
     </body>
 
     <div class="modal fade bs-agregartarea-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -99,8 +111,18 @@ $display = new Display($db);
               <div class="form-group">
                 <label for="descripcion-detalle-tarea" id="label-detalle-tarea">Detalle:</label>
               </div>
-              <div class="form-group">
+              <div id ="comentarios-tarea">
                 <h3>Comentarios:</h3>
+                <ul id="lista-comentarios">
+
+                </ul>
+                <form class="form-inline">
+                  <div class="form-group">
+                    <label for="contenido-comentario">Comentario: </label>
+                    <textarea class="form-control" rows="3" cols="75" id="contenido-comentario"></textarea>
+                  </div>
+                  <button type="button" class="btn btn-default" id="boton-ingresar-comentario">Ingresar</button>
+                </form>
               </div>
               <div class="form-group">
                 <div>

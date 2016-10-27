@@ -43,6 +43,21 @@ class Display
         return $output;
     }
 
+    public function objetivosCaso($id) {
+        $output = '';
+        $stmt = $this->db->query("SELECT cas_objact FROM cobarcom_clinicadb.TA_CASO WHERE cas_id = $id ");
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row['cas_objact'];
+    }
+
+    public function observacionesCaso($id) {
+        $output = '';
+        $stmt = $this->db->query("SELECT cas_observ FROM cobarcom_clinicadb.TA_CASO WHERE cas_id = $id ");
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row['cas_observ'];
+    }
+
+
     /*public function comentarios($tarea_id) {
         $output = '';
         $stmt = $this->db->query("SELECT * FROM cobarcom_clinicadb.TA_COMENTARIO WHERE tar_id = $tarea_id");
