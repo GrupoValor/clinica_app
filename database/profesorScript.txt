@@ -1,0 +1,20 @@
+CREATE TABLE `TA_PROFESOR` (
+	`pro_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`usu_id` INT(10) UNSIGNED NOT NULL,
+	`pro_codpuc` VARCHAR(20) NOT NULL DEFAULT '',
+	`pro_nrodoc` VARCHAR(20) NULL DEFAULT NULL,
+	`pro_nombre` VARCHAR(40) NULL DEFAULT NULL,
+	`pro_apepa`  VARCHAR(40) NULL DEFAULT NULL,
+	`pro_apema` VARCHAR(40) NULL DEFAULT NULL,
+	`pro_telno1` VARCHAR(20) NULL DEFAULT NULL,
+	`pro_telno2` VARCHAR(20) NULL DEFAULT NULL,
+	`pro_correo` VARCHAR(40) NULL DEFAULT NULL,
+	`pro_fecnac`  DATE NULL DAFAULT NULL,
+	
+	PRIMARY KEY (`pro_id`),
+	INDEX `fk_alumno_usuario` (`usu_id`),
+	CONSTRAINT `fk_alumno_usuario` FOREIGN KEY (`usu_id`) REFERENCES `TA_USUARIO` (`usu_id`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;

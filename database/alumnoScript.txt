@@ -1,0 +1,20 @@
+CREATE TABLE `TA_ALUMNO` (
+	`alu_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+	`usu_id` INT(10) UNSIGNED NOT NULL,
+	`alu_codpuc` VARCHAR(20) NOT NULL DEFAULT '',
+	`alu_nrodoc` VARCHAR(20) NULL DEFAULT NULL,
+	`alu_nombre` VARCHAR(40) NULL DEFAULT NULL,
+	`alu_apepa`  VARCHAR(40) NULL DEFAULT NULL,
+	`alu_apema` VARCHAR(40) NULL DEFAULT NULL,
+	`alu_telno1` VARCHAR(20) NULL DEFAULT NULL,
+	`alu_telno2` VARCHAR(20) NULL DEFAULT NULL,
+	`alu_correo` VARCHAR(40) NULL DEFAULT NULL,
+	`alu_fecnac`  DATE NULL DFAULT NULL,
+	
+	PRIMARY KEY (`alu_id`),
+	INDEX `fk_alumno_usuario` (`usu_id`),
+	CONSTRAINT `fk_alumno_usuario` FOREIGN KEY (`usu_id`) REFERENCES `TA_USUARIO` (`usu_id`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
