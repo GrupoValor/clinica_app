@@ -57,7 +57,7 @@ Route::get('/ta_rubricas', function () {
 });
 
 //directorio de usuarios
-Route::get('/directorio', function () {
+Route::get('directorio', function () {
     return view('intranet/directorio');
 });
 
@@ -68,16 +68,16 @@ Route::get('/mapa', function () {
 });
 
 //mantenimientos
-Route::get('/mant_prof', function () {
+Route::get('mant_prof', function () {
     return view('intranet/mantenimiento_profesor');
 });
-Route::get('/mant_jp', function () {
+Route::get('mant_jp', function () {
     return view('intranet/mantenimiento_jp');
 });
-Route::get('/mant_alu', function () {
+Route::get('mant_alu', function () {
     return view('intranet/mantenimiento_alumno');
 });
-Route::get('/mant_cli', function () {
+Route::get('mant_cli', function () {
     return view('intranet/mantenimiento_cliente');
 });
 
