@@ -20,35 +20,45 @@ $display = new Display($db);
     </head>
 
     <body>
-      <h1>Seguimieto de caso <?php echo $_GET['id'] ?></h1>
-        <div>
-            <div id="left">
+      <div class="row">
+        <div class="col-md-12"><h1>Seguimieto de caso <?php echo $_GET['id'] ?></h1></div>
+      </div>
+      <div class="row">
+            <div id="backlog-tablero" class="col-md-2">
                 <h2>Backlog</h2>
                 <ul id="backlog">
                     <?php echo $display->backlog($_GET['id']); ?>
                 </ul>
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-agregartarea-modal-sm">Agregar tarea</button>
+                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-agregartarea-modal-sm">Agregar tarea</button>
             </div>
-            <div id="center">
+            <div id="pendientes-tablero" class="col-md-2">
                 <h2>Pendientes</h2>
                 <ul id="pendiente">
                     <?php echo $display->pendiente($_GET['id']); ?>
                 </ul>
             </div>
-            <div id="right">
+            <div id="proceso-tablero" class="col-md-2">
                 <h2>En proceso</h2>
                 <ul id="proceso">
                     <?php echo $display->proceso($_GET['id']); ?>
                 </ul>
             </div>
-            <div id="right">
+            <div id="finalizadas-tablero" class="col-md-2">
                 <h2>Finalizadas</h2>
                 <ul id="finalizada">
                     <?php echo $display->finalizada($_GET['id']); ?>
                 </ul>
             </div>
-        </div>
-
+            <div id="panel-control-tablero" class="col-md-4">
+              <div id="panel-control-tablero-header"></div>
+                <h2>Menú</h2>
+              <div id="panel-control-tablero-interesados"></div>
+                <h2>Miembros</h2>
+              <div id="panel-control-tablero-actividad">
+                <h2>Registro de actividad</h2>
+              </div>
+            </div>
+      </div>
     </body>
 
     <div class="modal fade bs-agregartarea-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
@@ -83,12 +93,28 @@ $display = new Display($db);
               <h4>Detalles de la tarea:</h4>
             </div>
             <div class="modal-body">
+              <div class="form-group">
+                <label for="nombre-detalle-tarea" id="label-nombre-tarea">Nombre:</label>
+              </div>
+              <div class="form-group">
                 <label for="descripcion-detalle-tarea" id="label-detalle-tarea">Detalle:</label>
-
+              </div>
+              <div class="form-group">
+                <h3>Comentarios:</h3>
+              </div>
+              <div class="form-group">
+                <div>
+                  <h5>Establecer fecha vencimiento:</h5>
+                  <input type="date" name="fecha">
+                </div>
+                <div>
+                  <br><button type="button" class="btn btn-warning">Alerta documento</button>
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default"  data-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-danger"   data-dismiss="modal" id="boton-eliminar-tarea">Eliminar tarea</button>
+                <button type="button" class="btn btn-default"  data-dismiss="modal">Cerrar</button>
             </div>
         </div>
       </div>

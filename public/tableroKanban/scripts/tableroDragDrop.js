@@ -88,10 +88,14 @@ $(document).ready(function() {
 
         var tarea = this;
 
-        $.get("ajax/detalle-tarea.ajax.php",{'id': this.id},function(data){
-            $('#descripcion-detalle-tarea').remove();
-            $('#label-detalle-tarea').after('<input type="text" class="form-control" id="descripcion-detalle-tarea" disabled placeholder="'+data+'">');
+        $.get("ajax/nombre-tarea.ajax.php",{'id': this.id},function(data1){
+            $('#nombre-detalle-tarea').remove();
+            $('#label-nombre-tarea').after('<input type="text" class="form-control" id="nombre-detalle-tarea" disabled placeholder="'+data1+'">');
+        });
 
+        $.get("ajax/detalle-tarea.ajax.php",{'id': this.id},function(data2){
+            $('#descripcion-detalle-tarea').remove();
+            $('#label-detalle-tarea').after('<textarea class="form-control" rows="3" id="descripcion-detalle-tarea"  disabled placeholder="'+data2+'"</textarea>');
         });
         $('.bs-detalle-tarea-modal-lg').modal('show');
 
