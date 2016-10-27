@@ -20,15 +20,14 @@ class casosController extends Controller
       
 
 
-        $casos =DB::select('SELECT A.cas_id, A.cas_fecate, 
-                    CONCAT(E.usu_nombre," ",E.usu_appate) as "cli_nombre",
-                    A.cas_objact,
-                    CONCAT(C.usu_nombre," ",C.usu_appate) as "res_nombre",
-                    D.estcas_detalle
-                    FROM TA_CASO A, TA_CLIENTE B, TA_USUARIO C, TA_ESTADOCASO D,TA_USUARIO E 
-                    WHERE 
-                    A.cli_id = B.cli_id AND A.usu_id = C.usu_id AND
-                    A.estcas_id = D.estcas_id AND B.usu_id = E.usu_id ');
+        $casos =DB::select('SELECT cas_id ,cas_fecate,cli_nombre,cas_objact,alu_nombre as res_nombre,estcas_detalle
+            FROM TA_CASO
+            JOIN TA_CLIENTE
+            ON TA_CASO.cli_id=TA_CLIENTE.cli_id
+            JOIN TA_ALUMNO
+            ON TA_CASO.usu_id=TA_ALUMNO.usu_id
+            JOIN TA_ESTADOCASO
+            ON TA_CASO.estcas_id=TA_ESTADOCASO.estcas_id;');
 
 
 

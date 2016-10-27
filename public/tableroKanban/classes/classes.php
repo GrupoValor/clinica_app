@@ -9,7 +9,7 @@ class Display
 
     public function backlog() {
         $output = '';
-        $stmt = $this->db->query("SELECT * FROM cobarcom_clinicadb.TA_TAREA WHERE tar_estado = 'backlog'");
+        $stmt = $this->db->query("SELECT * FROM TA_TAREA WHERE tar_estado = 'backlog'");
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $output .= '<li class="tarea" id="' . $row['tar_id'] . '">' . $row['tar_nombre'] . '</li>';
         }
@@ -18,7 +18,7 @@ class Display
 
     public function pendiente() {
         $output = '';
-        $stmt = $this->db->query("SELECT * FROM cobarcom_clinicadb.TA_TAREA WHERE tar_estado = 'pendiente'");
+        $stmt = $this->db->query("SELECT * FROM TA_TAREA WHERE tar_estado = 'pendiente'");
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $output .= '<li class="tarea" id="' . $row['tar_id'] . '">' . $row['tar_nombre'] . '</li>';
         }
@@ -27,7 +27,7 @@ class Display
 
     public function proceso() {
         $output = '';
-        $stmt = $this->db->query("SELECT * FROM cobarcom_clinicadb.TA_TAREA WHERE tar_estado = 'proceso'");
+        $stmt = $this->db->query("SELECT * FROM TA_TAREA WHERE tar_estado = 'proceso'");
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $output .= '<li class="tarea" id="' . $row['tar_id'] . '">' . $row['tar_nombre'] . '</li>';
         }
@@ -36,7 +36,7 @@ class Display
 
     public function finalizada() {
         $output = '';
-        $stmt = $this->db->query("SELECT * FROM cobarcom_clinicadb.TA_TAREA WHERE tar_estado = 'finalizada'");
+        $stmt = $this->db->query("SELECT * FROM TA_TAREA WHERE tar_estado = 'finalizada'");
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $output .= '<li class="tarea" id="' . $row['tar_id'] . '">' . $row['tar_nombre'] . '</li>';
         }
@@ -45,7 +45,7 @@ class Display
 
     /*public function comentarios($tarea_id) {
         $output = '';
-        $stmt = $this->db->query("SELECT * FROM cobarcom_clinicadb.TA_COMENTARIO WHERE tar_id = $tarea_id");
+        $stmt = $this->db->query("SELECT * FROM TA_COMENTARIO WHERE tar_id = $tarea_id");
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $output .= '<li class="comentario" id="' . $row['com_id'] . '">' . $row['com_contenid'] . '</li>';
         }
