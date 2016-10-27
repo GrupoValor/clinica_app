@@ -25,26 +25,26 @@ $display = new Display($db);
             <div id="left">
                 <h2>Backlog</h2>
                 <ul id="backlog">
-                    <?php echo $display->backlog(); ?>
+                    <?php echo $display->backlog($_GET['id']); ?>
                 </ul>
                 <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-agregartarea-modal-sm">Agregar tarea</button>
             </div>
             <div id="center">
                 <h2>Pendientes</h2>
                 <ul id="pendiente">
-                    <?php echo $display->pendiente(); ?>
+                    <?php echo $display->pendiente($_GET['id']); ?>
                 </ul>
             </div>
             <div id="right">
                 <h2>En proceso</h2>
                 <ul id="proceso">
-                    <?php echo $display->proceso(); ?>
+                    <?php echo $display->proceso($_GET['id']); ?>
                 </ul>
             </div>
             <div id="right">
                 <h2>Finalizadas</h2>
                 <ul id="finalizada">
-                    <?php echo $display->finalizada(); ?>
+                    <?php echo $display->finalizada($_GET['id']); ?>
                 </ul>
             </div>
         </div>

@@ -104,17 +104,23 @@ $(document).ready(function() {
     })
 
 
+    function getUrlVars() {
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+      });
+      return vars;
+    }
+
     //Agregar una tarea
     $('#btn-guardar-tarea').on('click', function(){
       $.get("ajax/inserta-detalle-tarea.ajax.php",
           {'titulo': $('#titulo-tarea').val(),
-          'descripcion': $('#descripcion-tarea').val()
+          'descripcion': $('#descripcion-tarea').val(),
+          'cas_id': parseInt(getUrlVars()['id'])
           }, function(data){
         $('#backlog').append('<li class="tarea" id="'+ data + '">' + $('#titulo-tarea').val()+'</li>');
       });
-
-
-
     })
 
 });

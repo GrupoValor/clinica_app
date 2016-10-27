@@ -7,36 +7,36 @@ class Display
         $this->db = $db;
     }
 
-    public function backlog() {
+    public function backlog($id) {
         $output = '';
-        $stmt = $this->db->query("SELECT * FROM cobarcom_clinicadb.TA_TAREA WHERE tar_estado = 'backlog'");
+        $stmt = $this->db->query("SELECT * FROM cobarcom_clinicadb.TA_TAREA WHERE tar_estado = 'backlog' AND cas_id = $id");
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $output .= '<li class="tarea" id="' . $row['tar_id'] . '">' . $row['tar_nombre'] . '</li>';
         }
         return $output;
     }
 
-    public function pendiente() {
+    public function pendiente($id) {
         $output = '';
-        $stmt = $this->db->query("SELECT * FROM cobarcom_clinicadb.TA_TAREA WHERE tar_estado = 'pendiente'");
+        $stmt = $this->db->query("SELECT * FROM cobarcom_clinicadb.TA_TAREA WHERE tar_estado = 'pendiente' AND cas_id = $id");
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $output .= '<li class="tarea" id="' . $row['tar_id'] . '">' . $row['tar_nombre'] . '</li>';
         }
         return $output;
     }
 
-    public function proceso() {
+    public function proceso($id) {
         $output = '';
-        $stmt = $this->db->query("SELECT * FROM cobarcom_clinicadb.TA_TAREA WHERE tar_estado = 'proceso'");
+        $stmt = $this->db->query("SELECT * FROM cobarcom_clinicadb.TA_TAREA WHERE tar_estado = 'proceso' AND cas_id = $id");
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $output .= '<li class="tarea" id="' . $row['tar_id'] . '">' . $row['tar_nombre'] . '</li>';
         }
         return $output;
     }
 
-    public function finalizada() {
+    public function finalizada($id) {
         $output = '';
-        $stmt = $this->db->query("SELECT * FROM cobarcom_clinicadb.TA_TAREA WHERE tar_estado = 'finalizada'");
+        $stmt = $this->db->query("SELECT * FROM cobarcom_clinicadb.TA_TAREA WHERE tar_estado = 'finalizada' AND cas_id = $id ");
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $output .= '<li class="tarea" id="' . $row['tar_id'] . '">' . $row['tar_nombre'] . '</li>';
         }
