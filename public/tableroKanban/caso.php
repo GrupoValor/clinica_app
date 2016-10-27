@@ -20,7 +20,7 @@ $display = new Display($db);
     </head>
 
     <body>
-        <h1>Seguimieto de caso</h1>
+      <h1>Seguimieto de caso <?php echo $_GET['id'] ?></h1>
         <div>
             <div id="left">
                 <h2>Backlog</h2>

@@ -86,7 +86,7 @@ $(document).ready(function() {
     //Al  hacer doble click sobre las tareas se despliega su detalle
     $(document).on('dblclick','.tarea',function(){
 
-        var id_tarea = this.id;
+        var tarea = this;
 
         $.get("ajax/detalle-tarea.ajax.php",{'id': this.id},function(data){
             $('#descripcion-detalle-tarea').remove();
@@ -96,8 +96,8 @@ $(document).ready(function() {
         $('.bs-detalle-tarea-modal-lg').modal('show');
 
         $('#boton-eliminar-tarea').on('click',function(){
-
-            alert("Tarea eliminada");
+            tarea.remove();
+            $.get("ajax/elimina-tarea.ajax.php", {'id': tarea.id});
         })
         //<label for="descripcion-detalle-tarea">Titulo:</label>
         //<input type="text" class="form-control" id="descripcion-titulo-tarea" placeholder="" disabled>
