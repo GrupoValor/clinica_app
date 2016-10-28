@@ -83,17 +83,10 @@ $(document).ready(function() {
   	});
 
 
-    $('#modal-agrega-tarea').on('hidden.bs.modal', function(){
-        $(this).find('.form-control')[0].reset();
-    });
-
     //Al  hacer doble click sobre las tareas se despliega su detalle
     $(document).on('dblclick','.tarea',function(){
 
         var tarea = this;
-
-        $("#modal-detalle-tarea").modal("show");
-
 
         //Primero tenemos que listar todos comentarios, usamos ajax
         $.get("ajax/lista-comentarios.ajax.php", {'tar_id': tarea.id},
@@ -112,7 +105,7 @@ $(document).ready(function() {
         });
 
         //mostramos el modal
-        $('.bs-detalle-tarea-modal-lg').modal('show');
+        $('#modal-detalle-tarea').modal('show');
 
         //manejo de eventos
         $('#boton-eliminar-tarea').on('click',function(){
@@ -120,11 +113,12 @@ $(document).ready(function() {
             $.get("ajax/elimina-tarea.ajax.php", {'id': tarea.id});
         })
 
-        $('#boton-ingresar-comentario').on('click', function(){
+        $('#boton-ingresar-comentario').off().on('click', function(){
           $.get("ajax/inserta-comentario.ajax.php",
             {'tar_id': tarea.id,
             'com_mensaje': $('#contenido-comentario').val()},function(data){
             $('#lista-comentarios').append('<li class="comentario" id="'+data+'"> super_user escribio: '+ $('#contenido-comentario').val()+'</li>'); });
+          $('#contenido-comentario').removeData();
         });
 
         //<label for="descripcion-detalle-tarea">Titulo:</label>
@@ -148,8 +142,23 @@ $(document).ready(function() {
           'cas_id': parseInt(getUrlVars()['id'])
           }, function(data){
         $('#backlog').append('<li class="tarea" id="'+ data + '">' + $('#titulo-tarea').val()+'</li>');
+        $('#titulo-tarea').removeData();
+        $('#descripcion-tarea').removeData();
       });
     })
+
+    //cambiar estado de un casos
+    $('#boton-cambia-estado').on('click', function(){
+      var value = $("form input[type='radio']:checked").val();
+      if($("form input[type='radio']").is(':checked')) {
+        $.get("ajax/cambia-estado-caso.ajax.php",{'id_estado': value,
+        'cas_id':parseInt(getUrlVars()['id']) }, function(data){
+          $("#nombre-estado").html(data);
+        },"html")
+      }
+      $("form input[type='radio']:checked").removeAttr("checked");
+    })
+
 
 
 
