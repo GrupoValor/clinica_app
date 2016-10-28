@@ -317,9 +317,9 @@ ALTER TABLE TA_EVALUADOR
     FOREIGN KEY(cst_id)
     REFERENCES TA_CONSULTA(cst_id);
  ALTER TABLE TA_TAREA
-    ADD CONSTRAINT fk_tarea_etapa
-    FOREIGN KEY(eta_id)
-    REFERENCES TA_ETAPA(eta_id);
+    ADD CONSTRAINT fk_tarea_caso
+    FOREIGN KEY(cas_id)
+    REFERENCES TA_CASO(cas_id);
 
  ALTER TABLE TA_USUARIO_TAREA
     ADD CONSTRAINT fk_usutarea_tarea
@@ -329,7 +329,26 @@ ALTER TABLE TA_EVALUADOR
     FOREIGN KEY(usu_id)
     REFERENCES TA_USUARIO(usu_id);
 
+ALTER TABLE TA_CASO
+    ADD CONSTRAINT fk_caso_cliente
+    FOREIGN KEY(cli_id)
+    REFERENCES TA_CLIENTE(cli_id);
 
+
+ALTER TABLE TA_CASO
+    ADD CONSTRAINT fk_caso_estadocaso
+    FOREIGN KEY(estcas_id)
+    REFERENCES TA_ESTADOCASO(estcas_id);
+    
+ALTER TABLE TA_TAREA
+    ADD CONSTRAINT fk_tarea_caso
+    FOREIGN KEY(cas_id)
+    REFERENCES TA_CASO(cas_id);
+    
+ALTER TABLE TA_USUARIO_CASO
+    ADD CONSTRAINT fk_usucaso_caso
+    FOREIGN KEY(cas_id)
+    REFERENCES TA_CASO(cas_id)
 
 
 ALTER TABLE TA_COMENTARIO DROP FOREIGN KEY fk_comentario_tarea;

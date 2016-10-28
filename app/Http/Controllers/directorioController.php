@@ -48,7 +48,7 @@ class directorioController extends Controller
      */
     public function store(Request $request)
     {
-        
+      
 
         $contact = TACONTACTO::create(['cln_id' => '1',
                                        'con_tipcon' => $request['con_tipcon'],

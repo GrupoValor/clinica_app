@@ -61,23 +61,22 @@ class casosController extends Controller
      */
     public function store(Request $request)
     {
-        
-/*
-    $caso = TaCaso::create([
-                                       'usu_id' => '1',
-                                       'cst_id' => '1',
-                                       'cln_id' => '1',
-                                       'cli_id' => '2',
-                                       'tipcas_id' =>'1',
-                                       'cas_estado' => 'Administra',
-                                       'cas_fecate' => '2016-10-21',
-                                       'cas_observ'=> $request['observacion'],
-                                        'cas_object'=> $request['objetivo']]);
-        
+ 
+   
+    
+       $caso = TaCaso::create([
+                                           'usu_id' => $request['usu_id'],
+                                           'cli_id' => $request['cli_id'],
+                                           'cas_docent' => $request['doc_id'],
+                                           'estcas_id' => $request['estcas_id'],
+                                           'cas_fecate' => $request['cas_fecate'],
+                                           'cas_objact'=> $request['cas_objact'],
+                                            'cas_observ'=> $request['cas_observ']]);
+            
 
-        $caso->save();
-*/
-        echo "Ingresado";
+            $caso->save();
+    
+        echo "Registrado";
     }
 
     /**

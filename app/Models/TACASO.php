@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sun, 23 Oct 2016 06:48:47 +0000
+ * Date: Fri, 28 Oct 2016 16:40:31 +0000
  */
 
 namespace App\Models;
@@ -16,8 +16,11 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $usu_id
  * @property int $cli_id
  * @property int $estcas_id
+ * @property int $cas_docent
  * @property \Carbon\Carbon $cas_fecate
- * @property int $cas_usureg
+ * @property string $cas_objact
+ * @property string $cas_observ
+ * @property string $cas_result
  *
  * @package App\Models
  */
@@ -31,7 +34,7 @@ class TACASO extends Eloquent
 		'usu_id' => 'int',
 		'cli_id' => 'int',
 		'estcas_id' => 'int',
-		'cas_usureg' => 'int'
+		'cas_docent' => 'int'
 	];
 
 	protected $dates = [
@@ -42,7 +45,10 @@ class TACASO extends Eloquent
 		'usu_id',
 		'cli_id',
 		'estcas_id',
+		'cas_docent',
 		'cas_fecate',
-		'cas_usureg'
+		'cas_objact',
+		'cas_observ',
+		'cas_result'
 	];
 }

@@ -255,11 +255,17 @@
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
     function a_onClick( hola) {
-               alert(hola);
+               
               }
+
+
+
         $(document).ready(function(){
             jQuery('#casos').addClass('active open');
             jQuery('#casos-busqueda').addClass('active');
+
+
+
               var myTable =
                 $('#dynamic-table')
                 //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
@@ -276,10 +282,19 @@
 
 
                             select: {
-                                style: 'multi'
+                                style: 'single'
                             }
                         });
+                $('#dynamic-table').on( 'click', 'a', function () {
 
+
+                                var id = myTable.row( this ).index();
+                                var data = myTable.row( id ).data();
+                                row_id = data[0];
+                                window.location.replace("/tableroKanban/caso.php?id="+row_id);
+
+                                
+                            } );
        
         $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
 
@@ -447,12 +462,8 @@
             
             var butons = '<div class="hidden-sm hidden-xs action-buttons">'+
                                                     
-                                                    '<a onClick="a_onClick(\'editar\')" class="green" ">'+
+                                                    '<a  class="green" ">'+
                                                         '<i class="ace-icon fa fa-pencil bigger-130">'+'</i>'+
-                                                    '</a>'+
-
-                                                    '<a onClick="a_onClick(\'borrar\')" class="red" href="#">'+
-                                                        '<i class="ace-icon fa fa-trash-o bigger-130">'+'</i>'+
                                                     '</a>'+
                                                 '</div>';
                 $.ajax({

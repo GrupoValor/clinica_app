@@ -195,6 +195,7 @@
                                 <th>ID</th>
                                 <th>Nro Documento</th>
                                 <th>Nombre</th>
+                                <th>Direccion</th>
                                
 
                             </tr>
@@ -229,10 +230,12 @@
                     <table id="table-docentes" class="table table-striped table-bordered table-hover">
                        <thead>
                             <tr>
+                                
                                 <th>ID</th>
-                                <th>Codigo Pucp</th>
+                                <th>Tipo</th>
+                                <th>Codigo PUCP</th>
                                 <th>Nombre</th>
-                               
+                                <th>Correo</th>
 
                             </tr>
                         </thead>
@@ -301,30 +304,7 @@
         $(document).ready(function(){
             jQuery('#casos').addClass('active open');
             jQuery('#casos-registro').addClass('active');
-            $('#click_button').click(function(){
-                
-                 var token = $('meta[name="csrf_token"]').attr('content');
-                 alert (token);
-                /* $.ajax({
-                    type:"PATCH",
-                    url:'service_casos',
-                    beforeSend: function (xhr) {
-                        var token = $('meta[name="csrf_token"]').attr('content');
-
-                        if (token) {
-                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                        }
-                    },
-                    data: {
-                           usu_id: 1,
-                           con_nombre: $('#observaciones').val(),
-                           con_apell: $('#objetivo').val(),
-                        },
-                    success: function(Response){
-                        alert(Response);
-                    }
-                });*/
-            });
+            
         });
         </script>
 
@@ -334,7 +314,8 @@
         
         <script type="text/javascript">
        var myTable ;
-       var data_set = [];
+       var data_set_cli = [];
+       var data_set_doc = [];
        var editid;
        var action;
        var cli_id;
@@ -358,7 +339,7 @@
                             
                             "aoColumns": [
 
-                                null,null, null
+                                null,null, null,null
                             ],
                             "aaSorting": [],
 
@@ -378,7 +359,7 @@
                             
                             "aoColumns": [
 
-                                null,null, null
+                                 null,null, null,null,null
                             ],
                             "aaSorting": [],
 
@@ -408,14 +389,31 @@
                 var id = tableDoc.row( this ).index();
                 var data = tableDoc.row( id ).data();
                 doc_id = data[0];
-                $("#docente").val(data[2]);
+                $("#docente").val(data[3]);
 
                 
             } );
 
-            $("#btnIngresar").on('click', function (e){
-                    //alert("mostareaas");
-            
+            function get_date(){
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth()+1; //January is 0!
+                var yyyy = today.getFullYear();
+
+                if(dd<10) {
+                    dd='0'+dd
+                } 
+
+                if(mm<10) {
+                    mm='0'+mm
+                } 
+
+                today = yyyy +'-'+ mm+'-'+dd;
+                return today;
+            }
+
+            $("#click_button").on('click', function (e){
+               
                 $.ajax({
                     type: "POST",
                     url:'/service_casos',
@@ -427,25 +425,15 @@
                         }
                     },
                     data: {
-                           con_tipcon : $( "#dir_tipocon option:selected" ).val(),
-                           con_nombre: $('#dir_nombre').val(),
-                           con_nrotel: $('#dir_telefono').val(),
-                           con_correo: $('#dir_email').val(),
-                           con_dirweb: $('#dir_web').val(),
-                           con_direcc: $('#dir_direcc').val()},
+                           usu_id : '2',
+                           cli_id: cli_id,
+                           doc_id: doc_id,
+                           estcas_id: '6',
+                           cas_fecate: get_date(),
+                           cas_objact: $('#objetivo').val(),
+                           cas_observ: $('#observaciones').val()},
                     success: function(Response){
-                        data_set.push([
-                                data_set[i-1][0],
-                                tipo,
-                                $("#dir_nombre").val(),
-                                $("#dir_telefono").val(),
-                                $("#dir_email").val(),
-                                $("#dir_web").val(),
-                                $("#dir_direcc").val(),
-                                getButtons(i,i)
-                                
-                            ] );
-                         myTable.clear().rows.add(data_set).draw(); 
+                
                         alert(Response);
                     }
                 });
@@ -458,40 +446,71 @@
                 $.ajax({
                    
                     type: "GET",
-                    url:'../service_directorio',
+                    url:'/service_cliente',
                     success: function(result){
                         
                         
                         var data = jQuery.parseJSON(result);
-                        var rows = "";
-                        $("#tbodycontent").html(rows);
+                        
                        
                         for(var i = 0; i<data.length ;i++)
                         {
-                            var tipo ="";
+                            
 
-                            if (data[i].con_tipcon == 'p') {
-                                tipo = "Persona";
-                            }
-                            else
-                                tipo = "Institucion";
+                                data_set_cli.push([
+                                data[i].cli_id,
+                                data[i].cli_nrodoc,
+                                data[i].cli_nombre,
+                                data[i].cli_direcc
 
-                                data_set.push([
-                                data[i].con_id,
-                                tipo,
-                                data[i].con_nombre,
-                                data[i].con_nrotel,
-                                data[i].con_correo,
-                                data[i].con_direcc,
-                                data[i].con_dirweb,
-                                getButtons(i)
-                                
                             ] )
                             
                         
                         }
-                        tableCli.clear().rows.add(data_set).draw()
-                        tableDoc.clear().rows.add(data_set).draw()
+                        tableCli.clear().rows.add(data_set_cli).draw()
+                        
+                    }
+                        
+                            
+            
+                 
+            
+                });
+
+
+
+                 $.ajax({
+                   
+                    type: "GET",
+                    url:'/service_docente',
+                    success: function(result){
+                        
+                        
+                        var data = jQuery.parseJSON(result);
+                        
+                       
+                        for(var i = 0; i<data.length ;i++)
+                        {
+                            var tipo ="";
+                            if (data[i].eva_tipeva == 'd') {
+                                tipo = "Docente";
+                            }
+                            else
+                                tipo = "Jefe Practica";
+
+                                data_set_doc.push([
+                                data[i].eva_id,
+                                tipo,
+                                data[i].eva_codpuc,
+                                data[i].eva_nombre,
+                                data[i].eva_correo
+
+                            ] )
+                            
+                        
+                        }
+                  
+                        tableDoc.clear().rows.add(data_set_doc).draw()
                     }
                         
                             

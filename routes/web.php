@@ -94,7 +94,9 @@ Route::get('/noticias_registro', function () {
 Route::resource('service_alumno','alumnoController');
 Route::resource('service_jp','jpController');
 Route::resource('service_profesor','profesorController');
+Route::resource('service_docente','docenteController');
 Route::resource('service_directorio','directorioController');
 Route::resource('service_casos','casosController');
+Route::resource('service_cliente','clienteController');
 //Route::resource('test','testController');
 
