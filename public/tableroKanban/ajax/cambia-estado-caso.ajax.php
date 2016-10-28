@@ -6,7 +6,7 @@ $id_estado = $_GET['id_estado'];
 $cas_id = $_GET['cas_id'];
 
 
-$stmt = $db->prepare("UPDATE cobarcom_clinicadb.TA_CASO SET estcas_id = :id_estado WHERE cas_id = $cas_id");
+$stmt = $db->prepare("UPDATE TA_CASO SET estcas_id = :id_estado WHERE cas_id = $cas_id");
 $stmt->bindParam(':id_estado', $id_estado);
 $stmt->execute();
 

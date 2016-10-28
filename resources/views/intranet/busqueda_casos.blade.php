@@ -291,8 +291,8 @@
                                 var id = myTable.row( this ).index();
                                 var data = myTable.row( id ).data();
                                 row_id = data[0];
-                                window.location.replace("/tableroKanban/caso.php?id="+row_id);
-
+                     
+                                window.open("/tableroKanban/caso.php?id="+row_id, "Detalle del Caso", "directories=no, location=no, menubar=no, scrollbars=yes, statusbar=no, tittlebar=no, width=1200, height=700");
                                 
                             } );
        
