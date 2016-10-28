@@ -179,14 +179,14 @@
 		<script src="assets/js/bootstrap.min.js"></script>
 
 		<!-- page specific plugin scripts -->
-		<script src="../assets/js/jquery.dataTables.min.js"></script>
-		<script src="../assets/js/jquery.dataTables.bootstrap.min.js"></script>
-		<script src="../assets/js/dataTables.buttons.min.js"></script>
-		<script src="../assets/js/buttons.flash.min.js"></script>
-		<script src="../assets/js/buttons.html5.min.js"></script>
-		<script src="../assets/js/buttons.print.min.js"></script>
-		<script src="../assets/js/buttons.colVis.min.js"></script>
-		<script src="../assets/js/dataTables.select.min.js"></script>
+		<script src="assets/js/jquery.dataTables.min.js"></script>
+		<script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
+		<script src="assets/js/dataTables.buttons.min.js"></script>
+		<script src="assets/js/buttons.flash.min.js"></script>
+		<script src="assets/js/buttons.html5.min.js"></script>
+		<script src="assets/js/buttons.print.min.js"></script>
+		<script src="assets/js/buttons.colVis.min.js"></script>
+		<script src="sassets/js/dataTables.select.min.js"></script>
 
 
 		<script src="assets/js/ace-elements.min.js"></script>
@@ -246,7 +246,7 @@
             		return;
             	$.ajax({
                     type: "POST",
-                    url:'/service_docente',
+                    url:'service_docente',
                     beforeSend: function (xhr) {
                         var token = $('meta[name="csrf_token"]').attr('content');
 
@@ -338,7 +338,7 @@
                 $.ajax({
                    
                     type: "GET",
-                    url:'/service_docente',
+                    url:'service_docente',
                     success: function(result){
                         
                         

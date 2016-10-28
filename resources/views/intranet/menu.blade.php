@@ -1,5 +1,5 @@
 <script type="text/javascript">
- var url_clinica = "clinica_app/public";   
+ var url_clinica = "";   
 
 </script>
 

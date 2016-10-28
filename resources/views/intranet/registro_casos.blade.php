@@ -416,7 +416,7 @@
                
                 $.ajax({
                     type: "POST",
-                    url:'/service_casos',
+                    url:'service_casos',
                     beforeSend: function (xhr) {
                         var token = $('meta[name="csrf_token"]').attr('content');
 
@@ -446,7 +446,7 @@
                 $.ajax({
                    
                     type: "GET",
-                    url:'/service_cliente',
+                    url:'service_cliente',
                     success: function(result){
                         
                         
@@ -482,7 +482,7 @@
                  $.ajax({
                    
                     type: "GET",
-                    url:'/service_docente',
+                    url:'service_docente',
                     success: function(result){
                         
                         
