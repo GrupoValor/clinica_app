@@ -21,8 +21,14 @@ $display = new Display($db);
 
     <body>
       <div class="row">
-        <div class="col-md-6"><h1>Seguimieto de caso <?php echo $_GET['id'] ?></h1></div>
-        <div class="col-md-2"><button type="button" class="btn btn-default">Estado caso</button></div>
+        <div class="col-md-4"><h1>Seguimieto de caso <?php echo $_GET['id'] ?> </h1></div>
+        <div class="col-md-4">
+            <h3>Estado del caso:</h3>
+            <div id="nombre-estado"> <!--aquí se actualiza dinámicamente con ajax-->
+              <h4> <?php echo $display->estadoCaso($_GET['id']); ?></h4>
+            </div>
+        </div>
+        <div class="col-md-2"><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-cambia-estado">Cambiar estado</button></div>
       </div>
       <div class="row">
             <div id="backlog-tablero" class="col-md-2">
@@ -30,7 +36,7 @@ $display = new Display($db);
                 <ul id="backlog">
                     <?php echo $display->backlog($_GET['id']); ?>
                 </ul>
-                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target=".bs-agregartarea-modal-sm">Agregar tarea</button>
+                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modal-agrega-tarea">Agregar tarea</button>
             </div>
             <div id="pendientes-tablero" class="col-md-2">
                 <h2>Pendientes</h2>
@@ -73,7 +79,7 @@ $display = new Display($db);
 
     </body>
 
-    <div class="modal fade bs-agregartarea-modal-sm" tabindex="-1" id="modal-agrega-tarea" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal fade bs-modal-sm" tabindex="-1" id="modal-agrega-tarea" role="dialog" aria-labelledby="mySmallModalLabel">
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -136,6 +142,30 @@ $display = new Display($db);
                 <button type="button" class="btn btn-danger"   data-dismiss="modal" id="boton-eliminar-tarea">Eliminar tarea</button>
                 <button type="button" class="btn btn-default"  data-dismiss="modal">Cerrar</button>
             </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade bs-modal-sm" tabindex="-1" id="modal-cambia-estado" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Cambie el estado del caso:</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <input type="radio" name="radio" value="1">Activo<br>
+              <input type="radio" name="radio" value="2">Cerrado<br>
+              <input type="radio" name="radio" value="3">En abandono<br>
+              <input type="radio" name="radio" value="4">En seguimiento<br>
+              <input type="radio" name="radio" value="5">Inactivo<br>
+              <input type="radio" name="radio" value="6">Registrado<br>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-success" id="boton-cambia-estado" data-dismiss="modal">Aceptar</button>
+          </div>
         </div>
       </div>
     </div>

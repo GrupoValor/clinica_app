@@ -44,17 +44,21 @@ class Display
     }
 
     public function objetivosCaso($id) {
-        $output = '';
         $stmt = $this->db->query("SELECT cas_objact FROM TA_CASO WHERE cas_id = $id ");
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return $row['cas_objact'];
     }
 
     public function observacionesCaso($id) {
-        $output = '';
         $stmt = $this->db->query("SELECT cas_observ FROM TA_CASO WHERE cas_id = $id ");
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         return $row['cas_observ'];
+    }
+
+    public function estadoCaso($id) {
+        $stmt = $this->db->query("SELECT ESTADO.estcas_detalle FROM TA_CASO CASO, TA_ESTADOCASO ESTADO WHERE CASO.estcas_id = ESTADO.estcas_id AND CASO.cas_id = $id");
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row['estcas_detalle'];
     }
 
 
