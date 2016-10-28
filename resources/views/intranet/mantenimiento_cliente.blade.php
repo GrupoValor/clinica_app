@@ -267,16 +267,6 @@
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
 		<script type="text/javascript">
-			jQuery(function($) {
-				//datepicker plugin
-				//link
-				$('.date-picker').datepicker({
-					autoclose: true,
-					todayHighlight: true
-				}).next().on(ace.click_event, function(){
-					$(this).prev().focus();
-				});
-            }
 			
 		</script>
 		<!-- inline scripts related to this page -->
