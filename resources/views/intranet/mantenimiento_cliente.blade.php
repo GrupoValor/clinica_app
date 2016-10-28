@@ -15,7 +15,7 @@
 		<!-- page specific plugin styles -->
 		<link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
 		<link rel="stylesheet" href="assets/css/ui.jqgrid.min.css" />
-        <!--<link rel="stylesheet" href="assets/css/bootstrap-datepicker3.min.css" />-->
+        <link rel="stylesheet" href="assets/css/bootstrap-datepicker3.min.css" />
 
 		<!-- text fonts -->
 		<link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
@@ -263,12 +263,24 @@
 		<script src="../assets/js/buttons.print.min.js"></script>
 		<script src="../assets/js/buttons.colVis.min.js"></script>
 		<script src="../assets/js/dataTables.select.min.js"></script>
-        <script src="../assets/js/bootstrap-datepicker.min.js"></script>
+        <script src="assets/js/bootstrap-datepicker.min.js"></script>
 
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
 		<script type="text/javascript">
-			
+			jQuery(function($) {
+				//datepicker plugin
+				//link
+				$('.date-picker').datepicker({
+					autoclose: true,
+					todayHighlight: true
+				})
+				//show datepicker when clicking on the icon
+				.next().on(ace.click_event, function(){
+					$(this).prev().focus();
+				});
+            });
+                
 		</script>
 		<!-- inline scripts related to this page -->
 		
