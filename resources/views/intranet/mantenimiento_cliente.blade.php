@@ -15,6 +15,7 @@
 		<!-- page specific plugin styles -->
 		<link rel="stylesheet" href="assets/css/jquery-ui.min.css" />
 		<link rel="stylesheet" href="assets/css/ui.jqgrid.min.css" />
+        <link rel="stylesheet" href="assets/css/bootstrap-datepicker3.min.css" />
 
 		<!-- text fonts -->
 		<link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
@@ -69,8 +70,8 @@
                                         	<th class="hidden">ID</th>
                                             <th>Nombres</th>
                                             <th>Apellidos</th>
-                                            <th>Tipo de documentación</th>
-                                            <th>N° Identificación</th>
+                                            <th>Tipo de documento</th>
+                                            <th>N° documento</th>
                                             <th>Fecha de nacimiento</th>
                                             <th>Teléfono</th>
                                             <th>Nivel educativo</th>
@@ -115,31 +116,61 @@
 							<h1 >  Contacto </h1>
 
 							<form class="form-horizontal" role="form" style="padding-left: 66px;">
-                                    <div class="space-20" ></div>
-
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Tipo </label>
-
-										<div class="col-sm-9">
-											 <select id="dir_tipocon" class="col-xs-5 col-sm-7" data-placeholder="Click para elegir...">
-													<option value="p">Persona</option>
-													<option value="i">Institucion</option>
-		
-												</select>
-									   	
-										</div>
-									</div>
+                                    <div class="space-20" ></div>									
                                    
 									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Nombre </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Nombres </label>
 
 										<div class="col-sm-9">
 											<input id="dir_nombre" type="text" id="form-field-3"  class="col-xs-5 col-sm-7" />
 										</div>
 									</div>
                                     <div class="space-4"></div>
-                                    
-                                    
+                                
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Apellidos </label>
+
+                                        <div class="col-sm-9">
+                                            <input id="dir_apellidos" type="text" id="form-field-3"  class="col-xs-5 col-sm-7" />
+                                        </div>
+                                    </div>
+                                    <div class="space-4"></div>
+                                
+                                    <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Tipo de documento</label>
+
+								        <div class="col-sm-9">
+											 <select id="dir_tipodoc" class="col-xs-5 col-sm-7" data-placeholder="Click para elegir...">
+                                                <option value="d">DNI</option>
+                                                <option value="l">Libreta militar</option>
+                                                <option value="p">Pasaporte</option>		
+								            </select>									   	
+										</div>
+									</div>                                
+                                
+                                    <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4"> N° de documento </label>
+
+										<div class="col-sm-9">
+											<input id="dir_nrodoc" type="text" id="form-field-4" class="col-xs-5 col-sm-7" />
+										</div>
+									</div>
+                                    <div class="space-4"></div>
+                                
+                                    <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-4">Fecha de Nacimiento</label>
+										<div class="col-sm-4">
+                                            <div class="col-sm-4">
+                                                <div class="input-group">
+                                                    <input class="form-control date-picker" id="dir_fechanac" type="text" data-date-format="dd-mm-yyyy" />
+                                                    <span class="input-group-addon">
+                                                        <i class="fa fa-calendar bigger-110"></i>
+                                                    </span>
+                                                </div>
+                                            </div>
+										</div>
+									</div>
+                                
                                     <div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-4"> Teléfono </label>
 
@@ -148,6 +179,21 @@
 										</div>
 									</div>
                                     <div class="space-4"></div>
+                                
+                                    <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-3">Nivel educativo</label>
+
+								        <div class="col-sm-9">
+											 <select id="dir_tipodoc" class="col-xs-5 col-sm-7" data-placeholder="Click para elegir...">
+                                                <option value="pri">Primaria</option>
+                                                <option value="sec">Secundaria</option>
+                                                <option value="p">Superior</option>		
+								            </select>									   	
+										</div>
+									</div>  
+                                    
+                                    
+                                    
                                     <div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > E-mail </label>
 
@@ -200,7 +246,7 @@
 		<!-- basic scripts -->
 
 		<!--[if !IE]> -->
-		<script src="assets/js/jquery-2.1.4.min.js"></script>
+		<script src="../assets/js/jquery-2.1.4.min.js"></script>
 
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
@@ -216,12 +262,21 @@
 		<script src="../assets/js/buttons.print.min.js"></script>
 		<script src="../assets/js/buttons.colVis.min.js"></script>
 		<script src="../assets/js/dataTables.select.min.js"></script>
-
+        <script src="../assets/js/bootstrap-datepicker.min.js"></script>
 
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
 		<script type="text/javascript">
-			
+			jQuery(function($) {
+				//datepicker plugin
+				//link
+				$('.date-picker').datepicker({
+					autoclose: true,
+					todayHighlight: true
+				}).next().on(ace.click_event, function(){
+					$(this).prev().focus();
+				});
+            }
 			
 		</script>
 		<!-- inline scripts related to this page -->
