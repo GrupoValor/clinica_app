@@ -91,6 +91,11 @@ Route::get('/noticias_registro', function () {
     return view('intranet/gestor_noticias_registro');
 });
 
+//page error
+Route::get('/error-500', function () {
+    return view('errors/500');
+});
+
 Route::resource('service_alumno','alumnoController');
 Route::resource('service_jp','jpController');
 Route::resource('service_profesor','profesorController');
