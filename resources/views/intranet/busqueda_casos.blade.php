@@ -292,7 +292,7 @@
                                 var data = myTable.row( id ).data();
                                 row_id = data[0];
                      
-                                window.open("/tableroKanban/caso.php?id="+row_id, "Detalle del Caso", "directories=no, location=no, menubar=no, scrollbars=yes, statusbar=no, tittlebar=no, width=1200, height=700");
+                                window.open(url_clinica+"/tableroKanban/caso.php?id="+row_id, "Detalle del Caso", "directories=no, location=no, menubar=no, scrollbars=yes, statusbar=no, tittlebar=no, width=1200, height=700");
                                 
                             } );
        

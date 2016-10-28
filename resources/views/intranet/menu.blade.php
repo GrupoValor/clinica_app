@@ -1,3 +1,8 @@
+<script type="text/javascript">
+ var url_clinica = "clinica_app/public";   
+
+</script>
+
 <div id="navbar" class="navbar navbar-default          ace-save-state"> <!--Barra superior-->
             <div class="navbar-container ace-save-state" id="navbar-container">
                 <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
