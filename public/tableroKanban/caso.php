@@ -73,7 +73,7 @@ $display = new Display($db);
 
     </body>
 
-    <div class="modal fade bs-agregartarea-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal fade bs-agregartarea-modal-sm" tabindex="-1" id="modal-agrega-tarea" role="dialog" aria-labelledby="mySmallModalLabel">
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -98,7 +98,7 @@ $display = new Display($db);
     </div>
 
 
-    <div class="modal fade bs-detalle-tarea-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal fade bs-modal-lg" id="modal-detalle-tarea" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -113,9 +113,7 @@ $display = new Display($db);
               </div>
               <div id ="comentarios-tarea">
                 <h3>Comentarios:</h3>
-                <ul id="lista-comentarios">
-
-                </ul>
+                <div id="contenedor-lista-comentarios"></div>
                 <form class="form-inline">
                   <div class="form-group">
                     <label for="contenido-comentario">Comentario: </label>

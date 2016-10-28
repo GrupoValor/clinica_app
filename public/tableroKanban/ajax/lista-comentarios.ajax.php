@@ -2,16 +2,15 @@
 
 require_once '../php-includes/connect.inc.php';
 
-$tar_id = $_GET['tar_id'];
+$id = $_GET['tar_id'];
 
-$arreglo_comentarios = [];
 
-$stmt = $db->query("SELECT com_mensaj FROM cobarcom_clinicadb.TA_COMENTARIO WHERE tar_id = $tar_id");
-
+$output = '';
+$stmt = $db->query("SELECT * FROM cobarcom_clinicadb.TA_COMENTARIO WHERE tar_id = $id");
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    $arreglo_comentarios[] = $row['com_mensaj'];
+    $output .= '<li class="comentario" id="' . $row['com_id'] . '"> super_user escribio:' . $row['com_mensaj'] . '</li>';
 }
 
-echo $arreglo_comentarios;
+echo '<ul id="lista-comentarios">'. $output .'</ul>';
 
 ?>

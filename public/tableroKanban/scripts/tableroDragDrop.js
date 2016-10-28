@@ -83,19 +83,21 @@ $(document).ready(function() {
   	});
 
 
+    $('#modal-agrega-tarea').on('hidden.bs.modal', function(){
+        $(this).find('.form-control')[0].reset();
+    });
+
     //Al  hacer doble click sobre las tareas se despliega su detalle
     $(document).on('dblclick','.tarea',function(){
 
         var tarea = this;
 
-        //Primero tenemos que listar todos comentarios, usamos ajax
-        $.get("ajax/lista-comentarios.ajax.php",{'tar_id': this.id}, function(data){
-          /*var $mensajes = JSON.parse(data);
-          for (var i = 0, len = $mensajes.length; i < len; i++) { // OJO AQUI PUEDE HABER UN ERROR MAS ADELANTE
-            ('#lista-comentarios').append('<li class="comentario"> super_user escribio: '+$mensajes[i]+'</li>');
-          } */
-        });
+        $("#modal-detalle-tarea").modal("show");
 
+
+        //Primero tenemos que listar todos comentarios, usamos ajax
+        $.get("ajax/lista-comentarios.ajax.php", {'tar_id': tarea.id},
+             function(data){$("#contenedor-lista-comentarios").html(data);}, "html");
 
         //Obtenemos el nombre de la tarea
         $.get("ajax/nombre-tarea.ajax.php",{'id': this.id},function(data1){
@@ -122,9 +124,7 @@ $(document).ready(function() {
           $.get("ajax/inserta-comentario.ajax.php",
             {'tar_id': tarea.id,
             'com_mensaje': $('#contenido-comentario').val()},function(data){
-            $('#lista-comentarios').append('<li class="comentario" id="'+data+'"> super_user escribio: '+ $('#contenido-comentario').val()+'</li>');
-          });
-
+            $('#lista-comentarios').append('<li class="comentario" id="'+data+'"> super_user escribio: '+ $('#contenido-comentario').val()+'</li>'); });
         });
 
         //<label for="descripcion-detalle-tarea">Titulo:</label>
