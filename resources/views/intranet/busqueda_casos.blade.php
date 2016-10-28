@@ -285,7 +285,7 @@
                                 style: 'single'
                             }
                         });
-                $('#dynamic-table').on( 'click', 'a', function () {
+                $('#dynamic-table').on( 'click', 'tr', function () {
 
 
                                 var id = myTable.row( this ).index();
@@ -466,6 +466,8 @@
                                                         '<i class="ace-icon fa fa-pencil bigger-130">'+'</i>'+
                                                     '</a>'+
                                                 '</div>';
+
+            var butons2 = '<button type="button" class="btn btn-warning btn-sm" >Ir al caso</button>' 
                 $.ajax({
                    
                     type: "GET",
@@ -488,7 +490,7 @@
                             data[i].cas_objact,
                             data[i].res_nombre,
                             data[i].estcas_detalle,
-                            butons
+                            butons2
                             
                         ] ).draw( false );
                         
