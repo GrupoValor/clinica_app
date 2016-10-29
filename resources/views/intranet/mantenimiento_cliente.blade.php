@@ -28,6 +28,7 @@
 		<link rel="stylesheet" href="assets/css/ace-skins.min.css" />
 		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
 
+        <script src="assets/js/jquery-2.1.4.min.js"></script>
         <script src="assets/js/ace-extra.min.js"></script>
 
 	</head>
@@ -41,7 +42,7 @@
 						<ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="index.html">Home</a>
+								<a href="index">Home</a>
 							</li>
 							<li>
 								Mantenimientos
@@ -246,7 +247,7 @@
 		<!-- basic scripts -->
 
 		<!--[if !IE]> -->
-		<script src="../assets/js/jquery-2.1.4.min.js"></script>
+		
 
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
@@ -262,12 +263,24 @@
 		<script src="../assets/js/buttons.print.min.js"></script>
 		<script src="../assets/js/buttons.colVis.min.js"></script>
 		<script src="../assets/js/dataTables.select.min.js"></script>
-        <script src="../assets/js/bootstrap-datepicker.min.js"></script>
+        <script src="assets/js/bootstrap-datepicker.min.js"></script>
 
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
 		<script type="text/javascript">
-			
+			jQuery(function($) {
+				//datepicker plugin
+				//link
+				$('.date-picker').datepicker({
+					autoclose: true,
+					todayHighlight: true
+				})
+				//show datepicker when clicking on the icon
+				.next().on(ace.click_event, function(){
+					$(this).prev().focus();
+				});
+            });
+                
 		</script>
 		<!-- inline scripts related to this page -->
 		

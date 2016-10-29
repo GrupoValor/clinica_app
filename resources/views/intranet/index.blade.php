@@ -38,7 +38,7 @@
 						<ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="index.html">Home</a>
+								<a href="index">Home</a>
 							</li>
 							<li class="active">Principal</li>
 						</ul><!-- /.breadcrumb -->
@@ -73,7 +73,7 @@
 												<div class="widget-header">
 
                                                     <h5 class="widget-title lighter">
-														<a href="Casos/caso.html">
+														<a href="caso_semana8">
 															<strong>Actividad Semana 8</strong>
 														</a>
 														<small> vence el 12 de noviembre del 2016</small>
