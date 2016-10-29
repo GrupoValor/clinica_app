@@ -1,7 +1,12 @@
 body {
     margin: 0;
 }
-
+*{
+    border:0;
+}
+ul{
+    border: none;
+}
 h1 {
     font-family: sans-serif;
     margin: 0;
@@ -12,7 +17,8 @@ h1 {
 }
 
 h2 {
-    color: #fff;
+    color: #1B6AAA;
+    padding-bottom: 5px;
 }
 
 #backlog-tablero, #pendientes-tablero, #proceso-tablero, #finalizadas-tablero{
@@ -20,7 +26,7 @@ h2 {
 }
 
 ul {
-    border: 8px solid #4B3621;
+    border: none;
     border-radius: 10px;
     list-style: none;
     padding: 0;
@@ -55,4 +61,32 @@ li:hover {
 .modal-body{
     max-height: 600px;
     overflow-y: auto;
+}
+#nombre-estado{
+    color: #1B6AAA;
+    margin: 0;
+    vertical-align: middle;
+    padding-left: 0;
+    padding-right: 0
+}
+#cambia-estado{
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    vert-align: middle;
+}
+#tituloCaso{
+    margin: 0;
+    vertical-align: middle;
+}
+#areaTareas{
+    background-color: #F5F5DC;
+}
+#columnaEnunciadoEstado{
+    margin:0;
+    padding: 0;
+    vertical-align: middle;
+}
+#datosEstadoCaso{
+    vertical-align: middle;
 }

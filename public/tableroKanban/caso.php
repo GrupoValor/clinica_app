@@ -21,59 +21,66 @@ $display = new Display($db);
 
     <body>
       <div class="row">
-        <div class="col-md-4"><h1>Seguimieto de caso <?php echo $_GET['id'] ?> </h1></div>
-        <div class="col-md-4">
-            <h3>Estado del caso:</h3>
-            <div id="nombre-estado"> <!--aquí se actualiza dinámicamente con ajax-->
+        <div class="col-md-4" id="tituloCaso"><h2>Seguimieto de caso <?php echo $_GET['id'] ?> </h2></div>
+        <div class="col-md-8" id="datosEstadoCaso">
+            <div class="col-md-2" id="columnaEnunciadoEstado"><h4>Estado del caso:</h4></div>
+            <div class="col-md-2" id="nombre-estado"> <!--aquí se actualiza dinámicamente con ajax-->
               <h4> <?php echo $display->estadoCaso($_GET['id']); ?></h4>
             </div>
+            <div class="col-md-3" id="cambia-estado"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-cambia-estado">Cambiar estado</button></div>
         </div>
-        <div class="col-md-2"><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-cambia-estado">Cambiar estado</button></div>
       </div>
       <div class="row">
+          <div id="areaTareas" >
             <div id="backlog-tablero" class="col-md-2">
-                <h2>Backlog</h2>
+                <h3>Backlog</h3>
                 <ul id="backlog">
                     <?php echo $display->backlog($_GET['id']); ?>
                 </ul>
-                <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modal-agrega-tarea">Agregar tarea</button>
+                <button type="button" class="btn btn-success btn-info" data-toggle="modal" data-target="#modal-agrega-tarea">Agregar tarea</button>
             </div>
             <div id="pendientes-tablero" class="col-md-2">
-                <h2>Pendientes</h2>
+                <h3>Pendientes</h3>
                 <ul id="pendiente">
                     <?php echo $display->pendiente($_GET['id']); ?>
                 </ul>
             </div>
             <div id="proceso-tablero" class="col-md-2">
-                <h2>En proceso</h2>
+                <h3>En proceso</h3>
                 <ul id="proceso">
                     <?php echo $display->proceso($_GET['id']); ?>
                 </ul>
             </div>
             <div id="finalizadas-tablero" class="col-md-2">
-                <h2>Finalizadas</h2>
+                <h3>Finalizadas</h3>
                 <ul id="finalizada">
                     <?php echo $display->finalizada($_GET['id']); ?>
                 </ul>
             </div>
+          </div>
             <div id="panel-control-tablero" class="col-md-4">
               <div id="panel-control-tablero-interesados">
-                <h2>Miembros</h2>
+                <h3>Miembros</h3>
               </div>
               <div id="panel-control-tablero-actividad">
-                <h2>Registro de actividad</h2>
+                <h3>Registro de actividad</h3>
               </div>
             </div>
       </div>
-      <div class="row">
-          <div id="detalles-caso" class="col-md-6">
-            <h2>Objetivos del caso:</h2>
-            <p><?php echo $display->objetivosCaso($_GET['id']); ?></p>
-            <h2>ObservacionesCaso del caso:</h2>
-            <p><?php echo $display->observacionesCaso($_GET['id']); ?></p>
-            <h2>Resultados del caso:</h2>
+      <div class="row" id="detalles-caso">
+          <div class="col-sm-4">
+              <label class="control-label no-padding-right">Objetivo del caso:</label>
 
+              <div>
+                  <p><?php echo $display->objetivosCaso($_GET['id']); ?></p>
+              </div>
+          </div>
+          <div class="col-sm-4">
+              <label class="control-label no-padding-right">Observaciones del caso:</label>
 
+              <div>
+                  <p><?php echo $display->observacionesCaso($_GET['id']); ?></p>
+              </div>
           </div>
       </div>
 
@@ -128,6 +135,7 @@ $display = new Display($db);
                   <button type="button" class="btn btn-default" id="boton-ingresar-comentario">Ingresar</button>
                 </form>
               </div>
+                <form class="form-inline">
               <div class="form-group">
                 <div>
                   <h5>Establecer fecha vencimiento:</h5>
@@ -136,7 +144,9 @@ $display = new Display($db);
                 <div>
                   <br><button type="button" class="btn btn-warning">Alerta documento</button>
                 </div>
+
               </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger"   data-dismiss="modal" id="boton-eliminar-tarea">Eliminar tarea</button>
