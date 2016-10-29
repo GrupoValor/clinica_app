@@ -20,11 +20,14 @@ class docenteController extends Controller
      */
     public function index()
     {
-        $docentes = TAEVALUADOR::all();
+		
+        //$docentes = TAEVALUADOR::all();
+		$docentes =DB::select('SELECT * FROM TA_EVALUADOR WHERE eva_tipeva = "d"');
         $data = array();
 
         foreach ($docentes as $docente) {
-            array_push($data,$docente['attributes']);
+            array_push($data,json_decode(json_encode($docente), true));
+            //echo var_dump($data);
         }
        
         echo json_encode($data);
