@@ -40,7 +40,7 @@
 						<ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="index.html">Home</a>
+								<a href="index">Home</a>
 							</li>
 							<li>
 								Mantenimientos
@@ -186,7 +186,7 @@
 		<script src="assets/js/buttons.html5.min.js"></script>
 		<script src="assets/js/buttons.print.min.js"></script>
 		<script src="assets/js/buttons.colVis.min.js"></script>
-		<script src="sassets/js/dataTables.select.min.js"></script>
+		<script src="assets/js/dataTables.select.min.js"></script>
 
 
 		<script src="assets/js/ace-elements.min.js"></script>
@@ -347,7 +347,7 @@
                        
                         for(var i = 0; i<data.length ;i++)
                         {
-                            [{"eva_id":1,"usu_id":3,"eva_codpuc":"20012734","eva_tipeva":"d","eva_nombre":"Carlos Flores","eva_correo":"carlos@pucp.pe"}]
+                            //[{"eva_id":1,"usu_id":3,"eva_codpuc":"20012734","eva_tipeva":"d","eva_nombre":"Carlos Flores","eva_correo":"carlos@pucp.pe"}]
 
 	                            data_set.push([
 	                            data[i].eva_id,

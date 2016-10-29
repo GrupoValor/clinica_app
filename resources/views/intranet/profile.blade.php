@@ -34,10 +34,18 @@
 </head>
 
 <body class="no-skin">
-    @include('intranet.menu')	
-					<li class="">Página Personal</li>
-				</ul>
-			</div>
+    <?php  echo view('intranet/menu'); ?>			
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="index">Home</a>
+                        </li>
+                        <li class="active">Perfil </li>
+                    </ul><!-- /.breadcrumb -->
+                </div>
 
 			<div class="page-content">
 				<div class="page-header"><!-- /.page-header -->
@@ -124,21 +132,7 @@
 		</div>
 	</div><!-- /.main-content -->
 
-	<div class="footer"><!--pie de pagina-->
-		<div class="footer-inner">
-			<div class="footer-content">
-                <span class="bigger-120">
-                    <span class="blue bolder">Grupo Valor</span>
-                    Application &copy; 2016
-                </span>
-			</div>
-		</div>
-	</div>
-    <!-- para moviles, sirve para scrollear hacia arriba-->
-	<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse"> 
-		<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-	</a>
-</div><!-- /.main-container -->
+	<?php  echo view('intranet/footer'); ?>	
 
 <!-- basic scripts -->
 <script src="assets/js/jquery-2.1.4.min.js"></script>
