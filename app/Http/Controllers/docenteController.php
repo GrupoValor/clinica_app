@@ -72,7 +72,7 @@ class docenteController extends Controller
         array_push($data,json_decode(json_encode($casos[0]), true));
         $userid = $data[0]['id'];
         
-        //creo el jefe de practica
+        //creo el docente
         
         $docente = TAEVALUADOR::create([
                                     'usu_id' => $userid,

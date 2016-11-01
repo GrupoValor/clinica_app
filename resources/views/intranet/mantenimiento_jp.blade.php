@@ -293,7 +293,7 @@
             }          
                               
         });
-       function edit_onClick(id,alu_id) {
+       function edit_onClick(id,eva_id) {
 
        			//alert (id);
 				action="UPDATE";

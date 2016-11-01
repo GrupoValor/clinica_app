@@ -99,8 +99,8 @@ class jpController extends Controller
 		
 		$data = array();
         array_push($data,json_decode(json_encode($casos[0]), true));
-        $userid = $data[0]['id'];
-		echo $userid;
+        $jpid = $data[0]['id'];
+		echo $jpid;
     }
 
     /**

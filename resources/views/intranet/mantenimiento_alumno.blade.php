@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+    <meta name="csrf_token" content="{{ csrf_token() }}" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Intranet | Mantenimientos - Alumnos</title>
+		<title>Intranet | Mantenimientos - Alumno</title>
 
 		<meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -51,7 +52,7 @@
 					<div class="page-content">
 						<div class="page-header"><!-- /.page-header -->
 							<h1 id = "mytitulo" >
-								Mantenimiento de alumnos
+								Mantenimiento de Alumno
 								<button type="button" class="btn btn-primary" style="float: right;margin-top: -8px;" onclick="add_onClick()" >Nuevo +</button>
 							</h1>
 
@@ -67,11 +68,10 @@
                                         <tr>
                                         	<th>ID</th>
                                             <th>Nombre</th>
-                                            <th>Apellido Paterno</th>
-                                            <th>Apellido Materno</th>
-                                            <th>DNI</th>
-                                            <th>Telefono 1</th>
+                                            <th>Codigo Pucp</th>
+											<th>Número Documento</th>
                                             <th>Correo</th>
+											<th>Voluntario</th>
                                             <th>Modificar</th>
                                         </tr>
                                         </thead>
@@ -120,33 +120,12 @@
 										</div>
 									</div>
                                    
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Apellido Paterno </label>
-
-										<div class="col-sm-9">
-											<input id="dir_apelPa" type="text" id="form-field-3"  class="col-xs-5 col-sm-7" />
-										</div>
-									</div>
-                                    <div class="space-4"></div>
+									
                                     
                                     
-                                    <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-4"> Apellido Materno </label>
-
-										<div class="col-sm-9">
-											<input id="dir_apelMa" type="text" id="form-field-4" class="col-xs-5 col-sm-7" />
-										</div>
-									</div>
                                     <div class="space-4"></div>
-                                    <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-4"> DNI </label>
-
-										<div class="col-sm-9">
-											<input id="dir_dni" type="text" id="form-field-4" class="col-xs-5 col-sm-7" />
-										</div>
-									</div>
                                     
-                                    <div class="space-4"></div>
+
                                     <div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > codigo Pucp </label>
 
@@ -155,22 +134,20 @@
 										</div>
 									</div>    
                                 
+								<div class="space-4"></div>
+                                    
+
+                                    <div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > Número de documento </label>
+
+										<div class="col-sm-9">
+											<input id="dir_nrodoc" type="text"   class="col-xs-5 col-sm-7"  />
+										</div>
+									</div>
+								
+								
                                     <div class="space-4"></div>
-                                    <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > Telefono 1 </label>
-
-										<div class="col-sm-9">
-											<input id="dir_tele1" type="text"   class="col-xs-5 col-sm-7"  />
-										</div>
-									</div>
-									<div class="space-4"></div>
-                                    <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-5"> telefono 2   </label>
-
-										<div class="col-sm-9">
-											<input id="dir_tele2" type="text" id="form-field-5"  class="col-xs-5 col-sm-7" />
-										</div>
-									</div>
+                                    
 									<div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-5"> Correo </label>
 
@@ -216,14 +193,14 @@
 		<script src="assets/js/bootstrap.min.js"></script>
 
 		<!-- page specific plugin scripts -->
-		<script src="../assets/js/jquery.dataTables.min.js"></script>
-		<script src="../assets/js/jquery.dataTables.bootstrap.min.js"></script>
-		<script src="../assets/js/dataTables.buttons.min.js"></script>
-		<script src="../assets/js/buttons.flash.min.js"></script>
-		<script src="../assets/js/buttons.html5.min.js"></script>
-		<script src="../assets/js/buttons.print.min.js"></script>
-		<script src="../assets/js/buttons.colVis.min.js"></script>
-		<script src="../assets/js/dataTables.select.min.js"></script>
+		<script src="assets/js/jquery.dataTables.min.js"></script>
+		<script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
+		<script src="assets/js/dataTables.buttons.min.js"></script>
+		<script src="assets/js/buttons.flash.min.js"></script>
+		<script src="assets/js/buttons.html5.min.js"></script>
+		<script src="assets/js/buttons.print.min.js"></script>
+		<script src="assets/js/buttons.colVis.min.js"></script>
+		<script src="assets/js/dataTables.select.min.js"></script>
 
 
 		<script src="assets/js/ace-elements.min.js"></script>
@@ -267,13 +244,10 @@
        	action="ADD";
 
        	$("#dir_nombre").val("");
-        $("#dir_apelPa").val("");
-        $("#dir_apelMa").val("");
-        $("#dir_dni").val("");   
-        $("#dir_tel1").val("");
-        $("#dir_tel2").val("");
         $("#dir_correo").val("");
-           
+        $("#dir_codpucp").val("");
+		$("#dir_nrodoc").val("");
+        
        	$("#boton").modal()
        }
 
@@ -283,11 +257,15 @@
             if (action=="ADD"){
             	//tipo = "Persona";
             	i = data_set.length;
-            	if ( $('#dir_nombre').val().length < 1)
+            	var tipo = "SI";
+				//validaciones
+				if ( $('#dir_nombre').val().length < 1)
             		return;
+					
+				//	
             	$.ajax({
                     type: "POST",
-                    url:'/service_alumno',
+                    url:'service_alumno',
                     beforeSend: function (xhr) {
                         var token = $('meta[name="csrf_token"]').attr('content');
 
@@ -296,32 +274,29 @@
                         }
                     },
                     data: {
-                           //
-                           //con_tipcon : $( "#dir_tipocon option:selected" ).val(),
+                           
                            alu_nombre: $('#dir_nombre').val(),
-                           alu_apepa: $('#dir_apelPa').val(),
-                           alu_apema: $('#dir_apelMa').val(),
-                           alu_nrodoc: $('#dir_dni').val(),
+                           alu_nrodoc: $("#dir_nrodoc").val(),
                            alu_codpuc: $('#dir_codpucp').val(),
-                           alu_telno1: $('#dir_tel1').val(),
-                           alu_telno2: $('#dir_tel2').val(),
                            alu_correo: $('#dir_correo').val()},
+						   
                            
                     
                     success: function(Response){
                     	data_set.push([
+						
                             //para agregar al datatable
-            					data_set[i-1][0],
-	                            $("#dir_nombre").val(),
-	                            $("#dir_apelPa").val(),
-	                            $("#dir_apelMa").val(),
-	                            $("#dir_tele1").val(),
+            					Response,
+                                $("#dir_nombre").val(),
+	                            $("#dir_codpucp").val(),
+								$("#dir_nrodoc").val(),
 	                            $("#dir_correo").val(),
+								tipo,
 	                            getButtons(i,i)
 	                            
 	                        ] );
                     	 myTable.clear().rows.add(data_set).draw(); 
-                        alert(Response);
+                        alert("Registrado");
                     }
                 });
 
@@ -335,10 +310,10 @@
 
 
             data_set[editid][1]=$("#dir_nombre").val();
-	        data_set[editid][2]=$("#dir_apelPa").val();
-	        data_set[editid][3] =$("#dir_apelMa").val();
-	        data_set[editid][4]=$("#dir_tele1").val();
-	        data_set[editid][5]=$("#dir_correo").val();
+	        data_set[editid][2]=$("#dir_codpucp").val();
+			data_set[editid][3]=$("#dir_nrodoc").val();
+	        data_set[editid][4]=$("#dir_correo").val();
+			
              myTable.clear().rows.add(data_set).draw(); 
             }          
                               
@@ -350,13 +325,12 @@
                 var rows = myTable.rows(id).data();
                 editid = parseInt(id);
                 $("#dir_nombre").val(data_set[editid][1]+"");
-                $("#dir_apelPa").val(data_set[editid][2]+"");
-                $("#dir_apelMA").val(data_set[editid][3]+"");
-                $("#dir_tele1").val(data_set[editid][4]+"");
-                $("#dir_correo").val(data_set[id][5]+"");
+                $("#dir_codpucp").val(data_set[editid][2]+"");
+				$("#dir_nrodoc").val(data_set[editid][3]+"");
+                $("#dir_correo").val(data_set[id][4]+"");
 
                 $("#boton").modal()
-               //alert(rows[0][3]);
+    
               
 
               }
@@ -366,15 +340,11 @@
                 $('#dynamic-table')                
                         .DataTable({
                         	
-                            bAutoWidth: true,
-                    		"columnDefs": [
-							    { "width": "160px", "targets": [2,4] },
-							     { "width": "200px", "targets": [5] },
-							     { "visible": false, "targets": [0] }
-							  ],
+                            bAutoWidth: false,
+                    		
                             "aoColumns": [
 
-                                null,null, null, null, null,null, null,
+                                null,null,null,null,null,null,
                                 {"bSortable": false}
                             ],
                             "aaSorting": [],
@@ -394,31 +364,28 @@
                 $.ajax({
                    
                     type: "GET",
-                    url:'../service_alumno',
+                    url:'service_alumno',
                     success: function(result){
                         
                         
                         var data = jQuery.parseJSON(result);
-                        var rows = "";
-                        $("#tbodycontent").html(rows);
+						var tipo;
                        
                         for(var i = 0; i<data.length ;i++)
                         {
-                            //var tipo ="";
-
-                            //if (data[i].con_tipcon == 'p') {
-                            //    tipo = "Persona";
-                            //}
-                            //else
-                            //    tipo = "Institucion";
+							if(data[i].alu_volunt === 1)
+								tipo = "SI";
+							else
+								tipo = "NO";
+                            //[{"eva_id":1,"usu_id":3,"eva_codpuc":"20012734","eva_tipeva":"d","eva_nombre":"Carlos Flores","eva_correo":"carlos@pucp.pe"}]
 
 	                            data_set.push([
 	                            data[i].alu_id,
-	                            data[i].alu_nombre,
-	                            data[i].alu_apepa,
-	                            data[i].alu_apelma,
-	                            data[i].alu_telno1,
+                                data[i].alu_nombre,
+	                            data[i].alu_codpuc,
+								data[i].alu_nrodoc,
 	                            data[i].alu_correo,
+								tipo,
 	                            getButtons(i)
 	                            
 	                        ] )
