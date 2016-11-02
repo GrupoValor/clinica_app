@@ -425,17 +425,17 @@
                     },
                     data: {
                            
-							cli_nombre : $("#dir_nombre").val(""),
+							cli_nombre : $("#dir_nombre").val(),
 							cli_genero : genero,
-							cli_fecnac : $("#dir_fecnac").val(""),
-							cli_numhij : $("#dir_numhij").val(""),
+							cli_fecnac : $("#dir_fecnac").val(),
+							cli_numhij : $("#dir_numhij").val(),
 							cli_nivedu : nivel,
-							cli_nrodoc : $("#dir_nrodoc").val(""),
-							cli_ocupac : $("#dir_ocupac").val(""),
-							cli_direcc : $("#dir_direcc").val(""),
-							cli_telno1 : $("#dir_telno1").val(""),
-							cli_telno2 : $("#dir_telno2").val(""),
-							cli_correo : $("#dir_correo").val("")},
+							cli_nrodoc : $("#dir_nrodoc").val(),
+							cli_ocupac : $("#dir_ocupac").val(),
+							cli_direcc : $("#dir_direcc").val(),
+							cli_telno1 : $("#dir_telno1").val(),
+							cli_telno2 : $("#dir_telno2").val(),
+							cli_correo : $("#dir_correo").val()},
                            
                     
                     success: function(Response){

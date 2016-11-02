@@ -91,7 +91,7 @@ class alumnoController extends Controller
 		$data = array();
         array_push($data,json_decode(json_encode($casos[0]), true));
         $aluid = $data[0]['id'];
-		echo $alurid;
+		echo $aluid;
     }
 
     /**
