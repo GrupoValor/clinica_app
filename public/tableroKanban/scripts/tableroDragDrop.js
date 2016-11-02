@@ -97,7 +97,9 @@ $(document).ready(function() {
             $('#nombre-detalle-tarea').remove();
             $('#label-nombre-tarea').after('<input type="text" class="form-control" id="nombre-detalle-tarea" disabled placeholder="'+data1+'">');
         });
-
+		$('#botonEditar').on('click',function () {
+			//$('#nombre-detalle-tarea').read;
+		})
         //Obtenemos la direccion
         $.get("ajax/detalle-tarea.ajax.php",{'id': this.id},function(data2){
             $('#descripcion-detalle-tarea').remove();

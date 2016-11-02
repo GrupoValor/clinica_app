@@ -124,6 +124,7 @@ $display = new Display($db);
               <div class="form-group">
                 <label for="descripcion-detalle-tarea" id="label-detalle-tarea">Detalle:</label>
               </div>
+                <div><button type="button" class="btn btn-info" id="botonEditar">Editar</button> </div>
               <div id ="comentarios-tarea">
                 <h3>Comentarios:</h3>
                 <div id="contenedor-lista-comentarios"></div>
