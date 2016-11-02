@@ -21,7 +21,7 @@ $display = new Display($db);
 
     <body>
       <div class="row">
-        <div class="col-md-4" id="tituloCaso"><h2>Seguimieto de caso <?php echo $_GET['id'] ?> </h2></div>
+        <div class="col-md-4" id="tituloCaso"><h2>Seguimiento de caso <?php echo $_GET['id'] ?> </h2></div>
         <div class="col-md-8" id="datosEstadoCaso">
             <div class="col-md-2" id="columnaEnunciadoEstado"><h4>Estado del caso:</h4></div>
             <div class="col-md-2" id="nombre-estado"> <!--aquí se actualiza dinámicamente con ajax-->
@@ -129,20 +129,20 @@ $display = new Display($db);
                 <div id="contenedor-lista-comentarios"></div>
                 <form class="form-inline">
                   <div class="form-group">
-                    <label for="contenido-comentario">Comentario: </label>
+                    <label id="enunciadoComentario" for="contenido-comentario">Comentarios: </label>
                     <textarea class="form-control" rows="3" cols="75" id="contenido-comentario"></textarea>
                   </div>
-                  <button type="button" class="btn btn-default" id="boton-ingresar-comentario">Ingresar</button>
+                  <button type="button" class="btn btn-info" id="boton-ingresar-comentario">Ingresar</button>
                 </form>
               </div>
                 <form class="form-inline">
               <div class="form-group">
                 <div>
-                  <h5>Establecer fecha vencimiento:</h5>
-                  <input type="date" name="fecha">
+                  <label for="fechaTarea">Vencimiento:</label>
+                  <input type="date" name="fechaTarea">
                 </div>
                 <div>
-                  <br><button type="button" class="btn btn-warning">Alerta documento</button>
+                  <button type="button" class="btn btn-warning">+ Alerta documento</button>
                 </div>
 
               </div>

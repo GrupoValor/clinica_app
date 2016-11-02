@@ -120,7 +120,6 @@ $(document).ready(function() {
             $('#lista-comentarios').append('<li class="comentario" id="'+data+'"> super_user escribio: '+ $('#contenido-comentario').val()+'</li>'); });
           $('#contenido-comentario').removeData();
         });
-
         //<label for="descripcion-detalle-tarea">Titulo:</label>
         //<input type="text" class="form-control" id="descripcion-titulo-tarea" placeholder="" disabled>
     })
