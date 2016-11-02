@@ -13,7 +13,9 @@ h1 {
     color: black;
     height: 50px;
 }
-
+ul{
+    list-style: none;
+}
 h2 {
     color: #1B6AAA;
     padding-bottom: 5px;
