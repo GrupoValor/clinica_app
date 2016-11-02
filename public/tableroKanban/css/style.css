@@ -4,9 +4,7 @@ body {
 *{
     border:0;
 }
-ul{
-    border: 5px solid #F5F5DC;
-}
+
 h1 {
     font-family: sans-serif;
     margin: 0;
@@ -25,7 +23,7 @@ h2 {
     background-color: #F5F5DC;
 }
 
-ul {
+#backlog,#pendiente,#proceso,#finalizada {
     border: 5px solid #F5F5DC;
     border-radius: 10px;
     list-style: none;
