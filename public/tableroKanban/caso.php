@@ -101,7 +101,7 @@ $display = new Display($db);
           <div class="col-sm-4">
               <label class="control-label no-padding-right">Observaciones del caso:</label>
 
-              <div>
+              <div id="caso-observacion">
                   <p><?php echo $display->observacionesCaso($_GET['id']); ?></p>
               </div>
           </div>
@@ -173,7 +173,7 @@ $display = new Display($db);
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger"   data-dismiss="modal" id="boton-eliminar-tarea">Eliminar tarea</button>
+                <button id="deleteTarea" type="button" class="btn btn-success btn-danger" data-toggle="modal" data-target="#modal-eliminar-tarea">Eliminar tarea</button>
                 <button type="button" class="btn btn-default"  data-dismiss="modal">Cerrar</button>
             </div>
         </div>
@@ -202,6 +202,22 @@ $display = new Display($db);
           </div>
         </div>
       </div>
+    </div>
+    <div class="modal fade bs-modal-sm" tabindex="-1" id="modal-eliminar-tarea" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Alerta</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Esta a punto de eliminar esta tarea. ¿Desea Continuar?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-danger" id="boton-elimina-tarea" data-dismiss="modal">Si</button>
+                </div>
+            </div>
+        </div>
     </div>
     <div id="block">
 

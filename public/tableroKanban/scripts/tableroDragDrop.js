@@ -112,9 +112,10 @@ $(document).ready(function () {
         $('#modal-detalle-tarea').modal('show');
 
         //manejo de eventos
-        $('#boton-eliminar-tarea').on('click', function () {
+        $('#deleteTarea').on('click', function () {
             tarea.remove();
             $.get("ajax/elimina-tarea.ajax.php", {'id': tarea.id});
+            $('#modal-detalle-tarea').modal('hide');
         })
 
         $('#boton-ingresar-comentario').off().on('click', function () {

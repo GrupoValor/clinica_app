@@ -20,7 +20,9 @@ h2 {
     color: #1B6AAA;
     padding-bottom: 5px;
 }
-
+h3{
+    font-weight: bold;
+}
 #backlog-tablero, #pendientes-tablero, #proceso-tablero, #finalizadas-tablero{
    background-color: #ddd;
     border-radius: 11px;
@@ -96,7 +98,7 @@ li:hover {
     border-radius: 5px;
     padding-bottom: 59px;
 }
-#caso-objetivo{
+#caso-objetivo,#caso-observacion{
     background: white;
     padding: 20px;
     border-radius: 5px;
