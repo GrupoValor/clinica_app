@@ -43,7 +43,7 @@
                     </h1> </div>
 				<div>
 					<select id='myOptions'>
-						<option disabled selected value="0"> -- Select an option -- </option>
+						<option disabled selected value="0" style="display:none;"> -- Select an option -- </option>
 						<option value="1">Profesor</option>
 						<option value="2">Jefe de práctica</option>
 						<option value="3">Alumno</option>
@@ -51,7 +51,7 @@
 					</select>
 					<button type="button" class="btn btn-primary" style="float: right;margin-top: -8px;" onclick="add_onClick()">Nuevo +</button>
 				</div>
-				<div class="row hide" id="table-alu">
+				<div class="row hide" id="table-alu"> <!--Alumnos-->
 					<div class="col-xs-12">
 						<!-- PAGE CONTENT BEGINS -->
 						<table id="dynamic-table-alu" class="table table-striped table-bordered table-hover">
@@ -74,7 +74,7 @@
 					<!-- /.col -->
 				</div>
 				<!-- /.row -->
-				<div class="row hide" id="table-prof">
+				<div class="row hide" id="table-prof"> <!--Profesor-->
 					<div class="col-xs-12">
 						<!-- PAGE CONTENT BEGINS -->
 						<table id="dynamic-table-prof" class="table table-striped table-bordered table-hover">
@@ -95,7 +95,7 @@
 					<!-- /.col -->
 				</div>
 				<!-- /.row -->
-				<div class="row hide" id="table-jp">
+				<div class="row hide" id="table-jp"> <!--JP-->
 					<div class="col-xs-12">
 						<!-- PAGE CONTENT BEGINS -->
 						<table id="dynamic-table-jp" class="table table-striped table-bordered table-hover">
@@ -116,7 +116,7 @@
 					<!-- /.col -->
 				</div>
 				<!-- /.row -->
-				<div class="row hide" id="table-cli">
+				<div class="row hide" id="table-cli"> <!--Cliente-->
 					<div class="col-xs-12">
 						<!-- PAGE CONTENT BEGINS -->
 						<table id="dynamic-table-cli" class="table table-striped table-bordered table-hover">
@@ -143,49 +143,131 @@
 		</div>
 	</div>
 	<!-- /.main-content -->
-	<!-- Popup :  Agregar -->
+	<!-- Popup :  Agregar Alumno-->
 	<div align="center">
-		<div class="modal fade" id="boton" role="dialog">
-			<div class="modal-dialog" style="width: 500px;">
+		<div class="modal fade" id="modal_alumno" role="dialog">
+			<div class="modal-dialog" style="width: 650px">
 				<div class="modal-content">
-					<div class="modal-header">
-						<h1 type="button" class="close" data-dismiss="modal"></h1> </div>
 					<!-- Modal content-->
 					<div class="page-header">
 						<!-- /.page-header -->
+                        <button type="button" class="fa fa-times btn-danger" style="float: right; margin-right: 8px" data-dismiss="modal"></button>
+                        <div class="space-10"></div>
 						<h1>  Alumno </h1>
-						<form class="form-horizontal" role="form" style="padding-left: 66px;">
-							<div class="space-20"></div>
+                    </div>
+                    <div class="row">
+						<form class="form-horizontal" role="form">
 							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Nombre </label>
-								<div class="col-sm-9">
-									<input id="dir_nombre" type="text" id="form-field-3" class="col-xs-5 col-sm-7" /> </div>
+								<label class="col-sm-3 col-xs-3 control-label" for="form-field-3"> Nombres </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="dir_nombre" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio" /> 
+                                </div>
+							</div>
+                            <div class="space-4"></div>
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Apellido paterno </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="dir_apePat" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio"/> </div>
+							</div>
+                            <div class="space-4"></div>
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Apellido materno </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="dir_apeMat" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio"/> </div>
+							</div>							
+							<div class="space-4"></div>
+                            <div class="form-group" id="docs_radio_buttons">
+                                <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Tipo de documento</label>
+                                <label class="radio-inline" style="margin-left:-15%;">
+                                    <input type="radio" name="docs" value="dni" checked="checked"> DNI 
+                                </label> 
+                                <label class="radio-inline">
+                                    <input type="radio" name="docs" value="libreta"> Libreta militar 
+                                </label> 
+                                <label class="radio-inline">
+                                    <input type="radio"  name="docs"value="pasaporte"> Pasaporte 
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio"  name="docs" value="otro"> Otro
+                                </label>
+                            </div>
+							<div class="space-4"></div>
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Nº de documento </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="dir_nrodoc" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
+							</div>                            
+                            <div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Fecha de nacimiento </label>
+                                <div class="col-sm-3 col-xs-3">
+                                    <div class="input-group">
+                                        <input placeholder="*obligatorio" class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" />
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar bigger-110"></i>
+                                        </span>
+                                    </div>
+                                </div>								
+							</div>
+                            <div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Teléfono 1 </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="dir_telf1" type="text" class="col-xs-5 col-sm-7" /> </div>
+							</div>
+                            <div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Teléfono 2</label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="dir_tel2" type="text" class="col-xs-5 col-sm-7" /> </div>
+							</div>
+                            
+                            <div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Clínica jurídica </label>
+								<div class="col-sm-9 col-xs-9">
+									<select id='clinicaOptions' class="col-xs-5 col-sm-7">
+                                        <option disabled selected value="0" style="display:none;">*Obligatorio</option>
+                                        <option value="1">Clínica 1</option>
+                                        <option value="2">Clínica 2</option>
+                                        <option value="3">Clínica 3</option>
+                                        <option value="4">Clínica 4</option>
+                                    </select>
+                                </div>
+							</div>
+                            <div class="space-4"></div>                             
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Código PUCP </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="dir_codpucp" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio" /> </div>
 							</div>
 							<div class="space-4"></div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-5"> codigo Pucp </label>
-								<div class="col-sm-9">
-									<input id="dir_codpucp" type="text" class="col-xs-5 col-sm-7" /> </div>
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Correo </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="dir_correo" type="text" id="form-field-5" class="col-xs-5 col-sm-7" placeholder="*obligatorio" /> </div>
+							</div>							
+							<div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Usuario </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="dir_user" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
 							</div>
 							<div class="space-4"></div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-5"> Número de documento </label>
-								<div class="col-sm-9">
-									<input id="dir_nrodoc" type="text" class="col-xs-5 col-sm-7" /> </div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Contraseña </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="dir_pass" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
 							</div>
-							<div class="space-4"></div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-5"> Correo </label>
-								<div class="col-sm-9">
-									<input id="dir_correo" type="text" id="form-field-5" class="col-xs-5 col-sm-7" /> </div>
-							</div>
-							<div class="form-group"></div>
 							<div class="space-20"></div>
 						</form>
-					</div>
+                    </div>
+					
 					<div class="modal-footer">
 						<div align="center">
-							<button id="botonAlumno" type="button" class="btn btn-default" data-dismiss="modal" onclick="close();">Aceptar</button>
+							<button id="botonAlumno" type="button" class="btn btn-primary" data-dismiss="modal" onclick="close();">Registrar</button>
+                            &nbsp; &nbsp; &nbsp;
+                            <button type="button" class="btn btn-primary btn-danger" data-dismiss="modal">Cancelar</button>
 						</div>
 					</div>
 				</div>
@@ -212,8 +294,19 @@
 	<script src="assets/js/ace-elements.min.js"></script>
 	<script src="assets/js/ace.min.js"></script>
 	<script type="text/javascript"></script>
+    <script src="assets/js/bootstrap-datepicker.min.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
+    
+    jQuery(function($) {
+        $('.date-picker').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        }).next().on(ace.click_event, function(){
+            $(this).prev().focus();
+        });
+    });
+    
 	jQuery('#limantenimientos').addClass('active open');
 	jQuery('#mant-alumno').addClass('active');
 	var myTable_alu;
@@ -223,6 +316,8 @@
 	var data_set = [];
 	var editid;
 	var action;
+    var previous;
+    var table_previous;
 
 	function getButtons(i, alu_id) {
 		var param = "'" + i + "','" + alu_id + "'";
@@ -240,11 +335,10 @@
 		$("#dir_correo").val("");
 		$("#dir_codpucp").val("");
 		$("#dir_nrodoc").val("");
-		$("#boton").modal()
+		$("#modal_alumno").modal();
 	}
         
-    var previous;
-    var table_previous;
+    
     $('#myOptions').focus(function(){
         previous = this.value;  
     }).change(function(){
