@@ -57,13 +57,13 @@ function initMap(){
         var formulario_edicion = $('#formulario-edicion');
         $.get("ajax/listar-alertas.ajax.php", 'json', function(data){
             $.each(data, function(i, item){
-                var posi = new google.maps.LatLng(item.aler_cx, item.aler_cy);
+                var posi = new google.maps.LatLng(item.ale_cx, item.ale_cy);
                 var marca = new google.maps.Marker({
-                    idMarcador: item.aler_id,
+                    idMarcador: item.ale_id,
                     position: posi,
-                    titulo: item.aler_titulo,
-                    cx: item.aler_cx,
-                    cy: item.aler_cy
+                    titulo: item.ale_titulo,
+                    cx: item.ale_cx,
+                    cy: item.ale_cy
                 });
                 google.maps.event.addListener(marca, "click", function(){
                     $('#collapseTwo').collapse('show');

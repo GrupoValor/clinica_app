@@ -25,7 +25,7 @@ $display = new Display($db);
         <div class="col-md-8" id="datosEstadoCaso" style="margin-top: 10px;">
             <div class="col-md-2" id="columnaEnunciadoEstado"><h4 style="font-size: 15px;">Estado del caso:</h4></div>
             <div class="col-md-2" id="nombre-estado"> <!--aquí se actualiza dinámicamente con ajax-->
-              <h4 style="font-size: 15px; color: white;"> 
+              <h4 style="font-size: 15px; color: white;">
               <?php
 
                $detalle = $display->estadoCaso($_GET['id']);
@@ -33,7 +33,7 @@ $display = new Display($db);
                         $(document).ready(function(){
                               $('#corpus').css('display', 'block');
                               $('#addtarea').css('display', 'block');
-                              
+
                             });
                       </script>";
                   if( $detalle  =="Cerrado" || $detalle  =="En Abandono" || $detalle  =="Inactivo" ){
@@ -57,7 +57,7 @@ $display = new Display($db);
                 <ul id="backlog" style="padding-bottom: 35px;">
                     <?php echo $display->backlog($_GET['id']); ?>
                 </ul>
-                
+
             </div>
             <div id="pendientes-tablero" class="col-md-2">
                 <h3 style="font-size: 15px;">Pendientes</h3>
@@ -166,7 +166,7 @@ $display = new Display($db);
                   <input type="date" name="fechaTarea">
                 </div>
                 <div>
-                  <button type="button" class="btn btn-warning">+ Alerta documento</button>
+                  <button type="button" class="btn btn-warning" id="boton-agregar-alerta">+ Alerta documento</button>
                 </div>
 
               </div>
@@ -204,7 +204,7 @@ $display = new Display($db);
       </div>
     </div>
     <div id="block">
-      
+
     </div>
-    
+
 </html>

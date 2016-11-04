@@ -174,4 +174,14 @@ $(document).ready(function () {
     })
 
 
+    //registrar una alerta de pedido de documento
+    $('#boton-agregar-alerta').on('click', function(){
+      var win = window.open('../mapa/mapa.php', '_blank','height=480,width=900');
+      if (win) {
+          win.focus();
+      } else {
+          alert('Por favor permita pop-ups en su navegador');
+      }
+    })
+
 });
