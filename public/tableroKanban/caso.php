@@ -19,59 +19,62 @@ $display = new Display($db);
         <script src="scripts/bootstrap.min.js"></script>
     </head>
 
-    <body>
-      <div class="row">
-        <div class="col-md-4" id="tituloCaso"><h2>Seguimiento de caso <?php echo $_GET['id'] ?> </h2></div>
-        <div class="col-md-8" id="datosEstadoCaso">
-            <div class="col-md-2" id="columnaEnunciadoEstado"><h4>Estado del caso:</h4></div>
+    <body style="width: 100%; height: 100%; background: #337ab7;">
+      <div class="row" style="background-color: #286090; color: whitesmoke;padding-left: 17px;">
+        <div class="col-md-4" id="tituloCaso"><h2 style="font-size: 18px;">Seguimiento de caso <?php echo $_GET['id'] ?> </h2></div>
+        <div class="col-md-8" id="datosEstadoCaso" style="margin-top: 10px;">
+            <div class="col-md-2" id="columnaEnunciadoEstado"><h4 style="font-size: 15px;">Estado del caso:</h4></div>
             <div class="col-md-2" id="nombre-estado"> <!--aquí se actualiza dinámicamente con ajax-->
-              <h4> <?php echo $display->estadoCaso($_GET['id']); ?></h4>
+              <h4 style="font-size: 15px; color: white;"> <?php echo $display->estadoCaso($_GET['id']); ?></h4>
             </div>
-            <div class="col-md-3" id="cambia-estado"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-cambia-estado">Cambiar estado</button></div>
+            <div class="col-md-3" id="cambia-estado" style="width: 65%;"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-cambia-estado" style="    float: right;">Cambiar estado</button></div>
         </div>
       </div>
-      <div class="row">
+      <div class="row" style="padding-left: 20px;padding-top: 30px; height: 413px;">
           <div id="areaTareas" >
             <div id="backlog-tablero" class="col-md-2">
-                <h3>Backlog</h3>
-                <ul id="backlog">
+                <h3 style="font-size: 15px;">Backlog</h3>
+                <ul id="backlog" style="padding-bottom: 35px;">
                     <?php echo $display->backlog($_GET['id']); ?>
                 </ul>
-                <button type="button" class="btn btn-success btn-info" data-toggle="modal" data-target="#modal-agrega-tarea">Agregar tarea</button>
+                
             </div>
             <div id="pendientes-tablero" class="col-md-2">
-                <h3>Pendientes</h3>
-                <ul id="pendiente">
+                <h3 style="font-size: 15px;">Pendientes</h3>
+                <ul id="pendiente" style="padding-bottom: 35px;">
                     <?php echo $display->pendiente($_GET['id']); ?>
                 </ul>
             </div>
             <div id="proceso-tablero" class="col-md-2">
-                <h3>En proceso</h3>
-                <ul id="proceso">
+                <h3 style="font-size: 15px;">En proceso</h3>
+                <ul id="proceso" style="padding-bottom: 35px;">
                     <?php echo $display->proceso($_GET['id']); ?>
                 </ul>
             </div>
             <div id="finalizadas-tablero" class="col-md-2">
-                <h3>Finalizadas</h3>
-                <ul id="finalizada">
+                <h3 style="font-size: 15px;">Finalizadas</h3>
+                <ul id="finalizada" style="padding-bottom: 35px;">
                     <?php echo $display->finalizada($_GET['id']); ?>
                 </ul>
             </div>
           </div>
-            <div id="panel-control-tablero" class="col-md-4">
+            <div id="panel-control-tablero" class="col-md-2" style="background: #ccc; margin-left: 30px; border-radius: 7px;">
               <div id="panel-control-tablero-interesados">
-                <h3>Miembros</h3>
+                <h3 style="font-size: 15px">Miembros</h3>
               </div>
               <div id="panel-control-tablero-actividad">
-                <h3>Registro de actividad</h3>
+                <h3 style="font-size: 15px">Registro de actividad</h3>
               </div>
             </div>
       </div>
       <div class="row" id="detalles-caso">
+          <div class="col-sm-2">
+              <button type="button" class="btn btn-success btn-info" data-toggle="modal" data-target="#modal-agrega-tarea">Agregar tarea</button>
+            </div>
           <div class="col-sm-4">
               <label class="control-label no-padding-right">Objetivo del caso:</label>
 
-              <div>
+              <div id="caso-objetivo">
                   <p><?php echo $display->objetivosCaso($_GET['id']); ?></p>
               </div>
           </div>

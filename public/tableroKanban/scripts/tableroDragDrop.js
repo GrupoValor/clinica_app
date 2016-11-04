@@ -69,7 +69,7 @@ $(document).ready(function () {
     $(document).on('mousedown', 'li', function () {
         $(this).css(
             {
-                'backgroundColor': 'black',
+                'backgroundColor': '#285e8c',
                 'color': 'white'
             }
         );
