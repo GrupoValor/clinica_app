@@ -121,7 +121,7 @@ $display = new Display($db);
               <input type="text" class="form-control" id="titulo-tarea">
             </div>
             <div class="form-group">
-              <label for="titulo-tarea">Descripcion:</label>
+              <label for="descripcion-tarea">Descripcion:</label>
               <textarea class="form-control" rows="3" id="descripcion-tarea"></textarea>
             </div>
           </div>

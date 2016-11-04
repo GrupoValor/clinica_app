@@ -112,16 +112,15 @@ $(document).ready(function () {
         $('#modal-detalle-tarea').modal('show');
 
         //manejo de eventos
-        $('#deleteTarea').on('click', function () {
+        $('#boton-elimina-tarea').on('click', function () {
             tarea.remove();
             $.get("ajax/elimina-tarea.ajax.php", {'id': tarea.id});
             $('#modal-detalle-tarea').modal('hide');
         })
 
         $('#boton-ingresar-comentario').off().on('click', function () {
-            if ($('#contenido-comentario').val()) {
+            if($('#contenido-comentario').val()){
                 //solo se agrega un comentario si es que se ha comentado algo (si no es vacio)
-
                 $.get("ajax/inserta-comentario.ajax.php",
                     {
                         'tar_id': tarea.id,
