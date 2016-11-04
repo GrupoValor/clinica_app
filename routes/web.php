@@ -81,6 +81,11 @@ Route::get('mant_cli', function () {
     return view('intranet/mantenimiento_cliente');
 });
 
+//mantenimiento unificado
+Route::get('manten', function () {
+    return view('intranet/mantenimiento');
+});
+
 //reportes
 
 //gestor de contenidos
