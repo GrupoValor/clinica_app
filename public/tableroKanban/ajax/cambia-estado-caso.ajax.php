@@ -13,5 +13,21 @@ $stmt->execute();
 $stmt = $db->query("SELECT ESTADO.estcas_detalle FROM TA_CASO CASO, TA_ESTADOCASO ESTADO WHERE CASO.estcas_id = ESTADO.estcas_id AND CASO.cas_id = $cas_id");
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-echo '<h4>'. $row['estcas_detalle'].'</h4>';
+$script = "<script type='text/javascript'>
+      $(document).ready(function(){
+            $('#corpus').css('display', 'block');
+            $('#addtarea').css('display', 'block');
+            
+          });
+    </script>";
+if( $row['estcas_detalle'] =="Cerrado" || $row['estcas_detalle'] =="En Abandono" || $row['estcas_detalle'] =="Inactivo" ){
+	$script = "<script type='text/javascript'>
+      $(document).ready(function(){
+            $('#corpus').css('display', 'none');
+            $('#addtarea').css('display', 'none');
+          });
+    </script>";
+}
+echo '<h4 style="font-size: 15px; color: white;">'. $row['estcas_detalle'].'</h4>'.$script;
+
 ?>

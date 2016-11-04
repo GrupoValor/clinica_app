@@ -25,12 +25,32 @@ $display = new Display($db);
         <div class="col-md-8" id="datosEstadoCaso" style="margin-top: 10px;">
             <div class="col-md-2" id="columnaEnunciadoEstado"><h4 style="font-size: 15px;">Estado del caso:</h4></div>
             <div class="col-md-2" id="nombre-estado"> <!--aquí se actualiza dinámicamente con ajax-->
-              <h4 style="font-size: 15px; color: white;"> <?php echo $display->estadoCaso($_GET['id']); ?></h4>
+              <h4 style="font-size: 15px; color: white;"> 
+              <?php
+
+               $detalle = $display->estadoCaso($_GET['id']);
+               $script = "<script type='text/javascript'>
+                        $(document).ready(function(){
+                              $('#corpus').css('display', 'block');
+                              $('#addtarea').css('display', 'block');
+                              
+                            });
+                      </script>";
+                  if( $detalle  =="Cerrado" || $detalle  =="En Abandono" || $detalle  =="Inactivo" ){
+                    $script = "<script type='text/javascript'>
+                        $(document).ready(function(){
+                              $('#corpus').css('display', 'none');
+                              $('#addtarea').css('display', 'none');
+                            });
+                      </script>";
+                  }
+                  echo $detalle.$script;
+               ?></h4>
             </div>
             <div class="col-md-3" id="cambia-estado" style="width: 65%;"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-cambia-estado" style="    float: right;">Cambiar estado</button></div>
         </div>
       </div>
-      <div class="row" style="padding-left: 20px;padding-top: 30px; height: 413px;">
+      <div id="corpus" class="row" style="padding-left: 20px;padding-top: 30px; height: 413px;">
           <div id="areaTareas" >
             <div id="backlog-tablero" class="col-md-2">
                 <h3 style="font-size: 15px;">Backlog</h3>
@@ -69,7 +89,7 @@ $display = new Display($db);
       </div>
       <div class="row" id="detalles-caso">
           <div class="col-sm-2">
-              <button type="button" class="btn btn-success btn-info" data-toggle="modal" data-target="#modal-agrega-tarea">Agregar tarea</button>
+              <button id="addtarea" type="button" class="btn btn-success btn-info" data-toggle="modal" data-target="#modal-agrega-tarea">Agregar tarea</button>
             </div>
           <div class="col-sm-4">
               <label class="control-label no-padding-right">Objetivo del caso:</label>
@@ -183,5 +203,8 @@ $display = new Display($db);
         </div>
       </div>
     </div>
-
+    <div id="block">
+      
+    </div>
+    
 </html>
