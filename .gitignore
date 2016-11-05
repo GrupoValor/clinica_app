@@ -45,3 +45,11 @@ public/mapa/php-includes/connect.inc.php
 public/mapa/php-includes/connect.inc.php
 
 public/tableroKanban/php-includes/connect.inc.php
+
+.env
+
+.env.example
+
+public/tableroKanban/php-includes/connect.inc.php
+
+public/mapa/php-includes/connect.inc.php
