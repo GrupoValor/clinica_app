@@ -24,6 +24,12 @@ function initMap(){
     }
 
     google.maps.event.addListener(mapa, "click", function(event){
+
+        $('#collapseOne').collapse('show');
+        $('#collapseTwo').collapse('hide');
+        var f = $("#formulario-edicion");
+        f[0].reset();
+
         var coordenadas = event.latLng.toString();
         coordenadas = coordenadas.replace("(","");
         coordenadas = coordenadas.replace(")","");
@@ -68,10 +74,17 @@ function initMap(){
                 google.maps.event.addListener(marca, "click", function(){
                     $('#collapseTwo').collapse('show');
                     $('#collapseOne').collapse('hide');
+                    var f = $("#formulario");
+                    f[0].reset();
+
                     formulario_edicion.find("input[name='id']").val(marca.idMarcador);
                     formulario_edicion.find("input[name='titulo']").val(marca.titulo);
                     formulario_edicion.find("input[name='cx']").val(marca.cx);
                     formulario_edicion.find("input[name='cy']").val(marca.cy);
+
+                    $('#btn-cambia-estado').on('click', function() {
+                        $('#modal-cambia-estado').modal('show');
+                    });
                 });
                 marcadores_bd.push(marca);
                 marca.setMap(mapa);
@@ -131,11 +144,16 @@ function initMap(){
 }
 
 $(document).on('ready',function(){
+
     $('#btn-colapsar-one').on('click', function(){
         $('#collapseOne').collapse('hide');
+        var f = $("#formulario");
+        f[0].reset();
     });
     $('#btn-colapsar-two').on('click', function(){
         $('#collapseTwo').collapse('hide');
+        var f = $("#formulario-edicion");
+        f[0].reset();
     });
 
 });

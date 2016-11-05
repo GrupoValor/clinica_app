@@ -96,13 +96,14 @@
                           <tr>
                               <td></td>
                               <td><button type="button" class="btn btn-danger btn-sm" id="btn-colapsar-two">Cancelar</button></td>
+                              <td><button type="button" class="btn btn-success btn-sm" id="btn-cambia-estado">Cambiar estado</button></td>
                           </tr>
                       </table>
                   </form>
               </div>
             </div>
           </div>
-          <div class="panel panel-default">
+          <!--<div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingThree">
               <h4 class="panel-title">
                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -115,7 +116,7 @@
                   ...
               </div>
             </div>
-          </div>
+        </div> -->
       </div>
     </div>
 </body>
