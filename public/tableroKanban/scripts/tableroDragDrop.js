@@ -112,9 +112,10 @@ $(document).ready(function () {
         $(document).on('dblclick','.comentario',function () {
             var comentario=this;
             $('#modal-eliminar-comentario').modal('show');
-            //$.get("ajax/elimina-tarea.ajax.php", {'id': tarea.id});
+            $.get("ajax/elimina-tarea.ajax.php", {'id': tarea.id});
             $('#boton-elimina-comentario').on('click',function () {
                comentario.remove();
+                //$.get("ajax/elimina-comentario.ajax.php", {'id': comentario.id});
             });
         });
         //manejo de eventos
