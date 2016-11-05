@@ -103,6 +103,10 @@ Route::get('manten', function () {
     return view('intranet/mantenimiento');
 });
 
+Route::get('manten2', function () {
+    return view('intranet/mantenimiento2');
+});
+
 //reportes
 
 //gestor de contenidos
