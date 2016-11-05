@@ -99,8 +99,15 @@ $(document).ready(function () {
             $('#nombre-detalle-tarea').remove();
             $('#label-nombre-tarea').after('<input type="text" class="form-control" id="nombre-detalle-tarea" disabled placeholder="' + data1 + '">');
         });
-        $('#botonEditar').on('click', function () {
-            //$('#nombre-detalle-tarea').read;
+
+        $("#contenedor-lista-comentarios").on('dbclick','.comentario',function () {
+            var comentario=this;
+            $('#modal-eliminar-comentario').modal('show');
+            $('#boton-elimina-comentario').on('click', function () {
+                comentario.remove();
+                //$.get("ajax/elimina-tarea.ajax.php", {'id': tarea.id});
+                //$('#modal-detalle-tarea').modal('hide');
+            })
         })
         //Obtenemos la direccion
         $.get("ajax/detalle-tarea.ajax.php", {'id': this.id}, function (data2) {
@@ -116,8 +123,12 @@ $(document).ready(function () {
             tarea.remove();
             $.get("ajax/elimina-tarea.ajax.php", {'id': tarea.id});
             $('#modal-detalle-tarea').modal('hide');
-        })
-
+        });
+        $('#boton-editar').on('click', function () {
+            //$('#modal-detalle-tarea').modal('hide');
+            document.getElementById("nombre-detalle-tarea").disabled = false;
+            document.getElementById("descripcion-detalle-tarea").disabled = false;
+        });
         $('#boton-ingresar-comentario').off().on('click', function () {
             if($('#contenido-comentario').val()){
                 //solo se agrega un comentario si es que se ha comentado algo (si no es vacio)

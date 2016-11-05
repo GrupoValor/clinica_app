@@ -147,7 +147,9 @@ $display = new Display($db);
               <div class="form-group">
                 <label for="descripcion-detalle-tarea" id="label-detalle-tarea">Detalle:</label>
               </div>
-                <div><button type="button" class="btn btn-info" id="botonEditar">Editar</button> </div>
+                <div class="form-group">
+                    <button type="button" class="btn btn-info" id="boton-editar">Editar</button>
+                </div>
               <div id ="comentarios-tarea">
                 <h3>Comentarios:</h3>
                 <div id="contenedor-lista-comentarios"></div>
@@ -215,6 +217,22 @@ $display = new Display($db);
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
                     <button type="button" class="btn btn-danger" id="boton-elimina-tarea" data-dismiss="modal">Si</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bs-modal-sm" tabindex="-1" id="modal-eliminar-comentario" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Alerta</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Esta a punto de eliminar este comentario. ¿Desea Continuar?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-danger" id="boton-elimina-comentario" data-dismiss="modal">Si</button>
                 </div>
             </div>
         </div>
