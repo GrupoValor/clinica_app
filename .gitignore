@@ -33,3 +33,5 @@ public/mapa/php-includes/connect.inc.php
 *.php
 .env
 public/tableroKanban/php-includes/connect.inc.php
+.env
+public/tableroKanban/php-includes/connect.inc.php
