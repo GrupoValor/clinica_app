@@ -229,7 +229,7 @@
                                                         '<i class="ace-icon fa fa-pencil bigger-130">'+'</i>'+
                                                     '</a>'+
 
-                                                    '<a onClick="edit_onClick(\'borrar\')" class="red" href="#">'+
+                                                    '<a onClick="delete_onClick('+param+')" class="red" ">'+
                                                         '<i class="ace-icon fa fa-trash-o bigger-130">'+'</i>'+
                                                     '</a>'+
                                                 '</div>';
@@ -308,14 +308,79 @@
             if (action=="UPDATE")
             {
 
+			 //guardar cambios
+			 
+			$.ajax({
+                    type: "PATCH",
+                    url:'service_alumno/'+data_set[editid][0],
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+            
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                           
+                           alu_nombre: $('#dir_nombre').val(),
+                           alu_nrodoc: $("#dir_nrodoc").val(),
+                           alu_codpuc: $('#dir_codpucp').val(),
+                           alu_correo: $('#dir_correo').val()},
+						   
+                           
+                    
+                    success: function(Response){
+                    	 
+						
+					data_set[editid][1]=$("#dir_nombre").val();
+					data_set[editid][2]=$("#dir_codpucp").val();
+					data_set[editid][3]=$("#dir_nrodoc").val();
+					data_set[editid][4]=$("#dir_correo").val();
+					
+					myTable.clear().rows.add(data_set).draw(); 
+						 
+                    alert(Response);
+                    }
+                });
+			 
+            }
 
-            data_set[editid][1]=$("#dir_nombre").val();
-	        data_set[editid][2]=$("#dir_codpucp").val();
-			data_set[editid][3]=$("#dir_nrodoc").val();
-	        data_set[editid][4]=$("#dir_correo").val();
-			
-             myTable.clear().rows.add(data_set).draw(); 
-            }          
+			if (action=="DELETE")
+            {
+
+	
+			 myTable.rows(editid).remove().draw();
+             //myTable.clear().rows.add(data_set).draw();
+			 //guardar cambios
+			 
+			$.ajax({
+                    type: "DELETE",
+                    url:'service_alumno/'+data_set[editid][0],
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+            
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    //data: {
+                           //alu_id ,
+                           //alu_nombre: $('#dir_nombre').val(),
+                           //alu_nrodoc: $("#dir_nrodoc").val(),
+                           //alu_codpuc: $('#dir_codpucp').val(),
+                           //alu_correo: $('#dir_correo').val()},
+						   
+                           
+                    
+                    success: function(Response){
+                    
+					
+                    
+					alert(Response);
+                    }
+                });
+			 
+            }
                               
         });
        function edit_onClick(id,alu_id) {
@@ -333,7 +398,21 @@
     
               
 
-              }
+        }
+		
+		function delete_onClick(id,alu_id){
+			action="DELETE";
+			
+			var rows = myTable.rows(id).data();
+            editid = parseInt(id);
+            $("#dir_nombre").val(data_set[editid][1]+"");
+            $("#dir_codpucp").val(data_set[editid][2]+"");
+			$("#dir_nrodoc").val(data_set[editid][3]+"");
+            $("#dir_correo").val(data_set[id][4]+"");
+
+            $("#boton").modal()
+		}
+		
         $(document).ready(function(){
             //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
                 myTable =
@@ -378,7 +457,7 @@
 							else
 								tipo = "NO";
                             //[{"eva_id":1,"usu_id":3,"eva_codpuc":"20012734","eva_tipeva":"d","eva_nombre":"Carlos Flores","eva_correo":"carlos@pucp.pe"}]
-
+							if(data[i].usu_activo === 1){
 	                            data_set.push([
 	                            data[i].alu_id,
                                 data[i].alu_nombre,
@@ -388,8 +467,8 @@
 								tipo,
 	                            getButtons(i)
 	                            
-	                        ] )
-	                        
+								])
+	                        }
                         
                         }
                         myTable.clear().rows.add(data_set).draw()

@@ -20,7 +20,7 @@ class alumnoController extends Controller
     public function index()
     {
         //$alumnos = TAALUMNO::all();
-		$alumnos =DB::select('SELECT * FROM TA_ALUMNO');
+		$alumnos =DB::select('SELECT * FROM TA_ALUMNO INNER JOIN TA_USUARIO on TA_ALUMNO.usu_id = TA_USUARIO.usu_id');
 		$data = array();
 		
 		foreach ($alumnos as $alumno){
@@ -60,6 +60,7 @@ class alumnoController extends Controller
         $usuario = TAUSUARIO::create([
                                       'cln_id' => '1',
                                       'rol_id' => '1',
+									  'usu_activo' => '1',
 
         ]);
 
@@ -125,7 +126,21 @@ class alumnoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        DB::update('UPDATE TA_ALUMNO set 
+            alu_nombre = :nombre ,
+			alu_nrodoc = :nrodoc ,
+            alu_codpuc = :codpuc ,
+            alu_correo = :correo
         
+        
+            where alu_id = :id',
+            ['nombre' => $request['alu_nombre'],
+            'nrodoc' => $request['alu_nrodoc'],
+            'codpuc' => $request['alu_codpuc'],
+            'correo' => $request['alu_correo'],
+            'id' => $id]);
+			
+			echo "Registro actualizado correctamente" ;
     }
 
     /**
@@ -136,6 +151,25 @@ class alumnoController extends Controller
      */
     public function destroy($id)
     {
-        //
+		//buscamos el usu_id, dado el alu_id
+		$caso =DB::select('SELECT TA_ALUMNO.usu_id FROM TA_USUARIO INNER JOIN TA_ALUMNO ON TA_USUARIO.usu_id = TA_ALUMNO.usu_id WHERE TA_ALUMNO.alu_id = :ID',
+		['ID' => $id]);
+		
+		
+		$data = array();
+        array_push($data,json_decode(json_encode($caso), true));
+        $userid = $data[0][0]['usu_id'];
+		
+		//echo $userid;
+		//echo $userid['usu_id'];
+        
+		DB::UPDATE('Update  TA_USUARIO set
+			usu_activo = 0
+			where usu_id = :id',
+			['id' => $userid]);
+		
+				
+				
+		echo "Se elimino el alumno seleccionado ";
     }
 }

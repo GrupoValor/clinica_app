@@ -33,13 +33,15 @@ class TAUSUARIO extends Eloquent
 	protected $casts = [
 		'usu_id' => 'int',
 		'cln_id' => 'int',
-		'rol_id' => 'int'
+		'rol_id' => 'int',
+		'usu_activo' => 'int'
 	];
 
 	protected $fillable = [
 		'cln_id',
 		'rol_id',
 		'usu_passwd'
+		'usu_activo'
 	];
 
 	public function t_a__a_l_u_m_n_o_s()
