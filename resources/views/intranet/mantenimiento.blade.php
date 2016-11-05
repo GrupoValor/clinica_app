@@ -49,8 +49,11 @@
 						<option value="3">Alumno</option>
 						<option value="4">Cliente</option>
 					</select>
-					<button type="button" class="btn btn-primary" style="float: right;margin-top: -8px;" onclick="add_onClick()">Nuevo +</button>
+					<button id="boton_nuevo" type="button" class="btn btn-primary hide" style="float: right;margin-top: -8px;" onclick="add_onClick()">Nuevo +</button>
 				</div>
+                <div class="row" id="comentario_ini" style="text-align:center; margin-top:10%; color: grey;">
+                    <h3>Selecciona la tabla a mostrar</h3>                
+                </div>
 				<div class="row hide" id="table-alu"> <!--Alumnos-->
 					<div class="col-xs-12">
 						<!-- PAGE CONTENT BEGINS -->
@@ -265,7 +268,7 @@
 					
 					<div class="modal-footer">
 						<div align="center">
-							<button id="boton_nuevo" type="button" class="btn btn-primary" data-dismiss="modal" onclick="close();">Registrar</button>
+							<button id="boton_registrar" type="button" class="btn btn-primary" data-dismiss="modal" onclick="close();">Registrar</button>
                             &nbsp; &nbsp; &nbsp;
                             <button type="button" class="btn btn-primary btn-danger" data-dismiss="modal">Cancelar</button>
 						</div>
@@ -397,7 +400,7 @@
 					
 					<div class="modal-footer">
 						<div align="center">
-							<button id="boton_nuevo" type="button" class="btn btn-primary" data-dismiss="modal" onclick="close();">Registrar</button>
+							<button id="boton_registrar" type="button" class="btn btn-primary" data-dismiss="modal" onclick="close();">Registrar</button>
                             &nbsp; &nbsp; &nbsp;
                             <button type="button" class="btn btn-primary btn-danger" data-dismiss="modal">Cancelar</button>
 						</div>
@@ -569,7 +572,7 @@
 					
 					<div class="modal-footer">
 						<div align="center">
-							<button id="boton_nuevo" type="button" class="btn btn-primary" data-dismiss="modal" onclick="close();">Registrar</button>
+							<button id="boton_registrar" type="button" class="btn btn-primary" data-dismiss="modal" onclick="close();">Registrar</button>
                             &nbsp; &nbsp; &nbsp;
                             <button type="button" class="btn btn-primary btn-danger" data-dismiss="modal">Cancelar</button>
 						</div>
@@ -596,23 +599,23 @@
 							<div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label" for="form-field-3"> Nombres </label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="alu_nombre" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio" /> 
+									<input id="jp_nombre" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio" /> 
                                 </div>
 							</div>
                             <div class="space-4"></div>
 							<div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Apellido paterno </label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="alu_apePat" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio"/> </div>
+									<input id="jp_apePat" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio"/> </div>
 							</div>
                             <div class="space-4"></div>
 							<div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Apellido materno </label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="alu_apeMat" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio"/> </div>
+									<input id="jp_apeMat" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio"/> </div>
 							</div>							
 							<div class="space-4"></div>
-                            <div class="form-group" id="alu_docs">
+                            <div class="form-group" id="jp_docs">
                                 <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Tipo de documento</label>
                                 <label class="radio-inline" style="margin-left:-15%;">
                                     <input type="radio" name="docs" value="dni" checked="checked"> DNI 
@@ -631,14 +634,14 @@
 							<div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> N° documento </label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="alu_nrodoc" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
+									<input id="jp_nrodoc" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
 							</div>                            
                             <div class="space-4"></div>
                             <div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Fecha de nacimiento </label>
                                 <div class="col-sm-3 col-xs-3">
                                     <div class="input-group">
-                                        <input placeholder="*obligatorio" class="form-control date-picker" id="alu_date_picker" type="text" data-date-format="dd-mm-yyyy" />
+                                        <input placeholder="*obligatorio" class="form-control date-picker" id="jp_date_picker" type="text" data-date-format="dd-mm-yyyy" />
                                         <span class="input-group-addon">
                                             <i class="fa fa-calendar bigger-110"></i>
                                         </span>
@@ -649,20 +652,20 @@
                             <div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Teléfono 1 </label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="alu_telf1" type="text" class="col-xs-5 col-sm-7" /> </div>
+									<input id="jp_telf1" type="text" class="col-xs-5 col-sm-7" /> </div>
 							</div>
                             <div class="space-4"></div>
                             <div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Teléfono 2</label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="alu_tel2" type="text" class="col-xs-5 col-sm-7" /> </div>
+									<input id="jp_tel2" type="text" class="col-xs-5 col-sm-7" /> </div>
 							</div>
                             
                             <div class="space-4"></div>
                             <div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Clínica jurídica </label>
 								<div class="col-sm-9 col-xs-9">
-									<select id='alu_clinica' class="col-xs-5 col-sm-7">
+									<select id='jp_clinica' class="col-xs-5 col-sm-7">
                                         <option disabled selected value="0" style="display:none;">*Obligatorio</option>
                                         <option value="1">Clínica 1</option>
                                         <option value="2">Clínica 2</option>
@@ -675,25 +678,25 @@
 							<div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Código PUCP </label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="alu_codpucp" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio" /> </div>
+									<input id="jp_codpucp" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio" /> </div>
 							</div>
 							<div class="space-4"></div>
 							<div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Correo </label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="alu_correo" type="text" id="form-field-5" class="col-xs-5 col-sm-7" placeholder="*obligatorio" /> </div>
+									<input id="jp_correo" type="text" id="form-field-5" class="col-xs-5 col-sm-7" placeholder="*obligatorio" /> </div>
 							</div>							
 							<div class="space-4"></div>
                             <div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Usuario </label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="alu_user" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
+									<input id="jp_user" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
 							</div>
 							<div class="space-4"></div>
                             <div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Contraseña </label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="alu_pass" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
+									<input id="jp_pass" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
 							</div>
 							<div class="space-20"></div>
 						</form>
@@ -701,7 +704,7 @@
 					
 					<div class="modal-footer">
 						<div align="center">
-							<button id="boton_nuevo" type="button" class="btn btn-primary" data-dismiss="modal" onclick="close();">Registrar</button>
+							<button id="boton_registrar" type="button" class="btn btn-primary" data-dismiss="modal" onclick="close();">Registrar</button>
                             &nbsp; &nbsp; &nbsp;
                             <button type="button" class="btn btn-primary btn-danger" data-dismiss="modal">Cancelar</button>
 						</div>
@@ -763,11 +766,16 @@
 
 	function getButtons(i, alu_id) {
 		var param = "'" + i + "','" + alu_id + "'";
-		var butons = ' < div class = "hidden-sm hidden-xs action-buttons" > '+
-		' < a onClick = "edit_onClick('+param+')"class = "green"">'+
-		' < i class = "ace-icon fa fa-pencil bigger-130" > '+' < /i>'+' < /a>'+
-		' < a onClick = "edit_onClick(\'borrar\')"class = "red"	href = "#" > '+
-		' < i class = "ace-icon fa fa-trash-o bigger-130" > '+' < /i>'+' < /a>'+' < /div>';
+		var butons = '<div class="hidden-sm hidden-xs action-buttons">'+
+                                                    
+                                                    '<a  onClick="edit_onClick('+param+')" class="green" ">'+
+                                                        '<i class="ace-icon fa fa-pencil bigger-130">'+'</i>'+
+                                                    '</a>'+
+
+                                                    '<a onClick="edit_onClick(\'borrar\')" class="red" href="#">'+
+                                                        '<i class="ace-icon fa fa-trash-o bigger-130">'+'</i>'+
+                                                    '</a>'+
+                                                '</div>';
 		return butons;
 	}
 
@@ -819,6 +827,10 @@
         if(previous!='0'){
            table_previous.removeClass('show'); 
            table_previous.addClass('hide'); 
+        }else{
+            $('#comentario_ini').addClass('hide');
+            $('#boton_nuevo').removeClass('hide');
+            $('#boton_nuevo').addClass('show');
         }
         previous = this.value;
         table_previous = table_display;
@@ -826,7 +838,7 @@
         
     
     
-	$("#boton_nuevo").on('click', function(e) {
+	$("#boton_registrar").on('click', function(e) {
 		//alert("mostareaas");
 		if(action == "ADD") {
 			//tipo = "Persona";
