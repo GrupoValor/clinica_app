@@ -142,7 +142,7 @@
 									<div class="space-4"></div>
 									
 									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-5"> Fecha Nacimiento(Formato: Año/Mes/Dia)</label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-5"> Fecha Nacimiento(Formato: Año-Mes-Dia)</label>
 
 										<div class="col-sm-9">
 											<input id="dir_fecnac" type="text" id="form-field-5"  class="col-xs-5 col-sm-7" />
@@ -186,9 +186,9 @@
 													<option value="pc">Primaria completa</option>
 													<option value="pi">Primaria incompleta</option>
 													<option value="sc">Secundaria completa</option>
-													<option value="si">secundaria incompleta</option>
+													<option value="si">Secundaria incompleta</option>
 													<option value="suc">Superior completa</option>
-													<option value="sui">superior incompleta</option>
+													<option value="sui">Superior incompleta</option>
 		
 												</select>
 									   	
@@ -345,11 +345,11 @@
                     var param = "'"+i+"','"+cli_id+"'";
                     var butons = '<div class="hidden-sm hidden-xs action-buttons">'+
                                                     
-                                                    '<a  onClick="edit_onClick('+param+')" class="green" ">'+
+                                                    '<a  onClick="edit_onClick('+param+')" class="green">'+
                                                         '<i class="ace-icon fa fa-pencil bigger-130">'+'</i>'+
                                                     '</a>'+
 
-                                                    '<a onClick="edit_onClick(\'borrar\')" class="red" href="#">'+
+                                                    '<a onClick="delete_onClick('+param+')" class="red" ">'+
                                                         '<i class="ace-icon fa fa-trash-o bigger-130">'+'</i>'+
                                                     '</a>'+
                                                 '</div>';
@@ -390,19 +390,19 @@
 				
 				var nivel;
 				if($( "#dir_nivedu option:selected" ).val() === 's'){
-					nivel = "Sin Estudios";
+					nivel = "Sin estudios";
 				}else if($( "#dir_nivedu option:selected" ).val() === 'pi'){
-					nivel = "Primaria Incompleta";
+					nivel = "Primaria incompleta";
 				}else if($( "#dir_nivedu option:selected" ).val() === 'pc'){
-					nivel = "Primaria Completa";
+					nivel = "Primaria completa";
 				}else if($( "#dir_nivedu option:selected" ).val() === 'si'){
-					nivel = "Secundaria Incompleta";
+					nivel = "Secundaria incompleta";
 				}else if($( "#dir_nivedu option:selected" ).val() === 'sc'){
-					nivel = "Secundaria Completa";
+					nivel = "Secundaria completa";
 				}else if($( "#dir_nivedu option:selected" ).val() === 'sui'){
-					nivel = "Nivel Superior Incompleto";
+					nivel = "Superior incompleto";
 				}else if($( "#dir_nivedu option:selected" ).val() === 'suc'){
-					nivel = "Nivel Superior Completo";
+					nivel = "Superior completo";
 				}
 				
 				
@@ -469,34 +469,190 @@
 			
 
 
-            data_set[editid][1]=$("#dir_nombre").val();
-	        data_set[editid][2]=$("#dir_nrodoc").val();
-	        data_set[editid][3]=$("#dir_nivedu").val();
-			data_set[editid][4]=$("#dir_ocupac").val();
-			data_set[editid][5]=$("#dir_telno1").val();
-			data_set[editid][6]=$("#dir_correo").val();
-             myTable.clear().rows.add(data_set).draw(); 
-            }          
+            //data_set[editid][1]=$("#dir_nombre").val();
+	        //data_set[editid][2]=$("#dir_nrodoc").val();
+	        //data_set[editid][3]=$("#dir_nivedu").val();
+			//data_set[editid][4]=$("#dir_ocupac").val();
+			//data_set[editid][5]=$("#dir_telno1").val();
+			//data_set[editid][6]=$("#dir_correo").val();
+            // myTable.clear().rows.add(data_set).draw();
+			 
+			var genero;
+            if ($( "#dir_genero option:selected" ).val() === 'm') {
+				genero = "m";
+            }else
+				genero = "f";
+			
+			var nivel;
+			if($( "#dir_nivedu option:selected" ).val() === 's'){
+				nivel = "Sin Estudios";
+			}else if($( "#dir_nivedu option:selected" ).val() === 'pi'){
+				nivel = "Primaria incompleta";
+			}else if($( "#dir_nivedu option:selected" ).val() === 'pc'){
+				nivel = "Primaria completa";
+			}else if($( "#dir_nivedu option:selected" ).val() === 'si'){
+				nivel = "Secundaria incompleta";
+			}else if($( "#dir_nivedu option:selected" ).val() === 'sc'){
+				nivel = "Secundaria completa";
+			}else if($( "#dir_nivedu option:selected" ).val() === 'sui'){
+				nivel = "Superior incompleto";
+			}else if($( "#dir_nivedu option:selected" ).val() === 'suc'){
+				nivel = "Superior completo";
+			}
+			
+			 
+			$.ajax({
+                    type: "PATCH",
+                    url:'service_cliente/'+data_set[editid][0],
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+            
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    data: {
+                           
+							cli_nombre : $("#dir_nombre").val(),
+							cli_genero : genero,
+							cli_fecnac : $("#dir_fecnac").val(),
+							cli_numhij : $("#dir_numhij").val(),
+							cli_nivedu : nivel,
+							cli_nrodoc : $("#dir_nrodoc").val(),
+							cli_ocupac : $("#dir_ocupac").val(),
+							cli_direcc : $("#dir_direcc").val(),
+							cli_telno1 : $("#dir_telno1").val(),
+							cli_telno2 : $("#dir_telno2").val(),
+							cli_correo : $("#dir_correo").val()},
+						   
+                           
+                    
+                    success: function(Response){
+                    	 
+						
+					data_set[editid][1]=$("#dir_nombre").val();
+					data_set[editid][2]=$("#dir_nrodoc").val();
+					data_set[editid][3]=nivel;
+					data_set[editid][4]=$("#dir_ocupac").val();
+					data_set[editid][5]=$("#dir_telno1").val();
+					data_set[editid][6]=$("#dir_correo").val();
+					data_set[editid][8]=genero;
+					data_set[editid][9]=$("#dir_fecnac").val();
+					data_set[editid][10]=$("#dir_numhij").val();
+					data_set[editid][11]=$("#dir_direcc").val();
+					data_set[editid][12]=$("#dir_telno2").val();
+					
+					myTable.clear().rows.add(data_set).draw(); 
+						 
+                    alert(Response);
+                    }
+                });
+			 
+			 
+            }
+
+			if (action=="DELETE")
+            {
+
+	
+			 
+             //myTable.clear().rows.add(data_set).draw();
+			 //guardar cambios
+			 
+			$.ajax({
+                    type: "DELETE",
+                    url:'service_cliente/'+data_set[editid][0],
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
+            
+                        if (token) {
+                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                        }
+                    },
+                    //data: {
+                           //alu_id ,
+                           //alu_nombre: $('#dir_nombre').val(),
+                           //alu_nrodoc: $("#dir_nrodoc").val(),
+                           //alu_codpuc: $('#dir_codpucp').val(),
+                           //alu_correo: $('#dir_correo').val()},
+						   
+                           
+                    
+                    success: function(Response){
+                    
+					myTable.rows(editid).remove().draw();
+                    
+					alert(Response);
+                    }
+                });
+			 
+            }
                               
         });
        function edit_onClick(id,cli_id) {
 
        			//alert (id);
 				action="UPDATE";
+				
+				
+		
                 var rows = myTable.rows(id).data();
                 editid = parseInt(id);
+				
+				var nivel;
+				if(data_set[editid][3] === "Sin Estudios"){
+					nivel = "se";
+				}else if(data_set[editid][3] === "Primaria incompleta"){
+					nivel = "pi";
+				}else if(data_set[editid][3] === "Primaria completa"){
+					nivel = "pc";
+				}else if(data_set[editid][3] === "Secundaria incompleta"){
+					nivel = "si";
+				}else if(data_set[editid][3] === "Secundaria completa"){
+					nivel = "sc";
+				}else if(data_set[editid][3] === "Nivel Superior Incompleto"){
+					nivel = "sui";
+				}else if(data_set[editid][3] === "Nivel Superior Completo"){
+					nivel = "suc";
+				}
+				
+				
+				
                 $("#dir_nombre").val(data_set[editid][1]+"");
                 $("#dir_nrodoc").val(data_set[editid][2]+"");
-                $("#dir_nivedu").val(data_set[id][3]+"");
-				$("#dir_ocupac").val(data_set[id][4]+"");
-				$("#dir_telno1").val(data_set[id][5]+"");
-				$("#dir_correo").val(data_set[id][6]+"");
+                $("#dir_nivedu").val(nivel);
+				$("#dir_ocupac").val(data_set[editid][4]+"");
+				$("#dir_telno1").val(data_set[editid][5]+"");
+				$("#dir_correo").val(data_set[editid][6]+"");
+				
+				$("#dir_genero").val(data_set[editid][8]+"");
+				$("#dir_fecnac").val(data_set[editid][9]+"");
+				$("#dir_numhij").val(data_set[editid][10]+"");
+				$("#dir_direcc").val(data_set[editid][11]+"");
+				$("#dir_telno2").val(data_set[editid][12]+"");
+				
 
                 $("#boton").modal()
     
               
 
-              }
+        }
+		
+		function delete_onClick(id,cli_id){
+			action="DELETE";
+			
+			var rows = myTable.rows(id).data();
+            editid = parseInt(id);
+            $("#dir_nombre").val(data_set[editid][1]+"");
+            $("#dir_nrodoc").val(data_set[editid][2]+"");
+            $("#dir_nivedu").val(data_set[id][3]+"");
+			$("#dir_ocupac").val(data_set[id][4]+"");
+			$("#dir_telno1").val(data_set[id][5]+"");
+			$("#dir_correo").val(data_set[id][6]+"");
+
+            $("#boton").modal()
+		}
+		
         $(document).ready(function(){
             //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
                 myTable =
@@ -536,7 +692,7 @@
                        
                         for(var i = 0; i<data.length ;i++)
                         {
-                            
+                            if(data[i].usu_activo === 1){
 	                            data_set.push([
 	                            data[i].cli_id,
                                 data[i].cli_nombre,
@@ -545,10 +701,17 @@
 								data[i].cli_ocupac,
 								data[i].cli_telno1,
 								data[i].cli_correo,
-	                            getButtons(i)
-	                            
+	                            getButtons(i),
+								//para los modales
+	                            data[i].cli_genero,
+								data[i].cli_fecnac,
+								data[i].cli_numhij,
+								data[i].cli_direcc,
+								data[i].cli_telno2
+								
 	                        ] )
 	                        
+							}
                         
                         }
                         myTable.clear().rows.add(data_set).draw()
