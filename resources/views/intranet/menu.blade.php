@@ -1,5 +1,56 @@
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script type="text/javascript">
 
 
+
+    $.ajax({
+                   
+                    type: "GET",
+                    url:'user',
+                    success: function(result){
+        
+                        var data =  $.map(jQuery.parseJSON(result), function(value, index) {
+                            return [value];
+                        });
+                        $('#user_name').html(data[1])   
+                        if(data[0]=='2'){ligestor
+                            $('#ligestor').css("display","none") 
+                            $('#lireportes').css("display","none") 
+                            $('#mant-profesor').css("display","none") 
+                            $('#mant-jp').css("display","none") 
+                            $('#mant-alumno').css("display","none") 
+                            $('#litareas').css("display","none") 
+                        }
+                    }
+                        
+                            
+            
+                 
+            
+                });
+
+    function logout(){
+        {
+            $.ajax({
+                   
+                    type: "GET",
+                    url:'logout',
+                    success: function(result){
+                        
+                        window.location.replace("login");
+                        
+                      
+                    }
+                        
+                            
+            
+                 
+            
+                });
+        
+        }
+    } 
+</script>
 <div id="navbar" class="navbar navbar-default          ace-save-state"> <!--Barra superior-->
             <div class="navbar-container ace-save-state" id="navbar-container">
                 <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
@@ -68,7 +119,7 @@
                                 <img class="nav-user-photo" src="assets/images/avatars/user.jpg" alt="Jason's Photo" />
                                 <span class="user-info">
                                             <small>Bienvenido,</small>
-                                            Chiara
+                                            <p id="user_name" ></p>
                                         </span>
                                 <i class="ace-icon fa fa-caret-down"></i>
                             </a>
@@ -82,7 +133,7 @@
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="#">
+                                    <a href="#" onclick="logout();">
                                         <i class="ace-icon fa fa-power-off"></i>
                                         Cerrar sesión
                                     </a>
@@ -220,7 +271,7 @@
 
                           </ul>-->
                     </li>
-                    <li class=""> <!-- Reportes FALTA-->
+                    <li id="lireportes"class=""> <!-- Reportes FALTA-->
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-file-o"></i>
                             <span class="menu-text">
@@ -302,4 +353,6 @@
                     <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
                 </div>
             </div>
+
+
             
