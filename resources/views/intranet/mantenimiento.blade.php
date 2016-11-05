@@ -49,8 +49,11 @@
 						<option value="3">Alumno</option>
 						<option value="4">Cliente</option>
 					</select>
-					<button type="button" class="btn btn-primary" style="float: right;margin-top: -8px;" onclick="add_onClick()">Nuevo +</button>
+					<button id="boton_nuevo" type="button" class="btn btn-primary hide" style="float: right;margin-top: -8px;" onclick="add_onClick()">Nuevo +</button>
 				</div>
+                <div class="row" id="comentario_ini" style="text-align:center; margin-top:10%; color: grey;">
+                    <h3>Selecciona la tabla a mostrar</h3>                
+                </div>
 				<div class="row hide" id="table-alu"> <!--Alumnos-->
 					<div class="col-xs-12">
 						<!-- PAGE CONTENT BEGINS -->
@@ -160,23 +163,23 @@
 							<div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label" for="form-field-3"> Nombres </label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="dir_nombre" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio" /> 
+									<input id="alu_nombre" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio" /> 
                                 </div>
 							</div>
                             <div class="space-4"></div>
 							<div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Apellido paterno </label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="dir_apePat" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio"/> </div>
+									<input id="alu_apePat" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio"/> </div>
 							</div>
                             <div class="space-4"></div>
 							<div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Apellido materno </label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="dir_apeMat" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio"/> </div>
+									<input id="alu_apeMat" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio"/> </div>
 							</div>							
 							<div class="space-4"></div>
-                            <div class="form-group" id="docs_radio_buttons">
+                            <div class="form-group" id="alu_docs">
                                 <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Tipo de documento</label>
                                 <label class="radio-inline" style="margin-left:-15%;">
                                     <input type="radio" name="docs" value="dni" checked="checked"> DNI 
@@ -193,16 +196,16 @@
                             </div>
 							<div class="space-4"></div>
 							<div class="form-group">
-								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Nº de documento </label>
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> N° documento </label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="dir_nrodoc" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
+									<input id="alu_nrodoc" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
 							</div>                            
                             <div class="space-4"></div>
                             <div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Fecha de nacimiento </label>
                                 <div class="col-sm-3 col-xs-3">
                                     <div class="input-group">
-                                        <input placeholder="*obligatorio" class="form-control date-picker" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" />
+                                        <input placeholder="*obligatorio" class="form-control date-picker" id="alu_date_picker" type="text" data-date-format="dd-mm-yyyy" />
                                         <span class="input-group-addon">
                                             <i class="fa fa-calendar bigger-110"></i>
                                         </span>
@@ -213,20 +216,20 @@
                             <div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Teléfono 1 </label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="dir_telf1" type="text" class="col-xs-5 col-sm-7" /> </div>
+									<input id="alu_telf1" type="text" class="col-xs-5 col-sm-7" /> </div>
 							</div>
                             <div class="space-4"></div>
                             <div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Teléfono 2</label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="dir_tel2" type="text" class="col-xs-5 col-sm-7" /> </div>
+									<input id="alu_tel2" type="text" class="col-xs-5 col-sm-7" /> </div>
 							</div>
                             
                             <div class="space-4"></div>
                             <div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Clínica jurídica </label>
 								<div class="col-sm-9 col-xs-9">
-									<select id='clinicaOptions' class="col-xs-5 col-sm-7">
+									<select id='alu_clinica' class="col-xs-5 col-sm-7">
                                         <option disabled selected value="0" style="display:none;">*Obligatorio</option>
                                         <option value="1">Clínica 1</option>
                                         <option value="2">Clínica 2</option>
@@ -239,25 +242,25 @@
 							<div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Código PUCP </label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="dir_codpucp" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio" /> </div>
+									<input id="alu_codpucp" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio" /> </div>
 							</div>
 							<div class="space-4"></div>
 							<div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Correo </label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="dir_correo" type="text" id="form-field-5" class="col-xs-5 col-sm-7" placeholder="*obligatorio" /> </div>
+									<input id="alu_correo" type="text" id="form-field-5" class="col-xs-5 col-sm-7" placeholder="*obligatorio" /> </div>
 							</div>							
 							<div class="space-4"></div>
                             <div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Usuario </label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="dir_user" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
+									<input id="alu_user" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
 							</div>
 							<div class="space-4"></div>
                             <div class="form-group">
 								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Contraseña </label>
 								<div class="col-sm-9 col-xs-9">
-									<input id="dir_pass" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
+									<input id="alu_pass" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
 							</div>
 							<div class="space-20"></div>
 						</form>
@@ -265,7 +268,7 @@
 					
 					<div class="modal-footer">
 						<div align="center">
-							<button id="botonAlumno" type="button" class="btn btn-primary" data-dismiss="modal" onclick="close();">Registrar</button>
+							<button id="boton_registrar" type="button" class="btn btn-primary" data-dismiss="modal" onclick="close();">Registrar</button>
                             &nbsp; &nbsp; &nbsp;
                             <button type="button" class="btn btn-primary btn-danger" data-dismiss="modal">Cancelar</button>
 						</div>
@@ -274,7 +277,446 @@
 			</div>
 		</div>
 	</div>
-	<?php echo view( 'intranet/footer'); ?>
+	
+    <!-- Popup :  Agregar Profesor-->
+	<div align="center">
+		<div class="modal fade" id="modal_profesor" role="dialog">
+			<div class="modal-dialog" style="width: 650px">
+				<div class="modal-content">
+					<!-- Modal content-->
+					<div class="page-header">
+						<!-- /.page-header -->
+                        <button type="button" class="fa fa-times btn-danger" style="float: right; margin-right: 8px" data-dismiss="modal"></button>
+                        <div class="space-10"></div>
+						<h1>  Profesor </h1>
+                    </div>
+                    <div class="row">
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label" for="form-field-3"> Nombres </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="prof_nombre" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio" /> 
+                                </div>
+							</div>
+                            <div class="space-4"></div>
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Apellido paterno </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="prof_apePat" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio"/> </div>
+							</div>
+                            <div class="space-4"></div>
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Apellido materno </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="prof_apeMat" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio"/> </div>
+							</div>							
+							<div class="space-4"></div>
+                            <div class="form-group" id="prof_docs">
+                                <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Tipo de documento</label>
+                                <label class="radio-inline" style="margin-left:-15%;">
+                                    <input type="radio" name="docs" value="dni" checked="checked"> DNI 
+                                </label> 
+                                <label class="radio-inline">
+                                    <input type="radio" name="docs" value="libreta"> Libreta militar 
+                                </label> 
+                                <label class="radio-inline">
+                                    <input type="radio"  name="docs"value="pasaporte"> Pasaporte 
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio"  name="docs" value="otro"> Otro
+                                </label>
+                            </div>
+							<div class="space-4"></div>
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> N° documento </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="prof_nrodoc" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
+							</div>                            
+                            <div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Fecha de nacimiento </label>
+                                <div class="col-sm-3 col-xs-3">
+                                    <div class="input-group">
+                                        <input placeholder="*obligatorio" class="form-control date-picker" id="prof_date_picker" type="text" data-date-format="dd-mm-yyyy" />
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar bigger-110"></i>
+                                        </span>
+                                    </div>
+                                </div>								
+							</div>
+                            <div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Teléfono 1 </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="prof_telf1" type="text" class="col-xs-5 col-sm-7" /> </div>
+							</div>
+                            <div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Teléfono 2</label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="prof_tel2" type="text" class="col-xs-5 col-sm-7" /> </div>
+							</div>
+                            
+                            <div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Clínica jurídica </label>
+								<div class="col-sm-9 col-xs-9">
+									<select id='prof_clinica' class="col-xs-5 col-sm-7">
+                                        <option disabled selected value="0" style="display:none;">*Obligatorio</option>
+                                        <option value="1">Clínica 1</option>
+                                        <option value="2">Clínica 2</option>
+                                        <option value="3">Clínica 3</option>
+                                        <option value="4">Clínica 4</option>
+                                    </select>
+                                </div>
+							</div>
+                            <div class="space-4"></div>                             
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Código PUCP </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="prof_codpucp" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio" /> </div>
+							</div>
+							<div class="space-4"></div>
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Correo </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="prof_correo" type="text" id="form-field-5" class="col-xs-5 col-sm-7" placeholder="*obligatorio" /> </div>
+							</div>							
+							<div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Usuario </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="prof_user" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
+							</div>
+							<div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Contraseña </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="prof_pass" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
+							</div>
+							<div class="space-20"></div>
+						</form>
+                    </div>
+					
+					<div class="modal-footer">
+						<div align="center">
+							<button id="boton_registrar" type="button" class="btn btn-primary" data-dismiss="modal" onclick="close();">Registrar</button>
+                            &nbsp; &nbsp; &nbsp;
+                            <button type="button" class="btn btn-primary btn-danger" data-dismiss="modal">Cancelar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+    <!-- Popup :  Agregar Cliente-->
+	<div align="center">
+		<div class="modal fade" id="modal_cliente" role="dialog">
+			<div class="modal-dialog" style="width: 650px">
+				<div class="modal-content">
+					<!-- Modal content-->
+					<div class="page-header">
+						<!-- /.page-header -->
+                        <button type="button" class="fa fa-times btn-danger" style="float: right; margin-right: 8px" data-dismiss="modal"></button>
+                        <div class="space-10"></div>
+						<h1>  Cliente </h1>
+                    </div>
+                    <div class="row">
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label" for="form-field-3"> Nombres </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="cli_nombre" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio" /> 
+                                </div>
+							</div>
+                            <div class="space-4"></div>
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Apellido paterno </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="cli_apePat" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio"/> </div>
+							</div>
+                            <div class="space-4"></div>
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Apellido materno </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="cli_apeMat" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio"/> </div>
+							</div>							
+							<div class="space-4"></div>
+                            <div class="form-group" id="cli_docs">
+                                <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Tipo de documento</label>
+                                <label class="radio-inline" style="margin-left:-15%;">
+                                    <input type="radio" name="docs" value="dni" checked="checked"> DNI 
+                                </label> 
+                                <label class="radio-inline">
+                                    <input type="radio" name="docs" value="libreta"> Libreta militar 
+                                </label> 
+                                <label class="radio-inline">
+                                    <input type="radio"  name="docs"value="pasaporte"> Pasaporte 
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio"  name="docs" value="otro"> Otro
+                                </label>
+                            </div>
+							<div class="space-4"></div>
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> N° documento </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="cli_nrodoc" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
+							</div>                            
+                            <div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Fecha de nacimiento </label>
+                                <div class="col-sm-3 col-xs-3">
+                                    <div class="input-group">
+                                        <input placeholder="*obligatorio" class="form-control date-picker" id="cli_date_picker" type="text" data-date-format="dd-mm-yyyy" />
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar bigger-110"></i>
+                                        </span>
+                                    </div>
+                                </div>								
+							</div>
+                            <div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Teléfono 1 </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="cli_telf1" type="text" class="col-xs-5 col-sm-7" /> </div>
+							</div>
+                            <div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Teléfono 2</label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="cli_tel2" type="text" class="col-xs-5 col-sm-7" /> </div>
+							</div>
+                            <div class="space-4"></div>
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Correo </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="cli_correo" type="text" id="form-field-5" class="col-xs-5 col-sm-7" placeholder="*obligatorio" /> </div>
+							</div>
+                            <div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Nivel educativo</label>
+								<div class="col-sm-9 col-xs-9">
+									<select id='cli_educacion' class="col-xs-5 col-sm-7">
+                                        <option disabled selected value="0" style="display:none;">*Obligatorio</option>
+                                        <option value="1">Primaria</option>
+                                        <option value="2">Secundaria</option>
+                                        <option value="3">Superior</option>
+                                    </select>
+                                </div>
+							</div>
+                            <div class="space-4"></div>                             
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> N° hijos </label>
+								<div class="col-sm-9 col-xs-9" style="margin-left:-27%;">
+									<input type="text" id="cli_spinner"/>
+                                </div>
+							</div>
+                            <div class="space-4"></div>
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Ocupación </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="cli_ocupacion" type="text" id="form-field-5" class="col-xs-5 col-sm-7" placeholder="*obligatorio" /> </div>
+							</div>		
+                            <div class="space-4"></div>
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Dirección </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="cli_direccion" type="text" id="form-field-5" class="col-xs-9 col-sm-9" placeholder="*obligatorio" /> </div>
+							</div>	
+							<div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Población vulnerable </label>
+                                <div class="checkbox col-sm-9 col-xs-9" style="margin-left:-10%">
+                                    <label>
+                                        <input name="form-field-checkbox" type="checkbox" class="ace">
+                                        <span class="lbl">Desplazado</span>
+                                    </label>
+
+                                    <label>
+                                        <input name="form-field-checkbox" type="checkbox" class="ace">
+                                        <span class="lbl">Menor de edad</span>
+                                    </label>
+                                    <label>
+                                        <input name="form-field-checkbox" type="checkbox" class="ace">
+                                        <span class="lbl">Anciano</span>
+                                    </label>                                    
+                                </div>
+                                <div class="checkbox col-sm-9 col-xs-9" style="margin-left:-10%">
+                                    <label>
+                                        <input name="form-field-checkbox" type="checkbox" class="ace">
+                                        <span class="lbl">Discapacitado</span>
+                                    </label>
+                                    <label>
+                                        <input name="form-field-checkbox" type="checkbox" class="ace">
+                                        <span class="lbl">Otros</span>
+                                    </label>
+                                </div>
+							</div>
+							<div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Usuario </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="cli_user" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
+							</div>
+							<div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Contraseña </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="cli_pass" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
+							</div>
+							<div class="space-20"></div>
+						</form>
+                    </div>
+					
+					<div class="modal-footer">
+						<div align="center">
+							<button id="boton_registrar" type="button" class="btn btn-primary" data-dismiss="modal" onclick="close();">Registrar</button>
+                            &nbsp; &nbsp; &nbsp;
+                            <button type="button" class="btn btn-primary btn-danger" data-dismiss="modal">Cancelar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+    <!-- Popup :  Agregar JP-->
+	<div align="center">
+		<div class="modal fade" id="modal_jp" role="dialog">
+			<div class="modal-dialog" style="width: 650px">
+				<div class="modal-content">
+					<!-- Modal content-->
+					<div class="page-header">
+						<!-- /.page-header -->
+                        <button type="button" class="fa fa-times btn-danger" style="float: right; margin-right: 8px" data-dismiss="modal"></button>
+                        <div class="space-10"></div>
+						<h1>  Jefe de práctica </h1>
+                    </div>
+                    <div class="row">
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label" for="form-field-3"> Nombres </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="jp_nombre" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio" /> 
+                                </div>
+							</div>
+                            <div class="space-4"></div>
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Apellido paterno </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="jp_apePat" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio"/> </div>
+							</div>
+                            <div class="space-4"></div>
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Apellido materno </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="jp_apeMat" type="text" class="col-xs-9 col-sm-9" placeholder="*obligatorio"/> </div>
+							</div>							
+							<div class="space-4"></div>
+                            <div class="form-group" id="jp_docs">
+                                <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Tipo de documento</label>
+                                <label class="radio-inline" style="margin-left:-15%;">
+                                    <input type="radio" name="docs" value="dni" checked="checked"> DNI 
+                                </label> 
+                                <label class="radio-inline">
+                                    <input type="radio" name="docs" value="libreta"> Libreta militar 
+                                </label> 
+                                <label class="radio-inline">
+                                    <input type="radio"  name="docs"value="pasaporte"> Pasaporte 
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio"  name="docs" value="otro"> Otro
+                                </label>
+                            </div>
+							<div class="space-4"></div>
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> N° documento </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="jp_nrodoc" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
+							</div>                            
+                            <div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Fecha de nacimiento </label>
+                                <div class="col-sm-3 col-xs-3">
+                                    <div class="input-group">
+                                        <input placeholder="*obligatorio" class="form-control date-picker" id="jp_date_picker" type="text" data-date-format="dd-mm-yyyy" />
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar bigger-110"></i>
+                                        </span>
+                                    </div>
+                                </div>								
+							</div>
+                            <div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Teléfono 1 </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="jp_telf1" type="text" class="col-xs-5 col-sm-7" /> </div>
+							</div>
+                            <div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Teléfono 2</label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="jp_tel2" type="text" class="col-xs-5 col-sm-7" /> </div>
+							</div>
+                            
+                            <div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Clínica jurídica </label>
+								<div class="col-sm-9 col-xs-9">
+									<select id='jp_clinica' class="col-xs-5 col-sm-7">
+                                        <option disabled selected value="0" style="display:none;">*Obligatorio</option>
+                                        <option value="1">Clínica 1</option>
+                                        <option value="2">Clínica 2</option>
+                                        <option value="3">Clínica 3</option>
+                                        <option value="4">Clínica 4</option>
+                                    </select>
+                                </div>
+							</div>
+                            <div class="space-4"></div>                             
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Código PUCP </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="jp_codpucp" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio" /> </div>
+							</div>
+							<div class="space-4"></div>
+							<div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Correo </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="jp_correo" type="text" id="form-field-5" class="col-xs-5 col-sm-7" placeholder="*obligatorio" /> </div>
+							</div>							
+							<div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Usuario </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="jp_user" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
+							</div>
+							<div class="space-4"></div>
+                            <div class="form-group">
+								<label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Contraseña </label>
+								<div class="col-sm-9 col-xs-9">
+									<input id="jp_pass" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/> </div>
+							</div>
+							<div class="space-20"></div>
+						</form>
+                    </div>
+					
+					<div class="modal-footer">
+						<div align="center">
+							<button id="boton_registrar" type="button" class="btn btn-primary" data-dismiss="modal" onclick="close();">Registrar</button>
+                            &nbsp; &nbsp; &nbsp;
+                            <button type="button" class="btn btn-primary btn-danger" data-dismiss="modal">Cancelar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+    
+    
+    <?php echo view( 'intranet/footer'); ?>
 	<!-- basic scripts -->
 	<!--[if !IE]> -->
 	<script src="assets/js/jquery-2.1.4.min.js"></script>
@@ -295,6 +737,7 @@
 	<script src="assets/js/ace.min.js"></script>
 	<script type="text/javascript"></script>
     <script src="assets/js/bootstrap-datepicker.min.js"></script>
+    <script src="assets/js/spinbox.min.js"></script>
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript">
     
@@ -305,6 +748,7 @@
         }).next().on(ace.click_event, function(){
             $(this).prev().focus();
         });
+        $('#cli_spinner').ace_spinner({value:0,min:0,max:100,step:1, on_sides: true, icon_up:'ace-icon fa fa-plus bigger-110', icon_down:'ace-icon fa fa-minus bigger-110', btn_up_class:'btn-success' , btn_down_class:'btn-danger'});
     });
     
 	jQuery('#limantenimientos').addClass('active open');
@@ -318,31 +762,49 @@
 	var action;
     var previous;
     var table_previous;
+    var myselect;
 
 	function getButtons(i, alu_id) {
 		var param = "'" + i + "','" + alu_id + "'";
-		var butons = ' < div class = "hidden-sm hidden-xs action-buttons" > '+
-		' < a onClick = "edit_onClick('+param+')"class = "green"">'+
-		' < i class = "ace-icon fa fa-pencil bigger-130" > '+' < /i>'+' < /a>'+
-		' < a onClick = "edit_onClick(\'borrar\')"class = "red"	href = "#" > '+
-		' < i class = "ace-icon fa fa-trash-o bigger-130" > '+' < /i>'+' < /a>'+' < /div>';
+		var butons = '<div class="hidden-sm hidden-xs action-buttons">'+
+                                                    
+                                                    '<a  onClick="edit_onClick('+param+')" class="green" ">'+
+                                                        '<i class="ace-icon fa fa-pencil bigger-130">'+'</i>'+
+                                                    '</a>'+
+
+                                                    '<a onClick="edit_onClick(\'borrar\')" class="red" href="#">'+
+                                                        '<i class="ace-icon fa fa-trash-o bigger-130">'+'</i>'+
+                                                    '</a>'+
+                                                '</div>';
 		return butons;
 	}
 
-	function add_onClick() {
+	function add_onClick() { //Cuando se da click Nuevo+
 		action = "ADD";
-		$("#dir_nombre").val("");
-		$("#dir_correo").val("");
-		$("#dir_codpucp").val("");
-		$("#dir_nrodoc").val("");
-		$("#modal_alumno").modal();
+        switch(myselect){
+            case '1': //Profesor
+                $("#modal_profesor").modal();
+                break;
+            case '2': //JP
+                $("#modal_jp").modal();
+                break;
+            case '3': //Alumno
+                $("#modal_alumno").modal();
+                break;
+            case '4': //Cliente
+                $("#modal_cliente").modal();
+                break;
+            default:
+                break;                
+        }
+		
 	}
         
     
     $('#myOptions').focus(function(){
         previous = this.value;  
     }).change(function(){
-        var myselect = this.value;//$("#myOptions option:selected").attr('value');
+        myselect = this.value;//$("#myOptions option:selected").attr('value');
         var table_display;
         switch(myselect){
             case '1': //Profesor
@@ -365,6 +827,10 @@
         if(previous!='0'){
            table_previous.removeClass('show'); 
            table_previous.addClass('hide'); 
+        }else{
+            $('#comentario_ini').addClass('hide');
+            $('#boton_nuevo').removeClass('hide');
+            $('#boton_nuevo').addClass('show');
         }
         previous = this.value;
         table_previous = table_display;
@@ -372,14 +838,14 @@
         
     
     
-	$("#botonAlumno").on('click', function(e) {
+	$("#boton_registrar").on('click', function(e) {
 		//alert("mostareaas");
 		if(action == "ADD") {
 			//tipo = "Persona";
 			i = data_set.length;
 			var tipo = "SI";
 			//validaciones
-			if($('#dir_nombre').val().length < 1) return;
+			if($('#alu_nombre').val().length < 1) return;
 			//	
 			$.ajax({
 				type: "POST",
@@ -391,19 +857,19 @@
 					}
 				},
 				data: {
-					alu_nombre: $('#dir_nombre').val(),
-					alu_nrodoc: $("#dir_nrodoc").val(),
-					alu_codpuc: $('#dir_codpucp').val(),
-					alu_correo: $('#dir_correo').val()
+					alu_nombre: $('#alu_nombre').val(),
+					alu_nrodoc: $("#alu_nrodoc").val(),
+					alu_codpuc: $('#alu_codpucp').val(),
+					alu_correo: $('#alu_correo').val()
 				},
 				success: function(Response) {
 					data_set.push([
 						//para agregar al datatable
 						Response,
-						$("#dir_nombre").val(),
-						$("#dir_codpucp").val(),
-						$("#dir_nrodoc").val(),
-						$("#dir_correo").val(),
+						$("#alu_nombre").val(),
+						$("#alu_codpucp").val(),
+						$("#alu_nrodoc").val(),
+						$("#alu_correo").val(),
 						tipo,
 						getButtons(i, i)
 					]);
@@ -413,10 +879,10 @@
 			});
 		}
 		if(action == "UPDATE") {
-			data_set[editid][1] = $("#dir_nombre").val();
-			data_set[editid][2] = $("#dir_codpucp").val();
-			data_set[editid][3] = $("#dir_nrodoc").val();
-			data_set[editid][4] = $("#dir_correo").val();
+			data_set[editid][1] = $("#alu_nombre").val();
+			data_set[editid][2] = $("#alu_codpucp").val();
+			data_set[editid][3] = $("#alu_nrodoc").val();
+			data_set[editid][4] = $("#alu_correo").val();
 			myTable_alu.clear().rows.add(data_set).draw();
 		}
 	});
@@ -426,10 +892,10 @@
 		action = "UPDATE";
 		var rows = myTable_alu.rows(id).data();
 		editid = parseInt(id);
-		$("#dir_nombre").val(data_set[editid][1] + "");
-		$("#dir_codpucp").val(data_set[editid][2] + "");
-		$("#dir_nrodoc").val(data_set[editid][3] + "");
-		$("#dir_correo").val(data_set[id][4] + "");
+		$("#alu_nombre").val(data_set[editid][1] + "");
+		$("#alu_codpucp").val(data_set[editid][2] + "");
+		$("#alu_nrodoc").val(data_set[editid][3] + "");
+		$("#alu_correo").val(data_set[id][4] + "");
 		$("#boton").modal()
 	}
 	$(document).ready(function() { //Alumno
