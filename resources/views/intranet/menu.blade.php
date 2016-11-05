@@ -201,7 +201,7 @@
                                 <b class="arrow"></b>
                             </li>
                             <li id ="lirubricas" >
-                                <a href="ta_rubricas">
+                                <a href="rubricas">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Mantenimiento de rúbricas
                                 </a>
