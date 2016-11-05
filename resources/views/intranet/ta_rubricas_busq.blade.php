@@ -84,20 +84,19 @@
 									{!! Form::label('curso', 'Curso:', ['class' => 'col-sm-3 control-label no-padding-right']) !!}
 									<div class="col-sm-8">
 										{!! Form::select('curso', $cursos, ['class' => 'input-xlarge']) !!}
-										{!! Form::button('A&ntilde;adir curso', ['class' => 'btn btn-info btn-xs']) !!}
+										{!! Form::button('Mantener cursos', ['class' => 'btn btn-info btn-xs']) !!}
 									</div>
 								</div>
 								<div class="form-group">
 									{!! Form::label('ciclo', 'Ciclo:', ['class' => 'col-sm-3 control-label no-padding-right']) !!}
 									<div class="col-sm-8">
 										{!! Form::select('ciclo', $ciclos, ['class' => 'input-xlarge']) !!}
-										{!! Form::button('A&ntilde;adir ciclo', ['class' => 'btn btn-info btn-xs']) !!}
+										{!! Form::button('Mantener ciclos', ['class' => 'btn btn-info btn-xs']) !!}
 									</div>
 								</div>
 								<div class="form-group">
 									<div class="col-sm-10 center">
 										{!! Form::submit('Buscar r&uacute;brica', ['class' => 'btn btn-purple btn-sm']) !!}
-										{!! Form::button('Reutilizar r&uacute;brica', ['class' => 'btn btn-inverse btn-sm']) !!}
 									</div>
 								</div>
 							{!! Form::close() !!}
