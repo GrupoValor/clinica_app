@@ -751,8 +751,8 @@
         $('#cli_spinner').ace_spinner({value:0,min:0,max:100,step:1, on_sides: true, icon_up:'ace-icon fa fa-plus bigger-110', icon_down:'ace-icon fa fa-minus bigger-110', btn_up_class:'btn-success' , btn_down_class:'btn-danger'});
     });
     
-	jQuery('#limantenimientos').addClass('active open');
-	jQuery('#mant-alumno').addClass('active');
+	jQuery('#limantenimientos').addClass('active');
+	//jQuery('#mant-alumno').addClass('active');
 	var myTable_alu;
     var myTable_cli;
     var myTable_prof;

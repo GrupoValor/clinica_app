@@ -1,7 +1,7 @@
 <?php
 try {
-	  $db = new PDO( 'mysql:host=murano.websitewelcome.com;dbname=cobarcom_clinicadb;charset=utf8', 'cobarcom_root', 'clinica' );
-	//$db = new PDO( 'mysql:host=localhost;dbname=clinica_db;charset=utf8', 'root', '' );
+	 // $db = new PDO( 'mysql:host=murano.websitewelcome.com;dbname=cobarcom_clinicadb;charset=utf8', 'cobarcom_root', 'clinica' );
+	$db = new PDO( 'mysql:host=localhost;dbname=clinicadb;charset=utf8', 'root', '' );
 }
 catch(Exception $e) {
     echo "An error has occurred";
