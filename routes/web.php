@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +16,15 @@ Route::get('/', function () {
 });
 
 
+Route::get('/login', function () {
+    return view('login/login');
+});
+
+Route::post('/login', 'loginController@login');
+Route::get('/session', 'loginController@session');
+Route::get('/user', 'loginController@user');
+Route::get('/logout', 'loginController@logout');
+
 
 //prototipo
 
@@ -27,8 +36,12 @@ Route::get('/prototipo/busqueda', function () {
 });
 
 //index
-Route::get('/index', function () {
-    return view('intranet/index');
+Route::get('/index', function (Request $request) {
+    $result = app('App\Http\Controllers\loginController')->session($request);
+    if($result == '1')
+        return view('intranet/index');
+    else
+        return view('login/login');
 });
 
 //casos
@@ -40,8 +53,13 @@ Route::get('/casos_busqueda', function () {
 });
 
 //perfil
-Route::get('/perfil', function () {
-    return view('intranet/profile');
+
+Route::get('/perfil', function (Request $request) {
+    $result = app('App\Http\Controllers\loginController')->session($request);
+    if($result == '1')
+        return view('intranet/profile');
+    else
+        return view('login/login');
 });
 
 

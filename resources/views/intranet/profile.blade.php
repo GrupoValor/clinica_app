@@ -34,7 +34,8 @@
 </head>
 
 <body class="no-skin">
-    <?php  echo view('intranet/menu'); ?>			
+    <?php  echo view('intranet/menu'); ?>
+
         <div class="main-content">
             <div class="main-content-inner">
                 <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -66,7 +67,7 @@
 										<div class="space-4"></div>
 										<div class="width-80 label label-info label-xlg arrowed-in arrowed-in-right"><!--nombre completo-->
 											<div class="inline position-relative">
-												<span class="white">Luis Flores</span>												
+												<span id="pro_name2"class="white"></span>												
 											</div>
 										</div>
 									</div>
@@ -76,46 +77,44 @@
 								<div class="col-xs-12 col-sm-9"><!--lado derecho del profile: datos del usuario-->
 									<div class="space-12"></div>
 									<div class="profile-user-info profile-user-info-striped">
-										<div class="profile-info-row"><!--Codigo-->
-											<div class="profile-info-name"> Código </div>
-											<div class="profile-info-value">
-												<span class="">00000000</span>
-											</div>
-										</div>
+										
 
 										<div class="profile-info-row"><!--Nombres-->
 											<div class="profile-info-name"> Nombres </div>
 											<div class="profile-info-value">
-												<span class="">Luis</span>
+												<span id="pro_name" class=""></span>
 											</div>
 										</div>
 
-										<div class="profile-info-row"><!--Apellidos-->
-											<div class="profile-info-name"> Apellidos </div>
+										<div class="profile-info-row"><!--Nombres-->
+											<div class="profile-info-name"> Codigo Pucp </div>
 											<div class="profile-info-value">
-												<span class="">Flores</span>
+												<span id="pro_cod" class=""></span>
 											</div>
 										</div>
 
-										<div class="profile-info-row"><!--fecha de nacimiento-->
-											<div class="profile-info-name"> Fecha de nacimiento </div>
+										<div class="profile-info-row"><!--Nombres-->
+											<div class="profile-info-name">Rol</div>
 											<div class="profile-info-value">
-												<span class="">00/00/0000</span>
+												<span id="pro_rol" class=""></span>
+											</div>
+										</div>
+
+										<div class="profile-info-row"><!--Nombres-->
+											<div class="profile-info-name"> Nro Documento </div>
+											<div class="profile-info-value">
+												<span id="pro_doc" class=""></span>
 											</div>
 										</div>
 
 
-										<div class="profile-info-row"><!--telefono-->
-											<div class="profile-info-name"> Teléfono </div>
-											<div class="profile-info-value">
-												<span class="editable editable-click username">000-000-000</span>
-                                                <div class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="You can edit by click in text.">?</div>
-											</div>  
-										</div>
+										
+
+
 										<div class="profile-info-row"><!--correo-->
 											<div class="profile-info-name"> Correo </div>
 											<div class="profile-info-value">
-												<span class="editable editable-clic username">luis.flores@pucp.edu.pe</span>
+												<span id="pro_correo" class="editable editable-clic username"></span>
                                                 <div class="help-button" data-rel="popover" data-trigger="hover" data-placement="right" data-content="You can edit by click in text.">?</div>
 											</div>
 										</div>
@@ -271,6 +270,51 @@
 			$('[class*=select2]').remove();
 		});
 	});
+</script>
+
+<script type="text/javascript">
+	
+$(document).ready(function(){
+
+		$.ajax({
+		                   
+		                    type: "GET",
+		                    url:'user',
+		                    success: function(result){
+		        
+		                        var data =  $.map(jQuery.parseJSON(result), function(value, index) {
+		                            return [value];
+		                        });
+		                        $("#pro_name").html(data[1]);
+		                        $("#pro_name2").html(data[1]);
+		                          $("#pro_doc").html(data[6]);  
+		                         $("#pro_cod").html(data[4]); 
+		                         $("#pro_correo").html(data[2]);  
+
+		                         if(data[0]=='1')
+		                         	 $("#pro_rol").html("Administrador"); 
+		                         if(data[0]=='2')
+		                         	 $("#pro_rol").html("Alumno"); 
+		                         if(data[0]=='3')
+		                         	 $("#pro_rol").html("Voluntario"); 
+		                         if(data[0]=='4')
+		                         	 $("#pro_rol").html("Docente"); 
+		                         if(data[0]=='5')
+		                         	 $("#pro_rol").html("Jefe de Practica"); 
+		                         if(data[0]=='6')
+		                         	 $("#pro_rol").html("Editor de contenidos"); 
+		                         
+		                    }
+		                        
+		                            
+		            
+		                 
+		            
+		                });
+	
+	});
+
+
 </script>
 </body>
 </html>
