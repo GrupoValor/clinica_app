@@ -88,6 +88,11 @@ function initMap(){
             return false;
         }
 
+        if(f.find("textarea[name='descripcion']").val().trim()==""){
+            alert("Falta descripcion");
+            return false;
+        }
+
         if(f.find("input[name='cx']").val().trim()==""){
             alert("Falta coordenada X");
             return false;
