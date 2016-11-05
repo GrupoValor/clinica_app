@@ -67,11 +67,10 @@ Route::get('/perfil', function (Request $request) {
 Route::get('/ta_alumnos', function () {
     return view('intranet/ta_alumno');
 });
+Route::resource('rubrica', 'RubricaController');
+Route::resource('rubro', 'RubroController');
 Route::get('/ta_notas', function () {
     return view('intranet/ta_notas');
-});
-Route::get('/ta_rubricas', function () {
-    return view('intranet/ta_rubricas');
 });
 
 //directorio de usuarios
