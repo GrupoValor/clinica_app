@@ -180,44 +180,45 @@
                         <b class="arrow"></b>
                     </li>
                     <li class="" id="limantenimientos"> <!-- Mantenimientos -->
-                        <a href="#" class="dropdown-toggle">
+                        <a href="manten" class="">
                             <i class="menu-icon fa fa-desktop"></i>
                             <span class="menu-text">
                                 Mantenimientos
                             </span>
-                            <b class="arrow fa fa-angle-down"></b>
                         </a>
                         <b class="arrow"></b>
+                        
+                        <!--<b class="arrow"></b>
                         <ul class="submenu"> 
-                            <li class="" id="mant-profesor"> <!-- Profesor -->
+                            <li class="" id="mant-profesor"> <!-- Profesor
                                 <a href="mant_prof">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Profesor
                                 </a>                                 
                              </li>
 
-                            <li class="" id="mant-jp"> <!-- Jefe de Practica -->
+                            <li class="" id="mant-jp"> <!-- Jefe de Practica
                                 <a href="mant_jp" class="">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Jefe de práctica
                                 </a>
                             </li>
 
-                            <li class="" id="mant-alumno"> <!-- Alumno -->
+                            <li class="" id="mant-alumno"> <!-- Alumno
                                 <a href="mant_alu" class="">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Alumno
                                 </a>
                             </li>
 
-                            <li class="" id="mant-cliente"><!-- Cliente -->
+                            <li class="" id="mant-cliente"><!-- Cliente
                                 <a href="mant_cli" class="">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     Cliente
                                 </a>                     
                             </li>
 
-                          </ul>
+                          </ul>-->
                     </li>
                     <li class=""> <!-- Reportes FALTA-->
                         <a href="#" class="dropdown-toggle">
