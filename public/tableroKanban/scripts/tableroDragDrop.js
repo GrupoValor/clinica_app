@@ -100,15 +100,6 @@ $(document).ready(function () {
             $('#label-nombre-tarea').after('<input type="text" class="form-control" id="nombre-detalle-tarea" disabled placeholder="' + data1 + '">');
         });
 
-        $("#contenedor-lista-comentarios").on('dbclick','.comentario',function () {
-            var comentario=this;
-            $('#modal-eliminar-comentario').modal('show');
-            $('#boton-elimina-comentario').on('click', function () {
-                comentario.remove();
-                //$.get("ajax/elimina-tarea.ajax.php", {'id': tarea.id});
-                //$('#modal-detalle-tarea').modal('hide');
-            })
-        })
         //Obtenemos la direccion
         $.get("ajax/detalle-tarea.ajax.php", {'id': this.id}, function (data2) {
             $('#descripcion-detalle-tarea').remove();
@@ -118,6 +109,14 @@ $(document).ready(function () {
         //mostramos el modal
         $('#modal-detalle-tarea').modal('show');
 
+        $(document).on('dblclick','.comentario',function () {
+            var comentario=this;
+            $('#modal-eliminar-comentario').modal('show');
+            //$.get("ajax/elimina-tarea.ajax.php", {'id': tarea.id});
+            $('#boton-elimina-comentario').on('click',function () {
+               comentario.remove();
+            });
+        });
         //manejo de eventos
         $('#boton-elimina-tarea').on('click', function () {
             tarea.remove();
