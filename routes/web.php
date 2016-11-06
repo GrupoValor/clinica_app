@@ -119,6 +119,10 @@ Route::get('cliente', function () {
 });
 //reportes
 
+Route::get('mantenimiento2', function () {
+    return view('intranet/mantenimiento2');
+});
+
 //gestor de contenidos
 Route::get('/eventos', function () {
     return view('intranet/gestor_eventos');

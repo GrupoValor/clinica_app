@@ -26,9 +26,14 @@ composer.phar
 /node_modules
 composer.lock
 
-.env
-public/mapa/php-includes/connect.inc.php
-
-
 public/tableroKanban/php-includes/connect.inc.php
 
+.env.example
+
+.env
+
+public/mapa/php-includes/connect.inc.php
+
+composer.lock
+
+*.lock
