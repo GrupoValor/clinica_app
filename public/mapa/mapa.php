@@ -12,9 +12,7 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOwKYLMGElTWMO7Qf_QEGgNVgOMp2Ucgs&callback=initMap"></script>
 </head>
 <body>
-    <div id="mapa">
-        <h2>Mapa</h2>
-    </div>
+    <div id="mapa"></div>
     <div id="infor">
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
           <div class="panel panel-default">
@@ -30,16 +28,32 @@
                   <form id="formulario">
                       <table>
                           <tr>
-                              <td>Titulo </td>
+                              <td>Titulo (*)</td>
                               <td><input type="text" class="form-control" name="titulo" autocomplete="off"/></td>
                           </tr>
                           <tr>
-                              <td>Coordenada X </td>
+                              <td>Direccion </td>
+                              <td><input type="text" class="form-control" name="direccion" autocomplete="off"/></td>
+                          </tr>
+                          <tr>
+                              <td>Descripcion (*)</td>
+                              <td><textarea class="form-control" rows="3" name="descripcion" autocomplete="off"></textarea></td>
+                          </tr>
+                          <tr>
+                              <td>Coordenada X (*)</td>
                               <td><input type="text" class="form-control" readonly name="cx" autocomplete="off"/></td>
                           </tr>
                           <tr>
-                              <td>Coordenada Y </td>
+                              <td>Coordenada Y (*) </td>
                               <td><input type="text" class="form-control" readonly name="cy" autocomplete="off"/></td>
+                          </tr>
+                          <tr>
+                              <td>Fecha vencimiento </td>
+                              <td><input class="form-control" name="fecvenc" placeholder="MM/DD/YYYY" type="text" autocomplete="off"/></td>
+                          </tr>
+                          <tr>
+                              <td style="color: red">(*) Campos obligatorios</td>
+                              <td></td>
                           </tr>
                           <tr>
                               <td></td>
@@ -82,13 +96,14 @@
                           <tr>
                               <td></td>
                               <td><button type="button" class="btn btn-danger btn-sm" id="btn-colapsar-two">Cancelar</button></td>
+                              <td><button type="button" class="btn btn-success btn-sm" id="btn-cambia-estado">Cambiar estado</button></td>
                           </tr>
                       </table>
                   </form>
               </div>
             </div>
           </div>
-          <div class="panel panel-default">
+          <!--<div class="panel panel-default">
             <div class="panel-heading" role="tab" id="headingThree">
               <h4 class="panel-title">
                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -101,7 +116,7 @@
                   ...
               </div>
             </div>
-          </div>
+        </div> -->
       </div>
     </div>
 </body>

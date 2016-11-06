@@ -22,7 +22,7 @@ class docenteController extends Controller
     {
 		
         //$docentes = TAEVALUADOR::all();
-		$docentes =DB::select('SELECT * FROM TA_EVALUADOR WHERE eva_tipeva = "d"');
+		$docentes =DB::select('SELECT * FROM TA_EVALUADOR INNER JOIN TA_USUARIO on TA_EVALUADOR.usu_id = TA_USUARIO.usu_id WHERE eva_tipeva = "d" and TA_USUARIO.usu_activo = "1"');
         $data = array();
 
         foreach ($docentes as $docente) {
@@ -57,6 +57,7 @@ class docenteController extends Controller
         $usuario = TAUSUARIO::create([
                                       'cln_id' => '1',
                                       'rol_id' => '1',
+									  'usu_activo' => '1'
 
         ]);
 
@@ -82,7 +83,14 @@ class docenteController extends Controller
                                     'eva_correo' => $request['eva_correo']
                                     ]);
         $docente->save();
-        echo "Registrado";
+        
+		$casos =DB::select('SELECT MAX(eva_id) as id FROM TA_EVALUADOR');
+		
+		
+		$data = array();
+        array_push($data,json_decode(json_encode($casos[0]), true));
+        $docid = $data[0]['id'];
+		echo $docid;
     }
 
     /**
@@ -116,7 +124,19 @@ class docenteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::update('UPDATE TA_EVALUADOR set 
+            eva_nombre = :nombre ,
+            eva_codpuc = :codpuc ,
+            eva_correo = :correo
+        
+        
+            where eva_id = :id and eva_tipeva = "d"',
+            ['nombre' => $request['eva_nombre'],
+            'codpuc' => $request['eva_codpuc'],
+            'correo' => $request['eva_correo'],
+            'id' => $id]);
+			
+			echo "Registro actualizado correctamente" ;
     }
 
     /**
@@ -127,6 +147,25 @@ class docenteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //buscamos el usu_id, dado el eva_id
+		$caso =DB::select('SELECT TA_EVALUADOR.usu_id FROM TA_USUARIO INNER JOIN TA_EVALUADOR ON TA_USUARIO.usu_id = TA_EVALUADOR.usu_id WHERE TA_EVALUADOR.eva_id = :ID',
+		['ID' => $id]);
+		
+		
+		$data = array();
+        array_push($data,json_decode(json_encode($caso), true));
+        $userid = $data[0][0]['usu_id'];
+		
+		//echo $userid;
+		//echo $userid['usu_id'];
+        
+		DB::UPDATE('Update  TA_USUARIO set
+			usu_activo = 0
+			where usu_id = :id',
+			['id' => $userid]);
+		
+				
+				
+		echo "Se elimino el alumno seleccionado ";
     }
 }

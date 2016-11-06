@@ -225,7 +225,7 @@
                     var param = "'"+i+"','"+alu_id+"'";
                     var butons = '<div class="hidden-sm hidden-xs action-buttons">'+
                                                     
-                                                    '<a  onClick="edit_onClick('+param+')" class="green" ">'+
+                                                    '<a  onClick="edit_onClick('+param+')" class="green">'+
                                                         '<i class="ace-icon fa fa-pencil bigger-130">'+'</i>'+
                                                     '</a>'+
 
@@ -349,7 +349,7 @@
             {
 
 	
-			 myTable.rows(editid).remove().draw();
+			 
              //myTable.clear().rows.add(data_set).draw();
 			 //guardar cambios
 			 
@@ -374,7 +374,7 @@
                     
                     success: function(Response){
                     
-					
+					myTable.rows(editid).remove().draw();
                     
 					alert(Response);
                     }
@@ -452,12 +452,12 @@
                        
                         for(var i = 0; i<data.length ;i++)
                         {
-							if(data[i].alu_volunt === 1)
-								tipo = "SI";
-							else
-								tipo = "NO";
-                            //[{"eva_id":1,"usu_id":3,"eva_codpuc":"20012734","eva_tipeva":"d","eva_nombre":"Carlos Flores","eva_correo":"carlos@pucp.pe"}]
 							if(data[i].usu_activo === 1){
+								if(data[i].alu_volunt === 1){
+									tipo = "SI";
+								}else{
+									tipo = "NO";
+								}
 	                            data_set.push([
 	                            data[i].alu_id,
                                 data[i].alu_nombre,

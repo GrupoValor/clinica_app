@@ -20,7 +20,7 @@ class alumnoController extends Controller
     public function index()
     {
         //$alumnos = TAALUMNO::all();
-		$alumnos =DB::select('SELECT * FROM TA_ALUMNO INNER JOIN TA_USUARIO on TA_ALUMNO.usu_id = TA_USUARIO.usu_id');
+		$alumnos =DB::select('SELECT * FROM TA_ALUMNO INNER JOIN TA_USUARIO on TA_ALUMNO.usu_id = TA_USUARIO.usu_id WHERE TA_USUARIO.usu_activo = "1"');
 		$data = array();
 		
 		foreach ($alumnos as $alumno){
@@ -60,7 +60,7 @@ class alumnoController extends Controller
         $usuario = TAUSUARIO::create([
                                       'cln_id' => '1',
                                       'rol_id' => '1',
-									  'usu_activo' => '1',
+									  'usu_activo' => '1'
 
         ]);
 
