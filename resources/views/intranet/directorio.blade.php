@@ -236,11 +236,11 @@
                     var param = "'"+i+"','"+con_id+"'";
                     var butons = '<div class="hidden-sm hidden-xs action-buttons">'+
                                                     
-                                                    '<a  onClick="edit_onClick('+param+')" class="green" ">'+
+                                                    '<a  onClick="edit_onClick('+param+')" class="green" >'+
                                                         '<i class="ace-icon fa fa-pencil bigger-130">'+'</i>'+
                                                     '</a>'+
 
-                                                    '<a onClick="edit_onClick(\'borrar\')" class="red" href="#">'+
+                                                    '<a onClick="delete_onClick('+param+')" class="red">'+
                                                         '<i class="ace-icon fa fa-trash-o bigger-130">'+'</i>'+
                                                     '</a>'+
                                                 '</div>';
@@ -271,10 +271,11 @@
                                 tipo = "Institucion";
                             }
 
-                                
+                if($('#dir_email').val().trim().length<1 && ($('#dir_telefono').val().trim().length<1) && ($('#dir_direcc').val().trim().length<1))
+                    return;
             	
             	i = data_set.length;
-            	if ( $('#dir_nombre').val().length < 1)
+            	if ( $('#dir_nombre').val().trim().length < 1 )
             		return;
             	$.ajax({
                     type: "POST",
@@ -357,6 +358,11 @@
             }          
                               
         });
+
+	   function delete_onClick(id,con_id){
+	   		action="DELETE";
+
+	   }
        function edit_onClick(id,con_id) {
 
        			//alert (id);
@@ -366,7 +372,7 @@
                 tipo = "p";
                 if (data_set[editid][1] == 'Institucion') {
                                 tipo = "i";
-                            }
+                }
 
                 $("#dir_tipocon").val(tipo);
                 $("#dir_nombre").val(data_set[editid][2]+"");
