@@ -271,9 +271,11 @@
                                 tipo = "Institucion";
                             }
 
-                if($('#dir_email').val().trim().length<1 && ($('#dir_telefono').val().trim().length<1) && ($('#dir_direcc').val().trim().length<1))
+                if($('#dir_email').val().trim().length<3 && ($('#dir_telefono').val().trim().length<1) && ($('#dir_direcc').val().trim().length<1))
                     return;
-            	
+            	if($('#dir_email').val().indexOf("@")===-1){
+            	    return;
+                }
             	i = data_set.length;
             	if ( $('#dir_nombre').val().trim().length < 1 )
             		return;
