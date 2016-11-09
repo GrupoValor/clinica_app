@@ -40,6 +40,10 @@
                               <td><textarea class="form-control" rows="3" name="descripcion" autocomplete="off"></textarea></td>
                           </tr>
                           <tr>
+                              <td>Incentivos </td>
+                              <td><textarea class="form-control" rows="3" name="incentivos" autocomplete="off"></textarea></td>
+                          </tr>
+                          <tr>
                               <td>Coordenada X (*)</td>
                               <td><input type="text" class="form-control" readonly name="cx" autocomplete="off"/></td>
                           </tr>
@@ -130,10 +134,10 @@
           </div>
           <div class="modal-body">
             <form>
-              <input type="radio" name="radio" value="1">Registrada<br>
-              <input type="radio" name="radio" value="2">En espera<br>
-              <input type="radio" name="radio" value="3">Finalizada<br>
-              <input type="radio" name="radio" value="4">Vencida<br>
+              <input type="radio" name="radio" value="registrada">Registrada<br>
+              <input type="radio" name="radio" value="espera">En espera<br>
+              <input type="radio" name="radio" value="finalizada">Finalizada<br>
+              <input type="radio" name="radio" value="vencida">Vencida<br>
             </form>
           </div>
           <div class="modal-footer">
