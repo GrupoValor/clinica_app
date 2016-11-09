@@ -69,8 +69,32 @@ function initMap(){
                     position: posi,
                     titulo: item.ale_titulo,
                     cx: item.ale_cx,
-                    cy: item.ale_cy
+                    cy: item.ale_cy,
+                    estado: item.ale_estado
                 });
+
+                if(marca.estado == 'registrada'){
+                    marca.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
+                } else if(marca.estado == 'espera'){
+                    marca.setIcon('http://maps.google.com/mapfiles/ms/icons/yellow-dot.png');
+                } else if(marca.estado == 'finalizada'){
+                    marca.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+                } else if(marca.estado == 'vencida'){
+                    marca.setIcon('http://maps.google.com/mapfiles/ms/icons/purple-dot.png');
+                }
+
+                google.maps.event.addListener(marca, 'mouseover', function(){
+                    var infowindow =  new google.maps.InfoWindow({
+                		content: '<div>'+marca.estado+'</div>'
+                	});
+                    infowindow.open(mapa, this);
+
+                    google.maps.event.addListener(marca, 'mouseout', function() {
+                    	infowindow.close();
+                    });
+                });
+
+
                 google.maps.event.addListener(marca, "click", function(){
                     $('#collapseTwo').collapse('show');
                     $('#collapseOne').collapse('hide');
@@ -84,6 +108,17 @@ function initMap(){
 
                     $('#btn-cambia-estado').on('click', function() {
                         $('#modal-cambia-estado').modal('show');
+
+                        $('#boton-cambia-estado').on('click', function () {
+                            var value = $("form input[type='radio']:checked").val();
+                            if ($("form input[type='radio']").is(':checked')) {
+                                $.get("ajax/actualiza-estado-alerta.ajax.php", {'id_alerta': marca.idMarcador, 'estado': value}, function(){
+                                    listar();
+                                });
+                            }
+                            $("form input[type='radio']:checked").removeAttr("checked");
+                        })
+
                     });
                 });
                 marcadores_bd.push(marca);
