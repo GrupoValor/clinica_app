@@ -130,7 +130,9 @@ $(document).ready(function () {
             document.getElementById("descripcion-detalle-tarea").disabled = false;
         });
         $('#boton-ingresar-comentario').off().on('click', function () {
-            if($('#contenido-comentario').val()){
+            if($('#contenido-comentario').val().trim().length<1) {
+                return;
+            }
                 //solo se agrega un comentario si es que se ha comentado algo (si no es vacio)
                 $.get("ajax/inserta-comentario.ajax.php",
                     {
@@ -140,7 +142,7 @@ $(document).ready(function () {
                         $('#lista-comentarios').append('<li class="comentario" id="' + data + '"> super_user escribio: ' + $('#contenido-comentario').val() + '</li>');
                     });
                 $('#contenido-comentario').removeData();
-            }
+
         });
         //<label for="descripcion-detalle-tarea">Titulo:</label>
         //<input type="text" class="form-control" id="descripcion-titulo-tarea" placeholder="" disabled>
@@ -157,7 +159,7 @@ $(document).ready(function () {
 
     //Agregar una tarea
     $('#btn-guardar-tarea').on('click', function () {
-        if($('#titulo-tarea').val() && $('#descripcion-tarea').val()){
+        if($('#titulo-tarea').val().trim().length>0 && $('#descripcion-tarea').val().trim().length>0){
         $.get("ajax/inserta-detalle-tarea.ajax.php",
             {
                 'titulo': $('#titulo-tarea').val(),
