@@ -104,8 +104,8 @@ Route::get('manten', function () {
     return view('intranet/mantenimiento');
 });
 //mantenimiento unificado
-Route::get('mantenimiento2', function () {
-    return view('intranet/mantenimiento2');
+Route::get('manten2', function () {
+    return view('intranet/kari_manten2');
 });
 Route::get('docente', function () {
     return view('intranet/docente');
