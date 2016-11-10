@@ -176,7 +176,7 @@ $display = new Display($db);
             </div>
             <div class="modal-footer">
                 <button id="deleteTarea" type="button" class="btn btn-success btn-danger" data-toggle="modal" data-target="#modal-eliminar-tarea">Eliminar tarea</button>
-                <button type="button" class="btn btn-default"  data-dismiss="modal">Cerrar</button>
+                <button id="guardarCambios" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
       </div>

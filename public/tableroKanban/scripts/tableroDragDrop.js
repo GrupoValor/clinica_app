@@ -112,10 +112,9 @@ $(document).ready(function () {
         $(document).on('dblclick','.comentario',function () {
             var comentario=this;
             $('#modal-eliminar-comentario').modal('show');
-            $.get("ajax/elimina-tarea.ajax.php", {'id': tarea.id});
             $('#boton-elimina-comentario').on('click',function () {
                comentario.remove();
-                //$.get("ajax/elimina-comentario.ajax.php", {'id': comentario.id});
+                $.get("ajax/elimina-comentario.ajax.php", {'id': comentario.id});
             });
         });
         //manejo de eventos
@@ -124,8 +123,14 @@ $(document).ready(function () {
             $.get("ajax/elimina-tarea.ajax.php", {'id': tarea.id});
             $('#modal-detalle-tarea').modal('hide');
         });
+        $('#guardarCambios').on('click'),function () {
+            $.get("ajax/cambia-datos-caso.ajax.php",
+                {'id':tarea.id,
+                    'nombre-detalle-tarea':document.getElementById("nombre-detalle-tarea").value,
+                    'descripcion-detalle-tarea':document.getElementById("descripcion-detalle-tarea").value
+                });
+        }
         $('#boton-editar').on('click', function () {
-            //$('#modal-detalle-tarea').modal('hide');
             document.getElementById("nombre-detalle-tarea").disabled = false;
             document.getElementById("descripcion-detalle-tarea").disabled = false;
         });
