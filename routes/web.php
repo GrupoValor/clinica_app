@@ -106,8 +106,12 @@ Route::get('manten', function () {
     return view('intranet/mantenimiento');
 });
 //mantenimiento unificado
-Route::get('manten2', function () {
-    return view('intranet/kari_manten2');
+Route::get('manten2', function (Request $request) {
+    $result = app('App\Http\Controllers\loginController')->session($request);
+    if($result == '1')
+        return view('intranet/kari_manten2');
+    else
+        return view('login/login');
 });
 Route::get('docente', function () {
     return view('intranet/docente');
