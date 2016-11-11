@@ -362,8 +362,23 @@
         });
 
 	   function delete_onClick(id,con_id){
-	   		action="DELETE";
-
+		   action="DELETE";
+		   editid=parseInt(id);
+	   		$.ajax({
+				   type: "DELETE",
+				   url: 'service_directorio/' + data_set[editid][0],
+				   beforeSend: function(xhr) {
+					   var token = $('meta[name="csrf_token"]').attr('content');
+					   if (token) {
+						   return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+					   }
+				   },
+					success: function(Response) {
+					   myTable.rows(id).remove().draw();
+					   alert(Response);
+				   }
+			});
+			//$('#modal_alumno').modal('toggle');
 	   }
        function edit_onClick(id,con_id) {
 

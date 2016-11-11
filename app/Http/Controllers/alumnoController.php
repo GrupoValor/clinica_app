@@ -165,8 +165,8 @@ class alumnoController extends Controller
         
 		DB::UPDATE('Update  TA_USUARIO set
 			usu_activo = 0
-			where usu_id = :id',
-			['id' => $userid]);
+			where usu_id = :ID',
+			['ID' => $userid]);
 		
 				
 				
