@@ -2,7 +2,183 @@
 <script type="text/javascript">
 
 
+    function addPrincipal(){
+        return '<li class="" id="principal" > <!-- Principal -->'+
+                        '<a href="index">'+
+                            '<i class="menu-icon fa fa-tachometer"></i>'+
+                            '<span class="menu-text">Principal </span>'+
+                        '</a>'+
+                    '</li>';
 
+    }
+    function addCasos(){
+        return '<li id="licasos" class=""> <!-- Registro de casos -->'+
+                        '<a href="#" class="dropdown-toggle">'+
+                         '   <i class="menu-icon fa fa-pencil-square-o"></i>'+
+                          '  <span class="menu-text"> Registro de casos </span>'+
+                           ' <b class="arrow fa fa-angle-down"></b>'+
+                        '</a>'+
+                        '<b class="arrow"></b>'+
+                        '<ul class="submenu" >'+
+                            '<li class="" id="casos-registro">'+
+                                '<a href="casos_registro" >'+
+                                    '<i class="menu-icon fa fa-caret-right"></i>'+
+                                    'Registro'+
+                                '</a>'+
+                                '<b class="arrow"></b>'+
+                            '</li>'+
+                            '<li class="" id="casos-busqueda">'+
+                                '<a href="casos_busqueda">'+
+                                    '<i class="menu-icon fa fa-caret-right"></i>'+
+                                    'Búsqueda'+
+                                '</a>'+
+                                '<b class="arrow"></b>'+
+                            '</li>'+                   
+                        '</ul>'+
+                    '</li>';
+
+    }
+
+    function addTareas(){
+        return '<li id="litareas"><!-- Tareas académicas -->'+
+                '        <a href="#" class="dropdown-toggle">'+
+                '            <i class="menu-icon fa fa-list-alt"></i>'+
+                '            <span class="menu-text"> Tareas académicas </span>'+
+                '            <b class="arrow fa fa-angle-down"></b>'+
+                '        </a>'+
+                '        <b class="arrow"></b>'+
+                '        <ul class="submenu">'+
+                '            <li class="" id="lialumnos">'+
+                '                <a href="ta_alumnos">'+
+                '                    <i class="menu-icon fa fa-caret-right"></i>'+
+                '                    Alumno'+
+                '                </a>'+
+                '                <b class="arrow"></b>'+
+                '            </li>'+
+                '            <li id ="lirubricas" >'+
+                '                <a href="rubrica">'+
+                '                    <i class="menu-icon fa fa-caret-right"></i>'+
+                '                    Mantenimiento de rúbricas'+
+                '                </a>'+
+                '                <b class="arrow"></b>'+
+                '            </li>'+
+                '            <li id="linotas" class="">'+
+                '                <a href="ta_notas">'+
+                '                    <i class="menu-icon fa fa-caret-right"></i>'+
+                '                    Registro de notas'+
+                '                </a>'+
+                '                <b class="arrow"></b>'+
+                '            </li>'+
+                '        </ul>'+
+                '    </li>';
+    }
+    function addDirectorio(){
+        return '<li id="lidirectorio"><!-- Directorio -->'+
+                '        <a href="directorio">'+
+                '            <i class="menu-icon fa fa-book"></i>'+
+                '            <span class="menu-text"> Directorio </span>'+                           
+                '        </a>'+                        
+                    '</li>';
+    }
+    function addMapa(){
+        return '<li class="" id="limapa"> <!-- Mapa -->'+
+                '        <a href="mapa">'+
+                '            <i class="menu-icon fa fa-map-marker"></i>'+
+                '            <span class="menu-text"> Mapa </span>'+
+                '        </a>'+
+                '        <b class="arrow"></b>'+
+                '    </li>';
+    }
+    function addMantenimiento(){
+        return ' <li class="" id="limantenimientos"> <!-- Mapa -->'+
+                '        <a href="manten2">'+
+                '            <i class="menu-icon fa fa-desktop"></i>'+
+                '            <span class="menu-text"> Mantenimientos 2.0 </span>'+
+                '        </a>'+
+                '        <b class="arrow"></b>'+
+                '    </li>';
+    }
+    function addReportes(){
+        return '<li id="lireportes"class=""> <!-- Reportes FALTA-->'+
+                '        <a href="#" class="dropdown-toggle">'+
+                '            <i class="menu-icon fa fa-file-o"></i>'+
+                '            <span class="menu-text">'+
+                '                Reportes'+
+                '            </span>'+
+                '            <b class="arrow fa fa-angle-down"></b>'+
+                '        </a>'+
+                '        <b class="arrow"></b>'+
+                '        <ul class="submenu">'+
+                '            <li class="">'+
+                '                <a href="reporte1.html">'+
+                '                    <i class="menu-icon fa fa-caret-right"></i>'+
+                '                    Reporte por alumno'+
+                '                </a>'+
+                '                <b class="arrow"></b>'+
+                '            </li>'+
+                '            <li class="">'+
+                '                <a href="reporte2.html">'+
+                '                    <i class="menu-icon fa fa-caret-right"></i>'+
+                '                    Reporte por caso'+
+                '                </a>'+
+                '                <b class="arrow"></b>'+
+                '            </li>'+
+                '            <li class="">'+
+                '                <a href="reporte3.html">'+
+                '                    <i class="menu-icon fa fa-caret-right"></i>'+
+                '                    Reporte 3'+
+                '                </a>'+
+                '                <b class="arrow"></b>'+
+                '            </li>'+
+                '        </ul>'+
+                '    </li>';
+    }
+    function addContenidos(){
+        return '<li class="" id="ligestor"> <!--Gestor de contenidos-->'+
+                '        <a href="#" class="dropdown-toggle">'+
+                '            <i class="menu-icon fa fa-cog"></i>'+
+                '            <span class="menu-text">'+
+                '                <small>Gestor de contenidos</small>'+
+                '            </span>'+
+                '            <b class="arrow fa fa-angle-down"></b>'+
+                '        </a>'+
+                '        <b class="arrow"></b>'+
+                '        <ul class="submenu">'+
+                '            <li class="" id="linoticias"><!-- Noticias -->'+
+                '                <a href="#" class="dropdown-toggle">'+
+                '                    <i class="menu-icon fa fa-caret-right"></i>'+
+                '                    Noticias'+
+                '                    <b class="arrow fa fa-angle-down"></b>'+
+                '                </a>'+
+                '                <b class="arrow"></b>'+
+                '                <ul class="submenu">'+
+                '                    <li class="" id="noticias-reg">'+
+                '                        <a href="noticias_registro">'+
+                '                            <i class="menu-icon fa fa-caret-right"></i>'+
+                '                            Registro'+
+                '                        </a>'+
+                '                        <b class="arrow"></b>'+
+                '                    </li>'+
+                '                    <li class="" id="noticias-busq">'+
+                '                        <a href="gestor_noticias_busqueda.php">'+
+                '                            <i class="menu-icon fa fa-caret-right"></i>'+
+                '                            Búsqueda'+
+                '                        </a>'+
+                '                        <b class="arrow"></b>'+
+                '                    </li>'+
+                '                </ul>'+
+                '            </li>'+
+                '            <li class="" id="lieventos"> <!-- Eventos -->'+
+                '                <a href="eventos">'+
+                '                    <i class="menu-icon fa fa-caret-right"></i>'+
+                '                    Eventos'+
+                '                </a>'+
+                '                <b class="arrow"></b>'+
+                '            </li>'+
+                '        </ul>'+
+                '    </li>';
+    }
+    
     $.ajax({
                    
                     type: "GET",
@@ -14,12 +190,50 @@
                         });
 
                         $('#session_data').val(data);
-
+                        
+                        
+                        //Alumno y Voluntario
                         $('#user_name').html(data[1])   
                         if(data[0]=='2' || data[0]=='3'){
-                            $('#ligestor').css("display","none") 
-                            $('#lireportes').css("display","none") 
-                            $('#litareas').css("display","none") 
+                             $('#list_of_menu').html(
+                            addPrincipal()+
+                            addCasos()+
+                            addDirectorio()+
+                            addMapa()+
+                            addMantenimiento()
+                            )
+                           
+                        }
+                        // Docente y JP
+                        if(data[0]=='4' || data[0]=='5'){
+                            $('#list_of_menu').html(
+                            addPrincipal()+
+                            addCasos()+
+                            addTareas()+
+                            addDirectorio()+
+                            addMapa()+
+                            addMantenimiento()+
+                            addReportes()
+                            )
+                          
+                        }
+                        // Gestor de contenidos
+                        if(data[0]=='6'){
+                            
+                            $('#list_of_menu').html(
+                            addPrincipal()+
+                            addContenidos()
+                          
+                            )
+                            
+                          
+                        }
+                         // Cliente
+                        if(data[0]=='7'){
+                            $('#list_of_menu').html(
+                                addPrincipal()
+                            );
+                          
                         }
 
                     }
@@ -157,167 +371,13 @@
                 <script type="text/javascript">
                     try{ace.settings.loadState('sidebar')}catch(e){}
                 </script>
-                <ul class="nav nav-list"><!-- barra de menu a la izq -->
-                    <li class="" id="principal" > <!-- Principal -->
-                        <a href="index">
-                            <i class="menu-icon fa fa-tachometer"></i>
-                            <span class="menu-text">Principal </span>
-                        </a>
-                    </li>
-                    <li id="casos" class=""> <!-- Registro de casos -->
-                        <a href="#" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-pencil-square-o"></i>
-                            <span class="menu-text"> Registro de casos </span>
-                            <b class="arrow fa fa-angle-down"></b>
-                        </a>
-                        <b class="arrow"></b>
-                        <ul class="submenu" >
-                            <li class="" id="casos-registro">
-                                <a href="casos_registro" >
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Registro
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                            <li class="" id="casos-busqueda">
-                                <a href="casos_busqueda">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Búsqueda
-                                </a>
-                                <b class="arrow"></b>
-                            </li>					
-                        </ul>
-                    </li>
-                    <li id="litareas"><!-- Tareas académicas -->
-                        <a href="#" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-list-alt"></i>
-                            <span class="menu-text"> Tareas académicas </span>
-                            <b class="arrow fa fa-angle-down"></b>
-                        </a>
-                        <b class="arrow"></b>
-                        <ul class="submenu">
-                            <li class="" id="lialumnos">
-                                <a href="ta_alumnos">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Alumno
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                            <li id ="lirubricas" >
-                                <a href="rubrica">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Mantenimiento de rúbricas
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                            <li id="linotas" class="">
-                                <a href="ta_notas">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Registro de notas
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                        </ul>
-                    </li>
-                    <li id="lidirectorio"><!-- Directorio -->
-                        <a href="directorio">
-                            <i class="menu-icon fa fa-book"></i>
-                            <span class="menu-text"> Directorio </span>                            
-                        </a>                        
-                    </li>
-
-                    <li class="" id="limapa"> <!-- Mapa -->
-                        <a href="mapa">
-                            <i class="menu-icon fa fa-map-marker"></i>
-                            <span class="menu-text"> Mapa </span>
-                        </a>
-                        <b class="arrow"></b>
-                    </li>
-                    <li class="" id="limantenimientos"> <!-- Mapa -->
-                        <a href="manten2">
-                            <i class="menu-icon fa fa-desktop"></i>
-                            <span class="menu-text"> Mantenimientos 2.0 </span>
-                        </a>
-                        <b class="arrow"></b>
-                    </li>
+                <ul  id=list_of_menu class="nav nav-list"><!-- barra de menu a la izq -->
                     
-                    <li id="lireportes"class=""> <!-- Reportes FALTA-->
-                        <a href="#" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-file-o"></i>
-                            <span class="menu-text">
-                                Reportes
-                            </span>
-                            <b class="arrow fa fa-angle-down"></b>
-                        </a>
-                        <b class="arrow"></b>
-                        <ul class="submenu">
-                            <li class="">
-                                <a href="reporte1.html">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Reporte por alumno
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                            <li class="">
-                                <a href="reporte2.html">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Reporte por caso
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                            <li class="">
-                                <a href="reporte3.html">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Reporte 3
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                        </ul>
-                    </li>		
-                    <li class="" id="ligestor"> <!--Gestor de contenidos-->
-                        <a href="#" class="dropdown-toggle">
-                            <i class="menu-icon fa fa-cog"></i>
-                            <span class="menu-text">
-                                <small>Gestor de contenidos</small>
-                            </span>
-                            <b class="arrow fa fa-angle-down"></b>
-                        </a>
-                        <b class="arrow"></b>
-                        <ul class="submenu">
-                            <li class="" id="linoticias"><!-- Noticias -->
-                                <a href="#" class="dropdown-toggle">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Noticias
-                                    <b class="arrow fa fa-angle-down"></b>
-                                </a>
-                                <b class="arrow"></b>
-                                <ul class="submenu">
-                                    <li class="" id="noticias-reg">
-                                        <a href="noticias_registro">
-                                            <i class="menu-icon fa fa-caret-right"></i>
-                                            Registro
-                                        </a>
-                                        <b class="arrow"></b>
-                                    </li>
-                                    <li class="" id="noticias-busq">
-                                        <a href="gestor_noticias_busqueda.php">
-                                            <i class="menu-icon fa fa-caret-right"></i>
-                                            Búsqueda
-                                        </a>
-
-                                        <b class="arrow"></b>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="" id="lieventos"> <!-- Eventos -->
-                                <a href="eventos">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Eventos
-                                </a>
-                                <b class="arrow"></b>
-                            </li>
-                        </ul>
-                    </li>        
+                    
+                   
+                   
+                    		
+                            
                 </ul>
                 <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse"> <!--Contraer barra de menú-->
                     <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>

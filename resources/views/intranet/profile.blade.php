@@ -302,7 +302,9 @@ $(document).ready(function(){
 		                         if(data[0]=='5')
 		                         	 $("#pro_rol").html("Jefe de Practica"); 
 		                         if(data[0]=='6')
-		                         	 $("#pro_rol").html("Editor de contenidos"); 
+		                         	 $("#pro_rol").html("Editor de contenidos");
+		                          if(data[0]=='7')
+		                         	 $("#pro_rol").html("Cliente"); 
 		                         
 		                    }
 		                        
