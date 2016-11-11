@@ -56,7 +56,7 @@
                 '                <b class="arrow"></b>'+
                 '            </li>'+
                 '            <li id ="lirubricas" >'+
-                '                <a href="rubrica">'+
+                '                <a href="ta_registro">'+
                 '                    <i class="menu-icon fa fa-caret-right"></i>'+
                 '                    Mantenimiento de rúbricas'+
                 '                </a>'+

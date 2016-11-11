@@ -6,7 +6,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 
 class TaCurso extends Eloquent
 {
-	protected $table = 'ta_curso';
+	protected $table = 'TA_CURSO';
 	protected $primaryKey = 'cur_id';
 	public $timestamps = false;
 

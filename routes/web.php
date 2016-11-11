@@ -67,11 +67,13 @@ Route::get('/perfil', function (Request $request) {
 Route::get('/ta_alumnos', function () {
     return view('intranet/ta_alumno');
 });
+//TAREAS ACADÉMICAS - Mantenimiento de rúbricas
+Route::resource('ta_registro', 'PeriodoController', ['only' => ['index', 'store', 'update', 'destroy']]);
+Route::resource('rubrica', 'RubricaController', ['only' => ['index', 'store', 'update', 'destroy']]);
+Route::resource('rubro', 'RubroController', ['only' => ['store', 'update', 'destroy']]);
+//TAREAS ACADÉMICAS - Registro de notas
 Route::get('/ta_notas', function () {
     return view('intranet/ta_notas');
-});
-Route::get('/ta_rubricas', function () {
-    return view('intranet/ta_rubricas');
 });
 
 //directorio de usuarios

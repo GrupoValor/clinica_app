@@ -6,7 +6,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 
 class TaNotaComentario extends Eloquent
 {
-	protected $table = 'ta_nota_comentario';
+	protected $table = 'TA_NOTA_COMENTARIO';
 	protected $primaryKey = 'cmr_id';
 	public $timestamps = false;
 

@@ -78,27 +78,43 @@
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
 								<h3 class="header smaller lighter blue">Resultados de la b&uacute;squeda</h3>
-								<!-- CONTROL DE TABLAS 
-								<div class="">
-									Se mostrar&aacute;n 
-									<div class="ace-spinner middle" style="width: 115px;">
-										<input type="text" id="spinner1" />
-									</div>
-									tablas de r&uacute;bricas, para un total de 
-									<div class="ace-spinner middle" style="width: 90px;">
-										<input type="text" class="input-sm" id="spinner2" />
-									</div>
-									semanas.
-								</div>-->
-
-@include('intranet.ta_registro.mant')
+								<p>No se encontr&oacute; ningun periodo acad&eacute;mico para el curso {{ $valores['cur_nombre'] }} en el ciclo {{ $valores['cic_nombre'] }}.</p>
+								<p>Puede crear un nuevo periodo si lo desea, usando el formato a continuací&oacute;n:</p>
 								
+								<h3 class="header smaller lighter blue">Crear un periodo acad&eacute;mico</h3>
+								{!! Form::open(['route' => 'ta_registro.store', 'method' => 'POST', 'class' => 'form-horizontal']) !!}
+									<div class="form-group">
+										{!! Form::label('per_semanas', 'N&uacute;mero de semanas:&nbsp;', ['class' => 'col-sm-3 control-label no-padding-right']) !!}
+										{!! Form::text('per_semanas', null, ['placeholder' => 'N&uacute;mero de semanas']) !!}
+									</div>
+									<div class="form-group">
+										{!! Form::label('per_fechafin', 'Fecha l&iacute;mite de cambios:&nbsp;', ['class' => 'col-sm-3 control-label no-padding-right']) !!}
+										{!! Form::text('per_fechafin', null, ['class' => 'input-large', 'placeholder' => 'Use el formato "dd-mm-aaaa"']) !!}
+									</div>
+									<div class="form-group">
+										{!! Form::label('per_base_id', 'Periodo base a escoger:&nbsp;', ['class' => 'col-sm-3 control-label no-padding-right']) !!}
+										{!! Form::select('per_base_id', $periodos, ['class' => 'input-xlarge']) !!}
+									</div>
+									<div class="center">
+										{!! Form::submit('Guardar periodo', ['class' => 'btn btn-info']) !!}
+										&nbsp;
+										<a href="ta_registro">
+											<button class="btn" type="reset">
+												<i class="ace-icon fa fa-undo bigger-110"></i>
+												Regresar
+											</button>
+										</a>
+									</div>
+									<div class="hidden">
+										{!! Form::text('cur_id', $valores['cur_id']) !!}
+										{!! Form::text('cic_id', $valores['cic_id']) !!}
+									</div>
+								{!! Form::close() !!}
+
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
 					</div><!-- /.page-content -->
-
-@include('intranet.ta_registro.modal')
 
 				</div>
 			</div><!-- /.main-content -->
@@ -147,11 +163,8 @@
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 
+
 			jQuery(function($) {
-
-				
-				
-
 
 				//initiate dataTables plugin
 				
@@ -258,36 +271,7 @@
 				*/
 			
 			
-			});
-
-			//FUNCION PARA EDITAR RUBRICA
-			function rba_editar(rba_id) {
-				$('#rba_edit_id').attr('value', rba_id);
-				$('#rba_edit_nombre').attr('value', $("h4#" + rba_id).text());
-				$('#rba_edit_peso').attr('value', $("#rba_peso_" + rba_id).text());
-			}
-
-			//FUNCION PARA ELIMINAR RUBRICA
-			function rba_eliminar(rba_id) {
-				$('#rba_delete_id').attr('value', rba_id);
-			}
-
-			//FUNCION PARA AÑADIR RUBRO
-			function rbo_anadir(rba_id) {
-				$('#rba_add_id').attr('value', rba_id);
-			}
-
-			//FUNCION PARA EDITAR RUBRO
-			function rbo_editar(rbo_id) {
-				$('#rbo_edit_id').attr('value', rbo_id);
-				$('#rbo_edit_nombre').attr('value', $("#rbo_nombre_" + rbo_id).text());
-				$('#rbo_edit_maxpunt').attr('value', $("#rbo_maxpunt_" + rbo_id).text());
-			}
-
-			//FUNCION PARA ELIMINAR RUBRO
-			function rbo_eliminar(rbo_id) {
-				$('#rbo_delete_id').attr('value', rbo_id);
-			}
+			})
 		</script>
 	</body>
 </html>

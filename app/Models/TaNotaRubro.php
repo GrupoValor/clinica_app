@@ -6,7 +6,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 
 class TaNotaRubro	 extends Eloquent
 {
-	protected $table = 'ta_nota_rubro';
+	protected $table = 'TA_NOTA_RUBRO';
 	protected $primaryKey = 'nrb_id';
 	public $timestamps = false;
 

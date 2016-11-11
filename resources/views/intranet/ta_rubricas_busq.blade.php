@@ -66,7 +66,7 @@
 
 				<div class="page-content">
 
-@include('intranet.mensajes')
+@include('intranet.ta_registro.mensajes')
 
 					<div class="page-header">
 						<h1>Mantenimiento de r&uacute;bricas</h1>
@@ -79,19 +79,17 @@
 						
 							<h3 class="header smaller lighter blue">B&uacute;squeda</h3>
 							<!-- BÚSQUEDA -->
-							{!! Form::open(['route' => 'rubro.index', 'method' => 'GET', 'class' => 'form-horizontal']) !!}
+							{!! Form::open(['route' => 'rubrica.index', 'method' => 'GET', 'class' => 'form-horizontal']) !!}
 								<div class="form-group">
 									{!! Form::label('curso', 'Curso:', ['class' => 'col-sm-3 control-label no-padding-right']) !!}
 									<div class="col-sm-8">
 										{!! Form::select('curso', $cursos, ['class' => 'input-xlarge']) !!}
-										{!! Form::button('Mantener cursos', ['class' => 'btn btn-info btn-xs']) !!}
 									</div>
 								</div>
 								<div class="form-group">
 									{!! Form::label('ciclo', 'Ciclo:', ['class' => 'col-sm-3 control-label no-padding-right']) !!}
 									<div class="col-sm-8">
 										{!! Form::select('ciclo', $ciclos, ['class' => 'input-xlarge']) !!}
-										{!! Form::button('Mantener ciclos', ['class' => 'btn btn-info btn-xs']) !!}
 									</div>
 								</div>
 								<div class="form-group">

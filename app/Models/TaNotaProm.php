@@ -6,7 +6,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 
 class TaNotaProm extends Eloquent
 {
-	protected $table = 'ta_nota_promedio';
+	protected $table = 'TA_NOTA_PROMEDIO';
 	protected $primaryKey = 'prm_id';
 	public $timestamps = false;
 
@@ -17,7 +17,7 @@ class TaNotaProm extends Eloquent
 	];
 
 	protected $fillable = [
-		'ralu_id',
+		'alu_id',
 		'cur_id',
 		'cic_id',
 		'prm_notafinal',

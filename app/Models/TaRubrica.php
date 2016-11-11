@@ -6,20 +6,22 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 
 class TaRubrica extends Eloquent
 {
-	protected $table = 'ta_rubrica';
+	protected $table = 'TA_RUBRICA';
 	protected $primaryKey = 'rba_id';
 	public $timestamps = false;
 
 	protected $casts = [
-		'cln_id' => 'int',
 		'rba_peso' => 'int',
-		'rba_maxpunt' => 'int'
+		'rba_maxpunt' => 'int',
+		'per_id' => 'int',
+		'cln_id' => 'int'
 	];
 
 	protected $fillable = [
 		'rba_nombre',
-		'cln_id',
 		'rba_peso',
-		'rba_maxpunt'
+		'rba_maxpunt',
+		'per_id',
+		'cln_id'
 	];
 }
