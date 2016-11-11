@@ -143,5 +143,7 @@ Route::resource('service_docente','docenteController');
 Route::resource('service_directorio','directorioController');
 Route::resource('service_casos','casosController');
 Route::resource('service_cliente','clienteController');
+Route::resource('service_alumno_ta','taAlumnoController');
+
 //Route::resource('test','testController');
 
