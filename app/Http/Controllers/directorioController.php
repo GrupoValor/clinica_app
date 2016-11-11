@@ -128,6 +128,9 @@ class directorioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::delete('DELETE FROM TA_CONTACTO 
+            where con_id = :id',
+            ['id' => $id]);
+        echo "Registro eliminado correctamente" ;
     }
 }
