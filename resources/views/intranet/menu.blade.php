@@ -138,7 +138,7 @@
                 '        <a href="#" class="dropdown-toggle">'+
                 '            <i class="menu-icon fa fa-cog"></i>'+
                 '            <span class="menu-text">'+
-                '                <small>Gestor de contenidos</small>'+
+                '                Contenidos'+
                 '            </span>'+
                 '            <b class="arrow fa fa-angle-down"></b>'+
                 '        </a>'+
@@ -191,6 +191,19 @@
 
                         $('#session_data').val(data);
                         
+                        if(data[0]=='1'){
+                            $('#list_of_menu').html(
+                            addPrincipal()+
+                            addCasos()+
+                            addTareas()+
+                            addDirectorio()+
+                            addMapa()+
+                            addMantenimiento()+
+                            addReportes()+
+                            addContenidos()
+                            )
+                          
+                        }
                         
                         //Alumno y Voluntario
                         $('#user_name').html(data[1])   
