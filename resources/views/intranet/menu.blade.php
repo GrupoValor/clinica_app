@@ -12,15 +12,16 @@
                         var data =  $.map(jQuery.parseJSON(result), function(value, index) {
                             return [value];
                         });
+
+                        $('#session_data').val(data);
+
                         $('#user_name').html(data[1])   
-                        if(data[0]=='2'){ligestor
+                        if(data[0]=='2' || data[0]=='3'){
                             $('#ligestor').css("display","none") 
                             $('#lireportes').css("display","none") 
-                            $('#mant-profesor').css("display","none") 
-                            $('#mant-jp').css("display","none") 
-                            $('#mant-alumno').css("display","none") 
                             $('#litareas').css("display","none") 
                         }
+
                     }
                         
                             
@@ -51,6 +52,8 @@
         }
     } 
 </script>
+<input id="session_data" type="hidden" name="">
+
 <div id="navbar" class="navbar navbar-default          ace-save-state"> <!--Barra superior-->
             <div class="navbar-container ace-save-state" id="navbar-container">
                 <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
@@ -230,47 +233,14 @@
                         </a>
                         <b class="arrow"></b>
                     </li>
-                    <li class="" id="limantenimientos"> <!-- Mantenimientos -->
-                        <a href="#" class="dropdown-toggle">
+                    <li class="" id="limantenimientos"> <!-- Mapa -->
+                        <a href="manten2">
                             <i class="menu-icon fa fa-desktop"></i>
-                            <span class="menu-text">
-                                Mantenimientos
-                            </span>
-                            <b class="arrow fa fa-angle-down"></b>
+                            <span class="menu-text"> Mantenimientos 2.0 </span>
                         </a>
-                        
                         <b class="arrow"></b>
-                        <ul class="submenu"> 
-                            <li class="" id="mant-profesor"> <!-- Profesor-->
-                                <a href="mant_prof">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Profesor
-                                </a>                                 
-                             </li>
-
-                            <li class="" id="mant-jp"> <!-- Jefe de Practica-->
-                                <a href="mant_jp" class="">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Jefe de práctica
-                                </a>
-                            </li>
-
-                            <li class="" id="mant-alumno"> <!-- Alumno-->
-                                <a href="mant_alu" class="">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Alumno
-                                </a>
-                            </li>
-
-                            <li class="" id="mant-cliente"><!-- Cliente-->
-                                <a href="mant_cli" class="">
-                                    <i class="menu-icon fa fa-caret-right"></i>
-                                    Cliente
-                                </a>                     
-                            </li>
-
-                          </ul
                     </li>
+                    
                     <li id="lireportes"class=""> <!-- Reportes FALTA-->
                         <a href="#" class="dropdown-toggle">
                             <i class="menu-icon fa fa-file-o"></i>

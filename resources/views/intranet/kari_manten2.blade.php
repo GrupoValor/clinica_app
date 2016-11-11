@@ -54,11 +54,7 @@
                     </h1> </div>
 				<div>
 					<select id='myOptions'>
-						<option disabled selected value="0" style="display:none;"> -- Select an option -- </option>
-						<option value="1">Profesor</option>
-						<option value="2">Jefe de práctica</option>
-						<option value="3">Alumno</option>
-						<option value="4">Cliente</option>
+						
 					</select>
 					<button id="boton_nuevo" type="button" class="btn btn-primary hide" style="float: right;margin-top: -8px;" onclick="add_onClick()">Nuevo +</button>
 				</div>
@@ -108,6 +104,42 @@
 	<script type="text/javascript"></script>
     <script src="assets/js/bootstrap-datepicker.min.js"></script>
     <script src="assets/js/spinbox.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            
+            setTimeout(function(){
+                var str = $('#session_data').val()+"";
+                var data = str.split(',');
+
+                if (data[0] == '1'){
+                $('#myOptions').html('<option selected="selected" disabled selected value="0" > -- Select an option -- </option>'+
+                        '<option value="1">Profesor</option>'+
+                        '<option value="2">Jefe de práctica</option>'+
+                        '<option value="3">Alumno</option>'+
+                        '<option value="4">Cliente</option>')
+                }
+
+                if (data[0] == '2' || data[0] == '3'){
+                $('#myOptions').html('<option selected="selected" disabled selected value="0" > -- Select an option -- </option>'+
+                        '<option value="4">Cliente</option>')
+                }
+                if (data[0] == '4'){
+                $('#myOptions').html('<option selected="selected" disabled selected value="0" > -- Select an option -- </option>'+
+                    '<option value="2">Jefe de práctica</option>'+
+                    '<option value="3">Alumno</option>'+
+                    '<option value="4">Cliente</option>')
+                }
+                if (data[0] == '5'){
+                $('#myOptions').html('<option selected="selected" disabled selected value="0" > -- Select an option -- </option>'+
+                    '<option value="3">Alumno</option>'+
+                    '<option value="4">Cliente</option>')
+                }
+
+            }, 100);
+
+        });
+    </script>
+
 	<!-- inline scripts related to this page -->
 	<script type="text/javascript"> 
         jQuery(function($) {

@@ -42,7 +42,7 @@ class loginController extends Controller
     if (!isset($password))
     	$password = "";
 
-    $result = DB::select("select rol_id,alu_nombre,alu_correo,alu_volunt,alu_codpuc,usu_passwd,alu_nrodoc from ta_usuario inner join ta_alumno on ta_usuario.usu_id = ta_alumno.usu_id where ta_alumno.alu_codpuc =  '".$user."' and ta_usuario.usu_passwd = '" .$password."'");
+    $result = DB::select("select rol_id,alu_nombre,alu_correo,alu_volunt,alu_codpuc,usu_passwd,alu_nrodoc from TA_USUARIO inner join TA_ALUMNO on TA_USUARIO.usu_id = TA_ALUMNO.usu_id where TA_ALUMNO.alu_codpuc = '".$user."' and TA_USUARIO.usu_passwd = '" .$password."'");
     if (!isset($result[0]))
     	return 0;
 	else{
