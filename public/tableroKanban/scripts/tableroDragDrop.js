@@ -1,3 +1,4 @@
+var seEdito=false;
 $(document).ready(function () {
 
     $("#backlog").sortable({ //inicio sortable
@@ -124,18 +125,23 @@ $(document).ready(function () {
             $('#modal-detalle-tarea').modal('hide');
         });
         $('#guardarCambios').on('click'),function () {
-            $.get("ajax/cambia-datos-caso.ajax.php",
-                {'id':tarea.id,
-                    'nombre-detalle-tarea':document.getElementById("nombre-detalle-tarea").value,
-                    'descripcion-detalle-tarea':document.getElementById("descripcion-detalle-tarea").value
-                });
+            if(seEdito){
+                $.get("ajax/cambia-datos-caso.ajax.php",
+                    {'id':tarea.id,
+                        'nombre-detalle-tarea':document.getElementById("nombre-detalle-tarea").value,
+                        'descripcion-detalle-tarea':document.getElementById("descripcion-detalle-tarea").value
+                    });
+                alert("Se guardaron los cambios");
+            }
         }
         $('#boton-editar').on('click', function () {
+            seEdito=true;
             document.getElementById("nombre-detalle-tarea").disabled = false;
             document.getElementById("descripcion-detalle-tarea").disabled = false;
         });
         $('#boton-ingresar-comentario').off().on('click', function () {
             if($('#contenido-comentario').val().trim().length<1) {
+                alert("No se permiten comentarios vacios");
                 return;
             }
                 //solo se agrega un comentario si es que se ha comentado algo (si no es vacio)
