@@ -62,7 +62,7 @@
 
                 <div class="modal-footer">
                     <div align="center">
-                        <button id="botonJP" type="button" class="btn btn-primary" onclick="close();"></button>
+                        <button id="botonJP" type="submit" class="btn btn-primary" onclick="close();"></button>
                         &nbsp; &nbsp;
                         <button type="button" class="btn btn-primary btn-danger" data-dismiss="modal">Cancelar</button>
                     </div>
