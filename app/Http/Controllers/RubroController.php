@@ -49,18 +49,23 @@ class RubroController extends Controller {
 	}
 
 	public function update(Request $request) {
-		try {
-			$rbo_id = $request['rbo_edit_id'];
-			$rbo_nombre = $request['rbo_edit_nombre'];
-			$rbo_maxpunt = $request['rbo_edit_maxpunt'];
-			echo "rbo_id=$rbo_id, rbo_nombre=$rbo_nombre, rbo_maxpunt=$rbo_maxpunt";
-			if (empty($rbo_nombre)) {
-				Session::flash('msg-err', 'El nombre no puede estar vac&iacute;o.');
-			} else if (!$this->es_entero_positivo($rbo_maxpunt)) {
-				Session::flash("msg-err", "El m&aacute;ximo puntaje de un rubro no puede estar vac&iacute;o, y debe ser un entero positivo.");
-			} else {
+		//Verificar la existencia del ID del rubro
+		$rbo_id = $request['rbo_edit_id'];
+		$rubro = TaRubro::find($rbo_id);
+		if (empty($rbo_id) || empty($rubro)) {
+			Session::flash('msg-err', 'No se pudo encontrar el rubro solicitado. Por favor int&eacute;ntelo de nuevo m&aacute;s tarde.');
+			return redirect()->action('PeriodoController@index');
+		}
+		//Verificar que los datos a modificar son correctos
+		$rbo_nombre = $request['rbo_edit_nombre'];
+		$rbo_maxpunt = $request['rbo_edit_maxpunt'];
+		if (empty($rbo_nombre)) {
+			Session::flash('msg-err', 'El nombre no puede estar vac&iacute;o.');
+		} else if (!$this->es_entero_positivo($rbo_maxpunt)) {
+			Session::flash("msg-err", "El m&aacute;ximo puntaje de un rubro no puede estar vac&iacute;o, y debe ser un entero positivo.");
+		} else {
+			try {
 				//Actualizar rubro
-				$rubro = TaRubro::where('rbo_id', $rbo_id)->firstOrFail();
 				$rubro->rbo_nombre = $rbo_nombre;
 				$rbo_old_maxpunt = $rubro->rbo_maxpunt;
 				$rubro->rbo_maxpunt = $rbo_maxpunt;
@@ -76,52 +81,56 @@ class RubroController extends Controller {
 				} else {
 					Session::flash('msg-err', 'Hubo un error al intentar actualizar el rubro. Por favor, int&eacute;ntelo de nuevo m&aacute;s tarde.');
 				}
+			} catch (\Exception $e) {
+				Session::flash('msg-err', 'Hubo un error desconocido al intentar actualizar el rubro. Por favor, int&eacute;ntelo de nuevo m&aacute;s tarde.');
 			}
-			//Ir a la página de resultados de la búsqueda
-			$periodo = TaPeriodo::where('per_id', $rubrica['per_id'])->first();
-			if (empty($periodo)) {
-				Session::flash('msg-err', 'No se pudo volver al periodo de los resultados de la b&uacute;squeda.');
-			} else {
-				return redirect()->action('RubricaController@index', ['curso' => $periodo['cur_id'], 'ciclo' => $periodo['cic_id']]);
-			}	
-		} catch (\Exception $e) {
-			Session::flash('msg-err', 'Hubo un error desconocido al intentar actualizar el rubro. Por favor, int&eacute;ntelo de nuevo m&aacute;s tarde.');
 		}
+		//Ir a la página de resultados de la búsqueda
+		$per_id = (empty($rubrica)) ? TaRubrica::where('rba_id', $rubro->rba_id)->value('per_id') : $rubrica->per_id;
+		$periodo = TaPeriodo::where('per_id', $per_id)->first();
+		if (empty($periodo)) {
+			Session::flash('msg-adv', 'No se pudo volver al periodo de los resultados de la b&uacute;squeda.');
+		} else {
+			return redirect()->action('RubricaController@index', ['curso' => $periodo['cur_id'], 'ciclo' => $periodo['cic_id']]);
+		}	
 		return redirect()->action('PeriodoController@index');
 	}
 
 	public function destroy(Request $request) {
 		$rbo_id = $request['rbo_delete_id'];
-		try {
-			//Eliminar el rubro
-			$rubro = TaRubro::where('rbo_id', $rbo_id)->firstOrFail();
-			$rbo_maxpunt = $rubro->rbo_maxpunt;
-			$rubro->delete();
-			//Restar la suma de puntajes a la rúbrica
-			$rubrica = TaRubrica::where('rba_id', $rubro->rba_id)->firstOrFail();
-			$rubrica->rba_maxpunt -= $rbo_maxpunt;
-			if ($rubrica->save()) {
-				Session::flash('msg-ok', 'Se elimin&oacute; el rubro correctamente.');
-			} else {
-				Session::flash('msg-err', 'Se pudo eliminar el rubro, pero no se pudo actualizar la suma de puntajes de la r&uacute;brica. Por favor contacte al administrador de bases de datos.');
-			}
-			//Volver a los resultados de la búsqueda
-			$periodo = TaPeriodo::where('per_id', $rubrica['per_id'])->first();
-			if (empty($periodo)) {
-				Session::flash('msg-err', 'No se pudo volver al periodo de los resultados de la b&uacute;squeda.');
-				return redirect()->action('PeriodoController@index');
-			} else {
-				return redirect()->action('RubricaController@index', ['curso' => $periodo['cur_id'], 'ciclo' => $periodo['cic_id']]);
-			}
-		} catch (\Exception $e) {
-			Session::flash('msg-err', 'Hubo un error desconocido al intentar eliminar el rubro. Por favor, int&eacute;ntelo m&aacute;s tarde.');
+		$rubro = TaRubro::where('rbo_id', $rbo_id)->first();
+		if (empty($rbo_id) || empty($rubro)) {
+			Session::flash('msg-err', 'No se pudo encontrar el rubro a eliminar. Por favor int&eacute;ntelo de nuevo m&aacute;s tarde.');
 			return redirect()->action('PeriodoController@index');
+		}
+		//Guardar el puntaje del rubro, y eliminarlo
+		$rba_id = $rubro->rba_id;
+		$rbo_maxpunt = $rubro->rbo_maxpunt;
+		$rubro->delete();
+		//Restar la suma de puntajes a la rúbrica
+		$rubrica = TaRubrica::where('rba_id', $rba_id)->first();
+		if (empty($rubrica)) {
+			Session::flash('msg-err', 'Se pudo eliminar el rubro, pero no se pudo actualizar la suma de puntajes de la r&uacute;brica. Esto puede dar errores en los c&aaucte;lculos de las notas. Por favor contacte al administrador de bases de datos para poder solucionar este problema.');
+			return redirect()->action('PeriodoController@index');
+		}
+		$rubrica->rba_maxpunt -= $rbo_maxpunt;
+		if ($rubrica->save()) {
+			Session::flash('msg-ok', 'Se elimin&oacute; el rubro correctamente.');
+		} else {
+			Session::flash('msg-err', 'Se pudo eliminar el rubro, pero no se pudo actualizar la suma de puntajes de la r&uacute;brica. Esto puede dar errores en los c&aaucte;lculos de las notas. Por favor contacte al administrador de bases de datos para poder solucionar este problema.');
+		}
+		//Volver a los resultados de la búsqueda
+		$periodo = TaPeriodo::where('per_id', $rubrica->per_id)->first();
+		if (empty($periodo)) {
+			Session::flash('msg-adv', 'No se pudo volver al periodo de los resultados de la b&uacute;squeda.');
+			return redirect()->action('PeriodoController@index');
+		} else {
+			return redirect()->action('RubricaController@index', ['curso' => $periodo['cur_id'], 'ciclo' => $periodo['cic_id']]);
 		}
 	}
 
 	private function es_entero_positivo($valor) {
 		return (!empty($valor) && is_numeric($valor) && ((float)$valor == (int)$valor) && ((int)$valor > 0));
 	}
-
 
 }
