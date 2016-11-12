@@ -6,7 +6,7 @@
 							{{ Session::get('msg-ok') }}
 						</div>
 @endif
-@if (Session::has('msg-adv')
+@if (Session::has('msg-adv'))
 						<div class="alert alert-warning">
 							<button type="button" class="close" data-dismiss="alert">
 								<i class="ace-icon fa fa-times"></i>
