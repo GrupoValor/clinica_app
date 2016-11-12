@@ -81,7 +81,7 @@ Route::get('directorio', function () {
     return view('intranet/directorio');
 });
 
-
+//prueba
 //mapa
 Route::get('/mapa', function () {
     return view('intranet/mapa');
