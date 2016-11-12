@@ -76,20 +76,18 @@ class RubroController extends Controller {
 				} else {
 					Session::flash('msg-err', 'Hubo un error al intentar actualizar el rubro. Por favor, int&eacute;ntelo de nuevo m&aacute;s tarde.');
 				}
-
-				//Ir a la página de resultados de la búsqueda
-				$periodo = TaPeriodo::where('per_id', $rubrica['per_id'])->first();
-				if (empty($periodo)) {
-					Session::flash('msg-err', 'No se pudo volver al periodo de los resultados de la b&uacute;squeda.');
-					return redirect()->action('PeriodoController@index');
-				} else {
-					return redirect()->action('RubricaController@index', ['curso' => $periodo['cur_id'], 'ciclo' => $periodo['cic_id']]);
-				}	
 			}
+			//Ir a la página de resultados de la búsqueda
+			$periodo = TaPeriodo::where('per_id', $rubrica['per_id'])->first();
+			if (empty($periodo)) {
+				Session::flash('msg-err', 'No se pudo volver al periodo de los resultados de la b&uacute;squeda.');
+			} else {
+				return redirect()->action('RubricaController@index', ['curso' => $periodo['cur_id'], 'ciclo' => $periodo['cic_id']]);
+			}	
 		} catch (\Exception $e) {
 			Session::flash('msg-err', 'Hubo un error desconocido al intentar actualizar el rubro. Por favor, int&eacute;ntelo de nuevo m&aacute;s tarde.');
-			return redirect()->action('PeriodoController@index');
 		}
+		return redirect()->action('PeriodoController@index');
 	}
 
 	public function destroy(Request $request) {
