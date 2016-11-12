@@ -47,6 +47,7 @@
 </head>
 
 <body class="no-skin">
+    <?php  echo view( 'intranet/menu'); ?>
       <div class="main-content">
             <div class="main-content-inner">
                 <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -399,7 +400,7 @@
                 </div><!-- /.page-content -->
             </div>
         </div><!-- /.main-content -->
-
+        <?php  echo view('intranet/footer'); ?> 
         <!--intranet/footer-->
 
 		<!-- basic scripts -->
