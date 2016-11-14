@@ -114,14 +114,14 @@ $(document).ready(function () {
             var comentario=this;
             $('#modal-eliminar-comentario').modal('show');
             $('#boton-elimina-comentario').on('click',function () {
-               comentario.remove();
-                $.get("ajax/elimina-comentario.ajax.php", {'id': comentario.id});
+               $.get("ajax/elimina-comentario.ajax.php", {'id': comentario.id});
+                comentario.remove();
             });
         });
         //manejo de eventos
         $('#boton-elimina-tarea').on('click', function () {
+            $.get("ajax/elimina-tarea.ajax.php", {'tar_id': tarea.id});
             tarea.remove();
-            $.get("ajax/elimina-tarea.ajax.php", {'id': tarea.id});
             $('#modal-detalle-tarea').modal('hide');
         });
         $('#guardarCambios').on('click'),function () {
