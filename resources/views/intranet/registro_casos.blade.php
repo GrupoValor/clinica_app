@@ -132,7 +132,7 @@
                                 <div class="col-sm-4">
                                     <!--<input class="input-sm" type="text" id="form-field-4" placeholder="Observaciones" />
                                     <div class="space-2"></div>-->
-                                    <textarea id="objetivo" class="form-control" rows="4"></textarea>
+                                    <textarea id="objetivo" class="form-control" rows="4" placeholder="*obligatorio"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -142,7 +142,7 @@
                                 <div class="col-sm-4">
                                     <!--<input class="input-sm" type="text" id="form-field-4" placeholder="Observaciones" />
                                     <div class="space-2"></div>-->
-                                    <textarea id="observaciones"class="form-control" rows="8"></textarea>
+                                    <textarea id="observaciones"class="form-control" rows="8" placeholder="*obligatorio"></textarea>
                                 </div>
                             </div>
 
@@ -309,7 +309,6 @@
         </script>
 
 
-        </script>
         <!-- inline scripts related to this page -->
         
         <script type="text/javascript">
@@ -413,31 +412,38 @@
             }
 
             $("#click_button").on('click', function (e){
-               
-                $.ajax({
-                    type: "POST",
-                    url:'service_casos',
-                    beforeSend: function (xhr) {
-                        var token = $('meta[name="csrf_token"]').attr('content');
+                document.getElementById("objetivo").required = true;
+                document.getElementById("observaciones").required=true;
+                if(($('#objetivo').val().trim().length<1)||($('#observaciones').val().trim())){
+                    alert("Debe llenar todos los campos");
 
-                        if (token) {
-                              return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                }
+                else {
+                    $.ajax({
+                        type: "POST",
+                        url: 'service_casos',
+                        beforeSend: function (xhr) {
+                            var token = $('meta[name="csrf_token"]').attr('content');
+
+                            if (token) {
+                                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                            }
+                        },
+                        data: {
+                            usu_id: '2',
+                            cli_id: cli_id,
+                            doc_id: doc_id,
+                            estcas_id: '6',
+                            cas_fecate: get_date(),
+                            cas_objact: $('#objetivo').val(),
+                            cas_observ: $('#observaciones').val()
+                        },
+                        success: function (Response) {
+
+                            alert(Response);
                         }
-                    },
-                    data: {
-                           usu_id : '2',
-                           cli_id: cli_id,
-                           doc_id: doc_id,
-                           estcas_id: '6',
-                           cas_fecate: get_date(),
-                           cas_objact: $('#objetivo').val(),
-                           cas_observ: $('#observaciones').val()},
-                    success: function(Response){
-                
-                        alert(Response);
-                    }
-                });
-
+                    });
+                }
                              
                                       
                 });
