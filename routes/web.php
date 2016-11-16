@@ -83,7 +83,11 @@ Route::get('directorio', function () {
 
 //prueba
 //mapa
-Route::get('/mapa', function () {
+Route::get('/mapa_intranet2', function () {
+    return view('intranet/kari_mapa2');
+});
+
+Route::get('/mapa_intranet', function () {
     return view('intranet/mapa');
 });
 
