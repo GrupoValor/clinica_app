@@ -419,6 +419,7 @@
                             "columnDefs": [
                                 { "width": "160px", "targets": [2,4] },
                                 { "width": "200px", "targets": [5] },
+                                { "width": "100px", "targets": [7] },
                                 { "visible": false, "targets": [0] }
                             ],
                             "aoColumns": [
