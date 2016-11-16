@@ -120,7 +120,7 @@ function initMap(){
     
     
     $('#btn-cambia-estado').on("click", function(){
-        alert(estado_alerta); //" + estado_alerta + "        
+        //alert(estado_alerta); //" + estado_alerta + "        
         $("#lista_estados input[value='" + estado_alerta+ "']").prop("checked", true); 
         $('#modal-cambia-estado').modal();
     });  
@@ -161,7 +161,7 @@ function listar(){
                         color_marca = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
                         break;
                     case "vencida":
-                        color_marca = "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
+                        color_marca = "http://maps.google.com/mapfiles/marker_grey.png";
                         break;
                 }
                 marca.setIcon(color_marca);
@@ -209,7 +209,7 @@ $(document).on('ready',function(){
                 color_marca = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
                 break;
             case "vencida":
-                color_marca = "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
+                color_marca = "http://maps.google.com/mapfiles/marker_grey.png";
                 break;
         }
         
