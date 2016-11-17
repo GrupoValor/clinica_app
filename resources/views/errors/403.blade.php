@@ -56,22 +56,20 @@
 										<h1 class="grey lighter smaller">
 											<span class="blue bigger-125">
 												<i class="ace-icon fa fa-random"></i>
-												500
+												403
 											</span>
-											Ocurri&oacute; un error inesperado...
+											Acceso restringido
 										</h1>
 
 										<hr />
 										<h3 class="lighter smaller">
-											¡Pero estamos trabajando&nbsp;
-											<i class="ace-icon fa fa-wrench icon-animated-wrench bigger-125"></i>
-											&nbsp;en ello!
+											No tiene permisos para ver la p&aacute;gina que usted solicit&oacute; :(.
 										</h3>
 
 										<div class="space"></div>
 
 										<div>
-											Si el problema persiste, puede comunicarse con nosotros e intentaremos solucionarlo lo m&aacute;s pronto posible.
+											Si cree que se trata de un error, o est&aacute; seguro de que necesita ver la p&aacute;gina, puede comunicarse con nosotros e intentaremos solucionarlo lo m&aacute;s pronto posible.
 										</div>
 
 										<hr />

@@ -45,6 +45,7 @@ class RubricaController extends Controller {
 			}
 			$periodos = array_combine($per_id, $per_nombre);
 
+			//Ir a vista de creación de periodos
 			return view('intranet.ta_rubricas_crear', ['valores' => $valores, 'periodos' => $periodos]);
 
 		} else {
@@ -60,6 +61,7 @@ class RubricaController extends Controller {
 			//Colocar los nombres a usar en el arreglo del periodo
 			$periodo['cur_nombre'] = "\"" . $curso['cur_descrip'] . "\" (" . $curso['cur_codigo'] . ")";
 			$periodo['cic_nombre'] = $ciclo['cic_nombre'];
+			$periodo['editable'] = (strtotime($periodo['per_fechafin']) >= time());
 
 			//Ir a la vista de resultados de la búsqueda
 			return view('intranet.ta_rubricas_res', ['periodo' => $periodo, 'rubricas' => $rubricas]);
