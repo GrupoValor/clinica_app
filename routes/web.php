@@ -100,7 +100,10 @@ Route::get('mant_alu', function () {
 Route::get('mant_cli', function () {
     return view('intranet/mantenimiento_cliente');
 });
-
+//mantenimiento de clinicas
+Route::get('mant_clinica',function(){
+   return view('intranet/clinica_registro');
+});
 //mantenimiento unificado
 Route::get('manten', function () {
     return view('intranet/mantenimiento');
@@ -150,6 +153,7 @@ Route::resource('service_directorio','directorioController');
 Route::resource('service_casos','casosController');
 Route::resource('service_cliente','clienteController');
 Route::resource('service_alumno_ta','taAlumnoController');
+Route::resource('service_clinica','clinicaController');
 
 //Route::resource('test','testController');
 

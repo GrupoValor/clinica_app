@@ -30,6 +30,10 @@
     <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
 
     <script src="assets/js/ace-extra.min.js"></script>
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
+    <script src="assets/js/dataTables.buttons.min.js"></script>
+    <script src="assets/js/dataTables.select.min.js"></script>
 
 </head>
 
@@ -415,23 +419,19 @@
                 $('#dynamic-table')
                         .DataTable({
 
-                            bAutoWidth: true,
-                            "columnDefs": [
-                                { "width": "160px", "targets": [2,4] },
-                                { "width": "200px", "targets": [5] },
-                                { "width": "100px", "targets": [7] },
-                                { "visible": false, "targets": [0] }
-                            ],
-                            "aoColumns": [
+                            bAutoWidth: false,
 
-                                null,null, null, null, null,null, null,
-                                {"bSortable": false}
+                            "aoColumns": [
+                                {"sWidth": "5%"},
+                                {"sWidth": "10%"},
+                                {"sWidth": "27%"},
+                                {"sWidth": "10%"},
+                                {"sWidth": "20%"},
+                                {"sWidth": "27%"},
+                                {"sWidth": "27%"},
+                                {"sWidth": "20%", "bSortable":false}
                             ],
                             "aaSorting": [],
-
-
-
-
                             select: {
                                 style: 'single'
                             }

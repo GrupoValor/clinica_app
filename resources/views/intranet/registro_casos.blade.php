@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="csrf_token" content="{{ csrf_token() }}" />
+    <meta name="csrf_token" content="{{ csrf_token() }}"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta charset="utf-8"/>
     <title>Registro de casos</title>
@@ -35,118 +35,114 @@
 
     <script src="assets/js/ace-extra.min.js"></script>
 
- 
+
 </head>
 
 <body class="no-skin">
-    <?php  echo view('intranet/menu'); ?>
-			
-        <div class="main-content">
-            <div class="main-content-inner">
-                <div class="breadcrumbs ace-save-state" id="breadcrumbs">
-                    <ul class="breadcrumb">
-                        <li>
-                            <i class="ace-icon fa fa-home home-icon"></i>
-                            <a href="index">Home</a>
-                        </li>
-                    <li>
-                        Registro de casos
-                    </li>
-                    <li class="active">Registro</li>
-                </ul><!-- /.breadcrumb -->
+<?php  echo view('intranet/menu'); ?>
 
-                
-            </div>
-
-            <div class="page-content">
-                <div class="page-header">
-                    <h1>
-                        Registro de casos
-                        <small>
-                            <i class="ace-icon fa fa-angle-double-right"></i>
-                            Registro
-                        </small>
-                    </h1>
-                </div><!-- /.page-header -->
-
-                <div class="row">
-                    <div class="col-xs-12">
-                        <!-- PAGE CONTENT BEGINS -->
-                        <form class="form-horizontal" role="form">
-                            
-
-                            <div class="space-6"></div>
-                            <div class="space-6"></div>
-                            <div class="space-6"></div>
-                            <div class="space-6"></div>
-
-                            <div class="form-group">
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="index">Home</a>
+                </li>
+                <li>
+                    Registro de casos
+                </li>
+                <li class="active">Registro</li>
+            </ul><!-- /.breadcrumb -->
 
 
-                            <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Nombre del Cliente</label>
+        </div>
+
+        <div class="page-content">
+            <div class="page-header">
+                <h1>
+                    Registro de casos
+                    <small>
+                        <i class="ace-icon fa fa-angle-double-right"></i>
+                        Registro
+                    </small>
+                </h1>
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <form class="form-horizontal" role="form">
 
 
-                            <div class="col-sm-6">
+                        <div class="space-6"></div>
+                        <div class="space-6"></div>
+                        <div class="space-6"></div>
+                        <div class="space-6"></div>
 
-                                <button type="button" style="font-size: 12px" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal_clientes">Buscar</button>
-
-                                 <div class="col-sm-6">
-
-
-                                <input class="input-sm" type="text" id="cliente" value="" disabled />
-
-                                </div>
-
-                            </div>
+                        <div class="form-group">
 
 
-                            </div>
-
-                            <div class="form-group">
-
-
-                            <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Nombre del Docente</label>
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Nombre del
+                                Cliente</label>
 
 
                             <div class="col-sm-6">
 
-                                <button type="button" style="font-size: 12px" class="btn btn-info btn-lg" data-toggle="modal" data-target="#modal_docente">Buscar</button>
+                                <button type="button" style="font-size: 12px" class="btn btn-info btn-lg"
+                                        data-toggle="modal" data-target="#modal_clientes">Buscar
+                                </button>
 
-                                 <div class="col-sm-6">
+                                <div class="col-sm-6">
 
 
-                                <input class="input-sm" type="text" id="docente" value="" disabled />
+                                    <input class="input-sm" type="text" id="cliente" value="" disabled/>
 
                                 </div>
 
                             </div>
 
 
-                            </div>
+                        </div>
 
-
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right"
-                                       for="form-field-4">Objetivo de la actuación</label>
-
-                                <div class="col-sm-4">
-                                    <!--<input class="input-sm" type="text" id="form-field-4" placeholder="Observaciones" />
-                                    <div class="space-2"></div>-->
-                                    <textarea id="objetivo" class="form-control" rows="4" placeholder="*obligatorio"></textarea>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-4">Nombre del
+                                Docente</label>
+                            <div class="col-sm-6">
+                                <button type="button" style="font-size: 12px" class="btn btn-info btn-lg"
+                                        data-toggle="modal" data-target="#modal_docente">Buscar
+                                </button>
+                                <div class="col-sm-6">
+                                    <input class="input-sm" type="text" id="docente" value="" disabled/>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right"
-                                       for="form-field-4">Observaciones</label>
+                        </div>
 
-                                <div class="col-sm-4">
-                                    <!--<input class="input-sm" type="text" id="form-field-4" placeholder="Observaciones" />
-                                    <div class="space-2"></div>-->
-                                    <textarea id="observaciones"class="form-control" rows="8" placeholder="*obligatorio"></textarea>
-                                </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right"
+                                   for="form-field-4">Objetivo de la actuación</label>
+
+                            <div class="col-sm-4">
+                                <!--<input class="input-sm" type="text" id="form-field-4" placeholder="Observaciones" />
+                                <div class="space-2"></div>-->
+                                <textarea id="objetivo" class="form-control" rows="4"
+                                          placeholder="*obligatorio"></textarea>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right"
+                                   for="form-field-4">Observaciones</label>
 
-                            <div class="hidden">
+                            <div class="col-sm-4">
+                                <!--<input class="input-sm" type="text" id="form-field-4" placeholder="Observaciones" />
+                                <div class="space-2"></div>-->
+                                <textarea id="observaciones" class="form-control" rows="8"
+                                          placeholder="*obligatorio"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="hidden">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right"
                                        for="form-field-4">Archivos</label>
@@ -154,111 +150,104 @@
                                     <input type="file" id="id-input-file-2"/>
                                 </div>
                             </div>
-                            </div>
+                        </div>
 
-                            <div align="center">
-                                <button id="click_button"class="btn btn-info" type="button">
-                                    <i class="ace-icon fa fa-check bigger-110"></i>
-                                    Registrar Caso
-                                </button>
-                            </div>
-
-
-                        </form>
-                    </div>
-                </div><!-- /.row -->
+                        <div align="center">
+                            <button id="click_button" class="btn btn-info" type="button">
+                                <i class="ace-icon fa fa-check bigger-110"></i>
+                                Registrar Caso
+                            </button>
+                        </div>
 
 
-
-            </div><!-- /.page-content -->
-            </div>
-        </div><!-- /.main-content -->
-
+                    </form>
+                </div>
+            </div><!-- /.row -->
 
 
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->
 
 
-<div align="center">                                            
+<div align="center">
     <div class="modal fade" id="modal_clientes" role="dialog">
         <div class="modal-dialog">
-           <!-- Modal content-->
+            <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 type="button" class="close" data-dismiss="modal">
                     </h1>
                     <div class="page-header"><!-- /.page-header -->
-                            <h1 >  Clientes </h1>
+                        <h1> Clientes </h1>
                     </div>
                     <table id="table-clientes" class="table table-striped table-bordered table-hover">
-                       <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nro Documento</th>
-                                <th>Nombre</th>
-                                <th>Direccion</th>
-                               
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nro Documento</th>
+                            <th>Nombre</th>
+                            <th>Direccion</th>
 
-                            </tr>
+
+                        </tr>
                         </thead>
-                        <tbody id ="tbodycontent">
+                        <tbody id="tbodycontent">
                         </tbody>
                     </table>
-               </div>                                  
-               <div class="modal-footer">
+                </div>
+                <div class="modal-footer">
                     <div align="center">
-                        <button id="botonCliente" type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+                        <button id="botonCliente" type="button" class="btn btn-default" data-dismiss="modal">Aceptar
+                        </button>
                     </div>
                 </div>
-           </div>
-       </div>
+            </div>
+        </div>
     </div>
 </div>
 
 
-
-<div align="center">                                            
+<div align="center">
     <div class="modal fade" id="modal_docente" role="dialog">
         <div class="modal-dialog">
-           <!-- Modal content-->
+            <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 type="button" class="close" data-dismiss="modal">
                     </h1>
                     <div class="page-header"><!-- /.page-header -->
-                            <h1 >  Docentes </h1>
+                        <h1> Docentes </h1>
                     </div>
                     <table id="table-docentes" class="table table-striped table-bordered table-hover">
-                       <thead>
-                            <tr>
-                                
-                                <th>ID</th>
-                                <th>Tipo</th>
-                                <th>Codigo PUCP</th>
-                                <th>Nombre</th>
-                                <th>Correo</th>
+                        <thead>
+                        <tr>
 
-                            </tr>
+                            <th>ID</th>
+                            <th>Tipo</th>
+                            <th>Codigo PUCP</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+
+                        </tr>
                         </thead>
-                        <tbody id ="tbodycontent">
+                        <tbody id="tbodycontent">
                         </tbody>
                     </table>
-               </div>                                  
-               <div class="modal-footer">
+                </div>
+                <div class="modal-footer">
                     <div align="center">
-                        <button id="btnIngresar" type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+                        <button id="btnIngresar" type="button" class="btn btn-default" data-dismiss="modal">Aceptar
+                        </button>
                     </div>
                 </div>
-           </div>
-       </div>
+            </div>
+        </div>
     </div>
 </div>
 
 
-
-
-
-
-    <?php  echo view('intranet/footer'); ?>
+<?php  echo view('intranet/footer'); ?>
 
 <!-- basic scripts -->
 
@@ -293,240 +282,191 @@
 <script src="assets/js/buttons.html5.min.js"></script>
 <script src="assets/js/buttons.print.min.js"></script>
 <script src="assets/js/buttons.colVis.min.js"></script>
-<script src="assets/js/dataTables.select.min.js"></script>    
-    
+<script src="assets/js/dataTables.select.min.js"></script>
+
 
 <!-- ace scripts -->
 <script src="assets/js/ace-elements.min.js"></script>
 <script src="assets/js/ace.min.js"></script>
 
 <script type="text/javascript">
-        $(document).ready(function(){
-            jQuery('#casos').addClass('active open');
-            jQuery('#casos-registro').addClass('active');
-            
+    $(document).ready(function () {
+        jQuery('#casos').addClass('active open');
+        jQuery('#casos-registro').addClass('active');
+
+    });
+</script>
+
+
+<!-- inline scripts related to this page -->
+
+<script type="text/javascript">
+    var myTable;
+    var data_set_cli = [];
+    var data_set_doc = [];
+    var editid;
+    var action;
+    var cli_id;
+    var doc_id;
+
+
+    $(document).ready(function () {
+        //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+
+        tableCli =
+                $('#table-clientes')
+                        .DataTable({
+
+                            bAutoWidth: false,
+
+                            "aoColumns": [
+
+                                null, null, null, null
+                            ],
+                            "aaSorting": [],
+
+
+                            select: {
+                                style: 'single'
+                            }
+                        });
+
+        tableDoc =
+                $('#table-docentes')
+                        .DataTable({
+
+                            bAutoWidth: false,
+
+                            "aoColumns": [
+
+                                null, null, null, null, null
+                            ],
+                            "aaSorting": [],
+
+
+                            select: {
+                                style: 'single'
+                            }
+                        });
+
+
+        $('#table-clientes').on('click', 'tr', function () {
+
+
+            var id = tableCli.row(this).index();
+            var data = tableCli.row(id).data();
+            cli_id = data[0];
+            $("#cliente").val(data[2]);
+
         });
-        </script>
+
+        $('#table-docentes').on('click', 'tr', function () {
 
 
-        <!-- inline scripts related to this page -->
-        
-        <script type="text/javascript">
-       var myTable ;
-       var data_set_cli = [];
-       var data_set_doc = [];
-       var editid;
-       var action;
-       var cli_id;
-       var doc_id;
-
-       
-
-       
-
-      
-       
-       
-        $(document).ready(function(){
-            //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-                
-                tableCli =
-                $('#table-clientes')                
-                        .DataTable({
-                            
-                            bAutoWidth: false,
-                            
-                            "aoColumns": [
-
-                                null,null, null,null
-                            ],
-                            "aaSorting": [],
+            var id = tableDoc.row(this).index();
+            var data = tableDoc.row(id).data();
+            doc_id = data[0];
+            $("#docente").val(data[3]);
 
 
+        });
 
+        function get_date() {
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();
 
-                            select: {
-                                style: 'single'
-                            }
-                        });
-
-                tableDoc =
-                $('#table-docentes')                
-                        .DataTable({
-                            
-                            bAutoWidth: false,
-                            
-                            "aoColumns": [
-
-                                 null,null, null,null,null
-                            ],
-                            "aaSorting": [],
-
-
-
-
-                            select: {
-                                style: 'single'
-                            }
-                        });
-
-           
-
-            $('#table-clientes').on( 'click', 'tr', function () {
-
-
-                var id = tableCli.row( this ).index();
-                var data = tableCli.row( id ).data();
-                cli_id = data[0];
-                $("#cliente").val(data[2]);
-                
-            } );
-
-            $('#table-docentes').on( 'click', 'tr', function () {
-
-
-                var id = tableDoc.row( this ).index();
-                var data = tableDoc.row( id ).data();
-                doc_id = data[0];
-                $("#docente").val(data[3]);
-
-                
-            } );
-
-            function get_date(){
-                var today = new Date();
-                var dd = today.getDate();
-                var mm = today.getMonth()+1; //January is 0!
-                var yyyy = today.getFullYear();
-
-                if(dd<10) {
-                    dd='0'+dd
-                } 
-
-                if(mm<10) {
-                    mm='0'+mm
-                } 
-
-                today = yyyy +'-'+ mm+'-'+dd;
-                return today;
+            if (dd < 10) {
+                dd = '0' + dd
             }
 
-            $("#click_button").on('click', function (e){
-                document.getElementById("objetivo").required = true;
-                document.getElementById("observaciones").required=true;
-                if(($('#objetivo').val().trim().length<1)||($('#observaciones').val().trim())){
-                    alert("Debe llenar todos los campos");
+            if (mm < 10) {
+                mm = '0' + mm
+            }
 
-                }
-                else {
-                    $.ajax({
-                        type: "POST",
-                        url: 'service_casos',
-                        beforeSend: function (xhr) {
-                            var token = $('meta[name="csrf_token"]').attr('content');
+            today = yyyy + '-' + mm + '-' + dd;
+            return today;
+        }
 
-                            if (token) {
-                                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
-                            }
-                        },
-                        data: {
-                            usu_id: '2',
-                            cli_id: cli_id,
-                            doc_id: doc_id,
-                            estcas_id: '6',
-                            cas_fecate: get_date(),
-                            cas_objact: $('#objetivo').val(),
-                            cas_observ: $('#observaciones').val()
-                        },
-                        success: function (Response) {
+        $("#click_button").on('click', function (e) {
+            document.getElementById("objetivo").required = true;
+            document.getElementById("observaciones").required = true;
+            if (($('#objetivo').val().trim().length < 1) || ($('#observaciones').val().trim())) {
+                alert("Debe llenar todos los campos");
 
-                            alert(Response);
-                        }
-                    });
-                }
-                             
-                                      
-                });
-            
-           
+            }
+            else {
                 $.ajax({
-                   
-                    type: "GET",
-                    url:'service_cliente',
-                    success: function(result){
-                        
-                        
-                        var data = jQuery.parseJSON(result);
-                        
-                       
-                        for(var i = 0; i<data.length ;i++)
-                        {
-                            
+                    type: "POST",
+                    url: 'service_casos',
+                    beforeSend: function (xhr) {
+                        var token = $('meta[name="csrf_token"]').attr('content');
 
-                                data_set_cli.push([
-                                data[i].cli_id,
-                                data[i].cli_nrodoc,
-                                data[i].cli_nombre,
-                                data[i].cli_direcc
-
-                            ] )
-                            
-                        
+                        if (token) {
+                            return xhr.setRequestHeader('X-CSRF-TOKEN', token);
                         }
-                        tableCli.clear().rows.add(data_set_cli).draw()
-                        
+                    },
+                    data: {
+                        usu_id: '2',
+                        cli_id: cli_id,
+                        doc_id: doc_id,
+                        estcas_id: '6',
+                        cas_fecate: get_date(),
+                        cas_objact: $('#objetivo').val(),
+                        cas_observ: $('#observaciones').val()
+                    },
+                    success: function (Response) {
+
+                        alert(Response);
                     }
-                        
-                            
-            
-                 
-            
                 });
+            }
 
 
-
-                 $.ajax({
-                   
-                    type: "GET",
-                    url:'service_docente',
-                    success: function(result){
-                        
-                        
-                        var data = jQuery.parseJSON(result);
-                        
-                       
-                        for(var i = 0; i<data.length ;i++)
-                        {
-                            var tipo ="";
-                            if (data[i].eva_tipeva == 'd') {
-                                tipo = "Docente";
-                            }
-                            else
-                                tipo = "Jefe Practica";
-
-                                data_set_doc.push([
-                                data[i].eva_id,
-                                tipo,
-                                data[i].eva_codpuc,
-                                data[i].eva_nombre,
-                                data[i].eva_correo
-
-                            ] )
-                            
-                        
-                        }
-                  
-                        tableDoc.clear().rows.add(data_set_doc).draw()
-                    }
-                        
-                            
-            
-                 
-            
-                });
-            
         });
-</script>  
 
+
+        $.ajax({
+            type: "GET",
+            url: 'service_cliente',
+            success: function (result) {
+                var data = jQuery.parseJSON(result);
+                for (var i = 0; i < data.length; i++) {
+                    data_set_cli.push([
+                        data[i].cli_id,
+                        data[i].cli_nrodoc,
+                        data[i].cli_nombre,
+                        data[i].cli_direcc
+                    ])
+                }
+                tableCli.clear().rows.add(data_set_cli).draw()
+            }
+        });
+        $.ajax({
+            type: "GET",
+            url: 'service_docente',
+            success: function (result) {
+                var data = jQuery.parseJSON(result);
+                for (var i = 0; i < data.length; i++) {
+                    var tipo = "";
+                    if (data[i].eva_tipeva == 'd') {
+                        tipo = "Docente";
+                    }
+                    else
+                        tipo = "Jefe Practica";
+                    data_set_doc.push([
+                        data[i].eva_id,
+                        tipo,
+                        data[i].eva_codpuc,
+                        data[i].eva_nombre,
+                        data[i].eva_correo
+                    ])
+                }
+                tableDoc.clear().rows.add(data_set_doc).draw()
+            }
+        });
+    });
+</script>
 </body>
 </html>
