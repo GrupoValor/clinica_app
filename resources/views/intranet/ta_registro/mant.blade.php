@@ -20,7 +20,9 @@
 												<tr>
 													<th>T&iacute;tulo del rubro</th>
 													<th>M&aacute;ximo puntaje</th>
+@if ($periodo['editable'])
 													<th></th>
+@endif
 												</tr>
 											</thead>
 											<tbody>
@@ -33,6 +35,7 @@
 												<tr>
 													<td id="rbo_nombre_{{ $rubro['rbo_id'] }}">{{ $rubro['rbo_nombre'] }}</td>
 													<td id="rbo_maxpunt_{{ $rubro['rbo_id'] }}">{{ $rubro['rbo_maxpunt'] }}</td>
+@if ($periodo['editable'])
 													<td class="center">
 														<button class="btn btn-mini btn-success" title="Editar rubro" data-toggle="modal", data-target="#rubro_update" onclick="rbo_editar({{ $rubro['rbo_id'] }})">
 															<i class="ace-icon fa fa-pencil"></i>
@@ -41,8 +44,10 @@
 															<i class="ace-icon fa fa-trash"></i>
 														</button>
 													</td>
+@endif
 												</tr>
 @endforeach
+@if($periodo['editable'])
 												<tr>
 													<td colspan="3" style="background-color:#EFF3F8">
 														<div class="center">
@@ -63,6 +68,7 @@
 														</div>
 													</td>
 												</tr>	
+@endif
 											</tbody>
 										</table>
 									</div><!-- /.span -->
@@ -71,16 +77,30 @@
 @endforeach
 
 								<br />
-								<div class="center">		
+								<div class="center">
+@if($periodo['editable'])	
 									<button class="btn btn-info" type="button" data-toggle="modal", data-target="#rubrica_store">
 										<i class="ace-icon fa fa-plus bigger-110"></i>
                                         A&ntilde;adir una r&uacute;brica
+									</button>
+									&nbsp;
+									<button class="btn btn-success" type="button" data-toggle="modal" data-target="#periodo_update">
+										<i class="ace-icon fa fa-pencil bigger-110"></i>
+										Editar periodo acad&eacute;mico
 									</button>
 									&nbsp;
 									<button class="btn btn-danger" type="button" data-toggle="modal", data-target="#periodo_delete">
 										<i class="ace-icon fa fa-trash bigger-110"></i>
 										Eliminar periodo acad&eacute;mico
 									</button>
+@else
+									<a href="#">
+										<button class="btn btn-inverse" type="button">
+											<i class="ace-icon fa fa-pencil bigger-110"></i>
+											Editar notas de alumnos
+										</button>
+									</a>
+@endif
 									&nbsp;
 									<a href="ta_registro">
 										<button class="btn" type="reset">

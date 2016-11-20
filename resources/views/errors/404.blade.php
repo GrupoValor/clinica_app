@@ -56,22 +56,20 @@
 										<h1 class="grey lighter smaller">
 											<span class="blue bigger-125">
 												<i class="ace-icon fa fa-random"></i>
-												500
+												404
 											</span>
-											Ocurri&oacute; un error inesperado...
+											No se encuentra la p&aacute;gina
 										</h1>
 
 										<hr />
 										<h3 class="lighter smaller">
-											¡Pero estamos trabajando&nbsp;
-											<i class="ace-icon fa fa-wrench icon-animated-wrench bigger-125"></i>
-											&nbsp;en ello!
+											La p&aacute;gina que usted solicit&oacute; no existe o el servidor no la encontr&oacute;.
 										</h3>
 
 										<div class="space"></div>
 
 										<div>
-											Si el problema persiste, puede comunicarse con nosotros e intentaremos solucionarlo lo m&aacute;s pronto posible.
+											Chequee si de casualidad habr&aacute; cometido un error al intentar navegar hasta esta p&aacute;gina. Si a pesar de ello el problema persiste, puede comunicarse con nosotros e intentaremos solucionarlo lo m&aacute;s pronto posible.
 										</div>
 
 										<hr />

@@ -1,0 +1,13 @@
+#mapa{
+    width: 400px;
+    height: 400px;
+    float: left;
+    background: white;
+}
+
+#infor{
+    width: 400px;
+    height: 400px;
+    float: left;
+    background: white;
+}
