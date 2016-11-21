@@ -59,7 +59,9 @@ class alumnoController extends Controller
 		//creo el usuario
         $usuario = TAUSUARIO::create([
                                       'cln_id' => '1',
-                                      'rol_id' => '1',
+                                      'rol_id' => '2',
+                                      'usu_usenam' => $request['alu_codpuc'],
+                                      'usu_passwd' => $request['alu_codpuc'],
 									  'usu_activo' => '1'
 
         ]);
@@ -82,7 +84,7 @@ class alumnoController extends Controller
 									'alu_nrodoc' => $request['alu_nrodoc'],
 									'alu_codpuc' => $request['alu_codpuc'],
 									'alu_correo' => $request['alu_correo'],
-									'alu_volunt' => 1
+									'alu_volunt' => 0
 									]);
 		$alumno->save();
 		

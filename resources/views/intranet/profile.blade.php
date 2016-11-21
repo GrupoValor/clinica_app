@@ -282,28 +282,31 @@ $(document).ready(function(){
 		                    url:'user',
 		                    success: function(result){
 		        
-		                        var data =  $.map(jQuery.parseJSON(result), function(value, index) {
+		                        /* var data =  $.map(jQuery.parseJSON(result), function(value, index) {
 		                            return [value];
-		                        });
-		                        $("#pro_name").html(data[1]);
-		                        $("#pro_name2").html(data[1]);
-		                          $("#pro_doc").html(data[6]);  
-		                         $("#pro_cod").html(data[4]); 
-		                         $("#pro_correo").html(data[2]);  
+		                        }); */
 
-		                         if(data[0]=='1')
+		                        var data = JSON.parse(result);
+
+		                        $("#pro_name").html(data.nombre);
+		                        $("#pro_name2").html(data.nombre);
+		                         $("#pro_doc").html(data.documento);  
+		                         $("#pro_cod").html(data.codigo); 
+		                         $("#pro_correo").html(data.correo);  
+
+		                         if(data.rol=='1')
 		                         	 $("#pro_rol").html("Administrador"); 
-		                         if(data[0]=='2')
+		                         if(data.rol=='2')
 		                         	 $("#pro_rol").html("Alumno"); 
-		                         if(data[0]=='3')
+		                         if(data.rol=='3')
 		                         	 $("#pro_rol").html("Voluntario"); 
-		                         if(data[0]=='4')
+		                         if(data.rol=='4')
 		                         	 $("#pro_rol").html("Docente"); 
-		                         if(data[0]=='5')
+		                         if(data.rol=='5')
 		                         	 $("#pro_rol").html("Jefe de Practica"); 
-		                         if(data[0]=='6')
+		                         if(data.rol=='6')
 		                         	 $("#pro_rol").html("Editor de contenidos");
-		                          if(data[0]=='7')
+		                          if(data.rol=='7')
 		                         	 $("#pro_rol").html("Cliente"); 
 		                         
 		                    }

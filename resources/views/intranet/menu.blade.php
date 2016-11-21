@@ -185,13 +185,12 @@
                     url:'user',
                     success: function(result){
         
-                        var data =  $.map(jQuery.parseJSON(result), function(value, index) {
-                            return [value];
-                        });
+                        var data = JSON.parse(result);
 
                         $('#session_data').val(data);
-                        
-                        if(data[0]=='1'){
+                        $('#user_name').html(data.nombre)
+
+                        if(data.rol=='1'){
                             $('#list_of_menu').html(
                             addPrincipal()+
                             addCasos()+
@@ -206,8 +205,9 @@
                         }
                         
                         //Alumno y Voluntario
-                        $('#user_name').html(data[1])   
-                        if(data[0]=='2' || data[0]=='3'){
+                       
+                        if(data.rol=='2' || data.rol=='3'){
+
                              $('#list_of_menu').html(
                             addPrincipal()+
                             addCasos()+
@@ -218,7 +218,7 @@
                            
                         }
                         // Docente y JP
-                        if(data[0]=='4' || data[0]=='5'){
+                        if(data.rol=='4' || data.rol=='5'){
                             $('#list_of_menu').html(
                             addPrincipal()+
                             addCasos()+
@@ -231,7 +231,7 @@
                           
                         }
                         // Gestor de contenidos
-                        if(data[0]=='6'){
+                        if(data.rol=='6'){
                             
                             $('#list_of_menu').html(
                             addPrincipal()+
@@ -242,7 +242,7 @@
                           
                         }
                          // Cliente
-                        if(data[0]=='7'){
+                        if(data.rol=='7'){
                             $('#list_of_menu').html(
                                 addPrincipal()
                             );

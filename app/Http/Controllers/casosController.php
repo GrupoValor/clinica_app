@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Models\TaCaso;
+use App\Models\TA_CASO;
 use Illuminate\Support\Facades\DB;
 
 class casosController extends Controller

@@ -54,12 +54,18 @@ class clienteController extends Controller
      */
     public function store(Request $request)
     {
-        //creo el usuario
-		$usuario = TAUSUARIO::create([
-									  'cln_id' => '1',
-									  'rol_id' => '1',
-									  'usu_activo' => '1'
-		]);
+
+
+         //creo el usuario
+        $usuario = TAUSUARIO::create([
+                                      'cln_id' => '1',
+                                      'rol_id' => '7',
+                                      'usu_usenam' => $request['cli_nrodoc'],
+                                      'usu_passwd' => $request['cli_nrodoc'],
+                                      'usu_activo' => '1'
+
+        ]);
+
 		$usuario->save();
 		
 		$casos =DB::select('SELECT MAX(usu_id) as id FROM TA_USUARIO');
