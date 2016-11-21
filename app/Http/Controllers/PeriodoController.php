@@ -15,9 +15,10 @@ use App\Models\TaRubro;
 
 class PeriodoController extends Controller {
 
-	public function index() {
+	public function index(Request $request) {
 		//Verificar si el usuario tiene permisos para visualizar esta pantalla
 		/* FALTA IMPLEMENTAR LOL */
+
 
 		//Extraer cursos según clínica
 		$db_cursos = TaCurso::where('cln_id', 1)->get()->toArray();

@@ -257,6 +257,15 @@
     function a_onClick( hola) {
                
               }
+    var myTable ;
+    var butons = '<div class="hidden-sm hidden-xs action-buttons">'+
+                                                    
+                                                    '<a  class="green" ">'+
+                                                        '<i class="ace-icon fa fa-pencil bigger-130">'+'</i>'+
+                                                    '</a>'+
+                                                '</div>';
+
+            var butons2 = '<button type="button" class="btn btn-warning btn-sm" >Ir al caso</button>' 
 
 
 
@@ -266,7 +275,7 @@
 
 
 
-              var myTable =
+              myTable =
                 $('#dynamic-table')
                 //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
                         .DataTable({
@@ -460,15 +469,48 @@
             $(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
         });
             
-            var butons = '<div class="hidden-sm hidden-xs action-buttons">'+
-                                                    
-                                                    '<a  class="green" ">'+
-                                                        '<i class="ace-icon fa fa-pencil bigger-130">'+'</i>'+
-                                                    '</a>'+
-                                                '</div>';
+            
 
-            var butons2 = '<button type="button" class="btn btn-warning btn-sm" >Ir al caso</button>' 
+
+
+
+
                 $.ajax({
+                           
+                            type: "GET",
+                            url:'user',
+                            success: function(result){
+                
+                                var data = JSON.parse(result);
+                                
+                                if(data.rol == "1"){
+                                    get_all_casos();
+
+                                }
+                                else{
+                                    get_mis_casos();
+                                }
+
+                        }
+                                
+                                    
+                    
+                         
+                    
+                        });
+
+
+
+
+               
+            
+        });
+
+
+function get_all_casos(){
+
+
+     $.ajax({
                    
                     type: "GET",
                     url:'service_casos',
@@ -505,8 +547,51 @@
                          
             
                 });
+
+}
+
+function get_mis_casos(){
+
+
+     $.ajax({
+                   
+                    type: "GET",
+                    url:'miscasos',
+                    success: function(result){
+                        
+                        
+                        var data = jQuery.parseJSON(result);
+                        var rows = "";
+                        $("#tbodycontent").html(rows);
+                        
+                    
+
+                        for(var i = 0; i<data.length ;i++)
+                        {
+                            myTable.row.add( [
+                            data[i].cas_id,
+                            data[i].cas_fecate,
+                            data[i].cli_nombre,
+                            data[i].cas_objact,
+                            data[i].res_nombre,
+                            data[i].estcas_detalle,
+                            butons2
+                            
+                        ] ).draw( false );
+                        
+                        }
+                        
+                       // $("#tbodycontent").html (rows);
+                    }
+                        
+                            
             
-        });
+                        //alert(Response);
+                         
+            
+                });
+
+}
 </script>   
 </body>
 </html>

@@ -301,6 +301,7 @@
 <!-- inline scripts related to this page -->
 
 <script type="text/javascript">
+    var userdata ;
     var myTable;
     var data_set_cli = [];
     var data_set_doc = [];
@@ -392,7 +393,7 @@
         $("#click_button").on('click', function (e) {
             document.getElementById("objetivo").required = true;
             document.getElementById("observaciones").required = true;
-            if (($('#objetivo').val().trim().length < 1) || ($('#observaciones').val().trim())) {
+            if (($('#objetivo').val().trim().length < 1) || ($('#observaciones').val().trim().length < 1 )) {
                 alert("Debe llenar todos los campos");
 
             }
@@ -408,7 +409,7 @@
                         }
                     },
                     data: {
-                        usu_id: '2',
+                        usu_id: userdata.userid,
                         cli_id: cli_id,
                         doc_id: doc_id,
                         estcas_id: '6',
@@ -443,6 +444,29 @@
                 tableCli.clear().rows.add(data_set_cli).draw()
             }
         });
+
+        $.ajax({
+                           
+                            type: "GET",
+                            url:'user',
+                            success: function(result){
+                
+                                /* var data =  $.map(jQuery.parseJSON(result), function(value, index) {
+                                    return [value];
+                                }); */
+
+                                userdata = JSON.parse(result);
+                                
+                            
+
+                        }
+                                
+                                    
+                    
+                         
+                    
+                        });
+
         $.ajax({
             type: "GET",
             url: 'service_docente',

@@ -52,6 +52,9 @@ Route::get('/casos_busqueda', function () {
     return view('intranet/busqueda_casos');
 });
 
+Route::get('/miscasos', 'casosController@miscasos');
+
+
 //perfil
 
 Route::get('/perfil', function (Request $request) {
