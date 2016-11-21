@@ -212,10 +212,8 @@
 
                     <div class="modal-footer">
                         <div align="center">
-                            <button id="botonJP" type="submit" class="btn btn-primary" onclick="close();">Aceptar
-                            </button>
-                            <button type="button" class="btn btn-primary btn-danger" data-dismiss="modal">Cancelar
-                            </button>
+                            <button id="botonAccion" type="button" class="btn btn-default" data-dismiss="modal" onclick="close();">Aceptar</button>
+
                         </div>
                     </div>
                 </div>
@@ -298,17 +296,17 @@
     var data_set_clinica=[];
     var doc_id;
 
-    function getButtons(i, cln_id) {
-        var param = "'" + i + "','" + cln_id + "'";
-        var butons = '<div class="hidden-sm hidden-xs action-buttons">' +
+    function getButtons(i,cln_id) {
+        var param = "'"+i+"','"+cln_id+"'";
+        var butons = '<div class="hidden-sm hidden-xs action-buttons">'+
 
-            '<a  onClick="edit_onClick(' + param + ')" class="green" >' +
-            '<i class="ace-icon fa fa-pencil bigger-130">' + '</i>' +
-            '</a>' +
+            '<a  onClick="edit_onClick('+param+')" class="green" >'+
+            '<i class="ace-icon fa fa-pencil bigger-130">'+'</i>'+
+            '</a>'+
 
-            '<a onClick="delete_onClick(' + param + ')" class="red">' +
-            '<i class="ace-icon fa fa-trash-o bigger-130">' + '</i>' +
-            '</a>' +
+            '<a onClick="delete_onClick('+param+')" class="red">'+
+            '<i class="ace-icon fa fa-trash-o bigger-130">'+'</i>'+
+            '</a>'+
             '</div>';
         return butons;
     }
@@ -336,7 +334,7 @@
     }
 
 
-    $("#botonCliente").on('click', function (e) {
+    $("#botonAccion").on('click', function (e) {
         if (action == "ADD") {
 
             if ($('#cln_email').val().trim().length < 3 || ($('#cln_telefono').val().trim().length < 1) || ($('#cln_direcc').val().trim().length < 1))
@@ -344,7 +342,7 @@
             if ($('#cln_email').val().indexOf("@") === -1) {
                 return;
             }
-            i = data_set.length;
+            var i = data_set_clinica.length;
             if ($('#cln_nombre').val().trim().length < 1)
                 return;
             $.ajax({
@@ -367,11 +365,11 @@
                     cln_direcc: $('#cln_direcc').val(),
                     cln_mision: $('#cln_mision').val(),
                     cln_vision: $('#cln_vision').val(),
-                    cln_prof: doc_id
+                    cln_prof: $('#cln_prof').val()
                 },
                 success: function (Response) {
-                    data_set.push([
-                        data_set[i - 1][0],
+                    data_set_clinica.push([
+                        data_set_clinica[i - 1][0]+1,
                         $("#cln_nombre").val(),
                         $("#cln_telefono").val(),
                         $("#cln_email").val(),
@@ -383,9 +381,9 @@
                         $("#cln_mision").val(),
                         $("#cln_vision").val(),
                         $("#cln_prof").val(),
-                        getButtons(i, i)
+                        getButtons(i, data_set_clinica[i-1][0]+1)
                     ]);
-                    tablaClinicas.clear().rows.add(data_set).draw();
+                    tablaClinicas.clear().rows.add(data_set_clinica).draw();
                     alert(Response);
                 }
             });
@@ -395,7 +393,7 @@
         if (action == "UPDATE") {
             $.ajax({
                 type: "PATCH",
-                url: 'service_clinica/' + data_set[editid][0],
+                url: 'service_clinica/' + data_set_clinica[editid][0],
                 beforeSend: function (xhr) {
                     var token = $('meta[name="csrf_token"]').attr('content');
                     if (token) {
@@ -416,20 +414,19 @@
                     cln_prof: $('#cln_prof').val()
                 },
                 success: function (Response) {
-                    data_set[editid][1] = $("#cln_nombre").val();
-                    data_set[editid][2] = $("#cln_telefono").val();
-                    data_set[editid][3] = $("#cln_email").val();
-                    data_set[editid][4] = $("#cln_urlfbk").val();
-                    data_set[editid][5] = $("#cln_urltwi").val();
-                    data_set[editid][6] = $("#cln_urlgoo").val();
-                    data_set[editid][7] = $("#cln_descri").val();
-                    data_set[editid][8] = $("#cln_direcc").val();
-                    data_set[editid][9] = $("#cln_mision").val();
-                    data_set[editid][10] = $("#cln_vision").val();
-                    data_set[editid][11] = $("#cln_prof").val();
-                    //data_set[editid][11] = doc_id;
+                    data_set_clinica[editid][1] = $("#cln_nombre").val();
+                    data_set_clinica[editid][2] = $("#cln_telefono").val();
+                    data_set_clinica[editid][3] = $("#cln_email").val();
+                    data_set_clinica[editid][4] = $("#cln_urlfbk").val();
+                    data_set_clinica[editid][5] = $("#cln_urltwi").val();
+                    data_set_clinica[editid][6] = $("#cln_urlgoo").val();
+                    data_set_clinica[editid][7] = $("#cln_descri").val();
+                    data_set_clinica[editid][8] = $("#cln_direcc").val();
+                    data_set_clinica[editid][9] = $("#cln_mision").val();
+                    data_set_clinica[editid][10] = $("#cln_vision").val();
+                    data_set_clinica[editid][11] = $("#cln_prof").val();
 
-                    tablaClinicas.clear().rows.add(data_set).draw();
+                    tablaClinicas.clear().rows.add(data_set_clinica).draw();
 
                     alert(Response);
                 }
@@ -437,22 +434,23 @@
         }
     });
 
-    function delete_onClick(id, cln_id) {
-        action = "DELETE";
-        editid = parseInt(id);
+    function delete_onClick(id,con_id){
+        action="DELETE";
+        editid=parseInt(id);
         $.ajax({
             type: "DELETE",
-            url: 'service_clinica/' + data_set[editid][0],
-            beforeSend: function (xhr) {
+            url: 'service_clinica/' + data_set_clinica[editid][0],
+            beforeSend: function(xhr) {
                 var token = $('meta[name="csrf_token"]').attr('content');
                 if (token) {
                     return xhr.setRequestHeader('X-CSRF-TOKEN', token);
                 }
             },
-            success: function (Response) {
+            success: function(Response) {
                 tablaClinicas.rows(id).remove().draw();
                 alert(Response);
             }
+
         });
     }
     function edit_onClick(id, cln_id) {
@@ -461,7 +459,7 @@
         editid = parseInt(id);
 
         $("#cln_nombre").val(data_set_clinica[editid][1]+"");
-        $("#cln_telefono").val(data_set_clinica[editid][2] + "");
+        $("#cln_telefono").val(data_set_clinica[editid][2]+"");
         $("#cln_email").val(data_set_clinica[editid][3] + "");
         $("#cln_urlfbk").val(data_set_clinica[editid][4] + "");
         $("#cln_urltwi").val(data_set_clinica[editid][5] + "");

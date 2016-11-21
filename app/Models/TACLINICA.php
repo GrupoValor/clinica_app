@@ -34,7 +34,9 @@ class TACLINICA extends Eloquent
     public $timestamps = false;
 
     protected $casts = [
+        'cln_telefono'=>'int',
         'cln_prof' => 'int'
+
     ];
 
     protected $fillable = [

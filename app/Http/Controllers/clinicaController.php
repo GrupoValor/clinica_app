@@ -110,9 +110,7 @@ class clinicaController extends Controller
             cln_mision = :mision,
             cln_vision = :vision,
             cln_prof = :prof
-
-
-            where cln_id = :id',
+            where cln_id = :cl_id',
             ['nombre' => $request['cln_nombre'],
                 'telefono' => $request['cln_telefono'],
                 'email' => $request['cln_email'],
@@ -124,7 +122,7 @@ class clinicaController extends Controller
                 'mision' => $request['cln_mision'],
                 'vision' => $request['cln_vision'],
                 'prof' => $request['cln_prof'],
-                'id' => $id]);
+                'cln_id' => $id]);
         // print_r($request );
         echo "Registro actualizado correctamente" ;
     }
@@ -138,8 +136,8 @@ class clinicaController extends Controller
     public function destroy($id)
     {
         DB::delete('DELETE FROM TA_CLINICA 
-            where con_id = :id',
-            ['id' => $id]);
+            where cln_id = :cln_id',
+            ['cl_id' => $id]);
         echo "Registro eliminado correctamente" ;
     }
 }
