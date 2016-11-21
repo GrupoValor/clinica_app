@@ -147,9 +147,21 @@ Route::get('/noticias_registro', function () {
     return view('intranet/gestor_noticias_registro');
 });
 
+//eventos
+Route::get('/agenda', function () {
+    return view('intranet/kari_eventos');
+});
+
 //page error
 Route::get('/error-500', function () {
     return view('errors/500');
+});
+
+//WEB
+
+//mapa
+Route::get('/mapa_web', function () {
+    return view('web/mapa');
 });
 
 Route::resource('service_alumno','alumnoController');
