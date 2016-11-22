@@ -158,7 +158,7 @@ Route::get('/error-500', function () {
 });
 
 //WEB
-
+Route::get('/log', 'logController@get');
 //mapa
 Route::get('/mapa_web', function () {
     return view('web/mapa');
