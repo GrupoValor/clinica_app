@@ -13,7 +13,8 @@ $(document).ready(function () {
                 data: {
                     'id': id,
                     'estado': estado
-                },
+                },function(){
+                }
             }); //fin ajax
         }, //fin receive
     }); //fin sortable
@@ -29,7 +30,9 @@ $(document).ready(function () {
                 data: {
                     'id': id,
                     'estado': estado
-                },
+                },success:function(){
+                    $('#registro-actividad').append('<li>Tarea movida a pendientes</li>');
+                }
             }); //fin ajax
         }, //fin receive
     }); //fin sortable
@@ -203,6 +206,7 @@ $(document).ready(function () {
                 $('#backlog').append('<li class="tarea" id="' + data + '">' + $('#titulo-tarea').val() + '</li>');
                 $('#titulo-tarea').val('');
                 $('#descripcion-tarea').removeData();
+                $('#registro-actividad').append('<li>Tarea creada</li>');
             });
             $('#modal-agrega-tarea').modal('hide');
           }

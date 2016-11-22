@@ -84,6 +84,8 @@ $display = new Display($db);
               </div>
               <div id="panel-control-tablero-actividad">
                 <h3 style="font-size: 15px">Registro de actividad</h3>
+                <ul id="registro-actividad">
+                </ul>
               </div>
             </div>
       </div>
@@ -151,7 +153,7 @@ $display = new Display($db);
 
               <div class="form-group">
                   <label for="descripcion-fecha-registro" id="label-fecha-registro">Fecha registro:</label>
-                  
+
               </form>
 
               <div class="form-group">
