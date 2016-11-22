@@ -1,5 +1,6 @@
-var seEdito=false;
+
 $(document).ready(function () {
+  var seEdito=false;
 
     $("#backlog").sortable({ //inicio sortable
         connectWith: "#pendiente, #proceso, #finalizada",
@@ -98,13 +99,22 @@ $(document).ready(function () {
         //Obtenemos el nombre de la tarea
         $.get("ajax/nombre-tarea.ajax.php", {'id': this.id}, function (data1) {
             $('#nombre-detalle-tarea').remove();
-            $('#label-nombre-tarea').after('<input type="text" class="form-control" id="nombre-detalle-tarea" disabled placeholder="' + data1 + '">');
+            $('#label-nombre-tarea').after('<input type="text" class="form-control" id="nombre-detalle-tarea" disabled>');
+            $('#nombre-detalle-tarea').val(data1);
         });
 
-        //Obtenemos la direccion
+        //Obtenemos la descripcion
         $.get("ajax/detalle-tarea.ajax.php", {'id': this.id}, function (data2) {
             $('#descripcion-detalle-tarea').remove();
-            $('#label-detalle-tarea').after('<textarea class="form-control" rows="3" id="descripcion-detalle-tarea"  disabled placeholder="' + data2 + '"</textarea>');
+            $('#label-detalle-tarea').after('<textarea class="form-control" rows="3" id="descripcion-detalle-tarea"  disabled>');
+            $('#descripcion-detalle-tarea').val(data2);
+        });
+
+        //Obtenemos la fecha de registro
+        $.get("ajax/detalle-fecha-registro.ajax.php", {'id': this.id}, function (data3) {
+            $('#descripcion-fecha-registro').remove();
+            $('#label-fecha-registro').after('<input type="datetime" class="form-control" id="descripcion-fecha-registro" disabled>');
+            $('#descripcion-fecha-registro').val(data3);
         });
 
         //mostramos el modal
@@ -119,40 +129,53 @@ $(document).ready(function () {
             });
         });
         //manejo de eventos
-        $('#boton-elimina-tarea').on('click', function () {
+        $('#boton-elimina-tarea-ok').on('click', function () {
             $.get("ajax/elimina-tarea.ajax.php", {'tar_id': tarea.id});
             tarea.remove();
             $('#modal-detalle-tarea').modal('hide');
         });
-        $('#guardarCambios').on('click'),function () {
-            if(seEdito){
-                $.get("ajax/cambia-datos-caso.ajax.php",
-                    {'id':tarea.id,
-                        'nombre-detalle-tarea':document.getElementById("nombre-detalle-tarea").value,
-                        'descripcion-detalle-tarea':document.getElementById("descripcion-detalle-tarea").value
+
+
+        $('#guardarCambios').on('click',function () {
+
+            if(seEdito && ($('#nombre-detalle-tarea').val().trim().length>0)){
+                  $.get("ajax/cambia-datos-caso.ajax.php",
+                    {'tar_id':tarea.id,
+                        'nombre-detalle-tarea': $('#nombre-detalle-tarea').val(),
+                        'descripcion-detalle-tarea': $('#descripcion-detalle-tarea').val()
+                    },function(){
+                      document.getElementById(tarea.id).innerHTML = $('#nombre-detalle-tarea').val();
                     });
-                alert("Se guardaron los cambios");
+                    eEdito = false;
+                    document.getElementById("nombre-detalle-tarea").disabled = true;
+                    document.getElementById("descripcion-detalle-tarea").disabled = true;
+                    document.getElementById("guardarCambios").disabled = true;
+            } else {
+              alert("Complete el titulo de tarea");
             }
-        }
+        });
+
+
         $('#boton-editar').on('click', function () {
             seEdito=true;
+            document.getElementById("guardarCambios").disabled = false;
             document.getElementById("nombre-detalle-tarea").disabled = false;
             document.getElementById("descripcion-detalle-tarea").disabled = false;
         });
         $('#boton-ingresar-comentario').off().on('click', function () {
             if($('#contenido-comentario').val().trim().length<1) {
                 alert("No se permiten comentarios vacios");
-                return;
+            } else {
+              //solo se agrega un comentario si es que se ha comentado algo (si no es vacio)
+              $.get("ajax/inserta-comentario.ajax.php",
+                  {
+                      'tar_id': tarea.id,
+                      'com_mensaje': $('#contenido-comentario').val()
+                  }, function (data) {
+                      $('#lista-comentarios').append('<li class="comentario" id="' + data + '"> super_user escribio: ' + $('#contenido-comentario').val() + '</li>');
+                      $('#contenido-comentario').val('');
+                  });
             }
-                //solo se agrega un comentario si es que se ha comentado algo (si no es vacio)
-                $.get("ajax/inserta-comentario.ajax.php",
-                    {
-                        'tar_id': tarea.id,
-                        'com_mensaje': $('#contenido-comentario').val()
-                    }, function (data) {
-                        $('#lista-comentarios').append('<li class="comentario" id="' + data + '"> super_user escribio: ' + $('#contenido-comentario').val() + '</li>');
-                    });
-                $('#contenido-comentario').removeData();
 
         });
         //<label for="descripcion-detalle-tarea">Titulo:</label>
@@ -170,7 +193,7 @@ $(document).ready(function () {
 
     //Agregar una tarea
     $('#btn-guardar-tarea').on('click', function () {
-        if($('#titulo-tarea').val().trim().length>0 && $('#descripcion-tarea').val().trim().length>0){
+          if($('#titulo-tarea').val().trim().length>0){
         $.get("ajax/inserta-detalle-tarea.ajax.php",
             {
                 'titulo': $('#titulo-tarea').val(),
@@ -178,10 +201,20 @@ $(document).ready(function () {
                 'cas_id': parseInt(getUrlVars()['id'])
             }, function (data) {
                 $('#backlog').append('<li class="tarea" id="' + data + '">' + $('#titulo-tarea').val() + '</li>');
-                $('#titulo-tarea').removeData();
+                $('#titulo-tarea').val('');
                 $('#descripcion-tarea').removeData();
-            });}
+            });
+            $('#modal-agrega-tarea').modal('hide');
+          }
+            else(alert("Titulo obligatorio"));
+
     })
+
+    $("#modal-agrega-tarea").on('hidden.bs.modal', function () {
+        $('#titulo-tarea').val('');
+        $('#descripcion-tarea').val('');
+    });
+
 
     //cambiar estado de un casos
     $('#boton-cambia-estado').on('click', function () {

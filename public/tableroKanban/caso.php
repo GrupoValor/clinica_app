@@ -117,17 +117,18 @@ $display = new Display($db);
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <label for="titulo-tarea">Titulo:</label>
+              <label for="titulo-tarea">Titulo(*):</label>
               <input type="text" class="form-control" id="titulo-tarea">
             </div>
             <div class="form-group">
               <label for="descripcion-tarea">Descripcion:</label>
               <textarea class="form-control" rows="3" id="descripcion-tarea"></textarea>
             </div>
+            <label style="color:red">(*)Campos obligatorios</label>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn-guardar-tarea">Guardar</button>
+            <button type="button" class="btn btn-primary" id="btn-guardar-tarea">Guardar</button>
           </div>
         </div>
       </div>
@@ -142,14 +143,25 @@ $display = new Display($db);
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label for="nombre-detalle-tarea" id="label-nombre-tarea">Nombre:</label>
+                <label for="nombre-detalle-tarea" id="label-nombre-tarea">Titulo(*):</label>
               </div>
               <div class="form-group">
                 <label for="descripcion-detalle-tarea" id="label-detalle-tarea">Detalle:</label>
               </div>
+
+              <div class="form-group">
+                  <label for="descripcion-fecha-registro" id="label-fecha-registro">Fecha registro:</label>
+                  
+              </form>
+
+              <div class="form-group">
+                <label style="color:red">(*)Campos obligatorios</label>
+              </div>
                 <div class="form-group">
                     <button type="button" class="btn btn-info" id="boton-editar">Editar</button>
+                    <button type="button" class="btn btn-success" id="guardarCambios" disabled>Guardar cambios</button>
                 </div>
+
               <div id ="comentarios-tarea">
                 <h3>Comentarios:</h3>
                 <div id="contenedor-lista-comentarios"></div>
@@ -164,19 +176,14 @@ $display = new Display($db);
                 <form class="form-inline">
               <div class="form-group">
                 <div>
-                  <label for="fechaTarea">Vencimiento:</label>
-                  <input type="date" name="fechaTarea">
-                </div>
-                <div>
                   <button type="button" class="btn btn-warning" id="boton-agregar-alerta">+ Alerta documento</button>
                 </div>
-
               </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button id="deleteTarea" type="button" class="btn btn-success btn-danger" data-toggle="modal" data-target="#modal-eliminar-tarea">Eliminar tarea</button>
-                <button id="guardarCambios" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button  type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             </div>
         </div>
       </div>
@@ -216,7 +223,7 @@ $display = new Display($db);
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-danger" id="boton-elimina-tarea" data-dismiss="modal">Si</button>
+                    <button type="button" class="btn btn-danger" id="boton-elimina-tarea-ok" data-dismiss="modal">Si</button>
                 </div>
             </div>
         </div>
