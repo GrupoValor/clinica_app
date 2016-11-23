@@ -47,7 +47,7 @@
 </head>
 
 <body class="no-skin">
-    <?php  echo view( 'intranet/menu'); ?>
+    <?php  echo view('intranet/menu'); ?>
       <div class="main-content">
             <div class="main-content-inner">
                 <div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -71,7 +71,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <!-- PAGE CONTENT BEGINS -->
-                            <h3 class="header smaller lighter blue">R&uacute;brica de participaci&oacute;n (50%)</h3>
+                            <h3 class="header smaller lighter blue">{{$nombresPesosRubrica[0]}} ({{(int)$nombresPesosRubrica[1]*10 }}%)</h3>
 
                             <div class="row">
                                 <div class="col-xs-12">
@@ -80,8 +80,11 @@
                                         <thead>
                                             <tr>
                                                 <th style="text-align:center"># semana</th>
-                                                <th class="hidden-480">Puntualidad</th>
-                                                <th class="hidden-480">Participaci&oacute;n y discusi&oacute;n</th>
+
+                                                @for($i = 0; $i < count($nombresRubroP); $i++)
+                                                    <th class="hidden-480">{{$nombresRubroP[$i]}}</th>
+                                                @endfor
+                                        
                                                 <th>Suma de notas</th>
                                                 <th class="detail-col">Comentarios</th>
                                             </tr>
@@ -114,7 +117,7 @@
                                            
 
 
-                                            //PARTICIPACION
+                                            <!--PARTICIPACION-->
                                             <!--hasta el momento los comentarios estan harcodeados-->
                                             <!--BODY-->
                                             <tr class="detail-row">
@@ -180,7 +183,7 @@
                                 </div><!-- /.span -->
                             </div><!-- /.row -->
 
-                            <h3 class="header smaller lighter blue">R&uacute;brica de seguimiento de casos (50%)</h3>
+                            <h3 class="header smaller lighter blue">{{$nombresPesosRubrica[2]}} ({{(int)$nombresPesosRubrica[3]*10 }}%)</h3>
 
                             <div class="row">
                                 <div class="col-xs-12">
@@ -189,10 +192,11 @@
                                                 <thead>
                                                     <tr>
                                                         <th class="center"># semana</th>
-                                                        <th class="hidden-480">Relaci&oacute;n abogado-usuario</th>
-                                                        <th class="hidden-480">Ejercicio profesional</th>
-                                                        <th class="hidden-480">Investigaci&oacute;n y redacci&oacute;n</th>
-                                                        <th class="hidden-480">Oralidad</th>
+                                                        
+                                                        @for($i = 0; $i < count($nombresRubroS); $i++)
+                                                            <th class="hidden-480">{{$nombresRubroS[$i]}}</th>
+                                                        @endfor
+
                                                         <th>Suma de notas</th>
                                                         <th class="detail-col">Comentarios</th>
                                                     </tr>
@@ -310,10 +314,15 @@
 
                                                      <tr class="">
                                                         <td class="hidden-480 center">
-                                                            <span style="color:red">5/10</span>
+                                                        @for($ii = 0, $j=0,$suma=0; $ii < count($sumanotasParticipacion);$suma += $sumanotasParticipacion[$ii],$ii++,$j++)
+                                                        @endfor
+                                                            <span style="color:red">{{$suma}}/{{$j}}</span>
                                                         </td>
                                                         <td class="hidden-480 center">
-                                                            <span style="color:red">10.3/20</span>
+
+                                                            @for($ii = 0, $j=0,$suma=0; $ii < count($sumanotasSeguimiento);$suma += $sumanotasSeguimiento[$ii],$ii++,$j++)
+                                                            @endfor
+                                                            <span style="color:red">{{$suma}}/{{$j}}</span>
                                                         </td>
                                                         <td class="center">
                                                             <span style="color:red">{{$promedios[$i]}}</span>
@@ -400,7 +409,7 @@
                 </div><!-- /.page-content -->
             </div>
         </div><!-- /.main-content -->
-        <?php  echo view('intranet/footer'); ?> 
+        <?php  echo view('intranet/footer'); ?>
         <!--intranet/footer-->
 
 		<!-- basic scripts -->
