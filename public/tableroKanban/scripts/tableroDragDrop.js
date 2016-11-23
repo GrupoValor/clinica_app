@@ -13,7 +13,24 @@ $(document).ready(function () {
                 data: {
                     'id': id,
                     'estado': estado
-                },function(){
+                },success:function(){
+                    $.ajax({
+                        type: "GET",
+                        url: "../user",
+                        success: function(result){
+                            var data = JSON.parse(result);
+                            $('#registro-actividad').prepend('<li>'+data.nombre+' movió '+ $(ui.item).attr('value')+ ' a backlog</li>');
+                            $.ajax({
+                                url:"ajax/guarda-registro-actividad.ajax.php",
+                                type: "GET",
+                                data:{
+                                    'usu_id': data.userid,
+                                    'cas_id': parseInt(getUrlVars()['id']),
+                                    'act_desc': data.nombre+ " movió la tarea a backlog"
+                                }
+                            });
+                        }
+                    })
                 }
             }); //fin ajax
         }, //fin receive
@@ -31,7 +48,23 @@ $(document).ready(function () {
                     'id': id,
                     'estado': estado
                 },success:function(){
-                    $('#registro-actividad').append('<li>Tarea movida a pendientes</li>');
+                    $.ajax({
+                        type: "GET",
+                        url: "../user",
+                        success: function(result){
+                            var data = JSON.parse(result);
+                            $('#registro-actividad').prepend('<li>'+data.nombre+' movió la tarea a pendientes</li>');
+                            $.ajax({
+                                url:"ajax/guarda-registro-actividad.ajax.php",
+                                type: "GET",
+                                data:{
+                                    'usu_id': data.userid,
+                                    'cas_id': parseInt(getUrlVars()['id']),
+                                    'act_desc': data.nombre+ " movió la tarea a pendientes"
+                                }
+                            });
+                        }
+                    })
                 }
             }); //fin ajax
         }, //fin receive
@@ -48,7 +81,25 @@ $(document).ready(function () {
                 data: {
                     'id': id,
                     'estado': estado
-                },
+                },success:function(){
+                    $.ajax({
+                        type: "GET",
+                        url: "../user",
+                        success: function(result){
+                            var data = JSON.parse(result);
+                            $('#registro-actividad').prepend('<li>'+data.nombre+' movió la tarea a en proceso</li>');
+                            $.ajax({
+                                url:"ajax/guarda-registro-actividad.ajax.php",
+                                type: "GET",
+                                data:{
+                                    'usu_id': data.userid,
+                                    'cas_id': parseInt(getUrlVars()['id']),
+                                    'act_desc': data.nombre+ " movió la tarea a en proceso"
+                                }
+                            });
+                        }
+                    })
+                }
             }); //fin ajax
         }, //fin receive
     }); //fin sortable
@@ -64,7 +115,25 @@ $(document).ready(function () {
                 data: {
                     'id': id,
                     'estado': estado
-                },
+                },success:function(){
+                    $.ajax({
+                        type: "GET",
+                        url: "../user",
+                        success: function(result){
+                            var data = JSON.parse(result);
+                            $('#registro-actividad').prepend('<li>'+data.nombre+' movió la tarea a finalizadas</li>');
+                            $.ajax({
+                                url:"ajax/guarda-registro-actividad.ajax.php",
+                                type: "GET",
+                                data:{
+                                    'usu_id': data.userid,
+                                    'cas_id': parseInt(getUrlVars()['id']),
+                                    'act_desc': data.nombre+ " movió la tarea a finalizadas"
+                                }
+                            });
+                        }
+                    })
+                }
             }); //fin ajax
         }, //fin receive
     }); //fin sortable
@@ -139,15 +208,17 @@ $(document).ready(function () {
         });
 
 
-        $('#guardarCambios').on('click',function () {
+        $('#guardarCambios').off().on('click',function () {
 
             if(seEdito && ($('#nombre-detalle-tarea').val().trim().length>0)){
+                var nombreDetalleTarea =$('#nombre-detalle-tarea').val();
+                var descripcionDetalleTarea =$('#descripcion-detalle-tarea').val();
                   $.get("ajax/cambia-datos-caso.ajax.php",
                     {'tar_id':tarea.id,
-                        'nombre-detalle-tarea': $('#nombre-detalle-tarea').val(),
-                        'descripcion-detalle-tarea': $('#descripcion-detalle-tarea').val()
+                        'nombre-detalle-tarea': nombreDetalleTarea,
+                        'descripcion-detalle-tarea': descripcionDetalleTarea
                     },function(){
-                      document.getElementById(tarea.id).innerHTML = $('#nombre-detalle-tarea').val();
+                      document.getElementById(tarea.id).innerHTML = nombreDetalleTarea;
                     });
                     eEdito = false;
                     document.getElementById("nombre-detalle-tarea").disabled = true;
@@ -197,16 +268,15 @@ $(document).ready(function () {
     //Agregar una tarea
     $('#btn-guardar-tarea').on('click', function () {
           if($('#titulo-tarea').val().trim().length>0){
+              var tituloTarea = $('#titulo-tarea').val();
+              var descripcionTarea = $('#descripcion-tarea').val();
         $.get("ajax/inserta-detalle-tarea.ajax.php",
             {
-                'titulo': $('#titulo-tarea').val(),
-                'descripcion': $('#descripcion-tarea').val(),
+                'titulo': tituloTarea,
+                'descripcion': descripcionTarea,
                 'cas_id': parseInt(getUrlVars()['id'])
             }, function (data) {
-                $('#backlog').append('<li class="tarea" id="' + data + '">' + $('#titulo-tarea').val() + '</li>');
-                $('#titulo-tarea').val('');
-                $('#descripcion-tarea').removeData();
-                $('#registro-actividad').append('<li>Tarea creada</li>');
+                $('#backlog').append('<li class="tarea" id="' + data + '">' + tituloTarea + '</li>');
             });
             $('#modal-agrega-tarea').modal('hide');
           }
