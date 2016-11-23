@@ -18,28 +18,28 @@ use App\Models\TaRubro;
 
 class taAlumnoController extends Controller {
 
-	public function index() {
+	public function index(Request $request) {
 
 		//Extraer datos de la tabla ta_nota_promedio
 
 		//buscar la fila de promedio igual al del alumno
 
 		//REVISAR
-		//$data = $request->session()->get('user');
-		
+		$data = $request->session()->get('user');
+		//print_r($data);
 		//buscaria el usu_id y el rol_id
 
-		//$useridi = (int)$data['usu_id'];
-		$useridi = 2;
+		$useridi = (int)$data['userid'];
+		//$useridi = 2;
 
-		//$rolidi = (int)$data['rol_id'];
-		$rolidi = 2;
+		$rolidi = (int)$data['rol'];
+		//$rolidi = 2;
 
 
 
 		//todo lo demas es solo si ro_id == 2
 
-		if($rolidi ==2){
+		if($rolidi ==2) {
 
 			$dbNotaAlum = TaNotaProm::all();
 			$dbAlumnos = TAALUMNO::all();
@@ -253,12 +253,17 @@ class taAlumnoController extends Controller {
 				}
 			}
 
-		}
+		
 
 
 		//Ingresar a la vista principal
 		return view('intranet.ta_alumno', ['promedios' => $promedios, 'estados' => $estados, 'sumanotasParticipacion'=> $sumanotasParticipacion, 'sumanotasSeguimiento'=>$sumanotasSeguimiento,'semanasParticipacion'=>$semanasParticipacion, 'semanasSeguimiento'=>$semanasSeguimiento, 'listaPuntajesParticipacion'=>$listaPuntajesParticipacion, 'listaPuntajesSeguimiento'=>$listaPuntajesSeguimiento,'comentariosEnSemanaParticipacion'=>$comentariosEnSemanaParticipacion,'comentariosEnSemanaSeguimiento'=>$comentariosEnSemanaSeguimiento, 'nombresPesosRubrica' => $nombresPesosRubrica, 'nombresRubroS' => $nombresRubroS, 'nombresRubroP' => $nombresRubroP]);
+		}
+		return view('errors.403'); //no tiene permisos para ver la pagina que solicito
+
 	}
+
+	
 
 	public function create() {
 		return abort(404);
