@@ -278,6 +278,41 @@
         
         }
     } 
+
+
+
+$.ajax({
+                   
+                    type: "GET",
+                    url:'mispendientes',
+                    success: function(result){
+                        
+                        
+                        var data = jQuery.parseJSON(result);
+             
+                        $("#count_notify").html(data.length);
+                        $("#num_notify").html('<i class="ace-icon fa fa-exclamation-triangle"></i>'+data.length+
+                                    '  Notifications');
+       
+                        var column ='<span class="pull-left">'+
+                                                                '<i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>'+
+                                                                ' Tareas pendientes'+
+                                                            '</span>'+
+                                                             '<span class="pull-right badge badge-info">+'+data.length+'</span>';
+
+
+                        $("#tareas_notify").html(column);
+
+                        
+                       // $("#tbodycontent").html (rows);
+                    }
+                        
+                            
+            
+                        //alert(Response);
+                         
+            
+                });
 </script>
 <input id="session_data" type="hidden" name="">
 
@@ -304,11 +339,11 @@
                         <li class="purple dropdown-modal"> <!-- Campanita de alerta -->
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <i class="ace-icon fa fa-bell icon-animated-bell"></i>
-                                <span class="badge badge-important">8</span>
+                                <span class="badge badge-important" id="count_notify" ></span>
                             </a>
 
                             <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
-                                <li class="dropdown-header">
+                                <li class="dropdown-header" id="num_notify">
                                     <i class="ace-icon fa fa-exclamation-triangle"></i>
                                     8 Notifications
                                 </li>
@@ -316,31 +351,23 @@
                                 <li class="dropdown-content">
                                     <ul class="dropdown-menu dropdown-navbar navbar-pink">
                                         <li>
-                                            <a href="#">
-                                                <div class="clearfix">
+                                            <a href="index">
+                                                <div class="clearfix" id ="tareas_notify">
                                                             <span class="pull-left">
                                                                 <i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
-                                                                New Comments
+                                                                Tareas pendientes
                                                             </span>
-                                                    <span class="pull-right badge badge-info">+12</span>
+                                                    <span class="pull-right badge badge-info"></span>
                                                 </div>
                                             </a>
                                         </li>
 
-                                        <li>
-                                            <a href="#">
-                                                <i class="btn btn-xs btn-primary fa fa-user"></i>
-                                                Bob just signed up as an editor ...
-                                            </a>
-                                        </li>
+                                        
                                     </ul>
                                 </li>
 
                                 <li class="dropdown-footer">
-                                    <a href="#">
-                                        See all notifications
-                                        <i class="ace-icon fa fa-arrow-right"></i>
-                                    </a>
+                                    
                                 </li>
                             </ul>
                         </li>
