@@ -124,7 +124,7 @@
                 '                <b class="arrow"></b>'+
                 '            </li>'+
                 '            <li class="">'+
-                '                <a href="reporte3.html">'+
+                '                <a href="log">'+
                 '                    <i class="menu-icon fa fa-caret-right"></i>'+
                 '                    Reporte 3'+
                 '                </a>'+

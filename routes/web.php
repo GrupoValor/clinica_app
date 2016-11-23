@@ -91,7 +91,7 @@ Route::get('/mapa_intranet2', function () {
 });
 
 Route::get('/mapa_intranet', function () {
-    return view('intranet/mapa');
+    return view('intranet/kari_mapa2');
 });
 
 //mantenimientos
@@ -158,7 +158,7 @@ Route::get('/error-500', function () {
 });
 
 //WEB
-
+Route::get('/log', 'logController@get');
 //mapa
 Route::get('/mapa_web', function () {
     return view('web/mapa');
