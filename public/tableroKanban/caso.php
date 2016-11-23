@@ -47,7 +47,7 @@ $display = new Display($db);
                   echo $detalle.$script;
                ?></h4>
             </div>
-            <div class="col-md-3" id="cambia-estado" style="width: 65%;"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-cambia-estado" style="    float: right;">Cambiar estado</button></div>
+            <div class="col-md-3" id="cambia-estado" style="width: 65%;"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-edit-estado" style="    float: right;">Cambiar estado</button></div>
         </div>
       </div>
       <div id="corpus" class="row" style="padding-left: 20px;padding-top: 30px; height: 413px;">
@@ -111,7 +111,31 @@ $display = new Display($db);
 
     </body>
 
-    <div class="modal fade bs-modal-sm" tabindex="-1" id="modal-agrega-tarea" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal fade bs-modal-sm" tabindex="-1" id="modal-edit-estado" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Cambie el estado del caso:</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <input type="radio" name="radio" value="1">Activo<br>
+              <input type="radio" name="radio" value="2">Cerrado<br>
+              <input type="radio" name="radio" value="3">En abandono<br>
+              <input type="radio" name="radio" value="4">En seguimiento<br>
+              <input type="radio" name="radio" value="5">Inactivo<br>
+              <input type="radio" name="radio" value="6">Registrado<br>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-success" id="boton-cambia-estado" data-dismiss="modal">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <div class="modal fade bs-modal-sm" tabindex="-1" id="modal-agrega-tarea" role="dialog" aria-labelledby="mySmallModalLabel">
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -135,7 +159,6 @@ $display = new Display($db);
         </div>
       </div>
     </div>
-
 
     <div class="modal fade bs-modal-lg" id="modal-detalle-tarea" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
       <div class="modal-dialog modal-lg" role="document">
@@ -191,29 +214,7 @@ $display = new Display($db);
       </div>
     </div>
 
-    <div class="modal fade bs-modal-sm" tabindex="-1" id="modal-cambia-estado" role="dialog" aria-labelledby="mySmallModalLabel">
-      <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4>Cambie el estado del caso:</h4>
-          </div>
-          <div class="modal-body">
-            <form>
-              <input type="radio" name="radio" value="1">Activo<br>
-              <input type="radio" name="radio" value="2">Cerrado<br>
-              <input type="radio" name="radio" value="3">En abandono<br>
-              <input type="radio" name="radio" value="4">En seguimiento<br>
-              <input type="radio" name="radio" value="5">Inactivo<br>
-              <input type="radio" name="radio" value="6">Registrado<br>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-success" id="boton-cambia-estado" data-dismiss="modal">Aceptar</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    
     <div class="modal fade bs-modal-sm" tabindex="-1" id="modal-eliminar-tarea" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">

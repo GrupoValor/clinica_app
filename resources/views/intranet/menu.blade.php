@@ -48,13 +48,6 @@
                 '        </a>'+
                 '        <b class="arrow"></b>'+
                 '        <ul class="submenu">'+
-                '            <li class="" id="lialumnos">'+
-                '                <a href="ta_alumnos">'+
-                '                    <i class="menu-icon fa fa-caret-right"></i>'+
-                '                    Alumno'+
-                '                </a>'+
-                '                <b class="arrow"></b>'+
-                '            </li>'+
                 '            <li id ="lirubricas" >'+
                 '                <a href="ta_registro">'+
                 '                    <i class="menu-icon fa fa-caret-right"></i>'+
@@ -72,6 +65,27 @@
                 '        </ul>'+
                 '    </li>';
     }
+
+    function addTareasAumno(){
+        return '<li id="litareas"><!-- Tareas académicas -->'+
+                '        <a href="#" class="dropdown-toggle">'+
+                '            <i class="menu-icon fa fa-list-alt"></i>'+
+                '            <span class="menu-text"> Tareas académicas </span>'+
+                '            <b class="arrow fa fa-angle-down"></b>'+
+                '        </a>'+
+                '        <b class="arrow"></b>'+
+                '        <ul class="submenu">'+
+                '            <li class="" id="lialumnos">'+
+                '                <a href="service_alumno_ta">'+
+                '                    <i class="menu-icon fa fa-caret-right"></i>'+
+                '                    Alumno'+
+                '                </a>'+
+                '                <b class="arrow"></b>'+
+                '            </li>'+
+                '        </ul>'+
+                '    </li>';
+    }
+
     function addDirectorio(){
         return '<li id="lidirectorio"><!-- Directorio -->'+
                 '        <a href="directorio">'+
@@ -206,8 +220,23 @@
                         
                         //Alumno y Voluntario
                        
-                        if(data.rol=='2' || data.rol=='3'){
+                        if(data.rol=='2' ){
 
+
+                             $('#list_of_menu').html(
+                            addPrincipal()+
+                            addCasos()+
+                            addTareasAumno()+
+                            addDirectorio()+
+                            addMapa()+
+                            addMantenimiento()
+                            )
+                           
+                        }
+
+                        if(data.rol=='3'){
+
+                            
                              $('#list_of_menu').html(
                             addPrincipal()+
                             addCasos()+
@@ -217,6 +246,7 @@
                             )
                            
                         }
+
                         // Docente y JP
                         if(data.rol=='4' || data.rol=='5'){
                             $('#list_of_menu').html(
