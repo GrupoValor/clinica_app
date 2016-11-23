@@ -91,7 +91,7 @@ Route::get('/mapa_intranet2', function () {
 });
 
 Route::get('/mapa_intranet', function () {
-    return view('intranet/mapa');
+    return view('intranet/kari_mapa2');
 });
 
 //mantenimientos
