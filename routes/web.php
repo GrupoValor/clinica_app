@@ -53,7 +53,7 @@ Route::get('/casos_busqueda', function () {
 });
 
 Route::get('/miscasos', 'casosController@miscasos');
-
+Route::get('/mispendientes', 'casosController@getpendientes');
 
 //perfil
 
