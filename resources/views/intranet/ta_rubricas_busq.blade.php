@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Intranet | Tareas acad&eacute;micas | Mantenimiento de r&uacute;bricas</title>
+		<title>Cl&iacute;nica Jur&iacute;dica | Tareas acad&eacute;micas</title>
 
 		<meta name="description" content="Static &amp; Dynamic Tables" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -55,12 +55,12 @@
 					<ul class="breadcrumb">
 						<li>
 							<i class="ace-icon fa fa-home home-icon"></i>
-							<a href="#">Home</a>
+							<a href="index">Home</a>
 						</li>
 						<li>
 							<a href="#">Tareas acad&eacute;micas</a>
 						</li>
-						<li class="active">Registro de notas</li>
+						<li class="active">Mantenimiento de r&uacute;bricas</li>
 					</ul><!-- /.breadcrumb -->
 				</div>
 
@@ -72,7 +72,8 @@
 						<h1>Mantenimiento de r&uacute;bricas</h1>
 					</div><!-- /.page-header -->
 
-					<p>Aqu&iacute; el profesor puede editar las r&uacute;bricas para registrar el avance de sus alumnos en el curso.</p>
+					<p>Aqu&iacute; el profesor puede ver y editar las r&uacute;bricas que usar&aacute; para registrar el avance de sus alumnos en el curso.</p>
+					<p>Si todav&iacute;a no ha creado un periodo acad&eacute;mico para el curso y ciclo seleccionados, se le llevar&aacute; a una p&aacute;gina de creaci&oacute;n del mismo.</p>
 					
 					<div class="row">
 						<div class="col-xs-12">

@@ -37,7 +37,7 @@ class RubroController extends Controller {
 				//Actualizar la suma de puntajes
 				TaRubrica::where('rba_id', $rba_id)->increment('rba_maxpunt', $maxpunt);
 				//Mostrar la pantalla de resultados de la búsqueda
-				Session::flash('msg-ok', "Se gaurd&oacute; el rubro correctamente.");
+				Session::flash('msg-ok', "Se guard&oacute; el rubro correctamente.");
 			}
 
 			//Volver a la página de resultados de la búsqueda

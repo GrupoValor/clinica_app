@@ -17,8 +17,8 @@ class PeriodoController extends Controller {
 
 	public function index(Request $request) {
 		//Verificar si el usuario tiene permisos para visualizar esta pantalla
-		/* FALTA IMPLEMENTAR LOL */
-
+		$usuario = $request->session()->get('user');
+		if (empty($usuario)) return view('login/login');
 
 		//Extraer cursos según clínica
 		$db_cursos = TaCurso::where('cln_id', 1)->get()->toArray();

@@ -72,7 +72,7 @@
 							<h1>Mantenimiento de r&uacute;bricas</h1>
 						</div><!-- /.page-header -->
 						
-						<p>Aqu&iacute; el profesor puede editar las r&uacute;bricas para registrar el avance de sus alumnos en el curso.</p>
+						<p>Aqu&iacute; el profesor puede ver y editar las r&uacute;bricas que usar&aacute; para registrar el avance de sus alumnos en el curso.</p>
 
 						<div class="row">
 							<div class="col-xs-12">

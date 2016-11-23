@@ -75,9 +75,8 @@ Route::resource('ta_registro', 'PeriodoController', ['only' => ['index', 'store'
 Route::resource('rubrica', 'RubricaController', ['only' => ['index', 'store', 'update', 'destroy']]);
 Route::resource('rubro', 'RubroController', ['only' => ['store', 'update', 'destroy']]);
 //TAREAS ACADÉMICAS - Registro de notas
-Route::get('/ta_notas', function () {
-    return view('intranet/ta_notas');
-});
+Route::resource('ta_notas', 'PromedioController');
+Route::resource('ta_notas_res', 'NotasController');
 
 //directorio de usuarios
 Route::get('directorio', function () {

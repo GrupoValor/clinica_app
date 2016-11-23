@@ -15,7 +15,13 @@ use App\Models\TaRubro;
 
 class RubricaController extends Controller {
 
-	public function index(Request $request) {
+	public function index(Request $request)
+	{
+		//Verificar que la sesión iniciada sea válida y que el usuario tenga acceso a esta página
+		$usuario = $request->session()->get('user');
+		if (empty($usuario)) return view('login.login');
+		//if ($usuario['rol'] != '1' || $usuario['rol'] != '4') return abort(404);
+
 		//Verificar si los IDs de curso y ciclo son válidos
 		$curso = TaCurso::where('cur_id', $request['curso'])->first();
 		$ciclo = TaCiclo::where('cic_id', $request['ciclo'])->first();
@@ -37,7 +43,7 @@ class RubricaController extends Controller {
 			$per_nombre = ['Ninguno'];
 			foreach ($db_periodo as $value) {
 				//Obtener ids del array
-				array_push($per_id, $value['cur_id']);
+				array_push($per_id, $value['per_id']);
 				//Obtener valores del array
 				$curso = TaCurso::find($value['cur_id']);
 				$ciclo = TaCiclo::find($value['cic_id']);
@@ -49,19 +55,20 @@ class RubricaController extends Controller {
 			return view('intranet.ta_rubricas_crear', ['valores' => $valores, 'periodos' => $periodos]);
 
 		} else {
-
 			$periodo = $periodo->toArray();
+
 			//Obtener datos de las rúbricas
 			$rubricas = TaRubrica::where('per_id', $periodo['per_id'])->get()->toArray();
-			//Obtenemos y colocamos los datos de los rubros dentro de las rúbricas
-			foreach ($rubricas as &$rubrica) {
-				$rubrica['rubros'] = TaRubro::where('rba_id', $rubrica['rba_id'])->get()->toArray();
-			}
 
 			//Colocar los nombres a usar en el arreglo del periodo
 			$periodo['cur_nombre'] = "\"" . $curso['cur_descrip'] . "\" (" . $curso['cur_codigo'] . ")";
 			$periodo['cic_nombre'] = $ciclo['cic_nombre'];
-			$periodo['editable'] = (strtotime($periodo['per_fechafin']) >= time());
+			$periodo['editable'] = (time() <= strtotime($periodo['per_fechafin']));
+
+			//Obtenemos y colocamos los datos de los rubros dentro de las rúbricas
+			foreach ($rubricas as &$rubrica) {
+				$rubrica['rubros'] = TaRubro::where('rba_id', $rubrica['rba_id'])->get()->toArray();
+			}
 
 			//Ir a la vista de resultados de la búsqueda
 			return view('intranet.ta_rubricas_res', ['periodo' => $periodo, 'rubricas' => $rubricas]);
@@ -69,7 +76,13 @@ class RubricaController extends Controller {
 
 	}
 
-	public function store(Request $request) {
+	public function store(Request $request)
+	{
+		//Verificar que la sesión iniciada sea válida y que el usuario tenga acceso a esta página
+		$usuario = $request->session()->get('user');
+		if (empty($usuario)) return view('login/login');
+		if ($usuario['rol'] != '1' || $usuario['rol'] != '4') return abort(404);
+
 		//Obtener los datos del request
 		$rba_nombre = $request['rba_nombre'];
 		$rba_peso = $request['rba_peso'];
@@ -105,7 +118,14 @@ class RubricaController extends Controller {
 		return redirect()->action('RubricaController@index', ['curso' => $periodo['cur_id'], 'ciclo' => $periodo['cic_id']]);
 	}
 
-	public function update(Request $request) {
+	public function update(Request $request)
+	{
+		//Verificar que la sesión iniciada sea válida y que el usuario tenga acceso a esta página
+		$usuario = $request->session()->get('user');
+		if (empty($usuario)) return view('login/login');
+		if ($usuario['rol'] != '1' || $usuario['rol'] != '4') return abort(404);
+
+		//Obtener rúbrica
 		$rubrica = TaRubrica::where('rba_id', $request['rba_edit_id'])->first();
 		if (empty($rubrica)) {
 			Session::flash('msg_err', 'No se pudo encontrar la r&uacute;brica solicitada. Por favor int&eacute;ntelo de nuevo m&aacute;s tarde.');
@@ -147,30 +167,53 @@ class RubricaController extends Controller {
 		}
 	}
 
-	public function destroy(Request $request) {
-		try {
-			$rba_id = $request['rba_delete_id'];
-			$rubrica = TaRubrica::where('rba_id', $rba_id)->first();
-			$periodo = TaPeriodo::where('per_id', $rubrica['per_id'])->first();
-			//Eliminar todos los rubros de la rúbrica
-			TaRubro::where('rba_id', $rba_id)->delete();
-			//Eliminar la rúbrica en sí
-			$rba_peso = $rubrica->rba_peso;
-			$rubrica->delete();
-			//Actualizar la suma de pesos del periodo
-			$periodo->per_sumapesos -= $rba_peso;
-			$periodo->save();
-			//Si todo ha salido OK, regresar a la vista de resultados de la búsqueda
-			Session::flash('msg-ok', 'Se elimin&oacute; la r&uacute;brica correctamente.');
-			return redirect()->action('RubricaController@index', ['curso' => $periodo['cur_id'], 'ciclo' => $periodo['cic_id']]);
-		} catch (\Exception $e) {
-			Session::flash('msg-err', 'Ocurri&oacute; un error al eliminar la r&uacute;brica. Por favor comun&iacute;quese con el administrador de base de datos.');
+	public function destroy(Request $request)
+	{
+		//Verificar que la sesión iniciada sea válida y que el usuario tenga acceso a esta página
+		$usuario = $request->session()->get('user');
+		if (empty($usuario)) return view('login/login');
+		if ($usuario['rol'] != '1' || $usuario['rol'] != '4') return abort(404);
+
+		print_r($usuario);
+		return "Funciono!";
+
+		//Asegurarse de que se especificó correctamente el id de la rúbrica
+		$rba_id = $request['rba_delete_id'];
+		if (empty($rba_id) || !($this->es_entero_positivo($rba_id))) {
+			Session::flash('msg-err', 'No se seleccion&oacute; una r&uacute;brica v&aacute;lida.');
+			$this->log('Usuario ' /*. $usuario['userid']*/ . ' intentó eliminar rubrica' . $rba_id . 'no válida.');
 			return redirect()->action('PeriodoController@index');
 		}
+		$rubrica = TaRubrica::where('rba_id', $rba_id)->first();
+		if (empty($rubrica)) {
+			Session::flash('msg-err', 'No se encontr&oacute; la r&uacute;brica solicitada.');
+			return redirect()->action('PeriodoController@index');
+		}
+		$periodo = TaPeriodo::where('per_id', $rubrica['per_id'])->first();
+		if (empty($rubrica)) {
+			Session::flash('msg-err', 'No se pudo encontrar el periodo de la r&uacute;brica solicitada.');
+			return redirect()->action('PeriodoController@index');
+		}
+		//Eliminar todos los rubros de la rúbrica
+		TaRubro::where('rba_id', $rba_id)->delete();
+		//Eliminar la rúbrica en sí
+		$rba_peso = $rubrica->rba_peso;
+		$rubrica->delete();
+		//Actualizar la suma de pesos del periodo
+		$periodo->per_sumapesos -= $rba_peso;
+		$periodo->save();
+		//Si todo ha salido OK, regresar a la vista de resultados de la búsqueda
+		Session::flash('msg-ok', 'Se elimin&oacute; la r&uacute;brica correctamente.');
+		$this->log('Usuario eliminó rúbrica ' . $rba_id . ' correctamente.');
+		return redirect()->action('RubricaController@index', ['curso' => $periodo['cur_id'], 'ciclo' => $periodo['cic_id']]);
 	}
 
 	private function es_entero_positivo($valor) {
 		return (!empty($valor) && is_numeric($valor) && ((float)$valor == (int)$valor) && ((int)$valor > 0));
+	}
+
+	private function log($log) {
+		DB::insert('insert into TA_LOG(log_text) values("' . $log . '")');
 	}
 
 }
