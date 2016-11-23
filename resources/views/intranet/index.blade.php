@@ -60,9 +60,9 @@
 									</button>
 
 
-									Bienvenido,
-									<strong class="red">
-										tiene tareas pendientes
+									Bienvenido
+									<strong class="red" id = "alert_pendientes">
+										
 									</strong>
 								</div>
 
@@ -350,6 +350,15 @@ $.ajax({
                         
                     	var column ="";
 
+                    	if(data.length <1){
+                    		 $("#alert_pendientes").html("");
+                    		
+                    	}
+                    	else
+                    	{
+                    		$("#alert_pendientes").html(", tiene tareas pendientes");
+                    		
+                    	}
 
                  
 
@@ -358,14 +367,7 @@ $.ajax({
                         	column += ' <div class="col-sm-6 widget-container-col" id="widget-container-col-12">'+
 									'		<div class="widget-box transparent" id="widget-box-12">'+
 									'			<div class="widget-header">'+
-								
-                                    '                <h5 class="widget-title lighter">'+
-									'					<a href="casos_busqueda">'+
-									'						<strong>'+data[i].tar_nombre+'</strong>'+
-									'					</a>'+
-									'					<small> '+data[i].cas_objact+'</small>'+
-									'				</h5>'+
-									
+
 									'				<div class="widget-toolbar no-border">'+
 									'					<a href="#" data-action="collapse">'+
 									'						<i class="ace-icon fa fa-chevron-up"></i>'+
@@ -375,6 +377,16 @@ $.ajax({
 									'						<i class="ace-icon fa fa-times"></i>'+
 									'					</a>'+
 									'				</div>'+
+									
+								
+                                    '                <h5 class="widget-title lighter">'+
+									'					<a href="casos_busqueda">'+
+									'						<strong>'+data[i].tar_nombre+'</strong>'+
+									'					</a> <br>'+
+									'					<small> '+data[i].cas_objact+'</small>'+
+									'				</h5>'+
+									
+									
 									'			</div>'+
 								
 									'			<div class="widget-body">'+
