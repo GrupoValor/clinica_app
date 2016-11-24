@@ -6,6 +6,7 @@ $(document).ready(function () {
         connectWith: "#pendiente, #proceso, #finalizada",
         receive: function (event, ui) { //inicio receive
             var id = $(ui.item).attr('id');
+            var nombre = $(ui.item).text();
             var estado = this.id;
             $.ajax({ //inicio ajax
                 url: "ajax/conexion-multiple.ajax.php",
@@ -19,7 +20,7 @@ $(document).ready(function () {
                         url: "../user",
                         success: function(result){
                             var data = JSON.parse(result);
-                            $('#registro-actividad').prepend('<li>'+data.nombre+' movió '+ $(ui.item).attr('value')+ ' a backlog</li>');
+                            $('#registro-actividad').prepend('<li>'+data.nombre+' movió a backlog</li>');
                             $.ajax({
                                 url:"ajax/guarda-registro-actividad.ajax.php",
                                 type: "GET",
