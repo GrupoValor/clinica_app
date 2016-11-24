@@ -17,9 +17,14 @@ use App\Models\TaRubro;
 class RubroController extends Controller {
 
 	public function store(Request $request) {
+		$rba_id = $request['rba_add_id'];
+		$rubrica = TaRubrica::where('rba_id', $rba_id)->first();
+		if (empty($rubrica))
+		{
+
+		}
 		try {
-			$rba_id = $request['rba_add_id'];
-			$rubrica = TaRubrica::where('rba_id', $rba_id)->firstOrFail();
+			
 			$periodo = TaPeriodo::where('per_id', $rubrica['per_id'])->firstOrFail();
 			//Verificar que los datos sean correctos
 			$nombre = $request['rbo_nombre'];
