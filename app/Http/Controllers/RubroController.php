@@ -7,6 +7,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Log;
 use App\Models\TaCurso;
 use App\Models\TaCiclo;
 use App\Models\TaPeriodo;

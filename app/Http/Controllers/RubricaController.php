@@ -12,6 +12,7 @@ use App\Models\TaCiclo;
 use App\Models\TaPeriodo;
 use App\Models\TaRubrica;
 use App\Models\TaRubro;
+use Illuminate\Support\Facades\Log;
 
 class RubricaController extends Controller {
 
@@ -19,13 +20,22 @@ class RubricaController extends Controller {
 	{
 		//Verificar que la sesión iniciada sea válida y que el usuario tenga acceso a esta página
 		$usuario = $request->session()->get('user');
-		if (empty($usuario)) return view('login.login');
-		//if ($usuario['rol'] != '1' || $usuario['rol'] != '4') return abort(404);
+		if (empty($usuario)) {
+			Log::info('Se intento entrar a la pagina de mantenimiento de rubricas sin haber iniciado sesion. Se le mando a la pagina de inicio de sesion de la intranet.');
+			return view('login.login');
+		}
+		if ($usuario['rol'] != 1 && $usuario['rol'] != 4) {
+			Log::warning('El usuario con id ' . $usuario['userid'] . ' intento acceder a la pagina de mantenimiento de rubricas sin tener los permisos requeridos. Se le mando una respuesta HTTP 403.');
+			return abort(403);
+		}
 
 		//Verificar si los IDs de curso y ciclo son válidos
 		$curso = TaCurso::where('cur_id', $request['curso'])->first();
 		$ciclo = TaCiclo::where('cic_id', $request['ciclo'])->first();
-		if (empty($curso) || empty($ciclo)) return abort(404);
+		if (empty($curso) || empty($ciclo)) {
+			Log::info('El usuario con id ' . $usuario['userid'] . ' intento acceder a la pagina de mantenimiento de rubricas con un curso o ciclo inexistente. Se le mando una respuesta HTTP 404.');
+			return abort(404);
+		}
 
 		//Obtener el periodo y las rúbricas y rubros a mostrar según la búsqueda realizada
 		$periodo = TaPeriodo::where(['cur_id' => $request['curso'], 'cic_id' => $request['ciclo']])->first();
@@ -38,7 +48,7 @@ class RubricaController extends Controller {
 			$valores['cic_nombre'] = $ciclo['cic_nombre'];
 
 			//Extraer todos los periodos de la clínica:
-			$db_periodo = TaPeriodo::where('cln_id', 1)->get()->toArray();
+			$db_periodo = TaPeriodo::where('cln_id', '1')->get()->toArray();
 			$per_id = ['0'];
 			$per_nombre = ['Ninguno'];
 			foreach ($db_periodo as $value) {
@@ -52,6 +62,7 @@ class RubricaController extends Controller {
 			$periodos = array_combine($per_id, $per_nombre);
 
 			//Ir a vista de creación de periodos
+			Log::info('El usuario con id ' . $usuario['userid'] . ' entro a la pagina de creacion de rubricas para el ciclo ' . $request['curso'] . ', ciclo ' . $request['ciclo']);
 			return view('intranet.ta_rubricas_crear', ['valores' => $valores, 'periodos' => $periodos]);
 
 		} else {
@@ -71,6 +82,7 @@ class RubricaController extends Controller {
 			}
 
 			//Ir a la vista de resultados de la búsqueda
+			Log::info('El usuario con id ' . $usuario['userid'] . ' entro a la pagina de mantenimiento de rubricas para el ciclo ' . $request['curso']. ', ciclo ' . $request['ciclo'] . ' (periodo '. $periodo['per_id'] . ').');
 			return view('intranet.ta_rubricas_res', ['periodo' => $periodo, 'rubricas' => $rubricas]);
 		}
 
@@ -81,7 +93,7 @@ class RubricaController extends Controller {
 		//Verificar que la sesión iniciada sea válida y que el usuario tenga acceso a esta página
 		$usuario = $request->session()->get('user');
 		if (empty($usuario)) return view('login/login');
-		if ($usuario['rol'] != '1' || $usuario['rol'] != '4') return abort(404);
+		if ($usuario['rol'] != 1 && $usuario['rol'] != 4) return abort(404);
 
 		//Obtener los datos del request
 		$rba_nombre = $request['rba_nombre'];
@@ -123,7 +135,7 @@ class RubricaController extends Controller {
 		//Verificar que la sesión iniciada sea válida y que el usuario tenga acceso a esta página
 		$usuario = $request->session()->get('user');
 		if (empty($usuario)) return view('login/login');
-		if ($usuario['rol'] != '1' || $usuario['rol'] != '4') return abort(404);
+		//if ($usuario['rol'] != '1' || $usuario['rol'] != '4') return abort(404);
 
 		//Obtener rúbrica
 		$rubrica = TaRubrica::where('rba_id', $request['rba_edit_id'])->first();
@@ -172,10 +184,7 @@ class RubricaController extends Controller {
 		//Verificar que la sesión iniciada sea válida y que el usuario tenga acceso a esta página
 		$usuario = $request->session()->get('user');
 		if (empty($usuario)) return view('login/login');
-		if ($usuario['rol'] != '1' || $usuario['rol'] != '4') return abort(404);
-
-		print_r($usuario);
-		return "Funciono!";
+		if ($usuario['rol'] != 1 && $usuario['rol'] != 4) return abort(404);
 
 		//Asegurarse de que se especificó correctamente el id de la rúbrica
 		$rba_id = $request['rba_delete_id'];
@@ -204,16 +213,12 @@ class RubricaController extends Controller {
 		$periodo->save();
 		//Si todo ha salido OK, regresar a la vista de resultados de la búsqueda
 		Session::flash('msg-ok', 'Se elimin&oacute; la r&uacute;brica correctamente.');
-		$this->log('Usuario eliminó rúbrica ' . $rba_id . ' correctamente.');
+		//Log::message('El usuario' . $usuario[]);
 		return redirect()->action('RubricaController@index', ['curso' => $periodo['cur_id'], 'ciclo' => $periodo['cic_id']]);
 	}
 
 	private function es_entero_positivo($valor) {
 		return (!empty($valor) && is_numeric($valor) && ((float)$valor == (int)$valor) && ((int)$valor > 0));
-	}
-
-	private function log($log) {
-		DB::insert('insert into TA_LOG(log_text) values("' . $log . '")');
 	}
 
 }

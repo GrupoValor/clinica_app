@@ -36,6 +36,11 @@ class PromedioController extends Controller {
 		$cic_nombre = array_map(function($o) { return $o['cic_nombre']; }, $db_ciclos);
 		$ciclos = array_combine($cic_id, $cic_nombre);
 
+		//Para 
+		//Formatear rúbricas para el select
+		$rba_id = [0];
+		$rba_nombre = ['Todas'];
+
 		//Ir a la página de notas
 		return view('intranet.ta_notas_busq', ['cursos' => $cursos, 'ciclos' => $ciclos]);		
 	}

@@ -63,7 +63,7 @@
 
 										<hr />
 										<h3 class="lighter smaller">
-											No tiene permisos para ver la p&aacute;gina que usted solicit&oacute; :(.
+											No tiene permisos para ver la p&aacute;gina que usted solicit&oacute; :(
 										</h3>
 
 										<div class="space"></div>
