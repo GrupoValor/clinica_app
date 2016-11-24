@@ -84,7 +84,7 @@ $display = new Display($db);
               </div>
               <div id="panel-control-tablero-actividad">
                 <h3 style="font-size: 15px">Registro de actividad</h3>
-                <ul id="registro-actividad">
+                <ul id="registro-actividad" style="width: 160px; height: 260px; overflow: auto">
                 </ul>
               </div>
             </div>

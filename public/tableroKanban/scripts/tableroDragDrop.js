@@ -6,7 +6,7 @@ $(document).ready(function () {
         connectWith: "#pendiente, #proceso, #finalizada",
         receive: function (event, ui) { //inicio receive
             var id = $(ui.item).attr('id');
-            var nombre = $(ui.item).text();
+            var nombreTarea = $(ui.item).text();
             var estado = this.id;
             $.ajax({ //inicio ajax
                 url: "ajax/conexion-multiple.ajax.php",
@@ -20,14 +20,14 @@ $(document).ready(function () {
                         url: "../user",
                         success: function(result){
                             var data = JSON.parse(result);
-                            $('#registro-actividad').prepend('<li>'+data.nombre+' movió a backlog</li>');
+                            $('#registro-actividad').prepend('<li>'+data.nombre+' movió '+ nombreTarea +' a backlog</li>');
                             $.ajax({
                                 url:"ajax/guarda-registro-actividad.ajax.php",
                                 type: "GET",
                                 data:{
                                     'usu_id': data.userid,
                                     'cas_id': parseInt(getUrlVars()['id']),
-                                    'act_desc': data.nombre+ " movió la tarea a backlog"
+                                    'act_desc': data.nombre+ " movió" + nombreTarea +" a backlog"
                                 }
                             });
                         }
@@ -41,6 +41,7 @@ $(document).ready(function () {
         connectWith: "#backlog, #proceso, #finalizada",
         receive: function (event, ui) { //inicio receive
             var id = $(ui.item).attr('id');
+			var nombreTarea = $(ui.item).text();
             var estado = this.id;
             $.ajax({ //inicio ajax
                 url: "ajax/conexion-multiple.ajax.php",
@@ -54,14 +55,14 @@ $(document).ready(function () {
                         url: "../user",
                         success: function(result){
                             var data = JSON.parse(result);
-                            $('#registro-actividad').prepend('<li>'+data.nombre+' movió la tarea a pendientes</li>');
+                            $('#registro-actividad').prepend('<li>'+data.nombre+' movió '+ nombreTarea +' a pendientes</li>');
                             $.ajax({
                                 url:"ajax/guarda-registro-actividad.ajax.php",
                                 type: "GET",
                                 data:{
                                     'usu_id': data.userid,
                                     'cas_id': parseInt(getUrlVars()['id']),
-                                    'act_desc': data.nombre+ " movió la tarea a pendientes"
+                                    'act_desc': data.nombre+ " movió" + nombreTarea +" a pendientes"
                                 }
                             });
                         }
@@ -75,6 +76,7 @@ $(document).ready(function () {
         connectWith: "#pendiente, #backlog, #finalizada",
         receive: function (event, ui) { //inicio receive
             var id = $(ui.item).attr('id');
+			var nombreTarea = $(ui.item).text();
             var estado = this.id;
             $.ajax({ //inicio ajax
                 url: "ajax/conexion-multiple.ajax.php",
@@ -88,14 +90,14 @@ $(document).ready(function () {
                         url: "../user",
                         success: function(result){
                             var data = JSON.parse(result);
-                            $('#registro-actividad').prepend('<li>'+data.nombre+' movió la tarea a en proceso</li>');
+                            $('#registro-actividad').prepend('<li>'+data.nombre+' movió '+ nombreTarea +' a en proceso</li>');
                             $.ajax({
                                 url:"ajax/guarda-registro-actividad.ajax.php",
                                 type: "GET",
                                 data:{
                                     'usu_id': data.userid,
                                     'cas_id': parseInt(getUrlVars()['id']),
-                                    'act_desc': data.nombre+ " movió la tarea a en proceso"
+                                    'act_desc': data.nombre+ " movió" + nombreTarea +" a en proceso"
                                 }
                             });
                         }
@@ -109,6 +111,7 @@ $(document).ready(function () {
         connectWith: "#pendiente, #proceso, #backlog",
         receive: function (event, ui) { //inicio receive
             var id = $(ui.item).attr('id');
+			var nombreTarea = $(ui.item).text();
             var estado = this.id;
             $.ajax({ //inicio ajax
                 url: "ajax/conexion-multiple.ajax.php",
@@ -122,14 +125,14 @@ $(document).ready(function () {
                         url: "../user",
                         success: function(result){
                             var data = JSON.parse(result);
-                            $('#registro-actividad').prepend('<li>'+data.nombre+' movió la tarea a finalizadas</li>');
+                            $('#registro-actividad').prepend('<li>'+data.nombre+' movió '+ nombreTarea +' a finalizadas</li>');
                             $.ajax({
                                 url:"ajax/guarda-registro-actividad.ajax.php",
                                 type: "GET",
                                 data:{
                                     'usu_id': data.userid,
                                     'cas_id': parseInt(getUrlVars()['id']),
-                                    'act_desc': data.nombre+ " movió la tarea a finalizadas"
+                                    'act_desc': data.nombre+ " movió" + nombreTarea +" a finalizadas"
                                 }
                             });
                         }
