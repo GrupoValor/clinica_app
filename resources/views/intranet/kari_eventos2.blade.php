@@ -139,6 +139,7 @@
                     </div>
                     <div class="row">
                         <div class="space-4"></div>
+                        <div id="id_evento" class="hide"></div>
                         <div class="form-group">
                             <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-3"> Título </label>
                             <div class="col-sm-8 col-xs-8">
@@ -245,7 +246,8 @@
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
     var action;
-    var action_calendar;
+    var action_calendar="NO";
+    var action_delete="NO";
     jQuery('#ligestor').addClass('active open');
     jQuery('#lieventos').addClass('active');
     jQuery(function($) {
@@ -289,6 +291,7 @@
         var calendar = $('#calendar').fullCalendar({
             //isRTL: true,
             //firstDay: 1,// >> change first day of week
+            eventColor: '#6FB3E0',
             timeFormat: 'h(:mm)t',
             buttonHtml: {
                 prev: '<i class="ace-icon fa fa-chevron-left"></i>',
@@ -301,7 +304,7 @@
                 right: 'month,agendaWeek,agendaDay'
             },
             events: {
-                url: 'service_evento',//'php-includes/events.json',
+                url: 'service_evento',//'php-includes/events.json',//
                 error:function(){
                     alert("Error al cargar la agenda");
                 }
@@ -332,17 +335,19 @@
                 }else{ //update date TODO
                     action = "UPDATE";
                     action_calendar = "YES";
-                    click_botonSubmit(event.id,0,event._end.format("YYYY-MM-DD H:mm"));
+                    click_botonSubmit(event);//event.id,0,event._end.format("YYYY-MM-DD H:mm"));
                 }
                 calendar.fullCalendar('unselect');
 		}, eventDrop: function(event,revertFunc) {
+
                 if (!confirm("El evento " + event.title + " cambiará su fecha de inicio a " + moment(event._start).format('DD/MM/YYYY h:mm A') +  " y su fecha de fin a " + moment(event._end).format('DD/MM/YYYY h:mm A') + " ¿Está seguro?")) {
                     revertFunc();
                 }else{
                     action = "UPDATE";
                     action_calendar = "YES";
-                    click_botonSubmit(event.id,event._start.format("YYYY-MM-DD H:mm"),event._end.format("YYYY-MM-DD H:mm"));
+                    click_botonSubmit(event);//event.id,event._start.format("YYYY-MM-DD H:mm"),event._end.format("YYYY-MM-DD H:mm"));
                 }
+                calendar.fullCalendar('unselect');
             },
             editable: true,
             selectable: true,
@@ -395,12 +400,13 @@
              calendar.fullCalendar('unselect');
             },
             eventClick: function(calEvent, jsEvent, view) {
+                action_delete = "YES";
                 action = "UPDATE";
                 //$("#botonNuevo").click(action);
                 document.getElementById("botonSubmit").innerHTML = 'Actualizar';
                 document.getElementById("botonDanger").innerHTML = 'Eliminar';
                 $("#modal_evento").modal();
-                viewEvent(calEvent._start, calEvent._end, calEvent.title, calEvent.description);
+                viewEvent(calEvent._id, calEvent._start, calEvent._end, calEvent.title, calEvent.description, calEvent.link, calEvent.active);
              /*//display a modal
              var modal =
              '<div class="modal fade">\
@@ -456,11 +462,13 @@
 
         $('#id-input-file-1 , #id-input-file-2, #imagen').ace_file_input({
             no_file:'',
-            btn_choose:'Selecciona',
-            btn_change:'Cambia',
+            btn_choose:'Drop images here or click to choose',
+            btn_change: null,
+            style:'well',
             droppable:false,
             onchange:null,
-            thumbnail: 'small', //| large
+            no_icon: "ace-icon fa fa-picture-o",
+            thumbnail: 'large', //| small
             'allowExt': ['jpg', 'jpeg', 'png', 'img']
             //whitelist:'gif|png|jpg|jpeg',
             //blacklist:'exe|php'
@@ -542,14 +550,14 @@
 
     //New functions
 
-    function click_botonSubmit(id, start, end){ //Para agregar o actualizar un evento
+    function click_botonSubmit(evento){//id, start, end){ //Para agregar o actualizar un evento
         if(action=="ADD"){
             alert("Add a new event");
-            var fecha_ini = $("#id-date-range-picker-1").data('daterangepicker').startDate.format("YYYY-MM-DD H:mm:ss").toString();
-            var fecha_fin = $("#id-date-range-picker-1").data('daterangepicker').endDate.format("YYYY-MM-DD H:mm:ss").toString();
+            var fecha_ini = $("#id-date-range-picker-1").data('daterangepicker').startDate.format("YYYY-MM-DD HH:mm:ss").toString();
+            var fecha_fin = $("#id-date-range-picker-1").data('daterangepicker').endDate.format("YYYY-MM-DD HH:mm:ss").toString();
             var file = document.getElementById('imagen').files;
             var imagen=null;
-            if(file != null){
+            if(file.length != 0){
                 imagen = file[0];
             }
             var act=-1;
@@ -581,6 +589,7 @@
                 processData: false,
                 data: form_data,
                 success: function(Response) {
+                    $('#calendar').fullCalendar( 'refetchEvents' ); //para cargar el calendario con nuevos eventos
                     alert(Response);
                 },
                 error: function(xhr) {
@@ -590,27 +599,96 @@
             $('#modal_evento').modal('toggle');
         }else if(action=="UPDATE"){
             alert("Edit an event");
+            var id_eve;
+            var titulo;
+            var descrip;
+            var fecha_ini;
+            var fecha_fin;
+            var imagen;
+            var link;
+            var enweb;
+
             //Del calendario
             if(action_calendar=="YES") {
-                alert(id);
-                alert(start);
-                alert(end);
+                id_eve = evento._id;
+                titulo = evento.title;
+                descrip = evento.description;
+                fecha_ini = evento._start.format("YYYY-MM-DD HH:mm:ss");
+                fecha_fin = evento._end.format("YYYY-MM-DD HH:mm:ss");
+                imagen = evento.image;
+                link = evento.link;
+                enweb = evento.active;
                 action_calendar = "NO";
             }else{
                 alert("For modal Edit");
+                id_eve = $("#id_evento").val();
+                titulo = $("#titulo").val();
+                descrip = $("#descripcion").val();
+                fecha_ini = $("#id-date-range-picker-1").data('daterangepicker').startDate.format("YYYY-MM-DD HH:mm:ss").toString();
+                fecha_fin = $("#id-date-range-picker-1").data('daterangepicker').endDate.format("YYYY-MM-DD HH:mm:ss").toString();
+                var file = document.getElementById('imagen').files;
+                imagen=null;
+                if(file.length != 0){
+                    imagen = file[0];
+                }
+                if( document.getElementById("enWeb").checked == true){
+                    enweb = 1;
+                }else enweb=0;
+
+                link = $("#link").val();
                 $('#modal_evento').modal('toggle');
             }
+            alert("hi form data");
+            /*var form_data = new FormData();
+            form_data.append('eve_titulo', titulo);
+            form_data.append('eve_fechaIn', fecha_ini);
+            form_data.append('eve_fechaFin', fecha_fin);
+            form_data.append('eve_descr', descrip);
+            form_data.append('file', imagen);
+            form_data.append('eve_activo', enweb);
+            form_data.append('eve_link', link);*/
+            alert("hi ajax");
+            $.ajax({
+               // enctype: "multipart/form-data",
+                type: "PATCH",
+                url: 'service_evento/' + id_eve,
+                beforeSend: function(xhr) {
+                    alert("hi token before");
+                    var token = $('meta[name="csrf_token"]').attr('content');
+                    if (token) {
+                        return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                data: //form_data,
+                {
+                    eve_titulo : titulo,
+                    eve_fechaIn :fecha_ini,
+                    eve_fechaFin : fecha_fin,
+                    eve_descr :descrip,
+                    file : imagen,
+                    eve_activo :enweb,
+                    eve_link: link
+                },
+                success: function(Response) {
+                    alert("successs");
+                    alert(Response);
+                },
+                error: function(e){
+                    alert("Error");
+                }
+            });
         }
 
     }
 
     $("#form_evento").submit(function(event) {
-        click_botonSubmit(0, 0, 0);
+        click_botonSubmit(0);
         event.preventDefault();
     });
 
     function click_botonNuevo(){//$("#botonNuevo").on("click",function(action){
         action = "ADD";
+        action_delete = "NO";
         document.getElementById("botonSubmit").innerHTML = 'Registrar';
         document.getElementById("botonDanger").innerHTML = 'Cancelar';
         $("#modal_evento").find('input, textarea').val('').end();
@@ -618,6 +696,33 @@
         $('#imagen').ace_file_input('reset_input');
         $("#modal_evento").modal();
     };
+
+    $("#botonDanger").on("click",function(){
+        if(action_delete=="YES"){
+            var id_eve  = $("#id_evento").val();
+            alert(id_eve);
+            $.ajax({
+                type: "DELETE",
+                url: 'service_evento/' + id_eve,
+                beforeSend: function(xhr) {
+                    var token = $('meta[name="csrf_token"]').attr('content');
+                    if (token) {
+                        return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+                    }
+                },
+                success: function(Response) {
+                    alert("success");
+                    $('#calendar').fullCalendar( 'refetchEvents' );
+                    alert(Response);
+                },
+                error:function(e){
+                    alert("Error en eliminar el evento");
+                }
+            });
+            action_delete = "NO";
+        }
+    });
+
 
     $('#btn-buscar').on("click", function() { //BUSQUEDA
         var buscar_palabra=$("#buscador").val().toString().toUpperCase();
@@ -648,10 +753,12 @@
         });
     });
 
-    function viewEvent(start, end, title, descrip) { //Falta agregar link, imagen, hora fin, horaini, fechas
+    function viewEvent(id, start, end, title, descrip, link, act) { //Falta agregar imagen
         //end.setDate(end.getDate()-1);
+        $("#id_evento").val(id);
         $("#titulo").val(title);
         $("#descripcion").val(descrip);
+        $("#link").val(link);
         $('input[name=date-range-picker]').daterangepicker({ //Date range picker
             'applyClass' : 'btn-sm btn-success',
             'cancelClass' : 'btn-sm btn-default',
@@ -669,6 +776,10 @@
         }).prev().on(ace.click_event, function() {
             $(this).next().focus();
         });
+
+        if(act == 1){
+            document.getElementById("enWeb").checked == true;
+        }else document.getElementById("enWeb").checked == false;
     };
 </script>
 

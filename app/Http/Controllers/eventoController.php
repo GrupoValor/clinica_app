@@ -47,11 +47,14 @@ class eventoController extends Controller
      */
     public function store(Request $request)
     {
-        var_dump($_POST);
-        $to_directory = './assets/images/' . $_FILES['file']['name'];
+        //var_dump($_POST);
+        /*$to_directory = './assets/images/' . $_FILES['file']['name'];
         move_uploaded_file($_FILES['file']['tmp_name'], $to_directory);
+*/
+        $encoded_image = null;
+        if(!emptyArray($_FILES))
+            $encoded_image= base64_encode($_FILES['file']['tmp_name']);
 
-        $encoded_image= base64_encode($_FILES['file']['tmp_name']);
 
         $evento = TAEVENTO::create([
           'title' => $_POST['eve_titulo'],
@@ -105,19 +108,27 @@ class eventoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        DB::update('UPDATE TA_ALUMNO set 
-            alu_nombre = :nombre ,
-			alu_nrodoc = :nrodoc ,
-            alu_codpuc = :codpuc ,
-            alu_correo = :correo
-        
-        
-            where alu_id = :id',
-            ['nombre' => $request['alu_nombre'],
-                'nrodoc' => $request['alu_nrodoc'],
-                'codpuc' => $request['alu_codpuc'],
-                'correo' => $request['alu_correo'],
-                'id' => $id]);
+        $encoded_image = null;
+        if(!emptyArray($_FILES))
+            $encoded_image= base64_encode($_FILES['file']['tmp_name']);
+
+        DB::update('UPDATE TA_EVENTO set
+            title = :titulo ,
+            start = :fecha_ini ,
+            end = :fecha_fin ,
+            description = :descrip ,
+            image = :imag ,
+            active = :act,
+            link = :ruta
+            where id = :id_eve',
+            ['titulo' => $request['eve_titulo'],
+                'fecha_ini' => $request['eve_fechaIn'],
+                'fecha_fin' => $request['eve_fechaFin'],
+                'descrip' => $request['eve_descr'],
+                'imag' => $encoded_image,
+                'act' => $request['eve_activo'],
+                'ruta' => $request['eve_link'],
+                'id_eve' => $id]);
 
         echo "Registro actualizado correctamente" ;
     }
@@ -130,25 +141,9 @@ class eventoController extends Controller
      */
     public function destroy($id)
     {
-        //buscamos el usu_id, dado el alu_id
-        $caso =DB::select('SELECT TA_ALUMNO.usu_id FROM TA_USUARIO INNER JOIN TA_ALUMNO ON TA_USUARIO.usu_id = TA_ALUMNO.usu_id WHERE TA_ALUMNO.alu_id = :ID',
-            ['ID' => $id]);
-
-
-        $data = array();
-        array_push($data,json_decode(json_encode($caso), true));
-        $userid = $data[0][0]['usu_id'];
-
-        //echo $userid;
-        //echo $userid['usu_id'];
-
-        DB::UPDATE('Update  TA_USUARIO set
-			usu_activo = 0
-			where usu_id = :ID',
-            ['ID' => $userid]);
-
-
-
-        echo "Se elimino el alumno seleccionado ";
+        DB::delete('DELETE FROM TA_EVENTO 
+            where id = :id_eve',
+            ['id_eve' => $id]);
+        echo "Registro eliminado correctamente" ;
     }
 }
