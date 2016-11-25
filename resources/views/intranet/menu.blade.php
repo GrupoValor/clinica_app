@@ -90,13 +90,30 @@
                 '    </li>';
     }
     function addMantenimiento(){
-        return ' <li class="" id="limantenimientos"> <!-- Mapa -->'+
-                '        <a href="manten2">'+
-                '            <i class="menu-icon fa fa-desktop"></i>'+
-                '            <span class="menu-text"> Mantenimientos 2.0 </span>'+
-                '        </a>'+
-                '        <b class="arrow"></b>'+
-                '    </li>';
+        return '<li id="licasos" class=""> <!-- Registro de casos -->'+
+                '   <a href="#" class="dropdown-toggle">'+
+                '       <i class="menu-icon fa fa-desktop"></i>'+
+                '       <span class="menu-text"> Mantenimientos </span>'+
+                '       <b class="arrow fa fa-angle-down"></b>'+
+                '   </a>'+
+                '   <b class="arrow"></b>'+
+                '   <ul class="submenu" >'+
+                '   <li class="" id="casos-registro">'+
+                '       <a href="manten2" >'+
+                '           <i class="menu-icon fa fa-caret-right"></i>'+
+                '           Usuarios'+
+                '       </a>'+
+                '       <b class="arrow"></b>'+
+                '   </li>'+
+                '   <li class="" id="casos-busqueda">'+
+                '       <a href="mant_clinica">'+
+                '       <i class="menu-icon fa fa-caret-right"></i>'+
+                '       Clínicas'+
+                '       </a>'+
+                '       <b class="arrow"></b>'+
+                '   </li>'+
+                '   </ul>'+
+                '</li>';
     }
     function addReportes(){
         return '<li id="lireportes"class=""> <!-- Reportes FALTA-->'+
@@ -396,6 +413,5 @@
                     <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
                 </div>
             </div>
-
 
             
