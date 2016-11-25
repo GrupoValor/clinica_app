@@ -10,6 +10,8 @@ use App\Models\TAALUMNO;
 
 use Illuminate\Support\Facades\DB;
 
+use App\Classes\Encrypter;
+
 class alumnoController extends Controller
 {
     /**
@@ -48,20 +50,21 @@ class alumnoController extends Controller
      */
     public function store(Request $request)
     {
+
         //sacar el siguiente ID
 		//$query = mysql_query("SELECT MAX(usu_id) FROM TAUSUARIO");
 		//$results = mysql_fetch_array($query);
 		//$actual_id = $results['MAX(usu_id)'];
 		//$cur_auto_id = $results['MAX(usu_id)'] + 1;
 		
-		
+
 		
 		//creo el usuario
         $usuario = TAUSUARIO::create([
                                       'cln_id' => '1',
                                       'rol_id' => '2',
                                       'usu_usenam' => $request['alu_codpuc'],
-                                      'usu_passwd' => $request['alu_codpuc'],
+                                      'usu_passwd' => Encrypter::encrypt($request['alu_codpuc']),
 									  'usu_activo' => '1'
 
         ]);

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
+use App\Classes\Encrypter;
+
 
 class loginController extends Controller
 {
@@ -37,26 +39,51 @@ class loginController extends Controller
     public function login(Request $request)
     {
 
+
     $user = $request['user'];
     $password = $request['pass'];
 
-    $log ="";
-    $log .= " Inicio session :". $user ." con el password :". $password ; 
+    $log_type ="Inicio session ";
+    $log ="Usuario : ";
+    $log .= $user ;
    
     if (!isset($password))
     	$password = "";
 
-    $result = DB::select("select usu_id , rol_id from TA_USUARIO where TA_USUARIO.usu_activo = '1' and TA_USUARIO.usu_usenam = '".$user."' and TA_USUARIO.usu_passwd = '" .$password."'");
+
+
+    $result = DB::select("select usu_id , rol_id ,usu_passwd from TA_USUARIO where TA_USUARIO.usu_activo = '1' and TA_USUARIO.usu_usenam = '".$user."' ");
+
+    
+    $data = array();
+    if (!isset($result[0])){
+	    $log .= " Conexion : No existe el usuario" ;
+    	DB::INSERT('insert into TA_LOG(log_tipo,log_text) values( "'.$log_type.'","'.$log.'")');
+    	return 0;
+		
+	}
+	else{
+		array_push($data,json_decode(json_encode($result[0]), true));
+		$data = $data[0];
+		
+	}
+
+    if ($password != Encrypter::decrypt($data['usu_passwd'])){
+    	$log .= " Conexion : Password incorrecto" ;
+    	DB::INSERT('insert into TA_LOG(log_tipo,log_text) values( "'.$log_type.'","'.$log.'")');
+    	return 0;
+    }
+
 
 
     if (!isset($result[0])){
-    	$log .= " Resultado : Usuario  incorrecto" ;
-    	DB::INSERT('insert into TA_LOG(log_text) values("'.$log.'")');
+    	$log .= " Conexion : Usuario  incorrecto" ;
+    	DB::INSERT('insert into TA_LOG(log_tipo,log_text) values( "'.$log_type.'","'.$log.'")');
     	return 0;
     }
 	else{
 
-		$log .= " Resultado : Usuario existente " ; 
+		$log .= " Conexion : Exitosa " ; 
 
 		$data = array();
 		array_push($data,json_decode(json_encode($result[0]), true));
@@ -66,7 +93,7 @@ class loginController extends Controller
 		$usu_id = $data['usu_id'];
 		$usu_rol = $data['rol_id'];
 
-		$log .= " Rol : ". $usu_rol;  
+		$log .= "-> Rol : ". $usu_rol;  
 		$userdata = array();
 		$userdata['rol'] = $usu_rol;
 		$userdata['userid'] = $usu_id;
@@ -88,7 +115,7 @@ class loginController extends Controller
 			}
 			else
 			{
-				$log .= " Resultado : No se pudo encontrar su registro en TA_ALUMNO" ;
+				$log .= ",Data : No tiene registro en Tabla ALUMNO " ; 
 			}
 
 		}
@@ -109,7 +136,7 @@ class loginController extends Controller
 			}
 			else
 			{
-				$log .= " Resultado : No se pudo encontrar su registro en TA_EVALUADOR" ; 
+				$log .= ",Data : No tiene registro en Tabla EVALUADOR " ; 
 			}
 		}
 
@@ -134,13 +161,13 @@ class loginController extends Controller
 			else
 			{
 
-				$log .= " Resultado : No se pudo encontrar su registro en TA_CLIENTE" ; 
+				$log .= ", Data : No tiene registro en Tabla CLIENTE " ; 
 
 			}
 		}
 
 
-		DB::INSERT('insert into TA_LOG(log_text) values("'.$log.'")');
+		DB::INSERT('insert into TA_LOG(log_tipo,log_text) values( "'.$log_type.'","'.$log.'")');
 		if (!$find){
 			return 0;
 		}
