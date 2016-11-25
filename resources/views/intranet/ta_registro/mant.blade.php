@@ -47,7 +47,7 @@
 @endif
 												</tr>
 @endforeach
-@if($periodo['editable'])
+@if ($periodo['editable'])
 												<tr>
 													<td colspan="3" style="background-color:#EFF3F8">
 														<div class="center">
@@ -67,7 +67,7 @@
 															</button>
 														</div>
 													</td>
-												</tr>	
+												</tr>
 @endif
 											</tbody>
 										</table>
@@ -78,30 +78,18 @@
 
 								<br />
 								<div class="center">
-@if($periodo['editable'])	
+@if($periodo['editable'])
 									<button class="btn btn-info" type="button" data-toggle="modal", data-target="#rubrica_store">
 										<i class="ace-icon fa fa-plus bigger-110"></i>
                                         A&ntilde;adir una r&uacute;brica
-									</button>
-									&nbsp;
-									<button class="btn btn-success" type="button" data-toggle="modal" data-target="#periodo_update">
-										<i class="ace-icon fa fa-pencil bigger-110"></i>
-										Editar periodo acad&eacute;mico
 									</button>
 									&nbsp;
 									<button class="btn btn-danger" type="button" data-toggle="modal", data-target="#periodo_delete">
 										<i class="ace-icon fa fa-trash bigger-110"></i>
 										Eliminar periodo acad&eacute;mico
 									</button>
-@else
-									<a href="#">
-										<button class="btn btn-inverse" type="button">
-											<i class="ace-icon fa fa-pencil bigger-110"></i>
-											Editar notas de alumnos
-										</button>
-									</a>
-@endif
 									&nbsp;
+@endif
 									<a href="ta_registro">
 										<button class="btn" type="reset">
 											<i class="ace-icon fa fa-undo bigger-110"></i>

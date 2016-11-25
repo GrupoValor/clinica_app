@@ -107,35 +107,48 @@
     <script type="text/javascript">
         $(document).ready(function(){
             
-            setTimeout(function(){
-                var str = $('#session_data').val()+"";
-                var data = str.split(',');
+            $.ajax({
+                   
+                    type: "GET",
+                    url:'user',
+                    success: function(result){
+        
+                        var data = JSON.parse(result);
 
-                if (data[0] == '1'){
-                $('#myOptions').html('<option selected="selected" disabled selected value="0" > -- Select an option -- </option>'+
-                        '<option value="1">Profesor</option>'+
-                        '<option value="2">Jefe de práctica</option>'+
-                        '<option value="3">Alumno</option>'+
-                        '<option value="4">Cliente</option>')
-                }
+                       if (data.rol == '1'){
+                        $('#myOptions').html('<option selected="selected" disabled selected value="0" > -- Select an option -- </option>'+
+                                '<option value="1">Profesor</option>'+
+                                '<option value="2">Jefe de práctica</option>'+
+                                '<option value="3">Alumno</option>'+
+                                '<option value="4">Cliente</option>')
+                        }
 
-                if (data[0] == '2' || data[0] == '3'){
-                $('#myOptions').html('<option selected="selected" disabled selected value="0" > -- Select an option -- </option>'+
-                        '<option value="4">Cliente</option>')
-                }
-                if (data[0] == '4'){
-                $('#myOptions').html('<option selected="selected" disabled selected value="0" > -- Select an option -- </option>'+
-                    '<option value="2">Jefe de práctica</option>'+
-                    '<option value="3">Alumno</option>'+
-                    '<option value="4">Cliente</option>')
-                }
-                if (data[0] == '5'){
-                $('#myOptions').html('<option selected="selected" disabled selected value="0" > -- Select an option -- </option>'+
-                    '<option value="3">Alumno</option>'+
-                    '<option value="4">Cliente</option>')
-                }
+                        if (data.rol == '2' || data.rol == '3'){
+                        $('#myOptions').html('<option selected="selected" disabled selected value="0" > -- Select an option -- </option>'+
+                                '<option value="4">Cliente</option>')
+                        }
+                        if (data.rol == '4'){
+                        $('#myOptions').html('<option selected="selected" disabled selected value="0" > -- Select an option -- </option>'+
+                            '<option value="2">Jefe de práctica</option>'+
+                            '<option value="3">Alumno</option>'+
+                            '<option value="4">Cliente</option>')
+                        }
+                        if (data.rol == '5'){
+                        $('#myOptions').html('<option selected="selected" disabled selected value="0" > -- Select an option -- </option>'+
+                            '<option value="3">Alumno</option>'+
+                            '<option value="4">Cliente</option>')
+                        }
+                        $('#limantenimientos').addClass('active');
 
-            }, 100);
+                    }
+                        
+                            
+            
+                 
+            
+                });
+
+
 
         });
     </script>
@@ -152,7 +165,7 @@
         });
         $('#cli_numhij').ace_spinner({value:0,min:0,max:20,step:1, on_sides: true, icon_up:'ace-icon fa fa-plus bigger-110', icon_down:'ace-icon fa fa-minus bigger-110', btn_up_class:'btn-success' , btn_down_class:'btn-danger'});
     });
-	jQuery('#limantenimientos').addClass('active');
+	
     var previous;
     var table_previous;
     var myselect;

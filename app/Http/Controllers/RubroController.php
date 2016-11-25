@@ -7,6 +7,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Log;
 use App\Models\TaCurso;
 use App\Models\TaCiclo;
 use App\Models\TaPeriodo;
@@ -16,9 +17,14 @@ use App\Models\TaRubro;
 class RubroController extends Controller {
 
 	public function store(Request $request) {
+		$rba_id = $request['rba_add_id'];
+		$rubrica = TaRubrica::where('rba_id', $rba_id)->first();
+		if (empty($rubrica))
+		{
+
+		}
 		try {
-			$rba_id = $request['rba_add_id'];
-			$rubrica = TaRubrica::where('rba_id', $rba_id)->firstOrFail();
+			
 			$periodo = TaPeriodo::where('per_id', $rubrica['per_id'])->firstOrFail();
 			//Verificar que los datos sean correctos
 			$nombre = $request['rbo_nombre'];
@@ -37,7 +43,7 @@ class RubroController extends Controller {
 				//Actualizar la suma de puntajes
 				TaRubrica::where('rba_id', $rba_id)->increment('rba_maxpunt', $maxpunt);
 				//Mostrar la pantalla de resultados de la búsqueda
-				Session::flash('msg-ok', "Se gaurd&oacute; el rubro correctamente.");
+				Session::flash('msg-ok', "Se guard&oacute; el rubro correctamente.");
 			}
 
 			//Volver a la página de resultados de la búsqueda

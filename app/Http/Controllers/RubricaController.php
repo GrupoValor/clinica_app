@@ -12,14 +12,30 @@ use App\Models\TaCiclo;
 use App\Models\TaPeriodo;
 use App\Models\TaRubrica;
 use App\Models\TaRubro;
+use Illuminate\Support\Facades\Log;
 
 class RubricaController extends Controller {
 
-	public function index(Request $request) {
+	public function index(Request $request)
+	{
+		//Verificar que la sesión iniciada sea válida y que el usuario tenga acceso a esta página
+		$usuario = $request->session()->get('user');
+		if (empty($usuario)) {
+			Log::info('Se intento entrar a la pagina de mantenimiento de rubricas sin haber iniciado sesion. Se le mando a la pagina de inicio de sesion de la intranet.');
+			return view('login.login');
+		}
+		if ($usuario['rol'] != 1 && $usuario['rol'] != 4) {
+			Log::warning('El usuario con id ' . $usuario['userid'] . ' intento acceder a la pagina de mantenimiento de rubricas sin tener los permisos requeridos. Se le mando una respuesta HTTP 403.');
+			return abort(403);
+		}
+
 		//Verificar si los IDs de curso y ciclo son válidos
 		$curso = TaCurso::where('cur_id', $request['curso'])->first();
 		$ciclo = TaCiclo::where('cic_id', $request['ciclo'])->first();
-		if (empty($curso) || empty($ciclo)) return abort(404);
+		if (empty($curso) || empty($ciclo)) {
+			Log::info('El usuario con id ' . $usuario['userid'] . ' intento acceder a la pagina de mantenimiento de rubricas con un curso o ciclo inexistente. Se le mando una respuesta HTTP 404.');
+			return abort(404);
+		}
 
 		//Obtener el periodo y las rúbricas y rubros a mostrar según la búsqueda realizada
 		$periodo = TaPeriodo::where(['cur_id' => $request['curso'], 'cic_id' => $request['ciclo']])->first();
@@ -32,12 +48,12 @@ class RubricaController extends Controller {
 			$valores['cic_nombre'] = $ciclo['cic_nombre'];
 
 			//Extraer todos los periodos de la clínica:
-			$db_periodo = TaPeriodo::where('cln_id', 1)->get()->toArray();
+			$db_periodo = TaPeriodo::where('cln_id', '1')->get()->toArray();
 			$per_id = ['0'];
 			$per_nombre = ['Ninguno'];
 			foreach ($db_periodo as $value) {
 				//Obtener ids del array
-				array_push($per_id, $value['cur_id']);
+				array_push($per_id, $value['per_id']);
 				//Obtener valores del array
 				$curso = TaCurso::find($value['cur_id']);
 				$ciclo = TaCiclo::find($value['cic_id']);
@@ -46,30 +62,39 @@ class RubricaController extends Controller {
 			$periodos = array_combine($per_id, $per_nombre);
 
 			//Ir a vista de creación de periodos
+			Log::info('El usuario con id ' . $usuario['userid'] . ' entro a la pagina de creacion de rubricas para el ciclo ' . $request['curso'] . ', ciclo ' . $request['ciclo']);
 			return view('intranet.ta_rubricas_crear', ['valores' => $valores, 'periodos' => $periodos]);
 
 		} else {
-
 			$periodo = $periodo->toArray();
+
 			//Obtener datos de las rúbricas
 			$rubricas = TaRubrica::where('per_id', $periodo['per_id'])->get()->toArray();
+
+			//Colocar los nombres a usar en el arreglo del periodo
+			$periodo['cur_nombre'] = "\"" . $curso['cur_descrip'] . "\" (" . $curso['cur_codigo'] . ")";
+			$periodo['cic_nombre'] = $ciclo['cic_nombre'];
+			$periodo['editable'] = (time() <= strtotime($periodo['per_fechafin']));
+
 			//Obtenemos y colocamos los datos de los rubros dentro de las rúbricas
 			foreach ($rubricas as &$rubrica) {
 				$rubrica['rubros'] = TaRubro::where('rba_id', $rubrica['rba_id'])->get()->toArray();
 			}
 
-			//Colocar los nombres a usar en el arreglo del periodo
-			$periodo['cur_nombre'] = "\"" . $curso['cur_descrip'] . "\" (" . $curso['cur_codigo'] . ")";
-			$periodo['cic_nombre'] = $ciclo['cic_nombre'];
-			$periodo['editable'] = (strtotime($periodo['per_fechafin']) >= time());
-
 			//Ir a la vista de resultados de la búsqueda
+			Log::info('El usuario con id ' . $usuario['userid'] . ' entro a la pagina de mantenimiento de rubricas para el ciclo ' . $request['curso']. ', ciclo ' . $request['ciclo'] . ' (periodo '. $periodo['per_id'] . ').');
 			return view('intranet.ta_rubricas_res', ['periodo' => $periodo, 'rubricas' => $rubricas]);
 		}
 
 	}
 
-	public function store(Request $request) {
+	public function store(Request $request)
+	{
+		//Verificar que la sesión iniciada sea válida y que el usuario tenga acceso a esta página
+		$usuario = $request->session()->get('user');
+		if (empty($usuario)) return view('login/login');
+		if ($usuario['rol'] != 1 && $usuario['rol'] != 4) return abort(404);
+
 		//Obtener los datos del request
 		$rba_nombre = $request['rba_nombre'];
 		$rba_peso = $request['rba_peso'];
@@ -105,7 +130,14 @@ class RubricaController extends Controller {
 		return redirect()->action('RubricaController@index', ['curso' => $periodo['cur_id'], 'ciclo' => $periodo['cic_id']]);
 	}
 
-	public function update(Request $request) {
+	public function update(Request $request)
+	{
+		//Verificar que la sesión iniciada sea válida y que el usuario tenga acceso a esta página
+		$usuario = $request->session()->get('user');
+		if (empty($usuario)) return view('login/login');
+		//if ($usuario['rol'] != '1' || $usuario['rol'] != '4') return abort(404);
+
+		//Obtener rúbrica
 		$rubrica = TaRubrica::where('rba_id', $request['rba_edit_id'])->first();
 		if (empty($rubrica)) {
 			Session::flash('msg_err', 'No se pudo encontrar la r&uacute;brica solicitada. Por favor int&eacute;ntelo de nuevo m&aacute;s tarde.');
@@ -147,26 +179,42 @@ class RubricaController extends Controller {
 		}
 	}
 
-	public function destroy(Request $request) {
-		try {
-			$rba_id = $request['rba_delete_id'];
-			$rubrica = TaRubrica::where('rba_id', $rba_id)->first();
-			$periodo = TaPeriodo::where('per_id', $rubrica['per_id'])->first();
-			//Eliminar todos los rubros de la rúbrica
-			TaRubro::where('rba_id', $rba_id)->delete();
-			//Eliminar la rúbrica en sí
-			$rba_peso = $rubrica->rba_peso;
-			$rubrica->delete();
-			//Actualizar la suma de pesos del periodo
-			$periodo->per_sumapesos -= $rba_peso;
-			$periodo->save();
-			//Si todo ha salido OK, regresar a la vista de resultados de la búsqueda
-			Session::flash('msg-ok', 'Se elimin&oacute; la r&uacute;brica correctamente.');
-			return redirect()->action('RubricaController@index', ['curso' => $periodo['cur_id'], 'ciclo' => $periodo['cic_id']]);
-		} catch (\Exception $e) {
-			Session::flash('msg-err', 'Ocurri&oacute; un error al eliminar la r&uacute;brica. Por favor comun&iacute;quese con el administrador de base de datos.');
+	public function destroy(Request $request)
+	{
+		//Verificar que la sesión iniciada sea válida y que el usuario tenga acceso a esta página
+		$usuario = $request->session()->get('user');
+		if (empty($usuario)) return view('login/login');
+		if ($usuario['rol'] != 1 && $usuario['rol'] != 4) return abort(404);
+
+		//Asegurarse de que se especificó correctamente el id de la rúbrica
+		$rba_id = $request['rba_delete_id'];
+		if (empty($rba_id) || !($this->es_entero_positivo($rba_id))) {
+			Session::flash('msg-err', 'No se seleccion&oacute; una r&uacute;brica v&aacute;lida.');
+			$this->log('Usuario ' /*. $usuario['userid']*/ . ' intentó eliminar rubrica' . $rba_id . 'no válida.');
 			return redirect()->action('PeriodoController@index');
 		}
+		$rubrica = TaRubrica::where('rba_id', $rba_id)->first();
+		if (empty($rubrica)) {
+			Session::flash('msg-err', 'No se encontr&oacute; la r&uacute;brica solicitada.');
+			return redirect()->action('PeriodoController@index');
+		}
+		$periodo = TaPeriodo::where('per_id', $rubrica['per_id'])->first();
+		if (empty($rubrica)) {
+			Session::flash('msg-err', 'No se pudo encontrar el periodo de la r&uacute;brica solicitada.');
+			return redirect()->action('PeriodoController@index');
+		}
+		//Eliminar todos los rubros de la rúbrica
+		TaRubro::where('rba_id', $rba_id)->delete();
+		//Eliminar la rúbrica en sí
+		$rba_peso = $rubrica->rba_peso;
+		$rubrica->delete();
+		//Actualizar la suma de pesos del periodo
+		$periodo->per_sumapesos -= $rba_peso;
+		$periodo->save();
+		//Si todo ha salido OK, regresar a la vista de resultados de la búsqueda
+		Session::flash('msg-ok', 'Se elimin&oacute; la r&uacute;brica correctamente.');
+		//Log::message('El usuario' . $usuario[]);
+		return redirect()->action('RubricaController@index', ['curso' => $periodo['cur_id'], 'ciclo' => $periodo['cic_id']]);
 	}
 
 	private function es_entero_positivo($valor) {

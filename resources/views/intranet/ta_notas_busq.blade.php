@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Intranet | Tareas acad&eacute;micas | Mantenimiento de r&uacute;bricas</title>
+		<title>Cl&iacute;nica Jur&iacute;dica | Tareas acad&eacute;micas</title>
 
 		<meta name="description" content="Static &amp; Dynamic Tables" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -58,7 +58,7 @@
 								<a href="/index">Home</a>
 							</li>
 							<li>
-								<a href="ta_registro">Tareas acad&eacute;micas</a>
+								<a href="/rubrica">Tareas acad&eacute;micas</a>
 							</li>
 							<li class="active">Mantenimiento de r&uacute;bricas</li>
 						</ul><!-- /.breadcrumb -->
@@ -69,38 +69,69 @@
 @include('intranet.ta_registro.mensajes')
 
 						<div class="page-header">
-							<h1>Mantenimiento de r&uacute;bricas</h1>
+							<h1>Registro de notas</h1>
 						</div><!-- /.page-header -->
 						
-						<p>Aqu&iacute; el profesor puede ver y editar las r&uacute;bricas que usar&aacute; para registrar el avance de sus alumnos en el curso.</p>
+						<p>Aqu&iacute; el profesor puede agregar y modificar las notas de sus alumnos por cada r&uacute;brica, semana, y alumno.</p>
 
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-								<h3 class="header smaller lighter blue">Resultados de la b&uacute;squeda</h3>
-								<!-- CONTROL DE TABLAS 
-								<div class="">
-									Se mostrar&aacute;n 
-									<div class="ace-spinner middle" style="width: 115px;">
-										<input type="text" id="spinner1" />
+								<h3 class="header smaller lighter blue">B&uacute;squeda</h3>
+								
+								{!! Form::open(['class' => 'form-horizontal']) !!}
+									<div class="form-group">
+										{!! Form::label('curso', 'Curso:', ['class' => 'col-sm-3 control-label no-padding-right']) !!}
+										<div class="col-sm-8">
+											{!! Form::select('curso', $cursos, ['class' => 'input-xlarge']) !!}
+										</div>
 									</div>
-									tablas de r&uacute;bricas, para un total de 
-									<div class="ace-spinner middle" style="width: 90px;">
-										<input type="text" class="input-sm" id="spinner2" />
+									<div class="form-group">
+										{!! Form::label('ciclo', 'Ciclo:', ['class' => 'col-sm-3 control-label no-padding-right']) !!}
+										<div class="col-sm-8">
+											{!! Form::select('ciclo', $ciclos, ['class' => 'input-xlarge']) !!}
+										</div>
 									</div>
-									semanas.
-								</div>-->
+								{!! Form::close() !!}
 
-@include('intranet.ta_registro.mant')
+								<!-- BÚSQUEDA -->
+								{!! Form::open(['route' => 'ta_notas_res.index', 'method' => 'GET', 'class' => "form-horizontal"]) !!}
+									<div class="hidden">
+										{!! Form::text('periodo', null) !!}
+									</div>
+									<div class="form-group">
+										{!! Form::label('rubrica', 'R&uacute;brica:', ['class' => "col-sm-3 control-label no-padding-right"]) !!}
+										<div class="col-sm-6">
+											{!! Form::select('rubrica', ['Todas'], ['class' => "input-xlarge"]) !!}
+										</div>
+									</div>
+									<div class="form-group">
+										{!! Form::label('semana', '# semana:', ['class' => "col-sm-3 control-label no-padding-right"]) !!}
+										<div class="col-sm-6">
+											{!! Form::select('semana', ['Todas'], ['class' => "input-small"]) !!}
+											&nbsp;de {{ 0 }}
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-9 center">
+											{!! Form::button('<span class="ace-icon fa fa-search icon-on-right bigger-110"></span> Buscar', ['class' => "btn btn-purple btn-sm", 'type' => 'submit']) !!}
+											&nbsp;
+											<a href="ta_registro">
+												<button class="btn btn-sm" type="reset">
+													<i class="ace-icon fa fa-undo bigger-110"></i>
+													Regresar
+												</button>
+											</a>
+										</div>
+									</div>
+								</form>
+								<!-- FIN BÚSQUEDA -->
 								
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
 					</div><!-- /.page-content -->
 
-@if($periodo['editable'])
-@include('intranet.ta_registro.modal')
-@endif
 				</div>
 			</div><!-- /.main-content -->
 
@@ -261,34 +292,15 @@
 			
 			});
 
-			//FUNCION PARA EDITAR RUBRICA
-			function rba_editar(rba_id) {
-				$('#rba_edit_id').attr('value', rba_id);
-				$('#rba_edit_nombre').attr('value', $("h4#" + rba_id).text());
-				$('#rba_edit_peso').attr('value', $("#rba_peso_" + rba_id).text());
-			}
+			//Select dinámico
+			$("#curso").change(function(event) {
+				$.get("towns/" + event.target.value + "", function(response, state) {
+					for (i = 0; i < response.length; i++) {
+						$("#rubrica").append("<option value='"	+ response[i].rba_id + )
+					}
+				});
+			});
 
-			//FUNCION PARA ELIMINAR RUBRICA
-			function rba_eliminar(rba_id) {
-				$('#rba_delete_id').attr('value', rba_id);
-			}
-
-			//FUNCION PARA AÑADIR RUBRO
-			function rbo_anadir(rba_id) {
-				$('#rba_add_id').attr('value', rba_id);
-			}
-
-			//FUNCION PARA EDITAR RUBRO
-			function rbo_editar(rbo_id) {
-				$('#rbo_edit_id').attr('value', rbo_id);
-				$('#rbo_edit_nombre').attr('value', $("#rbo_nombre_" + rbo_id).text());
-				$('#rbo_edit_maxpunt').attr('value', $("#rbo_maxpunt_" + rbo_id).text());
-			}
-
-			//FUNCION PARA ELIMINAR RUBRO
-			function rbo_eliminar(rbo_id) {
-				$('#rbo_delete_id').attr('value', rbo_id);
-			}
 		</script>
 	</body>
 </html>

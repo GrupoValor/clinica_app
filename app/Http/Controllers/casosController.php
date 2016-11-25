@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Models\TaCaso;
+use App\Models\TACASO;
 use Illuminate\Support\Facades\DB;
 
 class casosController extends Controller
@@ -15,9 +15,57 @@ class casosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function miscasos(Request $request){
+
+        $data = $request->session()->get('user');
+        
+       
+
+        $casos =DB::select('SELECT cas_id ,cas_fecate,cli_nombre,cas_objact,alu_nombre as res_nombre,estcas_detalle
+            FROM TA_CASO
+            JOIN TA_CLIENTE
+            ON TA_CASO.cli_id=TA_CLIENTE.cli_id
+            JOIN TA_ALUMNO
+            ON TA_CASO.usu_id=TA_ALUMNO.usu_id
+            JOIN TA_ESTADOCASO
+            ON TA_CASO.estcas_id=TA_ESTADOCASO.estcas_id  where TA_ALUMNO.usu_id="'.$data['userid'].'"');
+
+
+
+        $data = array();
+
+        foreach ($casos as $caso) {
+            array_push($data,json_decode(json_encode($caso), true));
+            //echo var_dump($data);
+        }
+       
+        
+        echo json_encode($data);
+
+    }
+
+    public function getpendientes(Request $request){
+        $data = $request->session()->get('user');
+
+        $casos =DB::select('select tar_nombre,tar_descri,cas_objact from ta_caso inner join ta_tarea on ta_caso.cas_id = ta_tarea.cas_id where tar_estado = "pendiente" and ta_caso.usu_id = "'.$data['userid'].'" or  tar_estado = "backlog" and ta_caso.usu_id = "'.$data['userid'].'"');
+
+
+
+        $data = array();
+
+        foreach ($casos as $caso) {
+            array_push($data,json_decode(json_encode($caso), true));
+            //echo var_dump($data);
+        }
+       
+        
+        echo json_encode($data);
+    }
+
     public function index()
     {
       
+
 
 
         $casos =DB::select('SELECT cas_id ,cas_fecate,cli_nombre,cas_objact,alu_nombre as res_nombre,estcas_detalle
@@ -64,7 +112,7 @@ class casosController extends Controller
  
    
     
-       $caso = TaCaso::create([
+       $caso = TACASO::create([
                                            'usu_id' => $request['usu_id'],
                                            'cli_id' => $request['cli_id'],
                                            'cas_docent' => $request['doc_id'],

@@ -7,6 +7,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Log;
 use App\Models\TaCurso;
 use App\Models\TaCiclo;
 use App\Models\TaPeriodo;
@@ -15,9 +16,18 @@ use App\Models\TaRubro;
 
 class PeriodoController extends Controller {
 
-	public function index() {
+	public function index(Request $request)
+	{
 		//Verificar si el usuario tiene permisos para visualizar esta pantalla
-		/* FALTA IMPLEMENTAR LOL */
+		$usuario = $request->session()->get('user');
+		if (empty($usuario)) {
+			Log::info('Se intento entrar a la pagina de busqueda de mantenimiento rubricas sin haber iniciado sesion. Se le mando a la pagina de inicio de sesion de la intranet.');
+			return view('login.login');
+		}
+		if ($usuario['rol'] != 1 && $usuario['rol'] != 4) {
+			Log::warning('El usuario con id ' . $usuario['userid'] . ' intento acceder a la pagina de mantenimiento de rubricas sin tener los permisos requeridos. Se le mando una respuesta HTTP 403.');
+			return abort(403);
+		}
 
 		//Extraer cursos según clínica
 		$db_cursos = TaCurso::where('cln_id', 1)->get()->toArray();
@@ -32,18 +42,39 @@ class PeriodoController extends Controller {
 		$ciclos = array_combine($cic_id, $cic_nombre);
 
 		//Ingresar a la vista principal
+		Log::info('El usuario con id ' . $usuario['userid'] . ' entro a la pagina de busqueda mantenimiento de rubricas.');
 		return view('intranet.ta_rubricas_busq', ['cursos' => $cursos, 'ciclos' => $ciclos]);
 	}
 
-	public function store(Request $request) {
+	public function store(Request $request)
+	{
+		//Verificar si el usuario tiene permisos para visualizar esta pantalla
+		$usuario = $request->session()->get('user');
+		if (empty($usuario))
+		{
+			Log::info('Se intento entrar a la pagina de busqueda de mantenimiento rubricas sin haber iniciado sesion. Se le mando a la pagina de inicio de sesion de la intranet.');
+			return view('login.login');
+		}
+		if ($usuario['rol'] != 1 && $usuario['rol'] != 4)
+		{
+			Log::warning('El usuario con id ' . $usuario['userid'] . ' intento acceder a la pagina de mantenimiento de rubricas sin tener los permisos requeridos. Se le mando una respuesta HTTP 403.');
+			return abort(403);
+		}
+
 		$semanas = $request['per_semanas'];
 		$fechaIni = time();
 		$fechaFin = strtotime($request['per_fechafin']);
-		if (!$this->es_entero_positivo($semanas)) {
+
+		if (!$this->es_entero_positivo($semanas))
+		{
 			Session::flash('msg-err', 'El n&uacute;mero de fechas debe ser un entero positivo no vac&iacute;o.');
-		} else if (empty($fechaFin)) {
+		}
+		else if (empty($fechaFin))
+		{
 			Session::flash('msg-err', 'Debe ingresar una fecha final no vac&iacute; y que sea v&aacute;lida.');
-		} else if ($fechaIni > $fechaFin) {
+		}
+		else if ($fechaIni > $fechaFin)
+		{
 			Session::flash('msg-err', 'La fecha de fin no puede ser menor al d&iacute;a de hoy.');
 		}
 		else try {
@@ -91,27 +122,48 @@ class PeriodoController extends Controller {
 		return redirect()->action('PeriodoController@index');
 	}
 
-	public function destroy(Request $request, $id) {
-		try {
-			//Para cada rúbrica borrar sus rubros
-			$rubricas = TaRubrica::where('per_id', $id)->get();
-			foreach ($rubricas as $rubrica) {
+	public function destroy(Request $request, $id)
+	{
+		//Verificar si el usuario tiene permisos para visualizar esta pantalla
+		$usuario = $request->session()->get('user');
+		if (empty($usuario))
+		{
+			Log::info('Se intento entrar a la pagina de busqueda de mantenimiento rubricas sin haber iniciado sesion. Se le mando a la pagina de inicio de sesion de la intranet.');
+			return view('login.login');
+		}
+		if ($usuario['rol'] != 1 && $usuario['rol'] != 4)
+		{
+			Log::warning('El usuario con id ' . $usuario['userid'] . ' intento acceder a la pagina de mantenimiento de rubricas sin tener los permisos requeridos. Se le mando una respuesta HTTP 403.');
+			return abort(403);
+		}
+
+		//Para cada rúbrica borrar sus rubros
+		$rubricas = TaRubrica::where('per_id', $id)->get();
+		if (empty($rubricas))
+		{
+			Session::flash('msg-err', 'No se pudo encontrar la r&uacute;brica que se buscaba eliminar.');
+		}
+		else
+		{
+			foreach ($rubricas as $rubrica)
+			{
 				TaRubro::where('rba_id', $rubrica['rba_id'])->delete();
+				Log::info('El usuario ' . $usuario['userid'] . ' ha eliminado todos los rubros cuya rubrica asociada sea ' . $rubrica['rba_id'] . '.');
 			}
 			//Borrar las rúbricas de la tabla de base de datos
 			TaRubrica::where('per_id', $id)->delete();
+			Log::info('El usuario' . $usuario['userid'] . ' ha eliminado todas las rubricas cuyo periodo asociado sea ' . $id . '.');
 			//Borrar el periodo de la tabla de base de datos
 			TaPeriodo::where('per_id', $id)->delete();
+			Log::info('El usuario' . $usuario['userid'] . ' ha eliminado satisfactoriamente el periodo ' . $id . '.');
 			//Mostrar mensaje de éxito
 			Session::flash('msg-ok', 'Se eliminaron todas las r&uacute;bricas correctamente.');
-		} catch (Exception $e) {
-			//Mostrar mensaje de error
-			Session::flash('msg-err', 'Ocurri&oacute; un error al borrar la r&uacute;brica. Por favor int&eacute;ntelo de nuevo m&aacute;s tarde.');
 		}
 		return redirect()->action('PeriodoController@index');
 	}
 
-	private function es_entero_positivo($valor) {
+	private function es_entero_positivo($valor)
+	{
 		return (!empty($valor) && is_numeric($valor) && ((float)$valor == (int)$valor) && ((int)$valor > 0));
 	}
 }

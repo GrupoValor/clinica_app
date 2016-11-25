@@ -40,6 +40,7 @@ class TAUSUARIO extends Eloquent
 	protected $fillable = [
 		'cln_id',
 		'rol_id',
+		'usu_usenam',
 		'usu_passwd',
 		'usu_activo'
 	];

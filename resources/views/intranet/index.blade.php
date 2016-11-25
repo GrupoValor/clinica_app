@@ -60,142 +60,15 @@
 									</button>
 
 
-									Bienvenido,
-									<strong class="red">
-										tiene tareas pendientes
+									Bienvenido
+									<strong class="red" id = "alert_pendientes">
+										
 									</strong>
 								</div>
 
-								<div class="row"> <!-- widgets de tareas pendientes-->
+								<div class="row" id="mainrow"> <!-- widgets de tareas pendientes-->
                                     
-                                    <div class="col-sm-6 widget-container-col" id="widget-container-col-12">
-											<div class="widget-box transparent" id="widget-box-12">
-												<div class="widget-header">
-
-                                                    <h5 class="widget-title lighter">
-														<a href="caso_semana8">
-															<strong>Actividad Semana 8</strong>
-														</a>
-														<small> vence el 12 de noviembre del 2016</small>
-													</h5>
-
-
-													<div class="widget-toolbar no-border">
-														<a href="#" data-action="collapse">
-															<i class="ace-icon fa fa-chevron-up"></i>
-														</a>
-
-														<a href="#" data-action="close">
-															<i class="ace-icon fa fa-times"></i>
-														</a>
-													</div>
-												</div>
-
-												<div class="widget-body">
-													<div class="widget-main padding-6 no-padding-left no-padding-right" align="justify">
-														Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis. Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit. Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
-													</div>
-												</div>
-											</div>
-										</div>
                                     
-                                    <div class="col-sm-6 widget-container-col" id="widget-container-col-15">
-											<div class="widget-box transparent" id="widget-box-15">
-												<div class="widget-header">
-                                                    <h5 class="widget-title lighter"><strong>Actividad Semana 9</strong><small> vence el 12 de noviembre del 2016</small></h5>
-                                                    
-
-													<div class="widget-toolbar no-border">
-														<a href="#" data-action="collapse">
-															<i class="ace-icon fa fa-chevron-up"></i>
-														</a>
-
-														<a href="#" data-action="close">
-															<i class="ace-icon fa fa-times"></i>
-														</a>
-													</div>
-												</div>
-
-												<div class="widget-body">
-													<div class="widget-main padding-6 no-padding-left no-padding-right" align="justify">
-														Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis. Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit. Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
-													</div>
-												</div>
-											</div>
-										</div>
-                                    
-                                    <div class="col-sm-6 widget-container-col" id="widget-container-col-10">
-											<div class="widget-box transparent" id="widget-box-10">
-												<div class="widget-header">
-                                                    <h5 class="widget-title lighter"><strong>Actividad Semana 10</strong><small> vence el 12 de noviembre del 2016</small></h5>
-                                                    
-
-													<div class="widget-toolbar no-border">
-														<a href="#" data-action="collapse">
-															<i class="ace-icon fa fa-chevron-up"></i>
-														</a>
-
-														<a href="#" data-action="close">
-															<i class="ace-icon fa fa-times"></i>
-														</a>
-													</div>
-												</div>
-
-												<div class="widget-body">
-													<div class="widget-main padding-6 no-padding-left no-padding-right" align="justify">
-														Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis. Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit. Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
-													</div>
-												</div>
-											</div>
-										</div>
-                                    
-                                    <div class="col-sm-6 widget-container-col" id="widget-container-col-11">
-											<div class="widget-box transparent" id="widget-box-11">
-												<div class="widget-header">
-                                                    <h5 class="widget-title lighter"><strong>Actividad Semana 11</strong><small> vence el 12 de noviembre del 2016</small></h5>
-
-													<div class="widget-toolbar no-border">
-														<a href="#" data-action="collapse">
-															<i class="ace-icon fa fa-chevron-up"></i>
-														</a>
-
-														<a href="#" data-action="close">
-															<i class="ace-icon fa fa-times"></i>
-														</a>
-													</div>
-												</div>
-
-												<div class="widget-body">
-													<div class="widget-main padding-6 no-padding-left no-padding-right" align="justify">
-														Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis. Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit. Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
-													</div>
-												</div>
-											</div>
-										</div>
-                                    
-                                    <div class="col-sm-6 widget-container-col" id="widget-container-col-13">
-											<div class="widget-box transparent" id="widget-box-13">
-												<div class="widget-header">
-                                                    <h5 class="widget-title lighter"><strong>Actividad Semana 13</strong><small> vence el 12 de noviembre del 2016</small></h5>
-
-													<div class="widget-toolbar no-border">
-														<a href="#" data-action="collapse">
-															<i class="ace-icon fa fa-chevron-up"></i>
-														</a>
-
-														<a href="#" data-action="close">
-															<i class="ace-icon fa fa-times"></i>
-														</a>
-													</div>
-												</div>
-
-												<div class="widget-body">
-													<div class="widget-main padding-6 no-padding-left no-padding-right" align="justify">
-														Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque commodo massa sed ipsum porttitor facilisis. Nullam interdum massa vel nisl fringilla sed viverra erat tincidunt. Phasellus in ipsum velit. Maecenas id erat vel sem convallis blandit. Nunc aliquam enim ut arcu aliquet adipiscing. Fusce dignissim volutpat justo non consectetur.
-													</div>
-												</div>
-											</div>
-										</div>
 
 									
 									
@@ -462,6 +335,85 @@
 				});
 			
 			})
+
+
+$.ajax({
+                   
+                    type: "GET",
+                    url:'mispendientes',
+                    success: function(result){
+                        
+                        
+                        var data = jQuery.parseJSON(result);
+             
+                        $("#mainrow").html("");
+                        
+                    	var column ="";
+
+                    	if(data.length <1){
+                    		 $("#alert_pendientes").html("");
+                    		
+                    	}
+                    	else
+                    	{
+                    		$("#alert_pendientes").html(", tiene tareas pendientes");
+                    		
+                    	}
+
+                 
+
+                        for(var i = 0; i<data.length ;i++)
+                        {
+                        	column += ' <div class="col-sm-6 widget-container-col" id="widget-container-col-12">'+
+									'		<div class="widget-box transparent" id="widget-box-12">'+
+									'			<div class="widget-header">'+
+
+									'				<div class="widget-toolbar no-border">'+
+									'					<a href="#" data-action="collapse">'+
+									'						<i class="ace-icon fa fa-chevron-up"></i>'+
+									'					</a>'+
+								
+									'					<a href="#" data-action="close">'+
+									'						<i class="ace-icon fa fa-times"></i>'+
+									'					</a>'+
+									'				</div>'+
+									
+								
+                                    '                <h5 class="widget-title lighter">'+
+									'					<a href="casos_busqueda">'+
+									'						<strong>'+data[i].tar_nombre+'</strong>'+
+									'					</a> <br>'+
+									'					<small> '+data[i].cas_objact+'</small>'+
+									'				</h5>'+
+									
+									
+									'			</div>'+
+								
+									'			<div class="widget-body">'+
+									'				<div class="widget-main padding-6 no-padding-left no-padding-right" align="justify">'+
+									data[i].tar_descri+
+									
+									'				</div>'+
+									'			</div>'+
+									'		</div>'+
+									'	</div>';
+                            
+                        
+                        }
+                        $("#mainrow").html(column);
+                       // $("#tbodycontent").html (rows);
+                    }
+                        
+                            
+            
+                        //alert(Response);
+                         
+            
+                });
+
+
+
+
 		</script>
 	</body>
 </html>

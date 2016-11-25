@@ -48,13 +48,6 @@
                 '        </a>'+
                 '        <b class="arrow"></b>'+
                 '        <ul class="submenu">'+
-                '            <li class="" id="lialumnos">'+
-                '                <a href="ta_alumnos">'+
-                '                    <i class="menu-icon fa fa-caret-right"></i>'+
-                '                    Alumno'+
-                '                </a>'+
-                '                <b class="arrow"></b>'+
-                '            </li>'+
                 '            <li id ="lirubricas" >'+
                 '                <a href="ta_registro">'+
                 '                    <i class="menu-icon fa fa-caret-right"></i>'+
@@ -72,6 +65,27 @@
                 '        </ul>'+
                 '    </li>';
     }
+
+    function addTareasAumno(){
+        return '<li id="litareas"><!-- Tareas académicas -->'+
+                '        <a href="#" class="dropdown-toggle">'+
+                '            <i class="menu-icon fa fa-list-alt"></i>'+
+                '            <span class="menu-text"> Tareas académicas </span>'+
+                '            <b class="arrow fa fa-angle-down"></b>'+
+                '        </a>'+
+                '        <b class="arrow"></b>'+
+                '        <ul class="submenu">'+
+                '            <li class="" id="lialumnos">'+
+                '                <a href="service_alumno_ta">'+
+                '                    <i class="menu-icon fa fa-caret-right"></i>'+
+                '                    Alumno'+
+                '                </a>'+
+                '                <b class="arrow"></b>'+
+                '            </li>'+
+                '        </ul>'+
+                '    </li>';
+    }
+
     function addDirectorio(){
         return '<li id="lidirectorio"><!-- Directorio -->'+
                 '        <a href="directorio">'+
@@ -141,7 +155,7 @@
                 '                <b class="arrow"></b>'+
                 '            </li>'+
                 '            <li class="">'+
-                '                <a href="reporte3.html">'+
+                '                <a href="log">'+
                 '                    <i class="menu-icon fa fa-caret-right"></i>'+
                 '                    Reporte 3'+
                 '                </a>'+
@@ -202,13 +216,12 @@
                     url:'user',
                     success: function(result){
         
-                        var data =  $.map(jQuery.parseJSON(result), function(value, index) {
-                            return [value];
-                        });
+                        var data = JSON.parse(result);
 
                         $('#session_data').val(data);
-                        
-                        if(data[0]=='1'){
+                        $('#user_name').html(data.nombre)
+
+                        if(data.rol=='1'){
                             $('#list_of_menu').html(
                             addPrincipal()+
                             addCasos()+
@@ -223,8 +236,24 @@
                         }
                         
                         //Alumno y Voluntario
-                        $('#user_name').html(data[1])   
-                        if(data[0]=='2' || data[0]=='3'){
+                       
+                        if(data.rol=='2' ){
+
+
+                             $('#list_of_menu').html(
+                            addPrincipal()+
+                            addCasos()+
+                            addTareasAumno()+
+                            addDirectorio()+
+                            addMapa()+
+                            addMantenimiento()
+                            )
+                           
+                        }
+
+                        if(data.rol=='3'){
+
+                            
                              $('#list_of_menu').html(
                             addPrincipal()+
                             addCasos()+
@@ -234,8 +263,9 @@
                             )
                            
                         }
+
                         // Docente y JP
-                        if(data[0]=='4' || data[0]=='5'){
+                        if(data.rol=='4' || data.rol=='5'){
                             $('#list_of_menu').html(
                             addPrincipal()+
                             addCasos()+
@@ -248,7 +278,7 @@
                           
                         }
                         // Gestor de contenidos
-                        if(data[0]=='6'){
+                        if(data.rol=='6'){
                             
                             $('#list_of_menu').html(
                             addPrincipal()+
@@ -259,7 +289,7 @@
                           
                         }
                          // Cliente
-                        if(data[0]=='7'){
+                        if(data.rol=='7'){
                             $('#list_of_menu').html(
                                 addPrincipal()
                             );
@@ -295,6 +325,41 @@
         
         }
     } 
+
+
+
+$.ajax({
+                   
+                    type: "GET",
+                    url:'mispendientes',
+                    success: function(result){
+                        
+                        
+                        var data = jQuery.parseJSON(result);
+             
+                        $("#count_notify").html(data.length);
+                        $("#num_notify").html('<i class="ace-icon fa fa-exclamation-triangle"></i>'+data.length+
+                                    '  Notifications');
+       
+                        var column ='<span class="pull-left">'+
+                                                                '<i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>'+
+                                                                ' Tareas pendientes'+
+                                                            '</span>'+
+                                                             '<span class="pull-right badge badge-info">+'+data.length+'</span>';
+
+
+                        $("#tareas_notify").html(column);
+
+                        
+                       // $("#tbodycontent").html (rows);
+                    }
+                        
+                            
+            
+                        //alert(Response);
+                         
+            
+                });
 </script>
 <input id="session_data" type="hidden" name="">
 
@@ -321,11 +386,11 @@
                         <li class="purple dropdown-modal"> <!-- Campanita de alerta -->
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <i class="ace-icon fa fa-bell icon-animated-bell"></i>
-                                <span class="badge badge-important">8</span>
+                                <span class="badge badge-important" id="count_notify" ></span>
                             </a>
 
                             <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
-                                <li class="dropdown-header">
+                                <li class="dropdown-header" id="num_notify">
                                     <i class="ace-icon fa fa-exclamation-triangle"></i>
                                     8 Notifications
                                 </li>
@@ -333,31 +398,23 @@
                                 <li class="dropdown-content">
                                     <ul class="dropdown-menu dropdown-navbar navbar-pink">
                                         <li>
-                                            <a href="#">
-                                                <div class="clearfix">
+                                            <a href="index">
+                                                <div class="clearfix" id ="tareas_notify">
                                                             <span class="pull-left">
                                                                 <i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
-                                                                New Comments
+                                                                Tareas pendientes
                                                             </span>
-                                                    <span class="pull-right badge badge-info">+12</span>
+                                                    <span class="pull-right badge badge-info"></span>
                                                 </div>
                                             </a>
                                         </li>
 
-                                        <li>
-                                            <a href="#">
-                                                <i class="btn btn-xs btn-primary fa fa-user"></i>
-                                                Bob just signed up as an editor ...
-                                            </a>
-                                        </li>
+                                        
                                     </ul>
                                 </li>
 
                                 <li class="dropdown-footer">
-                                    <a href="#">
-                                        See all notifications
-                                        <i class="ace-icon fa fa-arrow-right"></i>
-                                    </a>
+                                    
                                 </li>
                             </ul>
                         </li>

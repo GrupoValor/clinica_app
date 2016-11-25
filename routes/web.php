@@ -52,6 +52,9 @@ Route::get('/casos_busqueda', function () {
     return view('intranet/busqueda_casos');
 });
 
+Route::get('/miscasos', 'casosController@miscasos');
+Route::get('/mispendientes', 'casosController@getpendientes');
+
 //perfil
 
 Route::get('/perfil', function (Request $request) {
@@ -72,9 +75,8 @@ Route::resource('ta_registro', 'PeriodoController', ['only' => ['index', 'store'
 Route::resource('rubrica', 'RubricaController', ['only' => ['index', 'store', 'update', 'destroy']]);
 Route::resource('rubro', 'RubroController', ['only' => ['store', 'update', 'destroy']]);
 //TAREAS ACADÉMICAS - Registro de notas
-Route::get('/ta_notas', function () {
-    return view('intranet/ta_notas');
-});
+Route::resource('ta_notas', 'PromedioController');
+Route::resource('ta_notas_res', 'NotasController');
 
 //directorio de usuarios
 Route::get('directorio', function () {
@@ -88,7 +90,7 @@ Route::get('/mapa_intranet2', function () {
 });
 
 Route::get('/mapa_intranet', function () {
-    return view('intranet/mapa');
+    return view('intranet/kari_mapa2');
 });
 
 //mantenimientos
@@ -144,9 +146,24 @@ Route::get('/noticias_registro', function () {
     return view('intranet/gestor_noticias_registro');
 });
 
+//eventos
+Route::get('/agenda', function () {
+    return view('intranet/kari_eventos');
+});
+Route::get('/agenda2', function () {
+    return view('intranet/kari_eventos2');
+});
+
 //page error
 Route::get('/error-500', function () {
     return view('errors/500');
+});
+
+//WEB
+Route::get('/log', 'logController@get');
+//mapa
+Route::get('/mapa_web', function () {
+    return view('web/mapa');
 });
 
 Route::resource('service_alumno','alumnoController');
@@ -158,6 +175,7 @@ Route::resource('service_casos','casosController');
 Route::resource('service_cliente','clienteController');
 Route::resource('service_alumno_ta','taAlumnoController');
 Route::resource('service_clinica','clinicaController');
+Route::resource('service_evento','eventoController');
 
 //Route::resource('test','testController');
 
