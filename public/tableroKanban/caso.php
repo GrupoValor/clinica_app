@@ -78,13 +78,14 @@ $display = new Display($db);
                 </ul>
             </div>
           </div>
-            <div id="panel-control-tablero" class="col-md-2" style="background: #ccc; margin-left: 30px; border-radius: 7px;">
+            <div id="panel-control-tablero" class="col-md-2" style="background: #ccc; margin-left: 10px; border-radius: 7px;">
               <div id="panel-control-tablero-interesados">
                 <h3 style="font-size: 15px">Miembros</h3>
               </div>
               <div id="panel-control-tablero-actividad">
                 <h3 style="font-size: 15px">Registro de actividad</h3>
                 <ul id="registro-actividad" style="width: 160px; height: 260px; overflow: auto">
+                    <?php echo $display->lista_actividades($_GET['id']); ?>
                 </ul>
               </div>
             </div>
@@ -214,7 +215,7 @@ $display = new Display($db);
       </div>
     </div>
 
-    
+
     <div class="modal fade bs-modal-sm" tabindex="-1" id="modal-eliminar-tarea" role="dialog" aria-labelledby="mySmallModalLabel">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">

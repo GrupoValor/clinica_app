@@ -7,7 +7,7 @@ $caso = $_GET['cas_id'];
 $descripcion = $_GET['act_desc'];
 
 
-$stmt = $db->prepare("INSERT INTO TA_ACTIVIDAD(usu_id, cas_id, act_desc) VALUES (:usuario, :caso, :descripcion)");
+$stmt = $db->prepare("INSERT INTO TA_ACTIVIDAD(usu_id, cas_id, act_desc,act_fecreg) VALUES (:usuario, :caso, :descripcion,NOW())");
 $stmt->bindParam(':usuario', $usuario);
 $stmt->bindParam(':caso', $caso);
 $stmt->bindParam(':descripcion', $descripcion);
