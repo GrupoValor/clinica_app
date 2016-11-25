@@ -24,6 +24,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $cln_mision
  * @property string $cln_vision
  * @property int $cln_prof
+ * @property int $cln_activo
  * @package App\Models
  */
 
@@ -35,8 +36,8 @@ class TACLINICA extends Eloquent
 
     protected $casts = [
         'cln_telefono'=>'int',
-        'cln_prof' => 'int'
-
+        'cln_prof' => 'int',
+        'cln_activo' => 'int'
     ];
 
     protected $fillable = [
@@ -50,7 +51,8 @@ class TACLINICA extends Eloquent
         'cln_direcc',
         'cln_mision',
         'cln_vision',
-        'cln_prof'
+        'cln_prof',
+        'cln_activo'
     ];
 
 }

@@ -19,12 +19,18 @@ class clinicaController extends Controller
      */
     public function index()
     {
-        $clinicas = TACLINICA::all();
+        //$clinicas = TACLINICA::all();
+
+        $clinicas =DB::select('SELECT * FROM TA_CLINICA WHERE TA_CLINICA.cln_activo = "1"');
         $data = array();
 
+        foreach ($clinicas as $clinica){
+            array_push($data,json_decode(json_encode($clinica), true));
+        }
+        /*
         foreach ($clinicas as $clinica) {
             array_push($data,$clinica['attributes']);
-        }
+        }*/
 
         echo json_encode($data);
     }
@@ -54,12 +60,12 @@ class clinicaController extends Controller
             'cln_urlfbk' => $request['cln_urlfbk'],
             'cln_urltwi' => $request['cln_urltwi'],
             'cln_urlgoo' => $request['cln_urlgoo'],
-            'cln_descri'=>$request['cln_descri'],
-            'cln_direcc'=>$request['cln_direcc'],
-            'cln_mision'=>$request['cln_mision'],
-            'cln_vision'=>$request['cln_vision'],
-            'cln_prof'=>$request['cln_prof']
-
+            'cln_descri' => $request['cln_descri'],
+            'cln_direcc' => $request['cln_direcc'],
+            'cln_mision' => $request['cln_mision'],
+            'cln_vision' => $request['cln_vision'],
+            'cln_prof' => $request['cln_prof'],
+            'cln_activo' => '1'
         ]);
         $clinica->save();
         echo "Ingresado";
@@ -109,8 +115,8 @@ class clinicaController extends Controller
             cln_direcc = :direcc,
             cln_mision = :mision,
             cln_vision = :vision,
-            cln_prof = :prof
-            where cln_id = :cl_id',
+            cln_prof = :prof,
+            cln_activo = :activo where cln_id = :id',
             ['nombre' => $request['cln_nombre'],
                 'telefono' => $request['cln_telefono'],
                 'email' => $request['cln_email'],
@@ -122,7 +128,8 @@ class clinicaController extends Controller
                 'mision' => $request['cln_mision'],
                 'vision' => $request['cln_vision'],
                 'prof' => $request['cln_prof'],
-                'cln_id' => $id]);
+                'activo' => $request['cln_activo'],
+                'id' => $id]);
         // print_r($request );
         echo "Registro actualizado correctamente" ;
     }
@@ -135,9 +142,6 @@ class clinicaController extends Controller
      */
     public function destroy($id)
     {
-        DB::delete('DELETE FROM TA_CLINICA 
-            where cln_id = :cln_id',
-            ['cl_id' => $id]);
-        echo "Registro eliminado correctamente" ;
+
     }
 }

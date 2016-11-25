@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="csrf_token" content="{{ csrf_token() }}"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <meta charset="utf-8"/>
+    <meta name="csrf_token" content="{{csrf_token()}}" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
     <title>Intranet | Clinicas</title>
 
-    <meta name="description" content="Dynamic tables and grids using jqGrid plugin"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
     <!-- bootstrap & fontawesome -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css"/>
@@ -75,6 +75,7 @@
                             <th>Misión</th>
                             <th>Visión</th>
                             <th>Profesor</th>
+                            <th>Activo</th>
                             <th>Modificar</th>
                         </tr>
                         </thead>
@@ -186,7 +187,7 @@
                                    for="form-field-5">Misión</label>
                             <div class="col-sm-9 col-xs-9">
                                 <textarea id="cln_mision" class="form_control col-xs-9 col-sm-9" rows="4"
-                                          margin-left="12px" "placeholder="*obligatorio"></textarea>
+                                          margin-left="12px" placeholder="*obligatorio"></textarea>
                             </div>
                         </div>
                         <div class="space-4"></div>
@@ -289,7 +290,6 @@
 
 <script type="text/javascript">
     //var myTable;
-    var data_set = [];
     var editid;
     var action;
     var data_set_doc = [];
@@ -336,23 +336,20 @@
 
     $("#botonAccion").on('click', function (e) {
         if (action == "ADD") {
-
-            if ($('#cln_email').val().trim().length < 3 || ($('#cln_telefono').val().trim().length < 1) || ($('#cln_direcc').val().trim().length < 1))
-                return;
-            if ($('#cln_email').val().indexOf("@") === -1) {
-                return;
-            }
             var i = data_set_clinica.length;
-            if ($('#cln_nombre').val().trim().length < 1)
-                return;
+            alert("antes del ajax");
             $.ajax({
                 type: "POST",
                 url: 'service_clinica',
                 beforeSend: function (xhr) {
                     var token = $('meta[name="csrf_token"]').attr('content');
+
+                    alert("prueba antes del token");
                     if (token) {
+                        alert("luego del if")
                         return xhr.setRequestHeader('X-CSRF-TOKEN', token);
                     }
+                    alert("prueba despues del token");
                 },
                 data: {
                     cln_nombre: $("#cln_nombre").val(),
@@ -365,7 +362,8 @@
                     cln_direcc: $('#cln_direcc').val(),
                     cln_mision: $('#cln_mision').val(),
                     cln_vision: $('#cln_vision').val(),
-                    cln_prof: $('#cln_prof').val()
+                    cln_prof: $('#cln_prof').val(),
+                    cln_activo:'1'
                 },
                 success: function (Response) {
                     data_set_clinica.push([
@@ -381,6 +379,7 @@
                         $("#cln_mision").val(),
                         $("#cln_vision").val(),
                         $("#cln_prof").val(),
+                        '1',
                         getButtons(i, data_set_clinica[i-1][0]+1)
                     ]);
                     tablaClinicas.clear().rows.add(data_set_clinica).draw();
@@ -391,14 +390,19 @@
 
         }
         if (action == "UPDATE") {
+            alert("prueba update");
             $.ajax({
                 type: "PATCH",
                 url: 'service_clinica/' + data_set_clinica[editid][0],
                 beforeSend: function (xhr) {
+                    alert("prueba al inicio");
                     var token = $('meta[name="csrf_token"]').attr('content');
+                    alert("prueba antes del if");
                     if (token) {
+                        alert("prueba antes del return");
                         return xhr.setRequestHeader('X-CSRF-TOKEN', token);
                     }
+                    alert("prueba antes de data");
                 },
                 data: {
                     cln_nombre: $("#cln_nombre").val(),
@@ -411,9 +415,11 @@
                     cln_direcc: $('#cln_direcc').val(),
                     cln_mision: $('#cln_mision').val(),
                     cln_vision: $('#cln_vision').val(),
-                    cln_prof: $('#cln_prof').val()
+                    cln_prof: $('#cln_prof').val(),
+                    cln_activo: '1'
                 },
                 success: function (Response) {
+                    alert("Exito");
                     data_set_clinica[editid][1] = $("#cln_nombre").val();
                     data_set_clinica[editid][2] = $("#cln_telefono").val();
                     data_set_clinica[editid][3] = $("#cln_email").val();
@@ -425,7 +431,7 @@
                     data_set_clinica[editid][9] = $("#cln_mision").val();
                     data_set_clinica[editid][10] = $("#cln_vision").val();
                     data_set_clinica[editid][11] = $("#cln_prof").val();
-
+                    data_set_clinica[editid][12]='1';
                     tablaClinicas.clear().rows.add(data_set_clinica).draw();
 
                     alert(Response);
@@ -435,16 +441,32 @@
     });
 
     function delete_onClick(id,con_id){
+
         action="DELETE";
         editid=parseInt(id);
+        alert(id+" "+data_set_clinica[editid][0]);
         $.ajax({
-            type: "DELETE",
+            type: "PATCH",
             url: 'service_clinica/' + data_set_clinica[editid][0],
-            beforeSend: function(xhr) {
+            beforeSend: function (xhr) {
                 var token = $('meta[name="csrf_token"]').attr('content');
                 if (token) {
                     return xhr.setRequestHeader('X-CSRF-TOKEN', token);
                 }
+            },
+            data: {
+                cln_nombre: $("#cln_nombre").val(),
+                cln_telefono: $('#cln_telefono').val(),
+                cln_email: $('#cln_email').val(),
+                cln_urlfbk: $('#cln_urlfbk').val(),
+                cln_urltwi: $('#cln_urltwi').val(),
+                cln_urlgoo: $('#cln_urlgoo').val(),
+                cln_descri: $('#cln_descri').val(),
+                cln_direcc: $('#cln_direcc').val(),
+                cln_mision: $('#cln_mision').val(),
+                cln_vision: $('#cln_vision').val(),
+                cln_prof: $('#cln_prof').val(),
+                cln_activo: '0'
             },
             success: function(Response) {
                 tablaClinicas.rows(id).remove().draw();
@@ -479,7 +501,7 @@
 
                     "aoColumns": [
                         null, null, null, null, null, null, null,null,null,null,null,null,
-                        null
+                        null,null
                     ],
                     "aaSorting": [],
                     select: {
@@ -505,6 +527,7 @@
                         data[i].cln_mision,
                         data[i].cln_vision,
                         data[i].cln_prof,
+                        data[i].cln_activo,
                         getButtons(i)
                     ])
                 }
