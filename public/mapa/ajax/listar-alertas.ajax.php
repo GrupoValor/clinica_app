@@ -1,7 +1,7 @@
 <?php
 header('content-type: application/json; charset=utf-8');
 
-require_once '../php-includes/connect.inc.php';
+require_once '../../php-includes/connect.inc.php';
 
 $r = array();
 

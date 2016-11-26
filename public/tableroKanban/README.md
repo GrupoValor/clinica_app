@@ -1,2 +1,0 @@
-# tableroKanban
-Tablero Kanban

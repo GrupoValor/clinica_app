@@ -1,6 +1,6 @@
 <?php
 
-require_once '../php-includes/connect.inc.php';
+require_once '../../php-includes/connect.inc.php';
 
 $id_estado = $_GET['id_estado'];
 $cas_id = $_GET['cas_id'];
@@ -17,7 +17,7 @@ $script = "<script type='text/javascript'>
       $(document).ready(function(){
             $('#corpus').css('display', 'block');
             $('#addtarea').css('display', 'block');
-            
+
           });
     </script>";
 if( $row['estcas_detalle'] =="Cerrado" || $row['estcas_detalle'] =="En Abandono" || $row['estcas_detalle'] =="Inactivo" ){

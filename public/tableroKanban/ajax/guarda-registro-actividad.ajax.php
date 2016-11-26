@@ -1,6 +1,6 @@
 <?php
 
-require_once '../php-includes/connect.inc.php';
+require_once '../../php-includes/connect.inc.php';
 
 $usuario = $_GET['usu_id'];
 $caso = $_GET['cas_id'];

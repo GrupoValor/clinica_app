@@ -1,5 +1,5 @@
 <?php
-require_once '../php-includes/connect.inc.php';
+require_once '../../php-includes/connect.inc.php';
 $nombre = $_GET['nombre-detalle-tarea'];
 $descripcion = $_GET['descripcion-detalle-tarea'];
 $id = $_GET['tar_id'];

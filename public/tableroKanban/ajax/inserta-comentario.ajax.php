@@ -1,6 +1,6 @@
 <?php
 
-require_once '../php-includes/connect.inc.php';
+require_once '../../php-includes/connect.inc.php';
 
 $tar_id = $_GET['tar_id'];
 $com_mensaje = $_GET['com_mensaje'];

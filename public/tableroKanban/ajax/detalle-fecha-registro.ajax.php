@@ -1,6 +1,6 @@
 <?php
 
-require_once '../php-includes/connect.inc.php';
+require_once '../../php-includes/connect.inc.php';
 
 $id = $_GET['id'];
 

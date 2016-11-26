@@ -1,6 +1,6 @@
 <?php
 
-require_once '../php-includes/connect.inc.php';
+require_once '../../php-includes/connect.inc.php';
 
 $nombre = $_GET['titulo'];
 $descripcion = $_GET['descripcion'];

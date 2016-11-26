@@ -1,7 +1,7 @@
 
 <?php
 //Conexion a la BD
-require_once 'php-includes/connect.inc.php';
+require_once '../php-includes/connect.inc.php';
 require_once 'classes/classes.php';
 $display = new Display($db);
 ?>
