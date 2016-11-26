@@ -71,6 +71,8 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <!-- PAGE CONTENT BEGINS -->
+
+
                             <h3 class="header smaller lighter blue">{{$nombresPesosRubrica[0]}} ({{(int)$nombresPesosRubrica[1]*10 }}%)</h3>
 
                             <div class="row">
@@ -183,6 +185,7 @@
                                 </div><!-- /.span -->
                             </div><!-- /.row -->
 
+                            @if(count($nombresPesosRubrica)>3)
                             <h3 class="header smaller lighter blue">{{$nombresPesosRubrica[2]}} ({{(int)$nombresPesosRubrica[3]*10 }}%)</h3>
 
                             <div class="row">
@@ -292,7 +295,363 @@
 
                                 </div>
                             </div>
+                            @endif
 
+
+                            <!--TERCERA TABLA-->
+                            @if(count($nombresPesosRubrica)>5)
+                            <h3 class="header smaller lighter blue">{{$nombresPesosRubrica[4]}} ({{(int)$nombresPesosRubrica[5]*10 }}%)</h3>
+                            
+                            <div class="row">
+                                <div class="col-xs-12">
+
+                                    <table class="table  table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="center"># semana</th>
+                                                        
+                                                        @for($i = 0; $i < count($nombresRubro3); $i++)
+                                                            <th class="hidden-480">{{$nombresRubro3[$i]}}</th>
+                                                        @endfor
+
+                                                        <th>Suma de notas</th>
+                                                        <th class="detail-col">Comentarios</th>
+                                                    </tr>
+                                                </thead>
+                                                    <tbody>
+                                                    <!-- PRIMERA SEMANA -->
+
+                                                    @for($i = 0; $i < count($semanas3); $i++)
+                                                    <tr class="">
+                                                        <td class="center">{{$semanas3[$i]}}</td>
+                                                        @for($j = 0;$j< count($listaPuntajes3[$i]);$j++)
+                                                            <td class="hidden-480">
+                                                            <span style="color:red">{{$listaPuntajes3[$i][$j]}}</span>
+                                                            </td> 
+                                                        @endfor                                                       
+                                                        <td>{{$sumanotas3[$i]}}</td>
+                                                    
+                                                    <!--es hardcodeo-->
+                                                        <td class="center">
+                                                                <div class="action-buttons">
+                                                                    <a href="#" class="green bigger-140 show-details-btn" title="Ver comentarios">
+                                                                        <i class="ace-icon fa fa-angle-double-down"></i>
+                                                                        <span class="sr-only">Ver comentarios</span>
+                                                                    </a>
+                                                                </div>
+                                                        </td>
+                                                        
+                                                    </tr>
+
+
+                                                <!--SEGUIMIENTO-->
+
+
+                                                <tr class="detail-row">
+                                                <td colspan="8">
+                                                    <div class="table-detail">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="timeline-items">
+                                                                @if(count($comentariosEnSemana3)>0)
+                                                                @for($k = 0; $k <  count($comentariosEnSemana3[$i]);$k++,$k++,$k++,$k++)
+
+                                                                    <!-- COMENTARIO DE RESPUESTA -->
+                                                                    <div class="widget-box transparent">
+                                                                        <div class="widget-header widget-header-small">
+                                                                            <!--Nombre del que escribio-->
+                                                                            <h5 class="widget-title smaller"></h5>
+                                                                            <span class="widget-toolbar no-border">
+                                                                                <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                                                {{$comentariosEnSemana3[$i][$k+2]}}
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="widget-body">
+                                                                            <div class="widget-main">
+                                                                             {{$comentariosEnSemana3[$i][$k]}}
+                                                                                <div class="space-6"></div>
+                                                                                <div class="space-6"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                @endfor
+                                                                @endif
+                                                                    <!-- COMENTARIO PROPIO -->
+                                                                  <!-- FIN COMENTARIOS -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="row">
+                                                                    <div class="col-xs-12">
+                                                                        <form>
+                                                                            <fieldset>
+                                                                                <textarea class="width-100" resize="none" placeholder="Escribe algo..."></textarea>
+                                                                            </fieldset>
+                                                                            <div class="clearfix">
+                                                                                <button class="pull-right btn btn-sm btn-primary btn-white btn-round" type="button">
+                                                                                    Enviar
+                                                                                    <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+
+
+                                            @endfor
+                                                    <!-- FIN -->
+                                                </tbody>
+                                        </table>
+
+                                </div>
+                            </div>
+                            @endif
+
+
+
+
+
+                            <!--CUARTA TABLA-->
+                            @if(count($nombresPesosRubrica)>7)
+                            <h3 class="header smaller lighter blue">{{$nombresPesosRubrica[6]}} ({{(int)$nombresPesosRubrica[7]*10 }}%)</h3>
+
+                            <div class="row">
+                                <div class="col-xs-12">
+
+                                    <table class="table  table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="center"># semana</th>
+                                                        
+                                                        @for($i = 0; $i < count($nombresRubro4); $i++)
+                                                            <th class="hidden-480">{{$nombresRubro4[$i]}}</th>
+                                                        @endfor
+
+                                                        <th>Suma de notas</th>
+                                                        <th class="detail-col">Comentarios</th>
+                                                    </tr>
+                                                </thead>
+                                                    <tbody>
+                                                    <!-- PRIMERA SEMANA -->
+
+                                                    @for($i = 0; $i < count($semanas4); $i++)
+                                                    <tr class="">
+                                                        <td class="center">{{$semanas4[$i]}}</td>
+                                                        @for($j = 0;$j< count($listaPuntajes4[$i]);$j++)
+                                                            <td class="hidden-480">
+                                                            <span style="color:red">{{$listaPuntajes4[$i][$j]}}</span>
+                                                            </td> 
+                                                        @endfor                                                       
+                                                        <td>{{$sumanotas4[$i]}}</td>
+                                                    
+                                                    <!--es hardcodeo-->
+                                                        <td class="center">
+                                                                <div class="action-buttons">
+                                                                    <a href="#" class="green bigger-140 show-details-btn" title="Ver comentarios">
+                                                                        <i class="ace-icon fa fa-angle-double-down"></i>
+                                                                        <span class="sr-only">Ver comentarios</span>
+                                                                    </a>
+                                                                </div>
+                                                        </td>
+                                                        
+                                                    </tr>
+
+
+                                                <!--SEGUIMIENTO-->
+
+
+                                                <tr class="detail-row">
+                                                <td colspan="8">
+                                                    <div class="table-detail">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="timeline-items">
+                                                                 @if(count($comentariosEnSemana4)>0)
+                                                                @for($k = 0; $k <  count($comentariosEnSemana4[$i]);$k++,$k++,$k++,$k++)
+
+                                                                    <!-- COMENTARIO DE RESPUESTA -->
+                                                                    <div class="widget-box transparent">
+                                                                        <div class="widget-header widget-header-small">
+                                                                            <!--Nombre del que escribio-->
+                                                                            <h5 class="widget-title smaller"></h5>
+                                                                            <span class="widget-toolbar no-border">
+                                                                                <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                                                {{$comentariosEnSemana4[$i][$k+2]}}
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="widget-body">
+                                                                            <div class="widget-main">
+                                                                             {{$comentariosEnSemana4[$i][$k]}}
+                                                                                <div class="space-6"></div>
+                                                                                <div class="space-6"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    @endfor
+                                                                    @endif
+                                                                    <!-- COMENTARIO PROPIO -->
+                                                                  <!-- FIN COMENTARIOS -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="row">
+                                                                    <div class="col-xs-12">
+                                                                        <form>
+                                                                            <fieldset>
+                                                                                <textarea class="width-100" resize="none" placeholder="Escribe algo..."></textarea>
+                                                                            </fieldset>
+                                                                            <div class="clearfix">
+                                                                                <button class="pull-right btn btn-sm btn-primary btn-white btn-round" type="button">
+                                                                                    Enviar
+                                                                                    <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+
+
+                                            @endfor
+                                                    <!-- FIN -->
+                                                </tbody>
+                                        </table>
+
+                                </div>
+                            </div>
+                            @endif
+
+
+
+
+                            <!--QUINTA TABLA-->
+                            @if(count($nombresPesosRubrica)>9)
+                            <h3 class="header smaller lighter blue">{{$nombresPesosRubrica[8]}} ({{(int)$nombresPesosRubrica[9]*10 }}%)</h3>
+
+                            <div class="row">
+                                <div class="col-xs-12">
+
+                                    <table class="table  table-bordered table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="center"># semana</th>
+                                                        
+                                                        @for($i = 0; $i < count($nombresRubro5); $i++)
+                                                            <th class="hidden-480">{{$nombresRubro5[$i]}}</th>
+                                                        @endfor
+
+                                                        <th>Suma de notas</th>
+                                                        <th class="detail-col">Comentarios</th>
+                                                    </tr>
+                                                </thead>
+                                                    <tbody>
+                                                    <!-- PRIMERA SEMANA -->
+
+                                                    @for($i = 0; $i < count($semanas5); $i++)
+                                                    <tr class="">
+                                                        <td class="center">{{$semanas5[$i]}}</td>
+                                                        @for($j = 0;$j< count($listaPuntajes5[$i]);$j++)
+                                                            <td class="hidden-480">
+                                                            <span style="color:red">{{$listaPuntajes5[$i][$j]}}</span>
+                                                            </td> 
+                                                        @endfor                                                       
+                                                        <td>{{$sumanotas5[$i]}}</td>
+                                                    
+                                                    <!--es hardcodeo-->
+                                                        <td class="center">
+                                                                <div class="action-buttons">
+                                                                    <a href="#" class="green bigger-140 show-details-btn" title="Ver comentarios">
+                                                                        <i class="ace-icon fa fa-angle-double-down"></i>
+                                                                        <span class="sr-only">Ver comentarios</span>
+                                                                    </a>
+                                                                </div>
+                                                        </td>
+                                                        
+                                                    </tr>
+
+
+                                                <!--SEGUIMIENTO-->
+
+
+                                                <tr class="detail-row">
+                                                <td colspan="8">
+                                                    <div class="table-detail">
+                                                        <div class="row">
+                                                            <div class="col-xs-12">
+                                                                <div class="timeline-items">
+                                                                 @if(count($comentariosEnSemana5)>0)
+                                                                @for($k = 0; $k <  count($comentariosEnSemana5[$i]);$k++,$k++,$k++,$k++)
+
+                                                                    <!-- COMENTARIO DE RESPUESTA -->
+                                                                    <div class="widget-box transparent">
+                                                                        <div class="widget-header widget-header-small">
+                                                                            <!--Nombre del que escribio-->
+                                                                            <h5 class="widget-title smaller"></h5>
+                                                                            <span class="widget-toolbar no-border">
+                                                                                <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                                                {{$comentariosEnSemana5[$i][$k+2]}}
+                                                                            </span>
+                                                                        </div>
+                                                                        <div class="widget-body">
+                                                                            <div class="widget-main">
+                                                                             {{$comentariosEnSemana5[$i][$k]}}
+                                                                                <div class="space-6"></div>
+                                                                                <div class="space-6"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    @endfor
+                                                                    @endif
+                                                                    <!-- COMENTARIO PROPIO -->
+                                                                  <!-- FIN COMENTARIOS -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="row">
+                                                                    <div class="col-xs-12">
+                                                                        <form>
+                                                                            <fieldset>
+                                                                                <textarea class="width-100" resize="none" placeholder="Escribe algo..."></textarea>
+                                                                            </fieldset>
+                                                                            <div class="clearfix">
+                                                                                <button class="pull-right btn btn-sm btn-primary btn-white btn-round" type="button">
+                                                                                    Enviar
+                                                                                    <i class="ace-icon fa fa-arrow-right icon-on-right bigger-110"></i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+
+
+                                            @endfor
+                                                    <!-- FIN -->
+                                                </tbody>
+                                        </table>
+
+                                </div>
+                            </div>
+                            @endif
+
+
+                            
                             <h3 class="header smaller lighter blue">Promedio final</h3>
 
                             <div class="row">
@@ -301,8 +660,9 @@
                                     <table class="table  table-bordered table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th class="hidden-480 center">Promedio de participaci&oacute;n</th>
-                                                        <th class="hidden-480 center">Promedio de seguimiento de casos</th>
+                                                        @for($i =0,$j=1; $i < count($nombresPesosRubrica)/2;$i++,$j++)
+                                                        <th class="hidden-480 center">Promedio {{$j}}</th>
+                                                        @endfor
                                                         <th class="center">Nota final</th>
                                                         <th class="center">Estado</th>
                                                         <th class="detail-col">Comentarios</th>
@@ -310,6 +670,7 @@
                                                 </thead>
                                                 <tbody>
 
+                                                <!--FALTA-->
                                                @for($i = 0; $i < count($promedios); $i++)
 
                                                      <tr class="">
@@ -318,12 +679,43 @@
                                                         @endfor
                                                             <span style="color:red">{{$suma}}/{{$j}}</span>
                                                         </td>
+
+                                                        @if(count($nombresPesosRubrica)>3)
                                                         <td class="hidden-480 center">
 
                                                             @for($ii = 0, $j=0,$suma=0; $ii < count($sumanotasSeguimiento);$suma += $sumanotasSeguimiento[$ii],$ii++,$j++)
                                                             @endfor
                                                             <span style="color:red">{{$suma}}/{{$j}}</span>
                                                         </td>
+                                                        @endif
+
+                                                        @if(count($nombresPesosRubrica)>5)
+                                                        <td class="hidden-480 center">
+
+                                                            @for($ii = 0, $j=0,$suma=0; $ii < count($sumanotas3);$suma += $sumanotas3[$ii],$ii++,$j++)
+                                                            @endfor
+                                                            <span style="color:red">{{$suma}}/{{$j}}</span>
+                                                        </td>
+                                                        @endif
+
+                                                        @if(count($nombresPesosRubrica)>7)
+                                                        <td class="hidden-480 center">
+
+                                                            @for($ii = 0, $j=0,$suma=0; $ii < count($sumanotas4);$suma += $sumanotas4[$ii],$ii++,$j++)
+                                                            @endfor
+                                                            <span style="color:red">{{$suma}}/{{$j}}</span>
+                                                        </td>
+                                                        @endif
+
+                                                        @if(count($nombresPesosRubrica)>9)
+                                                        <td class="hidden-480 center">
+
+                                                            @for($ii = 0, $j=0,$suma=0; $ii < count($sumanotas4);$suma += $sumanotas5[$ii],$ii++,$j++)
+                                                            @endfor
+                                                            <span style="color:red">{{$suma}}/{{$j}}</span>
+                                                        </td>
+                                                        @endif
+
                                                         <td class="center">
                                                             <span style="color:red">{{$promedios[$i]}}</span>
                                                         </td>
@@ -389,11 +781,6 @@
                                                 </tr>
 
 
-
-
-
-                                                    
-
                                                     @endfor
 
 
@@ -451,8 +838,7 @@
 				
 				
 				$.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
-				
-			
+							
 				////
 			
 				setTimeout(function() {
@@ -462,14 +848,7 @@
 						else $(this).tooltip({container: 'body', title: $(this).text()});
 					});
 				}, 500);
-				
-				
-				
-				
-			
-			
-			
-			
+							
 				/////////////////////////////////
 				//table checkboxes
 				$('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
@@ -517,8 +896,6 @@
 				}
 				
 				
-				
-				
 				/***************/
 				$('.show-details-btn').on('click', function(e) {
 					e.preventDefault();
@@ -526,23 +903,6 @@
 					$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
 				});
 				/***************/
-				
-				
-				
-				
-				
-				/**
-				//add horizontal scrollbars to a simple table
-				$('#simple-table').css({'width':'2000px', 'max-width': 'none'}).wrap('<div style="width: 1000px;" />').parent().ace_scroll(
-				  {
-					horizontal: true,
-					styleClass: 'scroll-top scroll-dark scroll-visible',//show the scrollbars on top(default is bottom)
-					size: 2000,
-					mouseWheelLock: true
-				  }
-				).css('padding-top', '12px');
-				*/
-			
 			
 			})
 		</script>
