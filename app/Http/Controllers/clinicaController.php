@@ -19,7 +19,7 @@ class clinicaController extends Controller
      */
     public function index()
     {
-        //$clinicas = TACLINICA::all();
+
 
         $clinicas =DB::select('SELECT * FROM TA_CLINICA WHERE TA_CLINICA.cln_activo = "1"');
         $data = array();
@@ -27,10 +27,6 @@ class clinicaController extends Controller
         foreach ($clinicas as $clinica){
             array_push($data,json_decode(json_encode($clinica), true));
         }
-        /*
-        foreach ($clinicas as $clinica) {
-            array_push($data,$clinica['attributes']);
-        }*/
 
         echo json_encode($data);
     }

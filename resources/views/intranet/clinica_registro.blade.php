@@ -337,19 +337,16 @@
     $("#botonAccion").on('click', function (e) {
         if (action == "ADD") {
             var i = data_set_clinica.length;
-            alert("antes del ajax");
             $.ajax({
                 type: "POST",
                 url: 'service_clinica',
                 beforeSend: function (xhr) {
                     var token = $('meta[name="csrf_token"]').attr('content');
 
-                    alert("prueba antes del token");
                     if (token) {
-                        alert("luego del if")
+
                         return xhr.setRequestHeader('X-CSRF-TOKEN', token);
                     }
-                    alert("prueba despues del token");
                 },
                 data: {
                     cln_nombre: $("#cln_nombre").val(),
@@ -390,19 +387,15 @@
 
         }
         if (action == "UPDATE") {
-            alert("prueba update");
             $.ajax({
                 type: "PATCH",
                 url: 'service_clinica/' + data_set_clinica[editid][0],
                 beforeSend: function (xhr) {
-                    alert("prueba al inicio");
                     var token = $('meta[name="csrf_token"]').attr('content');
-                    alert("prueba antes del if");
                     if (token) {
-                        alert("prueba antes del return");
+
                         return xhr.setRequestHeader('X-CSRF-TOKEN', token);
                     }
-                    alert("prueba antes de data");
                 },
                 data: {
                     cln_nombre: $("#cln_nombre").val(),
@@ -419,7 +412,7 @@
                     cln_activo: '1'
                 },
                 success: function (Response) {
-                    alert("Exito");
+
                     data_set_clinica[editid][1] = $("#cln_nombre").val();
                     data_set_clinica[editid][2] = $("#cln_telefono").val();
                     data_set_clinica[editid][3] = $("#cln_email").val();
@@ -444,7 +437,6 @@
 
         action="DELETE";
         editid=parseInt(id);
-        alert(id+" "+data_set_clinica[editid][0]);
         $.ajax({
             type: "PATCH",
             url: 'service_clinica/' + data_set_clinica[editid][0],
@@ -470,7 +462,7 @@
             },
             success: function(Response) {
                 tablaClinicas.rows(id).remove().draw();
-                alert(Response);
+                alert("Se eliminó el registro correctamente");
             }
 
         });
@@ -501,7 +493,7 @@
 
                     "aoColumns": [
                         null, null, null, null, null, null, null,null,null,null,null,null,
-                        null,null
+                        {"visible":false},{"bSortable":false}
                     ],
                     "aaSorting": [],
                     select: {
