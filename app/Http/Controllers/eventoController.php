@@ -18,7 +18,7 @@ class eventoController extends Controller
      */
     public function index()
     {
-        $eventos = TAEVENTO::all();
+        $eventos =DB::select('SELECT * FROM TA_EVENTO WHERE TA_EVENTO.visible = 1');
         $data = array();
 
         foreach ($eventos as $evento){
@@ -52,8 +52,8 @@ class eventoController extends Controller
             $to_directory = null;
             if ($image != 'null') {
                 $path = public_path();
-                $to_directory = $path . '/assets/images/eventos/';// . $image->getClientOriginalName();
-                $image->move($to_directory, $image->getClientOriginalName());
+                $to_directory = '/assets/images/eventos/';// . $image->getClientOriginalName();
+                $image->move($path.$to_directory, $image->getClientOriginalName());
                 $to_directory = $to_directory . $image->getClientOriginalName();
             }
             //move_uploaded_file($_FILES['file']['tmp_name'], $to_directory);
@@ -78,8 +78,8 @@ class eventoController extends Controller
             //var_dump($image);
             if($image != 'null') {
                 $path = public_path();
-                $to_directory = $path . '/assets/images/eventos/';// . $image->getClientOriginalName();
-                $image->move($to_directory, $image->getClientOriginalName());
+                $to_directory = '/assets/images/eventos/';// . $image->getClientOriginalName();
+                $image->move($path.$to_directory, $image->getClientOriginalName());
                 $to_directory = $to_directory.$image->getClientOriginalName();
             }
 

@@ -167,7 +167,6 @@
                             <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Imagen </label>
                             <div class="col-sm-6 col-xs-6">
                                 <input type="file" id="imagen" value="" />
-                                <!--<img src="" id="image_view"/>-->
                             </div>
                         </div>
 
@@ -281,14 +280,6 @@
 
         /* initialize the calendar
          -----------------------------------------------------------------*/
-
-        var date = new Date();
-        var d = date.getDate();
-        var m = date.getMonth();
-        var y = date.getFullYear();
-
-
-
         var calendar = $('#calendar').fullCalendar({
             //isRTL: true,
             //firstDay: 1,// >> change first day of week
@@ -309,37 +300,18 @@
                 error:function(){
                     alert("Error al cargar la agenda");
                 }
-            },nowIndicator:true, /*[
-                {
-                    title: 'All Day Event',
-                    start: new Date(y, m, 1),
-                    className: 'label-important'
-                },
-                {
-                    title: 'Long Event',
-                    start: moment().subtract(5, 'days').format('YYYY-MM-DD'),
-                    end: moment().subtract(1, 'days').format('YYYY-MM-DD'),
-                    className: 'label-success'
-                },
-                {
-                    title: 'Some Event',
-                    start: new Date(y, m, d-3, 16, 0),
-                    allDay: false,
-                    className: 'label-info'
-                }
-            ]
-            ,*/
-
+            },nowIndicator:true,
             eventResize: function(event, revertFunc) {
                 if (!confirm("La fecha de fin del evento " + event.title + " cambiará a " + moment(event._end).format('DD/MM/YYYY h:mm A') + " ¿Está seguro?")) {
                     revertFunc();
-                }else{ //update date TODO
+                } else { //update date TODO
                     action = "UPDATE";
                     action_calendar = "YES";
                     click_botonSubmit(event);//event.id,0,event._end.format("YYYY-MM-DD H:mm"));
                 }
                 calendar.fullCalendar('unselect');
-		}, eventDrop: function(event,revertFunc) {
+            },
+            eventDrop: function(event,revertFunc) {
 
                 if (!confirm("El evento " + event.title + " cambiará su fecha de inicio a " + moment(event._start).format('DD/MM/YYYY h:mm A') +  " y su fecha de fin a " + moment(event._end).format('DD/MM/YYYY h:mm A') + " ¿Está seguro?")) {
                     revertFunc();
@@ -360,6 +332,8 @@
                 $("#modal_evento").find('input, textarea').val('').end();
                 $('#imagen').ace_file_input('reset_input');
                 document.getElementById("enWeb").checked=true;
+                $("span img[class='middle']").remove();
+                $("span[class='ace-file-name']").html('<i class=" ace-icon ace-icon fa fa-picture-o">');
                 $("#modal_evento").modal();
 
                 $('input[name=date-range-picker]').daterangepicker({ //Date range picker
@@ -379,25 +353,6 @@
                 }).prev().on(ace.click_event, function(){
                     $(this).next().focus();
                 });
-
-                //document.getElementById("#botonDanger").innerHTML = 'Cancelar';
-
-             /*bootbox.prompt("New Event Title:", function(title) {
-             if (title !== null) {
-             calendar.fullCalendar('renderEvent',
-             {
-             title: title,
-             start: start,
-             end: end,
-             allDay: allDay,
-             className: 'label-info'
-             },
-             true // make the event "stick"
-             );
-             }
-             });*/
-
-
              calendar.fullCalendar('unselect');
             },
             eventClick: function(calEvent, jsEvent, view) {
@@ -412,9 +367,11 @@
 
         });
 
+
+
         $('#id-input-file-1 , #id-input-file-2, #imagen').ace_file_input({
             no_file:'',
-            btn_choose:'Drop images here or click to choose',
+            btn_choose:'Drop images or select',
             btn_change: null,
             style:'well',
             droppable:false,
@@ -422,10 +379,6 @@
             no_icon: "ace-icon fa fa-picture-o",
             thumbnail: 'large', //| small
             'allowExt': ['jpg', 'jpeg', 'png', 'img']
-            //whitelist:'gif|png|jpg|jpeg',
-            //blacklist:'exe|php'
-            //onchange:''
-            //
         });
 
         $('#imagen').ace_file_input('enable_reset', true);
@@ -650,6 +603,8 @@
         $("#modal_evento").find('input, textarea').val('').end();
         document.getElementById("enWeb").checked = true;
         $('#imagen').ace_file_input('reset_input');
+        $("span img[class='middle']").remove();
+        $("span[class='ace-file-name']").html('<i class=" ace-icon ace-icon fa fa-picture-o">');
         $("#modal_evento").modal();
     };
 
@@ -709,17 +664,29 @@
         });
     });
 
-    function loadImage(path, width, height, target) {
-        /*$('<img src="'+ path +'">').load(function() {
-            $(this).width(width).height(height).appendTo(target);
-        });*/
+    $('#modal_evento').on('hidden.bs.modal', function () {
+        $('#imagen').ace_file_input('reset_input');
+    })
 
+    function loadImage(image) { //Para cargar la imagen en el modal
+        if(image) {
+            var loc = window.location.pathname;
+            var dir = loc.substring(0, loc.lastIndexOf('/'));
+            var image_name = image.substr(image.lastIndexOf("/") + 1); //nombre de la imagen
+            $("span[class='ace-file-container']").removeAttr("data-title");
+            $("span[class='ace-file-container']").addClass("hide-placeholder selected");
+            $("span[class='ace-file-name']").attr('data-title', image_name);
+            $("span[class='ace-file-name']").html("<img class='middle' style='background-image:url(" + dir + image + ");width:150px; heigth:150px;' src='" + dir + image + "'/>");
+            $("span[class='ace-file-name']").addClass("large");
+        }else{
+            $("span img[class='middle']").remove();
+            $("span[class='ace-file-name']").html('<i class=" ace-icon ace-icon fa fa-picture-o">');
+        }
     }
 
     function viewEvent(id, start, end, title, descrip, link, act, image) { //Falta agregar imagen
 
-        $("#image_view").attr('src', "file:///"+ image);
-
+        loadImage(image);
         $("#id_evento").val(id);
         $("#titulo").val(title);
         $("#descripcion").val(descrip);
@@ -758,6 +725,7 @@
                 jQuery.parseJSON(result);
             }
         });
+
     });
 
 
