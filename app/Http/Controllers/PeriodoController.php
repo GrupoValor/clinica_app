@@ -21,22 +21,32 @@ class PeriodoController extends Controller {
 		//Verificar si el usuario tiene permisos para visualizar esta pantalla
 		$usuario = $request->session()->get('user');
 		if (empty($usuario)) {
-			Log::info('Se intento entrar a la pagina de busqueda de mantenimiento rubricas sin haber iniciado sesion. Se le mando a la pagina de inicio de sesion de la intranet.');
+			Log::info('Se intento entrar a la pagina de busqueda del mantenimiento de rubricas sin haber iniciado sesion. Se le mando a la pagina de inicio de sesion de la intranet.');
 			return view('login.login');
 		}
 		if ($usuario['rol'] != 1 && $usuario['rol'] != 4) {
-			Log::warning('El usuario con id ' . $usuario['userid'] . ' intento acceder a la pagina de mantenimiento de rubricas sin tener los permisos requeridos. Se le mando una respuesta HTTP 403.');
+			Log::warning('El usuario con id ' . $usuario['userid'] . ' intento acceder a la pagina de busqueda del mantenimiento de rubricas sin tener los permisos requeridos. Se le mando una respuesta HTTP 403.');
 			return abort(403);
 		}
 
 		//Extraer cursos según clínica
-		$db_cursos = TaCurso::where('cln_id', 1)->get()->toArray();
+		$db_cursos = TaCurso::where('cln_id', 1)->get();
+		if (empty($db_cursos)) {
+			Log::info('El usuario con id ' . $usuario['userid'] . 'intento acceder a la pagina de busqueda del mantenimiento de rubricas, pero la clinica donde labora no tiene cursos registrados.');
+			return view('intranet.ta_error', ['tipo' => 'rubricas', 'faltante' => 'curso']);
+		}
+		$db_cursos = $db_cursos->toArray();
 		$cur_id = array_map(function($o) { return $o['cur_id']; }, $db_cursos);
 		$cur_nombre = array_map(function($o) { return "[" . $o['cur_codigo'] . "] " . $o['cur_descrip']; }, $db_cursos);
 		$cursos = array_combine($cur_id, $cur_nombre);
 
 		//Extraer ciclos según clínica
-		$db_ciclos = TaCiclo::where('cln_id', 1)->get()->toArray();
+		$db_ciclos = TaCiclo::where('cln_id', 1)->get();
+		if (empty($db_ciclos)) {
+			Log::info('El usuario con id ' . $usuario['userid'] . 'intento acceder a la pagina de busqueda del mantenimiento de rubricas, pero la clinica donde labora no tiene ciclos registrados.');
+			return view('intranet.ta_error', ['tipo' => 'rubricas', 'faltante' => 'ciclo']);
+		}
+		$db_ciclos = $db_ciclos->toArray();
 		$cic_id = array_map(function($o) { return $o['cic_id']; }, $db_ciclos);
 		$cic_nombre = array_map(function($o) { return $o['cic_nombre']; }, $db_ciclos);
 		$ciclos = array_combine($cic_id, $cic_nombre);
@@ -134,7 +144,7 @@ class PeriodoController extends Controller {
 		if ($usuario['rol'] != 1 && $usuario['rol'] != 4)
 		{
 			Log::warning('El usuario con id ' . $usuario['userid'] . ' intento acceder a la pagina de mantenimiento de rubricas sin tener los permisos requeridos. Se le mando una respuesta HTTP 403.');
-			return abort(403);
+			return abort(403);	
 		}
 
 		//Para cada rúbrica borrar sus rubros
