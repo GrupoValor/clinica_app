@@ -29,7 +29,7 @@ function initMap(){
 
         var direccion = new google.maps.LatLng(lista[0],lista[1]);
         marcador = new google.maps.Marker({
-            icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+            icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
             position: direccion,
             map: mapa,
             animation: google.maps.Animation.DROP,
@@ -152,7 +152,7 @@ function listar(){
                 var color_marca;
                 switch(marca.estado){
                     case "registrada":
-                        color_marca = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
+                        color_marca = "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
                         break;
                     case "espera":
                         color_marca = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
@@ -161,7 +161,7 @@ function listar(){
                         color_marca = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
                         break;
                     case "vencida":
-                        color_marca = "http://maps.google.com/mapfiles/marker_grey.png";
+                        color_marca = "http://maps.google.com/mapfiles/ms/icons/purple-dot.png";
                         break;
                 }
                 marca.setIcon(color_marca);
@@ -198,9 +198,10 @@ $(document).on('ready',function(){
     $('#boton-cambia-estado').on("click", function(){ //del modal
         estado_alerta = $('input[name=radio]:checked', '#lista_estados').val();
         var color_marca;
+
         switch(estado_alerta){
             case "registrada":
-                color_marca = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
+                color_marca = "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
                 break;
             case "espera":
                 color_marca = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
@@ -209,7 +210,7 @@ $(document).on('ready',function(){
                 color_marca = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
                 break;
             case "vencida":
-                color_marca = "http://maps.google.com/mapfiles/marker_grey.png";
+                color_marca = "http://maps.google.com/mapfiles/ms/icons/purple-dot.png";
                 break;
         }
         

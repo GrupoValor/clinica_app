@@ -234,7 +234,7 @@
           </div>
           <div class="modal-body">
             <form id="lista_estados">
-              <input type="radio" name="radio" value="registrada">Registrada<br>
+              <input type="radio" name="radio" value="registrada" class="hide"><!--Registrada<br>-->
               <input type="radio" name="radio" value="espera">En espera<br>
               <input type="radio" name="radio" value="finalizada">Finalizada<br>
               <input type="radio" name="radio" value="vencida">Vencida<br>
