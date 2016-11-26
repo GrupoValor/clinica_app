@@ -17,7 +17,8 @@ class TAEVENTO extends Eloquent
     public $timestamps = false;
 
     protected $casts = [
-        'active' => 'int'
+        'active' => 'int',
+        'visible' => 'int'
     ];
 
     protected $fillable = [
@@ -27,6 +28,8 @@ class TAEVENTO extends Eloquent
         'description',
         'image',
         'active',
-        'link'
+        'link',
+        'visible',
+        'dateModify'
     ];
 }

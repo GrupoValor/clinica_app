@@ -47,34 +47,65 @@ class eventoController extends Controller
      */
     public function store(Request $request)
     {
-        //var_dump($_POST);
-        /*$to_directory = './assets/images/' . $_FILES['file']['name'];
-        move_uploaded_file($_FILES['file']['tmp_name'], $to_directory);
-*/
-        $encoded_image = null;
-        if(!emptyArray($_FILES))
-            $encoded_image= base64_encode($_FILES['file']['tmp_name']);
+        if($request['eve_id'] == 'NO_ID') {
+            $image = $request['file'];
+            $to_directory = null;
+            if ($image != 'null') {
+                $path = public_path();
+                $to_directory = $path . '/assets/images/eventos/';// . $image->getClientOriginalName();
+                $image->move($to_directory, $image->getClientOriginalName());
+                $to_directory = $to_directory . $image->getClientOriginalName();
+            }
+            //move_uploaded_file($_FILES['file']['tmp_name'], $to_directory);
 
+            $evento = TAEVENTO::create(
+                ['title' => $request['eve_titulo'],
+                    'start' => $request['eve_fechaIn'],
+                    'end' => $request['eve_fechaFin'],
+                    'description' => $request['eve_descr'],
+                    'image' => $to_directory,
+                    'active' => $request['eve_activo'],
+                    'link' => $request['eve_link'],
+                    'visible' => 1,
+                    'dateModify' => date('Y/m/d H:i:s'),
+                ]);
+            $evento->save();
+            echo "Nuevo evento registrado";
+        }else{
+            //var_dump($request['file']);
+            $image = $request['file'];
+            $to_directory = null;
+            //var_dump($image);
+            if($image != 'null') {
+                $path = public_path();
+                $to_directory = $path . '/assets/images/eventos/';// . $image->getClientOriginalName();
+                $image->move($to_directory, $image->getClientOriginalName());
+                $to_directory = $to_directory.$image->getClientOriginalName();
+            }
 
-        $evento = TAEVENTO::create([
-          'title' => $_POST['eve_titulo'],
-          'start' => $_POST['eve_fechaIn'],
-          'end' => $_POST['eve_fechaFin'],
-          'description' => $_POST['eve_descr'],
-          'image' => $encoded_image,//$to_directory,
-          'active' => $_POST['eve_activo'],
-          'link' => $_POST['eve_link']
-        ]);
-        $evento->save();
+            //dd($request->all());
+            DB::update('UPDATE TA_EVENTO set
+            title = :titulo ,
+            start = :fecha_ini ,
+            end = :fecha_fin ,
+            description = :descrip ,
+            image = :imag ,
+            active = :act,
+            link = :ruta,
+            dateModify = :modi
+            where id = :id_eve',
+                ['titulo' => $request['eve_titulo'],
+                    'fecha_ini' => $request['eve_fechaIn'],
+                    'fecha_fin' => $request['eve_fechaFin'],
+                    'descrip' => $request['eve_descr'],
+                    'imag' => $to_directory,
+                    'act' => $request['eve_activo'],
+                    'ruta' => $request['eve_link'],
+                    'modi' => date('Y/m/d H:i:s'),
+                    'id_eve' => $request['eve_id']]);
 
-       /* $id_evento =DB::select('SELECT MAX(id) as id FROM ta_evento');
-        $data = array();
-        array_push($data,json_decode(json_encode($id_evento[0]), true));
-        $eve_id = $data[0]['id'];
-        var_dump($image);
-        DB::update("UPDATE ta_evento SET image='$image' WHERE id='$eve_id'");*/
-
-        echo "Nuevo evento registrado";
+            echo "Registro actualizado correctamente" ;
+        }
     }
 
     /**
@@ -108,10 +139,18 @@ class eventoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $encoded_image = null;
-        if(!emptyArray($_FILES))
-            $encoded_image= base64_encode($_FILES['file']['tmp_name']);
+        /*$image = $request['file'];
+        $to_directory = null;
+        var_dump($image);
+        if($image != null) {
+            var_dump($image);
+            $path = public_path();
+            $to_directory = $path . '/assets/images/eventos/';// . $image->getClientOriginalName();
+            $image->move($to_directory, $image->getClientOriginalName());
+            $to_directory = $to_directory.$image->getClientOriginalName();
+        }
 
+        //dd($request->all());
         DB::update('UPDATE TA_EVENTO set
             title = :titulo ,
             start = :fecha_ini ,
@@ -119,18 +158,20 @@ class eventoController extends Controller
             description = :descrip ,
             image = :imag ,
             active = :act,
-            link = :ruta
+            link = :ruta,
+            dateModify = :modi
             where id = :id_eve',
             ['titulo' => $request['eve_titulo'],
                 'fecha_ini' => $request['eve_fechaIn'],
                 'fecha_fin' => $request['eve_fechaFin'],
                 'descrip' => $request['eve_descr'],
-                'imag' => $encoded_image,
+                'imag' => $to_directory,
                 'act' => $request['eve_activo'],
                 'ruta' => $request['eve_link'],
+                'modi' => date('Y/m/d H:i:s'),
                 'id_eve' => $id]);
+*/
 
-        echo "Registro actualizado correctamente" ;
     }
 
     /**
@@ -141,9 +182,16 @@ class eventoController extends Controller
      */
     public function destroy($id)
     {
+        DB::update('UPDATE TA_EVENTO set
+            visible = :flag
+            where id = :id_eve',
+            ['flag' => 0, 'id_eve' => $id]);
+        echo "Registro eliminado correctamente" ;
+        /*
         DB::delete('DELETE FROM TA_EVENTO 
             where id = :id_eve',
             ['id_eve' => $id]);
         echo "Registro eliminado correctamente" ;
+        */
     }
 }

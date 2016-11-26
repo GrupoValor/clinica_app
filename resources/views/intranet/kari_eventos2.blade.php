@@ -167,6 +167,7 @@
                             <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Imagen </label>
                             <div class="col-sm-6 col-xs-6">
                                 <input type="file" id="imagen" value="" />
+                                <!--<img src="" id="image_view"/>-->
                             </div>
                         </div>
 
@@ -405,57 +406,8 @@
                 //$("#botonNuevo").click(action);
                 document.getElementById("botonSubmit").innerHTML = 'Actualizar';
                 document.getElementById("botonDanger").innerHTML = 'Eliminar';
+                viewEvent(calEvent._id, calEvent._start, calEvent._end, calEvent.title, calEvent.description, calEvent.link, calEvent.active, calEvent.image);
                 $("#modal_evento").modal();
-                viewEvent(calEvent._id, calEvent._start, calEvent._end, calEvent.title, calEvent.description, calEvent.link, calEvent.active);
-             /*//display a modal
-             var modal =
-             '<div class="modal fade">\
-             <div class="modal-dialog">\
-             <div class="modal-content">\
-             <div class="modal-body">\
-             <button type="button" class="close" data-dismiss="modal" style="margin-top:-10px;">&times;</button>\
-             <form class="no-margin">\
-             <label>Change event name &nbsp;</label>\
-             <input class="middle" autocomplete="off" type="text" value="' + calEvent.title + '" />\
-             <button type="submit" class="btn btn-sm btn-success"><i class="ace-icon fa fa-check"></i> Save</button>\
-             </form>\
-             </div>\
-             <div class="modal-footer">\
-             <button type="button" class="btn btn-sm btn-danger" data-action="delete"><i class="ace-icon fa fa-trash-o"></i> Delete Event</button>\
-             <button type="button" class="btn btn-sm" data-dismiss="modal"><i class="ace-icon fa fa-times"></i> Cancel</button>\
-             </div>\
-             </div>\
-             </div>\
-             </div>';
-
-
-             var modal = $(modal).appendTo('body');
-             modal.find('form').on('submit', function(ev){
-             ev.preventDefault();
-
-             calEvent.title = $(this).find("input[type=text]").val();
-             calendar.fullCalendar('updateEvent', calEvent);
-             modal.modal("hide");
-             });
-             modal.find('button[data-action=delete]').on('click', function() {
-             calendar.fullCalendar('removeEvents' , function(ev){
-             return (ev._id == calEvent._id);
-             })
-             modal.modal("hide");
-             });
-
-             modal.modal('show').on('hidden', function(){
-             modal.remove();
-             });
-
-
-             //console.log(calEvent.id);
-             //console.log(jsEvent);
-             //console.log(view);
-
-             // change the border color just for fun
-             //$(this).css('border-color', 'red');*/
-
              }
 
         });
@@ -566,6 +518,7 @@
             }else act=0;
 
             var form_data = new FormData();
+            form_data.append('eve_id', "NO_ID");
             form_data.append('eve_titulo', $("#titulo").val());
             form_data.append('eve_fechaIn', fecha_ini);
             form_data.append('eve_fechaFin', fecha_fin);
@@ -598,7 +551,7 @@
             });
             $('#modal_evento').modal('toggle');
         }else if(action=="UPDATE"){
-            alert("Edit an event");
+            console.log("ss");
             var id_eve;
             var titulo;
             var descrip;
@@ -608,7 +561,7 @@
             var link;
             var enweb;
 
-            //Del calendario
+            //Del calendario drop y change dates
             if(action_calendar=="YES") {
                 id_eve = evento._id;
                 titulo = evento.title;
@@ -620,7 +573,6 @@
                 enweb = evento.active;
                 action_calendar = "NO";
             }else{
-                alert("For modal Edit");
                 id_eve = $("#id_evento").val();
                 titulo = $("#titulo").val();
                 descrip = $("#descripcion").val();
@@ -638,29 +590,33 @@
                 link = $("#link").val();
                 $('#modal_evento').modal('toggle');
             }
-            alert("hi form data");
-            /*var form_data = new FormData();
+
+
+            var form_data = new FormData();
+            form_data.append('eve_id', id_eve);
             form_data.append('eve_titulo', titulo);
             form_data.append('eve_fechaIn', fecha_ini);
             form_data.append('eve_fechaFin', fecha_fin);
             form_data.append('eve_descr', descrip);
             form_data.append('file', imagen);
             form_data.append('eve_activo', enweb);
-            form_data.append('eve_link', link);*/
-            alert("hi ajax");
+            form_data.append('eve_link', link);
+
             $.ajax({
-               // enctype: "multipart/form-data",
-                type: "PATCH",
-                url: 'service_evento/' + id_eve,
+                enctype: "multipart/form-data",
+                type: "POST",
+                url: 'service_evento',
                 beforeSend: function(xhr) {
-                    alert("hi token before");
                     var token = $('meta[name="csrf_token"]').attr('content');
                     if (token) {
                         return xhr.setRequestHeader('X-CSRF-TOKEN', token);
                     }
                 },
-                data: //form_data,
-                {
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                /*{
                     eve_titulo : titulo,
                     eve_fechaIn :fecha_ini,
                     eve_fechaFin : fecha_fin,
@@ -668,9 +624,9 @@
                     file : imagen,
                     eve_activo :enweb,
                     eve_link: link
-                },
+                },*/
                 success: function(Response) {
-                    alert("successs");
+                    $('#calendar').fullCalendar( 'refetchEvents' );
                     alert(Response);
                 },
                 error: function(e){
@@ -682,8 +638,8 @@
     }
 
     $("#form_evento").submit(function(event) {
-        click_botonSubmit(0);
         event.preventDefault();
+        click_botonSubmit(0);
     });
 
     function click_botonNuevo(){//$("#botonNuevo").on("click",function(action){
@@ -753,8 +709,17 @@
         });
     });
 
-    function viewEvent(id, start, end, title, descrip, link, act) { //Falta agregar imagen
-        //end.setDate(end.getDate()-1);
+    function loadImage(path, width, height, target) {
+        /*$('<img src="'+ path +'">').load(function() {
+            $(this).width(width).height(height).appendTo(target);
+        });*/
+
+    }
+
+    function viewEvent(id, start, end, title, descrip, link, act, image) { //Falta agregar imagen
+
+        $("#image_view").attr('src', "file:///"+ image);
+
         $("#id_evento").val(id);
         $("#titulo").val(title);
         $("#descripcion").val(descrip);
