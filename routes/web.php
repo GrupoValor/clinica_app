@@ -140,7 +140,7 @@ Route::get('mantenimiento2', function () {
 
 //gestor de contenidos
 Route::get('/eventos', function () {
-    return view('intranet/gestor_eventos');
+    return view('intranet/kari_eventos2');
 });
 Route::get('/noticias_registro', function () {
     return view('intranet/gestor_noticias_registro');
