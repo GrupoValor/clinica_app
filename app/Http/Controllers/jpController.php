@@ -10,7 +10,7 @@ use App\Models\TAEVALUADOR;
 
 use Illuminate\Support\Facades\DB;
 
-use App\Classes\Encrypter;
+use App\Models\Encrypter;
 
 class jpController extends Controller
 {
