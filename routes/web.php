@@ -12,7 +12,8 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+	return view('web/indexWeb');
 });
 
 
@@ -173,10 +174,75 @@ Route::get('/error-500', function () {
 
 //WEB
 Route::get('/log', 'logController@get');
+
+//Pagina web
+Route::get('/inicio', function () {
+    return view('web/indexWeb');
+});
+//web eventos
+Route::get('/eventos', function () {
+    return view('web/eventos');
+});
+//web mapa
+Route::get('/mapaweb', function () {
+    return view('web/mapaweb');
+});
+//web nosotros
+Route::get('/nosotros', function () {
+    return view('web/nosotros');
+});
+//web noticias
+Route::get('/noticias', function () {
+    return view('web/noticias');
+});
+//web plantillaEvento
+Route::get('/web/plantillaEvento', function () {
+    return view('web/plantillaEvento');
+});
+//web plantillaNoticia
+Route::get('/web/plantillaNoticia', function () {
+    return view('web/plantillaNoticia');
+});
+
+
 //mapa
 Route::get('/mapa_web', function () {
     return view('web/mapa');
 });
+//web inicio
+Route::get('/web/inicio', function () {
+    return view('web/indexWeb');
+});
+//web eventos
+Route::get('/web/eventos', function () {
+    return view('web/eventos');
+});
+//web mapa
+Route::get('/web/mapaweb', function () {
+    return view('web/mapaweb');
+});
+//web nosotros
+Route::get('/web/nosotros', function () {
+    return view('web/nosotros');
+});
+//web noticias
+Route::get('/web/noticias', function () {
+    return view('web/noticias');
+});
+//web plantillaEvento
+Route::get('/web/plantillaEvento', function () {
+    return view('web/plantillaEvento');
+});
+//web plantillaNoticia
+Route::get('/web/plantillaNoticia', function () {
+    return view('web/plantillaNoticia');
+});
+
+//web pop-up-clinica
+Route::get('/web/pop-up-clinica', function () {
+    return view('web/pop-up-clinica');
+});
+
 
 Route::resource('service_alumno','alumnoController');
 Route::resource('service_jp','jpController');
