@@ -36,7 +36,18 @@
                         <h1> Alumno </h1>
                     </div>
                     <div class="row">
+                        <div class="space-4"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 col-xs-3  control-label no-padding-right" for="form-field-3"> Tipo </label>
+                            <div class="col-sm-9 col-xs-9">
+                                <select id="alu_volunta" class="col-xs-5 col-sm-7">
+                                    <option value="" disabled selected style="display:none;">*obligatorio</option>
+                                    <option value="0">Alumno</option>
+                                    <option value="1">Voluntario</option>                                                 
+                                </select>
 
+                            </div>
+                        </div>
                         <div class="space-4"></div>
                         <div class="form-group">
                             <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-3"> Nombre </label>
@@ -143,7 +154,11 @@
         //alert("mostareaas");
         if (action_alu == "ADD") {
             i = dataset_alu.length;
-            var tipo = "SI";
+             var tipo = "NO";
+            if($('#alu_volunta').val()=="1"){
+                 tipo = "SI";
+            }
+           
             //validaciones            
             $.ajax({
                 type: "POST",
@@ -155,7 +170,7 @@
                     }
                 },
                 data: {
-
+                    alu_volunt: $('#alu_volunta').val(),
                     alu_nombre: $('#alu_nombre').val(),
                     alu_nrodoc: $("#alu_nrodoc").val(),
                     alu_codpuc: $('#alu_codpucp').val(),
@@ -181,6 +196,11 @@
 
         }
         if (action_alu == "UPDATE") {
+            var tipo = "NO";
+            if($('#alu_volunta').val()=="1"){
+                 tipo = "SI";
+            }
+           
             //guardar cambios
             $.ajax({
                 type: "PATCH",
@@ -193,6 +213,7 @@
                     }
                 },
                 data: {
+                    alu_volunt: $('#alu_volunta').val(),
                     alu_nombre: $('#alu_nombre').val(),
                     alu_nrodoc: $("#alu_nrodoc").val(),
                     alu_codpuc: $('#alu_codpucp').val(),
@@ -203,7 +224,7 @@
                     dataset_alu[edit_id_alu][2] = $("#alu_codpucp").val();
                     dataset_alu[edit_id_alu][3] = $("#alu_nrodoc").val();
                     dataset_alu[edit_id_alu][4] = $("#alu_correo").val();
-
+                    dataset_alu[edit_id_alu][5] = tipo;
                     table_Alu.clear().rows.add(dataset_alu).draw();
 
                     alert(Response);
@@ -255,7 +276,10 @@
         $("#alu_codpucp").val(dataset_alu[edit_id_alu][2] + "");
         $("#alu_nrodoc").val(dataset_alu[edit_id_alu][3] + "");
         $("#alu_correo").val(dataset_alu[id][4] + "");
-        
+        var tipoint = 0;
+        if (dataset_alu[id][5] == "SI")
+            tipoint = 1
+        $("#alu_volunta").val(tipoint);
         $("#alu_codpucp").attr('pattern', '.{8}');
         $("#alu_codpucp").attr('title', 'Tiene que tener 8 dígitos');
         

@@ -87,7 +87,7 @@ class alumnoController extends Controller
 									'alu_nrodoc' => $request['alu_nrodoc'],
 									'alu_codpuc' => $request['alu_codpuc'],
 									'alu_correo' => $request['alu_correo'],
-									'alu_volunt' => 0
+									'alu_volunt' => $request['alu_volunt']
 									]);
 		$alumno->save();
 		
@@ -132,6 +132,7 @@ class alumnoController extends Controller
     public function update(Request $request, $id)
     {
         DB::update('UPDATE TA_ALUMNO set 
+            alu_volunt = :volunt ,
             alu_nombre = :nombre ,
 			alu_nrodoc = :nrodoc ,
             alu_codpuc = :codpuc ,
@@ -139,7 +140,9 @@ class alumnoController extends Controller
         
         
             where alu_id = :id',
-            ['nombre' => $request['alu_nombre'],
+            [
+            'volunt' => $request['alu_volunt'],
+            'nombre' => $request['alu_nombre'],
             'nrodoc' => $request['alu_nrodoc'],
             'codpuc' => $request['alu_codpuc'],
             'correo' => $request['alu_correo'],

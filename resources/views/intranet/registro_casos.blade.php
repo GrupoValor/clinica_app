@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/png" href="icon/valor.png" />
     <meta name="csrf_token" content="{{ csrf_token() }}"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta charset="utf-8"/>
@@ -420,6 +421,8 @@
                     success: function (Response) {
 
                         alert(Response);
+
+                        window.location.replace("casos_busqueda");
                     }
                 });
             }
