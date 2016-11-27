@@ -101,7 +101,7 @@ partir [&hellip;]" />
 			<div class="row logos">
 				<div class="col-sm-6 line-height-0">
 					<h1>
-						<a href="indexWeb" class="logo-pucp" alt="Clínica Juridica " title="Pontificia Universidad Católica del Perú"></a>
+						<a href="inicio" class="logo-pucp" alt="Clínica Juridica " title="Pontificia Universidad Católica del Perú"></a>
 					</h1>
 				</div>
 				
