@@ -118,7 +118,7 @@
                        if (data.rol == '1'){
                         $('#myOptions').html('<option selected="selected" disabled selected value="0" > -- Select an option -- </option>'+
                                 '<option value="1">Profesor</option>'+
-                                '<option value="2">Jefe de práctica</option>'+
+                                '<option value="2">Adjunto</option>'+
                                 '<option value="3">Alumno</option>'+
                                 '<option value="4">Cliente</option>')
                         }
@@ -129,7 +129,7 @@
                         }
                         if (data.rol == '4'){
                         $('#myOptions').html('<option selected="selected" disabled selected value="0" > -- Select an option -- </option>'+
-                            '<option value="2">Jefe de práctica</option>'+
+                            '<option value="2">Adjunto</option>'+
                             '<option value="3">Alumno</option>'+
                             '<option value="4">Cliente</option>')
                         }

@@ -4,7 +4,7 @@
     <meta name="csrf_token" content="{{ csrf_token() }}" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Intranet | Mantenimientos - Jefe de Practica</title>
+		<title>Intranet | Mantenimientos - Adjunto</title>
 
 		<meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -45,14 +45,14 @@
 							<li>
 								Mantenimientos
 							</li>
-							<li class="active">Jefe de Práctica</li>
+							<li class="active">Adjunto</li>
 						</ul>
 					</div>
 
 					<div class="page-content">
 						<div class="page-header"><!-- /.page-header -->
 							<h1 id = "mytitulo" >
-								Mantenimiento de Jefe de Práctica
+								Mantenimiento de Adjunto
 								<button type="button" class="btn btn-primary" style="float: right;margin-top: -8px;" onclick="add_onClick()" >Nuevo +</button>
 							</h1>
 
@@ -68,7 +68,7 @@
                                         <tr>
                                         	<th>ID</th>
                                             <th>Nombre</th>
-                                            <th>Codigo Pucp</th>
+                                            <th>Código</th>
                                             <th>Correo</th>
                                             <th>Modificar</th>
                                         </tr>
@@ -104,7 +104,7 @@
                             </div>
                             <!-- Modal content-->
                             	<div class="page-header"><!-- /.page-header -->
-							<h1 >  Jefe de Práctica </h1>
+							<h1 >  Adjunto </h1>
 
 							<form class="form-horizontal" role="form" style="padding-left: 66px;">
                                     <div class="space-20" ></div>
@@ -125,7 +125,7 @@
                                     
 
                                     <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > codigo Pucp </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > Codigo </label>
 
 										<div class="col-sm-9">
 											<input id="dir_codpucp" type="text"   class="col-xs-5 col-sm-7"  />

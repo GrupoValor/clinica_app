@@ -60,7 +60,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> N° documento </label>
                             <div class="col-sm-9 col-xs-9">
-                                <input id="cli_nrodoc" type="text" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/>
+                                <input id="cli_nrodoc" type="text" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" class="col-xs-5 col-sm-7"/>
                             </div>
                         </div>
                         <div class="space-4"></div>
@@ -233,7 +233,6 @@
         document.getElementById("cli_nombre").required = true;
         document.getElementById("cli_genero").required = true;
         document.getElementById("cli_fecnac").required = true;
-        document.getElementById("cli_nrodoc").required = true;
         
         $("#cli_correo").attr('type', 'email');        
 

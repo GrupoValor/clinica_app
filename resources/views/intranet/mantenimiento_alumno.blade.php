@@ -68,11 +68,11 @@
                                         <tr>
                                         	<th>ID</th>
                                             <th>Nombre</th>
-                                            <th>Codigo Pucp</th>
+                                            <th>Código</th>
 											<th>Número Documento</th>
                                             <th>Correo</th>
 											<th>Voluntario</th>
-                                            <th>Modificar</th>
+											<th>Modificar</th>
                                         </tr>
                                         </thead>
 
@@ -127,7 +127,7 @@
                                     
 
                                     <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > codigo Pucp </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > Código </label>
 
 										<div class="col-sm-9">
 											<input id="dir_codpucp" type="text"   class="col-xs-5 col-sm-7"  />
