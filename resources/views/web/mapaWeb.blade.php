@@ -66,7 +66,59 @@ partir [&hellip;]" />
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="http://www.pucp.edu.pe/wp-content/themes/home-theme/images/favicons/mstile-144x144.png">
 
-    <script type="text/javascript" src="pop-up.js"></script> 
+    <script type="text/javascript" src="pop-up.js"></script>
+
+    <!-- mapa de alertas-->
+    <link href="assets/css/style_mapa.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="assets/js/mapaWeb.js"></script>
+    <script src="assets/js/bootstrap2016.min.js"></script>
+    <style>
+        .controls {
+            margin-top: 10px;
+            border: 1px solid transparent;
+            border-radius: 2px 0 0 2px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            height: 32px;
+            outline: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        #pac-input {
+            background-color: #fff;
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+            margin-left: 12px;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 300px;
+        }
+
+        #pac-input:focus {
+            border-color: #4d90fe;
+        }
+
+        .pac-container {
+            font-family: Roboto;
+        }
+
+        #type-selector {
+            color: #fff;
+            background-color: #4d90fe;
+            padding: 5px 11px 0px 11px;
+        }
+
+        #type-selector label {
+            font-family: Roboto;
+            font-size: 13px;
+            font-weight: 300;
+        }
+
+    </style>
+
 </head>
     
 <body class="single single-carrera postid-1478">
@@ -186,15 +238,12 @@ partir [&hellip;]" />
         <div class="wrapper-cuerpo-interna direc-unid alt50">
             <div class="container">
                 <div class="row cuerpo-interna">
-                    <div class="col-md-12">
-                        <div class="formato">
-                            <p>Se pondrá una breve descripción del objtivo del mapa de alertas, con un mensaje hacia las personas que quiera colaborar.</p>
-				<p></p>
-			    <p>Leyenda:</p>
-			    <p>Pin rojo: Documento sin colaborar</p>
-			    <p>Pin amarillo: Documento en seguimiento</p>
-			    <p>Pin verde: Documento recogido</p>
+                    <div class="col-md-12 col-xs-12">
+                        <div class="formato"> <!-- TODO falta una descripción-->
                         </div>
+                        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+                        <div id="mapa" style="width:100%;height:500px"></div>
+                        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOwKYLMGElTWMO7Qf_QEGgNVgOMp2Ucgs&libraries=places&callback=initMap"></script>
                     </div>  
                 </div>
             </div>
@@ -202,89 +251,65 @@ partir [&hellip;]" />
 	   
     </article>    
 	
-	<table width="90%">
-	  <tbody>
-	    <tr>
-              <td width="100%">
-                <script type="text/javascript">
-		  function initAutocomplete() {
-	            var map = new google.maps.Map(document.getElementById('map'), {
-	                        center: {lat: -10.5049722, lng: -77.0641579},
-	                        zoom: 5,
-	                        mapTypeId: google.maps.MapTypeId.ROADMAP
-	                        });
-	            // Create the search box and link it to the UI element.
-	            var input = document.getElementById('pac-input');
-	            var searchBox = new google.maps.places.SearchBox(input);
-	            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-	            // Bias the SearchBox results towards current map's viewport.
-	            map.addListener('bounds_changed', function() {
-	                              searchBox.setBounds(map.getBounds());
-	                              });
-	            var markers = [];
-	            // [START region_getplaces]
-	            // Listen for the event fired when the user selects a prediction and retrieve
-	            // more details for that place.
-	            searchBox.addListener('places_changed', function() {
-	            var places = searchBox.getPlaces();
-	            if (places.length == 0) {
-	              return;
-	            }
-	            // Clear out the old markers.
-	            markers.forEach(function(marker) {
-	            marker.setMap(null);
-	            });
-	            markers = [];
-	            // For each place, get the icon, name and location.
-	            var bounds = new google.maps.LatLngBounds();
-	            places.forEach(function(place) {
-	            var icon = {
-		      url: place.icon,
-		      size: new google.maps.Size(71, 71),
-		      origin: new google.maps.Point(0, 0),
-		      anchor: new google.maps.Point(17, 34),
-		      scaledSize: new google.maps.Size(25, 25)
-	            };
-	            // Create a marker for each place.
-	            markers.push(new google.maps.Marker({
-		      map: map,
-		      icon: icon,
-		      title: place.name,
-		      position: place.geometry.location
-	            }));
-	            if (place.geometry.viewport) {
-		      // Only geocodes have viewport.
-		      bounds.union(place.geometry.viewport);
-	            } else {
-		      bounds.extend(place.geometry.location);
-	              }
-	            });
-	            map.fitBounds(bounds);
-	            });
-	            // [END region_getplaces]
-			
- 		    var lugar = {lat: -10.5049722, lng: -77.0641579};
-		    var markerPin = new google.maps.Marker({
-		    	position: lugar,
-		    	map: map,
-		    	title: 'lugar'
-		    });
-		    markerPin.addListener('click', function(){popmeup('pop-up-mapa.htm');});
-		    markerPin.setMap(map);
-		    }
-		
-	        </script>
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDO7aiKlHKsT7Kd4m-w-wjqVU0vX_J2gg0&libraries=places&callback=initAutocomplete" async defer>
-                </script>
-                <div id="map" style="width:1500;height:750px;border:2px solid green;left:5%;"></div>
-              </td>
-            </tr>
-            
-	
-	</tbody>
-	</table>
-	
+
 </section>
+
+<!-- Modal for attending alert -->
+<form class="form-horizontal" role="form" id="form_atender">
+    <div align="center">
+        <div class="modal fade" id="modal_atender" role="dialog" style="margin-top: -120px">
+            <div class="modal-dialog" style="width: 500px;">
+                <div class="modal-content">
+                    <div class="page-header">
+                        <!-- /.page-header -->
+                        <h3> Enviar mensaje </h3>
+                    </div>
+                    <div class="row">
+                        <div class="space-4"></div>
+                        <div id="id_evento" class="hide"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-3"> Nombres </label>
+                            <div class="col-sm-8 col-xs-8">
+                                <input id="nombres" type="text" class="form-control" placeholder="*obligatorio" required onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || event.charCode==45 || event.charCode == 193 || event.charCode == 201 || event.charCode == 205 || event.charCode == 211 || event.charCode == 218 || event.charCode == 221 || event.charCode == 225 || event.charCode == 233 || event.charCode == 237 || event.charCode == 243 || event.charCode == 252 || event.charCode==32)"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-3"> Correo </label>
+                            <div class="col-sm-8 col-xs-8">
+                                <input id="correo" type="email" class="form-control" placeholder="*obligatorio" required/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-3"> Teléfono </label>
+                            <div class="col-sm-8 col-xs-8">
+                                <input id="telef" type="text" class="form-control" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="space-4"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-3"> Mensaje </label>
+                            <div class="col-sm-8 col-xs-8">
+                                <textarea class="form-control" rows="8" style="resize: vertical;overflow: auto;" id="descripcion" placeholder="*obligatorio" required autocomplete="off"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <div align="center">
+                            <button type="submit" id="botonSubmit" class="btn btn-primary" style="background-color:#004C97">Enviar</button>                            &nbsp; &nbsp;
+                            <button type="button" id="botonDanger" class="btn btn-danger remove" data-dismiss="modal" style="background-color: #F3150A">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
 
 
 <footer>
@@ -328,6 +353,12 @@ partir [&hellip;]" />
                 $(this).find('.active.item').parent().animate({ height: nextH }, 300);
             });
                     });
+
+        $(document).keydown(function (e) {
+            if (e.keyCode == 27) {
+                $('.modal').modal('hide');
+            }
+        });
     </script>
     
 <script type='text/javascript' src='../../wp-includes/js/wp-embed.min.js?ver=4.6'></script>
