@@ -60,7 +60,6 @@ Route::get('/miscasos', 'casosController@miscasos');
 Route::get('/mispendientes', 'casosController@getpendientes');
 
 //perfil
-
 Route::get('/perfil', function (Request $request) {
     $result = app('App\Http\Controllers\loginController')->session($request);
     if($result == '1')
@@ -91,12 +90,7 @@ Route::get('directorio', function () {
     return view('intranet/directorio');
 });
 
-//prueba
 //mapa
-Route::get('/mapa_intranet2', function () {
-    return view('intranet/kari_mapa2');
-});
-
 Route::get('/mapa_intranet', function () {
     return view('intranet/kari_mapa2');
 });
@@ -119,10 +113,6 @@ Route::get('mant_clinica',function(){
    return view('intranet/clinica_registro');
 });
 //mantenimiento unificado
-Route::get('manten', function () {
-    return view('intranet/mantenimiento');
-});
-//mantenimiento unificado
 Route::get('manten2', function (Request $request) {
     $result = app('App\Http\Controllers\loginController')->session($request);
     if($result == '1')
@@ -130,6 +120,8 @@ Route::get('manten2', function (Request $request) {
     else
         return view('login/login');
 });
+
+//TODO no se si borrar esta parte hasta antes de reportes
 Route::get('docente', function () {
     return view('intranet/docente');
 });
@@ -142,28 +134,12 @@ Route::get('cliente', function () {
 });
 //reportes
 
-Route::get('mantenimiento2', function () {
-    return view('intranet/mantenimiento2');
-});
 
 //gestor de contenidos
-Route::get('/eventos', function () {
+Route::get('/eventos_intranet', function () {
     return view('intranet/kari_eventos2');
 });
-Route::get('/noticias_registro', function () {
-    return view('intranet/gestor_noticias_registro');
-});
-
-//eventos
-Route::get('/agenda', function () {
-    return view('intranet/kari_eventos');
-});
-Route::get('/agenda2', function () {
-    return view('intranet/kari_eventos2');
-});
-
-//noticas
-Route::get('/noti_reg', function () {
+Route::get('/noticias_intranet', function () {
     return view('intranet/kari_noticias');
 });
 
