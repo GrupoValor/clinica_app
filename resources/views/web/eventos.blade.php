@@ -64,7 +64,7 @@
                 <div class="col-sm-12 menu-acce top-mov text-right visible-xs">
                     <a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="../login"> Intranet   <span class="glyphicon glyphicon-chevron-down"></span></a>
                     <ul role="menu" class="dropdown-menu nav">
-                        <li><a target="_blank" href="../login">Iniciar sesión</a>
+                        <li><a target="_blank" href="login">Iniciar sesión</a>
                         <!--<a target="_blank" href="http://intranet.pucp.edu.pe">Intranet</a>--></li>
                     </ul>
                 </div>

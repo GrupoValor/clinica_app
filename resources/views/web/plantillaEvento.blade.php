@@ -51,7 +51,7 @@
 				<div class="col-sm-12 menu-acce text-right hidden-xs">
                     <ul class="nav nav-pills pull-right">
                     <li>
-                    	<a target="_blank" href="../login">Iniciar Sesión</a>
+                    	<a target="_blank" href="login">Iniciar Sesión</a>
                         <!--<a target="_blank" href="http://intranet.pucp.edu.pe">Intranet</a>-->
                     </li>
 
