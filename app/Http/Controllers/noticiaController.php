@@ -81,10 +81,9 @@ class noticiaController extends Controller
             echo $jpid;
 
         }else{
-            //var_dump($request['file']);
+            var_dump($request->all());
             $image = $request['not_imagen'];
             $to_directory = null;
-            //var_dump($image);
             if($image != 'null') {
                 $path = public_path();
                 $to_directory = '/assets/images/eventos/';// . $image->getClientOriginalName();
@@ -105,7 +104,7 @@ class noticiaController extends Controller
             not_dateModify = :modi
             where not_id = :id_not',
                 ['titulo' => $request['not_titulo'],
-                    'auto' => $request['not_autor'],
+                    'autor' => $request['not_autor'],
                     'fecha' => $request['not_fecha'],
                     'descrip' => $request['not_descr'],
                     'imag' => $to_directory,
@@ -193,10 +192,14 @@ class noticiaController extends Controller
      */
     public function destroy($id)
     {
-        DB::update('UPDATE TA_EVENTO set
-            visible = :flag
-            where id = :id_eve',
-            ['flag' => 0, 'id_eve' => $id]);
+        DB::update('UPDATE TA_NOTICIA set
+            not_visible = :flag,
+            not_dateModify= :modi
+            where not_id = :id',
+            ['flag' => 0,
+                'id' => $id,
+                'modi' => date('Y/m/d H:i:s')
+            ]);
         echo "Registro eliminado correctamente" ;
         /*
         DB::delete('DELETE FROM TA_EVENTO 

@@ -98,16 +98,16 @@
 </div><!-- /.main-content -->
 
 <!-- Popup :  Agregar -->
-<form class="form-horizontal" role="form" style="padding-left: 66px;" id="form_evento">
+<form class="form-horizontal" role="form" style="padding-left: 66px;" id="form_noticia">
     <div align="center">
-        <div class="modal fade" id="modal_evento" role="dialog">
+        <div class="modal fade" id="modal_noticia" role="dialog">
             <div class="modal-dialog" style="width: 500px;">
                 <div class="modal-content">
                     <div class="page-header">
                         <!-- /.page-header -->
                         <button type="button" class="close" data-dismiss="modal" style="margin-right: 8px;">&times;</button>
                         <div class="space-10"></div>
-                        <h1> Evento </h1>
+                        <h1> Noticias </h1>
                     </div>
                     <div class="row">
                         <div class="space-4"></div>
@@ -195,13 +195,18 @@
 
 <!--[if !IE]> -->
 <script src="assets/js/jquery-2.1.4.min.js"></script>
-
+<script src="assets/js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
     if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 </script>
 <script src="assets/js/bootstrap.min.js"></script>
 
 <!-- page specific plugin scripts -->
+<script src="assets/js/jquery-ui.custom.min.js"></script>
+<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
+<script src="assets/js/jquery.inputlimiter.min.js"></script>
+<script src="assets/js/jquery.maskedinput.min.js"></script>
+<script src="assets/js/jquery.knob.min.js"></script>
 <script src="assets/js/jquery.dataTables.min.js"></script>
 <script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
 <script src="assets/js/dataTables.buttons.min.js"></script>
@@ -226,12 +231,12 @@
     var editid;
     var action;
 
-    $("#form_evento").submit(function(event) {
-        event.preventDefault();
+    $("#form_noticia").submit(function(event) {
         click_botonSubmit();
+        event.preventDefault();
     });
 
-    $('#modal_evento').on('hidden.bs.modal', function () {
+    $('#modal_noticia').on('hidden.bs.modal', function () {
         $('#imagen').ace_file_input('reset_input');
     })
 
@@ -270,7 +275,7 @@
     function add_onClick(){
         action="ADD";
 
-        $("#modal_evento").find('input, textarea').val('').end();
+        $("#modal_noticia").find('input, textarea').val('').end();
         document.getElementById("enWeb").checked = true;
         document.getElementById("enPanel").checked = true;
         $('#imagen').ace_file_input('reset_input');
@@ -279,7 +284,7 @@
         document.getElementById("botonSubmit").innerHTML = 'Registrar';
         document.getElementById("botonDanger").innerHTML = 'Cancelar';
 
-        $("#modal_evento").modal();
+        $("#modal_noticia").modal();
     }
 
     function click_botonSubmit (){//$("#botonCliente").on('click', function (e){
@@ -299,13 +304,18 @@
 
         var file = document.getElementById('imagen').files;
         var imagen=null;
+        var dir_imagen=null;
         if(file.length != 0){
             imagen = file[0];
+            dir_imagen = '/assets/images/noticias/' + imagen.name;
         }
+
+
         var MyDate = new Date($("#id-date-picker-1").datepicker("getDate"));
         var fecha = MyDate.getFullYear() + '/'
                 + ('0' + (MyDate.getMonth()+1)).slice(-2) + '/'
                 + ('0' + MyDate.getDate()).slice(-2);
+
         var form_data = new FormData();
         form_data.append('not_titulo', $("#titulo").val());
         form_data.append('not_autor', $("#autor").val());
@@ -315,8 +325,11 @@
         form_data.append('not_link', $("#link").val());
         form_data.append('not_enweb', web);
         form_data.append('not_enpanel', panel);
+        i = data_set.length;
+
 
         if (action=="ADD"){
+            alert("hi add");
             form_data.append('not_id', "NO_ID");
             $.ajax({
                 type: "POST",
@@ -332,7 +345,7 @@
                 processData: false,
                 data: form_data,
                 success: function(Response){
-                    alert(Response);
+                    alert("Registro de nueva noticia ");
                     data_set.push([
                         Response,
                         $("#titulo").val(),
@@ -340,10 +353,15 @@
                         $("#id-date-picker-1").val(),
                         data_web,
                         data_panel,
-                        getButtons(Response,Response)
+                        getButtons(i,i),
+                            //for modal
+                        $("#descripcion").val(),
+                        $("#link").val(),
+                        dir_imagen
                     ] );
+
                     myTable.clear().rows.add(data_set).draw();
-                    $("#modal_evento").modal('toggle');
+                    $("#modal_noticia").modal('toggle');
                 },
                 error: function (e) {
                     alert("Error in ADD");
@@ -369,21 +387,26 @@
                     data_set[editid][1]= $("#titulo").val();
                     data_set[editid][2]=$("#autor").val();
                     data_set[editid][3]=$("#id-date-picker-1").val();
-                    data_set[editid][4] = web;
-                    data_set[editid][5]= panel;
+                    data_set[editid][4] = data_web;
+                    data_set[editid][5]= data_panel;
+                    //for modal
+                    data_set[editid][7] = $("#descripcion").val();
+                    data_set[editid][8] = $("#link").val();
+                    data_set[editid][9] = dir_imagen;
                     myTable.clear().rows.add(data_set).draw();
                     alert(Response);
+                    $("#modal_noticia").modal('toggle');
                 }
             });
         }
     }
 
-    function delete_onClick(id,con_id){
+    function delete_onClick(id,con_id){ //READY
         action="DELETE";
         editid=parseInt(id);
         $.ajax({
             type: "DELETE",
-            url: 'service_directorio/' + data_set[editid][0],
+            url: 'service_noticia/' + data_set[editid][0],
             beforeSend: function(xhr) {
                 var token = $('meta[name="csrf_token"]').attr('content');
                 if (token) {
@@ -398,28 +421,51 @@
         //$('#modal_alumno').modal('toggle');
     }
 
+    function loadImage(image) { //Para cargar la imagen en el modal
+        alert(image);
+        if(image) {
+            var loc = window.location.pathname;
+            var dir = loc.substring(0, loc.lastIndexOf('/'));
+            var image_name = image.substr(image.lastIndexOf("/") + 1); //nombre de la imagen
+            $("span[class='ace-file-container']").removeAttr("data-title");
+            $("span[class='ace-file-container']").addClass("hide-placeholder selected");
+            $("span[class='ace-file-name']").attr('data-title', image_name);
+            $("span[class='ace-file-name']").html("<img class='middle' style='background-image:url(" + dir + image + ");width:150px; heigth:150px;' src='" + dir + image + "'/>");
+            $("span[class='ace-file-name']").addClass("large");
+        }else{
+            $("span img[class='middle']").remove();
+            $("span[class='ace-file-name']").html('<i class=" ace-icon ace-icon fa fa-picture-o">');
+        }
+    }
+
     function edit_onClick(id,con_id) {
 
         //alert (id);
         action="UPDATE";
         var rows = myTable.rows(id).data();
+        //alert(rows[0][6]);
         editid = parseInt(id);
-        tipo = "p";
-        if (data_set[editid][1] == 'Institucion') {
-            tipo = "i";
-        }
 
-        $("#dir_tipocon").val(tipo);
-        $("#dir_nombre").val(data_set[editid][2]+"");
-        $("#dir_telefono").val(data_set[editid][3]+"");
-        $("#dir_email").val(data_set[editid][4]+"");
-        $("#dir_web").val(data_set[editid][5]+"");
-        $("#dir_direcc").val(data_set[id][6]+"");
+        $("#titulo").val(data_set[editid][1]+"");
+        $("#autor").val(data_set[editid][2]+"");
+        $("#descripcion").val(data_set[editid][7]+"");
+        $('#id-date-picker-1').datepicker('update', data_set[editid][3]);
 
-        $("#boton").modal()
-        //alert(rows[0][3]);
+        var web = data_set[editid][4];
+        if(web=="Sí") document.getElementById("enWeb").checked = true;
+        else document.getElementById("enWeb").checked = false;
 
+        var panel = data_set[editid][5];
+        if(panel=="Sí") document.getElementById("enPanel").checked = true;
+        else document.getElementById("enPanel").checked = false;
 
+        $("#descripcion").val(data_set[editid][7]+"");
+        $("#link").val(data_set[editid][8]+"");
+        loadImage(data_set[editid][9]);
+
+        document.getElementById("botonSubmit").innerHTML = 'Actualizar';
+        document.getElementById("botonDanger").innerHTML = 'Cancelar';
+        $("#modal_noticia").modal();
     }
 
 
@@ -485,7 +531,11 @@
                         fecha_show,
                         web,
                         panel,
-                        getButtons(i)
+                        getButtons(i),
+                            //for modal
+                        data[i].not_descr,
+                        data[i].not_linkNoticia,
+                        data[i].not_imagen
                     ] )
 
 

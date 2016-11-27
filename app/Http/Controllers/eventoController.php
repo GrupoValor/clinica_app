@@ -183,9 +183,12 @@ class eventoController extends Controller
     public function destroy($id)
     {
         DB::update('UPDATE TA_EVENTO set
-            visible = :flag
+            visible = :flag,
+            dateModify= :modi
             where id = :id_eve',
-            ['flag' => 0, 'id_eve' => $id]);
+            ['flag' => 0,
+                'modi' => date('Y/m/d H:i:s'),
+                'id_eve' => $id]);
         echo "Registro eliminado correctamente" ;
         /*
         DB::delete('DELETE FROM TA_EVENTO 
