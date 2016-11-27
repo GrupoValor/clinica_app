@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Cl&iacute;nica Jur&iacute;dica | Tareas acad&eacute;micas</title>
+		<title>Intranet | Tareas acad&eacute;micas | Mantenimiento de r&uacute;bricas</title>
 
 		<meta name="description" content="Static &amp; Dynamic Tables" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -57,74 +57,57 @@
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="index">Home</a>
 							</li>
-							<li>Tareas acad&eacute;micas</li>
+@if ($tipo == 'rubricas')
+							<li>
+								<a href="#">Tareas acad&eacute;micas</a>
+							</li>
+							<li class="active">Mantenimiento de r&uacute;bricas</li>
+@elseif ($tipo == 'notas')
+							<li>
+								<a href="#">Tareas acad&eacute;micas</a>
+							</li>
 							<li class="active">Registro de notas</li>
+@else
+							<li class="active">Tareas acad&eacute;micas</li>
+@endif
 						</ul><!-- /.breadcrumb -->
 					</div>
 
 					<div class="page-content">
-
-@include('intranet.ta_registro.mensajes')
-
 						<div class="page-header">
+@if ($tipo == 'rubricas')
+							<h1>Mantenimiento de r&uacute;bricas</h1>
+@elseif ($tipo == 'notas')
 							<h1>Registro de notas</h1>
+@else
+							<h1>Tareas acad&eacute;micas</h1>
+@endif
 						</div><!-- /.page-header -->
 						
+@if ($tipo == 'rubricas')
+						<p>Aqu&iacute; el profesor puede ver y editar las r&uacute;bricas que usar&aacute; para registrar el avance de sus alumnos en el curso.</p>
+@elseif ($tipo == 'notas')
 						<p>Aqu&iacute; el profesor puede agregar y modificar las notas de sus alumnos por cada r&uacute;brica, semana, y alumno.</p>
-
+@endif
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
 								<h3 class="header smaller lighter blue">B&uacute;squeda</h3>
-								
-								{!! Form::open(['class' => 'form-horizontal']) !!}
-									<div class="form-group">
-										{!! Form::label('curso', 'Curso:', ['class' => 'col-sm-3 control-label no-padding-right']) !!}
-										<div class="col-sm-8">
-											{!! Form::select('curso', $cursos, ['class' => 'input-xlarge']) !!}
-										</div>
-									</div>
-									<div class="form-group">
-										{!! Form::label('ciclo', 'Ciclo:', ['class' => 'col-sm-3 control-label no-padding-right']) !!}
-										<div class="col-sm-8">
-											{!! Form::select('ciclo', $ciclos, ['class' => 'input-xlarge']) !!}
-										</div>
-									</div>
-								{!! Form::close() !!}
-
-								<!-- BÚSQUEDA -->
-								{!! Form::open(['route' => 'ta_notas_res.index', 'method' => 'GET', 'class' => "form-horizontal"]) !!}
-									<div class="hidden">
-										{!! Form::text('periodo', $periodo['per_id'], ['id' => 'periodo']) !!}
-									</div>
-									<div class="form-group">
-										{!! Form::label('semana', '# semana:', ['class' => "col-sm-3 control-label no-padding-right"]) !!}
-										<div class="col-sm-6">
-											{!! Form::select('semana', $semanas, ['class' => "input-small"]) !!}
-											&nbsp;de <strong id="num_semanas">{{ $periodo['per_semanas'] }}</strong>
-										</div>
-									</div>
-									<div class="form-group">
-										{!! Form::label('rubrica', 'R&uacute;brica:', ['class' => "col-sm-3 control-label no-padding-right"]) !!}
-										<div class="col-sm-6">
-											{!! Form::select('rubrica', $rubricas, ['class' => "input-xlarge"]) !!}
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-sm-9 center">
-											{!! Form::button('<span class="ace-icon fa fa-search icon-on-right bigger-110"></span> Buscar', ['class' => "btn btn-purple btn-sm", 'type' => 'submit']) !!}
-											&nbsp;
-											<a href="ta_registro">
-												<button class="btn btn-sm" type="reset">
-													<i class="ace-icon fa fa-undo bigger-110"></i>
-													Regresar
-												</button>
-											</a>
-										</div>
-									</div>
-								</form>
-								<!-- FIN BÚSQUEDA -->
-								
+								<p>No se encontr&oacute; ning&uacute;n {{ $faltante }} que pertenezca a la cl&iacute;nica donde est&aacute; laborando.</p>
+@if ($tipo == 'rubricas')
+								<p>Por lo tanto, no puede acceder al mantenimiento de r&uacute;bricas.</p>
+								<p>Solicite al administrador la creaci&oacute;n de un {{ $faltante }} para que pueda registrar las r&uacute;bricas que usar&aacute;.</p>
+@elseif ($tipo == 'notas')
+								<p>Por lo tanto, no puede acceder al registro de notas.</p>
+								<p>Solicite al administrador la creaci&oacute;n de un {{ $faltante }} para que pueda registrar las notas de sus alumnos.</p>
+@endif
+								<br />
+								<div class="center">
+									<a href="javascript:history.back()" class="btn btn-inverse">
+										<i class="ace-icon fa fa-arrow-left"></i>
+										Regresar
+									</a>
+								</div>	
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
@@ -177,11 +160,8 @@
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
 
+
 			jQuery(function($) {
-
-				
-				
-
 
 				//initiate dataTables plugin
 				
@@ -253,83 +233,8 @@
 					return 'left';
 				}
 				
-				
-				/* SPINNERS */
-				$('#spinner1').ace_spinner({value:2,min:1,max:20,step:1, btn_up_class:'btn-info' , btn_down_class:'btn-info'})
-				.closest('.ace-spinner')
-				.on('changed.fu.spinbox', function(){
-					//console.log($('#spinner1').val())
-				});
-				$('#spinner2').ace_spinner({value:14,min:1,max:30,step:1, btn_up_class:'btn-info' , btn_down_class:'btn-info'});
-				/* FIN SPINNERS */
-				
-				/***************/
-				$('.show-details-btn').on('click', function(e) {
-					e.preventDefault();
-					$(this).closest('tr').next().toggleClass('open');
-					$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
-				});
-				/***************/
-
-				//FUNCION PARA OBTENER RUBRICAS (SELECT DINAMICO)
-				$('#curso').on('change', function(e)
-				{
-					var location = window.location.pathname;
-					var directoryPath = location.substring(0, location.lastIndexOf("/")+1);
-
-					$.get(directoryPath + "ta_notas_per?curso=" + $("#curso").val() + "&ciclo=" + $("#ciclo").val() + "",
-						function(response, state)
-						{
-							//Cambiar valor del periodo (oculto)
-							$('#periodo').attr('value', response[0].per_id);
-
-							//Cambiar opciones del select de las semanas
-							$("#semana").empty();
-							$("#semana").append("<option value='" + 0 + "'>Todas</option>");
-							for (i = 1; i <= response[0].per_semanas; i++) {
-								$('#semana').append("<option value='" + i + "'>" + i + "</option>");
-							}
-							$('#num_semanas').text(response[0].per_semanas);
-
-							//Cambiar opciones del select de las rubricas
-							$("#rubrica").empty();
-							$.each(response[1], function(key, value) {
-								$("#rubrica").append("<option value='" + key + "'>" + value + "</option>");
-							});
-						}
-					);
-				});
-
-				$('#ciclo').on('change', function(e)
-				{
-					var location = window.location.pathname;
-					var directoryPath = location.substring(0, location.lastIndexOf("/")+1);
-
-					$.get(directoryPath + "ta_notas_per?curso=" + $("#curso").val() + "&ciclo=" + $("#ciclo").val() + "",
-						function(response, state)
-						{
-							//Cambiar valor del periodo (oculto)
-							$('#periodo').attr('value', response[0].per_id);
-
-							//Cambiar opciones del select de las semanas
-							$("#semana").empty();
-							$("#semana").append("<option value='" + 0 + "'>Todas</option>");
-							for (i = 1; i <= response[0].per_semanas; i++) {
-								$('#semana').append("<option value='" + i + "'>" + i + "</option>");
-							}
-							$('#num_semanas').text(response[0].per_semanas);
-
-							//Cambiar opciones del select de las rubricas
-							$("#rubrica").empty();
-							$.each(response[1], function(key, value) {
-								$("#rubrica").append("<option value='" + key + "'>" + value + "</option>");
-							});
-						}
-					);
-				});
-
-			});
-
+			
+			})
 		</script>
 	</body>
 </html>

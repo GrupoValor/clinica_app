@@ -44,7 +44,10 @@ Route::get('/index', function (Request $request) {
         return view('login/login');
 });
 
-//casos
+/*************************************
+ *         REGISTRO DE CASOS         *
+ *************************************/
+ 
 Route::get('/casos_registro', function () {
     return view('intranet/registro_casos');
 });
@@ -65,17 +68,21 @@ Route::get('/perfil', function (Request $request) {
         return view('login/login');
 });
 
-
-//Tareas
+/*************************************
+ *         TAREAS ACADÉMICAS         *
+ *************************************/
+ 
+//Vista de alumno
 Route::get('/ta_alumnos', function () {
     return view('intranet/ta_alumno');
 });
-//TAREAS ACADÉMICAS - Mantenimiento de rúbricas
+//Mantenimiento de rúbricas
 Route::resource('ta_registro', 'PeriodoController', ['only' => ['index', 'store', 'update', 'destroy']]);
 Route::resource('rubrica', 'RubricaController', ['only' => ['index', 'store', 'update', 'destroy']]);
 Route::resource('rubro', 'RubroController', ['only' => ['store', 'update', 'destroy']]);
-//TAREAS ACADÉMICAS - Registro de notas
+//Registro de notas
 Route::resource('ta_notas', 'PromedioController');
+Route::get('ta_notas_per', 'PromedioController@obtenerRubricas');
 Route::resource('ta_notas_res', 'NotasController');
 
 //directorio de usuarios

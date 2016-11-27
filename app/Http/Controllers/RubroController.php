@@ -16,15 +16,29 @@ use App\Models\TaRubro;
 
 class RubroController extends Controller {
 
-	public function store(Request $request) {
+	public function store(Request $request)
+	{
+		//Verificar que la sesión iniciada sea válida y que el usuario tenga acceso a esta página
+		$usuario = $request->session()->get('user');
+		if (empty($usuario)) {
+			Log::warning('Se intento crear un rubro sin haber iniciado sesion. Se le mando al usuario a la pagina de inicio de sesion de la intranet.');
+			return view('login.login');
+		}
+		if ($usuario['rol'] != 1 && $usuario['rol'] != 4) {
+			Log::warning('El usuario con id ' . $usuario['userid'] . ' intento crear un rubro sin tener los permisos requeridos. Se le mando una respuesta HTTP 403.');
+			return abort(403);
+		}
+
+		//Buscar la rúbrica donde se insertará el rubro
 		$rba_id = $request['rba_add_id'];
 		$rubrica = TaRubrica::where('rba_id', $rba_id)->first();
 		if (empty($rubrica))
 		{
-
+			Session::flash('msg-err', 'El rubro que se intent&oacute; crear tiene una r&uacute;brica no v&aacute;lida.');
+			Log::info('El usuario ' . $usuario['userid'] . ' intento crear un rubro en una rubrica inexistente.')
+			return redirect()->action('PeriodoController@index');
 		}
 		try {
-			
 			$periodo = TaPeriodo::where('per_id', $rubrica['per_id'])->firstOrFail();
 			//Verificar que los datos sean correctos
 			$nombre = $request['rbo_nombre'];

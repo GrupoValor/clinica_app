@@ -185,7 +185,7 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Nro Documento</th>
+                            <th>Codigo</th>
                             <th>Nombre</th>
                             <th>Direccion</th>
 
@@ -225,7 +225,7 @@
 
                             <th>ID</th>
                             <th>Tipo</th>
-                            <th>Codigo PUCP</th>
+                            <th>Codigo</th>
                             <th>Nombre</th>
                             <th>Correo</th>
 
