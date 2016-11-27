@@ -75,6 +75,19 @@ partir [&hellip;]" />
     <script src="assets/js/mapaWeb.js"></script>
     <script src="assets/js/bootstrap2016.min.js"></script>
     <style>
+        #legend {
+            font-family: Arial, sans-serif;
+            background: #fff;
+            padding: 10px;
+            margin: 10px;
+            border: 3px solid #000;
+        }
+        #legend h3 {
+            margin-top: 0;
+        }
+        #legend img {
+            vertical-align: middle;
+        }
         .controls {
             margin-top: 10px;
             border: 1px solid transparent;
@@ -221,7 +234,7 @@ partir [&hellip;]" />
 		<div class="container">
 			<div class="row titulo-h1">
 				<div class="col-lg-12">
-					<h1> Mapa de alertas </h1>
+					<h1> Ayúdanos </h1>
 				</div>
 			</div>
 		</div>
@@ -240,9 +253,19 @@ partir [&hellip;]" />
                 <div class="row cuerpo-interna">
                     <div class="col-md-12 col-xs-12">
                         <div class="formato"> <!-- TODO falta una descripción-->
+                            <p>
+                                Muchos documentos aún faltan por encontrar.
+                            </p>
+                            <p>
+                                Visualiza en el mapa, las alertas más cercanas a ti.
+                            </p>
+                            <p>
+                                Ayúdanos para ayudar.
+                            </p>
                         </div>
                         <input id="pac-input" class="controls" type="text" placeholder="Search Box">
                         <div id="mapa" style="width:100%;height:500px"></div>
+                        <div id="legend"><h3>Leyenda</h3></div>
                         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOwKYLMGElTWMO7Qf_QEGgNVgOMp2Ucgs&libraries=places&callback=initMap"></script>
                     </div>  
                 </div>

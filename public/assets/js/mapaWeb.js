@@ -52,8 +52,37 @@ function initMap(){
     mapa.fitBounds(bounds);
   });
 
+    var iconBase = "http://maps.google.com/mapfiles/ms/icons/";
+    var icons = {
+        registrada: {
+            name: 'Registrada',
+            icon: iconBase + 'red-dot.png'
+        },
+        espera: {
+            name: 'Espera',
+            icon: iconBase + 'yellow-dot.png'
+        },
+        finalizada: {
+            name: 'Finalizada',
+            icon: iconBase + 'green-dot.png'
+        },
+        vencida: {
+            name: 'Vencida',
+            icon: iconBase + 'purple-dot.png'
+        }
+    };
 
+    var legend = document.getElementById('legend');
+    for (var key in icons) {
+        var type = icons[key];
+        var name = type.name;
+        var icon = type.icon;
+        var div = document.createElement('div');
+        div.innerHTML = '<img src="' + icon + '"> ' + name;
+        legend.appendChild(div);
+    }
 
+    mapa.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
 }
 
 function showModal(id){
