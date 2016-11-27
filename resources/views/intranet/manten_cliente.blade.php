@@ -5,8 +5,8 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Codigo</th>
                     <th>Nombre</th>
-                    <th>N° documento</th>
                     <th>Nivel educativo</th>
                     <th>Ocupación</th>
                     <th>Teléfono</th>
@@ -58,9 +58,9 @@
                         </div>
                         <div class="space-4"></div>
                         <div class="form-group">
-                            <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> N° documento </label>
+                            <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> DNI </label>
                             <div class="col-sm-9 col-xs-9">
-                                <input id="cli_nrodoc" type="text" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/>
+                                <input id="cli_nrodoc" type="text"  class="col-xs-5 col-sm-7"  onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" placeholder="opcional"/>
                             </div>
                         </div>
                         <div class="space-4"></div>
@@ -233,7 +233,7 @@
         document.getElementById("cli_nombre").required = true;
         document.getElementById("cli_genero").required = true;
         document.getElementById("cli_fecnac").required = true;
-        document.getElementById("cli_nrodoc").required = true;
+
         
         $("#cli_correo").attr('type', 'email');        
 
@@ -263,7 +263,7 @@
             } else if ($("#cli_nivedu option:selected").val() === 'suc') {
                 nivel = "Superior completo";
             }
-            
+            var code = Math.floor((Math.random() * 10000000) + 70000000);
             i = dataset_cliente.length;
             //Validaciones
             $.ajax({
@@ -281,7 +281,7 @@
                     cli_fecnac: $("#cli_fecnac").val(),
                     cli_numhij: $("#cli_numhij").val(),
                     cli_nivedu: nivel,
-                    cli_nrodoc: $("#cli_nrodoc").val(),
+                    cli_nrodoc: code,
                     cli_ocupac: $("#cli_ocupac").val(),
                     cli_direcc: $("#cli_direcc").val(),
                     cli_telno1: $("#cli_telno1").val(),
@@ -292,7 +292,7 @@
                     dataset_cliente.push([
                         Response,
                         $("#cli_nombre").val(),
-                        $("#cli_nrodoc").val(),
+                        code,
                         nivel,
                         $("#cli_ocupac").val(),
                         $("#cli_telno1").val(),
@@ -511,8 +511,8 @@
                     if (data[i].usu_activo === 1) {
                         dataset_cliente.push([
                             data[i].cli_id,
-                            data[i].cli_nombre,
                             data[i].cli_nrodoc,
+                            data[i].cli_nombre,
                             data[i].cli_nivedu,
                             data[i].cli_ocupac,
                             data[i].cli_telno1,

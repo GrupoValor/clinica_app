@@ -68,7 +68,7 @@
                                         <tr>
                                         	<th>ID</th>
                                             <th>Nombre</th>
-                                            <th>Codigo Pucp</th>
+                                            <th>Codigo</th>
                                             <th>Correo</th>
                                             <th>Modificar</th>
                                         </tr>

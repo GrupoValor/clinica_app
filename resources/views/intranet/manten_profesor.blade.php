@@ -6,7 +6,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
-                    <th>Codigo Pucp</th>
+                    <th>Codigo </th>
                     <th>Correo</th>
                     <th>Modificar</th>
                 </tr>
@@ -46,7 +46,7 @@
                         </div>
                         <div class="space-4"></div>
                         <div class="form-group">
-                            <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Código PUCP </label>
+                            <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Código  </label>
 
                             <div class="col-sm-9 col-xs-9">
                                 <input id="prof_codpucp" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"/>

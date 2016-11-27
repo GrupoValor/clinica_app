@@ -8,6 +8,8 @@ use App\Models\TAUSUARIO;
 
 use App\Models\TAPROFESOR;
 
+use App\Classes\Encrypter;
+
 class profesorController extends Controller
 {
     /**
