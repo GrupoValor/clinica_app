@@ -30,7 +30,7 @@ class PeriodoController extends Controller {
 		}
 
 		//Extraer cursos según clínica
-		$db_cursos = TaCurso::where('cln_id', $usuario['clinica'])->get();
+		$db_cursos = TaCurso::where('cln_id', 1)->get();
 		if (empty($db_cursos)) {
 			Log::info('El usuario con id ' . $usuario['userid'] . 'intento acceder a la pagina de busqueda del mantenimiento de rubricas, pero la clinica donde labora no tiene cursos registrados.');
 			return view('intranet.ta_error', ['tipo' => 'rubricas', 'faltante' => 'curso']);
@@ -41,7 +41,7 @@ class PeriodoController extends Controller {
 		$cursos = array_combine($cur_id, $cur_nombre);
 
 		//Extraer ciclos según clínica
-		$db_ciclos = TaCiclo::where('cln_id', $usuario['clinica'])->get();
+		$db_ciclos = TaCiclo::where('cln_id', 1)->get();
 		if (empty($db_ciclos)) {
 			Log::info('El usuario con id ' . $usuario['userid'] . 'intento acceder a la pagina de busqueda del mantenimiento de rubricas, pero la clinica donde labora no tiene ciclos registrados.');
 			return view('intranet.ta_error', ['tipo' => 'rubricas', 'faltante' => 'ciclo']);
@@ -52,7 +52,7 @@ class PeriodoController extends Controller {
 		$ciclos = array_combine($cic_id, $cic_nombre);
 
 		//Ingresar a la vista principal
-		Log::info('El usuario con id ' . $usuario['userid'] . ' entro a la pagina de busqueda del mantenimiento de rubricas.');
+		Log::info('El usuario con id ' . $usuario['userid'] . ' entro a la pagina de busqueda mantenimiento de rubricas.');
 		return view('intranet.ta_rubricas_busq', ['cursos' => $cursos, 'ciclos' => $ciclos]);
 	}
 

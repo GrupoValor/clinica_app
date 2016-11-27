@@ -51,7 +51,6 @@ $display = new Display($db);
         </div>
       </div>
       <div id="corpus" class="row" style="padding-left: 20px;padding-top: 30px; height: 413px;">
-          <div id="areaTareas" >
             <div id="backlog-tablero" class="col-md-2">
                 <h3 style="font-size: 15px;">Backlog</h3>
                 <ul id="backlog" style="padding-bottom: 35px;">
@@ -77,14 +76,15 @@ $display = new Display($db);
                     <?php echo $display->finalizada($_GET['id']); ?>
                 </ul>
             </div>
-          </div>
             <div id="panel-control-tablero" class="col-md-2" style="background: #ccc; margin-left: 10px; border-radius: 7px;">
               <div id="panel-control-tablero-interesados">
                 <h3 style="font-size: 15px">Miembros</h3>
+                <button id="addmiembros" type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-agregar-miembros">+Agregar</button>
+                <button type="button" class="btn btn-info">Ver</button>
               </div>
               <div id="panel-control-tablero-actividad">
                 <h3 style="font-size: 15px">Registro de actividad</h3>
-                <ul id="registro-actividad" style="width: 160px; height: 260px; overflow: auto">
+                <ul id="registro-actividad">
                     <?php echo $display->lista_actividades($_GET['id']); ?>
                 </ul>
               </div>
@@ -135,6 +135,31 @@ $display = new Display($db);
         </div>
       </div>
     </div>
+
+    <div class="modal fade bs-modal-lg" tabindex="-1" id="modal-agregar-miembros" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Agregar miembros</h4>
+          </div>
+          <div class="modal-body">
+              <div class="form-group">
+                     <div class="input-group">
+                          <span class="input-group-addon">Buscar</span>
+                          <input type="text" name="search_text" id="search_text" placeholder="Busqueda por codigo usuario" class="form-control" />
+                     </div>
+                </div>
+                <br />
+                <div id="result"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-success" data-dismiss="modal">Agregar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
      <div class="modal fade bs-modal-sm" tabindex="-1" id="modal-agrega-tarea" role="dialog" aria-labelledby="mySmallModalLabel">
       <div class="modal-dialog modal-sm" role="document">
@@ -242,14 +267,12 @@ $display = new Display($db);
                     <p>Esta a punto de eliminar este comentario. ¿Desea Continuar?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-danger" id="boton-elimina-comentario" data-dismiss="modal">Si</button>
+                    <button type="button" class="btn btn-primary">No</button>
+                    <button type="button" class="btn btn-danger" id="boton-elimina-comentario">Si</button>
                 </div>
             </div>
         </div>
     </div>
-    <div id="block">
 
-    </div>
 
 </html>

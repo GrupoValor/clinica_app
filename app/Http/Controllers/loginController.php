@@ -6,9 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
-use App\Classes\Encrypter;
 
+use App\Models\Encrypter;
 
 class loginController extends Controller
 {
@@ -32,16 +31,9 @@ class loginController extends Controller
 
 	}
 
-	//MODIFICADO POR ANTHONY. SI HAY ALGUN PROBLEMA, AVISARME AL RESPECTO.
-	public function logout(Request $request)
-	{
-		//Ver si se está ingresado, y obtener el usuario para el log
-		$user = $request->session()->get('user');
-		if (empty($user)) return;
-		//Cerrar sesión
+	public function logout(Request $request){
 		$request->session()->forget('user');
-		//Informar al respecto en el log
-		Log::info('El usuario con id ' . $user['userid'] . 'se ha desconectado.');
+
 	}
 
     public function login(Request $request)
@@ -52,20 +44,20 @@ class loginController extends Controller
     $password = $request['pass'];
 
     $log_type ="Inicio session ";
-    $log = "Usuario: " . $user;
+    $log ="Usuario : ";
+    $log .= $user ;
    
     if (!isset($password))
     	$password = "";
 
-    //MODIFICADO POR ANTHONY. SI HAY ALGUN PROBLEMA EN ESTA LINEA, POR FAVOR AVISARME.
-    $result = DB::select("select usu_id, rol_id, cln_id, usu_passwd from TA_USUARIO where TA_USUARIO.usu_activo = '1' and TA_USUARIO.usu_usenam = '".$user."' ");
+
+
+    $result = DB::select("select usu_id , rol_id ,usu_passwd from TA_USUARIO where TA_USUARIO.usu_activo = '1' and TA_USUARIO.usu_usenam = '".$user."' ");
 
     
     $data = array();
     if (!isset($result[0])){
 	    $log .= " Conexion : No existe el usuario" ;
-	    //AGREGADO POR ANTHONY. SI HAY ALGUN PROBLEMA EN ESTA LINEA, POR FAVOR AVISARME.
-	    Log::info($log_type . $log);
     	DB::INSERT('insert into TA_LOG(log_tipo,log_text) values( "'.$log_type.'","'.$log.'")');
     	return 0;
 		
@@ -78,7 +70,6 @@ class loginController extends Controller
 
     if ($password != Encrypter::decrypt($data['usu_passwd'])){
     	$log .= " Conexion : Password incorrecto" ;
-    	Log::info($log_type . $log);
     	DB::INSERT('insert into TA_LOG(log_tipo,log_text) values( "'.$log_type.'","'.$log.'")');
     	return 0;
     }
@@ -87,7 +78,6 @@ class loginController extends Controller
 
     if (!isset($result[0])){
     	$log .= " Conexion : Usuario  incorrecto" ;
-    	Log::info($log_type . $log);
     	DB::INSERT('insert into TA_LOG(log_tipo,log_text) values( "'.$log_type.'","'.$log.'")');
     	return 0;
     }
@@ -102,15 +92,11 @@ class loginController extends Controller
 		$find = false;
 		$usu_id = $data['usu_id'];
 		$usu_rol = $data['rol_id'];
-		//AGREGADO POR ANTHONY. SI HAY ALGUN PROBLEMA EN ESTA LINEA, POR FAVOR AVISARME.
-		$usu_cln = $data['cln_id'];
 
 		$log .= "-> Rol : ". $usu_rol;  
 		$userdata = array();
 		$userdata['rol'] = $usu_rol;
 		$userdata['userid'] = $usu_id;
-		//AGREGADO POR ANTHONY. SI HAY ALGUN PROBLEMA EN ESTA LINEA, POR FAVOR AVISARME.
-		$userdata['clinica'] = $usu_cln;
 
 		if ($usu_rol== "1" || $usu_rol== "2" || $usu_rol== "3"){
 			$result = DB::select("select * from TA_ALUMNO where TA_ALUMNO.usu_id = '" .$usu_id."'");
@@ -180,7 +166,7 @@ class loginController extends Controller
 			}
 		}
 
-		Log::info($log_type . $log);
+
 		DB::INSERT('insert into TA_LOG(log_tipo,log_text) values( "'.$log_type.'","'.$log.'")');
 		if (!$find){
 			return 0;

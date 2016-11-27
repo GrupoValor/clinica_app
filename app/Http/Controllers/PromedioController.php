@@ -33,7 +33,7 @@ class PromedioController extends Controller {
 		}
 
 		//Extraer cursos según clínica
-		$db_cursos = TaCurso::where('cln_id', $usuario['clinica'])->get();
+		$db_cursos = TaCurso::where('cln_id', 1)->get();
 		if (empty($db_cursos)) {
 			Log::info('El usuario con id ' . $usuario['userid'] . 'intento acceder a la pagina de busqueda del registro de notas, pero la clinica donde labora no tiene ingres_cursor(result)s registrados.');
 			return view('intranet.ta_error', ['tipo' => 'notas', 'faltante' => 'curso']);
@@ -44,7 +44,7 @@ class PromedioController extends Controller {
 		$cursos = array_combine($cur_id, $cur_nombre);
 
 		//Extraer ciclos según clínica
-		$db_ciclos = TaCiclo::where('cln_id', $usuario['clinica'])->get();
+		$db_ciclos = TaCiclo::where('cln_id', 1)->get();
 		if (empty($db_ciclos)) {
 			Log::info('El usuario con id ' . $usuario['userid'] . 'intento acceder a la pagina de busqueda del registro de notas, pero la clinica donde labora no tiene ciclos registrados.');
 			return view('intranet.ta_error', ['tipo' => 'notas', 'faltante' => 'ciclo']);
@@ -77,7 +77,6 @@ class PromedioController extends Controller {
 		$semanas[0] = 'Todas';
 
 		//Ir a la página de notas
-		Log::info('El usuario con id ' . $usuario['userid'] . ' entro a la pagina de busqueda del registro de notas.');
 		return view('intranet.ta_notas_busq', ['cursos' => $cursos, 'ciclos' => $ciclos, 'periodo' => $periodo, 'rubricas' => $rubricas, 'semanas' => $semanas]);
 	}
 
@@ -101,8 +100,12 @@ class PromedioController extends Controller {
 		}
 		$rubricas = array_combine($rba_id, $rba_nombre);
 
+		//Formatear semanas para el select
+		$semanas = range(0, $periodo['per_semanas']);
+		$semanas[0] = 'Todas';
+		
 		//Ir a la vista de edición de notas
-		return response()->json([$periodo, $rubricas]);
+		return response()->json([$periodo, $rubricas, $semanas]);
 	}
 
 }

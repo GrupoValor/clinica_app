@@ -68,13 +68,6 @@ class RubricaController extends Controller {
 		} else {
 			$periodo = $periodo->toArray();
 
-			//Verificar que el usuario tenga acceso al periodo
-			if ($periodo['cln_id'] != $usuario['clinica']) {
-				Session::flash('msg-err', 'El periodo al que esta intentando ingresar pertenece a una clinica distinta. &iexcl;No tiene los permisos para ingresar a ella!');
-				Log::warning('El usuario con id ' . $usuario['userid'] . ' intento acceder al registro de notas pero el periodo que solicito es de una clinica distinta a la suya. Por tanto, se le regreso a la pagina de busqueda del registro de notas.');
-				return redirect()->action('PeriodoController@index');
-			}
-
 			//Obtener datos de las rúbricas
 			$rubricas = TaRubrica::where('per_id', $periodo['per_id'])->get()->toArray();
 

@@ -47,7 +47,7 @@ class casosController extends Controller
     public function getpendientes(Request $request){
         $data = $request->session()->get('user');
 
-        $casos =DB::select('select tar_nombre,tar_descri,cas_objact from ta_caso inner join ta_tarea on ta_caso.cas_id = ta_tarea.cas_id where tar_estado = "pendiente" and ta_caso.usu_id = "'.$data['userid'].'" or  tar_estado = "backlog" and ta_caso.usu_id = "'.$data['userid'].'"');
+        $casos =DB::select('select TA_TAREA.cas_id,tar_nombre,tar_descri,cas_objact from TA_CASO inner join TA_TAREA on TA_CASO.cas_id = TA_TAREA.cas_id where tar_estado = "pendiente" and TA_CASO.usu_id = "'.$data['userid'].'" or  tar_estado = "backlog" and TA_CASO.usu_id = "'.$data['userid'].'"');
 
 
 

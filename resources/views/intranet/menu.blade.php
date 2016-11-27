@@ -176,31 +176,14 @@
                 '        <b class="arrow"></b>'+
                 '        <ul class="submenu">'+
                 '            <li class="" id="linoticias"><!-- Noticias -->'+
-                '                <a href="#" class="dropdown-toggle">'+
+                '                <a href="noticias_intranet">'+
                 '                    <i class="menu-icon fa fa-caret-right"></i>'+
                 '                    Noticias'+
-                '                    <b class="arrow fa fa-angle-down"></b>'+
                 '                </a>'+
                 '                <b class="arrow"></b>'+
-                '                <ul class="submenu">'+
-                '                    <li class="" id="noticias-reg">'+
-                '                        <a href="noticias_registro">'+
-                '                            <i class="menu-icon fa fa-caret-right"></i>'+
-                '                            Registro'+
-                '                        </a>'+
-                '                        <b class="arrow"></b>'+
-                '                    </li>'+
-                '                    <li class="" id="noticias-busq">'+
-                '                        <a href="gestor_noticias_busqueda.php">'+
-                '                            <i class="menu-icon fa fa-caret-right"></i>'+
-                '                            Búsqueda'+
-                '                        </a>'+
-                '                        <b class="arrow"></b>'+
-                '                    </li>'+
-                '                </ul>'+
                 '            </li>'+
                 '            <li class="" id="lieventos"> <!-- Eventos -->'+
-                '                <a href="eventos">'+
+                '                <a href="eventos_intranet">'+
                 '                    <i class="menu-icon fa fa-caret-right"></i>'+
                 '                    Eventos'+
                 '                </a>'+
@@ -361,6 +344,8 @@ $.ajax({
             
                 });
 </script>
+
+
 <input id="session_data" type="hidden" name="">
 
 <div id="navbar" class="navbar navbar-default          ace-save-state"> <!--Barra superior-->
@@ -420,7 +405,7 @@ $.ajax({
                         </li>
                         <li class="light-blue dropdown-modal"> <!-- Bienvenido, Luis -->
                             <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                                <img class="nav-user-photo" src="assets/images/avatars/user.jpg" alt="Jason's Photo" />
+                                <img class="nav-user-photo" src="assets/images/avatars/user2.jpg" alt="Jason's Photo" />
                                 <span class="user-info">
                                             <small>Bienvenido,</small>
                                             <p id="user_name" ></p>

@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+<link rel="icon" type="image/png" href="icon/valor.png" />
 	<meta name="csrf_token" content="{{ csrf_token() }}" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta charset="utf-8" />
@@ -925,7 +926,7 @@
 				var data = jQuery.parseJSON(result);
 				var tipo;
 				for(var i = 0; i < data.length; i++) {
-					if(data[i].alu_volunt === 1) tipo = "SI";
+					if(data[i].alu_volunt == 1) tipo = "SI";
 					else tipo = "NO";
 					//[{"eva_id":1,"usu_id":3,"eva_codpuc":"20012734","eva_tipeva":"d","eva_nombre":"Carlos Flores","eva_correo":"carlos@pucp.pe"}]
 					data_set.push([
@@ -965,7 +966,7 @@
 				var data = jQuery.parseJSON(result);
 				var tipo;
 				for(var i = 0; i < data.length; i++) {
-					if(data[i].alu_volunt === 1) tipo = "SI";
+					if(data[i].alu_volunt == 1) tipo = "SI";
 					else tipo = "NO";
 					//[{"eva_id":1,"usu_id":3,"eva_codpuc":"20012734","eva_tipeva":"d","eva_nombre":"Carlos Flores","eva_correo":"carlos@pucp.pe"}]
 					data_set.push([
@@ -1005,7 +1006,7 @@
 				var data = jQuery.parseJSON(result);
 				var tipo;
 				for(var i = 0; i < data.length; i++) {
-					if(data[i].alu_volunt === 1) tipo = "SI";
+					if(data[i].alu_volunt == 1) tipo = "SI";
 					else tipo = "NO";
 					//[{"eva_id":1,"usu_id":3,"eva_codpuc":"20012734","eva_tipeva":"d","eva_nombre":"Carlos Flores","eva_correo":"carlos@pucp.pe"}]
 					data_set.push([
@@ -1046,7 +1047,7 @@
 				var data = jQuery.parseJSON(result);
 				var tipo;
 				for(var i = 0; i < data.length; i++) {
-					if(data[i].alu_volunt === 1) tipo = "SI";
+					if(data[i].alu_volunt == 1) tipo = "SI";
 					else tipo = "NO";
 					//[{"eva_id":1,"usu_id":3,"eva_codpuc":"20012734","eva_tipeva":"d","eva_nombre":"Carlos Flores","eva_correo":"carlos@pucp.pe"}]
 					data_set.push([
