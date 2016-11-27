@@ -11,7 +11,7 @@ use App\Models\TACLIENTE;
 use App\Models\TAUSUARIO;
 
 use Illuminate\Support\Facades\DB;
-use App\Classes\Encrypter;
+use App\Models\Encrypter;
 
 class clienteController extends Controller
 {

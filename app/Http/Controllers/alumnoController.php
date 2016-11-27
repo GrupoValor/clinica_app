@@ -10,7 +10,7 @@ use App\Models\TAALUMNO;
 
 use Illuminate\Support\Facades\DB;
 
-use App\Classes\Encrypter;
+use App\Models\Encrypter;
 
 class alumnoController extends Controller
 {
