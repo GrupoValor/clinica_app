@@ -84,7 +84,7 @@ $display = new Display($db);
               </div>
               <div id="panel-control-tablero-actividad">
                 <h3 style="font-size: 15px">Registro de actividad</h3>
-                <ul id="registro-actividad" style="width: 160px; height: 260px; overflow: auto">
+                <ul id="registro-actividad">
                     <?php echo $display->lista_actividades($_GET['id']); ?>
                 </ul>
               </div>
@@ -242,8 +242,8 @@ $display = new Display($db);
                     <p>Esta a punto de eliminar este comentario. ¿Desea Continuar?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-danger" id="boton-elimina-comentario" data-dismiss="modal">Si</button>
+                    <button type="button" class="btn btn-primary">No</button>
+                    <button type="button" class="btn btn-danger" id="boton-elimina-comentario">Si</button>
                 </div>
             </div>
         </div>

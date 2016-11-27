@@ -63,9 +63,9 @@ class Display
 
     public function lista_actividades($id) {
         $output = '';
-        $stmt = $this->db->query("SELECT act_desc, act_fecreg FROM TA_ACTIVIDAD WHERE cas_id = $id ORDER BY act_fecreg ASC");
+        $stmt = $this->db->query("SELECT act_desc, act_fecreg FROM TA_ACTIVIDAD WHERE cas_id = $id ORDER BY act_fecreg DESC");
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $output .= '<li>'.  $row['act_fecreg'].': '. $row['act_desc'] . '</li>';
+            $output .= $row['act_desc'];
         }
         return $output;
     }

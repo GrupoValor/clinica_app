@@ -36,7 +36,15 @@ h3{
     padding: 0;
 }
 
-li {
+#registro-actividad{
+    width: 160px;
+    height: 260px;
+    overflow: auto;
+    font-size: 10px;
+    padding-left: 10px;
+}
+
+.tarea {
     font-size:12px;
     font-weight: bold;
     text-align:center;
@@ -45,24 +53,20 @@ li {
     padding: 0 10px;
     height: 50px;
     line-height: 25px;
-}
 
-li:nth-child(odd) {
-   background-color: #FFFFFF;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 2px 4px 2px rgba(0, 0, 0, 0.32);
-}
-
-li:nth-child(even) {
     background-color: #FFFFFF;
     margin-bottom: 10px;
-    border-radius: 5px;
     box-shadow: 2px 4px 2px rgba(0, 0, 0, 0.32);
 }
 
-li:hover {
+
+.tarea:hover, .comentario:hover {
     cursor: move;
+}
+
+.actividad{
+    border-bottom-width: 3px;
+    border-style: solid;
 }
 
 .modal-dialog{

@@ -20,14 +20,14 @@ $(document).ready(function () {
                         url: "../user",
                         success: function(result){
                             var data = JSON.parse(result);
-                            $('#registro-actividad').prepend('<li>'+data.nombre+' movió '+ nombreTarea +' a backlog</li>');
+                            $('#registro-actividad').prepend('<li class="actividad"><strong>'+ new Date().toLocaleString() +'</strong>:<br> <strong>'+data.nombre+'</strong> movió <strong>'+ nombreTarea +'</strong> a backlog</li>');
                             $.ajax({
                                 url:"ajax/guarda-registro-actividad.ajax.php",
                                 type: "GET",
                                 data:{
                                     'usu_id': data.userid,
                                     'cas_id': parseInt(getUrlVars()['id']),
-                                    'act_desc': data.nombre+ " movió" + nombreTarea +" a backlog"
+                                    'act_desc': '<li class="actividad"><strong>'+ new Date().toLocaleString() +'</strong>:<br> <strong>'+data.nombre+'</strong> movió <strong>'+ nombreTarea +'</strong> a backlog</li>'
                                 }
                             });
                         }
@@ -55,14 +55,14 @@ $(document).ready(function () {
                         url: "../user",
                         success: function(result){
                             var data = JSON.parse(result);
-                            $('#registro-actividad').prepend('<li>'+data.nombre+' movió '+ nombreTarea +' a pendientes</li>');
+                            $('#registro-actividad').prepend('<li class="actividad"><strong>'+ new Date().toLocaleString() +'</strong>:<br> <strong>'+data.nombre+'</strong> movió <strong>'+ nombreTarea +'</strong> a pendientes</li>');
                             $.ajax({
                                 url:"ajax/guarda-registro-actividad.ajax.php",
                                 type: "GET",
                                 data:{
                                     'usu_id': data.userid,
                                     'cas_id': parseInt(getUrlVars()['id']),
-                                    'act_desc': data.nombre+ " movió" + nombreTarea +" a pendientes"
+                                    'act_desc': '<li class="actividad"><strong>'+ new Date().toLocaleString() +'</strong>:<br> <strong>'+data.nombre+'</strong> movió <strong>'+ nombreTarea +'</strong> a pendientes</li>'
                                 }
                             });
                         }
@@ -90,14 +90,14 @@ $(document).ready(function () {
                         url: "../user",
                         success: function(result){
                             var data = JSON.parse(result);
-                            $('#registro-actividad').prepend('<li>'+data.nombre+' movió '+ nombreTarea +' a en proceso</li>');
+                            $('#registro-actividad').prepend('<li class="actividad"><strong>'+ new Date().toLocaleString() +'</strong>:<br> <strong>'+data.nombre+'</strong> movió <strong>'+ nombreTarea +'</strong> a en proceso</li>');
                             $.ajax({
                                 url:"ajax/guarda-registro-actividad.ajax.php",
                                 type: "GET",
                                 data:{
                                     'usu_id': data.userid,
                                     'cas_id': parseInt(getUrlVars()['id']),
-                                    'act_desc': data.nombre+ " movió" + nombreTarea +" a en proceso"
+                                    'act_desc': '<li class="actividad"><strong>'+ new Date().toLocaleString() +'</strong>:<br> <strong>'+data.nombre+'</strong> movió <strong>'+ nombreTarea +'</strong> a en proceso</li>'
                                 }
                             });
                         }
@@ -125,14 +125,14 @@ $(document).ready(function () {
                         url: "../user",
                         success: function(result){
                             var data = JSON.parse(result);
-                            $('#registro-actividad').prepend('<li>'+data.nombre+' movió '+ nombreTarea +' a finalizadas</li>');
+                            $('#registro-actividad').prepend('<li class="actividad"><strong>'+ new Date().toLocaleString() +'</strong>:<br> <strong>'+data.nombre+'</strong> movió <strong>'+ nombreTarea +'</strong> a finalizada</li>');
                             $.ajax({
                                 url:"ajax/guarda-registro-actividad.ajax.php",
                                 type: "GET",
                                 data:{
                                     'usu_id': data.userid,
                                     'cas_id': parseInt(getUrlVars()['id']),
-                                    'act_desc': data.nombre+ " movió" + nombreTarea +" a finalizadas"
+                                    'act_desc': '<li class="actividad"><strong>'+ new Date().toLocaleString() +'</strong>:<br> <strong>'+data.nombre+'</strong> movió <strong>'+ nombreTarea +'</strong> a finalizada</li>'
                                 }
                             });
                         }
@@ -144,7 +144,7 @@ $(document).ready(function () {
 
 
     //Para los efectos de drag and drop
-    $(document).on('mousedown', 'li', function () {
+    /*$(document).on('mousedown', 'li', function () {
         $(this).css(
             {
                 'backgroundColor': '#285e8c',
@@ -158,7 +158,7 @@ $(document).ready(function () {
                 'color': ''
             }
         )
-    });
+    });*/
 
 
     //Al  hacer doble click sobre las tareas se despliega su detalle
@@ -199,14 +199,33 @@ $(document).ready(function () {
         $(document).on('dblclick','.comentario',function () {
             var comentario=this;
             $('#modal-eliminar-comentario').modal('show');
-            $('#boton-elimina-comentario').on('click',function () {
+            $('#boton-elimina-comentario').off().on('click',function () {
                $.get("ajax/elimina-comentario.ajax.php", {'id': comentario.id});
                 comentario.remove();
             });
         });
         //manejo de eventos
         $('#boton-elimina-tarea-ok').on('click', function () {
-            $.get("ajax/elimina-tarea.ajax.php", {'tar_id': tarea.id});
+            $.get("ajax/elimina-tarea.ajax.php", {'tar_id': tarea.id}, function(data){
+                var nombreTarea = data;
+                $.ajax({
+                    type: "GET",
+                    url: "../user",
+                    success: function(result){
+                        var data = JSON.parse(result);
+                        $('#registro-actividad').prepend('<li class="actividad" style="background-color:#FF6E40"><strong>'+ new Date().toLocaleString() +'</strong>:<br> <strong>'+data.nombre+'</strong> eliminó <strong>'+ nombreTarea +'</strong></li>');
+                        $.ajax({
+                            url:"ajax/guarda-registro-actividad.ajax.php",
+                            type: "GET",
+                            data:{
+                                'usu_id': data.userid,
+                                'cas_id': parseInt(getUrlVars()['id']),
+                                'act_desc': '<li class="actividad" style="background-color:#FF6E40"><strong>'+ new Date().toLocaleString() +'</strong>:<br> <strong>'+data.nombre+'</strong> eliminó <strong>'+ nombreTarea +'</strong></li>'
+                            }
+                        });
+                    }
+                })
+            });
             tarea.remove();
             $('#modal-detalle-tarea').modal('hide');
         });
@@ -281,6 +300,23 @@ $(document).ready(function () {
                 'cas_id': parseInt(getUrlVars()['id'])
             }, function (data) {
                 $('#backlog').append('<li class="tarea" id="' + data + '">' + tituloTarea + '</li>');
+                $.ajax({
+                    type: "GET",
+                    url: "../user",
+                    success: function(result){
+                        var data = JSON.parse(result);
+                        $('#registro-actividad').prepend('<li class="actividad" style="background-color:#81C784 !important"><strong>'+ new Date().toLocaleString() +'</strong>:<br> <strong>'+data.nombre+'</strong> agregó <strong>'+ tituloTarea +'</strong> a backlog</li>');
+                        $.ajax({
+                            url:"ajax/guarda-registro-actividad.ajax.php",
+                            type: "GET",
+                            data:{
+                                'usu_id': data.userid,
+                                'cas_id': parseInt(getUrlVars()['id']),
+                                'act_desc': '<li class="actividad" style="background-color:#81C784 !important"><strong>'+ new Date().toLocaleString() +'</strong>:<br> <strong>'+data.nombre+'</strong> agregó <strong>'+ tituloTarea +'</strong> a backlog</li>'
+                            }
+                        });
+                    }
+                })
             });
             $('#modal-agrega-tarea').modal('hide');
           }
