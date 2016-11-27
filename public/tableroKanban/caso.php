@@ -78,9 +78,9 @@ $display = new Display($db);
             </div>
             <div id="panel-control-tablero" class="col-md-2" style="background: #ccc; margin-left: 10px; border-radius: 7px;">
               <div id="panel-control-tablero-interesados">
-                <h3 style="font-size: 15px">Miembros</h3>
+                <h3 style="font-size: 15px">Usuarios:</h3>
                 <button id="addmiembros" type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-agregar-miembros">+Agregar</button>
-                <button type="button" class="btn btn-info">Ver</button>
+                <button id="listarMiembros" type="button" class="btn btn-info" data-toggle="modal">Ver</button>
               </div>
               <div id="panel-control-tablero-actividad">
                 <h3 style="font-size: 15px">Registro de actividad</h3>
@@ -140,13 +140,13 @@ $display = new Display($db);
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4>Agregar miembros</h4>
+            <h4>Agregar usuarios:</h4>
           </div>
           <div class="modal-body">
               <div class="form-group">
                      <div class="input-group">
                           <span class="input-group-addon">Buscar</span>
-                          <input type="text" name="search_text" id="search_text" placeholder="Busqueda por codigo usuario" class="form-control" />
+                          <input type="text" name="search_text" id="search_text" placeholder="Busqueda por nombre de usuario" class="form-control" />
                      </div>
                 </div>
                 <br />
@@ -154,7 +154,23 @@ $display = new Display($db);
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-success" data-dismiss="modal">Agregar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade bs-modal-lg" tabindex="-1" id="modal-listar-miembros" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Usuarios registrados en el caso:</h4>
+          </div>
+          <div class="modal-body">
+              <div id="resultados-listar-usuarios-caso"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
           </div>
         </div>
       </div>

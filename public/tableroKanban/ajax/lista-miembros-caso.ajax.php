@@ -5,15 +5,13 @@ $output = '';
 
 $stmt = $db->query("(SELECT TA_USUARIO.usu_id, TA_ROL.rol_nombre, TA_USUARIO.usu_usenam, TA_ALUMNO.alu_nombre
 FROM TA_USUARIO, TA_ROL, TA_ALUMNO WHERE TA_USUARIO.rol_id = TA_ROL.rol_id AND
-TA_USUARIO.usu_id = TA_ALUMNO.usu_id AND TA_ROL.rol_id IN (2,3,4,5) AND TA_ALUMNO.usu_id NOT IN(SELECT usu_id FROM TA_USUARIO_CASO WHERE cas_id = ".$_GET['cas_id'].")
-AND TA_ALUMNO.alu_nombre LIKE '%".$_GET["search"]."%')
+TA_USUARIO.usu_id = TA_ALUMNO.usu_id AND TA_ALUMNO.usu_id IN (SELECT usu_id FROM TA_USUARIO_CASO WHERE cas_id = ".$_GET['cas_id']."))
 UNION
 (SELECT TA_USUARIO.usu_id, TA_ROL.rol_nombre, TA_USUARIO.usu_usenam, TA_EVALUADOR.eva_nombre FROM
 TA_USUARIO, TA_ROL, TA_EVALUADOR WHERE TA_USUARIO.rol_id = TA_ROL.rol_id AND
-TA_USUARIO.usu_id = TA_EVALUADOR.usu_id AND TA_ROL.rol_id IN (2,3,4,5) AND TA_EVALUADOR.usu_id NOT IN(SELECT usu_id FROM TA_USUARIO_CASO WHERE cas_id = ".$_GET['cas_id'].")
-AND TA_EVALUADOR.eva_nombre LIKE '%".$_GET["search"]."%')");
+TA_USUARIO.usu_id = TA_EVALUADOR.usu_id AND TA_EVALUADOR.usu_id IN (SELECT usu_id FROM TA_USUARIO_CASO WHERE cas_id = ".$_GET['cas_id']."))");
 if($stmt){
-    $output .= '<h4 align="center">Resultados de búsqueda</h4>';
+    $output .= '<h4 align="center">Lista:</h4>';
     $output .= '<div class="table-responsive">
                         <table class="table table bordered">
                              <tr>
@@ -31,7 +29,7 @@ if($stmt){
                                             <td>'.$row["rol_nombre"].'</td>
                                             <td>'.$row["usu_usenam"].'</td>
                                             <td>'.$row["alu_nombre"].'</td>
-                                            <td><button type="button" id="'.$row["usu_id"].'" class="btn btn-primary btn-sm boton-agrega-miembro" data-dismiss="modal">Selecciona</button> </td>
+                                            <td><button type="button" id="'.$row["usu_id"].'" class="btn btn-danger btn-sm boton-elimina-miembro" data-dismiss="modal">Elimina</button> </td>
                                        </tr>
                                   ';
                              }

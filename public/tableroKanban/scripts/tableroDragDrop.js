@@ -362,11 +362,12 @@ $(document).ready(function () {
                 $.ajax({
                      url:"ajax/busca-miembros.ajax.php",
                      method:"GET",
-                     data:{search:txt},
+                     data:{search:txt, 'cas_id': parseInt(getUrlVars()['id'])},
                      dataType:"text",
                      success:function(data)
                      {
                           $('#result').html(data);
+
                      }
                 });
            }
@@ -376,6 +377,51 @@ $(document).ready(function () {
            }
       });
 
+      $(document).on('click','#addmiembros',function () {
+          $.ajax({
+               url:"ajax/busca-miembros.ajax.php",
+               method:"GET",
+               data:{search:"", 'cas_id': parseInt(getUrlVars()['id'])},
+               dataType:"text",
+               success:function(data)
+               {
+                    $('#result').html(data);
+               }
+          });
+      });
 
+
+      $(document).on('click','.boton-agrega-miembro',function () {
+          $.get("ajax/agrega-usuarios-caso.ajax.php", {
+              'cas_id': parseInt(getUrlVars()['id']),
+              'usu_id': $(this).attr('id')
+          }, function () {
+              alert("Registrado");
+              $('#search_text').val('');
+          })
+      });
+
+        $(document).on('click','.boton-elimina-miembro',function () {
+            $.get("ajax/elimina-usuarios-caso.ajax.php", {
+                'cas_id': parseInt(getUrlVars()['id']),
+                'usu_id': $(this).attr('id')
+            }, function () {
+                alert("Eliminado");
+            })
+        });
+
+      $(document).on('click','#listarMiembros',function () {
+          $("#modal-listar-miembros").modal('show');
+          $.ajax({
+               url:"ajax/lista-miembros-caso.ajax.php",
+               method:"GET",
+               data:{'cas_id': parseInt(getUrlVars()['id'])},
+               dataType:"text",
+               success:function(data)
+               {
+                    $('#resultados-listar-usuarios-caso').html(data);
+               }
+          });
+      });
 
 });
