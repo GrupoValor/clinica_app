@@ -58,6 +58,7 @@
 						
 					</select>
 					<button id="boton_nuevo" type="button" class="btn btn-primary hide" style="float: right;margin-top: -8px;" onclick="add_onClick()">Nuevo +</button>
+
 				</div>
                 <div class="row" id="comentario_ini" style="text-align:center; margin-top:10%; color: grey;">
                     <h3>Selecciona la tabla a mostrar</h3>                
