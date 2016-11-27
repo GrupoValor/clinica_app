@@ -1,0 +1,32 @@
+@font-face {
+	font-family: 'RobotoWeb';
+	font-style: normal;
+	font-weight: normal;
+	src: url(fonts/Roboto-Regular.eot);
+	src: url(fonts/Roboto-Regular.eot) format('embedded-opentype'),
+	local('Roboto Web'), local('RobotoWeb-Regular'), url(fonts/Roboto-Regular.ttf) format('truetype');
+}
+@font-face {
+	font-family: 'RobotoWeb';
+	font-style: normal;
+	font-weight: bold;
+	src: url(fonts/Roboto-Bold.eot);
+	src: url(fonts/Roboto-Bold.eot) format('embedded-opentype'),
+	local('Roboto Web Bold'), local('RobotoWeb-Bold'), url(fonts/Roboto-Bold.ttf) format('truetype');
+}
+@font-face {
+	font-family: 'RobotoWeb';
+	font-style: normal;
+	font-weight: 500;
+	src: url(fonts/Roboto-Medium.eot);
+	src: url(fonts/Roboto-Medium.eot) format('embedded-opentype'),
+	local('Roboto Web Medium'), local('RobotoWeb-Medium'), url(fonts/Roboto-Medium.ttf) format('truetype');
+}
+@font-face {
+	font-family: 'RobotoWeb';
+	font-style: normal;
+	font-weight: 300;
+	src: url(fonts/Roboto-Light.eot);
+	src: url(fonts/Roboto-Light.eot) format('embedded-opentype'),
+	local('Roboto Web Light'), local('RobotoWeb-Light'), url(fonts/Roboto-Light.ttf) format('truetype');
+}
