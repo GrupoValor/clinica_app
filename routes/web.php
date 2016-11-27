@@ -161,6 +161,11 @@ Route::get('/agenda2', function () {
     return view('intranet/kari_eventos2');
 });
 
+//noticas
+Route::get('/noti_reg', function () {
+    return view('intranet/kari_noticias');
+});
+
 //page error
 Route::get('/error-500', function () {
     return view('errors/500');
@@ -183,6 +188,7 @@ Route::resource('service_cliente','clienteController');
 Route::resource('service_alumno_ta','taAlumnoController');
 Route::resource('service_clinica','clinicaController');
 Route::resource('service_evento','eventoController');
+Route::resource('service_noticia','noticiaController');
 
 //Route::resource('test','testController');
 
