@@ -349,8 +349,8 @@
                 var tipo;
 
                 for (var i = 0; i < data.length; i++) {
-                    if (data[i].usu_activo === 1) {
-                        if (data[i].alu_volunt === 1) {
+                    if (data[i].usu_activo == 1) {
+                        if (data[i].alu_volunt == 1) {
                             tipo = "SI";
                         } else {
                             tipo = "NO";

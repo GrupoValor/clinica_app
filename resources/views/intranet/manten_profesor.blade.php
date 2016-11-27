@@ -315,7 +315,7 @@
             success: function(result) {
                 var data = jQuery.parseJSON(result);
                 for (var i = 0; i < data.length; i++) {
-                    if (data[i].usu_activo === 1) {
+                    if (data[i].usu_activo == 1) {
                         dataset_prof.push([
                             data[i].eva_id,
                             data[i].eva_nombre,

@@ -926,7 +926,7 @@
 				var data = jQuery.parseJSON(result);
 				var tipo;
 				for(var i = 0; i < data.length; i++) {
-					if(data[i].alu_volunt === 1) tipo = "SI";
+					if(data[i].alu_volunt == 1) tipo = "SI";
 					else tipo = "NO";
 					//[{"eva_id":1,"usu_id":3,"eva_codpuc":"20012734","eva_tipeva":"d","eva_nombre":"Carlos Flores","eva_correo":"carlos@pucp.pe"}]
 					data_set.push([
@@ -966,7 +966,7 @@
 				var data = jQuery.parseJSON(result);
 				var tipo;
 				for(var i = 0; i < data.length; i++) {
-					if(data[i].alu_volunt === 1) tipo = "SI";
+					if(data[i].alu_volunt == 1) tipo = "SI";
 					else tipo = "NO";
 					//[{"eva_id":1,"usu_id":3,"eva_codpuc":"20012734","eva_tipeva":"d","eva_nombre":"Carlos Flores","eva_correo":"carlos@pucp.pe"}]
 					data_set.push([
@@ -1006,7 +1006,7 @@
 				var data = jQuery.parseJSON(result);
 				var tipo;
 				for(var i = 0; i < data.length; i++) {
-					if(data[i].alu_volunt === 1) tipo = "SI";
+					if(data[i].alu_volunt == 1) tipo = "SI";
 					else tipo = "NO";
 					//[{"eva_id":1,"usu_id":3,"eva_codpuc":"20012734","eva_tipeva":"d","eva_nombre":"Carlos Flores","eva_correo":"carlos@pucp.pe"}]
 					data_set.push([
@@ -1047,7 +1047,7 @@
 				var data = jQuery.parseJSON(result);
 				var tipo;
 				for(var i = 0; i < data.length; i++) {
-					if(data[i].alu_volunt === 1) tipo = "SI";
+					if(data[i].alu_volunt == 1) tipo = "SI";
 					else tipo = "NO";
 					//[{"eva_id":1,"usu_id":3,"eva_codpuc":"20012734","eva_tipeva":"d","eva_nombre":"Carlos Flores","eva_correo":"carlos@pucp.pe"}]
 					data_set.push([

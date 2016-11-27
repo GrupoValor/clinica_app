@@ -248,19 +248,19 @@
             var genero = $("#cli_genero option:selected").val();
             
             var nivel;
-            if ($("#cli_nivedu option:selected").val() === 's') {
+            if ($("#cli_nivedu option:selected").val() == 's') {
                 nivel = "Sin estudios";
-            } else if ($("#cli_nivedu option:selected").val() === 'pi') {
+            } else if ($("#cli_nivedu option:selected").val() == 'pi') {
                 nivel = "Primaria incompleta";
-            } else if ($("#cli_nivedu option:selected").val() === 'pc') {
+            } else if ($("#cli_nivedu option:selected").val() == 'pc') {
                 nivel = "Primaria completa";
-            } else if ($("#cli_nivedu option:selected").val() === 'si') {
+            } else if ($("#cli_nivedu option:selected").val() == 'si') {
                 nivel = "Secundaria incompleta";
-            } else if ($("#cli_nivedu option:selected").val() === 'sc') {
+            } else if ($("#cli_nivedu option:selected").val() == 'sc') {
                 nivel = "Secundaria completa";
-            } else if ($("#cli_nivedu option:selected").val() === 'sui') {
+            } else if ($("#cli_nivedu option:selected").val() == 'sui') {
                 nivel = "Superior incompleto";
-            } else if ($("#cli_nivedu option:selected").val() === 'suc') {
+            } else if ($("#cli_nivedu option:selected").val() == 'suc') {
                 nivel = "Superior completo";
             }
             var code = Math.floor((Math.random() * 10000000) + 70000000);
@@ -314,19 +314,19 @@
             var genero = $("#cli_genero option:selected").val();
 
             var nivel;
-            if ($("#cli_nivedu option:selected").val() === 's') {
+            if ($("#cli_nivedu option:selected").val() == 's') {
                 nivel = "Sin estudios";
-            } else if ($("#cli_nivedu option:selected").val() === 'pi') {
+            } else if ($("#cli_nivedu option:selected").val() == 'pi') {
                 nivel = "Primaria incompleta";
-            } else if ($("#cli_nivedu option:selected").val() === 'pc') {
+            } else if ($("#cli_nivedu option:selected").val() == 'pc') {
                 nivel = "Primaria completa";
-            } else if ($("#cli_nivedu option:selected").val() === 'si') {
+            } else if ($("#cli_nivedu option:selected").val() == 'si') {
                 nivel = "Secundaria incompleta";
-            } else if ($("#cli_nivedu option:selected").val() === 'sc') {
+            } else if ($("#cli_nivedu option:selected").val() == 'sc') {
                 nivel = "Secundaria completa";
-            } else if ($("#cli_nivedu option:selected").val() === 'sui') {
+            } else if ($("#cli_nivedu option:selected").val() == 'sui') {
                 nivel = "Superior incompleto";
-            } else if ($("#cli_nivedu option:selected").val() === 'suc') {
+            } else if ($("#cli_nivedu option:selected").val() == 'suc') {
                 nivel = "Superior completo";
             }
             
@@ -395,19 +395,19 @@
         var rows = table_cliente.rows(id).data();
         edit_id_cliente = parseInt(id);
         var nivel;
-        if (dataset_cliente[edit_id_cliente][3] === "Sin estudios") {
+        if (dataset_cliente[edit_id_cliente][3] == "Sin estudios") {
             nivel = "s";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Primaria incompleta") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Primaria incompleta") {
             nivel = "pi";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Primaria completa") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Primaria completa") {
             nivel = "pc";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Secundaria incompleta") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Secundaria incompleta") {
             nivel = "si";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Secundaria completa") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Secundaria completa") {
             nivel = "sc";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Superior incompleto") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Superior incompleto") {
             nivel = "sui";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Superior completo") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Superior completo") {
             nivel = "suc";
         }
                 
@@ -441,19 +441,19 @@
         edit_id_cliente = parseInt(id);
         
         var nivel;
-        if (dataset_cliente[edit_id_cliente][3] === "Sin estudios") {
+        if (dataset_cliente[edit_id_cliente][3] == "Sin estudios") {
             nivel = "s";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Primaria incompleta") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Primaria incompleta") {
             nivel = "pi";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Primaria completa") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Primaria completa") {
             nivel = "pc";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Secundaria incompleta") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Secundaria incompleta") {
             nivel = "si";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Secundaria completa") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Secundaria completa") {
             nivel = "sc";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Superior incompleto") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Superior incompleto") {
             nivel = "sui";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Superior completo") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Superior completo") {
             nivel = "suc";
         }
         
@@ -508,7 +508,7 @@
             success: function(result) {
                 var data = jQuery.parseJSON(result);
                 for (var i = 0; i < data.length; i++) {
-                    if (data[i].usu_activo === 1) {
+                    if (data[i].usu_activo == 1) {
                         dataset_cliente.push([
                             data[i].cli_id,
                             data[i].cli_nrodoc,
