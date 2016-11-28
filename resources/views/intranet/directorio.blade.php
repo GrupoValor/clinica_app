@@ -283,14 +283,16 @@
                 tipo = "Institucion";
             }
 
-            if($('#dir_email').val().trim().length<3 || ($('#dir_telefono').val().trim().length<1) || ($('#dir_direcc').val().trim().length<1))
-                return;
             if($('#dir_email').val().indexOf("@")===-1){
+                alert("debes ingresar un email correcto")
                 return;
             }
             i = data_set.length;
-            if ( $('#dir_nombre').val().trim().length < 1 )
+            if ( $('#dir_nombre').val().trim().length < 1 ){
+                alert("debes ingresar el nombre")
+
                 return;
+            }
             $.ajax({
                 type: "POST",
                 url:'service_directorio',
