@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 28-11-2016 a las 08:50:33
+-- Tiempo de generación: 27-11-2016 a las 18:32:16
 -- Versión del servidor: 5.5.51-38.2
 -- Versión de PHP: 5.4.31
 
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `TA_ACTIVIDAD` (
   `cas_id` int(10) DEFAULT NULL,
   `act_desc` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `act_fecreg` datetime DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=142 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=140 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `TA_ACTIVIDAD`
@@ -44,9 +44,7 @@ INSERT INTO `TA_ACTIVIDAD` (`act_id`, `usu_id`, `cas_id`, `act_desc`, `act_fecre
 (135, 1, 5, '<li class="actividad" style="background-color:#81C784 !important"><strong>11/27/2016, 1:54:11 PM</strong>:<br> <strong>Chiara</strong> agregó <strong>Recuperar Partida Original</strong> a backlog</li>', '2016-11-27 12:54:11'),
 (134, 1, 1, '<li class="actividad"><strong>11/27/2016, 1:43:05 PM</strong>:<br> <strong>Chiara</strong> movió <strong>Busqueda Partida Nacimiento</strong> a pendientes</li>', '2016-11-27 12:43:05'),
 (138, 1, 5, '<li class="actividad"><strong>11/27/2016, 1:55:22 PM</strong>:<br> <strong>Chiara</strong> movió <strong>Presentar Solicitud de DNI</strong> a pendientes</li>', '2016-11-27 12:55:22'),
-(139, 1, 5, '<li class="actividad" style="background-color:#FF6E40"><strong>11/27/2016, 1:55:30 PM</strong>:<br> <strong>Chiara</strong> eliminó <strong>Presentar Solicitud de DNI</strong></li>', '2016-11-27 12:55:30'),
-(140, 1, 15, '<li class="actividad" style="background-color:#81C784 !important"><strong>11/28/2016, 1:08:17 AM</strong>:<br> <strong>Chiara</strong> agregó <strong>tarea 1</strong> a backlog</li>', '2016-11-28 00:08:18'),
-(141, 1, 15, '<li class="actividad" style="background-color:#81C784 !important"><strong>11/28/2016, 1:11:04 AM</strong>:<br> <strong>Chiara</strong> agregó <strong>tarea</strong> a backlog</li>', '2016-11-28 00:11:04');
+(139, 1, 5, '<li class="actividad" style="background-color:#FF6E40"><strong>11/27/2016, 1:55:30 PM</strong>:<br> <strong>Chiara</strong> eliminó <strong>Presentar Solicitud de DNI</strong></li>', '2016-11-27 12:55:30');
 
 -- --------------------------------------------------------
 
@@ -64,23 +62,8 @@ CREATE TABLE IF NOT EXISTS `TA_ALERTA` (
   `ale_fecreg` date DEFAULT NULL,
   `ale_fecven` date DEFAULT NULL,
   `ale_incentivo` text,
-  `ale_direccion` varchar(50) DEFAULT NULL,
-  `cas_id` int(11) DEFAULT NULL
+  `ale_direccion` varchar(50) DEFAULT NULL
 ) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `TA_ALERTA_ATENCION`
---
-
-CREATE TABLE IF NOT EXISTS `TA_ALERTA_ATENCION` (
-  `ale_id` int(11) NOT NULL,
-  `nombre` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `correo` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `telefono` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `mensaje` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -92,7 +75,6 @@ CREATE TABLE IF NOT EXISTS `TA_ALUMNO` (
   `alu_id` int(10) unsigned NOT NULL,
   `usu_id` int(10) unsigned NOT NULL,
   `alu_volunt` int(1) NOT NULL,
-  `per_id` int(11) DEFAULT NULL,
   `alu_nrodoc` varchar(20) DEFAULT NULL,
   `alu_correo` varchar(40) DEFAULT NULL,
   `alu_nombre` varchar(40) DEFAULT NULL,
@@ -103,10 +85,10 @@ CREATE TABLE IF NOT EXISTS `TA_ALUMNO` (
 -- Volcado de datos para la tabla `TA_ALUMNO`
 --
 
-INSERT INTO `TA_ALUMNO` (`alu_id`, `usu_id`, `alu_volunt`, `per_id`, `alu_nrodoc`, `alu_correo`, `alu_nombre`, `alu_codpuc`) VALUES
-(1, 1, 0, 1, '28389392', 'chiara@pucp.pe', 'Chiara', '20160000'),
-(2, 2, 0, 1, '72921408', 'karina.alfaro@pucp.pe', 'Karina Alfaro ', '20160001'),
-(3, 3, 1, 1, '36899123', 'vduval@france.pl', 'Victor Duval', '20160002');
+INSERT INTO `TA_ALUMNO` (`alu_id`, `usu_id`, `alu_volunt`, `alu_nrodoc`, `alu_correo`, `alu_nombre`, `alu_codpuc`) VALUES
+(1, 1, 0, '28389392', 'chiara@pucp.pe', 'Chiara', '20160000'),
+(2, 2, 0, '72921408', 'karina.alfaro@pucp.pe', 'Karina Alfaro ', '20160001'),
+(3, 3, 1, '36899123', 'vduval@france.pl', 'Victor Duval', '20160002');
 
 -- --------------------------------------------------------
 
@@ -206,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `TA_CLINICA` (
 --
 
 INSERT INTO `TA_CLINICA` (`cln_id`, `cln_nombre`, `cln_telefono`, `cln_email`, `cln_urlfbk`, `cln_urltwi`, `cln_urlgoo`, `cln_descri`, `cln_direcc`, `cln_mision`, `cln_vision`, `cln_prof`, `cln_activo`) VALUES
-(1, 'Clinica Identidad', NULL, NULL, 'www.facebook.com', 'www.twiter.com', 'www.google.com', 'Clinica Identidad', 'PUCP', 'Mision Clinica Identidad', 'Vision Clinica Identidad', NULL, 1);
+(1, 'Clinica Identidad', NULL, NULL, 'www.facebook.com', 'www.twiter.com', 'www.google.com', 'Clinica Identidad', 'PUCP', 'Mision Clinica Identidad', 'Vision Clinica Identidad', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -353,7 +335,7 @@ CREATE TABLE IF NOT EXISTS `TA_EVENTO` (
 
 INSERT INTO `TA_EVENTO` (`id`, `title`, `start`, `end`, `description`, `image`, `active`, `link`, `visible`, `dateModify`) VALUES
 (1, 'Prueba1.1', '2016-11-09 00:00:00', '2016-11-10 00:00:00', 'Prueba1', NULL, 1, 'Prueba1', 1, '2016/11/26 04:46:20'),
-(2, 'Evento week', '2016-11-22 07:30:00', '2016-11-22 12:30:00', 'Evento week', '/assets/images/eventos/imagen1.png', 1, 'Evento week', 1, '2016/11/27 20:59:54'),
+(2, 'Evento week', '2016-11-22 07:30:00', '2016-11-22 12:30:00', 'Evento week', NULL, 1, 'Evento week', 1, '2016/11/27 20:59:54'),
 (3, 'Evento con imagen', '2016-11-10 00:00:00', '2016-11-11 00:00:00', 'Evento con imagen', '/assets/images/eventos/958a559a2a8d79753f4fafad7bb807d8.jpgl.jpg', 1, 'Evento con imagen', 1, '2016/11/26 04:51:34');
 
 -- --------------------------------------------------------
@@ -367,7 +349,7 @@ CREATE TABLE IF NOT EXISTS `TA_LOG` (
   `log_text` text,
   `log_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `log_tipo` varchar(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `TA_LOG`
@@ -468,8 +450,7 @@ INSERT INTO `TA_LOG` (`id`, `log_text`, `log_date`, `log_tipo`) VALUES
 (101, 'Usuario : 20160003 Conexion : Exitosa -> Rol : 4', '2016-11-27 22:46:11', 'Inicio session '),
 (102, 'Usuario : 20160000 Conexion : Password incorrecto', '2016-11-27 22:46:38', 'Inicio session '),
 (103, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 22:46:44', 'Inicio session '),
-(104, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 23:49:40', 'Inicio session '),
-(105, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-28 12:34:24', 'Inicio session ');
+(104, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 23:49:40', 'Inicio session ');
 
 -- --------------------------------------------------------
 
@@ -525,8 +506,8 @@ CREATE TABLE IF NOT EXISTS `TA_NOTA_PROMEDIO` (
 --
 
 INSERT INTO `TA_NOTA_PROMEDIO` (`prm_id`, `alu_id`, `cur_id`, `cic_id`, `prm_notafinal`, `prm_estado`) VALUES
-(1, 2, 1, 1, 10.5, 'Cerrado'),
-(2, 3, 1, 2, 12, 'Pendiente');
+(1, 1, 1, 1, 10.5, 'Cerrado'),
+(2, 2, 1, 2, 12, 'Pendiente');
 
 -- --------------------------------------------------------
 
@@ -540,19 +521,16 @@ CREATE TABLE IF NOT EXISTS `TA_NOTA_RUBRICA` (
   `rba_id` int(11) NOT NULL,
   `nra_semana` int(11) NOT NULL,
   `nra_promparcial` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `TA_NOTA_RUBRICA`
 --
 
 INSERT INTO `TA_NOTA_RUBRICA` (`nra_id`, `prm_id`, `rba_id`, `nra_semana`, `nra_promparcial`) VALUES
-(1, 1, 1, 1, 8),
-(2, 1, 2, 1, 11),
-(3, 1, 1, 2, 18),
-(4, 1, 2, 2, 14),
-(5, 1, 1, 3, 4),
-(6, 1, 2, 3, 6);
+(1, 2, 1, 1, 10),
+(2, 2, 2, 1, 14),
+(3, 2, 1, 2, 15);
 
 -- --------------------------------------------------------
 
@@ -566,31 +544,21 @@ CREATE TABLE IF NOT EXISTS `TA_NOTA_RUBRO` (
   `rbo_id` int(11) NOT NULL,
   `nrb_semana` int(11) NOT NULL,
   `nrb_puntaje` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `TA_NOTA_RUBRO`
 --
 
 INSERT INTO `TA_NOTA_RUBRO` (`nrb_id`, `nra_id`, `rbo_id`, `nrb_semana`, `nrb_puntaje`) VALUES
-(1, 1, 1, 1, 2),
-(2, 1, 2, 1, 6),
-(3, 3, 1, 2, 8),
-(4, 3, 2, 2, 10),
-(5, 5, 1, 3, 4),
-(6, 5, 2, 3, 0),
-(7, 2, 3, 1, 1),
-(8, 2, 4, 1, 3),
-(9, 2, 5, 1, 4),
-(10, 2, 6, 1, 3),
-(11, 4, 3, 2, 4),
-(12, 4, 4, 2, 5),
-(13, 4, 5, 2, 3),
-(14, 4, 6, 2, 2),
-(15, 6, 3, 3, 2),
-(16, 6, 4, 3, 0),
-(17, 6, 5, 3, 1),
-(18, 6, 6, 3, 3);
+(1, 1, 1, 1, 5),
+(2, 1, 2, 1, 5),
+(3, 1, 1, 2, 6),
+(4, 1, 2, 2, 9),
+(5, 2, 3, 1, 3),
+(6, 2, 4, 1, 4),
+(7, 2, 5, 1, 2),
+(8, 2, 6, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -610,17 +578,7 @@ CREATE TABLE IF NOT EXISTS `TA_NOTICIA` (
   `not_enpanel` int(1) NOT NULL,
   `not_visible` int(1) NOT NULL,
   `not_dateModify` varchar(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `TA_NOTICIA`
---
-
-INSERT INTO `TA_NOTICIA` (`not_id`, `not_titulo`, `not_autor`, `not_fecha`, `not_descr`, `not_imagen`, `not_linkNoticia`, `not_enweb`, `not_enpanel`, `not_visible`, `not_dateModify`) VALUES
-(1, 'PROBANDO 1', 'dan', '28/11/2016', 'hola mundo', '/assets/images/noticias/imagen1.png', 'http://elcomercio.pe/mundo/latinoamerica/cambio-cuba-luego-que-fidel-dejo-poder-raul-castro-noticia-1949445', 1, 0, 1, ''),
-(2, 'PROBANDO 2', 'dan2', '28/11/2016', 'hola mundo 2', '/assets/images/noticias/imagen1.png', 'http://elcomercio.pe/mundo/centroamerica/fidel-castro-che-guevara-contrastes-iconica-relacion-noticia-1949486?ref=nota_mundo&ft=mod_interesa&e=foto', 1, 0, 1, ''),
-(3, 'PROBANDO 3', 'dan3', '28/11/2016', 'hola mundo 3', '/assets/images/noticias/imagen1.png', 'http://elcomercio.pe/mundo/centroamerica/murio-fidel-castro-padre-revolucion-cubana-noticia-1949250?ref=nota_mundo&ft=mod_interesa&e=titulo', 1, 0, 1, ''),
-(4, 'Noticia1', 'Luis', '2016/11/22', 'Descripcion ', NULL, 'Link', 1, 1, 1, '2016/11/28 12:35:16');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -694,7 +652,7 @@ CREATE TABLE IF NOT EXISTS `TA_RUBRICA` (
 
 INSERT INTO `TA_RUBRICA` (`rba_id`, `rba_nombre`, `rba_peso`, `rba_maxpunt`, `per_id`, `cln_id`) VALUES
 (1, 'Rúbrica de participación', 5, 20, 1, 1),
-(2, 'Rúbrica de seguimiento de casos', 5, 20, 1, 1),
+(2, 'Rúbrica de seguimiento de casos', 5, 40, 1, 1),
 (7, 'Rúbrica de participación', 5, 20, 5, 1),
 (8, 'Rúbrica de seguimiento de casos', 5, 40, 5, 1),
 (13, 'Rúbrica de participación', 5, 20, 7, 1),
@@ -721,14 +679,14 @@ INSERT INTO `TA_RUBRO` (`rbo_id`, `rbo_nombre`, `rba_id`, `rbo_maxpunt`) VALUES
 (1, 'Puntualidad', 1, 10),
 (2, 'Participación y discusión', 1, 10),
 (3, 'Relación abogado-caso', 2, 5),
-(4, 'Ejercicio profesional', 2, 5),
-(5, 'Investigación y redacción', 2, 5),
-(6, 'Oralidad', 2, 5),
 (7, 'Puntualidad', 7, 10),
 (8, 'Participación y discusión', 7, 10),
 (9, 'Relación abogado-caso', 8, 5),
 (10, 'Oralidad', 8, 5),
+(11, 'Ejercicio profesional', 2, 5),
 (12, 'Investigación y redacción', 8, 5),
+(13, 'Oralidad', 2, 5),
+(14, 'SAD', 2, 10),
 (24, 'Puntualidad', 13, 10),
 (25, 'Participación y discusión', 13, 10),
 (26, 'Relación abogado-caso', 14, 5),
@@ -750,7 +708,7 @@ CREATE TABLE IF NOT EXISTS `TA_TAREA` (
   `tar_fecreg` date DEFAULT NULL,
   `cas_id` int(10) unsigned DEFAULT NULL,
   `tar_tipo` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -984,7 +942,7 @@ ALTER TABLE `TA_USUARIO_TAREA`
 -- AUTO_INCREMENT de la tabla `TA_ACTIVIDAD`
 --
 ALTER TABLE `TA_ACTIVIDAD`
-  MODIFY `act_id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=142;
+  MODIFY `act_id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=140;
 --
 -- AUTO_INCREMENT de la tabla `TA_ALERTA`
 --
@@ -1049,7 +1007,7 @@ ALTER TABLE `TA_EVENTO`
 -- AUTO_INCREMENT de la tabla `TA_LOG`
 --
 ALTER TABLE `TA_LOG`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=106;
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=105;
 --
 -- AUTO_INCREMENT de la tabla `TA_NOTA_COMENTARIO`
 --
@@ -1064,17 +1022,17 @@ ALTER TABLE `TA_NOTA_PROMEDIO`
 -- AUTO_INCREMENT de la tabla `TA_NOTA_RUBRICA`
 --
 ALTER TABLE `TA_NOTA_RUBRICA`
-  MODIFY `nra_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `nra_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `TA_NOTA_RUBRO`
 --
 ALTER TABLE `TA_NOTA_RUBRO`
-  MODIFY `nrb_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+  MODIFY `nrb_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `TA_NOTICIA`
 --
 ALTER TABLE `TA_NOTICIA`
-  MODIFY `not_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `not_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `TA_PERIODO`
 --
@@ -1099,7 +1057,7 @@ ALTER TABLE `TA_RUBRO`
 -- AUTO_INCREMENT de la tabla `TA_TAREA`
 --
 ALTER TABLE `TA_TAREA`
-  MODIFY `tar_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
+  MODIFY `tar_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT de la tabla `TA_USUARIO`
 --
