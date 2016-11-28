@@ -3,7 +3,9 @@
 <head>
     <!-- Flex Template -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-    
+
+    <link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css">
+
 	{!! Html::style('css/web_eventos/otros/bootstrap.min.css') !!}
 	{!! Html::style('css/web_eventos/font-awesome.css') !!}
 	{!! Html::style('css/web_eventos/otros/animate.css') !!}
@@ -77,6 +79,9 @@
         .titulo-clinicas{
             text-align: center;
         }
+        .form-group p{
+            font-family: 'RobotoWeb', sans-serif;
+        }
     </style>
     
 </head>
@@ -113,17 +118,7 @@
 <h3>Clínicas</h3>
 
 			<div class="row" id="clinicas"> <!-- clinicas añadidas dinamicamente -->
-                <a href="javascript:popmeup('web/pop-up-clinica');">
-                <div class="team-member col-md-3 col-sm-6">
-                    <div class="img-hover">
 
-                        <img src="http://www.garmendiaabogados.com/cache~1-3-2-b-5-132b513e56471811df827623c5ccf42e12789fc1/derecho-penal.jpg" alt="">
-
-                        </div>
-                        <div class="titulo-clinicas">Clínica 1</div>
-
-				</div>
-                    </a>
 			</div>
 							 <!-- /.row -->
 
@@ -151,6 +146,88 @@
     </div>
 
 </footer>
+
+<!-- Pop up show clinica -->
+
+    <div align="center">
+        <div class="modal fade" id="modal_clinica" role="dialog">
+            <div class="modal-dialog" style="width: 50%;">
+                <div class="modal-content">
+                    <div class="page-header">
+                        <h3 style="color: #0F4279"> </h3>
+                    </div>
+                    <div class="row">
+                        <div class="space-4"></div>
+                        <div id="id_evento" class="hide"></div>
+                        <div class="form-group col-sm-12" >
+                            <strong><p class="col-sm-2" style="text-align: left; text-decoration: underline">Descripción</p></strong>
+                            <p class="col-sm-12" id="descrip" style="text-align: justify">
+                            </p>
+                        </div>
+
+                        <div class="space-4"></div>
+                        <div class="form-group col-sm-12">
+                            <strong><p class="col-sm-2" style="text-align: left; text-decoration: underline">Misión</p></strong>
+                            <p class="col-sm-12" id="mision" style="text-align: justify">
+                            </p>
+                        </div>
+                        <div class="space-4"></div>
+                        <div class="form-group col-sm-12">
+                            <strong><p class="col-sm-2" style="text-align: left; text-decoration: underline">Visión</p></strong>
+                            <p class="col-sm-12" id="vision" style="text-align: justify">
+                            </p>
+                        </div>
+
+                        <div class="space-4"></div>
+                        <div class="form-group col-sm-12">
+                            <strong><p class="col-sm-2" style="text-align: left; text-decoration: underline">Contacto</p></strong>
+
+                            <div class="col-sm-12 text-left">
+                                <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                                <span id="direc" class="" style="text-align: left"></span>
+                            </div>
+                            <div class="col-sm-4 text-left">
+                                <i class="fa fa-phone" aria-hidden="true" style="text-align: left"> </i>
+                                <span id="telef" class="" style="text-align: left"></span>
+                            </div>
+                            <div class="col-sm-8 text-left">
+                                <i class="fa fa-envelope" aria-hidden="true" style="text-align: left"> </i>
+                                <span id="email" style="text-align: left"></span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <style>
+                        a:hover{
+                            color: white;
+                        }
+                        a{
+                            color:#6694C1;
+                        }
+                    </style>
+
+                    <div class="modal-footer" style="font-size: 15px; background-color: #0F4279; color:#6694C1;">
+                        <div class="text-right">
+                            <i>Síguenos en &nbsp;</i>
+                            <a style="" href='https://facebook.com/pucp/' target="_blank" id="fb">
+                                <i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
+                            </a>
+                            <a style="" href='https://facebook.com/pucp/' target="_blank" id="tw">
+                                <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
+                            </a>
+                            <a style="" href='https://facebook.com/pucp/' target="_blank" id="gm">
+                                <i class="fa fa-google-plus fa-2x"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 	{!! HTML::script('css/web_eventos/js/bootstrap.min.js') !!}
 	{!! HTML::script('css/web_eventos/js/index.js') !!}
 	{!! HTML::script('css/web_eventos/js/jquery.easing.min.js') !!}
@@ -171,12 +248,22 @@
         });
     </script>
     <script type="text/javascript">
-        function popmeup(URL) {
-            var popup_width = 600
-            var popup_height = 400
-            day = new Date();
-            id = day.getTime();
-            eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width='+popup_width+',height='+popup_height+'');");
+        var clinicas=[];
+
+        function showClinica(id) {
+            $(".page-header h3").html(clinicas[id-1][0]);
+            $("#descrip").html(clinicas[id-1][6]);
+            $("#mision").html(clinicas[id-1][8]);
+            $("#vision").html(clinicas[id-1][9]);
+            $("#telef").html(clinicas[id-1][1]);
+            $("#email").html(clinicas[id-1][2]);
+            $("#direc").html(clinicas[id-1][7]);
+            document.getElementById("fb").setAttribute('href', clinicas[id-1][3] );
+            document.getElementById("tw").setAttribute('href', clinicas[id-1][4] );
+            document.getElementById("gm").setAttribute('href', clinicas[id-1][5]);
+
+
+            $("#modal_clinica").modal();
         }
 
         $(document).ready(function() {
@@ -184,13 +271,49 @@
                 type: "GET",
                 url: 'service_clinica',
                 success: function(result) {
-                    jQuery.parseJSON(result);
+                    var data = jQuery.parseJSON(result);
+                    for (var i = 0; i < data.length; i++) {
+                        var id= data[i].cln_id;
+                        var nombre= data[i].cln_nombre;
+                        var telef= data[i].cln_telefono;
+                        var email= data[i].cln_email;
+                        var fb= data[i].cln_urlfbk;
+                        var twitter= data[i].cln_urltwi;
+                        var google= data[i].cln_urlgoo;
+                        var descrip= data[i].cln_descri;
+                        var direc= data[i].cln_direcc;
+                        var mision= data[i].cln_mision;
+                        var vision= data[i].cln_vision;
+
+                        clinicas.push([nombre, telef, email, fb, twitter, google, descrip, direc, mision, vision]);
+
+                        var new_clinica = '<a href="javascript:showClinica('+id+');">' +
+                                '<div class="team-member col-md-3 col-sm-6">' +
+                                '<div class="img-hover">' +
+                                '<img src="http://www.garmendiaabogados.com/cache~1-3-2-b-5-132b513e56471811df827623c5ccf42e12789fc1/derecho-penal.jpg">' +
+                                '</div>' +
+                                '<div class="titulo-clinicas">'+nombre+'</div>' +
+                                '</div>' +
+                                '</a>';
+
+                        $("#clinicas").append(new_clinica);
+
+                    }
                 }
             });
 
+
+
+        });
+
+        $(document).keydown(function (e) {
+            if (e.keyCode == 27) {
+                $('.modal').modal('hide');
+            }
         });
 
     </script>
+
     
 <script type='text/javascript' src='../../wp-includes/js/wp-embed.min.js?ver=4.6'></script>
 </body>
