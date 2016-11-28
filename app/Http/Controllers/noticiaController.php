@@ -66,7 +66,6 @@ class noticiaController extends Controller
             $jpid = $data[0]['id'];
             echo $jpid;
         }else{
-            var_dump($request->all());
             $image = $request['not_imagen'];
             $to_directory = null;
             if($image != 'null') {
@@ -74,9 +73,7 @@ class noticiaController extends Controller
                 $to_directory = '/assets/images/eventos/';// . $image->getClientOriginalName();
                 $image->move($path.$to_directory, $image->getClientOriginalName());
                 $to_directory = $to_directory.$image->getClientOriginalName();
-            }
-            //dd($request->all());
-            DB::update('UPDATE TA_NOTICIA set
+                DB::update('UPDATE TA_NOTICIA set
             not_titulo = :titulo ,
             not_autor = :autor ,
             not_fecha = :fecha ,
@@ -87,16 +84,40 @@ class noticiaController extends Controller
             not_enpanel = :panel,
             not_dateModify = :modi
             where not_id = :id_not',
-                ['titulo' => $request['not_titulo'],
-                    'autor' => $request['not_autor'],
-                    'fecha' => $request['not_fecha'],
-                    'descrip' => $request['not_descr'],
-                    'imag' => $to_directory,
-                    'link' => $request['not_link'],
-                    'web' => $request['not_enweb'],
-                    'panel' => $request['not_enpanel'],
-                    'modi' => date('Y/m/d H:i:s'),
-                    'id_not' => $request['not_id']]);
+                    ['titulo' => $request['not_titulo'],
+                        'autor' => $request['not_autor'],
+                        'fecha' => $request['not_fecha'],
+                        'descrip' => $request['not_descr'],
+                        'imag' => $to_directory,
+                        'link' => $request['not_link'],
+                        'web' => $request['not_enweb'],
+                        'panel' => $request['not_enpanel'],
+                        'modi' => date('Y/m/d H:i:s'),
+                        'id_not' => $request['not_id']]);
+            }else{
+                DB::update('UPDATE TA_NOTICIA set
+            not_titulo = :titulo ,
+            not_autor = :autor ,
+            not_fecha = :fecha ,
+            not_descr = :descrip ,
+            not_linkNoticia = :link,
+            not_enweb = :web,
+            not_enpanel = :panel,
+            not_dateModify = :modi
+            where not_id = :id_not',
+                    ['titulo' => $request['not_titulo'],
+                        'autor' => $request['not_autor'],
+                        'fecha' => $request['not_fecha'],
+                        'descrip' => $request['not_descr'],
+                        'link' => $request['not_link'],
+                        'web' => $request['not_enweb'],
+                        'panel' => $request['not_enpanel'],
+                        'modi' => date('Y/m/d H:i:s'),
+                        'id_not' => $request['not_id']]);
+
+            }
+
+
             echo "Registro actualizado correctamente" ;
         }
     }
