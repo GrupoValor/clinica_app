@@ -256,7 +256,7 @@
                         for(var i = 0; i<data.length ;i++)
                         {
 							
-							if(data[i].visible == 1 && data[i].active == 1){
+							if(data[i].visible == 1){
 								
 								var descrip = data[i].description;
 								var titulo = data[i].title;
