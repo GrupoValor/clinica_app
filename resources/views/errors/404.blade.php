@@ -40,7 +40,7 @@
 	</head>
 
 	<body class="no-skin">
-       @include('intranet/menu')	
+	<div class="main-container ace-save-state" id="main-container">
 			<div class="main-content">
 				<div class="main-content-inner">
 
@@ -68,18 +68,10 @@
 										<div class="space"></div>
 
 										<div>
-											Chequee si de casualidad habr&aacute; cometido un error al intentar navegar hasta esta p&aacute;gina. Si a pesar de ello el problema persiste, puede comunicarse con nosotros e intentaremos solucionarlo lo m&aacute;s pronto posible.
+											Verifique si de casualidad habr&aacute; cometido un error al intentar navegar hasta esta p&aacute;gina. Si a pesar de ello el problema persiste, puede comunicarse con nosotros e intentaremos solucionarlo lo m&aacute;s pronto posible.
 										</div>
 
 										<hr />
-										<div class="space"></div>
-
-										<div class="center">
-											<a href="javascript:history.back()" class="btn btn-inverse">
-												<i class="ace-icon fa fa-arrow-left"></i>
-												Regresar
-											</a>
-										</div>										
 									</div>
 								</div>
 
@@ -88,9 +80,13 @@
 						</div><!-- /.row -->
 					</div><!-- /.page-content -->
 				</div>
-			</div><!-- /.main-content -->
 
-			@include('intranet/footer')	
+			</div><!-- /.main-content -->
+		@include('intranet/footer')
+	</div>
+
+
+
 
 		<!-- basic scripts -->
 
