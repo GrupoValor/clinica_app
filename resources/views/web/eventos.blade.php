@@ -42,12 +42,6 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="http://www.pucp.edu.pe/wp-content/themes/home-theme/images/favicons/mstile-144x144.png">
 
-	<style>
-    img{
-        width: 100px;
-        height: 100px;
-    }
-	</style>
 
 </head>
     
