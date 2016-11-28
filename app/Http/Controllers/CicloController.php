@@ -18,18 +18,20 @@ class CicloController extends Controller {
 		//Verificar si el usuario tiene permisos para visualizar esta pantalla
 		$usuario = $request->session()->get('user');
 		if (empty($usuario)) {
-			Log::info('Se intento entrar al mantenimiento de cursos sin haber iniciado sesion. Se le mando a la pagina de inicio de sesion de la intranet.');
+			Log::info('Se intento entrar al mantenimiento de ciclos sin haber iniciado sesion. Se le mando a la pagina de inicio de sesion de la intranet.');
 			return view('login.login');
 		}
 		if ($usuario['rol'] != 1) {
-			Log::warning('El usuario con id ' . $usuario['userid'] . ' intento acceder al mantenimiento de cursos sin tener los permisos requeridos. Se le mando una respuesta HTTP 403.');
+			Log::warning('El usuario con id ' . $usuario['userid'] . ' intento acceder al mantenimiento de ciclos sin tener los permisos requeridos. Se le mando una respuesta HTTP 403.');
 			return abort(403);
 		}
 
-		//Obtener todos los cursos, y colocarles el nombre respectivo de su clinica
+		//Obtener todos los ciclos, y colocarles el nombre respectivo de su clinica
 		$ciclos = TaCiclo::all()->toArray();
 		foreach ($ciclos as &$ciclo) {
-			$ciclo['cln_nombre'] = TACLINICA::where('cln_id', $curso['cln_id'])->value('cln_nombre');
+			$ciclo['cic_fechaini'] = date('d-m-Y', strtotime($ciclo['cic_fechaini']));
+			$ciclo['cic_fechafin'] = date('d-m-Y', strtotime($ciclo['cic_fechafin']));
+			$ciclo['cln_nombre'] = TACLINICA::where('cln_id', $ciclo['cln_id'])->value('cln_nombre');
 		}
 
 		//Obtener todas las clínicas, para los select
@@ -46,36 +48,46 @@ class CicloController extends Controller {
 		//Verificar si el usuario tiene permisos para visualizar esta pantalla
 		$usuario = $request->session()->get('user');
 		if (empty($usuario)) {
-			Log::info('Se intento entrar al mantenimiento de cursos sin haber iniciado sesion. Se le mando a la pagina de inicio de sesion de la intranet.');
+			Log::info('Se intento agregar un ciclo sin haber iniciado sesion. Se le mando a la pagina de inicio de sesion de la intranet.');
 			return view('login.login');
 		}
 		if ($usuario['rol'] != 1) {
-			Log::warning('El usuario con id ' . $usuario['userid'] . ' intento acceder al mantenimiento de cursos sin tener los permisos requeridos. Se le mando una respuesta HTTP 403.');
+			Log::warning('El usuario con id ' . $usuario['userid'] . ' intento agregar un ciclo
+			 sin tener los permisos requeridos. Se le mando una respuesta HTTP 403.');
 			return abort(403);
 		}
 
+		//Obtener los campos
+		$cic_nombre = $request['cic_nombre'];
+		$cic_fechaini = $request['cic_fechaini'];
+		$cic_fechafin = $request['cic_fechafin'];
 		//Verificar que los campos no estén vacíos
-		if (empty($request['cur_descrip']) || empty($request['cur_codigo'])) {
+		if (empty($cic_nombre) || empty($cic_fechaini) || empty($cic_fechafin)) {
 			Session::flash('msg-err', 'Se deben ingresar todos los datos.');
-		} else {
-			//Crear un nuevo curso
-			$curso = TaCurso::create([
-				'cur_descrip' => $request['cur_descrip'],
-				'cur_codigo' => $request['cur_codigo'],
-				'cln_id' => $request['cln_id']
+		}
+		elseif (strtotime($cic_fechaini) > strtotime($cic_fechafin)) {
+			Session::flash('msg-err', 'La fecha de inicio no puede ser mayor a la fecha final.');
+		}
+		else {
+			//Crear un nuevo ciclo
+			$ciclo = TaCiclo::create([
+				'cic_nombre' => $cic_nombre,
+				'cln_id' => $request['cln_id'],
+				'cic_fechaini' => strtotime($cic_fechaini),
+				'cic_fechafin' => strtotime($cic_fechafin)
 			]);
 			//Verificar si se pudo guardar correctamente
-			if ($curso->save()) {
-				Session::flash('msg-ok', 'El curso fue guardado exitosamente.');
-				Log::info('El usuario con id '. $usuario['userid'] . 'agrego exitosamente un curso.');
+			if ($ciclo->save()) {
+				Session::flash('msg-ok', 'El ciclo fue guardado exitosamente.');
+				Log::info('El usuario con id '. $usuario['userid'] . 'agrego exitosamente un ciclo.');
 			}
 			else {
-				Session::flash('msg-err', 'No se pudo grabar el nuevo curso. Intente nuevamente m&aacute;s tarde.');
-				Log::error('El usuario con id '. $usuario['userid'] . ' tuvo un problema al guardar el curso.');
+				Session::flash('msg-err', 'No se pudo grabar el nuevo ciclo. Intente nuevamente m&aacute;s tarde.');
+				Log::error('El usuario con id '. $usuario['userid'] . ' tuvo un problema al guardar el ciclo.');
 			}
 		}
 
-		return redirect()->action('CursoController@index');
+		return redirect()->action('CicloController@index');
 	}
 
 	public function update(Request $request)
@@ -83,44 +95,50 @@ class CicloController extends Controller {
 		//Verificar si el usuario tiene permisos para visualizar esta pantalla
 		$usuario = $request->session()->get('user');
 		if (empty($usuario)) {
-			Log::info('Se intento entrar al mantenimiento de cursos sin haber iniciado sesion. Se le mando a la pagina de inicio de sesion de la intranet.');
+			Log::info('Se intento actualizar un ciclo sin haber iniciado sesion. Se le mando a la pagina de inicio de sesion de la intranet.');
 			return view('login.login');
 		}
 		if ($usuario['rol'] != 1) {
-			Log::warning('El usuario con id ' . $usuario['userid'] . ' intento acceder al mantenimiento de cursos sin tener los permisos requeridos. Se le mando una respuesta HTTP 403.');
+			Log::warning('El usuario con id ' . $usuario['userid'] . ' intento actualizar un ciclo sin tener los permisos requeridos. Se le mando una respuesta HTTP 403.');
 			return abort(403);
 		}
 
 		//Obtener los campos
-		$cur_id = $request['cur_edit_id'];
-		$cur_descrip = $request['cur_edit_descrip'];
-		$cur_codigo = $request['cur_edit_codigo'];
+		$cic_id = $request['cic_edit_id'];
+		$cic_nombre = $request['cic_edit_nombre'];
+		$cic_fechaini = $request['cic_edit_fechaini'];
+		$cic_fechafin = $request['cic_edit_fechafin'];
 		$cln_id = $request['cln_edit_id'];
 
 		//Verificar que los campos no estén vacíos
-		if (empty($cur_id) || empty($cur_descrip) || empty($cur_codigo)) {//|| empty($cln_id)) {
+		if (empty($cic_id) || empty($cic_nombre) || empty($cic_fechaini) || empty($cic_fechafin) || empty($cln_id)) {
 			Session::flash('msg-err', 'Se deben ingresar todos los datos.');
 		}
-		elseif (!$this->es_entero_positivo($cur_id)) { //|| !$this->es_entero_positivo($cln_id)) {
-			Session::flash('msg-err', 'El id del curso o de la clinica no es valido.');
+		elseif (!$this->es_entero_positivo($cic_id) || !$this->es_entero_positivo($cln_id)) {
+			Session::flash('msg-err', 'El id del ciclo o de la clinica no es valido.');
+		}
+		elseif (strtotime($cic_fechaini) > strtotime($cic_fechafin)) {
+			Session::flash('msg-err', 'La fecha de inicio no puede ser mayor a la fecha final.');
 		}
 		else {
-			$curso = TaCurso::find($cur_id);
-			if (empty($curso)) {
-				Session::flash('msg-err', 'No se ha encontrado alg&uacute;n curso que tenga el mismo id.');
-			}
-			$curso->cur_descrip = $cur_descrip;
-			$curso->cur_codigo = $cur_codigo;
-			//$curso->cln_id = $cln_id;
-			if ($curso->save()) {
-				Session::flash('msg-ok', 'El curso fue actualizado correctamente.');
-				Log::info('El usuario con id '. $usuario['userid'] . 'modifico exitosamente un curso.');
+			$ciclo = TaCiclo::find($cic_id);
+			if (empty($ciclo)) {
+				Session::flash('msg-err', 'No se ha encontrado alg&uacute;n ciclo que tenga el mismo id.');
 			} else {
-				Session::flash('msg-err', 'No se pudo actualizar el nuevo curso. Intente nuevamente m&aacute;s tarde.');
-				Log::error('El usuario con id '. $usuario['userid'] . ' tuvo un problema al actualizar el curso.');
-			}
+				$ciclo->cic_nombre = $cic_nombre;
+				$ciclo->cic_fechaini = strtotime($cic_fechaini);
+				$ciclo->cic_fechafin = strtotime($cic_fechafin);
+				$ciclo->cln_id = $cln_id;
+				if ($ciclo->save()) {
+					Session::flash('msg-ok', 'El ciclo fue actualizado correctamente.');
+					Log::info('El usuario con id '. $usuario['userid'] . 'modifico exitosamente un ciclo.');
+				} else {
+					Session::flash('msg-err', 'No se pudo actualizar el nuevo ciclo. Intente nuevamente m&aacute;s tarde.');
+					Log::error('El usuario con id '. $usuario['userid'] . ' tuvo un problema al actualizar el ciclo.');
+				}
+			}			
 		}		
-		return redirect()->action('CursoController@index');
+		return redirect()->action('CicloController@index');
 	}
 
 	public function destroy(Request $request)
@@ -128,20 +146,20 @@ class CicloController extends Controller {
 		//Verificar si el usuario tiene permisos para visualizar esta pantalla
 		$usuario = $request->session()->get('user');
 		if (empty($usuario)) {
-			Log::info('Se intento entrar al mantenimiento de cursos sin haber iniciado sesion. Se le mando a la pagina de inicio de sesion de la intranet.');
+			Log::info('Se intento eliminar un ciclo sin haber iniciado sesion. Se le mando a la pagina de inicio de sesion de la intranet.');
 			return view('login.login');
 		}
 		if ($usuario['rol'] != 1) {
-			Log::warning('El usuario con id ' . $usuario['userid'] . ' intento acceder al mantenimiento de cursos sin tener los permisos requeridos. Se le mando una respuesta HTTP 403.');
+			Log::warning('El usuario con id ' . $usuario['userid'] . ' intento eliminar un ciclo sin tener los permisos requeridos. Se le mando una respuesta HTTP 403.');
 			return abort(403);
 		}
 
 		//Obtener el campo
-		$curso = TaCurso::find($request['cur_del_id']);
-		$curso->delete();
-		Session::flash('msg-ok', 'El curso fue eliminado correctamente.');
-		Log::info('El usuario con id ' . $usuario['userid'] . ' elimino exitosamente un curso.');
-		return redirect()->action('CursoController@index');
+		$ciclo = TaCiclo::find($request['cic_del_id']);
+		$ciclo->delete();
+		Session::flash('msg-ok', 'El ciclo fue eliminado correctamente.');
+		Log::info('El usuario con id ' . $usuario['userid'] . ' elimino exitosamente un ciclo.');
+		return redirect()->action('CicloController@index');
 	}
 
 	private function es_entero_positivo($valor) {

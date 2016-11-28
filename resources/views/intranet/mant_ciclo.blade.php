@@ -55,12 +55,9 @@
 						<ul class="breadcrumb">
 							<li>
 								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="/index">Home</a>
+								<a href="index">Home</a>
 							</li>
-							<li>
-								<a href="ta_registro">Tareas acad&eacute;micas</a>
-							</li>
-							<li class="active">Mantenimiento de r&uacute;bricas</li>
+							<li class="active">Mantenimiento de ciclos</li>
 						</ul><!-- /.breadcrumb -->
 					</div>
 
@@ -69,15 +66,15 @@
 @include('intranet.ta_registro.mensajes')
 
 						<div class="page-header">
-							<h1>Mantenimiento de cursos</h1>
+							<h1>Mantenimiento de ciclos</h1>
 						</div><!-- /.page-header -->
 
-						<p>Aqu&iacute;, el administrador puede agregar, modificar y eliminar cursos de la cl&iacute;nica jur&iacute;dica a la que pertenece.</p>
+						<p>Aqu&iacute;, el administrador puede agregar, modificar y eliminar ciclos dentro de las cl&iacute;nicas jur&iacute;dicas.</p>
 
 						<div class="row">
 							<div class="col-xs-12">
 								<div style="float:right;">
-									<button class="btn btn-info" type="button" data-toggle="modal", data-target="#cur_new">
+									<button class="btn btn-info" type="button" data-toggle="modal", data-target="#cic_new">
 										<i class="ace-icon fa fa-plus bigger-110"></i>
                                         Nuevo
 									</button>
@@ -94,18 +91,18 @@
 										<th></th>
 									</thead>
 									<tbody>
-@foreach ($cursos as $value)
+@foreach ($ciclos as $value)
 										<tr>
 											<td id="cic_nombre_{{$value['cic_id']}}">{{ $value['cic_nombre'] }}</td>
-											<td class="hidden" id="cln_id_{{$value['cur_id']}}">{{ $value['cln_id'] }}</td>
+											<td class="hidden" id="cln_id_{{$value['cic_id']}}">{{ $value['cln_id'] }}</td>
 											<td>{{ $value['cln_nombre'] }}</td>
 											<td id="cic_fechaini_{{$value['cic_id']}}">{{ $value['cic_fechaini'] }}</td>
 											<td id="cic_fechafin_{{$value['cic_id']}}">{{ $value['cic_fechafin'] }}</td>
 											<td class="center">
-												<button class="btn btn-mini btn-success" title="Editar ciclo" data-toggle="modal", data-target="#cur_edit" onclick="cur_edit({{$value['cic_id']}})">
+												<button class="btn btn-mini btn-success" title="Editar ciclo" data-toggle="modal", data-target="#cic_edit" onclick="cic_edit({{$value['cic_id']}})">
 													<i class="ace-icon fa fa-pencil"></i>
 												</button>
-												<button class="btn btn-mini btn-danger" title="Eliminar ciclo" data-toggle="modal", data-target="#cur_del" onclick="cur_del({{$value['cic_id']}})">
+												<button class="btn btn-mini btn-danger" title="Eliminar ciclo" data-toggle="modal", data-target="#cic_del" onclick="cic_del({{$value['cic_id']}})">
 													<i class="ace-icon fa fa-trash"></i>
 												</button>
 											</td>
@@ -118,7 +115,7 @@
 						</div><!-- /.row -->
 					</div><!-- /.page-content -->
 
-@include('intranet.ta_registro.modal_curso')
+@include('intranet.ta_registro.modal_ciclo')
 
 				</div>
 			</div><!-- /.main-content -->
@@ -265,16 +262,17 @@
 			});
 
 			//FUNCION PARA EDITAR CURSO
-			function cur_edit(cur_id) {
-				$('#cur_edit_id').attr('value', cur_id);
-				$('#cur_edit_codigo').attr('value', $("#cur_codigo_" + cur_id).text());
-				$('#cur_edit_descrip').attr('value', $("#cur_descrip_" + cur_id).text());
-				$('#cln_edit_id').val(cur_id);
+			function cic_edit(cic_id) {
+				$('#cic_edit_id').attr('value', cic_id);
+				$('#cic_edit_nombre').attr('value', $("#cic_nombre_" + cic_id).text());
+				$('#cln_edit_id').val($("#cln_id_" + cic_id).text());
+				$('#cic_edit_fechaini').attr('value', $("#cic_fechaini_" + cic_id).text());
+				$('#cic_edit_fechafin').attr('value', $("#cic_fechafin_" + cic_id).text());
 			}
 
 			//FUNCION PARA ELIMINAR CURSO
-			function cur_del(cur_id) {
-				$('#cur_del_id').attr('value', cur_id);
+			function cic_del(cic_id) {
+				$('#cic_del_id').attr('value', cic_id);
 			}
 
 		</script>

@@ -267,7 +267,7 @@
 				$('#cur_edit_id').attr('value', cur_id);
 				$('#cur_edit_codigo').attr('value', $("#cur_codigo_" + cur_id).text());
 				$('#cur_edit_descrip').attr('value', $("#cur_descrip_" + cur_id).text());
-				$('#cln_edit_id').val(cur_id);
+				$('#cln_edit_id').val($("#cln_id_" + cur_id).text());
 			}
 
 			//FUNCION PARA ELIMINAR CURSO

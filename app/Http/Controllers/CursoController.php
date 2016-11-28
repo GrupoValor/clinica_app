@@ -98,28 +98,29 @@ class CursoController extends Controller {
 		$cln_id = $request['cln_edit_id'];
 
 		//Verificar que los campos no estén vacíos
-		if (empty($cur_id) || empty($cur_descrip) || empty($cur_codigo)) {//|| empty($cln_id)) {
+		if (empty($cur_id) || empty($cur_descrip) || empty($cur_codigo)) || empty($cln_id)) {
 			Session::flash('msg-err', 'Se deben ingresar todos los datos.');
 		}
-		elseif (!$this->es_entero_positivo($cur_id)) { //|| !$this->es_entero_positivo($cln_id)) {
+		elseif (!$this->es_entero_positivo($cur_id)) || !$this->es_entero_positivo($cln_id)) {
 			Session::flash('msg-err', 'El id del curso o de la clinica no es valido.');
 		}
 		else {
 			$curso = TaCurso::find($cur_id);
 			if (empty($curso)) {
 				Session::flash('msg-err', 'No se ha encontrado alg&uacute;n curso que tenga el mismo id.');
-			}
-			$curso->cur_descrip = $cur_descrip;
-			$curso->cur_codigo = $cur_codigo;
-			//$curso->cln_id = $cln_id;
-			if ($curso->save()) {
-				Session::flash('msg-ok', 'El curso fue actualizado correctamente.');
-				Log::info('El usuario con id '. $usuario['userid'] . 'modifico exitosamente un curso.');
 			} else {
-				Session::flash('msg-err', 'No se pudo actualizar el nuevo curso. Intente nuevamente m&aacute;s tarde.');
-				Log::error('El usuario con id '. $usuario['userid'] . ' tuvo un problema al actualizar el curso.');
+				$curso->cur_descrip = $cur_descrip;
+				$curso->cur_codigo = $cur_codigo;
+				$curso->cln_id = $cln_id;
+				if ($curso->save()) {
+					Session::flash('msg-ok', 'El curso fue actualizado correctamente.');
+					Log::info('El usuario con id '. $usuario['userid'] . 'modifico exitosamente un curso.');
+				} else {
+					Session::flash('msg-err', 'No se pudo actualizar el nuevo curso. Intente nuevamente m&aacute;s tarde.');
+					Log::error('El usuario con id '. $usuario['userid'] . ' tuvo un problema al actualizar el curso.');
+				}
 			}
-		}		
+		}
 		return redirect()->action('CursoController@index');
 	}
 
