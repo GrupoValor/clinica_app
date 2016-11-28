@@ -296,7 +296,18 @@ class NotasController extends Controller {
 			}
 
 			//Recalcular el promedio (FALTA)
-			
+			$total_rubricas = TaRubrica::where('per_id', $periodo['per_id'])->get()->toArray();
+			$notaFinal = 0;
+			foreach ($total_rubricas as $total_rubrica) {
+				$total_nota_rubricas = TaNotaRubrica::where(['rba_id' => $total_rubrica['rba_id'], 'prm_id' => $nota_promedio['prm_id']])->get()->toArray();
+				$notaParcial = 0;
+				foreach ($total_nota_rubricas as $total_nota_rubrica) {
+					$notaParcial += $total_nota_rubrica['nra_promparcial'];
+				}
+				$notaFinal += $notaParcial*$total_rubrica['rba_peso']/$periodo['per_semanas'];
+			}
+			$nota_promedio['prm_notafinal'] = $notaFinal/$periodo['per_sumapesos'];
+			$nota_promedio->save();
 		}
 
 		//Volver a la pantalla de búsqueda
