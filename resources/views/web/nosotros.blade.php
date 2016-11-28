@@ -97,38 +97,38 @@
 				</div>
 				<div class="team-member col-md-3 col-sm-6">
 					<div class="member-thumb">
-                        <a href="pop-up-clinica" target="_blank"><img src="http://www.garmendiaabogados.com/cache~1-3-2-b-5-132b513e56471811df827623c5ccf42e12789fc1/derecho-penal.jpg" alt=""></a>
+                        <img src="http://www.garmendiaabogados.com/cache~1-3-2-b-5-132b513e56471811df827623c5ccf42e12789fc1/derecho-penal.jpg" alt="">
                         <div class="team-overlay"> 
                         </div> <!-- /.team-overlay -->
                     </div> <!-- /.member-thumb -->
-                <div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 2</a> </div>
+                <a href="pop-up-clinica" target="_blank"><div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 1</a> </div></a>
 
 				</div>
 				<div class="team-member col-md-3 col-sm-6">
 					<div class="member-thumb">
-                        <a href="pop-up-clinica" target="_blank"><img src="http://www.garmendiaabogados.com/cache~1-3-2-b-5-132b513e56471811df827623c5ccf42e12789fc1/derecho-penal.jpg" alt=""></a>
+                        <img src="http://www.garmendiaabogados.com/cache~1-3-2-b-5-132b513e56471811df827623c5ccf42e12789fc1/derecho-penal.jpg" alt="">
                         <div class="team-overlay"> 
                         </div> <!-- /.team-overlay -->
                     </div> <!-- /.member-thumb -->
-                <div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 3</a> </div>
+                <a href="pop-up-clinica" target="_blank"><div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 1</a> </div></a>
 
 				</div>
 				<div class="team-member col-md-3 col-sm-6">
 					<div class="member-thumb">
-                        <a href="pop-up-clinica" target="_blank"><img src="http://www.garmendiaabogados.com/cache~1-3-2-b-5-132b513e56471811df827623c5ccf42e12789fc1/derecho-penal.jpg" alt=""></a>
+                        <img src="http://www.garmendiaabogados.com/cache~1-3-2-b-5-132b513e56471811df827623c5ccf42e12789fc1/derecho-penal.jpg" alt="">
                         <div class="team-overlay"> 
                         </div> <!-- /.team-overlay -->
                     </div> <!-- /.member-thumb -->
-                <div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 4</a> </div>
+                <a href="pop-up-clinica" target="_blank"><div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 1</a> </div></a>
 
 				</div>
 				<div class="team-member col-md-3 col-sm-6">
 					<div class="member-thumb">
-                        <a href="pop-up-clinica" target="_blank"><img src="http://www.garmendiaabogados.com/cache~1-3-2-b-5-132b513e56471811df827623c5ccf42e12789fc1/derecho-penal.jpg" alt=""></a>
+                        <img src="http://www.garmendiaabogados.com/cache~1-3-2-b-5-132b513e56471811df827623c5ccf42e12789fc1/derecho-penal.jpg" alt="">
                         <div class="team-overlay"> 
                         </div> <!-- /.team-overlay -->
                     </div> <!-- /.member-thumb -->
-                <div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 5</a> </div>
+                <a href="pop-up-clinica" target="_blank"><div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 1</a> </div></a>
 
 				</div>
 			</div>
