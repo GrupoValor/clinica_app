@@ -33,23 +33,21 @@ class PromedioController extends Controller {
 		}
 
 		//Extraer cursos según clínica
-		$db_cursos = TaCurso::where('cln_id', 1)->get();
+		$db_cursos = TaCurso::where('cln_id', 1)->get()->toArray();
 		if (empty($db_cursos)) {
 			Log::info('El usuario con id ' . $usuario['userid'] . 'intento acceder a la pagina de busqueda del registro de notas, pero la clinica donde labora no tiene ingres_cursor(result)s registrados.');
 			return view('intranet.ta_error', ['tipo' => 'notas', 'faltante' => 'curso']);
 		}
-		$db_cursos = $db_cursos->toArray();
 		$cur_id = array_map(function($o) { return $o['cur_id']; }, $db_cursos);
 		$cur_nombre = array_map(function($o) { return "[" . $o['cur_codigo'] . "] " . $o['cur_descrip']; }, $db_cursos);
 		$cursos = array_combine($cur_id, $cur_nombre);
 
 		//Extraer ciclos según clínica
-		$db_ciclos = TaCiclo::where('cln_id', 1)->get();
+		$db_ciclos = TaCiclo::where('cln_id', 1)->get()->toArray();
 		if (empty($db_ciclos)) {
 			Log::info('El usuario con id ' . $usuario['userid'] . 'intento acceder a la pagina de busqueda del registro de notas, pero la clinica donde labora no tiene ciclos registrados.');
 			return view('intranet.ta_error', ['tipo' => 'notas', 'faltante' => 'ciclo']);
 		}
-		$db_ciclos = $db_ciclos->toArray();
 		$cic_id = array_map(function($o) { return $o['cic_id']; }, $db_ciclos);
 		$cic_nombre = array_map(function($o) { return $o['cic_nombre']; }, $db_ciclos);
 		$ciclos = array_combine($cic_id, $cic_nombre);
@@ -60,8 +58,7 @@ class PromedioController extends Controller {
 			$periodo = ['per_id' => 0, 'per_semanas' => 0];
 		}
 		//Obtenemos las rúbricas del periodo
-		$rubricas = TaRubrica::where('per_id', $periodo['per_id'])->get();
-		if (!empty($rubricas)) $rubricas = $rubricas->toArray();
+		$rubricas = TaRubrica::where('per_id', $periodo['per_id'])->get()->toArray();
 
 		//Formatear rúbricas para el select
 		$rba_id = [0];
@@ -73,8 +70,8 @@ class PromedioController extends Controller {
 		$rubricas = array_combine($rba_id, $rba_nombre);
 
 		//Formatear semanas para el select
-		$semanas = range(0, $periodo['per_semanas']);
-		$semanas[0] = 'Todas';
+		$semanas = range(1, $periodo['per_semanas']);
+		$semanas = array_combine($semanas, $semanas);
 
 		//Ir a la página de notas
 		return view('intranet.ta_notas_busq', ['cursos' => $cursos, 'ciclos' => $ciclos, 'periodo' => $periodo, 'rubricas' => $rubricas, 'semanas' => $semanas]);
@@ -88,8 +85,7 @@ class PromedioController extends Controller {
 			$periodo = ['per_id' => 0, 'per_semanas' => 0];
 		} else $periodo = $periodo->toArray();
 		//Obtener las rúbricas del periodo obtenido
-		$rubricas = TaRubrica::where('per_id', $periodo['per_id'])->get();
-		if (!empty($rubricas)) $rubricas = $rubricas->toArray();
+		$rubricas = TaRubrica::where('per_id', $periodo['per_id'])->get()->toArray();
 
 		//Formatear rúbricas para el select
 		$rba_id = [0];

@@ -81,13 +81,13 @@
 									<div class="form-group">
 										{!! Form::label('curso', 'Curso:', ['class' => 'col-sm-3 control-label no-padding-right']) !!}
 										<div class="col-sm-8">
-											{!! Form::select('curso', $cursos, ['class' => 'input-xlarge']) !!}
+											{!! Form::select('curso', $cursos, 0, ['onchange' => 'cambiarRubricas()']) !!}
 										</div>
 									</div>
 									<div class="form-group">
 										{!! Form::label('ciclo', 'Ciclo:', ['class' => 'col-sm-3 control-label no-padding-right']) !!}
 										<div class="col-sm-8">
-											{!! Form::select('ciclo', $ciclos, ['class' => 'input-xlarge']) !!}
+											{!! Form::select('ciclo', $ciclos, 0, ['onchange' => 'cambiarRubricas()']) !!}
 										</div>
 									</div>
 								{!! Form::close() !!}
@@ -100,29 +100,22 @@
 									<div class="form-group">
 										{!! Form::label('semana', '# semana:', ['class' => "col-sm-3 control-label no-padding-right"]) !!}
 										<div class="col-sm-6">
-											{!! Form::select('semana', $semanas, ['class' => "input-small"]) !!}
+											{!! Form::select('semana', $semanas) !!}
 											&nbsp;de <strong id="num_semanas">{{ $periodo['per_semanas'] }}</strong>
 										</div>
 									</div>
 									<div class="form-group">
 										{!! Form::label('rubrica', 'R&uacute;brica:', ['class' => "col-sm-3 control-label no-padding-right"]) !!}
 										<div class="col-sm-6">
-											{!! Form::select('rubrica', $rubricas, ['class' => "input-xlarge"]) !!}
+											{!! Form::select('rubrica', $rubricas) !!}
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="col-sm-9 center">
 											{!! Form::button('<span class="ace-icon fa fa-search icon-on-right bigger-110"></span> Buscar', ['class' => "btn btn-purple btn-sm", 'type' => 'submit']) !!}
-											&nbsp;
-											<a href="ta_registro">
-												<button class="btn btn-sm" type="reset">
-													<i class="ace-icon fa fa-undo bigger-110"></i>
-													Regresar
-												</button>
-											</a>
 										</div>
 									</div>
-								</form>
+								{!! Form::close() !!}
 								<!-- FIN BÚSQUEDA -->
 								
 								<!-- PAGE CONTENT ENDS -->
@@ -270,65 +263,37 @@
 					$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
 				});
 				/***************/
-
-				//FUNCION PARA OBTENER RUBRICAS (SELECT DINAMICO)
-				$('#curso').on('change', function(e)
-				{
-					var location = window.location.pathname;
-					var directoryPath = location.substring(0, location.lastIndexOf("/")+1);
-
-					$.get(directoryPath + "ta_notas_per?curso=" + $("#curso").val() + "&ciclo=" + $("#ciclo").val() + "",
-						function(response, state)
-						{
-							//Cambiar valor del periodo (oculto)
-							$('#periodo').attr('value', response[0].per_id);
-
-							//Cambiar opciones del select de las semanas
-							$("#semana").empty();
-							$("#semana").append("<option value='" + 0 + "'>Todas</option>");
-							for (i = 1; i <= response[0].per_semanas; i++) {
-								$('#semana').append("<option value='" + i + "'>" + i + "</option>");
-							}
-							$('#num_semanas').text(response[0].per_semanas);
-
-							//Cambiar opciones del select de las rubricas
-							$("#rubrica").empty();
-							$.each(response[1], function(key, value) {
-								$("#rubrica").append("<option value='" + key + "'>" + value + "</option>");
-							});
-						}
-					);
-				});
-
-				$('#ciclo').on('change', function(e)
-				{
-					var location = window.location.pathname;
-					var directoryPath = location.substring(0, location.lastIndexOf("/")+1);
-
-					$.get(directoryPath + "ta_notas_per?curso=" + $("#curso").val() + "&ciclo=" + $("#ciclo").val() + "",
-						function(response, state)
-						{
-							//Cambiar valor del periodo (oculto)
-							$('#periodo').attr('value', response[0].per_id);
-
-							//Cambiar opciones del select de las semanas
-							$("#semana").empty();
-							$("#semana").append("<option value='" + 0 + "'>Todas</option>");
-							for (i = 1; i <= response[0].per_semanas; i++) {
-								$('#semana').append("<option value='" + i + "'>" + i + "</option>");
-							}
-							$('#num_semanas').text(response[0].per_semanas);
-
-							//Cambiar opciones del select de las rubricas
-							$("#rubrica").empty();
-							$.each(response[1], function(key, value) {
-								$("#rubrica").append("<option value='" + key + "'>" + value + "</option>");
-							});
-						}
-					);
-				});
-
 			});
+			
+			//FUNCION PARA CAMBIAR RUBRICAS (SELECT DINAMICO)
+			function cambiarRubricas() {
+				var location = window.location.pathname;
+				var directoryPath = location.substring(0, location.lastIndexOf("/")+1);
+
+				$.get(directoryPath + "ta_notas_per?curso=" + $("#curso").val() + "&ciclo=" + $("#ciclo").val() + "",
+					function(response, state)
+					{
+						//Cambiar valor del periodo (oculto)
+						$('#periodo').attr('value', response[0].per_id);
+
+						//Cambiar opciones del select de las semanas
+						$("#semana").empty();
+						if (response[0].per_semanas == 0) {
+							$('#semana').append("<option value='" + 0 + "'>No existe</option>");
+						}
+						for (i = 1; i <= response[0].per_semanas; i++) {
+							$('#semana').append("<option value='" + i + "'>" + i + "</option>");
+						}
+						$('#num_semanas').text(response[0].per_semanas);
+
+						//Cambiar opciones del select de las rubricas
+						$("#rubrica").empty();
+						$.each(response[1], function(key, value) {
+							$("#rubrica").append("<option value='" + key + "'>" + value + "</option>");
+						});
+					}
+				);
+			}
 
 		</script>
 	</body>

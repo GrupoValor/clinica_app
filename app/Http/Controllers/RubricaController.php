@@ -48,7 +48,7 @@ class RubricaController extends Controller {
 			$valores['cic_nombre'] = $ciclo['cic_nombre'];
 
 			//Extraer todos los periodos de la clínica:
-			$db_periodo = TaPeriodo::where('cln_id', '1')->get()->toArray();
+			$db_periodo = TaPeriodo::where('cln_id', $usuario['clinica'])->get()->toArray();
 			$per_id = ['0'];
 			$per_nombre = ['Ninguno'];
 			foreach ($db_periodo as $value) {
@@ -92,8 +92,14 @@ class RubricaController extends Controller {
 	{
 		//Verificar que la sesión iniciada sea válida y que el usuario tenga acceso a esta página
 		$usuario = $request->session()->get('user');
-		if (empty($usuario)) return view('login/login');
-		if ($usuario['rol'] != 1 && $usuario['rol'] != 4) return abort(404);
+		if (empty($usuario)) {
+			Log::info('Se intento entrar a la pagina de mantenimiento de rubricas sin haber iniciado sesion. Se le mando a la pagina de inicio de sesion de la intranet.');
+			return view('login.login');
+		}
+		if ($usuario['rol'] != 1 && $usuario['rol'] != 4) {
+			Log::warning('El usuario con id ' . $usuario['userid'] . ' intento acceder a la pagina de mantenimiento de rubricas sin tener los permisos requeridos. Se le mando una respuesta HTTP 403.');
+			return abort(403);
+		}
 
 		//Obtener los datos del request
 		$rba_nombre = $request['rba_nombre'];
@@ -114,7 +120,7 @@ class RubricaController extends Controller {
 					'rba_peso' => $rba_peso,
 					'rba_maxpunt' => '0',
 					'per_id' => $request['per_id'],
-					'cln_id' => '1',
+					'cln_id' => $usuario['clinica'],
 				]);
 				//Actualizar la suma de pesos
 				TaPeriodo::where('per_id', $request['per_id']);
