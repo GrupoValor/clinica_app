@@ -402,6 +402,8 @@ $(document).ready(function () {
       });
 
         $(document).on('click','.boton-elimina-miembro',function () {
+
+           
             $.get("ajax/elimina-usuarios-caso.ajax.php", {
                 'cas_id': parseInt(getUrlVars()['id']),
                 'usu_id': $(this).attr('id')
