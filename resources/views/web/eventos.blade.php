@@ -42,115 +42,17 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="http://www.pucp.edu.pe/wp-content/themes/home-theme/images/favicons/mstile-144x144.png">
 
+	<style>
+    img{
+        width: 100px;
+        height: 100px;
+    }
+	</style>
 
 </head>
     
 <body class="single single-carrera postid-1478">
-
-<header>
-
-	<div class="wrapper-barrasup">
-		<div class="container">
-			<div class="row barrasup">
-				<div class="col-sm-12 menu-acce text-right hidden-xs">
-                    <ul class="nav nav-pills pull-right">
-                    <li>
-                    	<a target="_blank" href="../login">Iniciar sesión</a>
-                        <!--<a target="_blank" href="http://intranet.pucp.edu.pe">Intranet</a>-->
-                    </li>
-
-                  </ul>	
-                 </div>
-                <div class="col-sm-12 menu-acce top-mov text-right visible-xs">
-                    <a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="../login"> Intranet   <span class="glyphicon glyphicon-chevron-down"></span></a>
-                    <ul role="menu" class="dropdown-menu nav">
-                        <li><a target="_blank" href="login">Iniciar sesión</a>
-                        <!--<a target="_blank" href="http://intranet.pucp.edu.pe">Intranet</a>--></li>
-                    </ul>
-                </div>
-			</div>
-		</div>
-	</div>
-
-
-
-	<div class="wrapper-logos-blank"></div>
-	<div class="wrapper-logos">
-		<div class="container">
-			<div class="row logos">
-				<div class="col-sm-6 line-height-0">
-					<h1>
-						<a href="inicio" class="logo-pucp" alt="Clínica Juridica " title="Pontificia Universidad Católica del Perú"></a>
-					</h1>
-				</div>
-				
-			</div>
-		</div>
-	</div>
-
-	<div class="wrapper-menu-prin-blank"></div>
-	<div class="wrapper-menu-prin">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<nav class="navbar navbar-default menu-prin">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<div class="input-group busca-campos pull-right solo-celu">
-                                <form action="#" onsubmit="javascript:cargaBuscar(); return false;">
-                                    <span class="lupa" id="movil-lupa"></span>
-                                    <input id="movil-input" name="busca" class="form-control" placeholder="Buscar en toda la PUCP" type="text">
-                                    <span class="input-group-btn" id="movil-submit">
-                                        <button class="btn btn-default" type="submit"><span></span></button>
-                                    </span>
-                                </form>
-                                <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-                                <script type="text/javascript">
-                                    function cargaBuscar(){
-                                        $busca = jQuery('#movil-input').val();
-                                        window.document.location.href='http://www.pucp.edu.pe?s='+$busca+'&q='+$busca;
-                                    }
-                                    function cargaBuscar2(){
-                                        $busca = jQuery('#movil-input2  ').val();
-                                        window.document.location.href='http://www.pucp.edu.pe?s='+$busca+'&q='+$busca;
-                                    }
-                                </script>
-							</div>
-						</div>
-						<div class="navbar-collapse collapse navbar-responsive-collapse">
-							<ul class="nav navbar-nav">
-                    <li class="dos-lineas ">
-                        <a href="inicio">Inicio</a>
-                    </li>    
-					<li class="dos-lineas">
-                        <a href="nosotros">Nosotros</a>
-                    </li>
-                    <li class="dos-lineas ">
-                    	<a href="noticias">Noticias</a>
-                    </li>
-                    
-                    <li class="dos-lineas ">
-                        <a href="eventos">Eventos</a>
-                    </li>
-                    <li class="dos-lineas">  
-                        <a href="mapaweb"> Mapa</a>
-                    </li>
-
-                    </ul>
-						</div>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</div>
-
-    
-</header>
-
+<?php echo view('web/headerWeb');?>
 <section>
 
 	
@@ -177,66 +79,92 @@
 				<div class="row cuerpo-interna">
 					<div class="col-md-10 col-md-push-1 col-sm-10 ">
 						<div class="formato">
+							<div class="documentos-modu-wrapper" id="listaEventos">
+                            
+							</div>
+							
+							<!-- para ver la descripcion del evento -->
+							<div align="center">        
+								<div class="modal fade" id="boton" role="dialog">
+									<div class="modal-dialog" style="width: 500px;">
+					 
+										<div class="modal-content">
+											<div class="modal-header">
+												<h1 type="button" class="close" data-dismiss="modal"></h1>
+											</div>
+											<!-- Modal content-->
+											<div class="page-header"><!-- /.page-header -->
+												<h1> Detalles del evento</h1>
 
-                            <!--div class="container-fluid">
-                                <div class="row">
-                                    <div class="documentos-busc diplo col-md-12">
-                                        <!--div class="col-md-6 busc-control">
-                                            <label class="control-label">Ordenar por:</label>
-                                            <!--select class="form-control" onchange="javascript:window.document.location.href='http://www.pucp.edu.pe/formacion-continua/diplomaturas/?orden='+this.value+'&areatematica=&lugarprovincia=&modalidad=&facultad='"-->
-                                            <!--select class="form-control" onchange="javascript:window.document.location.href=this.value+'.html'">
-						<!--option value="proximos-inicios" >Proximos inicios</option><option value="mas-vistos" >Más vistos</option>                                            </select-->
-						<!--option value="eventos" >Proximos inicios</option><option value="eventos" >Más vistos</option>                                            </select>
-                                        </div-->
-                                        <!--div class="buscador-intern busc-barra col-md-6">
-                                            <div class="form-group form-slider">
-                                                
-                                            </div>
-                                        </div>
-                                        <div class="clear cero"></div>
-                                    </div>
-                                </div>
-                            </div-->
+												<form class="form-horizontal" role="form" style="padding-left: 66px;">
+													<div class="space-20" ></div>
+
+													<div class="form-group">
+														<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Título </label>
+
+														<div class="col-sm-9">
+															<input id="titulo" type="text" id="form-field-3"  class="col-xs-5 col-sm-7" disabled/ />
+									   	
+														</div>
+													</div>
+                                                               
+                                    
+													<div class="space-4"></div>
+													
+													<div class="space-20" ></div>
+
+													<div class="form-group">
+														<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Descripción </label>
+
+														<div class="col-sm-9">
+															<textarea id="descripcion" type="text" id="form-field-3"  class="col-xs-5 col-sm-7" disabled/ ></textarea>
+									   	
+														</div>
+													</div>
+                                                               
+                                    
+													<div class="space-4"></div>
+                                    
+
+													<div class="form-group">
+														<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > Hora De Inicio </label>
+
+														<div class="col-sm-9">
+															<input id="hor_ini" type="text"   class="col-xs-5 col-sm-7"  disabled/ />
+														</div>
+													</div>    
+                                
+													<div class="space-4"></div>
+                                    
+													<div class="form-group">
+														<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > Hora De Fin </label>
+
+														<div class="col-sm-9">
+															<input id="hor_fin" type="text"   class="col-xs-5 col-sm-7"  disabled/ />
+														</div>
+													</div>
+																
+													<div class="space-4"></div>
+                                    
+													
+													<div class="form-group"></div>				
+									
+													<div class="space-20"></div>								
+												</form>
 
 
-							<div class="documentos-modu-wrapper">
-                                <div class="documentos-modu" id="D">
-                <h2 class="h2-direc"><a href="plantillaEvento">Evento 1</a> </h2>
-                <div class="direc-img" data="acf-img"><img src="http://becasinternacionales.net/webapp/img/imgpro/4790a4_guy-s.-goodwingill-scholarships_h150.jpg"></div>
-                <div class="direc-text">
-                    <div class="direc-info"><strong>Inicio:</strong> Del 24 de setiembre del 2016 al 30 de junio del 2017</div>
-                    <div class="link-btn btn-diplo"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfZKJaZnzker7WHwbJeNJoJDfK4SActHxkgjKxhkMfVcZDYUQ/viewform" target="_blank">Inscribirme <div class="link-btn-icon"></div> </a></div>
-                    
-                </div>
-                <div class="clear cero"></div>
-           </div><div class="documentos-modu" id="D">
-                <h2 class="h2-direc"><a href="plantillaEvento">Evento 2</a> </h2>
-                <div class="direc-img" data="acf-img"><img src="http://files.pucp.edu.pe/homepucp/uploads/2016/05/08172214/afc-dies-animacion_sociocultural-img-210x140.jpg"></div>
-                <div class="direc-text">
-                    <div class="direc-info"><strong>Inicio:</strong> Del 16 de octubre del 2016 al 15 de julio del 2017</div>
-                    <div class="link-btn btn-diplo"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfZKJaZnzker7WHwbJeNJoJDfK4SActHxkgjKxhkMfVcZDYUQ/viewform" target="_blank">Inscribirme <div class="link-btn-icon"></div> </a></div>
-                    
-                </div>
-                <div class="clear cero"></div>
-           </div><div class="documentos-modu" id="D">
-                <h2 class="h2-direc"><a href="plantillaEvento">Evento 3</a> </h2>
-                <div class="direc-img" data="acf-img"><img src="http://files.pucp.edu.pe/homepucp/uploads/2016/08/15180616/afc-dies-diseno_gestion_proyectos_sociales-img-210x140.jpg"></div>
-                <div class="direc-text">
-                    <div class="direc-info"><strong>Inicio:</strong> Del 02 de noviembre del 2016 al 06 de noviembre del 2017</div>
-                    <div class="link-btn btn-diplo"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfZKJaZnzker7WHwbJeNJoJDfK4SActHxkgjKxhkMfVcZDYUQ/viewform" target="_blank">Inscribirme <div class="link-btn-icon"></div> </a></div>
-                    
-                </div>
-                <div class="clear cero"></div>
-           </div><div class="documentos-modu" id="D">
-                <h2 class="h2-direc"><a href="plantillaEvento">Evento 4</a> </h2>
-                <div class="direc-img" data="acf-img"><img src="http://www.eriebusinesslaw.com/uploads/business-law-small.jpg"></div>
-                <div class="direc-text">
-                    <div class="direc-info"><strong>Inicio:</strong> Desde el 16 de setiembre del 2016</div>
-                    <div class="link-btn btn-diplo"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfZKJaZnzker7WHwbJeNJoJDfK4SActHxkgjKxhkMfVcZDYUQ/viewform" target="_blank">Inscribirme <div class="link-btn-icon"></div> </a></div>
-                    
-                </div>
-                <div class="clear cero"></div>
-           </div>							</div>
+											</div>
+
+											<div class="modal-footer">
+												<div align="center">
+													<button id="boto" type="button" class="btn btn-default" data-dismiss="modal" onclick="close();">Close</button>
+												</div>
+											</div>
+										</div>
+									</div>            
+								</div>
+							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -281,11 +209,30 @@
     <script src="css/wp-content/themes/home-theme/jquery.easing.min.js"></script>
     <script src="css/wp-content/themes/home-theme/jquery.matchHeight-min.js"></script>
     <script src="css/wp-content/themes/home-theme/masonry.pkgd.min.js"></script-->
-    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
-    <script type="text/javascript" src="http://www.youtube.com/iframe_api"></script>
+    <!-- <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
+    <script type="text/javascript" src="http://www.youtube.com/iframe_api"></script> -->
+	
     <!--script src="css/wp-content/themes/home-theme/jquery-home.js"></script-->
 	
     <script type="text/javascript">
+		var eventos = [];
+		
+		
+		
+		function add_onClick(id){
+
+			i = parseInt(id);
+
+			$("#descripcion").val(eventos[i][0]);
+			$("#hor_ini").val(eventos[i][1]);
+			$("#hor_fin").val(eventos[i][2]);
+			$("#titulo").val(eventos[i][3]);
+			
+			$("#boton").modal()
+       }
+	
+	
+	
         jQuery(document).ready(function($) {
             
             
@@ -295,7 +242,58 @@
                 var nextH = $(e.relatedTarget).height();
                 $(this).find('.active.item').parent().animate({ height: nextH }, 300);
             });
-                    });
+			
+			
+			
+			var padre = document.getElementById("listaEventos");
+			
+			$.ajax({
+                   
+                    type: "GET",
+                    url:'service_evento',
+                    success: function(result){
+                        
+                        
+                        var data = jQuery.parseJSON(result);
+						var hijo;
+						
+						
+						
+                        for(var i = 0; i<data.length ;i++)
+                        {
+							
+							if(data[i].visible == 1 && data[i].active == 1){
+								
+								var descrip = data[i].description;
+								var titulo = data[i].title;
+								var imagen = data[i].image;
+								var inicio = data[i].start;
+								var fin = data[i].end;
+								
+								eventos.push([descrip,inicio,fin,titulo]);
+								
+								
+								hijo = document.createElement("div");
+				
+								var codigo = '<div class="documentos-modu" id="D"><h2 class="h2-direc"><a href="javascript:add_onClick('+i+')">'+titulo+'</a></h2><div class="direc-img" data="acf-img"><img src="'+imagen+'"></div><div class="direc-text"><div class="direc-info"><strong>Inicio:</strong>'+' Del '+inicio+' al '+fin+'</div>	<div class="link-btn btn-diplo"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfZKJaZnzker7WHwbJeNJoJDfK4SActHxkgjKxhkMfVcZDYUQ/viewform" target="_blank">Inscribirme<div class="link-btn-icon"></div></a></div></div><div class="clear cero"></div></div>';
+			
+								hijo.innerHTML = codigo;
+								
+								padre.appendChild(hijo);
+
+								
+	                            
+	                        }
+                        
+                        }
+                        
+                     
+                    }
+                     
+                });
+			
+						
+			});
     </script>
     
 <script type='text/javascript' src='../../wp-includes/js/wp-embed.min.js?ver=4.6'></script>

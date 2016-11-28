@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<link rel="icon" type="image/png" href="icon/valor.png" />
+<link rel="icon" type="image/png" href="icono/valor.png" />
     <meta charset="utf-8" />
     <title>Mapa de alertas</title>
 

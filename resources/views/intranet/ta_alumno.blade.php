@@ -73,7 +73,7 @@
                             <!-- PAGE CONTENT BEGINS -->
 
 
-                            <h3 class="header smaller lighter blue">{{$nombresPesosRubrica[0]}} ({{(int)$nombresPesosRubrica[1]*10 }}%)</h3>
+                            <h3 class="header smaller lighter blue" id="comentario_rubrica">{{$nombresPesosRubrica[0]}} ({{(int)$nombresPesosRubrica[1]*10 }}%)</h3>
 
                             <div class="row">
                                 <div class="col-xs-12">
@@ -135,14 +135,14 @@
                                                                     <div class="widget-box transparent">
                                                                         <div class="widget-header widget-header-small">
                                                                             <!--Nombre del que escribio-->
-                                                                            <h5 class="widget-title smaller"></h5>
+                                                                            <h5 class="widget-title smaller" id="autor_comentario">{{$comentariosEnSemanaParticipacion[$i][$k+1]}}</h5>
                                                                             <span class="widget-toolbar no-border">
-                                                                                <i class="ace-icon fa fa-clock-o bigger-110"></i>
+                                                                                <i class="ace-icon fa fa-clock-o bigger-110" id='fecha_comentario'></i>
                                                                                 {{$comentariosEnSemanaParticipacion[$i][$k+2]}}
                                                                             </span>
                                                                         </div>
                                                                         <div class="widget-body">
-                                                                            <div class="widget-main">
+                                                                            <div class="widget-main" id='texto_comentario'>
                                                                              {{$comentariosEnSemanaParticipacion[$i][$k]}}
                                                                                 <div class="space-6"></div>
                                                                                 <div class="space-6"></div>
@@ -245,7 +245,7 @@
                                                                     <div class="widget-box transparent">
                                                                         <div class="widget-header widget-header-small">
                                                                             <!--Nombre del que escribio-->
-                                                                            <h5 class="widget-title smaller"></h5>
+                                                                            <h5 class="widget-title smaller">{{$comentariosEnSemanaSeguimiento[$i][$k+1]}}</h5>
                                                                             <span class="widget-toolbar no-border">
                                                                                 <i class="ace-icon fa fa-clock-o bigger-110"></i>
                                                                                 {{$comentariosEnSemanaSeguimiento[$i][$k+2]}}
@@ -360,7 +360,7 @@
                                                                     <div class="widget-box transparent">
                                                                         <div class="widget-header widget-header-small">
                                                                             <!--Nombre del que escribio-->
-                                                                            <h5 class="widget-title smaller"></h5>
+                                                                            <h5 class="widget-title smaller">{{$comentariosEnSemana3[$i][$k+1]}}</h5>
                                                                             <span class="widget-toolbar no-border">
                                                                                 <i class="ace-icon fa fa-clock-o bigger-110"></i>
                                                                                 {{$comentariosEnSemana3[$i][$k+2]}}
@@ -479,7 +479,7 @@
                                                                     <div class="widget-box transparent">
                                                                         <div class="widget-header widget-header-small">
                                                                             <!--Nombre del que escribio-->
-                                                                            <h5 class="widget-title smaller"></h5>
+                                                                            <h5 class="widget-title smaller">{{$comentariosEnSemana4[$i][$k+1]}}</h5>
                                                                             <span class="widget-toolbar no-border">
                                                                                 <i class="ace-icon fa fa-clock-o bigger-110"></i>
                                                                                 {{$comentariosEnSemana4[$i][$k+2]}}
@@ -597,7 +597,7 @@
                                                                     <div class="widget-box transparent">
                                                                         <div class="widget-header widget-header-small">
                                                                             <!--Nombre del que escribio-->
-                                                                            <h5 class="widget-title smaller"></h5>
+                                                                            <h5 class="widget-title smaller">{{$comentariosEnSemana5[$i][$k+1]}}</h5>
                                                                             <span class="widget-toolbar no-border">
                                                                                 <i class="ace-icon fa fa-clock-o bigger-110"></i>
                                                                                 {{$comentariosEnSemana5[$i][$k+2]}}
@@ -834,6 +834,9 @@
                 jQuery('#litareas').addClass('active open');
                 jQuery('#lialumnos').addClass('active');
 				//initiate dataTables plugin
+
+
+
 				
 				
 				
@@ -905,6 +908,9 @@
 				/***************/
 			
 			})
+
+
+
 		</script>
 	</body>
 </html>

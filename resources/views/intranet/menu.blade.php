@@ -95,7 +95,7 @@
                     '</li>';
     }
     function addMapa(){
-        return '<li class="" id="limapa"> <!-- Mapa -->'+
+        return '<li class="hide" id="limapa"> <!-- Mapa -->'+
                 '        <a href="mapa_intranet">'+
                 '            <i class="menu-icon fa fa-map-marker"></i>'+
                 '            <span class="menu-text"> Mapa </span>'+
@@ -134,30 +134,16 @@
                 '        <a href="#" class="dropdown-toggle">'+
                 '            <i class="menu-icon fa fa-file-o"></i>'+
                 '            <span class="menu-text">'+
-                '                Reportes'+
+                '                Auditoria'+
                 '            </span>'+
                 '            <b class="arrow fa fa-angle-down"></b>'+
                 '        </a>'+
                 '        <b class="arrow"></b>'+
                 '        <ul class="submenu">'+
                 '            <li class="">'+
-                '                <a href="reporte1.html">'+
-                '                    <i class="menu-icon fa fa-caret-right"></i>'+
-                '                    Reporte por alumno'+
-                '                </a>'+
-                '                <b class="arrow"></b>'+
-                '            </li>'+
-                '            <li class="">'+
-                '                <a href="reporte2.html">'+
-                '                    <i class="menu-icon fa fa-caret-right"></i>'+
-                '                    Reporte por caso'+
-                '                </a>'+
-                '                <b class="arrow"></b>'+
-                '            </li>'+
-                '            <li class="">'+
                 '                <a href="log">'+
                 '                    <i class="menu-icon fa fa-caret-right"></i>'+
-                '                    Reporte 3'+
+                '                    Inicio Sesion'+
                 '                </a>'+
                 '                <b class="arrow"></b>'+
                 '            </li>'+
@@ -255,8 +241,7 @@
                             addTareas()+
                             addDirectorio()+
                             addMapa()+
-                            addMantenimiento()+
-                            addReportes()
+                            addMantenimiento()
                             )
                           
                         }

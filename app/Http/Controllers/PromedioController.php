@@ -73,8 +73,8 @@ class PromedioController extends Controller {
 		$rubricas = array_combine($rba_id, $rba_nombre);
 
 		//Formatear semanas para el select
-		$semanas = range(0, $periodo['per_semanas']);
-		$semanas[0] = 'Todas';
+		$semanas = range(1, $periodo['per_semanas']);
+		$semanas = array_combine($semanas, $semanas);
 
 		//Ir a la página de notas
 		return view('intranet.ta_notas_busq', ['cursos' => $cursos, 'ciclos' => $ciclos, 'periodo' => $periodo, 'rubricas' => $rubricas, 'semanas' => $semanas]);

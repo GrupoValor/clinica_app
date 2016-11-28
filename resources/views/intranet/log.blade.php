@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +5,7 @@
     <meta name="csrf_token" content="{{ csrf_token() }}" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
-    <title>Intranet | Directorio</title>
+    <title>Intranet | Log</title>
 
     <meta name="description" content="Dynamic tables and grids using jqGrid plugin" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -49,7 +48,7 @@
                     <a href="index">Home</a>
                 </li>
                 <li>
-                    Directorio
+                    Log Inicio Sesion 
                 </li>
                 <!--<li class="active">Registro</li>-->
             </ul>
@@ -61,8 +60,8 @@
         <div class="page-content">
             <div class="page-header"><!-- /.page-header -->
                 <h1 id = "mytitulo" >
-                    Directorio
-                    <button type="button" class="btn btn-primary" style="float: right;margin-top: -8px;" onclick="add_onClick()" >Nuevo +</button>
+                    Log Inicio Sesion 
+                    
                 </h1>
 
             </div>
@@ -76,13 +75,9 @@
 
                         <tr>
                             <th>ID</th>
-                            <th>Tipo</th>
-                            <th>Nombre</th>
-                            <th>Teléfono</th>
-                            <th>E-mail</th>
-                            <th>Dirección</th>
-                            <th>Dirección Web</th>
-                            <th>Modificar</th>
+                            <th>Fecha</th>
+                            <th>Descripcion</th>
+                        
                         </tr>
                         </thead>
 
@@ -425,12 +420,7 @@
                             "aoColumns": [
                                 {"sWidth": "5%"},
                                 {"sWidth": "10%"},
-                                {"sWidth": "27%"},
-                                {"sWidth": "10%"},
-                                {"sWidth": "20%"},
-                                {"sWidth": "27%"},
-                                {"sWidth": "27%"},
-                                {"sWidth": "20%", "bSortable":false}
+                                {"sWidth": "27%"}
                             ],
                             "aaSorting": [],
                             select: {
@@ -445,33 +435,24 @@
         $.ajax({
 
             type: "GET",
-            url:'service_directorio',
+            url:'log_service',
             success: function(result){
 
 
                 var data = jQuery.parseJSON(result);
-                var rows = "";
-                $("#tbodycontent").html(rows);
+              	data = data[0];
 
                 for(var i = 0; i<data.length ;i++)
                 {
-                    var tipo ="";
+            
 
-                    if (data[i].con_tipcon == 'p') {
-                        tipo = "Persona";
-                    }
-                    else
-                        tipo = "Institucion";
+          
 
                     data_set.push([
-                        data[i].con_id,
-                        tipo,
-                        data[i].con_nombre,
-                        data[i].con_nrotel,
-                        data[i].con_correo,
-                        data[i].con_direcc,
-                        data[i].con_dirweb,
-                        getButtons(i)
+                        data[i].id,
+
+                        data[i].log_date,
+                        data[i].log_text
 
                     ] )
 

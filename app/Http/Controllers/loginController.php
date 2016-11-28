@@ -52,7 +52,7 @@ class loginController extends Controller
 
 
 
-    $result = DB::select("select usu_id , rol_id ,usu_passwd from TA_USUARIO where TA_USUARIO.usu_activo = '1' and TA_USUARIO.usu_usenam = '".$user."' ");
+    $result = DB::select("select cln_id, usu_id , rol_id ,usu_passwd from TA_USUARIO where TA_USUARIO.usu_activo = '1' and TA_USUARIO.usu_usenam = '".$user."' ");
 
     
     $data = array();
@@ -92,11 +92,13 @@ class loginController extends Controller
 		$find = false;
 		$usu_id = $data['usu_id'];
 		$usu_rol = $data['rol_id'];
+		$cln_id = $data['cln_id'];
 
 		$log .= "-> Rol : ". $usu_rol;  
 		$userdata = array();
 		$userdata['rol'] = $usu_rol;
 		$userdata['userid'] = $usu_id;
+		$userdata['clinica'] = $cln_id;
 
 		if ($usu_rol== "1" || $usu_rol== "2" || $usu_rol== "3"){
 			$result = DB::select("select * from TA_ALUMNO where TA_ALUMNO.usu_id = '" .$usu_id."'");

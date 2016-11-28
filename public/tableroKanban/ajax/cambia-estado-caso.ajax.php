@@ -20,7 +20,7 @@ $script = "<script type='text/javascript'>
 
           });
     </script>";
-if( $row['estcas_detalle'] =="Cerrado" || $row['estcas_detalle'] =="En Abandono" || $row['estcas_detalle'] =="Inactivo" ){
+if( $row['estcas_detalle'] =="Cerrado" || $row['estcas_detalle'] =="En Abandono" || $row['estcas_detalle'] =="Inactivo" || $row['estcas_detalle'] =="Registrado"){
 	$script = "<script type='text/javascript'>
       $(document).ready(function(){
             $('#corpus').css('display', 'none');

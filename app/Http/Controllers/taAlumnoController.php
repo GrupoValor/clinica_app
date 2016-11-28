@@ -203,10 +203,15 @@ class taAlumnoController extends Controller {
 							# code...
 							if((int)$value2['nra_id']==(int)$value['nra_id'])
 							{
-								//aqui guardo todos los nrb_id de participacion 
-								array_push($nrb_id_part,$value['nrb_id']);
 
 								array_push($comentariosPorSemana,$value2['cmr_desc']);
+								//array_push($comentariosPorSemana,$value2['usu_id']);
+								//busco el nombre
+								foreach ($dbAlumnos as $valueNombre) {
+									if( strcmp($value2['cmr_autor_usu_id'] , $valueNombre['alu_id'])==0){
+										array_push($comentariosPorSemana,$valueNombre['alu_nombre']);
+									}
+								}
 								array_push($comentariosPorSemana, $value2['cmr_fecha_emision']);
 								array_push($comentariosPorSemana, $value2['cmr_fecha_modif']);
 							}
@@ -231,13 +236,19 @@ class taAlumnoController extends Controller {
 							
 							if((int)$value2['nra_id']==(int)$value['nra_id'])
 							{
-								//aqui guardo todos los nrb_id de seguimieto
-								array_push($nrb_id_seg,$value['nrb_id']);
 
 								array_push($comentariosPorSemana,$value2['cmr_desc']);
-								array_push($comentariosPorSemana,$value2['usu_id']);	
+								//array_push($comentariosPorSemana,$value2['usu_id']);
+								//busco el nombre
+								foreach ($dbAlumnos as $valueNombre) {
+									if( strcmp($value2['cmr_autor_usu_id'] , $valueNombre['alu_id'])==0){
+										array_push($comentariosPorSemana,$valueNombre['alu_nombre']);
+									}
+								}	
 								array_push($comentariosPorSemana, $value2['cmr_fecha_emision']);
 								array_push($comentariosPorSemana, $value2['cmr_fecha_modif']);
+
+								
 							}
 
 						}
@@ -258,13 +269,19 @@ class taAlumnoController extends Controller {
 							
 							if((int)$value2['nra_id']==(int)$value['nra_id'])
 							{
-								//aqui guardo todos los nrb_id de seguimieto
-								array_push($nrb_id_seg,$value['nrb_id']);
 
 								array_push($comentariosPorSemana,$value2['cmr_desc']);
-								array_push($comentariosPorSemana,$value2['usu_id']);	
+								//array_push($comentariosPorSemana,$value2['usu_id']);
+								//busco el nombre
+								foreach ($dbAlumnos as $valueNombre) {
+									if( strcmp($value2['cmr_autor_usu_id'] , $valueNombre['alu_id'])==0){
+										array_push($comentariosPorSemana,$valueNombre['alu_nombre']);
+									}
+								}	
 								array_push($comentariosPorSemana, $value2['cmr_fecha_emision']);
 								array_push($comentariosPorSemana, $value2['cmr_fecha_modif']);
+
+								
 							}
 
 							array_push($comentariosEnSemana3, $comentariosPorSemana);
@@ -283,13 +300,19 @@ class taAlumnoController extends Controller {
 							
 							if((int)$value2['nra_id']==(int)$value['nra_id'])
 							{
-								//aqui guardo todos los nrb_id de seguimieto
-								array_push($nrb_id_seg,$value['nrb_id']);
 
 								array_push($comentariosPorSemana,$value2['cmr_desc']);
-								array_push($comentariosPorSemana,$value2['usu_id']);	
+								//array_push($comentariosPorSemana,$value2['usu_id']);
+								//busco el nombre
+								foreach ($dbAlumnos as $valueNombre) {
+									if( strcmp($value2['cmr_autor_usu_id'] , $valueNombre['alu_id'])==0){
+										array_push($comentariosPorSemana,$valueNombre['alu_nombre']);
+									}
+								}	
 								array_push($comentariosPorSemana, $value2['cmr_fecha_emision']);
 								array_push($comentariosPorSemana, $value2['cmr_fecha_modif']);
+
+								
 							}
 
 							array_push($comentariosEnSemana4, $comentariosPorSemana);
@@ -308,13 +331,18 @@ class taAlumnoController extends Controller {
 							
 							if((int)$value2['nra_id']==(int)$value['nra_id'])
 							{
-								//aqui guardo todos los nrb_id de seguimieto
-								array_push($nrb_id_seg,$value['nrb_id']);
 
 								array_push($comentariosPorSemana,$value2['cmr_desc']);
-								array_push($comentariosPorSemana,$value2['usu_id']);	
+								//array_push($comentariosPorSemana,$value2['usu_id']);
+								//busco el nombre
+								foreach ($dbAlumnos as $valueNombre) {
+									if( strcmp($value2['cmr_autor_usu_id'] , $valueNombre['alu_id'])==0){
+										array_push($comentariosPorSemana,$valueNombre['alu_nombre']);
+									}
+								}	
 								array_push($comentariosPorSemana, $value2['cmr_fecha_emision']);
 								array_push($comentariosPorSemana, $value2['cmr_fecha_modif']);
+
 							}
 
 							array_push($comentariosEnSemana5, $comentariosPorSemana);
@@ -406,4 +434,6 @@ class taAlumnoController extends Controller {
 	public function create() {
 		return abort(404);
 	}
+
+
 }

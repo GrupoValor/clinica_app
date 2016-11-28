@@ -17,6 +17,35 @@ $display = new Display($db);
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script src="scripts/tableroDragDrop.js"></script>
         <script src="scripts/bootstrap.min.js"></script>
+        <script type="text/javascript">
+          $.ajax({
+
+                    type: "GET",
+                    url:'../user',
+                    success: function(result){
+
+                        var data = JSON.parse(result);
+
+
+                        if(data.rol == '4' || data.rol == '1' ){
+                            $('#cambia-estado').html('<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-edit-estado" style="float: right;">Cambiar estado</button>');
+
+                        }
+                        else{
+                          $('#cambia-estado').html("");
+                        }
+
+
+                    }
+
+
+
+
+
+                });
+
+
+        </script>
     </head>
 
     <body style="width: 100%; height: 100%; background: #337ab7;">
@@ -36,7 +65,7 @@ $display = new Display($db);
 
                             });
                       </script>";
-                  if( $detalle  =="Cerrado" || $detalle  =="En Abandono" || $detalle  =="Inactivo" ){
+                  if( $detalle  =="Cerrado" || $detalle  =="En Abandono" || $detalle  =="Inactivo" || $detalle  =="Registrado"){
                     $script = "<script type='text/javascript'>
                         $(document).ready(function(){
                               $('#corpus').css('display', 'none');
@@ -47,7 +76,7 @@ $display = new Display($db);
                   echo $detalle.$script;
                ?></h4>
             </div>
-            <div class="col-md-3" id="cambia-estado" style="width: 65%;"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-edit-estado" style="    float: right;">Cambiar estado</button></div>
+            <div class="col-md-3" id="cambia-estado" style="width: 65%;"> <p style="float: right;">Loading... </p> </div>
         </div>
       </div>
       <div id="corpus" class="row" style="padding-left: 20px;padding-top: 30px; height: 413px;">
@@ -78,9 +107,9 @@ $display = new Display($db);
             </div>
             <div id="panel-control-tablero" class="col-md-2" style="background: #ccc; margin-left: 10px; border-radius: 7px;">
               <div id="panel-control-tablero-interesados">
-                <h3 style="font-size: 15px">Miembros</h3>
+                <h3 style="font-size: 15px">Usuarios:</h3>
                 <button id="addmiembros" type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-agregar-miembros">+Agregar</button>
-                <button type="button" class="btn btn-info">Ver</button>
+                <button id="listarMiembros" type="button" class="btn btn-info" data-toggle="modal">Ver</button>
               </div>
               <div id="panel-control-tablero-actividad">
                 <h3 style="font-size: 15px">Registro de actividad</h3>
@@ -93,6 +122,7 @@ $display = new Display($db);
       <div class="row" id="detalles-caso">
           <div class="col-sm-2">
               <button id="addtarea" type="button" class="btn btn-success btn-info" data-toggle="modal" data-target="#modal-agrega-tarea">Agregar tarea</button>
+              <button type="button" class="btn btn-warning" id="boton-agregar-alerta">+ Alerta documento</button>
             </div>
           <div class="col-sm-4">
               <label class="control-label no-padding-right">Objetivo del caso:</label>
@@ -140,13 +170,13 @@ $display = new Display($db);
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4>Agregar miembros</h4>
+            <h4>Agregar usuarios:</h4>
           </div>
           <div class="modal-body">
               <div class="form-group">
                      <div class="input-group">
                           <span class="input-group-addon">Buscar</span>
-                          <input type="text" name="search_text" id="search_text" placeholder="Busqueda por codigo usuario" class="form-control" />
+                          <input type="text" name="search_text" id="search_text" placeholder="Busqueda por nombre de usuario" class="form-control" />
                      </div>
                 </div>
                 <br />
@@ -154,7 +184,23 @@ $display = new Display($db);
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-success" data-dismiss="modal">Agregar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade bs-modal-lg" tabindex="-1" id="modal-listar-miembros" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Usuarios registrados en el caso:</h4>
+          </div>
+          <div class="modal-body">
+              <div id="resultados-listar-usuarios-caso"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
           </div>
         </div>
       </div>
@@ -224,13 +270,6 @@ $display = new Display($db);
                   <button type="button" class="btn btn-info" id="boton-ingresar-comentario">Ingresar</button>
                 </form>
               </div>
-                <form class="form-inline">
-              <div class="form-group">
-                <div>
-                  <button type="button" class="btn btn-warning" id="boton-agregar-alerta">+ Alerta documento</button>
-                </div>
-              </div>
-                </form>
             </div>
             <div class="modal-footer">
                 <button id="deleteTarea" type="button" class="btn btn-success btn-danger" data-toggle="modal" data-target="#modal-eliminar-tarea">Eliminar tarea</button>
