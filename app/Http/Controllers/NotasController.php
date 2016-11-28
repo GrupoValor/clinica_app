@@ -295,7 +295,7 @@ class NotasController extends Controller {
 				$nota_rubrica->save();
 			}
 
-			//Recalcular el promedio (FALTA)
+			//Recalcular el promedio
 			$total_rubricas = TaRubrica::where('per_id', $periodo['per_id'])->get()->toArray();
 			$notaFinal = 0;
 			foreach ($total_rubricas as $total_rubrica) {
