@@ -45,7 +45,7 @@
 					</div>
 					<div style="padding-left: 50px;">
 						<div class="hidden">
-							{!! Form::text('cur_edit_id', null) !!}
+							{!! Form::text('cur_edit_id', null, ['id' => 'cur_edit_id']) !!}
 						</div>
 						<div class="form-group">
 							{!! Form::label('cur_edit_codigo', 'C&oacute;digo interno del curso:&nbsp;') !!}
@@ -57,7 +57,7 @@
 						</div>
 						<div class="form-group">
 							{!! Form::label('cln_edit_id', 'Cl&iacute;nica jur&iacute;dica:&nbsp;') !!}
-							{!! Form::select('cln_edit_id', $clinicas, null, ['class' => 'input-xlarge']) !!}
+							{!! Form::select('cln_edit_id', $clinicas, null, ['class' => 'input-xlarge', 'id' => 'cln_edit_id']) !!}
 						</div>
 					</div>
 				</div>                                  
