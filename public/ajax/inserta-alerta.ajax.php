@@ -1,6 +1,6 @@
 <?php
 sleep(2);
-require_once '../../php-includes/connect.inc.php';
+require_once '../php-includes/connect.inc.php';
 
 $aler_titulo = $_GET['titulo'];
 $aler_cx = $_GET['cx'];

@@ -154,7 +154,41 @@ function listar(){
             });
         });
     }
-/*
-$(document).on('click','#botonSubmit',function () {
-    alert("Hola");
-});*/
+
+
+$(document).on('ready',function(){
+        //initMap();
+
+        $('#botonSubmit').on("click", function(){ //del modal
+            estado_alerta = "espera";
+            var color_marca;
+
+            switch(estado_alerta){
+                case "registrada":
+                    color_marca = "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
+                    break;
+                case "espera":
+                    color_marca = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
+                    break;
+                case "finalizada":
+                    color_marca = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
+                    break;
+                case "vencida":
+                    color_marca = "http://maps.google.com/mapfiles/ms/icons/purple-dot.png";
+                    break;
+            }
+
+            $.ajax({
+                url:"ajax/actualiza-estado-alerta.ajax.php",
+                data: {
+                    id_alerta: id_alerta,
+                    estado: estado_alerta
+                },
+                success:function(data){
+                    console.log(id_alerta + " actualizado a " + estado_alerta);
+                    listar();
+                }
+            });
+        });
+
+    });
