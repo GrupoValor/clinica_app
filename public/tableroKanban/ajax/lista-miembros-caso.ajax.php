@@ -13,7 +13,7 @@ TA_USUARIO.usu_id = TA_EVALUADOR.usu_id AND TA_EVALUADOR.usu_id IN (SELECT usu_i
 
 $caso = $_GET['cas_id'];
 
-$stmt2 = $db->query("select usu_id from TA_CASO where cas_id= $caso");
+$stmt2 = $db->query("select TA_EVALUADOR.usu_id from TA_EVALUADOR join TA_CASO on TA_EVALUADOR.eva_id = TA_CASO.cas_docent where TA_CASO.cas_id= $caso");
 $row = $stmt2->fetch(PDO::FETCH_ASSOC);
 
 $responsable = $row['usu_id'];
@@ -46,7 +46,7 @@ if($stmt){
                                             <td>'.$row["rol_nombre"].'</td>
                                             <td>'.$row["usu_usenam"].'</td>
                                             <td>'.$row["alu_nombre"].'</td>
-                                            <td><button type="button" '.$atrib.' id="'.$row["usu_id"].'" class="btn btn-danger btn-sm boton-elimina-miembro " data-dismiss="modal">Elimina</button> </td>
+                                            <td><button type="button" '.$atrib  .' id="'.$row["usu_id"].'" class="btn btn-danger btn-sm boton-elimina-miembro " data-dismiss="modal">Elimina</button> </td>
                                        </tr>
                                   ';
                              }
