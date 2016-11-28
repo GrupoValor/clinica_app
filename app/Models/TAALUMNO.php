@@ -32,12 +32,14 @@ class TAALUMNO extends Eloquent
 
 	protected $casts = [
 		'usu_id' => 'int',
-		'alu_volunt' => 'int'
+		'alu_volunt' => 'int',
+		'per_id' => 'int'
 	];
 
 	protected $fillable = [
 		'usu_id',
 		'alu_codpuc',
+		'per_id',
 		'alu_volunt',
 		'alu_nrodoc',
 		'alu_correo',
