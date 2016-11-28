@@ -92,13 +92,11 @@ class loginController extends Controller
 		$find = false;
 		$usu_id = $data['usu_id'];
 		$usu_rol = $data['rol_id'];
-		$cln_id = $data['cln_id'];
 
 		$log .= "-> Rol : ". $usu_rol;  
 		$userdata = array();
 		$userdata['rol'] = $usu_rol;
 		$userdata['userid'] = $usu_id;
-		$userdata['clinica'] = $cln_id;
 
 		if ($usu_rol== "1" || $usu_rol== "2" || $usu_rol== "3"){
 			$result = DB::select("select * from TA_ALUMNO where TA_ALUMNO.usu_id = '" .$usu_id."'");
