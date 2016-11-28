@@ -26,7 +26,7 @@
 						@foreach ($rubrica['rubros'] as $rbo_key => $rubro)
 						<td>
 							{!! Form::text('rubro[' . $alumno['alu_id'] . '][' . $rubrica['rba_id'] . '][' . $rubro['rbo_id'] . ']', $alumno['notas'][$rba_key]['rubros'][$rbo_key]['nrb_puntaje'],
-								['class' => 'input-mini', 'placeholder' => 'Puntaje']) !!}
+								['class' => 'input-mini', 'placeholder' => 'Puntaje', 'onchange' => 'cambiarNota(' . $alumno["alu_id"] . ', ' . $rubrica["rba_id"] . ')']) !!}
 							&nbsp;/ {{ $rubro['rbo_maxpunt'] }}
 						</td>
 						@endforeach

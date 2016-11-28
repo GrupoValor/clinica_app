@@ -210,7 +210,7 @@
 				/***************/
 				
 				
-				$('#rubros[]').on('change', function(e) {
+				$('#rubros').on('change', function(e) {
 					alert('Ayy lmao');
 				});
 				
@@ -229,6 +229,17 @@
 			
 			
 			});
+
+			function cambiarNota(alumno, rubrica) {
+				//Obtener suma de notas
+				var suma = 0;
+				$('input[name^="rubro[' + alumno + '][' + rubrica + ']"]').each(function(id, rubro) {
+					var puntaje =  parseInt(rubro.value);
+					suma += (isNaN(puntaje)) ? 0 : puntaje;
+				});
+				//Cambiar valores
+				$('input[name="rubrica[' + alumno + '][' + rubrica + ']"]').attr('value', suma);
+			}
 
 		</script>
 	</body>

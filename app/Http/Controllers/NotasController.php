@@ -241,37 +241,34 @@ class NotasController extends Controller {
 				}
 
 				//Buscar la nota de rubrica del alumno
-				$nota_rubrica = TaNotaRubrica::where(['prm_id' => $nota_promedio['prm_id'], 'rba_id' => $rba_id, 'nra_semana' => $semana])->first();
+				$nota_rubrica = TaNotaRubrica::where(['prm_id' => $nota_promedio->prm_id, 'rba_id' => $rba_id, 'nra_semana' => $semana])->first();
 				if (empty($nota_rubrica)) {
 					//Crear una nota de rubrica en caso no se haya encontrado
 					$nota_rubrica = TaNotaRubrica::create([
 						'rba_id' => $rba_id,
-						'prm_id' => $nota_promedio['prm_id'],
+						'prm_id' => $nota_promedio->prm_id,
 						'nra_semana' => $semana,
 						'nra_promparcial' => '0'
 					]);
 				}
 
-				//Guardar los cambios
-				$nota_rubrica['nra_promparcial'] = $promparcial;
-				$nota_rubrica->save();
-
 				//Registrar notas de cada rubro para un alumno y semana seleccionados
 				foreach ($rubrica_alumno as $rbo_id => $rubro_alumno)
 				{
 					//Verificar que existe el rubro
-					$rubrica = TaRubrica::find($rba_id);
-					if (empty($rubrica)) {
+					$rubro = TaRubro::find($rbo_id);
+					if (empty($rubro)) {
 						Log::info('El usuario '. $usuario['userid'] . ' intento guardar un registro de notas para un alumno con un rubro inexistente. Por tanto, se le regreso a la pagina web con el error correspondiente.');
 						return Redirect::back()->with('msg-err', 'Ha intentado ingresar una nota en un rubro que no existe.');
 					}
+
 					//Verificar que el puntaje no supere al máximo
 					$puntaje = $rubros[$alu_id][$rba_id][$rbo_id];
 					if (!$this->es_entero_positivo($puntaje)) {
 						Log::info('El usuario '. $usuario['userid'] . ' intento guardar un registro de notas pero la nota asignada a un rubro es vacia o no es valida. Por tanto, se le regreso a la pagina web con el error correspondiente.');
 						return Redirect::back()->with('msg-err', 'Ha intentado ingresar una nota vac&iacute;a o no v&aacute;lida en un rubro.');
 					}
-					if ($puntaje > $rubrica['rba_maxpunt']) {
+					if ($puntaje > $rubro['rbo_maxpunt']) {
 						Log::info('El usuario '. $usuario['userid'] . ' intento guardar un registro de notas pero la nota asignada a un rubro se pasa del puntaje maximo. Por tanto, se le regreso a la pagina web con el error correspondiente.');
 						return Redirect::back()->with('msg-err', 'Ha intentado ingresar en un rubro una nota que supera el m&aacute;ximo puntaje permitido.');
 					}
@@ -280,7 +277,7 @@ class NotasController extends Controller {
 					$nota_rubro = TaNotaRubro::where(['nra_id' => $nota_rubrica['nra_id'], 'rbo_id' => $rbo_id, 'nrb_semana' => $semana])->first();
 					if (empty($nota_rubro)) {
 						//Crear una nota de rubrica en caso no se haya encontrado
-						$nota_rubro = TaNotaRubrica::create([
+						$nota_rubro = TaNotaRubro::create([
 							'rbo_id' => $rbo_id,
 							'nra_id' => $nota_rubrica['nra_id'],
 							'nrb_semana' => $semana,
@@ -288,14 +285,22 @@ class NotasController extends Controller {
 						]);
 					}
 
-					//Guardar los cambios
+					//Guardar los cambios de la nota del rubro
 					$nota_rubro['nrb_puntaje'] = $puntaje;
 					$nota_rubro->save();
 				}
+
+				//Guardar los cambios de la nota de la rubrica
+				$nota_rubrica->nra_promparcial = $promparcial;
+				$nota_rubrica->save();
 			}
+
+			//Recalcular el promedio (FALTA)
+			
 		}
 
 		//Volver a la pantalla de búsqueda
+		Session::flash('msg-ok', 'Se guardaron las notas correctamente.');
 		Log::info('El usuario ' . $usuario['userid'] . ' ha podido registrar las notas de sus alumnos del periodo ' . $periodo['per_id'] . ' en la semana ' . $semana . '.');
 		return redirect()->action('PromedioController@index');
 	}
