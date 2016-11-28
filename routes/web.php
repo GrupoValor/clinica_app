@@ -88,8 +88,8 @@ Route::resource('ta_notas_res', 'NotasController');
 /***************************************
  * MANTENIMIENTOS DE TAREAS ACADEMICAS *
  ***************************************/
-Route::resource('mant_curso', 'CursoController');
-Route::resource('mant_ciclo', 'CicloController');
+Route::resource('mant_curso', 'CursoController', ['only' => ['index', 'store', 'update', 'destroy']]);
+Route::resource('mant_ciclo', 'CicloController', ['only' => ['index', 'store', 'update', 'destroy']]);
 
 //directorio de usuarios
 Route::get('directorio', function () {

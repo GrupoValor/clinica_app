@@ -76,25 +76,34 @@
 
 						<div class="row">
 							<div class="col-xs-12">
+								<div style="float:right;">
+									<button class="btn btn-info" type="button" data-toggle="modal", data-target="#cur_new">
+										<i class="ace-icon fa fa-plus bigger-110"></i>
+                                        Nuevo
+									</button>
+								</div>
+								<br />
 								<!-- PAGE CONTENT BEGINS -->
 								<table class="table  table-bordered table-hover">
 									<thead>
 										<th>Descripci&oacute;n</th>
 										<th>C&oacute;digo</th>
+										<th class="hidden"></th>
 										<th>Cl&iacute;nica</th>
 										<th></th>
 									</thead>
 									<tbody>
 @foreach ($cursos as $value)
 										<tr>
-											<td>{{ $value['cur_descrip'] }}</td>
-											<td>{{ $value['cur_codigo'] }}</td>
+											<td id="cur_descrip_{{$value['cur_id']}}">{{ $value['cur_descrip'] }}</td>
+											<td id="cur_codigo_{{$value['cur_id']}}">{{ $value['cur_codigo'] }}</td>
+											<td class="hidden" id="cln_id_{{$value['cur_id']}}">{{ $value['cln_id'] }}</td>
 											<td>{{ $value['cln_nombre'] }}</td>
 											<td class="center">
-												<button class="btn btn-mini btn-success" title="Editar rubro" data-toggle="modal", data-target="#rubro_update" onclick="rbo_editar({{ 1 }})">
+												<button class="btn btn-mini btn-success" title="Editar rubro" data-toggle="modal", data-target="#cur_edit" onclick="cur_edit({{$value['cur_id']}})">
 													<i class="ace-icon fa fa-pencil"></i>
 												</button>
-												<button class="btn btn-mini btn-danger" title="Eliminar rubro" data-toggle="modal", data-target="#rubro_delete" onclick="rbo_eliminar({{ 1 }})">
+												<button class="btn btn-mini btn-danger" title="Eliminar rubro" data-toggle="modal", data-target="#cur_del" onclick="cur_del({{$value['cur_id']}})">
 													<i class="ace-icon fa fa-trash"></i>
 												</button>
 											</td>
@@ -254,33 +263,18 @@
 			});
 
 			//FUNCION PARA EDITAR RUBRICA
-			function rba_editar(rba_id) {
-				$('#rba_edit_id').attr('value', rba_id);
-				$('#rba_edit_nombre').attr('value', $("h4#" + rba_id).text());
-				$('#rba_edit_peso').attr('value', $("#rba_peso_" + rba_id).text());
+			function cur_edit(cur_id) {
+				$('#rba_edit_id').attr('value', cur_id);
+				$('#cur_edit_codigo').attr('value', $("#cur_codigo_" + cur_id).text());
+				$('#cur_edit_descrip').attr('value', $("#cur_descrip_" + cur_id).text());
+				$('#cln_edit_id').val(cur_id).change();
 			}
 
 			//FUNCION PARA ELIMINAR RUBRICA
-			function rba_eliminar(rba_id) {
-				$('#rba_delete_id').attr('value', rba_id);
+			function cur_del(cur_id) {
+				$('#cur_del_id').attr('value', cur_id);
 			}
 
-			//FUNCION PARA AÑADIR RUBRO
-			function rbo_anadir(rba_id) {
-				$('#rba_add_id').attr('value', rba_id);
-			}
-
-			//FUNCION PARA EDITAR RUBRO
-			function rbo_editar(rbo_id) {
-				$('#rbo_edit_id').attr('value', rbo_id);
-				$('#rbo_edit_nombre').attr('value', $("#rbo_nombre_" + rbo_id).text());
-				$('#rbo_edit_maxpunt').attr('value', $("#rbo_maxpunt_" + rbo_id).text());
-			}
-
-			//FUNCION PARA ELIMINAR RUBRO
-			function rbo_eliminar(rbo_id) {
-				$('#rbo_delete_id').attr('value', rbo_id);
-			}
 		</script>
 	</body>
 </html>
