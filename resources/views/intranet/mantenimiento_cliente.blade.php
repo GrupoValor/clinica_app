@@ -74,6 +74,7 @@
 											<th>Ocupación</th>
                                             <th>Teléfono</th>
                                             <th>Correo</th>
+											<th>Clínica</th>
 											<th>Modificar</th>
                                         </tr>
                                         </thead>
@@ -147,17 +148,6 @@
 										<div class="col-sm-9">
 											<input id="dir_fecnac" type="text" id="form-field-5"  class="col-xs-5 col-sm-7" />
 										</div>
-										<!--<div class="col-sm-4">
-															<div class="col-sm-4">
-																<div class="input-group">
-																	
-																	<input  class="form-control date-picker" class="col-xs-5 col-sm-7" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" />
-																	<span class="input-group-addon">
-																		<i class="fa fa-calendar bigger-110"></i>
-																	</span>
-																</div>
-															</div>
-										</div>-->
 									</div>
 								
 									<div class="space-4"></div>
@@ -263,7 +253,14 @@
 										</div>
 									</div>
 									<div class="form-group">
-                                
+										<label class="col-sm-3 col-xs-3 control-label no-padding-right"
+											   for="form-field-5">Clínica</label>
+										<div class="col-sm-9 col-xs-9">
+											<input class="col-xs-7 col-sm-7" type="text" id="dir_clinica" value="" disabled/>
+											<button type="button" style="font-size: 12px" class="btn btn-info btn-lg"
+													data-toggle="modal" data-target="#modal_clinica">Buscar
+											</button>
+										</div>
                             </div>				
 									
                                     <div class="space-20"></div>
@@ -284,7 +281,40 @@
                     </div>            
                 </div>
             </div>
-			
+		<div align="center">
+			<div class="modal fade" id="modal_clinica" role="dialog">
+				<div class="modal-dialog">
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 type="button" class="close" data-dismiss="modal">
+							</h1>
+							<div class="page-header"><!-- /.page-header -->
+								<h1> Clínicas </h1>
+							</div>
+							<table id="table-clinicas" class="table table-striped table-bordered table-hover">
+								<thead>
+								<tr>
+
+									<th>ID</th>
+									<th>Nombre</th>
+
+								</tr>
+								</thead>
+								<tbody id="tbodycontent">
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer">
+							<div align="center">
+								<button id="btnIngresar" type="button" class="btn btn-default" data-dismiss="modal">Aceptar
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<?php  echo view('intranet/footer'); ?>
 
 		
@@ -337,6 +367,7 @@
 
        var myTable ;
        var data_set = [];
+       var data_set_cli=[];
        var editid;
        var action;
 
@@ -374,7 +405,7 @@
 		$("#dir_correo").val("");
 		$("#dir_telno1").val("");
 		$("#dir_telno2").val("");
-		
+		$("#dir_clinica").val("");
        	$("#boton").modal()
        }
 
@@ -435,8 +466,8 @@
 							cli_direcc : $("#dir_direcc").val(),
 							cli_telno1 : $("#dir_telno1").val(),
 							cli_telno2 : $("#dir_telno2").val(),
-							cli_correo : $("#dir_correo").val()},
-                           
+							cli_correo : $("#dir_correo").val(),
+							cli_clinica: $("#dir_clinica").val()},
                     
                     success: function(Response){
                     	data_set.push([
@@ -448,6 +479,7 @@
 	                            $("#dir_ocupac").val(),
 								$("#dir_telno1").val(),
 								$("#dir_correo").val(),
+								$("#dir_clinica").val(),
 	                            getButtons(i,i)
 	                            
 	                        ]);
@@ -523,8 +555,8 @@
 							cli_direcc : $("#dir_direcc").val(),
 							cli_telno1 : $("#dir_telno1").val(),
 							cli_telno2 : $("#dir_telno2").val(),
-							cli_correo : $("#dir_correo").val()},
-						   
+							cli_correo : $("#dir_correo").val(),
+						   cli_clinica : $("#dir_clinica").val()},
                            
                     
                     success: function(Response){
@@ -536,12 +568,12 @@
 					data_set[editid][4]=$("#dir_ocupac").val();
 					data_set[editid][5]=$("#dir_telno1").val();
 					data_set[editid][6]=$("#dir_correo").val();
-					data_set[editid][8]=genero;
-					data_set[editid][9]=$("#dir_fecnac").val();
-					data_set[editid][10]=$("#dir_numhij").val();
-					data_set[editid][11]=$("#dir_direcc").val();
-					data_set[editid][12]=$("#dir_telno2").val();
-					
+                    data_set[editid][7]=$("#dir_clinica").val();
+					data_set[editid][9]=genero;
+					data_set[editid][10]=$("#dir_fecnac").val();
+					data_set[editid][11]=$("#dir_numhij").val();
+					data_set[editid][12]=$("#dir_direcc").val();
+					data_set[editid][13]=$("#dir_telno2").val();
 					myTable.clear().rows.add(data_set).draw(); 
 						 
                     alert(Response);
@@ -624,12 +656,12 @@
 				$("#dir_ocupac").val(data_set[editid][4]+"");
 				$("#dir_telno1").val(data_set[editid][5]+"");
 				$("#dir_correo").val(data_set[editid][6]+"");
-				
-				$("#dir_genero").val(data_set[editid][8]+"");
-				$("#dir_fecnac").val(data_set[editid][9]+"");
-				$("#dir_numhij").val(data_set[editid][10]+"");
-				$("#dir_direcc").val(data_set[editid][11]+"");
-				$("#dir_telno2").val(data_set[editid][12]+"");
+				$("#dir_clinica").val(data_set[editid][7]+"");
+				$("#dir_genero").val(data_set[editid][9]+"");
+				$("#dir_fecnac").val(data_set[editid][10]+"");
+				$("#dir_numhij").val(data_set[editid][11]+"");
+				$("#dir_direcc").val(data_set[editid][12]+"");
+				$("#dir_telno2").val(data_set[editid][13]+"");
 				
 
                 $("#boton").modal()
@@ -649,7 +681,7 @@
 			$("#dir_ocupac").val(data_set[id][4]+"");
 			$("#dir_telno1").val(data_set[id][5]+"");
 			$("#dir_correo").val(data_set[id][6]+"");
-
+			$("#dir_clinica").val(data_set[id][7]+"");
             $("#boton").modal()
 		}
 		
@@ -663,7 +695,7 @@
                     		
                             "aoColumns": [
 
-                                null,null,null,null,null,null,null,
+                                null,null,null,null,null,null,null,null,
                                 {"bSortable": false}
                             ],
                             "aaSorting": [],
@@ -701,6 +733,7 @@
 								data[i].cli_ocupac,
 								data[i].cli_telno1,
 								data[i].cli_correo,
+									data[i].cli_clinica,
 	                            getButtons(i),
 								//para los modales
 	                            data[i].cli_genero,
@@ -725,6 +758,42 @@
                 });
             
         });
+            $(document).ready(function () {
+
+                tableCli = $('#table-clinicas')
+                    .DataTable({
+                        bAutoWidth: false,
+                        "aoColumns": [
+                            null, null
+                        ],
+                        "aaSorting": [],
+                        select: {
+                            style: 'single'
+                        }
+                    });
+                $('#table-clinicas').on('click', 'tr', function () {
+                    var id2 = tableCli.row(this).index();
+                    var data = tableCli.row(id2).data();
+					/*doc_id = data[0];
+					 $("#cln_prof").val(data[3]);*/
+                    $("#dir_clinica").val(data[0]+"");
+                });
+                $.ajax({
+                    type: "GET",
+                    url: 'service_clinica',
+                    success: function (result) {
+                        var data = jQuery.parseJSON(result);
+                        for (var i = 0; i < data.length; i++) {
+                            data_set_cli.push([
+                                data[i].cln_id,
+                                data[i].cln_nombre
+
+                            ])
+                        }
+                        tableCli.clear().rows.add(data_set_cli).draw()
+                    }
+                });
+            });
 </script>  
 
 

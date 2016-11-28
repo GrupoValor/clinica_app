@@ -156,8 +156,12 @@ Route::get('/error-500', function () {
 
 //WEB
 
-Route::get('/log', function () {
-    return view('intranet/log');
+Route::get('/log', function (Request $request) {
+    $result = app('App\Http\Controllers\loginController')->session($request);
+    if($result == '1')
+        return view('intranet/log');
+    else
+        return "<img src = 'http://i.imgur.com/zugsAYb.gif' />";
 });
 Route::get('/log_service', 'logController@get');
 
