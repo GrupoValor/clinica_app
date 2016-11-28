@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Intranet | Tareas acad&eacute;micas | Mantenimiento de r&uacute;bricas</title>
+		<title>Cl&iacute;nica Jur&iacute;dica | Tareas acad&eacute;micas | Mantenimiento de r&uacute;bricas</title>
 
 		<meta name="description" content="Static &amp; Dynamic Tables" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />

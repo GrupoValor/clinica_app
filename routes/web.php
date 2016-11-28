@@ -85,6 +85,12 @@ Route::resource('ta_notas', 'PromedioController');
 Route::get('ta_notas_per', 'PromedioController@obtenerRubricas');
 Route::resource('ta_notas_res', 'NotasController');
 
+/***************************************
+ * MANTENIMIENTOS DE TAREAS ACADEMICAS *
+ ***************************************/
+Route::resource('mant_curso', 'CursoController');
+Route::resource('mant_ciclo', 'CicloController');
+
 //directorio de usuarios
 Route::get('directorio', function () {
     return view('intranet/directorio');
