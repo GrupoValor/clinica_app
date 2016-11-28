@@ -70,7 +70,12 @@ function initMap(){
         var loader_grabar = $("#loader-grabar");
         $.ajax({
             url:"ajax/inserta-alerta.ajax.php",
-            data: f.serialize(),
+            data: {
+                'titulo' : f.find("input[name='titulo']").val(),
+                'cx': f.find("input[name='cx']").val(),
+                'cy': f.find("input[name='cy']").val(),
+                'cas_id': parseInt(getUrlVars()['cas_id'])
+            },
             success:function(data){
                 marcador.setMap(null);
                 listar();
@@ -137,7 +142,7 @@ function quitar_marcadores(lista){
 function listar(){
         quitar_marcadores(marcadores_bd);
         var formulario_edicion = $('#formulario-edicion');
-        $.get("ajax/listar-alertas.ajax.php", 'json', function(data){
+        $.get("ajax/listar-alertas.ajax.php", {'cas_id': parseInt(getUrlVars()['cas_id'])}, function(data){
             $.each(data, function(i, item){
                 var posi = new google.maps.LatLng(item.ale_cx, item.ale_cy);
                 var marca = new google.maps.Marker({
@@ -177,7 +182,7 @@ function listar(){
                 marcadores_bd.push(marca);
                 marca.setMap(mapa);
             });
-        });
+        },'json');
     }
 
 function updateMark(){
@@ -228,3 +233,12 @@ $(document).on('ready',function(){
     });
 
 });
+
+
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+        vars[key] = value;
+    });
+    return vars;
+}

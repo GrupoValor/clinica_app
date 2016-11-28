@@ -15,7 +15,7 @@
     <div class="page-content">
                 <div class="page-header">
                     <h1>
-                        Mapa de alertas
+                        Mapa de alertas de caso <?php echo $_GET['cas_id'] ?>
                     </h1>
                 </div>
                 <div class="row">

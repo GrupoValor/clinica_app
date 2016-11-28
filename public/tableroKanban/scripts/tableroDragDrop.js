@@ -347,7 +347,7 @@ $(document).ready(function () {
 
     //registrar una alerta de pedido de documento
     $('#boton-agregar-alerta').on('click', function(){
-      var win = window.open('../mapa/mapa.php', '_blank','height=480,width=900');
+      var win = window.open('../mapa/mapa.php?cas_id='+parseInt(getUrlVars()['id']), '_blank','height=600,width=950');
       if (win) {
           win.focus();
       } else {
@@ -403,7 +403,7 @@ $(document).ready(function () {
 
         $(document).on('click','.boton-elimina-miembro',function () {
 
-           
+
             $.get("ajax/elimina-usuarios-caso.ajax.php", {
                 'cas_id': parseInt(getUrlVars()['id']),
                 'usu_id': $(this).attr('id')

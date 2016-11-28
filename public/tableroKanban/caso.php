@@ -19,29 +19,29 @@ $display = new Display($db);
         <script src="scripts/bootstrap.min.js"></script>
         <script type="text/javascript">
           $.ajax({
-                   
+
                     type: "GET",
                     url:'../user',
                     success: function(result){
-        
+
                         var data = JSON.parse(result);
 
-                 
+
                         if(data.rol == '4' || data.rol == '1' ){
                             $('#cambia-estado').html('<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-edit-estado" style="float: right;">Cambiar estado</button>');
-                          
+
                         }
                         else{
                           $('#cambia-estado').html("");
                         }
-                        
-                       
+
+
                     }
-                        
-                            
-            
-                 
-            
+
+
+
+
+
                 });
 
 
@@ -122,6 +122,7 @@ $display = new Display($db);
       <div class="row" id="detalles-caso">
           <div class="col-sm-2">
               <button id="addtarea" type="button" class="btn btn-success btn-info" data-toggle="modal" data-target="#modal-agrega-tarea">Agregar tarea</button>
+              <button type="button" class="btn btn-warning" id="boton-agregar-alerta">+ Alerta documento</button>
             </div>
           <div class="col-sm-4">
               <label class="control-label no-padding-right">Objetivo del caso:</label>
@@ -269,13 +270,6 @@ $display = new Display($db);
                   <button type="button" class="btn btn-info" id="boton-ingresar-comentario">Ingresar</button>
                 </form>
               </div>
-                <form class="form-inline">
-              <div class="form-group">
-                <div>
-                  <button type="button" class="btn btn-warning" id="boton-agregar-alerta">+ Alerta documento</button>
-                </div>
-              </div>
-                </form>
             </div>
             <div class="modal-footer">
                 <button id="deleteTarea" type="button" class="btn btn-success btn-danger" data-toggle="modal" data-target="#modal-eliminar-tarea">Eliminar tarea</button>
