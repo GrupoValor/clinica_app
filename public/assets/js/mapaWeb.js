@@ -128,12 +128,13 @@ function listar(){
                         break;
                 };
                 google.maps.event.addListener(marca, 'click', function(){
-                    var infowindow =  new google.maps.InfoWindow({
-                        content:
-                        '<div>'+marca.descripcion+'</div>'+
-                            '<button onclick="showModal('+marca.idMarcador+')">Atender</button>'
-                    });
-                    infowindow.open(mapa, this);
+                    if((marca.estado !== 'vencida') && (marca.estado !== 'finalizada')) {
+                        var infowindow = new google.maps.InfoWindow({
+                            content: '<div>' + marca.descripcion + '</div>' +
+                            '<button onclick="showModal(' + marca.idMarcador + ')">Atender</button>'
+                        });
+                        infowindow.open(mapa, this);
+                    }
 
                     /*google.maps.event.addListener(marca, 'mouseout', function() {
                         infowindow.close();
