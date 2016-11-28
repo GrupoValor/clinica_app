@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 27-11-2016 a las 15:04:21
+-- Tiempo de generación: 27-11-2016 a las 18:32:16
 -- Versión del servidor: 5.5.51-38.2
 -- Versión de PHP: 5.4.31
 
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `TA_ALUMNO` (
   `alu_correo` varchar(40) DEFAULT NULL,
   `alu_nombre` varchar(40) DEFAULT NULL,
   `alu_codpuc` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `TA_ALUMNO`
@@ -87,7 +87,8 @@ CREATE TABLE IF NOT EXISTS `TA_ALUMNO` (
 
 INSERT INTO `TA_ALUMNO` (`alu_id`, `usu_id`, `alu_volunt`, `alu_nrodoc`, `alu_correo`, `alu_nombre`, `alu_codpuc`) VALUES
 (1, 1, 0, '28389392', 'chiara@pucp.pe', 'Chiara', '20160000'),
-(2, 2, 0, '72921408', 'karina.alfaro@pucp.pe', 'Karina Alfaro ', '20160001');
+(2, 2, 0, '72921408', 'karina.alfaro@pucp.pe', 'Karina Alfaro ', '20160001'),
+(3, 3, 1, '36899123', 'vduval@france.pl', 'Victor Duval', '20160002');
 
 -- --------------------------------------------------------
 
@@ -106,14 +107,6 @@ CREATE TABLE IF NOT EXISTS `TA_CASO` (
   `cas_observ` text,
   `cas_result` text
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `TA_CASO`
---
-
-INSERT INTO `TA_CASO` (`cas_id`, `usu_id`, `cli_id`, `estcas_id`, `cas_docent`, `cas_fecate`, `cas_objact`, `cas_observ`, `cas_result`) VALUES
-(1, 2, 1, 4, 1, '2016-10-23', 'Cancelación de una partida de nacimiento', 'La usuaria nació en casa', 'N/A'),
-(5, 1, 1, 6, 1, '2016-11-27', 'Duplicidad en el registro de Nacionalidad', '- El usuario no tiene la partida original', NULL);
 
 -- --------------------------------------------------------
 
@@ -166,8 +159,7 @@ CREATE TABLE IF NOT EXISTS `TA_CLIENTE` (
 --
 
 INSERT INTO `TA_CLIENTE` (`cli_id`, `usu_id`, `cli_pobvul`, `cli_numhij`, `cli_nivedu`, `cli_ocupac`, `cli_direcc`, `cli_genero`, `cli_otrdep`, `cli_nombre`, `cli_nrodoc`, `cli_telno1`, `cli_telno2`, `cli_correo`, `cli_fecnac`) VALUES
-(1, 7, 'Anciano', 5, 'Secundaria incompleta', 'Estudiante', 'Pasaje Los Sauces Mz. 1 Lt. 1 Santa Fe, Totorita', 'f', 'N/A', 'Daniela Salazar Flores', '70000001', '93829932', '392992', 'daniela.florez@hotmail.com', '1958-03-12'),
-(4, 11, NULL, 0, 'Sin estudios', '', 'Arequipa', 'm', NULL, 'Renzo', '76368822', '957407321', '957407321', '', '2016-11-22');
+(1, 7, 'Anciano', 5, 'Secundaria incompleta', 'Estudiante', 'Pasaje Los Sauces Mz. 1 Lt. 1 Santa Fe, Totorita', 'f', 'N/A', 'Daniela Salazar Flores', '70000001', '93829932', '392992', 'daniela.florez@hotmail.com', '1958-03-12');
 
 -- --------------------------------------------------------
 
@@ -308,7 +300,7 @@ CREATE TABLE IF NOT EXISTS `TA_EVALUADOR` (
   `eva_codpuc` varchar(10) DEFAULT NULL,
   `eva_nombre` varchar(40) DEFAULT NULL,
   `eva_correo` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `TA_EVALUADOR`
@@ -316,7 +308,7 @@ CREATE TABLE IF NOT EXISTS `TA_EVALUADOR` (
 
 INSERT INTO `TA_EVALUADOR` (`eva_id`, `usu_id`, `eva_tipeva`, `eva_codpuc`, `eva_nombre`, `eva_correo`) VALUES
 (1, 4, 'd', '20160003', 'Ivan Sipiran', 'isipiran@pucp.pe'),
-(3, 5, 'j', '20160004', 'Jorge Quirao', 'jguirao@pucp.pe');
+(2, 5, 'j', '20160004', 'Jorge Quirao', 'jguirao@pucp.pe');
 
 -- --------------------------------------------------------
 
@@ -357,7 +349,7 @@ CREATE TABLE IF NOT EXISTS `TA_LOG` (
   `log_text` text,
   `log_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `log_tipo` varchar(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `TA_LOG`
@@ -454,7 +446,11 @@ INSERT INTO `TA_LOG` (`id`, `log_text`, `log_date`, `log_tipo`) VALUES
 (97, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 19:39:32', 'Inicio session '),
 (98, 'Usuario : 20160000 Conexion : Password incorrecto', '2016-11-27 20:02:03', 'Inicio session '),
 (99, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 20:02:10', 'Inicio session '),
-(100, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 20:24:54', 'Inicio session ');
+(100, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 20:24:54', 'Inicio session '),
+(101, 'Usuario : 20160003 Conexion : Exitosa -> Rol : 4', '2016-11-27 22:46:11', 'Inicio session '),
+(102, 'Usuario : 20160000 Conexion : Password incorrecto', '2016-11-27 22:46:38', 'Inicio session '),
+(103, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 22:46:44', 'Inicio session '),
+(104, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 23:49:40', 'Inicio session ');
 
 -- --------------------------------------------------------
 
@@ -714,14 +710,6 @@ CREATE TABLE IF NOT EXISTS `TA_TAREA` (
   `tar_tipo` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `TA_TAREA`
---
-
-INSERT INTO `TA_TAREA` (`tar_id`, `tar_estado`, `tar_nombre`, `tar_descri`, `tar_fecven`, `tar_fecreg`, `cas_id`, `tar_tipo`) VALUES
-(48, 'pendiente', 'Busqueda Partida Nacimiento', 'jkjkjzxkjcbzjkxc', NULL, '2016-11-27', 1, NULL),
-(49, 'pendiente', 'Recuperar Partida Original', 'Recuperar Partida Original', NULL, '2016-11-27', 5, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -735,7 +723,7 @@ CREATE TABLE IF NOT EXISTS `TA_USUARIO` (
   `usu_usenam` varchar(20) DEFAULT NULL,
   `usu_passwd` varchar(100) DEFAULT NULL,
   `usu_activo` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `TA_USUARIO`
@@ -749,7 +737,8 @@ INSERT INTO `TA_USUARIO` (`usu_id`, `cln_id`, `rol_id`, `usu_usenam`, `usu_passw
 (5, 1, 5, '20160004', 'v3ps4+XuOoYpPCb2jZjPhBJ+5wWMbn7UzyAx0xLppEM=', 1),
 (6, 1, 6, '20160005', '3E+6o8lfcYhFbAagyefmssDhhg6Gg1IEo4Nrm8jsOGk=', 1),
 (7, 1, 7, '70000001', 'TpcETLw1O0Qz/jWK5Bv1GBUixaqLK4LoIXrNwCKwdbM=', 1),
-(11, 1, 7, '76368822', 'MBgtSxshoi3JSThq7WuLsvc7lINvEAJH9HP9Nw2Jpp4=', 1);
+(11, 1, 7, '76368822', 'MBgtSxshoi3JSThq7WuLsvc7lINvEAJH9HP9Nw2Jpp4=', 1),
+(12, 1, 4, '20060000', 'PzFYCnjWwGRV5lMrjpj9VSH57UgsI+SvHbT57H4Wh5A=', 0);
 
 -- --------------------------------------------------------
 
@@ -963,7 +952,7 @@ ALTER TABLE `TA_ALERTA`
 -- AUTO_INCREMENT de la tabla `TA_ALUMNO`
 --
 ALTER TABLE `TA_ALUMNO`
-  MODIFY `alu_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `alu_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `TA_CASO`
 --
@@ -1008,7 +997,7 @@ ALTER TABLE `TA_ESTADOCASO`
 -- AUTO_INCREMENT de la tabla `TA_EVALUADOR`
 --
 ALTER TABLE `TA_EVALUADOR`
-  MODIFY `eva_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `eva_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `TA_EVENTO`
 --
@@ -1018,7 +1007,7 @@ ALTER TABLE `TA_EVENTO`
 -- AUTO_INCREMENT de la tabla `TA_LOG`
 --
 ALTER TABLE `TA_LOG`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=101;
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=105;
 --
 -- AUTO_INCREMENT de la tabla `TA_NOTA_COMENTARIO`
 --
@@ -1073,7 +1062,7 @@ ALTER TABLE `TA_TAREA`
 -- AUTO_INCREMENT de la tabla `TA_USUARIO`
 --
 ALTER TABLE `TA_USUARIO`
-  MODIFY `usu_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `usu_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- Restricciones para tablas volcadas
 --
