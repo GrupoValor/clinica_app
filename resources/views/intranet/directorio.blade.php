@@ -30,6 +30,9 @@
     <link rel="stylesheet" href="assets/css/ace-skins.min.css" />
     <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
 
+    <!--[if !IE]> -->
+<script src="assets/js/jquery-2.1.4.min.js"></script>
+
     <script src="assets/js/ace-extra.min.js"></script>
     <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
@@ -203,8 +206,7 @@
 
 <!-- basic scripts -->
 
-<!--[if !IE]> -->
-<script src="assets/js/jquery-2.1.4.min.js"></script>
+
 
 <script type="text/javascript">
     if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
