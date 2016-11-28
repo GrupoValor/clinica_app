@@ -1,3 +1,7 @@
+<div class="space-10"></div>
+<div class="col-xs-12" id="tools-cli">
+    <div class="pull-right tableTools-container"></div>
+</div>
 <div class="row">
     <div class="col-xs-12">
         <!-- PAGE CONTENT BEGINS -->
@@ -5,8 +9,8 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Codigo</th>
                     <th>Nombre</th>
-                    <th>N° documento</th>
                     <th>Nivel educativo</th>
                     <th>Ocupación</th>
                     <th>Teléfono</th>
@@ -58,9 +62,9 @@
                         </div>
                         <div class="space-4"></div>
                         <div class="form-group">
-                            <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> N° documento </label>
+                            <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> DNI </label>
                             <div class="col-sm-9 col-xs-9">
-                                <input id="cli_nrodoc" type="text" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" class="col-xs-5 col-sm-7" placeholder="*obligatorio"/>
+                                <input id="cli_nrodoc" type="text"  class="col-xs-5 col-sm-7"  onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" placeholder="opcional"/>
                             </div>
                         </div>
                         <div class="space-4"></div>
@@ -175,6 +179,9 @@
 <script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
 <script src="assets/js/dataTables.buttons.min.js"></script>
 <script src="assets/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 <script src="assets/js/buttons.html5.min.js"></script>
 <script src="assets/js/buttons.print.min.js"></script>
 <script src="assets/js/buttons.colVis.min.js"></script>
@@ -233,7 +240,7 @@
         document.getElementById("cli_nombre").required = true;
         document.getElementById("cli_genero").required = true;
         document.getElementById("cli_fecnac").required = true;
-        document.getElementById("cli_nrodoc").required = true;
+
         
         $("#cli_correo").attr('type', 'email');        
 
@@ -248,22 +255,22 @@
             var genero = $("#cli_genero option:selected").val();
             
             var nivel;
-            if ($("#cli_nivedu option:selected").val() === 's') {
+            if ($("#cli_nivedu option:selected").val() == 's') {
                 nivel = "Sin estudios";
-            } else if ($("#cli_nivedu option:selected").val() === 'pi') {
+            } else if ($("#cli_nivedu option:selected").val() == 'pi') {
                 nivel = "Primaria incompleta";
-            } else if ($("#cli_nivedu option:selected").val() === 'pc') {
+            } else if ($("#cli_nivedu option:selected").val() == 'pc') {
                 nivel = "Primaria completa";
-            } else if ($("#cli_nivedu option:selected").val() === 'si') {
+            } else if ($("#cli_nivedu option:selected").val() == 'si') {
                 nivel = "Secundaria incompleta";
-            } else if ($("#cli_nivedu option:selected").val() === 'sc') {
+            } else if ($("#cli_nivedu option:selected").val() == 'sc') {
                 nivel = "Secundaria completa";
-            } else if ($("#cli_nivedu option:selected").val() === 'sui') {
+            } else if ($("#cli_nivedu option:selected").val() == 'sui') {
                 nivel = "Superior incompleto";
-            } else if ($("#cli_nivedu option:selected").val() === 'suc') {
+            } else if ($("#cli_nivedu option:selected").val() == 'suc') {
                 nivel = "Superior completo";
             }
-            
+            var code = Math.floor((Math.random() * 10000000) + 70000000);
             i = dataset_cliente.length;
             //Validaciones
             $.ajax({
@@ -281,7 +288,7 @@
                     cli_fecnac: $("#cli_fecnac").val(),
                     cli_numhij: $("#cli_numhij").val(),
                     cli_nivedu: nivel,
-                    cli_nrodoc: $("#cli_nrodoc").val(),
+                    cli_nrodoc: code,
                     cli_ocupac: $("#cli_ocupac").val(),
                     cli_direcc: $("#cli_direcc").val(),
                     cli_telno1: $("#cli_telno1").val(),
@@ -292,7 +299,7 @@
                     dataset_cliente.push([
                         Response,
                         $("#cli_nombre").val(),
-                        $("#cli_nrodoc").val(),
+                        code,
                         nivel,
                         $("#cli_ocupac").val(),
                         $("#cli_telno1").val(),
@@ -314,19 +321,19 @@
             var genero = $("#cli_genero option:selected").val();
 
             var nivel;
-            if ($("#cli_nivedu option:selected").val() === 's') {
+            if ($("#cli_nivedu option:selected").val() == 's') {
                 nivel = "Sin estudios";
-            } else if ($("#cli_nivedu option:selected").val() === 'pi') {
+            } else if ($("#cli_nivedu option:selected").val() == 'pi') {
                 nivel = "Primaria incompleta";
-            } else if ($("#cli_nivedu option:selected").val() === 'pc') {
+            } else if ($("#cli_nivedu option:selected").val() == 'pc') {
                 nivel = "Primaria completa";
-            } else if ($("#cli_nivedu option:selected").val() === 'si') {
+            } else if ($("#cli_nivedu option:selected").val() == 'si') {
                 nivel = "Secundaria incompleta";
-            } else if ($("#cli_nivedu option:selected").val() === 'sc') {
+            } else if ($("#cli_nivedu option:selected").val() == 'sc') {
                 nivel = "Secundaria completa";
-            } else if ($("#cli_nivedu option:selected").val() === 'sui') {
+            } else if ($("#cli_nivedu option:selected").val() == 'sui') {
                 nivel = "Superior incompleto";
-            } else if ($("#cli_nivedu option:selected").val() === 'suc') {
+            } else if ($("#cli_nivedu option:selected").val() == 'suc') {
                 nivel = "Superior completo";
             }
             
@@ -395,19 +402,19 @@
         var rows = table_cliente.rows(id).data();
         edit_id_cliente = parseInt(id);
         var nivel;
-        if (dataset_cliente[edit_id_cliente][3] === "Sin estudios") {
+        if (dataset_cliente[edit_id_cliente][3] == "Sin estudios") {
             nivel = "s";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Primaria incompleta") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Primaria incompleta") {
             nivel = "pi";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Primaria completa") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Primaria completa") {
             nivel = "pc";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Secundaria incompleta") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Secundaria incompleta") {
             nivel = "si";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Secundaria completa") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Secundaria completa") {
             nivel = "sc";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Superior incompleto") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Superior incompleto") {
             nivel = "sui";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Superior completo") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Superior completo") {
             nivel = "suc";
         }
                 
@@ -441,19 +448,19 @@
         edit_id_cliente = parseInt(id);
         
         var nivel;
-        if (dataset_cliente[edit_id_cliente][3] === "Sin estudios") {
+        if (dataset_cliente[edit_id_cliente][3] == "Sin estudios") {
             nivel = "s";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Primaria incompleta") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Primaria incompleta") {
             nivel = "pi";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Primaria completa") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Primaria completa") {
             nivel = "pc";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Secundaria incompleta") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Secundaria incompleta") {
             nivel = "si";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Secundaria completa") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Secundaria completa") {
             nivel = "sc";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Superior incompleto") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Superior incompleto") {
             nivel = "sui";
-        } else if (dataset_cliente[edit_id_cliente][3] === "Superior completo") {
+        } else if (dataset_cliente[edit_id_cliente][3] == "Superior completo") {
             nivel = "suc";
         }
         
@@ -502,17 +509,69 @@
                     style: 'single'
                 }
             });
+
+        $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
+
+        new $.fn.dataTable.Buttons( table_cliente, {
+            buttons: [
+                {
+                    "extend": "copy",
+                    "text": "<i class='fa fa-copy bigger-110 pink'></i> <span class='hidden'>Copy to clipboard</span>",
+                    "className": "btn btn-white btn-primary btn-bold"
+                },
+                {
+                    "extend": "csv",
+                    "text": "<i class='fa fa-database bigger-110 orange'></i> <span class='hidden'>Export to CSV</span>",
+                    "className": "btn btn-white btn-primary btn-bold"
+                },
+                {
+                    "extend": "excel",
+                    "text": "<i class='fa fa-file-excel-o bigger-110 green'></i> <span class='hidden'>Export to Excel</span>",
+                    "className": "btn btn-white btn-primary btn-bold"
+                },
+                {
+                    "extend": "pdf",
+                    "text": "<i class='fa fa-file-pdf-o bigger-110 red'></i> <span class='hidden'>Export to PDF</span>",
+                    "className": "btn btn-white btn-primary btn-bold"
+                },
+                {
+                    "extend": "print",
+                    "text": "<i class='fa fa-print bigger-110 grey'></i> <span class='hidden'>Print</span>",
+                    "className": "btn btn-white btn-primary btn-bold",
+                    autoPrint: true
+                }
+            ]
+        } );
+
+        table_cliente.buttons().container().appendTo( $('#tools-cli .tableTools-container ') );
+
+        //style the message box
+        var defaultCopyAction = table_Alu.button(1).action();
+        table_Alu.button(1).action(function (e, dt, button, config) {
+            defaultCopyAction(e, dt, button, config);
+            $('.dt-button-info').addClass('gritter-item-wrapper gritter-info gritter-center white');
+        });
+
+        setTimeout(function() {
+            $($('#tools-cli .tableTools-container')).find('a.dt-button').each(function() {
+                var div = $(this).find(' > div').first();
+                if(div.length == 1) div.tooltip({container: 'body', title: div.parent().text()});
+                else $(this).tooltip({container: 'body', title: $(this).text()});
+            });
+        }, 500);
+
+
         $.ajax({
             type: "GET",
             url: 'service_cliente',
             success: function(result) {
                 var data = jQuery.parseJSON(result);
                 for (var i = 0; i < data.length; i++) {
-                    if (data[i].usu_activo === 1) {
+                    if (data[i].usu_activo == 1) {
                         dataset_cliente.push([
                             data[i].cli_id,
-                            data[i].cli_nombre,
                             data[i].cli_nrodoc,
+                            data[i].cli_nombre,
                             data[i].cli_nivedu,
                             data[i].cli_ocupac,
                             data[i].cli_telno1,

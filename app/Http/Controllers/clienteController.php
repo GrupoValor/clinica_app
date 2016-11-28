@@ -11,6 +11,7 @@ use App\Models\TACLIENTE;
 use App\Models\TAUSUARIO;
 
 use Illuminate\Support\Facades\DB;
+use App\Models\Encrypter;
 
 class clienteController extends Controller
 {
@@ -61,7 +62,7 @@ class clienteController extends Controller
                                       'cln_id' => '1',
                                       'rol_id' => '7',
                                       'usu_usenam' => $request['cli_nrodoc'],
-                                      'usu_passwd' => $request['cli_nrodoc'],
+                                      'usu_passwd' => Encrypter::encrypt($request['cli_nrodoc']),
                                       'usu_activo' => '1'
 
         ]);
@@ -75,6 +76,7 @@ class clienteController extends Controller
 		
 		//creo el Cliente
 		
+       
 		$cliente = TACLIENTE::create([								
 									'usu_id' => $userid,
 									'cli_nombre' => $request['cli_nombre'],

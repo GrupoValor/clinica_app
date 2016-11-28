@@ -81,13 +81,13 @@
 									<div class="form-group">
 										{!! Form::label('curso', 'Curso:', ['class' => 'col-sm-3 control-label no-padding-right']) !!}
 										<div class="col-sm-8">
-											{!! Form::select('curso', $cursos, ['class' => 'input-xlarge', 'id' => 'curso']) !!}
+											{!! Form::select('curso', $cursos, ['class' => 'input-xlarge']) !!}
 										</div>
 									</div>
 									<div class="form-group">
 										{!! Form::label('ciclo', 'Ciclo:', ['class' => 'col-sm-3 control-label no-padding-right']) !!}
 										<div class="col-sm-8">
-											{!! Form::select('ciclo', $ciclos, ['class' => 'input-xlarge', 'id' => 'ciclo']) !!}
+											{!! Form::select('ciclo', $ciclos, ['class' => 'input-xlarge']) !!}
 										</div>
 									</div>
 								{!! Form::close() !!}
@@ -95,7 +95,7 @@
 								<!-- BÚSQUEDA -->
 								{!! Form::open(['route' => 'ta_notas_res.index', 'method' => 'GET', 'class' => "form-horizontal"]) !!}
 									<div class="hidden">
-										{!! Form::text('periodo', $periodo['per_id']) !!}
+										{!! Form::text('periodo', $periodo['per_id'], ['id' => 'periodo']) !!}
 									</div>
 									<div class="form-group">
 										{!! Form::label('semana', '# semana:', ['class' => "col-sm-3 control-label no-padding-right"]) !!}
@@ -107,7 +107,7 @@
 									<div class="form-group">
 										{!! Form::label('rubrica', 'R&uacute;brica:', ['class' => "col-sm-3 control-label no-padding-right"]) !!}
 										<div class="col-sm-6">
-											{!! Form::select('rubrica', $rubricas, ['class' => "input-xlarge", 'id' => 'rubrica']) !!}
+											{!! Form::select('rubrica', $rubricas, ['class' => "input-xlarge"]) !!}
 										</div>
 									</div>
 									<div class="form-group">
@@ -270,48 +270,65 @@
 					$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
 				});
 				/***************/
-				
-				//Select dinámico
-				$("#curso").on('change', function(event) {
-					alert('Ciclo: ' + $("#ciclo").val());
+
+				//FUNCION PARA OBTENER RUBRICAS (SELECT DINAMICO)
+				$('#curso').on('change', function(e)
+				{
 					var location = window.location.pathname;
 					var directoryPath = location.substring(0, location.lastIndexOf("/")+1);
-					$.get(directoryPath + "ta_notas_per?curso=" + event.target.value + "&ciclo=" + $("#ciclo").val() + "",
-						function(response, state) {
+
+					$.get(directoryPath + "ta_notas_per?curso=" + $("#curso").val() + "&ciclo=" + $("#ciclo").val() + "",
+						function(response, state)
+						{
 							//Cambiar valor del periodo (oculto)
-							$('#rbo_edit_id').attr('value', rbo_id);
+							$('#periodo').attr('value', response[0].per_id);
+
 							//Cambiar opciones del select de las semanas
+							$("#semana").empty();
+							$("#semana").append("<option value='" + 0 + "'>Todas</option>");
+							for (i = 1; i <= response[0].per_semanas; i++) {
+								$('#semana').append("<option value='" + i + "'>" + i + "</option>");
+							}
+							$('#num_semanas').text(response[0].per_semanas);
+
 							//Cambiar opciones del select de las rubricas
-						//	for (i = 0; i < response.length; i++) {
-						//		$("#rubrica").append("<option value='"	+ response[i].rba_id + )
+							$("#rubrica").empty();
+							$.each(response[1], function(key, value) {
+								$("#rubrica").append("<option value='" + key + "'>" + value + "</option>");
+							});
 						}
 					);
-					alert('Fin');
 				});
-				
-				$("#ciclo").on('change', function(event) {
+
+				$('#ciclo').on('change', function(e)
+				{
 					var location = window.location.pathname;
 					var directoryPath = location.substring(0, location.lastIndexOf("/")+1);
-					$.get(directoryPath + "ta_notas_per?curso=" + $("#curso").val() + "&ciclo=" + event.target.value + "");
+
+					$.get(directoryPath + "ta_notas_per?curso=" + $("#curso").val() + "&ciclo=" + $("#ciclo").val() + "",
+						function(response, state)
+						{
+							//Cambiar valor del periodo (oculto)
+							$('#periodo').attr('value', response[0].per_id);
+
+							//Cambiar opciones del select de las semanas
+							$("#semana").empty();
+							$("#semana").append("<option value='" + 0 + "'>Todas</option>");
+							for (i = 1; i <= response[0].per_semanas; i++) {
+								$('#semana').append("<option value='" + i + "'>" + i + "</option>");
+							}
+							$('#num_semanas').text(response[0].per_semanas);
+
+							//Cambiar opciones del select de las rubricas
+							$("#rubrica").empty();
+							$.each(response[1], function(key, value) {
+								$("#rubrica").append("<option value='" + key + "'>" + value + "</option>");
+							});
+						}
+					);
 				});
-				
-				/**
-				//add horizontal scrollbars to a simple table
-				$('#simple-table').css({'width':'2000px', 'max-width': 'none'}).wrap('<div style="width: 1000px;" />').parent().ace_scroll(
-				  {
-					horizontal: true,
-					styleClass: 'scroll-top scroll-dark scroll-visible',//show the scrollbars on top(default is bottom)
-					size: 2000,
-					mouseWheelLock: true
-				  }
-				).css('padding-top', '12px');
-				*/
-			
-			
+
 			});
-
-
-			
 
 		</script>
 	</body>

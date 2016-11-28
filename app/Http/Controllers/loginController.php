@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
-use App\Classes\Encrypter;
 
+use App\Models\Encrypter;
 
 class loginController extends Controller
 {

@@ -1,3 +1,7 @@
+<div class="space-10"></div>
+<div class="col-xs-12" id="tools-prof">
+    <div class="pull-right tableTools-container"></div>
+</div>
 <div class="row">
     <div class="col-xs-12">
         <!-- PAGE CONTENT BEGINS -->
@@ -6,7 +10,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
-                    <th>Codigo Pucp</th>
+                    <th>Codigo </th>
                     <th>Correo</th>
                     <th>Modificar</th>
                 </tr>
@@ -46,7 +50,7 @@
                         </div>
                         <div class="space-4"></div>
                         <div class="form-group">
-                            <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Código PUCP </label>
+                            <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Código  </label>
 
                             <div class="col-sm-9 col-xs-9">
                                 <input id="prof_codpucp" type="text" class="col-xs-5 col-sm-7" placeholder="*obligatorio" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"/>
@@ -94,6 +98,9 @@
 <script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
 <script src="assets/js/dataTables.buttons.min.js"></script>
 <script src="assets/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 <script src="assets/js/buttons.html5.min.js"></script>
 <script src="assets/js/buttons.print.min.js"></script>
 <script src="assets/js/buttons.colVis.min.js"></script>
@@ -309,13 +316,64 @@
                     style: 'single'
                 }
             });
+
+        $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
+
+        new $.fn.dataTable.Buttons( table_Prof, {
+            buttons: [
+                {
+                    "extend": "copy",
+                    "text": "<i class='fa fa-copy bigger-110 pink'></i> <span class='hidden'>Copy to clipboard</span>",
+                    "className": "btn btn-white btn-primary btn-bold"
+                },
+                {
+                    "extend": "csv",
+                    "text": "<i class='fa fa-database bigger-110 orange'></i> <span class='hidden'>Export to CSV</span>",
+                    "className": "btn btn-white btn-primary btn-bold"
+                },
+                {
+                    "extend": "excel",
+                    "text": "<i class='fa fa-file-excel-o bigger-110 green'></i> <span class='hidden'>Export to Excel</span>",
+                    "className": "btn btn-white btn-primary btn-bold"
+                },
+                {
+                    "extend": "pdf",
+                    "text": "<i class='fa fa-file-pdf-o bigger-110 red'></i> <span class='hidden'>Export to PDF</span>",
+                    "className": "btn btn-white btn-primary btn-bold"
+                },
+                {
+                    "extend": "print",
+                    "text": "<i class='fa fa-print bigger-110 grey'></i> <span class='hidden'>Print</span>",
+                    "className": "btn btn-white btn-primary btn-bold",
+                    autoPrint: true
+                }
+            ]
+        } );
+
+        table_Prof.buttons().container().appendTo( $('#tools-prof .tableTools-container ') );
+
+        //style the message box
+        var defaultCopyAction = table_Prof.button(1).action();
+        table_Prof.button(1).action(function (e, dt, button, config) {
+            defaultCopyAction(e, dt, button, config);
+            $('.dt-button-info').addClass('gritter-item-wrapper gritter-info gritter-center white');
+        });
+
+        setTimeout(function() {
+            $($('#tools-prof .tableTools-container')).find('a.dt-button').each(function() {
+                var div = $(this).find(' > div').first();
+                if(div.length == 1) div.tooltip({container: 'body', title: div.parent().text()});
+                else $(this).tooltip({container: 'body', title: $(this).text()});
+            });
+        }, 500);
+
         $.ajax({
             type: "GET",
             url: 'service_docente',
             success: function(result) {
                 var data = jQuery.parseJSON(result);
                 for (var i = 0; i < data.length; i++) {
-                    if (data[i].usu_activo === 1) {
+                    if (data[i].usu_activo == 1) {
                         dataset_prof.push([
                             data[i].eva_id,
                             data[i].eva_nombre,

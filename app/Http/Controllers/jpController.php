@@ -10,6 +10,8 @@ use App\Models\TAEVALUADOR;
 
 use Illuminate\Support\Facades\DB;
 
+use App\Models\Encrypter;
+
 class jpController extends Controller
 {
     /**
@@ -64,7 +66,7 @@ class jpController extends Controller
                                       'cln_id' => '1',
                                       'rol_id' => '5',
                                       'usu_usenam' => $request['eva_codpuc'],
-                                      'usu_passwd' => $request['eva_codpuc'],
+                                      'usu_passwd' => Encrypter::encrypt($request['eva_codpuc']),
                                       'usu_activo' => '1'
 
         ]);

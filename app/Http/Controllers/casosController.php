@@ -21,14 +21,18 @@ class casosController extends Controller
         
        
 
-        $casos =DB::select('SELECT cas_id ,cas_fecate,cli_nombre,cas_objact,alu_nombre as res_nombre,estcas_detalle
+        $casos =DB::select('SELECT TA_CASO.cas_id ,cas_fecate,cli_nombre,cas_objact,alu_nombre as res_nombre,estcas_detalle
             FROM TA_CASO
             JOIN TA_CLIENTE
             ON TA_CASO.cli_id=TA_CLIENTE.cli_id
             JOIN TA_ALUMNO
             ON TA_CASO.usu_id=TA_ALUMNO.usu_id
             JOIN TA_ESTADOCASO
-            ON TA_CASO.estcas_id=TA_ESTADOCASO.estcas_id  where TA_ALUMNO.usu_id="'.$data['userid'].'"');
+            ON TA_CASO.estcas_id=TA_ESTADOCASO.estcas_id
+            JOIN TA_USUARIO_CASO
+            on TA_CASO.cas_id = TA_USUARIO_CASO.cas_id
+            where
+            TA_USUARIO_CASO.usu_id = "'.$data['userid'].'"');
 
 
 
@@ -47,7 +51,7 @@ class casosController extends Controller
     public function getpendientes(Request $request){
         $data = $request->session()->get('user');
 
-        $casos =DB::select('select tar_nombre,tar_descri,cas_objact from ta_caso inner join ta_tarea on ta_caso.cas_id = ta_tarea.cas_id where tar_estado = "pendiente" and ta_caso.usu_id = "'.$data['userid'].'" or  tar_estado = "backlog" and ta_caso.usu_id = "'.$data['userid'].'"');
+        $casos =DB::select('select TA_TAREA.cas_id,tar_nombre,tar_descri,cas_objact from TA_CASO inner join TA_TAREA on TA_CASO.cas_id = TA_TAREA.cas_id inner join TA_USUARIO_CASO on TA_CASO.cas_id = TA_USUARIO_CASO.cas_id where tar_estado = "pendiente"  and TA_USUARIO_CASO.usu_id = "'.$data['userid'].'" or  tar_estado = "backlog" and TA_USUARIO_CASO.usu_id = "'.$data['userid'].'"');
 
 
 
@@ -122,8 +126,30 @@ class casosController extends Controller
                                             'cas_observ'=> $request['cas_observ']]);
             
 
-            $caso->save();
-    
+        $caso->save();
+
+        $casos =DB::select('SELECT MAX(cas_id) as id FROM TA_CASO');
+        
+        $data = array();
+        array_push($data,json_decode(json_encode($casos[0]), true));
+        $casoid = $data[0]['id'];
+
+
+
+
+
+        DB::insert("insert into TA_USUARIO_CASO values(".$casoid.",".$request['usu_id'].")");
+
+
+        $casos =DB::select('SELECT usu_id as id FROM TA_EVALUADOR where eva_id='.$request['doc_id']);
+        
+        $data = array();
+        array_push($data,json_decode(json_encode($casos[0]), true));
+        $evaid = $data[0]['id'];
+
+
+
+        DB::insert("insert into TA_USUARIO_CASO values(".$casoid.",".$evaid.")");
         echo "Registrado";
     }
 

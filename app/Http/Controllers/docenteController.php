@@ -10,6 +10,7 @@ use App\Models\TAEVALUADOR;
 use App\Models\TAUSUARIO;
 
 use Illuminate\Support\Facades\DB;
+use App\Models\Encrypter;
 
 class docenteController extends Controller
 {
@@ -58,7 +59,7 @@ class docenteController extends Controller
                                       'cln_id' => '1',
                                       'rol_id' => '4',
                                       'usu_usenam' => $request['eva_codpuc'],
-                                      'usu_passwd' => $request['eva_codpuc'],
+                                      'usu_passwd' => Encrypter::encrypt($request['eva_codpuc']),
 									  'usu_activo' => '1'
 
         ]);

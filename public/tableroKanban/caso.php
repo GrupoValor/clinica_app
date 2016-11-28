@@ -17,6 +17,35 @@ $display = new Display($db);
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script src="scripts/tableroDragDrop.js"></script>
         <script src="scripts/bootstrap.min.js"></script>
+        <script type="text/javascript">
+          $.ajax({
+                   
+                    type: "GET",
+                    url:'../user',
+                    success: function(result){
+        
+                        var data = JSON.parse(result);
+
+                 
+                        if(data.rol == '4' || data.rol == '1' ){
+                            $('#cambia-estado').html('<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-edit-estado" style="float: right;">Cambiar estado</button>');
+                          
+                        }
+                        else{
+                          $('#cambia-estado').html("");
+                        }
+                        
+                       
+                    }
+                        
+                            
+            
+                 
+            
+                });
+
+
+        </script>
     </head>
 
     <body style="width: 100%; height: 100%; background: #337ab7;">
@@ -36,7 +65,7 @@ $display = new Display($db);
 
                             });
                       </script>";
-                  if( $detalle  =="Cerrado" || $detalle  =="En Abandono" || $detalle  =="Inactivo" ){
+                  if( $detalle  =="Cerrado" || $detalle  =="En Abandono" || $detalle  =="Inactivo" || $detalle  =="Registrado"){
                     $script = "<script type='text/javascript'>
                         $(document).ready(function(){
                               $('#corpus').css('display', 'none');
@@ -47,11 +76,10 @@ $display = new Display($db);
                   echo $detalle.$script;
                ?></h4>
             </div>
-            <div class="col-md-3" id="cambia-estado" style="width: 65%;"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-edit-estado" style="    float: right;">Cambiar estado</button></div>
+            <div class="col-md-3" id="cambia-estado" style="width: 65%;"> <p style="float: right;">Loading... </p> </div>
         </div>
       </div>
       <div id="corpus" class="row" style="padding-left: 20px;padding-top: 30px; height: 413px;">
-          <div id="areaTareas" >
             <div id="backlog-tablero" class="col-md-2">
                 <h3 style="font-size: 15px;">Backlog</h3>
                 <ul id="backlog" style="padding-bottom: 35px;">
@@ -77,14 +105,15 @@ $display = new Display($db);
                     <?php echo $display->finalizada($_GET['id']); ?>
                 </ul>
             </div>
-          </div>
             <div id="panel-control-tablero" class="col-md-2" style="background: #ccc; margin-left: 10px; border-radius: 7px;">
               <div id="panel-control-tablero-interesados">
-                <h3 style="font-size: 15px">Miembros</h3>
+                <h3 style="font-size: 15px">Usuarios:</h3>
+                <button id="addmiembros" type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-agregar-miembros">+Agregar</button>
+                <button id="listarMiembros" type="button" class="btn btn-info" data-toggle="modal">Ver</button>
               </div>
               <div id="panel-control-tablero-actividad">
                 <h3 style="font-size: 15px">Registro de actividad</h3>
-                <ul id="registro-actividad" style="width: 160px; height: 260px; overflow: auto">
+                <ul id="registro-actividad">
                     <?php echo $display->lista_actividades($_GET['id']); ?>
                 </ul>
               </div>
@@ -135,6 +164,47 @@ $display = new Display($db);
         </div>
       </div>
     </div>
+
+    <div class="modal fade bs-modal-lg" tabindex="-1" id="modal-agregar-miembros" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Agregar usuarios:</h4>
+          </div>
+          <div class="modal-body">
+              <div class="form-group">
+                     <div class="input-group">
+                          <span class="input-group-addon">Buscar</span>
+                          <input type="text" name="search_text" id="search_text" placeholder="Busqueda por nombre de usuario" class="form-control" />
+                     </div>
+                </div>
+                <br />
+                <div id="result"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade bs-modal-lg" tabindex="-1" id="modal-listar-miembros" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Usuarios registrados en el caso:</h4>
+          </div>
+          <div class="modal-body">
+              <div id="resultados-listar-usuarios-caso"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
      <div class="modal fade bs-modal-sm" tabindex="-1" id="modal-agrega-tarea" role="dialog" aria-labelledby="mySmallModalLabel">
       <div class="modal-dialog modal-sm" role="document">
@@ -242,14 +312,12 @@ $display = new Display($db);
                     <p>Esta a punto de eliminar este comentario. ¿Desea Continuar?</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-danger" id="boton-elimina-comentario" data-dismiss="modal">Si</button>
+                    <button type="button" class="btn btn-primary">No</button>
+                    <button type="button" class="btn btn-danger" id="boton-elimina-comentario">Si</button>
                 </div>
             </div>
         </div>
     </div>
-    <div id="block">
 
-    </div>
 
 </html>

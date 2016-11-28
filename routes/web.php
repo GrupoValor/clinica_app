@@ -12,7 +12,8 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+	return view('web/indexWeb');
 });
 
 
@@ -59,7 +60,6 @@ Route::get('/miscasos', 'casosController@miscasos');
 Route::get('/mispendientes', 'casosController@getpendientes');
 
 //perfil
-
 Route::get('/perfil', function (Request $request) {
     $result = app('App\Http\Controllers\loginController')->session($request);
     if($result == '1')
@@ -90,12 +90,7 @@ Route::get('directorio', function () {
     return view('intranet/directorio');
 });
 
-//prueba
 //mapa
-Route::get('/mapa_intranet2', function () {
-    return view('intranet/kari_mapa2');
-});
-
 Route::get('/mapa_intranet', function () {
     return view('intranet/kari_mapa2');
 });
@@ -118,10 +113,6 @@ Route::get('mant_clinica',function(){
    return view('intranet/clinica_registro');
 });
 //mantenimiento unificado
-Route::get('manten', function () {
-    return view('intranet/mantenimiento');
-});
-//mantenimiento unificado
 Route::get('manten2', function (Request $request) {
     $result = app('App\Http\Controllers\loginController')->session($request);
     if($result == '1')
@@ -129,6 +120,8 @@ Route::get('manten2', function (Request $request) {
     else
         return view('login/login');
 });
+
+//TODO no se si borrar esta parte hasta antes de reportes
 Route::get('docente', function () {
     return view('intranet/docente');
 });
@@ -141,24 +134,19 @@ Route::get('cliente', function () {
 });
 //reportes
 
-Route::get('mantenimiento2', function () {
-    return view('intranet/mantenimiento2');
-});
 
 //gestor de contenidos
-Route::get('/eventos', function () {
+Route::get('/eventos_intranet', function () {
     return view('intranet/kari_eventos2');
 });
-Route::get('/noticias_registro', function () {
-    return view('intranet/gestor_noticias_registro');
+Route::get('/noticias_intranet', function () {
+    return view('intranet/kari_noticias');
 });
 
-//eventos
-Route::get('/agenda', function () {
-    return view('intranet/kari_eventos');
-});
-Route::get('/agenda2', function () {
-    return view('intranet/kari_eventos2');
+
+//noticas
+Route::get('/noticias', function () {
+    return view('intranet/kari_noticias');
 });
 
 //page error
@@ -168,10 +156,75 @@ Route::get('/error-500', function () {
 
 //WEB
 Route::get('/log', 'logController@get');
+
+//Pagina web
+Route::get('/inicio', function () {
+    return view('web/indexWeb');
+});
+//web eventos
+Route::get('/eventos', function () {
+    return view('web/eventos');
+});
+//web mapa
+Route::get('/mapaweb', function () {
+    return view('web/mapaWeb');
+});
+//web nosotros
+Route::get('/nosotros', function () {
+    return view('web/nosotros');
+});
+//web noticias
+Route::get('/noticias', function () {
+    return view('web/noticias');
+});
+//web plantillaEvento
+Route::get('/web/plantillaEvento', function () {
+    return view('web/plantillaEvento');
+});
+//web plantillaNoticia
+Route::get('/web/plantillaNoticia', function () {
+    return view('web/plantillaNoticia');
+});
+
+
 //mapa
 Route::get('/mapa_web', function () {
-    return view('web/mapa');
+    return view('web/mapaWeb');
 });
+//web inicio
+Route::get('/web/inicio', function () {
+    return view('web/indexWeb');
+});
+//web eventos
+Route::get('/web/eventos', function () {
+    return view('web/eventos');
+});
+//web mapa
+Route::get('/web/mapaweb', function () {
+    return view('web/mapaWeb');
+});
+//web nosotros
+Route::get('/web/nosotros', function () {
+    return view('web/nosotros');
+});
+//web noticias
+Route::get('/web/noticias', function () {
+    return view('web/noticias');
+});
+//web plantillaEvento
+Route::get('/web/plantillaEvento', function () {
+    return view('web/plantillaEvento');
+});
+//web plantillaNoticia
+Route::get('/web/plantillaNoticia', function () {
+    return view('web/plantillaNoticia');
+});
+
+//web pop-up-clinica
+Route::get('/web/pop-up-clinica', function () {
+    return view('web/pop-up-clinica');
+});
+
 
 Route::resource('service_alumno','alumnoController');
 Route::resource('service_jp','jpController');
@@ -183,6 +236,7 @@ Route::resource('service_cliente','clienteController');
 Route::resource('service_alumno_ta','taAlumnoController');
 Route::resource('service_clinica','clinicaController');
 Route::resource('service_evento','eventoController');
+Route::resource('service_noticia','noticiaController');
 
 //Route::resource('test','testController');
 

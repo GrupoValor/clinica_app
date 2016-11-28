@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+<link rel="icon" type="image/png" href="icono/valor.png" />
 	<meta name="csrf_token" content="{{ csrf_token() }}" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta charset="utf-8" />
@@ -57,6 +58,7 @@
 						
 					</select>
 					<button id="boton_nuevo" type="button" class="btn btn-primary hide" style="float: right;margin-top: -8px;" onclick="add_onClick()">Nuevo +</button>
+
 				</div>
                 <div class="row" id="comentario_ini" style="text-align:center; margin-top:10%; color: grey;">
                     <h3>Selecciona la tabla a mostrar</h3>                

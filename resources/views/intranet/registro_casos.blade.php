@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="icon" type="image/png" href="icono/valor.png" />
     <meta name="csrf_token" content="{{ csrf_token() }}"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta charset="utf-8"/>
@@ -185,7 +186,7 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Nro Documento</th>
+                            <th>Codigo</th>
                             <th>Nombre</th>
                             <th>Direccion</th>
 
@@ -225,7 +226,7 @@
 
                             <th>ID</th>
                             <th>Tipo</th>
-                            <th>Codigo PUCP</th>
+                            <th>Codigo</th>
                             <th>Nombre</th>
                             <th>Correo</th>
 
@@ -420,6 +421,8 @@
                     success: function (Response) {
 
                         alert(Response);
+
+                        window.location.replace("casos_busqueda");
                     }
                 });
             }

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
 		<title>Intranet</title>
-
+		<link rel="icon" type="image/png" href="icono/valor.png" />
 		<meta name="description" content="Draggabble Widget Boxes with Persistent Position and State" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
@@ -118,6 +119,12 @@
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
+
+		function caso_onclick(row_id){
+			window.open("tableroKanban/caso.php?id="+row_id, "Detalle del Caso", "directories=no, location=no, menubar=no, scrollbars=no, statusbar=no, tittlebar=no, width=1200, height=700,resizable=no,toolbar=no,dependent");
+		}
+
+
 			jQuery(function($) {
                 jQuery('#principal').addClass('active');
 				$('.easy-pie-chart.percentage').each(function(){
@@ -380,10 +387,10 @@ $.ajax({
 									
 								
                                     '                <h5 class="widget-title lighter">'+
-									'					<a href="casos_busqueda">'+
-									'						<strong>'+data[i].tar_nombre+'</strong>'+
+									'					<a href="" onclick = "caso_onclick('+ data[i].cas_id+')">'+
+									'						<strong> Tarea : '+ data[i].tar_nombre+'</strong>'+
 									'					</a> <br>'+
-									'					<small> '+data[i].cas_objact+'</small>'+
+									'					<small> Caso : '+data[i].cas_objact+'</small>'+
 									'				</h5>'+
 									
 									

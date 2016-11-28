@@ -1,16 +1,15 @@
-<!DOCTYPE html>
+<!DOCTYPE html>	
 <html lang="en">
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
 		<title>Cl&iacute;nica Jur&iacute;dica | Error</title>
 
-		<meta name="description" content="Error 500" />
+		<meta name="description" content="Error 404" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 		<!-- bootstrap & fontawesome -->
-		{!! Html::style("assets/css/bootstrap.min.css") !!}
-		{!! Html::style("assets/font-awesome/4.5.0/css/font-awesome.min.css") !!}
+		{!! Html::style("assets/css/bootstrap.min.css") !!}		{!! Html::style("assets/font-awesome/4.5.0/css/font-awesome.min.css") !!}
 		<!-- page specific plugin styles -->
 		
 		<!-- text fonts -->
@@ -20,12 +19,13 @@
         <!--logo -->
         {!! Html::style('assets/css/index.css') !!}
 		<!--[if lte IE 9]>
-			<link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+			{!! Html::style('assets/css/ace-part2.min.css', ['class' => "ace-main-stylesheet"]) !!}
 		<![endif]-->
+		
 		{!! Html::style("assets/css/ace-skins.min.css") !!}
 		{!! Html::style("assets/css/ace-rtl.min.css") !!}
 		<!--[if lte IE 9]>
-		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		  {!! Html::style("assets/css/ace-ie.min.css") !!}
 		<![endif]-->
 		
 		<!-- inline styles related to this page -->
@@ -35,9 +35,8 @@
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 		
 		<!--[if lte IE 8]>
-		<script src="assets/js/html5shiv.min.js"></script>
-		<script src="assets/js/respond.min.js"></script>
-		<![endif]-->
+		{!! Html::script("assets/js/html5shiv.min.js") !!}		{!! Html::script("assets/js/respond.min.js") !!}		<![endif]-->
+		
 	</head>
 
 	<body class="no-skin">
@@ -100,8 +99,8 @@
 		<!-- <![endif]-->
 
 		<!--[if IE]>
-<script src="assets/js/jquery-1.11.3.min.js"></script>
-<![endif]-->
+		  {!! Html::script("assets/js/jquery-1.11.3.min.js") !!}
+		<![endif]-->
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
