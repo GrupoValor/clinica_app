@@ -59,7 +59,7 @@ class clienteController extends Controller
 
          //creo el usuario
         $usuario = TAUSUARIO::create([
-                                      'cln_id' => '1',
+                                      'cln_id' => $request['cli_clinica'],
                                       'rol_id' => '7',
                                       'usu_usenam' => $request['cli_nrodoc'],
                                       'usu_passwd' => Encrypter::encrypt($request['cli_nrodoc']),
@@ -90,6 +90,7 @@ class clienteController extends Controller
 									'cli_telno1' => $request['cli_telno1'],
 									'cli_telno2' => $request['cli_telno2'],
 									'cli_correo' => $request['cli_correo'],
+                                    'cli_clinica' => $request['cli_clinica']
                                     ]);
 		$cliente->save();
 		
@@ -147,8 +148,8 @@ class clienteController extends Controller
 			cli_direcc = :direcc,
 			cli_telno1 = :telno1,
 			cli_telno2 = :telno2,
-			cli_correo = :correo
-			
+			cli_correo = :correo,
+			cli_clinica = :clinica
 			where cli_id = :id',
 			['nombre' => $request['cli_nombre'],
             'genero' => $request['cli_genero'],
@@ -161,7 +162,8 @@ class clienteController extends Controller
 			'telno1' => $request['cli_telno1'],
 			'telno2' => $request['cli_telno2'],
 			'correo' => $request['cli_correo'],
-			'id' => $id]);
+			'clinica' => $request['cli_clinica'],
+                'id' => $id]);
 			
             
 			echo "Registro actualizado correctamente" ;

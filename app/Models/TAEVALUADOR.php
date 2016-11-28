@@ -18,7 +18,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $eva_tipeva
  * @property string $eva_nombre
  * @property string $eva_correo
- *
+ * @property string $eva_clinica
  * @package App\Models
  */
 class TAEVALUADOR extends Eloquent
@@ -28,14 +28,16 @@ class TAEVALUADOR extends Eloquent
 	public $timestamps = false;
 
 	protected $casts = [
-		'usu_id' => 'int'
-	];
+		'usu_id' => 'int',
+        'eva_clinica' => 'int'
+    ];
 
 	protected $fillable = [
 		'usu_id',
 		'eva_codpuc',
 		'eva_tipeva',
 		'eva_nombre',
-		'eva_correo'
+		'eva_correo',
+        'eva_clinica'
 	];
 }

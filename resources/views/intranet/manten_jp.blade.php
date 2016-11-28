@@ -12,6 +12,7 @@
                     <th>Nombre</th>
                     <th>Codigo</th>
                     <th>Correo</th>
+                    <th>Clinica</th>
                     <th>Modificar</th>
                 </tr>
             </thead>

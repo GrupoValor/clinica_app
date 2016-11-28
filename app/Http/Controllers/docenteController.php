@@ -56,7 +56,7 @@ class docenteController extends Controller
         
         //creo el usuario
         $usuario = TAUSUARIO::create([
-                                      'cln_id' => '1',
+                                      'cln_id' => $request['eva_clinica'],
                                       'rol_id' => '4',
                                       'usu_usenam' => $request['eva_codpuc'],
                                       'usu_passwd' => Encrypter::encrypt($request['eva_codpuc']),
@@ -84,7 +84,8 @@ class docenteController extends Controller
                                     'eva_codpuc' => $request['eva_codpuc'],
                                     'eva_tipeva' => $request['eva_tipeva'],
                                     'eva_nombre' => $request['eva_nombre'],
-                                    'eva_correo' => $request['eva_correo']
+                                    'eva_correo' => $request['eva_correo'],
+                                    'eva_clinica' => $request['eva_clinica']
                                     ]);
         $docente->save();
         
@@ -131,13 +132,14 @@ class docenteController extends Controller
         DB::update('UPDATE TA_EVALUADOR set 
             eva_nombre = :nombre ,
             eva_codpuc = :codpuc ,
-            eva_correo = :correo
-        
+            eva_correo = :correo,
+            eva_clinica = :clinica
         
             where eva_id = :id and eva_tipeva = "d"',
             ['nombre' => $request['eva_nombre'],
             'codpuc' => $request['eva_codpuc'],
             'correo' => $request['eva_correo'],
+            'clinica' => $request['eva_clinica'],
             'id' => $id]);
 			
 			echo "Registro actualizado correctamente" ;

@@ -10,7 +10,7 @@ use App\Models\TAALUMNO;
 
 use Illuminate\Support\Facades\DB;
 
-use App\Models\Encrypter;
+use App\Classes\Encrypter;
 
 class alumnoController extends Controller
 {
@@ -61,7 +61,7 @@ class alumnoController extends Controller
 		
 		//creo el usuario
         $usuario = TAUSUARIO::create([
-                                      'cln_id' => '1',
+                                      'cln_id' => $request['alu_clinica'],
                                       'rol_id' => '2',
                                       'usu_usenam' => $request['alu_codpuc'],
                                       'usu_passwd' => Encrypter::encrypt($request['alu_codpuc']),
@@ -87,7 +87,8 @@ class alumnoController extends Controller
 									'alu_nrodoc' => $request['alu_nrodoc'],
 									'alu_codpuc' => $request['alu_codpuc'],
 									'alu_correo' => $request['alu_correo'],
-									'alu_volunt' => $request['alu_volunt']
+									'alu_volunt' => 0,
+                                    'alu_clinica' => $request['alu_clinica']
 									]);
 		$alumno->save();
 		
@@ -136,7 +137,8 @@ class alumnoController extends Controller
             alu_nombre = :nombre ,
 			alu_nrodoc = :nrodoc ,
             alu_codpuc = :codpuc ,
-            alu_correo = :correo
+            alu_correo = :correo,
+            alu_clinica = :clinica
         
         
             where alu_id = :id',
@@ -146,6 +148,7 @@ class alumnoController extends Controller
             'nrodoc' => $request['alu_nrodoc'],
             'codpuc' => $request['alu_codpuc'],
             'correo' => $request['alu_correo'],
+            'clinica' => $request['alu_clinica'],
             'id' => $id]);
 			
 			echo "Registro actualizado correctamente" ;
