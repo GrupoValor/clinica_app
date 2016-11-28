@@ -359,7 +359,16 @@ class taAlumnoController extends Controller {
 				$puntajes = array();
 
 				foreach($dbNotaRubro as $value){
-					if($value['nra_id']==$rubricaID){
+					//sacar rba_id
+					$rbaid_aux=1;
+					foreach ($dbNotaRubrica as $valuer) {
+						if($value['nra_id']==$valuer['nra_id']){
+							$rbaid_aux=$valuer['rba_id'];
+						}
+					}
+
+
+					if($rbaid_aux==$rubricaID){
 						if($value['nrb_semana']==$semanaID)
 						array_push($puntajes, $value['nrb_puntaje']);
 					}
@@ -414,6 +423,8 @@ class taAlumnoController extends Controller {
 					array_push($nombresRubro5, $value['rbo_nombre']);
 				}
 			}
+
+			//print_r($listaPuntajesParticipacion);
 
 		
 		//FALTA
