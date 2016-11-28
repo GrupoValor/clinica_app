@@ -548,6 +548,12 @@
             }
         });
     });
+
+    $(document).keydown(function (e) {
+        if (e.keyCode == 27) {
+            $('.modal').modal('hide');
+        }
+    });
 </script>
 
 </body>
