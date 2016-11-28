@@ -17,6 +17,35 @@ $display = new Display($db);
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script src="scripts/tableroDragDrop.js"></script>
         <script src="scripts/bootstrap.min.js"></script>
+        <script type="text/javascript">
+          $.ajax({
+                   
+                    type: "GET",
+                    url:'../user',
+                    success: function(result){
+        
+                        var data = JSON.parse(result);
+
+                 
+                        if(data.rol == '4' || data.rol == '1' ){
+                            $('#cambia-estado').html('<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-edit-estado" style="float: right;">Cambiar estado</button>');
+                          
+                        }
+                        else{
+                          $('#cambia-estado').html("");
+                        }
+                        
+                       
+                    }
+                        
+                            
+            
+                 
+            
+                });
+
+
+        </script>
     </head>
 
     <body style="width: 100%; height: 100%; background: #337ab7;">
@@ -36,7 +65,7 @@ $display = new Display($db);
 
                             });
                       </script>";
-                  if( $detalle  =="Cerrado" || $detalle  =="En Abandono" || $detalle  =="Inactivo" ){
+                  if( $detalle  =="Cerrado" || $detalle  =="En Abandono" || $detalle  =="Inactivo" || $detalle  =="Registrado"){
                     $script = "<script type='text/javascript'>
                         $(document).ready(function(){
                               $('#corpus').css('display', 'none');
@@ -47,7 +76,7 @@ $display = new Display($db);
                   echo $detalle.$script;
                ?></h4>
             </div>
-            <div class="col-md-3" id="cambia-estado" style="width: 65%;"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-edit-estado" style="    float: right;">Cambiar estado</button></div>
+            <div class="col-md-3" id="cambia-estado" style="width: 65%;"> <p style="float: right;">Loading... </p> </div>
         </div>
       </div>
       <div id="corpus" class="row" style="padding-left: 20px;padding-top: 30px; height: 413px;">
