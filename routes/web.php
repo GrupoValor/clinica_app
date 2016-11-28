@@ -143,6 +143,12 @@ Route::get('/noticias_intranet', function () {
     return view('intranet/kari_noticias');
 });
 
+
+//noticas
+Route::get('/noticias', function () {
+    return view('intranet/kari_noticias');
+});
+
 //page error
 Route::get('/error-500', function () {
     return view('errors/500');
@@ -161,7 +167,7 @@ Route::get('/eventos', function () {
 });
 //web mapa
 Route::get('/mapaweb', function () {
-    return view('web/mapaweb');
+    return view('web/mapaWeb');
 });
 //web nosotros
 Route::get('/nosotros', function () {
@@ -183,7 +189,7 @@ Route::get('/web/plantillaNoticia', function () {
 
 //mapa
 Route::get('/mapa_web', function () {
-    return view('web/mapa');
+    return view('web/mapaWeb');
 });
 //web inicio
 Route::get('/web/inicio', function () {
@@ -195,7 +201,7 @@ Route::get('/web/eventos', function () {
 });
 //web mapa
 Route::get('/web/mapaweb', function () {
-    return view('web/mapaweb');
+    return view('web/mapaWeb');
 });
 //web nosotros
 Route::get('/web/nosotros', function () {
