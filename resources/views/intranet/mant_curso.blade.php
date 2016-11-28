@@ -81,6 +81,7 @@
 									<thead>
 										<th>Descripci&oacute;n</th>
 										<th>C&oacute;digo</th>
+										<th>Cl&iacute;nica</th>
 										<th></th>
 									</thead>
 									<tbody>
@@ -88,6 +89,7 @@
 										<tr>
 											<td>{{ $value['cur_descrip'] }}</td>
 											<td>{{ $value['cur_codigo'] }}</td>
+											<td>{{ $value['cln_nombre'] }}</td>
 											<td class="center">
 												<button class="btn btn-mini btn-success" title="Editar rubro" data-toggle="modal", data-target="#rubro_update" onclick="rbo_editar({{ 1 }})">
 													<i class="ace-icon fa fa-pencil"></i>
