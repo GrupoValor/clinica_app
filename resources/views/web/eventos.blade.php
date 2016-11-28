@@ -42,6 +42,12 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="http://www.pucp.edu.pe/wp-content/themes/home-theme/images/favicons/mstile-144x144.png">
 
+	<style>
+    img{
+        width: 100px;
+        height: 100px;
+    }
+	</style>
 
 </head>
     
@@ -111,7 +117,7 @@
 														<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Descripción </label>
 
 														<div class="col-sm-9">
-															<input id="descripcion" type="text" id="form-field-3"  class="col-xs-5 col-sm-7" disabled/ />
+															<textarea id="descripcion" type="text" id="form-field-3"  class="col-xs-5 col-sm-7" disabled/ ></textarea>
 									   	
 														</div>
 													</div>
@@ -256,7 +262,7 @@
                         for(var i = 0; i<data.length ;i++)
                         {
 							
-							if(data[i].visible == 1){
+							if(data[i].visible == 1 && data[i].active == 1){
 								
 								var descrip = data[i].description;
 								var titulo = data[i].title;

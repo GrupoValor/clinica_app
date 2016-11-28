@@ -38,125 +38,17 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="http://www.pucp.edu.pe/wp-content/themes/home-theme/images/favicons/mstile-144x144.png">
 
+	<style>
+    img{
+        width: 100px;
+        height: 100px;
+    }
+	</style>
 
 </head>
     
 <body class="single single-carrera postid-1478">
-
-<header>
-
-	<div class="wrapper-barrasup">
-		<div class="container">
-			<div class="row barrasup">
-				<div class="col-sm-12 menu-acce text-right hidden-xs">
-                    <ul class="nav nav-pills pull-right">
-                    <li>
-                    	<a target="_blank" href="../login">Intranet</a>
-                        <!--<a target="_blank" href="http://intranet.pucp.edu.pe">Intranet</a>-->
-                    </li>
-
-                  </ul>	
-                 </div>
-                <div class="col-sm-12 menu-acce top-mov text-right visible-xs">
-                    <a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="../login"> Intranet   <span class="glyphicon glyphicon-chevron-down"></span></a>
-                    <ul role="menu" class="dropdown-menu nav">
-                        <li><a target="_blank" href="login">Iniciar sesión</a>
-                        <!--<a target="_blank" href="http://intranet.pucp.edu.pe">Intranet</a>--></li>
-                    </ul>
-                </div>
-			</div>
-		</div>
-	</div>
-
-
-
-	<div class="wrapper-logos-blank"></div>
-	<div class="wrapper-logos">
-		<div class="container">
-			<div class="row logos">
-				<div class="col-sm-6 line-height-0">
-					<h1>
-						<a href="inicio" class="logo-pucp" alt="Clínica Juridica " title="Pontificia Universidad Católica del Perú"></a>
-					</h1>
-				</div>
-				<!--div class="col-sm-6 hidden-xs">
-					<div class="input-group busca-campos pull-right">
-                      <form action="#" onsubmit="javascript:cargaBuscar2(); return false;">
-						<input name="busca" id="movil-input2" style="width: 86%" class="form-control" placeholder="Buscar " type="text">
-						<span class="input-group-btn">
-							<button class="btn btn-default" type="submit"><span></span></button>
-						</span>
-                      </form>
-					</div>
-				</div-->
-			</div>
-		</div>
-	</div>
-
-	<div class="wrapper-menu-prin-blank"></div>
-	<div class="wrapper-menu-prin">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<nav class="navbar navbar-default menu-prin">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<div class="input-group busca-campos pull-right solo-celu">
-                                <form action="#" onsubmit="javascript:cargaBuscar(); return false;">
-                                    <span class="lupa" id="movil-lupa"></span>
-                                    <input id="movil-input" name="busca" class="form-control" placeholder="Buscar en toda la PUCP" type="text">
-                                    <span class="input-group-btn" id="movil-submit">
-                                        <button class="btn btn-default" type="submit"><span></span></button>
-                                    </span>
-                                </form>
-								
-                                <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-                                <script type="text/javascript">
-                                    function cargaBuscar(){
-                                        $busca = jQuery('#movil-input').val();
-                                        window.document.location.href='http://www.pucp.edu.pe?s='+$busca+'&q='+$busca;
-                                    }
-                                    function cargaBuscar2(){
-                                        $busca = jQuery('#movil-input2  ').val();
-                                        window.document.location.href='http://www.pucp.edu.pe?s='+$busca+'&q='+$busca;
-                                    }
-                                </script>
-							</div>
-						</div>
-						<div class="navbar-collapse collapse navbar-responsive-collapse">
-							<ul class="nav navbar-nav">
-                    <li class="dos-lineas ">
-                        <a href="inicio">Inicio</a>
-                    </li>    
-					<li class="dos-lineas">
-                        <a href="nosotros">Nosotros</a>
-                    </li>
-                    <li class="dos-lineas ">
-                    	<a href="noticias">Noticias</a>
-                    </li>
-                    
-                    <li class="dos-lineas ">
-                        <a href="eventos">Eventos</a>
-                    </li>
-                    <li class="dos-lineas">  
-                        <a href="mapaweb"> Mapa</a>
-                    </li>
-
-                    </ul>
-						</div>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</div>
-
-    
-</header>
-
+<?php echo view('web/headerWeb');?>
 <section>
 
 	
@@ -173,11 +65,10 @@
     <article>
 		{!! HTML::script('css/web_eventos/js/jquery.min.js') !!}
 		{!! HTML::script('css/web_eventos/js/jquery.carouFredSel-6.2.0.js') !!}
-        <!--script type="text/javascript" src="css/wp-content/themes/home-theme/jquery.min.js"></script>
-        <script type="text/javascript" src="css/wp-content/themes/home-theme/assets/carouFredSel/jquery.carouFredSel-6.2.0.js"></script-->
+        
   
-        <div class="wrapper-destacados slide-bottom">
-		<div class="container">
+    <!-- <div class="wrapper-destacados slide-bottom">
+			<div class="container">
 			<div id="carousel-pricipal" class="carousel slide destacados" data-ride="carousel">
 				<ol class="carousel-indicators hidden-xs">
 					<li data-target="#carousel-pricipal" data-slide-to="0" class="active"></li><li data-target="#carousel-pricipal" data-slide-to="1" class=""></li>				</ol>
@@ -217,7 +108,7 @@
 																<div class="multimedia foto" style="background-image: url(http://facultad.pucp.edu.pe/derecho/wp-content/uploads/2014/04/Derecho-a-la-identidad02-500x375.jpg);">
 																</div>
 																<div class="bloque-azul">
-																																					<a target="_blank" href="plantillaNoticia" class="bloque-azul-content">
+																					<a target="_blank" href="plantillaNoticia" class="bloque-azul-content">
 																					<h2>Noticia 3</h2>
 																					<p>Breve descripción de una noticia más resaltante.</p>
 																				</a>
@@ -267,7 +158,7 @@
 			</div>
 			
 		</div>
-	</div>
+	</div> -->
         
         
        
@@ -289,85 +180,91 @@
                 <div class="row cuerpo-interna">
                     <div class="col-md-10 col-md-push-1 col-sm-8 col-sm-push-4">
                         <div class="formato">
-				<!--Buscador:-->
-                            <!--div class="documentos-busc text-left">
-                                <label class="control-label">Ver noticias por: </label>
-                                     <select class="form-control" onchange="javascript:window.document.location.href='http://www.pucp.edu.pe/admision/pregrado/modalidades-de-admision/?modalidad='+this.value;"><option value="">Todos los perfiles</option><option value="escolares" >Escolares</option><option value="no-escolares" >No escolares</option><option value="adultos-mayores-de-30-anos" >Adultos mayores de 30 años</option><option value="alumnos-o-egresados-de-otras-instituciones" >Alumnos o egresados de otras instituciones</option><option value="postulantes-internacionales" >Postulantes internacionales</option></select>                            </div-->
-                            <div class="documentos-modu-wrapper">
-                                <div class="documentos-modu" id="31-3">
-                        <h2 class="h2-direc"><a href="plantillaNoticia">Noticia 8</a></h2>
-                            <div class="direc-img">
-                            <img src="http://idehpucp.pucp.edu.pe/wp-content/uploads/2015/07/Diplomatura-en-Gobernanza-Ind%C3%ADgena-Amaz%C3%B3nica-e1435767187670.jpg" width="210" alt="" />
-                            </div>
-                            <div class="direc-text">
-                                <!--div class="direc-info"><span class="etiqueta">Escolares</span></div-->
-                                <p>Breve descripción</p>
-                            </div>
-                    </div><div class="documentos-modu" id="33-4">
-                        <h2 class="h2-direc"><a href="plantillaNoticia">Noticia 9</a></h2>
-                            <div class="direc-img">
-                            <img src="http://becasinternacionales.net/webapp/img/imgpro/4790a4_guy-s.-goodwingill-scholarships_h150.jpg" width="210" alt="" />
-                            </div>
-                            <div class="direc-text">
-                                <p>Breve descripción</p>
-                            </div>
-                    </div><div class="documentos-modu" id="35-8">
-                        <h2 class="h2-direc"><a href="plantillaNoticia">Noticia 10</a></h2>
-                            <div class="direc-img">
-                            <img src="http://www.eriebusinesslaw.com/uploads/business-law-small.jpg" width="210" alt="" />
-                            </div>
-                            <div class="direc-text">
-                                <p>Breve descripción</p>
-                            </div>
-                    </div><div class="documentos-modu" id="36-9">
-                        <h2 class="h2-direc"><a href="plantillaNoticia">Noticia 11</a></h2>
-                            <div class="direc-img">
-                            <img src="http://becasinternacionales.net/webapp/img/imgpro/4790a4_guy-s.-goodwingill-scholarships_h150.jpg" width="210" alt="" />
-                            </div>
-                            <div class="direc-text">
-                                <p>Breve descripción</p>
-                            </div>
-                    </div><div class="documentos-modu" id="40-6">
-                        <h2 class="h2-direc"><a href="plantillaNoticia">Noticia 12</a></h2>
-                            <div class="direc-img">
-                            <img src="http://www.eriebusinesslaw.com/uploads/business-law-small.jpg" width="210" alt="" />
-                            </div>
-                            <div class="direc-text">
-                                <p>Breve descripción</p>
-                            </div>
-                    </div><div class="documentos-modu" id="41-1">
-                        <h2 class="h2-direc"><a href="plantillaNoticia">Noticia 13</a></h2>
-                            <div class="direc-img">
-                            <img src="http://facultad.pucp.edu.pe/derecho/wp-content/uploads/2014/04/SesionClinica-500x333.jpg" width="210" alt="" />
-                            </div>
-                            <div class="direc-text">
-                                <p>Breve descripción</p>
-                            </div>
-                    </div><div class="documentos-modu" id="45-5">
-                        <h2 class="h2-direc"><a href="plantillaNoticia">Noticia 14</a></h2>
-                            <div class="direc-img">
-                            <img src="http://idehpucp.pucp.edu.pe/wp-content/uploads/2013/05/logo-CJ-copia-350x243.jpg" width="210" alt="" />
-                            </div>
-                            <div class="direc-text">
-                                <p>Breve descripción</p>
-                            </div>
-                    </div><div class="documentos-modu" id="47-7">
-                        <h2 class="h2-direc"><a href="plantillaNoticia">Noticia 15</a></h2>
-                            <div class="direc-img">
-                            <img src="http://facultad.pucp.edu.pe/derecho/wp-content/uploads/2014/04/Derecho-a-la-identidad02-500x375.jpg" width="210" alt="" />
-                            </div>
-                            <div class="direc-text">
-                                <p>Breve descripción</p>
-                            </div>
-                    </div><div class="documentos-modu" id="50-2">
-                        <h2 class="h2-direc"><a href="plantillaNoticia">Noticia 16</a></h2>
-                            <div class="direc-img">
-                            <img src="http://idehpucp.pucp.edu.pe/wp-content/uploads/2015/07/Diplomatura-en-Gobernanza-Ind%C3%ADgena-Amaz%C3%B3nica-e1435767187670.jpg" width="210" alt="" />
-                            </div>
-                            <div class="direc-text">
-                                <p>Breve descripción</p>
-                            </div>
-                    </div>                           </div>
+				
+                            <div class="documentos-modu-wrapper" id="listaNoticias"></div>
+							
+							
+							<!-- para ver la descripcion de las noticias -->
+							<div align="center">        
+								<div class="modal fade" id="boton" role="dialog">
+									<div class="modal-dialog" style="width: 500px;">
+					 
+										<div class="modal-content">
+											<div class="modal-header">
+												<h1 type="button" class="close" data-dismiss="modal"></h1>
+											</div>
+											<!-- Modal content-->
+											<div class="page-header"><!-- /.page-header -->
+												<h1> Detalles de la noticia</h1>
+
+												<form class="form-horizontal" role="form" style="padding-left: 66px;">
+													<div class="space-20" ></div>
+
+													<div class="form-group">
+														<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Título </label>
+
+														<div class="col-sm-9">
+															<input id="titulo" type="text" id="form-field-3"  class="col-xs-5 col-sm-7" disabled/ />
+									   	
+														</div>
+													</div>
+                                                               
+                                    
+													<div class="space-4"></div>
+													
+													<div class="space-20" ></div>
+
+													<div class="form-group">
+														<label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Descripción </label>
+
+														<div class="col-sm-9">
+															<input id="descripcion" type="text" id="form-field-3"  class="col-xs-5 col-sm-7" disabled/ />
+									   	
+														</div>
+													</div>
+                                                               
+                                    
+													<div class="space-4"></div>
+                                    
+
+													<div class="form-group">
+														<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > Fecha </label>
+
+														<div class="col-sm-9">
+															<input id="hor_ini" type="text"   class="col-xs-5 col-sm-7"  disabled/ />
+														</div>
+													</div>    
+                                
+													<div class="space-4"></div>
+                                    
+													<div class="form-group">
+														<label class="col-sm-3 control-label no-padding-right" for="form-field-5" > Autor </label>
+
+														<div class="col-sm-9">
+															<input id="autor" type="text"   class="col-xs-5 col-sm-7"  disabled/ />
+														</div>
+													</div>
+																
+													<div class="space-4"></div>
+                                    
+													
+													<div class="form-group"></div>				
+									
+													<div class="space-20"></div>								
+												</form>
+
+
+											</div>
+
+											<div class="modal-footer">
+												<div align="center">
+													<button id="boto" type="button" class="btn btn-default" data-dismiss="modal" onclick="close();">Close</button>
+												</div>
+											</div>
+										</div>
+									</div>            
+								</div>
+							</div>
                         </div>
                     </div>
                 </div>
@@ -454,6 +351,22 @@
     <!--script src="css/wp-content/themes/home-theme/jquery-home.js"></script-->
     
     <script type="text/javascript">
+	var noticias = [];
+		
+		
+		
+		function add_onClick(id){
+
+			i = parseInt(id);
+
+			$("#descripcion").val(noticias[i][0]);
+			$("#hor_ini").val(noticias[i][1]);
+			$("#autor").val(noticias[i][2]);
+			$("#titulo").val(noticias[i][3]);
+			
+			$("#boton").modal()
+       }
+	   
         jQuery(document).ready(function($) {
 
             var playerZbNukQVASA;
@@ -494,7 +407,56 @@
                                         break;
                                 }
                             }
-                                });
+                                
+			var padre = document.getElementById("listaNoticias");
+			
+			$.ajax({
+                   
+                    type: "GET",
+                    url:'service_noticia',
+                    success: function(result){
+                        
+                        
+                        var data = jQuery.parseJSON(result);
+						var hijo;
+						
+						
+						
+                        for(var i = 0; i<data.length ;i++)
+                        {
+							
+							if(data[i].not_visible == 1 && data[i].not_enweb == 1){
+								
+								var descrip = data[i].not_descr;
+								var titulo = data[i].not_titulo;
+								var imagen = data[i].not_imagen;
+								var inicio = data[i].not_fecha;
+								var autor = data[i].not_autor;
+								var link = data[i].not_linkNoticia;
+								
+								noticias.push([descrip,inicio,autor,titulo]);
+								
+								
+								hijo = document.createElement("div");
+				
+								var codigo = '<div class="documentos-modu" id="D"><h2 class="h2-direc"><a href="javascript:add_onClick('+i+')">'+titulo+'</a></h2><div class="direc-img" data="acf-img"><img src="'+imagen+'"></div><div class="direc-text"><div class="direc-info"><strong>Fecha:</strong>'+inicio+ '</div>'+ '<div class="direc-info"><strong>Autor:</strong>'+autor + '</div>'+'<div class="link-btn btn-diplo"><a href="'+link+'" target="_blank">Ver Noticia<div class="link-btn-icon"></div></a></div></div><div class="clear cero"></div></div>';
+			
+								hijo.innerHTML = codigo;
+								
+								padre.appendChild(hijo);
+
+								
+	                            
+	                        }
+                        
+                        }
+                        
+                     
+                    }
+                     
+                });
+		
+		});
     </script>
     
     
