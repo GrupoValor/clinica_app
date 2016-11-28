@@ -86,24 +86,26 @@
 								<!-- PAGE CONTENT BEGINS -->
 								<table class="table  table-bordered table-hover">
 									<thead>
-										<th>C&oacute;digo</th>
-										<th>Descripci&oacute;n</th>
+										<th>Nombre</th>
 										<th class="hidden"></th>
 										<th>Cl&iacute;nica</th>
+										<th>Fecha de inicio de clases</th>
+										<th>Fecha de fin de registros</th>
 										<th></th>
 									</thead>
 									<tbody>
 @foreach ($cursos as $value)
 										<tr>
-											<td id="cur_codigo_{{$value['cur_id']}}">{{ $value['cur_codigo'] }}</td>
-											<td id="cur_descrip_{{$value['cur_id']}}">{{ $value['cur_descrip'] }}</td>
+											<td id="cic_nombre_{{$value['cic_id']}}">{{ $value['cic_nombre'] }}</td>
 											<td class="hidden" id="cln_id_{{$value['cur_id']}}">{{ $value['cln_id'] }}</td>
 											<td>{{ $value['cln_nombre'] }}</td>
+											<td id="cic_fechaini_{{$value['cic_id']}}">{{ $value['cic_fechaini'] }}</td>
+											<td id="cic_fechafin_{{$value['cic_id']}}">{{ $value['cic_fechafin'] }}</td>
 											<td class="center">
-												<button class="btn btn-mini btn-success" title="Editar curso" data-toggle="modal", data-target="#cur_edit" onclick="cur_edit({{$value['cur_id']}})">
+												<button class="btn btn-mini btn-success" title="Editar ciclo" data-toggle="modal", data-target="#cur_edit" onclick="cur_edit({{$value['cic_id']}})">
 													<i class="ace-icon fa fa-pencil"></i>
 												</button>
-												<button class="btn btn-mini btn-danger" title="Eliminar curso" data-toggle="modal", data-target="#cur_del" onclick="cur_del({{$value['cur_id']}})">
+												<button class="btn btn-mini btn-danger" title="Eliminar ciclo" data-toggle="modal", data-target="#cur_del" onclick="cur_del({{$value['cic_id']}})">
 													<i class="ace-icon fa fa-trash"></i>
 												</button>
 											</td>
