@@ -84,7 +84,7 @@
 							</div>
 							
 							<!-- para ver la descripcion del evento -->
-							<div align="center">        
+							<!--<div align="center">
 								<div class="modal fade" id="boton" role="dialog">
 									<div class="modal-dialog" style="width: 500px;">
 					 
@@ -92,8 +92,7 @@
 											<div class="modal-header">
 												<h1 type="button" class="close" data-dismiss="modal"></h1>
 											</div>
-											<!-- Modal content-->
-											<div class="page-header"><!-- /.page-header -->
+											<div class="page-header">
 												<h1> Detalles del evento</h1>
 
 												<form class="form-horizontal" role="form" style="padding-left: 66px;">
@@ -163,7 +162,7 @@
 										</div>
 									</div>            
 								</div>
-							</div>
+							</div>-->
 							
 						</div>
 					</div>
@@ -172,9 +171,7 @@
 		</div>
 
 	</article>
-        
 
-    <div class="bloque-sombra"></div>
         
 
     </article>
@@ -182,6 +179,46 @@
     
 	
 </section>
+
+
+<!-- Pop up show evento -->
+
+<div align="center">
+	<div class="modal fade" id="boton" role="dialog">
+		<div class="modal-dialog" style="width: 50%;">
+			<div class="modal-content">
+				<div class="page-header">
+					<h3 style="color: #0F4279"> </h3>
+				</div>
+				<div class="row">
+					<div class="space-4"></div>
+
+					<div class="form-group col-sm-12" >
+						<strong><p class="col-sm-2" style="text-align: left; text-decoration: underline">Descripción</p></strong>
+						<p class="col-sm-12" id="descripcion" style="text-align: justify">
+						</p>
+					</div>
+
+					<div class="space-4"></div>
+					<div class="form-group col-sm-12">
+						<strong><p class="col-sm-12" style="text-align: left; text-decoration: underline">Fecha de inicio</p></strong>
+						<p class="col-sm-12" id="hor_ini" style="text-align: justify">
+						</p>
+					</div>
+					<div class="space-4"></div>
+					<div class="form-group col-sm-12">
+						<strong><p class="col-sm-12" style="text-align: left; text-decoration: underline">Fecha de fin</p></strong>
+						<p class="col-sm-12" id="hor_fin" style="text-align: justify">
+						</p>
+					</div>
+				</div>
+				<div class="modal-footer" style="font-size: 15px; background-color: #0F4279; color:#6694C1;">
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 <footer>
@@ -204,32 +241,27 @@
 	{!! HTML::script('css/web_eventos/js/masonry.pkgd.min.js') !!}
 	{!! HTML::script('css/web_eventos/js/jquery-home.js') !!}
 	
-    <!--script src="css/wp-content/themes/home-theme/bootstrap.min.js"></script>
-    <script src="js/index.js"></script>
-    <script src="css/wp-content/themes/home-theme/jquery.easing.min.js"></script>
-    <script src="css/wp-content/themes/home-theme/jquery.matchHeight-min.js"></script>
-    <script src="css/wp-content/themes/home-theme/masonry.pkgd.min.js"></script-->
-    <!-- <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
-    <script type="text/javascript" src="http://www.youtube.com/iframe_api"></script> -->
-	
-    <!--script src="css/wp-content/themes/home-theme/jquery-home.js"></script-->
-	
     <script type="text/javascript">
 		var eventos = [];
-		
 		
 		
 		function add_onClick(id){
 
 			i = parseInt(id);
 
-			$("#descripcion").val(eventos[i][0]);
-			$("#hor_ini").val(eventos[i][1]);
-			$("#hor_fin").val(eventos[i][2]);
-			$("#titulo").val(eventos[i][3]);
+			$("#descripcion").html(eventos[i][0]);
+			$("#hor_ini").html(eventos[i][1]);
+			$("#hor_fin").html(eventos[i][2]);
+			$(".page-header h3").html(eventos[i][3]);
 			
 			$("#boton").modal()
        }
+
+		$(document).keydown(function (e) {
+			if (e.keyCode == 27) {
+				$('.modal').modal('hide');
+			}
+		});
 	
 	
 	
@@ -246,7 +278,22 @@
 			
 			
 			var padre = document.getElementById("listaEventos");
-			
+			var loc = window.location.pathname;
+			var local_path = loc.substring(0, loc.lastIndexOf('/'));
+
+			function formatDate(date) {
+				var fecha = ('0' + (date.getDate())).slice(-2) + '/'
+						+ ('0' + (date.getMonth()+1)).slice(-2) + '/' + date.getFullYear()+ ' ';
+				var hours = date.getHours();
+				var minutes = date.getMinutes();
+				var ampm = hours >= 12 ? 'pm' : 'am';
+				hours = hours % 12;
+				hours = hours ? hours : 12; // the hour '0' should be '12'
+				minutes = minutes < 10 ? '0'+minutes : minutes;
+				var strTime = fecha + hours + ':' + minutes + ' ' + ampm;
+				return strTime;
+			}
+
 			$.ajax({
                    
                     type: "GET",
@@ -269,13 +316,26 @@
 								var imagen = data[i].image;
 								var inicio = data[i].start;
 								var fin = data[i].end;
-								
-								eventos.push([descrip,inicio,fin,titulo]);
+								var link= data[i].link;
+								link = "https://docs.google.com/forms/d/e/1FAIpQLSfZKJaZnzker7WHwbJeNJoJDfK4SActHxkgjKxhkMfVcZDYUQ/viewform";
+
+								var MyDate = new Date(inicio);
+								var fecha_ini = formatDate(MyDate) ;
+								MyDate = new Date(fin);
+								var fecha_fin = formatDate(MyDate);
+
+								eventos.push([descrip,fecha_ini,fecha_fin,titulo]);
 								
 								
 								hijo = document.createElement("div");
 				
-								var codigo = '<div class="documentos-modu" id="D"><h2 class="h2-direc"><a href="javascript:add_onClick('+i+')">'+titulo+'</a></h2><div class="direc-img" data="acf-img"><img src="'+imagen+'"></div><div class="direc-text"><div class="direc-info"><strong>Inicio:</strong>'+' Del '+inicio+' al '+fin+'</div>	<div class="link-btn btn-diplo"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfZKJaZnzker7WHwbJeNJoJDfK4SActHxkgjKxhkMfVcZDYUQ/viewform" target="_blank">Inscribirme<div class="link-btn-icon"></div></a></div></div><div class="clear cero"></div></div>';
+								var codigo = '<div class="documentos-modu" id="D"><h2 class="h2-direc">' +
+										'<a href="javascript:add_onClick('+i+')">'+titulo+'</a></h2>' +
+										'<div class="direc-img" data="acf-img"><img src="'+local_path+imagen+'">' +
+										'</div><div class="direc-text"><div class="direc-info"><strong>Fecha:</strong>'+
+										' Del '+fecha_ini+' al '+fecha_fin+'</div>	<div class="link-btn btn-diplo">' +
+										'<a href="'+link+'" target="_blank">Inscribirme<div class="link-btn-icon">' +
+										'</div></a></div></div><div class="clear cero"></div></div>';
 			
 								hijo.innerHTML = codigo;
 								
