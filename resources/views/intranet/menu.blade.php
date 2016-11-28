@@ -134,16 +134,30 @@
                 '        <a href="#" class="dropdown-toggle">'+
                 '            <i class="menu-icon fa fa-file-o"></i>'+
                 '            <span class="menu-text">'+
-                '                Auditoria'+
+                '                Reportes'+
                 '            </span>'+
                 '            <b class="arrow fa fa-angle-down"></b>'+
                 '        </a>'+
                 '        <b class="arrow"></b>'+
                 '        <ul class="submenu">'+
                 '            <li class="">'+
+                '                <a href="reporte1.html">'+
+                '                    <i class="menu-icon fa fa-caret-right"></i>'+
+                '                    Reporte por alumno'+
+                '                </a>'+
+                '                <b class="arrow"></b>'+
+                '            </li>'+
+                '            <li class="">'+
+                '                <a href="reporte2.html">'+
+                '                    <i class="menu-icon fa fa-caret-right"></i>'+
+                '                    Reporte por caso'+
+                '                </a>'+
+                '                <b class="arrow"></b>'+
+                '            </li>'+
+                '            <li class="">'+
                 '                <a href="log">'+
                 '                    <i class="menu-icon fa fa-caret-right"></i>'+
-                '                    Inicio Sesion'+
+                '                    Reporte 3'+
                 '                </a>'+
                 '                <b class="arrow"></b>'+
                 '            </li>'+
@@ -241,7 +255,8 @@
                             addTareas()+
                             addDirectorio()+
                             addMapa()+
-                            addMantenimiento()
+                            addMantenimiento()+
+                            addReportes()
                             )
                           
                         }

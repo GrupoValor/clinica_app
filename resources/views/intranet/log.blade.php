@@ -48,7 +48,7 @@
                     <a href="index">Home</a>
                 </li>
                 <li>
-                    Log Inicio Sesion 
+                    Directorio
                 </li>
                 <!--<li class="active">Registro</li>-->
             </ul>
@@ -60,8 +60,8 @@
         <div class="page-content">
             <div class="page-header"><!-- /.page-header -->
                 <h1 id = "mytitulo" >
-                    Log Inicio Sesion 
-                    
+                    Directorio
+                    <button type="button" class="btn btn-primary" style="float: right;margin-top: -8px;" onclick="add_onClick()" >Nuevo +</button>
                 </h1>
 
             </div>

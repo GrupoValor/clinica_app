@@ -12,7 +12,6 @@
                     <th>Nombre</th>
                     <th>Codigo</th>
                     <th>Correo</th>
-                    <th>Clinica</th>
                     <th>Modificar</th>
                 </tr>
             </thead>
@@ -36,7 +35,7 @@
                     <!-- /.page-header -->
                     <button type="button" class="fa fa-times btn-danger" style="float: right; margin-right: 8px" data-dismiss="modal"></button>
                     <div class="space-10"></div>
-                    <h1> Adjunto </h1>
+                    <h1> Jefe de práctica </h1>
                 </div>
                 <div class="row">
                     
