@@ -47,6 +47,37 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="http://www.pucp.edu.pe/wp-content/themes/home-theme/images/favicons/mstile-144x144.png">
 
+    <style>
+        img{
+            border-radius: 50%;
+            width: 250px;
+            height: 250px;
+
+        }
+        .img-hover {
+            position: relative;
+            display: inline-block;
+
+        }
+
+        .img-hover:hover:before {
+            content: '';
+            display: block;
+            background: #0F4279;
+            color: white;
+            opacity: 0.2;
+            width: 250px;
+            height: 250px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-radius: 50%;
+
+        }
+        .titulo-clinicas{
+            text-align: center;
+        }
+    </style>
     
 </head>
     
@@ -69,11 +100,6 @@
 		
 		{!! HTML::script('css/web_eventos/js/jquery.min.js') !!}
 		{!! HTML::script('css/web_eventos/js/jquery.carouFredSel-6.2.0.js') !!}
-        <!--script type="text/javascript" src="css/wp-content/themes/home-theme/jquery.min.js"></script>
-        <script type="text/javascript" src="css/wp-content/themes/home-theme/assets/carouFredSel/jquery.carouFredSel-6.2.0.js"></script-->
-        <!--Para el pop-up-->
-        <script type="text/javascript" src="pop-up.js"></script> 
-       <!--<div class="bloque-sombra"></div>-->
     
         <div class="wrapper-cuerpo-interna direc-unid alt50">
             <div class="container">
@@ -85,56 +111,22 @@
                             <p>No solo es un espacio de formación académica para el ejercicio profesional del derecho, sino que además permite al alumno contrastar los conceptos jurídicos aprendidos en su carrera con una situación concreta que le desafía. La Clínica Jurídica cumple finalmente un rol social de vital importancia al propiciar cambios institucionales a través de las herramientas que el derecho permite.</p>
 
 <h3>Clínicas</h3>
-			<div class="row">
+
+			<div class="row" id="clinicas"> <!-- clinicas añadidas dinamicamente -->
+                <a href="javascript:popmeup('web/pop-up-clinica');">
                 <div class="team-member col-md-3 col-sm-6">
-					<div class="member-thumb">
+                    <div class="img-hover">
+
                         <img src="http://www.garmendiaabogados.com/cache~1-3-2-b-5-132b513e56471811df827623c5ccf42e12789fc1/derecho-penal.jpg" alt="">
-                        <div class="team-overlay"> 
-                        </div> <!-- /.team-overlay -->
-                    </div> <!-- /.member-thumb -->
-                <a href="pop-up-clinica" target="_blank"><div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 1</a> </div></a>
+
+                        </div>
+                        <div class="titulo-clinicas">Clínica 1</div>
 
 				</div>
-				<div class="team-member col-md-3 col-sm-6">
-					<div class="member-thumb">
-                        <img src="http://www.garmendiaabogados.com/cache~1-3-2-b-5-132b513e56471811df827623c5ccf42e12789fc1/derecho-penal.jpg" alt="">
-                        <div class="team-overlay"> 
-                        </div> <!-- /.team-overlay -->
-                    </div> <!-- /.member-thumb -->
-                <a href="pop-up-clinica" target="_blank"><div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 2</a> </div></a>
-
-				</div>
-				<div class="team-member col-md-3 col-sm-6">
-					<div class="member-thumb">
-                        <img src="http://www.garmendiaabogados.com/cache~1-3-2-b-5-132b513e56471811df827623c5ccf42e12789fc1/derecho-penal.jpg" alt="">
-                        <div class="team-overlay"> 
-                        </div> <!-- /.team-overlay -->
-                    </div> <!-- /.member-thumb -->
-                <a href="pop-up-clinica" target="_blank"><div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 3</a> </div></a>
-
-				</div>
-				<div class="team-member col-md-3 col-sm-6">
-					<div class="member-thumb">
-                        <img src="http://www.garmendiaabogados.com/cache~1-3-2-b-5-132b513e56471811df827623c5ccf42e12789fc1/derecho-penal.jpg" alt="">
-                        <div class="team-overlay"> 
-                        </div> <!-- /.team-overlay -->
-                    </div> <!-- /.member-thumb -->
-                <a href="pop-up-clinica" target="_blank"><div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 4</a> </div></a>
-
-				</div>
-				<div class="team-member col-md-3 col-sm-6">
-					<div class="member-thumb">
-                        <img src="http://www.garmendiaabogados.com/cache~1-3-2-b-5-132b513e56471811df827623c5ccf42e12789fc1/derecho-penal.jpg" alt="">
-                        <div class="team-overlay"> 
-                        </div> <!-- /.team-overlay -->
-                    </div> <!-- /.member-thumb -->
-                <a href="pop-up-clinica" target="_blank"><div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 5</a> </div></a>
-
-				</div>
+                    </a>
 			</div>
 							 <!-- /.row -->
-                <div class="row">
-                        </div>
+
                     </div>
                     </div>
             </div>
@@ -177,6 +169,27 @@
                 $(this).find('.active.item').parent().animate({ height: nextH }, 300);
             });
         });
+    </script>
+    <script type="text/javascript">
+        function popmeup(URL) {
+            var popup_width = 600
+            var popup_height = 400
+            day = new Date();
+            id = day.getTime();
+            eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width='+popup_width+',height='+popup_height+'');");
+        }
+
+        $(document).ready(function() {
+            $.ajax({ //Para llenar la tabla
+                type: "GET",
+                url: 'service_clinica',
+                success: function(result) {
+                    jQuery.parseJSON(result);
+                }
+            });
+
+        });
+
     </script>
     
 <script type='text/javascript' src='../../wp-includes/js/wp-embed.min.js?ver=4.6'></script>
