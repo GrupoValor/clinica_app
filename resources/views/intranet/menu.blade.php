@@ -95,7 +95,7 @@
                     '</li>';
     }
     function addMapa(){
-        return '<li class="" id="limapa"> <!-- Mapa -->'+
+        return '<li class="hide" id="limapa"> <!-- Mapa -->'+
                 '        <a href="mapa_intranet">'+
                 '            <i class="menu-icon fa fa-map-marker"></i>'+
                 '            <span class="menu-text"> Mapa </span>'+

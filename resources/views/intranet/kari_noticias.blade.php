@@ -140,7 +140,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Fecha</label>
                             <div class="col-sm-3 col-xs-3">
-                                <input class="form-control" type="text" name="date-picker" id="id-date-picker-1" data-date-format="dd/mm/yyyy"/>
+                                <input class="form-control" type="text" name="date-picker" id="id-date-picker-1" data-date-format="dd/mm/yyyy" required/>
                             </div>
                         </div>
 

@@ -160,7 +160,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Fechas y horas</label>
                             <div class="col-sm-8 col-xs-8">
-                                <input class="form-control" type="text" name="date-range-picker" id="id-date-range-picker-1" />
+                                <input class="form-control" type="text" name="date-range-picker" id="id-date-range-picker-1" required/>
                             </div>
                         </div>
 

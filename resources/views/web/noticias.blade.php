@@ -296,7 +296,13 @@
 			var padre = document.getElementById("listaNoticias");
 			var loc = window.location.pathname;
 			var local_path = loc.substring(0, loc.lastIndexOf('/'));
-			
+
+			function formatDate(date) {
+				var fecha = ('0' + (date.getDate())).slice(-2) + '/'
+						+ ('0' + (date.getMonth()+1)).slice(-2) + '/' + date.getFullYear()+ ' ';
+				return fecha;
+			}
+
 			$.ajax({
                    
                     type: "GET",
@@ -320,8 +326,11 @@
 								var inicio = data[i].not_fecha;
 								var autor = data[i].not_autor;
 								var link = data[i].not_linkNoticia;
+
+								var fecha = formatDate(new Date(inicio));
+
 								
-								noticias.push([descrip,inicio,autor,titulo]);
+								noticias.push([descrip,fecha,autor,titulo]);
 
 								
 								hijo = document.createElement("div");
@@ -329,7 +338,7 @@
 								var codigo = '<div class="documentos-modu" id="D"><h2 class="h2-direc">' +
 										'<a href="javascript:add_onClick('+i+')">'+titulo+'</a></h2>' +
 										'<div class="direc-img" data="acf-img"><img src="'+local_path+ imagen+'">' +
-										'</div><div class="direc-text"><div class="direc-info"><strong>Fecha:</strong>'+inicio+ '</div>'+
+										'</div><div class="direc-text"><div class="direc-info"><strong>Fecha:</strong>'+fecha+ '</div>'+
 										'<div class="direc-info"><strong>Autor:</strong>'+autor + '</div>'+
 										'<div class="link-btn btn-diplo"><a href="'+link+'"target="_blank">Ver Noticia' +
 										'<div class="link-btn-icon"></div></a></div></div><div class="clear cero"></div></div>';
