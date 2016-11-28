@@ -326,7 +326,13 @@
 								
 								hijo = document.createElement("div");
 				
-								var codigo = '<div class="documentos-modu" id="D"><h2 class="h2-direc"><a href="javascript:add_onClick('+i+')">'+titulo+'</a></h2><div class="direc-img" data="acf-img"><img src="'+local_path+ imagen+'"></div><div class="direc-text"><div class="direc-info"><strong>Fecha:</strong>'+inicio+ '</div>'+ '<div class="direc-info"><strong>Autor:</strong>'+autor + '</div>'+'<div class="link-btn btn-diplo"><a href="javascript:add_onClick('+i+')">Ver Noticia<div class="link-btn-icon"></div></a></div></div><div class="clear cero"></div></div>';
+								var codigo = '<div class="documentos-modu" id="D"><h2 class="h2-direc">' +
+										'<a href="javascript:add_onClick('+i+')">'+titulo+'</a></h2>' +
+										'<div class="direc-img" data="acf-img"><img src="'+local_path+ imagen+'">' +
+										'</div><div class="direc-text"><div class="direc-info"><strong>Fecha:</strong>'+inicio+ '</div>'+
+										'<div class="direc-info"><strong>Autor:</strong>'+autor + '</div>'+
+										'<div class="link-btn btn-diplo"><a href="'+link+'"target="_blank">Ver Noticia' +
+										'<div class="link-btn-icon"></div></a></div></div><div class="clear cero"></div></div>';
 			
 								hijo.innerHTML = codigo;
 								

@@ -102,8 +102,9 @@
     
     
     <article>
-		
-		{!! HTML::script('css/web_eventos/js/jquery.min.js') !!}
+        <div class="bloque-sombra"></div>
+
+        {!! HTML::script('css/web_eventos/js/jquery.min.js') !!}
 		{!! HTML::script('css/web_eventos/js/jquery.carouFredSel-6.2.0.js') !!}
     
         <div class="wrapper-cuerpo-interna direc-unid alt50">
