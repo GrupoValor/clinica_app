@@ -155,7 +155,11 @@ Route::get('/error-500', function () {
 });
 
 //WEB
-Route::get('/log', 'logController@get');
+
+Route::get('/log', function () {
+    return view('intranet/log');
+});
+Route::get('/log_service', 'logController@get');
 
 //Pagina web
 Route::get('/inicio', function () {

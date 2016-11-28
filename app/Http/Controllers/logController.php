@@ -18,6 +18,8 @@ class logController extends Controller
 		if($data["rol"]=="1"){
 			$result = DB::select("Select id,log_date,log_text from TA_LOG");
 			$data = array();
+
+			
 			array_push($data,json_decode(json_encode($result), true));
 				
 			echo json_encode($data);
