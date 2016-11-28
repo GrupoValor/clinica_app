@@ -251,16 +251,16 @@
         var clinicas=[];
 
         function showClinica(id) {
-            $(".page-header h3").html(clinicas[id-1][0]);
-            $("#descrip").html(clinicas[id-1][6]);
-            $("#mision").html(clinicas[id-1][8]);
-            $("#vision").html(clinicas[id-1][9]);
-            $("#telef").html(clinicas[id-1][1]);
-            $("#email").html(clinicas[id-1][2]);
-            $("#direc").html(clinicas[id-1][7]);
-            document.getElementById("fb").setAttribute('href', clinicas[id-1][3] );
-            document.getElementById("tw").setAttribute('href', clinicas[id-1][4] );
-            document.getElementById("gm").setAttribute('href', clinicas[id-1][5]);
+            $(".page-header h3").html(clinicas[id][0]);
+            $("#descrip").html(clinicas[id][6]);
+            $("#mision").html(clinicas[id][8]);
+            $("#vision").html(clinicas[id][9]);
+            $("#telef").html(clinicas[id][1]);
+            $("#email").html(clinicas[id][2]);
+            $("#direc").html(clinicas[id][7]);
+            document.getElementById("fb").setAttribute('href', clinicas[id][3] );
+            document.getElementById("tw").setAttribute('href', clinicas[id][4] );
+            document.getElementById("gm").setAttribute('href', clinicas[id][5]);
 
 
             $("#modal_clinica").modal();
@@ -287,7 +287,7 @@
 
                         clinicas.push([nombre, telef, email, fb, twitter, google, descrip, direc, mision, vision]);
 
-                        var new_clinica = '<a href="javascript:showClinica('+id+');">' +
+                        var new_clinica = '<a href="javascript:showClinica('+i+');">' +
                                 '<div class="team-member col-md-3 col-sm-6">' +
                                 '<div class="img-hover">' +
                                 '<img src="http://www.garmendiaabogados.com/cache~1-3-2-b-5-132b513e56471811df827623c5ccf42e12789fc1/derecho-penal.jpg">' +

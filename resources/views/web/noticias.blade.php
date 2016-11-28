@@ -78,7 +78,7 @@
 							
 							
 							<!-- para ver la descripcion de las noticias -->
-							<div align="center">        
+							<!--<div align="center">
 								<div class="modal fade" id="boton" role="dialog">
 									<div class="modal-dialog" style="width: 500px;">
 					 
@@ -86,8 +86,8 @@
 											<div class="modal-header">
 												<h1 type="button" class="close" data-dismiss="modal"></h1>
 											</div>
-											<!-- Modal content-->
-											<div class="page-header"><!-- /.page-header -->
+
+											<div class="page-header">
 												<h1> Detalles de la noticia</h1>
 
 												<form class="form-horizontal" role="form" style="padding-left: 66px;">
@@ -98,7 +98,7 @@
 
 														<div class="col-sm-9">
 															<input id="titulo" type="text" id="form-field-3"  class="col-xs-5 col-sm-7" disabled />
-									   	
+
 														</div>
 													</div>
                                                                
@@ -157,7 +157,7 @@
 										</div>
 									</div>            
 								</div>
-							</div>
+							</div>-->
                         </div>
                     </div>
                 </div>
@@ -184,6 +184,46 @@
     
 </footer>
 
+<!-- Pop up show noticia -->
+
+<div align="center">
+	<div class="modal fade" id="boton" role="dialog">
+		<div class="modal-dialog" style="width: 50%;">
+			<div class="modal-content">
+				<div class="page-header">
+					<h3 style="color: #0F4279"> </h3>
+				</div>
+				<div class="row">
+					<div class="space-4"></div>
+					<div id="id_noticia" class="hide"></div>
+					<div class="form-group col-sm-12" >
+						<strong><p class="col-sm-2" style="text-align: left; text-decoration: underline">Autor</p></strong>
+						<p class="col-sm-12" id="autor" style="text-align: justify">
+						</p>
+					</div>
+
+					<div class="form-group col-sm-12" >
+						<strong><p class="col-sm-2" style="text-align: left; text-decoration: underline">Descripción</p></strong>
+						<p class="col-sm-12" id="descripcion" style="text-align: justify">
+						</p>
+					</div>
+
+					<div class="space-4"></div>
+					<div class="form-group col-sm-12">
+						<strong><p class="col-sm-2" style="text-align: left; text-decoration: underline">Fecha</p></strong>
+						<p class="col-sm-12" id="hor_ini" style="text-align: justify">
+						</p>
+					</div>
+				</div>
+				<div class="modal-footer" style="font-size: 15px; background-color: #0F4279; color:#6694C1;">
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 	{!! HTML::script('css/web_eventos/js/bootstrap.min.js') !!}
 	{!! HTML::script('css/web_eventos/js/index.js') !!}
 	{!! HTML::script('css/web_eventos/js/jquery.easing.min.js') !!}
@@ -202,10 +242,10 @@
 
 			i = parseInt(id);
 
-			$("#descripcion").val(noticias[i][0]);
-			$("#hor_ini").val(noticias[i][1]);
-			$("#autor").val(noticias[i][2]);
-			$("#titulo").val(noticias[i][3]);
+			$("#descripcion").html(noticias[i][0]);
+			$("#hor_ini").html(noticias[i][1]);
+			$("#autor").html(noticias[i][2]);
+			$(".page-header h3").html(noticias[i][3]);
 			
 			$("#boton").modal()
        }
@@ -273,7 +313,7 @@
                         {
 							
 							if(data[i].not_visible == 1 && data[i].not_enweb == 1){
-								
+								var id_not = data[i].not_id;
 								var descrip = data[i].not_descr;
 								var titulo = data[i].not_titulo;
 								var imagen = data[i].not_imagen;
@@ -282,11 +322,11 @@
 								var link = data[i].not_linkNoticia;
 								
 								noticias.push([descrip,inicio,autor,titulo]);
-								
+
 								
 								hijo = document.createElement("div");
 				
-								var codigo = '<div class="documentos-modu" id="D"><h2 class="h2-direc"><a href="javascript:add_onClick('+i+')">'+titulo+'</a></h2><div class="direc-img" data="acf-img"><img src="'+local_path+ imagen+'"></div><div class="direc-text"><div class="direc-info"><strong>Fecha:</strong>'+inicio+ '</div>'+ '<div class="direc-info"><strong>Autor:</strong>'+autor + '</div>'+'<div class="link-btn btn-diplo"><a href="'+link+'" target="_blank">Ver Noticia<div class="link-btn-icon"></div></a></div></div><div class="clear cero"></div></div>';
+								var codigo = '<div class="documentos-modu" id="D"><h2 class="h2-direc"><a href="javascript:add_onClick('+i+')">'+titulo+'</a></h2><div class="direc-img" data="acf-img"><img src="'+local_path+ imagen+'"></div><div class="direc-text"><div class="direc-info"><strong>Fecha:</strong>'+inicio+ '</div>'+ '<div class="direc-info"><strong>Autor:</strong>'+autor + '</div>'+'<div class="link-btn btn-diplo"><a href="javascript:add_onClick('+i+')">Ver Noticia<div class="link-btn-icon"></div></a></div></div><div class="clear cero"></div></div>';
 			
 								hijo.innerHTML = codigo;
 								
