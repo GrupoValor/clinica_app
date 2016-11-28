@@ -110,7 +110,9 @@ function listar(){
                     cx: item.ale_cx,
                     cy: item.ale_cy,
                     estado: item.ale_estado,
-                    descripcion: item.ale_descrip
+                    descripcion: item.ale_descrip,
+                    direccion: item.ale_direccion,
+                    incentivo: item.ale_incentivo
                 });
                 var color_marca;
                 switch(marca.estado){
@@ -130,8 +132,14 @@ function listar(){
                 google.maps.event.addListener(marca, 'click', function(){
                     if((marca.estado !== 'vencida') && (marca.estado !== 'finalizada')) {
                         var infowindow = new google.maps.InfoWindow({
-                            content: '<div>' + marca.descripcion + '</div>' +
-                            '<button onclick="showModal(' + marca.idMarcador + ')">Atender</button>'
+                            content: '<div style="font-size: 12px"> <h6>' + marca.titulo + '</h6>' +
+                            '<h7>Dirección:</h7>'+
+                            '<p>'+marca.direccion+'</p>'+
+                            '<h7>Descripción:</h7>'+
+                            '<p>'+marca.descripcion+'</p>'+
+                            '<h7>Incentivos:</h7>'+
+                            '<p>'+marca.incentivo+'</p>'+
+                            '<button onclick="showModal(' + marca.idMarcador + ')">Atender</button></div>'
                         });
                         infowindow.open(mapa, this);
                     }
@@ -146,5 +154,7 @@ function listar(){
             });
         });
     }
-
-
+/*
+$(document).on('click','#botonSubmit',function () {
+    alert("Hola");
+});*/
