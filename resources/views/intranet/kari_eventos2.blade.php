@@ -685,6 +685,12 @@
         }
     }
 
+    $(document).keydown(function (e) {
+        if (e.keyCode == 27) {
+            $('.modal').modal('hide');
+        }
+    });
+
     function viewEvent(id, start, end, title, descrip, link, act, image) { //Falta agregar imagen
 
         loadImage(image);
