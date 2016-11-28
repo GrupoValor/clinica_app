@@ -20,7 +20,9 @@ class logController extends Controller
 			$data = array();
 			array_push($data,json_decode(json_encode($result), true));
 				
-			echo var_dump($data);
+			echo json_encode($data);
+
+			
 		}
 		else
 		{
