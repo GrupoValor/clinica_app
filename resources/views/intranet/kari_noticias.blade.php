@@ -446,6 +446,7 @@
         //alert(rows[0][6]);
         editid = parseInt(id);
 
+        $("#id_noticia").val(data_set[editid][0]+"");
         $("#titulo").val(data_set[editid][1]+"");
         $("#autor").val(data_set[editid][2]+"");
         $("#descripcion").val(data_set[editid][7]+"");
@@ -546,6 +547,12 @@
                 alert("Error al cargar la tabla");
             }
         });
+    });
+
+    $(document).keydown(function (e) {
+        if (e.keyCode == 27) {
+            $('.modal').modal('hide');
+        }
     });
 </script>
 
