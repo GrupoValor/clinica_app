@@ -72,6 +72,9 @@ function initMap(){
             url:"ajax/inserta-alerta.ajax.php",
             data: {
                 'titulo' : f.find("input[name='titulo']").val(),
+                'direccion': f.find("input[name='direccion']").val(),
+                'descripcion': f.find("textarea[name='descripcion']").val(),
+                'incentivos': f.find("textarea[name='incentivos']").val(),
                 'cx': f.find("input[name='cx']").val(),
                 'cy': f.find("input[name='cy']").val(),
                 'cas_id': parseInt(getUrlVars()['cas_id'])

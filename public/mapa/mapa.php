@@ -62,8 +62,8 @@
                                                         <td><input type="text" class="form-control" name="cy" autocomplete="off" readonly/></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Fecha vencimiento </td>
-                                                        <td><input class="form-control" name="fecvenc" placeholder="MM/DD/YYYY" type="text" autocomplete="off" /></td>
+                                                        <!--<td>Fecha vencimiento </td>
+                                                        <td><input class="form-control" name="fecvenc" placeholder="MM/DD/YYYY" type="text" autocomplete="off" /></td>-->
                                                     </tr>
                                                     <tr>
                                                         <td style="color: red">(*) Campos obligatorios</td>
