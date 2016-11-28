@@ -101,7 +101,7 @@
                         <div class="team-overlay"> 
                         </div> <!-- /.team-overlay -->
                     </div> <!-- /.member-thumb -->
-                <a href="pop-up-clinica" target="_blank"><div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 1</a> </div></a>
+                <a href="pop-up-clinica" target="_blank"><div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 2</a> </div></a>
 
 				</div>
 				<div class="team-member col-md-3 col-sm-6">
@@ -110,7 +110,7 @@
                         <div class="team-overlay"> 
                         </div> <!-- /.team-overlay -->
                     </div> <!-- /.member-thumb -->
-                <a href="pop-up-clinica" target="_blank"><div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 1</a> </div></a>
+                <a href="pop-up-clinica" target="_blank"><div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 3</a> </div></a>
 
 				</div>
 				<div class="team-member col-md-3 col-sm-6">
@@ -119,7 +119,7 @@
                         <div class="team-overlay"> 
                         </div> <!-- /.team-overlay -->
                     </div> <!-- /.member-thumb -->
-                <a href="pop-up-clinica" target="_blank"><div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 1</a> </div></a>
+                <a href="pop-up-clinica" target="_blank"><div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 4</a> </div></a>
 
 				</div>
 				<div class="team-member col-md-3 col-sm-6">
@@ -128,7 +128,7 @@
                         <div class="team-overlay"> 
                         </div> <!-- /.team-overlay -->
                     </div> <!-- /.member-thumb -->
-                <a href="pop-up-clinica" target="_blank"><div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 1</a> </div></a>
+                <a href="pop-up-clinica" target="_blank"><div class="titulo-clinicas"><a href="pop-up-clinica">Clínica 5</a> </div></a>
 
 				</div>
 			</div>
