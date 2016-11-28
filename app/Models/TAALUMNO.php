@@ -19,7 +19,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $alu_nrodoc
  * @property string $alu_correo
  * @property string $alu_nombre
- * @property int $alu_clinica
+ * 
  * @property \App\Models\TAUSUARIO $t_a_u_s_u_a_r_i_o
  *
  * @package App\Models
@@ -32,8 +32,7 @@ class TAALUMNO extends Eloquent
 
 	protected $casts = [
 		'usu_id' => 'int',
-		'alu_volunt' => 'int',
-        'alu_clinica' => 'int'
+		'alu_volunt' => 'int'
 	];
 
 	protected $fillable = [
@@ -42,8 +41,7 @@ class TAALUMNO extends Eloquent
 		'alu_volunt',
 		'alu_nrodoc',
 		'alu_correo',
-		'alu_nombre',
-        'alu_clinica'
+		'alu_nombre'
 	];
 
 	public function t_a_u_s_u_a_r_i_o()

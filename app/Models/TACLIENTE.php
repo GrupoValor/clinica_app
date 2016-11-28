@@ -40,8 +40,7 @@ class TACLIENTE extends Eloquent
 
 	protected $casts = [
 		'usu_id' => 'int',
-		'cli_numhij' => 'int',
-        'cli_clinica' => 'int'
+		'cli_numhij' => 'int'
 	];
 
 	protected $dates = [
@@ -62,8 +61,7 @@ class TACLIENTE extends Eloquent
 		'cli_telno1',
 		'cli_telno2',
 		'cli_correo',
-		'cli_fecnac',
-        'cli_clinica'
+		'cli_fecnac'
 	];
 
 	public function t_a__c_a_s_o_s()

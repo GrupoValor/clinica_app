@@ -52,7 +52,7 @@ class loginController extends Controller
 
 
 
-    $result = DB::select("select cln_id, usu_id , rol_id ,usu_passwd from TA_USUARIO where TA_USUARIO.usu_activo = '1' and TA_USUARIO.usu_usenam = '".$user."' ");
+    $result = DB::select("select usu_id , rol_id ,usu_passwd from TA_USUARIO where TA_USUARIO.usu_activo = '1' and TA_USUARIO.usu_usenam = '".$user."' ");
 
     
     $data = array();

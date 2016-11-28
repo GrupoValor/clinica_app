@@ -329,6 +329,7 @@
         document.getElementById("cln_email").required = true;
         document.getElementById("cln_descri").required = true;
         document.getElementById("cln_direcc").required = true;
+        document.getElementById("cln_prof").required = true;
         $("#cln_email").attr('type', 'email');
         $("#modal_clinica").modal();
     }

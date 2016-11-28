@@ -113,7 +113,17 @@
 <h3>Clínicas</h3>
 
 			<div class="row" id="clinicas"> <!-- clinicas añadidas dinamicamente -->
+                <a href="javascript:popmeup('web/pop-up-clinica');">
+                <div class="team-member col-md-3 col-sm-6">
+                    <div class="img-hover">
 
+                        <img src="http://www.garmendiaabogados.com/cache~1-3-2-b-5-132b513e56471811df827623c5ccf42e12789fc1/derecho-penal.jpg" alt="">
+
+                        </div>
+                        <div class="titulo-clinicas">Clínica 1</div>
+
+				</div>
+                    </a>
 			</div>
 							 <!-- /.row -->
 
@@ -141,82 +151,6 @@
     </div>
 
 </footer>
-
-<!-- Pop up show clinica -->
-<form class="form-horizontal" role="form" style="padding-left: 66px;" id="form_clinica">
-    <div align="center">
-        <div class="modal fade" id="modal_clinica" role="dialog">
-            <div class="modal-dialog" style="width: 500px;">
-                <div class="modal-content">
-                    <div class="page-header">
-                        <!-- /.page-header -->
-                        <button type="button" class="close" data-dismiss="modal" style="margin-right: 8px;">&times;</button>
-                        <div class="space-10"></div>
-                        <h1> Evento </h1>
-                    </div>
-                    <div class="row">
-                        <div class="space-4"></div>
-                        <div id="id_evento" class="hide"></div>
-                        <div class="form-group">
-                            <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-3"> Título </label>
-                            <div class="col-sm-8 col-xs-8">
-                                <input id="titulo" type="text" class="form-control" placeholder="*obligatorio" required/>
-                            </div>
-                        </div>
-
-                        <div class="space-4"></div>
-                        <div class="form-group">
-                            <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-3"> Descripción </label>
-                            <div class="col-sm-8 col-xs-8">
-                                <textarea class="form-control" rows="10" style="resize: vertical;overflow: auto;" id="descripcion" placeholder="*obligatorio" required autocomplete="off"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="space-4"></div>
-                        <div class="form-group">
-                            <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5">Fechas y horas</label>
-                            <div class="col-sm-8 col-xs-8">
-                                <input class="form-control" type="text" name="date-range-picker" id="id-date-range-picker-1" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Imagen </label>
-                            <div class="col-sm-6 col-xs-6">
-                                <input type="file" id="imagen" value="" />
-                            </div>
-                        </div>
-
-                        <div class="space-4"></div>
-                        <div class="form-group">
-                            <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> Link </label>
-                            <div class="col-sm-8 col-xs-8">
-                                <input id="link" type="text" class="form-control" placeholder="*obligatorio" required/>
-                            </div>
-                        </div>
-
-                        <div class="space-4"></div>
-                        <div class="form-group">
-                            <label class="col-sm-3 col-xs-3 control-label no-padding-right" for="form-field-5"> ¿En web? </label>
-                            <div class="col-sm-1 col-xs-1">
-                                <input id="enWeb" type="checkbox" class="form-control" checked/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <div align="center">
-                            <button type="submit" id="botonSubmit" class="btn btn-primary"></button>                            &nbsp; &nbsp;
-                            <button type="button" id="botonDanger" class="btn btn-primary btn-danger remove" data-dismiss="modal"></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-
-
 	{!! HTML::script('css/web_eventos/js/bootstrap.min.js') !!}
 	{!! HTML::script('css/web_eventos/js/index.js') !!}
 	{!! HTML::script('css/web_eventos/js/jquery.easing.min.js') !!}
@@ -237,7 +171,6 @@
         });
     </script>
     <script type="text/javascript">
-        var noticias=[];
         function popmeup(URL) {
             var popup_width = 600
             var popup_height = 400
@@ -251,41 +184,13 @@
                 type: "GET",
                 url: 'service_clinica',
                 success: function(result) {
-                    var data = jQuery.parseJSON(result);
-                    for (var i = 0; i < data.length; i++) {
-                        var id= data[i].cln_id;
-                        var nombre= data[i].cln_nombre;
-                        var telef= data[i].cln_telefono;
-                        var email= data[i].cln_email;
-                        var fb= data[i].cln_urlfbk;
-                        var twitter= data[i].cln_urltwi;
-                        var google= data[i].cln_urlgoo;
-                        var descrip= data[i].cln_descri;
-                        var direc= data[i].cln_direcc;
-                        var mision= data[i].cln_mision;
-                        var vision= data[i].cln_vision;
-
-                        noticias.push([nombre, telef, email, fb, twitter, google, descrip, direc, mision, vision]);
-
-                        var new_clinica = '<a href="#">' +
-                                '<div class="team-member col-md-3 col-sm-6">' +
-                                '<div class="img-hover">' +
-                                '<img src="http://www.garmendiaabogados.com/cache~1-3-2-b-5-132b513e56471811df827623c5ccf42e12789fc1/derecho-penal.jpg">' +
-                                '</div>' +
-                                '<div class="titulo-clinicas">'+nombre+'</div>' +
-                                '</div>' +
-                                '</a>';
-
-                        $("#clinicas").html(new_clinica);
-
-                    }
+                    jQuery.parseJSON(result);
                 }
             });
 
         });
 
     </script>
-
     
 <script type='text/javascript' src='../../wp-includes/js/wp-embed.min.js?ver=4.6'></script>
 </body>

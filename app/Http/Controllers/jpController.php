@@ -63,7 +63,7 @@ class jpController extends Controller
 		
 		//creo el usuario
         $usuario = TAUSUARIO::create([
-                                      'cln_id' => $request['eva_clinica'],
+                                      'cln_id' => '1',
                                       'rol_id' => '5',
                                       'usu_usenam' => $request['eva_codpuc'],
                                       'usu_passwd' => Encrypter::encrypt($request['eva_codpuc']),
@@ -94,8 +94,7 @@ class jpController extends Controller
 									'eva_codpuc' => $request['eva_codpuc'],
                                     'eva_tipeva' => $request['eva_tipeva'],
                                     'eva_nombre' => $request['eva_nombre'],
-                                    'eva_correo' => $request['eva_correo'],
-                                    'eva_clinica' => $request['eva_clinica']
+                                    'eva_correo' => $request['eva_correo']
                                     ]);
 		$jefe->save();
 		
@@ -142,14 +141,13 @@ class jpController extends Controller
          DB::update('UPDATE TA_EVALUADOR set 
             eva_nombre = :nombre ,
             eva_codpuc = :codpuc ,
-            eva_correo = :correo,
-            eva_clinica = :clinica
+            eva_correo = :correo
+        
         
             where eva_id = :id and eva_tipeva = "j"',
             ['nombre' => $request['eva_nombre'],
             'codpuc' => $request['eva_codpuc'],
             'correo' => $request['eva_correo'],
-            'clinica' => $request['eva_clinica'],
             'id' => $id]);
 			
 			echo "Registro actualizado correctamente" ;
