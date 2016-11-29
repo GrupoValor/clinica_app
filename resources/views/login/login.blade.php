@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html >
   <head>
+      <link rel="icon" type="image/png" href="icono/valor.png" />
     <meta name="csrf_token" content="{{ csrf_token() }}" />
     <meta charset="UTF-8">
     <title>Clínica Jurídica | Iniciar Sesión </title>
@@ -154,6 +155,7 @@
 }
 .login:not(.loading) button:hover {
   box-shadow: 0px 1px 3px #2196F3;
+
 }
 .login:not(.loading) button:focus {
   border-bottom-width: 4px;
@@ -190,7 +192,7 @@ footer a, footer a:link {
     <i class="fa fa-user"></i>
     <input id="txt_pass" type="password" placeholder="Contraseña" />
     <i class="fa fa-key"></i>
-    <a href="#">¿Olvidó su contraseña?</a>
+    <!--<a href="#">¿Olvidó su contraseña?</a>-->
     <button>
       <i class="spinner"></i>
       
@@ -244,9 +246,14 @@ footer a, footer a:link {
 
                               }
                               else{
-                                $this.removeClass('loading');
-                                $state.html('Acceder');
-                                 working = false;
+                                  $this.removeClass('wrong');
+                                  $this.removeClass('loading');
+                                  $state.html('Acceder');
+                                  working = false;
+                                  alert("Usuario y/o contraseña incorrectos.");
+                                  $( "#txt_user" ).val("");
+                                  $('#txt_pass').val("");
+
                               
 
                                                              }

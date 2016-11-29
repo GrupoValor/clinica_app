@@ -81,10 +81,7 @@ class eventoController extends Controller
                 $to_directory = '/assets/images/eventos/';// . $image->getClientOriginalName();
                 $image->move($path.$to_directory, $image->getClientOriginalName());
                 $to_directory = $to_directory.$image->getClientOriginalName();
-            }
-
-            //dd($request->all());
-            DB::update('UPDATE TA_EVENTO set
+                DB::update('UPDATE TA_EVENTO set
             title = :titulo ,
             start = :fecha_ini ,
             end = :fecha_fin ,
@@ -94,15 +91,38 @@ class eventoController extends Controller
             link = :ruta,
             dateModify = :modi
             where id = :id_eve',
-                ['titulo' => $request['eve_titulo'],
-                    'fecha_ini' => $request['eve_fechaIn'],
-                    'fecha_fin' => $request['eve_fechaFin'],
-                    'descrip' => $request['eve_descr'],
-                    'imag' => $to_directory,
-                    'act' => $request['eve_activo'],
-                    'ruta' => $request['eve_link'],
-                    'modi' => date('Y/m/d H:i:s'),
-                    'id_eve' => $request['eve_id']]);
+                    ['titulo' => $request['eve_titulo'],
+                        'fecha_ini' => $request['eve_fechaIn'],
+                        'fecha_fin' => $request['eve_fechaFin'],
+                        'descrip' => $request['eve_descr'],
+                        'imag' => $to_directory,
+                        'act' => $request['eve_activo'],
+                        'ruta' => $request['eve_link'],
+                        'modi' => date('Y/m/d H:i:s'),
+                        'id_eve' => $request['eve_id']]);
+            }else{
+                DB::update('UPDATE TA_EVENTO set
+            title = :titulo ,
+            start = :fecha_ini ,
+            end = :fecha_fin ,
+            description = :descrip ,
+            active = :act,
+            link = :ruta,
+            dateModify = :modi
+            where id = :id_eve',
+                    ['titulo' => $request['eve_titulo'],
+                        'fecha_ini' => $request['eve_fechaIn'],
+                        'fecha_fin' => $request['eve_fechaFin'],
+                        'descrip' => $request['eve_descr'],
+                        'act' => $request['eve_activo'],
+                        'ruta' => $request['eve_link'],
+                        'modi' => date('Y/m/d H:i:s'),
+                        'id_eve' => $request['eve_id']]);
+
+            }
+
+            //dd($request->all());
+
 
             echo "Registro actualizado correctamente" ;
         }
