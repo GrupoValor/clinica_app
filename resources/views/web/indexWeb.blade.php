@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Magazine -->
+    <!-- Icono valor -->
+    <link rel="icon" type="image/png" href="icono/valor.png" />
     <!-- google fonts  -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Metal+Mania' rel='stylesheet' type='text/css'> 
@@ -162,7 +163,7 @@
         
 <div class="bloque-sombra"></div>
     
-
+</article>
     
 </section>
 
