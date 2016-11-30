@@ -101,7 +101,7 @@ class CursoController extends Controller {
 		if (empty($cur_id) || empty($cur_descrip) || empty($cur_codigo) || empty($cln_id)) {
 			Session::flash('msg-err', 'Se deben ingresar todos los datos.');
 		}
-		elseif (!$this->es_entero_positivo($cur_id)) || !$this->es_entero_positivo($cln_id)) {
+		elseif (!$this->es_entero_positivo($cur_id) || !$this->es_entero_positivo($cln_id)) {
 			Session::flash('msg-err', 'El id del curso o de la clinica no es valido.');
 		}
 		else {
