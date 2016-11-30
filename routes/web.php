@@ -83,10 +83,13 @@ Route::get('/ta_alumnos', function () {
 Route::resource('ta_registro', 'PeriodoController', ['only' => ['index', 'store', 'update', 'destroy']]);
 Route::resource('rubrica', 'RubricaController', ['only' => ['index', 'store', 'update', 'destroy']]);
 Route::resource('rubro', 'RubroController', ['only' => ['store', 'update', 'destroy']]);
+//Selección de alumnos
+Route::get('ta_registro_alumno', 'PeriodoAlumnoController@index'); 
 //Registro de notas
-Route::resource('ta_notas', 'PromedioController');
+Route::get('ta_notas', 'PromedioController@index');
 Route::get('ta_notas_per', 'PromedioController@obtenerRubricas');
-Route::resource('ta_notas_res', 'NotasController');
+Route::get('ta_notas_res', 'NotasController@index');
+Route::post('ta_notas_res', 'NotasController@store');
 
 /***************************************
  * MANTENIMIENTOS DE TAREAS ACADEMICAS *

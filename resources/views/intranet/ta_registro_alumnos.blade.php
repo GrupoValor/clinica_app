@@ -3,9 +3,9 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Cl&iacute;nica Jur&iacute;dica | Tareas acad&eacute;micas</title>
+		<title>Cl&iacute;nica Jur&iacute;dica | Tareas acad&eacute;micas | Selecci&oacute;n de alumnos</title>
 
-		<meta name="description" content="Static &amp; Dynamic Tables" />
+		<meta name="description" content="Cl&iacute;nica Jur&iacute;dica" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 		<!-- bootstrap & fontawesome -->
@@ -58,7 +58,7 @@
 								<a href="index">Home</a>
 							</li>
 							<li>Tareas acad&eacute;micas</li>
-							<li class="active">Registro de notas</li>
+							<li class="active">Selecci&oacute;n de alumnos</li>
 						</ul><!-- /.breadcrumb -->
 					</div>
 
@@ -67,72 +67,28 @@
 @include('intranet.ta_registro.mensajes')
 
 						<div class="page-header">
-							<h1>Registro de notas</h1>
+							<h1>Selecci&oacute;n de alumnos</h1>
 						</div><!-- /.page-header -->
-						
-						<p>Aqu&iacute; el profesor puede agregar y modificar las notas de sus alumnos por cada r&uacute;brica, semana, y alumno.</p>
 
+						<p>Aqu&iacute; el profesor puede ver y editar los alumnos que est&aacute;n inscritos en el curso.</p>
+						
 						<div class="row">
 							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<h3 class="header smaller lighter blue">B&uacute;squeda</h3>
 								
-								{!! Form::open(['class' => 'form-horizontal']) !!}
-									<div class="form-group">
-										{!! Form::label('curso', 'Curso:', ['class' => 'col-sm-3 control-label no-padding-right']) !!}
-										<div class="col-sm-8">
-											{!! Form::select('curso', $cursos, 0, ['onchange' => 'cambiarRubricas()']) !!}
-										</div>
-									</div>
-									<div class="form-group">
-										{!! Form::label('ciclo', 'Ciclo:', ['class' => 'col-sm-3 control-label no-padding-right']) !!}
-										<div class="col-sm-8">
-											{!! Form::select('ciclo', $ciclos, 0, ['onchange' => 'cambiarRubricas()']) !!}
-										</div>
-									</div>
-								{!! Form::close() !!}
+@include('intranet.ta_registro.alumnos')
 
-								<!-- BÚSQUEDA -->
-								{!! Form::open(['url' => 'ta_notas_res', 'method' => 'GET', 'class' => "form-horizontal"]) !!}
-									<div class="hidden">
-										{!! Form::text('periodo', $periodo['per_id'], ['id' => 'periodo']) !!}
-									</div>
-									<div class="form-group">
-										{!! Form::label('semana', '# semana:', ['class' => "col-sm-3 control-label no-padding-right"]) !!}
-										<div class="col-sm-6">
-											{!! Form::select('semana', $semanas) !!}
-											&nbsp;de <strong id="num_semanas">{{ $periodo['per_semanas'] }}</strong>
-										</div>
-									</div>
-									<div class="form-group">
-										{!! Form::label('rubrica', 'R&uacute;brica:', ['class' => "col-sm-3 control-label no-padding-right"]) !!}
-										<div class="col-sm-6">
-											{!! Form::select('rubrica', $rubricas) !!}
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="col-sm-9 center">
-											{!! Form::button('<span class="ace-icon fa fa-search icon-on-right bigger-110"></span> Buscar', ['class' => "btn btn-purple btn-sm", 'type' => 'submit']) !!}
-										</div>
-									</div>
-								{!! Form::close() !!}
-								<!-- FIN BÚSQUEDA -->
-								
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
 					</div><!-- /.page-content -->
-
 				</div>
 			</div><!-- /.main-content -->
 
-			@include('intranet.footer')
+		@include('intranet.footer')
 
 			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
 				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 			</a>
-
-
 		</div><!-- /.main-container -->
 
 		<!-- basic scripts -->
@@ -169,13 +125,7 @@
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
-
 			jQuery(function($) {
-
-				
-				
-
-
 				//initiate dataTables plugin
 				
 				
@@ -192,12 +142,6 @@
 						else $(this).tooltip({container: 'body', title: $(this).text()});
 					});
 				}, 500);
-				
-				
-				
-				
-			
-			
 			
 			
 				/////////////////////////////////
@@ -225,7 +169,7 @@
 					if(this.checked) $row.addClass(active_class);
 					else $row.removeClass(active_class);
 				});
-				
+			
 				
 			
 				/********************************/
@@ -247,14 +191,13 @@
 				}
 				
 				
-				/* SPINNERS */
+				/* SPINNER */
 				$('#spinner1').ace_spinner({value:2,min:1,max:20,step:1, btn_up_class:'btn-info' , btn_down_class:'btn-info'})
 				.closest('.ace-spinner')
 				.on('changed.fu.spinbox', function(){
 					//console.log($('#spinner1').val())
 				});
-				$('#spinner2').ace_spinner({value:14,min:1,max:30,step:1, btn_up_class:'btn-info' , btn_down_class:'btn-info'});
-				/* FIN SPINNERS */
+				/* FIN SPINNER */
 				
 				/***************/
 				$('.show-details-btn').on('click', function(e) {
@@ -263,6 +206,23 @@
 					$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
 				});
 				/***************/
+				
+				
+				
+				
+				/**
+				//add horizontal scrollbars to a simple table
+				$('#simple-table').css({'width':'2000px', 'max-width': 'none'}).wrap('<div style="width: 1000px;" />').parent().ace_scroll(
+				  {
+					horizontal: true,
+					styleClass: 'scroll-top scroll-dark scroll-visible',//show the scrollbars on top(default is bottom)
+					size: 2000,
+					mouseWheelLock: true
+				  }
+				).css('padding-top', '12px');
+				*/
+			
+			
 			});
 		</script>
 		<script src="js/rubricas.js"></script>

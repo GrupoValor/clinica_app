@@ -260,35 +260,8 @@
 			
 			
 			});
-
-			//FUNCION PARA EDITAR RUBRICA
-			function rba_editar(rba_id) {
-				$('#rba_edit_id').attr('value', rba_id);
-				$('#rba_edit_nombre').attr('value', $("h4#" + rba_id).text());
-				$('#rba_edit_peso').attr('value', $("#rba_peso_" + rba_id).text());
-			}
-
-			//FUNCION PARA ELIMINAR RUBRICA
-			function rba_eliminar(rba_id) {
-				$('#rba_delete_id').attr('value', rba_id);
-			}
-
-			//FUNCION PARA AÑADIR RUBRO
-			function rbo_anadir(rba_id) {
-				$('#rba_add_id').attr('value', rba_id);
-			}
-
-			//FUNCION PARA EDITAR RUBRO
-			function rbo_editar(rbo_id) {
-				$('#rbo_edit_id').attr('value', rbo_id);
-				$('#rbo_edit_nombre').attr('value', $("#rbo_nombre_" + rbo_id).text());
-				$('#rbo_edit_maxpunt').attr('value', $("#rbo_maxpunt_" + rbo_id).text());
-			}
-
-			//FUNCION PARA ELIMINAR RUBRO
-			function rbo_eliminar(rbo_id) {
-				$('#rbo_delete_id').attr('value', rbo_id);
-			}
 		</script>
+		<!--Scripts para rubricas-->
+		<script src="js/rubricas.js"></script>
 	</body>
 </html>

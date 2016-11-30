@@ -123,8 +123,7 @@ class RubricaController extends Controller {
 					'cln_id' => $usuario['clinica'],
 				]);
 				//Actualizar la suma de pesos
-				TaPeriodo::where('per_id', $request['per_id']);
-				increment('per_sumapesos', $rba_peso);
+				TaPeriodo::where('per_id', $request['per_id'])->increment('per_sumapesos', $rba_peso);
 				//Mostrar el mensaje
 				Session::flash('msg-ok', 'R&uacute;brica guardada con &eacute;xito.');
 			} catch (\Exception $e) {

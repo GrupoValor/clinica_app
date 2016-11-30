@@ -1,5 +1,5 @@
 
-{!! Form::open(['class' => 'form-horizontal']) !!}
+{!! Form::open(['url' => 'ta_notas_res', 'method' => 'POST', 'class' => 'form-horizontal']) !!}
 	<div class="hidden">
 		{!! Form::text('periodo', $periodo) !!}
 		{!! Form::text('semana', $semana) !!}
@@ -25,15 +25,20 @@
 						<td>{{ $alumno['alu_nombre'] }}</td>
 						@foreach ($rubrica['rubros'] as $rbo_key => $rubro)
 						<td>
-							{!! Form::text('rubro[' . $alumno['alu_id'] . '][' . $rubrica['rba_id'] . '][' . $rubro['rbo_id'] . ']', $alumno['notas'][$rba_key]['rubros'][$rbo_key]['nrb_puntaje'],
-								['class' => 'input-mini', 'placeholder' => 'Puntaje', 'onchange' => 'cambiarNota(' . $alumno["alu_id"] . ', ' . $rubrica["rba_id"] . ')']) !!}
+							@if ($editable)
+								{!! Form::text('rubro[' . $alumno['alu_id'] . '][' . $rubrica['rba_id'] . '][' . $rubro['rbo_id'] . ']', $alumno['notas'][$rba_key]['rubros'][$rbo_key]['nrb_puntaje'], ['class' => 'input-mini', 'placeholder' => 'Puntaje', 'onchange' => 'cambiarNota(' . $alumno["alu_id"] . ', ' . $rubrica["rba_id"] . ')']) !!}
+							@else
+								{{ empty($alumno['notas'][$rba_key]['rubros'][$rbo_key]['nrb_puntaje']) ? "Sin nota" : $alumno['notas'][$rba_key]['rubros'][$rbo_key]['nrb_puntaje'] }}
+							@endif
 							&nbsp;/ {{ $rubro['rbo_maxpunt'] }}
 						</td>
 						@endforeach
 						<td>
-							{!! Form::text('rubrica[' . $alumno['alu_id'] . '][' . $rubrica['rba_id'] . ']',
-								$alumno['notas'][$rba_key]['nra_promparcial'],
-								['readonly', 'class' => 'input-mini', 'placeholder' => 'Total']) !!}
+							@if ($editable)
+								{!! Form::text('rubrica[' . $alumno['alu_id'] . '][' . $rubrica['rba_id'] . ']', $alumno['notas'][$rba_key]['nra_promparcial'], ['readonly', 'class' => 'input-mini', 'placeholder' => 'Total']) !!}
+							@else
+								{{ empty($alumno['notas'][$rba_key]['nra_promparcial']) ? 'Sin nota' : $alumno['notas'][$rba_key]['nra_promparcial'] }}
+							@endif
 							&nbsp;/ {{ $rubrica['rba_maxpunt'] }}
 						</td>
 						<td class="center">
@@ -51,11 +56,13 @@
 	</div>
 @endforeach
 	<div class="center">
+		@if ($editable)
 		<button class="btn btn-info" type="submit">
 			<i class="ace-icon fa fa-save bigger-110"></i>
 			Guardar
 		</button>
 		&nbsp;
+		@endif
 		<a href="ta_notas">
 			<button class="btn" type="button">
 				<i class="ace-icon fa fa-undo bigger-110"></i>
