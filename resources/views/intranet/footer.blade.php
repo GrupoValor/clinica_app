@@ -13,3 +13,10 @@
     <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 </a>
 </div><!-- /.main-container -->
+<script>
+	$(document).ready(function() {
+		$("form").validate({
+			lang: 'es'  // or whatever language option you have.
+		});
+	});
+</script>

@@ -383,6 +383,11 @@ partir [&hellip;]" />
                 $('.modal').modal('hide');
             }
         });
+        $(document).ready(function() {
+            $("form").validate({
+                lang: 'es'  // or whatever language option you have.
+            });
+        });
     </script>
     
 <script type='text/javascript' src='../../wp-includes/js/wp-embed.min.js?ver=4.6'></script>
