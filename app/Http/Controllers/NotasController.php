@@ -59,9 +59,8 @@ class NotasController extends Controller {
 		}
 
 		//Obtener la relación de alumnos que llevan el curso
-		$alumnos = TAALUMNO::where('per_id', $periodo['per_id'])->get()->toArray();
+		$alumnos = TAALUMNO::where(['alu_volunt' => 0, 'per_id' => $periodo['per_id']])->get()->toArray();
 		if (empty($alumnos)) {
-			print_r("ALUMNOS VACIOS");
 			Session::flash('msg-err', 'El periodo que esta buscando no tiene registrado ning&uacute;n alumno. Puede pedirle al administrador que incluya alumnado para este periodo.');
 			Log::info('El usuario '. $usuario['userid'] . ' intento entrar al registro de notas pero el periodo que escogio no tiene registrado ningun alumno. Por tanto, se le regreso a la pagina de busqueda del registro de notas.');
 			return redirect()->action('PromedioController@index');
@@ -144,9 +143,10 @@ class NotasController extends Controller {
 		}
 
 		//Verificar si las notas pueden ser editables
+		$editable = null;
 		$ciclo = TaCiclo::find($periodo['cic_id']);
-		if (empty($ciclo)) $editable = null;
-		else $editable = (time($ciclo['cic_fechaini']) <= time($ciclo['cic_fechafin']));
+		if (!empty($ciclo))
+			$editable = (time() <= strtotime($ciclo['cic_fechafin']));
 
 		//Ir a los resultados de la búsqueda del registro de notas
 		Log::info('El usuario ' . $usuario['userid'] . ' ingreso al registro de notas.');

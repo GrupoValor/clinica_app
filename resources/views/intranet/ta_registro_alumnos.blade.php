@@ -3,9 +3,9 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Intranet | Tareas acad&eacute;micas</title>
+		<title>Cl&iacute;nica Jur&iacute;dica | Tareas acad&eacute;micas | Selecci&oacute;n de alumnos</title>
 
-		<meta name="description" content="Static &amp; Dynamic Tables" />
+		<meta name="description" content="Cl&iacute;nica Jur&iacute;dica" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 		<!-- bootstrap & fontawesome -->
@@ -57,72 +57,38 @@
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="index">Home</a>
 							</li>
-@if ($tipo == 'rubricas')
-							<li>
-								<a href="#">Tareas acad&eacute;micas</a>
-							</li>
-							<li class="active">Mantenimiento de r&uacute;bricas</li>
-@elseif ($tipo == 'notas')
-							<li>
-								<a href="#">Tareas acad&eacute;micas</a>
-							</li>
-							<li class="active">Registro de notas</li>
-@else
-							<li class="active">Tareas acad&eacute;micas</li>
-@endif
+							<li>Tareas acad&eacute;micas</li>
+							<li class="active">Selecci&oacute;n de alumnos</li>
 						</ul><!-- /.breadcrumb -->
 					</div>
 
 					<div class="page-content">
+
+@include('intranet.ta_registro.mensajes')
+
 						<div class="page-header">
-@if ($tipo == 'rubricas')
-							<h1>Mantenimiento de r&uacute;bricas</h1>
-@elseif ($tipo == 'notas')
-							<h1>Registro de notas</h1>
-@else
-							<h1>Tareas acad&eacute;micas</h1>
-@endif
+							<h1>Selecci&oacute;n de alumnos</h1>
 						</div><!-- /.page-header -->
+
+						<p>Aqu&iacute; el profesor puede ver y editar los alumnos que est&aacute;n inscritos en el curso.</p>
 						
-@if ($tipo == 'rubricas')
-						<p>Aqu&iacute; el profesor puede ver y editar las r&uacute;bricas que usar&aacute; para registrar el avance de sus alumnos en el curso.</p>
-@elseif ($tipo == 'notas')
-						<p>Aqu&iacute; el profesor puede agregar y modificar las notas de sus alumnos por cada r&uacute;brica, semana, y alumno.</p>
-@endif
 						<div class="row">
 							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<h3 class="header smaller lighter blue">B&uacute;squeda</h3>
-								<p>No se encontr&oacute; ning&uacute;n {{ $faltante }} que pertenezca a la cl&iacute;nica donde est&aacute; laborando.</p>
-@if ($tipo == 'rubricas')
-								<p>Por lo tanto, no puede acceder al mantenimiento de r&uacute;bricas.</p>
-								<p>Solicite al administrador la creaci&oacute;n de un {{ $faltante }} para que pueda registrar las r&uacute;bricas que usar&aacute;.</p>
-@elseif ($tipo == 'notas')
-								<p>Por lo tanto, no puede acceder al registro de notas.</p>
-								<p>Solicite al administrador la creaci&oacute;n de un {{ $faltante }} para que pueda registrar las notas de sus alumnos.</p>
-@endif
-								<br />
-								<div class="center">
-									<a href="javascript:history.back()" class="btn btn-inverse">
-										<i class="ace-icon fa fa-arrow-left"></i>
-										Regresar
-									</a>
-								</div>	
+								
+@include('intranet.ta_registro.alumnos')
+
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
 					</div><!-- /.page-content -->
-
 				</div>
 			</div><!-- /.main-content -->
 
-			@include('intranet.footer')
+		@include('intranet.footer')
 
 			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
 				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 			</a>
-
-
 		</div><!-- /.main-container -->
 
 		<!-- basic scripts -->
@@ -159,10 +125,7 @@
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
-
-
 			jQuery(function($) {
-
 				//initiate dataTables plugin
 				
 				
@@ -179,12 +142,6 @@
 						else $(this).tooltip({container: 'body', title: $(this).text()});
 					});
 				}, 500);
-				
-				
-				
-				
-			
-			
 			
 			
 				/////////////////////////////////
@@ -212,7 +169,7 @@
 					if(this.checked) $row.addClass(active_class);
 					else $row.removeClass(active_class);
 				});
-				
+			
 				
 			
 				/********************************/
@@ -233,8 +190,41 @@
 					return 'left';
 				}
 				
+				
+				/* SPINNER */
+				$('#spinner1').ace_spinner({value:2,min:1,max:20,step:1, btn_up_class:'btn-info' , btn_down_class:'btn-info'})
+				.closest('.ace-spinner')
+				.on('changed.fu.spinbox', function(){
+					//console.log($('#spinner1').val())
+				});
+				/* FIN SPINNER */
+				
+				/***************/
+				$('.show-details-btn').on('click', function(e) {
+					e.preventDefault();
+					$(this).closest('tr').next().toggleClass('open');
+					$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
+				});
+				/***************/
+				
+				
+				
+				
+				/**
+				//add horizontal scrollbars to a simple table
+				$('#simple-table').css({'width':'2000px', 'max-width': 'none'}).wrap('<div style="width: 1000px;" />').parent().ace_scroll(
+				  {
+					horizontal: true,
+					styleClass: 'scroll-top scroll-dark scroll-visible',//show the scrollbars on top(default is bottom)
+					size: 2000,
+					mouseWheelLock: true
+				  }
+				).css('padding-top', '12px');
+				*/
 			
-			})
+			
+			});
 		</script>
+		<script src="js/rubricas.js"></script>
 	</body>
 </html>

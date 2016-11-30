@@ -28,7 +28,7 @@ class ComentarioController extends Controller {
 			Log::info('Se intento entrar a la vista de comentarios del profesor sin haber iniciado sesion. Se le mando a la pagina de inicio de sesion de la intranet.');
 			return view('login.login');
 		}
-		if ($usuario['rol'] != 1 || ) {
+		if ($usuario['rol'] != 1 && $usuario['rol'] != 4 && $usuario['rol'] != 5) {
 			Log::warning('El usuario con id ' . $usuario['userid'] . ' intento entrar a la vista de comentarios del profesor sin tener los permisos requeridos. Se le mando una respuesta HTTP 403.');
 			return abort(403);
 		}
