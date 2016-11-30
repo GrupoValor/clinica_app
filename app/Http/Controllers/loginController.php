@@ -52,7 +52,7 @@ class loginController extends Controller
   
 
     $log_type ="Inicio session ";
-    $log =" Usuario : ";
+    $log = "IP :".$request->ip()." - Usuario : ";
     $log .= $user ;
    
     if (!isset($password))
