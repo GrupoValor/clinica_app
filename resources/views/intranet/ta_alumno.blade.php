@@ -72,7 +72,7 @@
                         <div class="col-xs-12">
                             <!-- PAGE CONTENT BEGINS -->
 
-
+                            @if(count(nombresPesosRubrica)>0)
                             <h3 class="header smaller lighter blue" id="comentario_rubrica">{{$nombresPesosRubrica[0]}} ({{(int)$nombresPesosRubrica[1]*10 }}%)</h3>
 
                             <div class="row">
@@ -184,7 +184,7 @@
 
                                 </div><!-- /.span -->
                             </div><!-- /.row -->
-
+                            @endif
                             @if(count($nombresPesosRubrica)>3)
                             <h3 class="header smaller lighter blue">{{$nombresPesosRubrica[2]}} ({{(int)$nombresPesosRubrica[3]*10 }}%)</h3>
 
