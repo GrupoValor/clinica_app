@@ -141,20 +141,6 @@
                 '        <b class="arrow"></b>'+
                 '        <ul class="submenu">'+
                 '            <li class="">'+
-                '                <a href="reporte1.html">'+
-                '                    <i class="menu-icon fa fa-caret-right"></i>'+
-                '                    Usuarios'+
-                '                </a>'+
-                '                <b class="arrow"></b>'+
-                '            </li>'+
-                '            <li class="">'+
-                '                <a href="reporte2.html">'+
-                '                    <i class="menu-icon fa fa-caret-right"></i>'+
-                '                    Casos'+
-                '                </a>'+
-                '                <b class="arrow"></b>'+
-                '            </li>'+
-                '            <li class="">'+
                 '                <a href="log">'+
                 '                    <i class="menu-icon fa fa-caret-right"></i>'+
                 '                    Inicio Sesion'+
