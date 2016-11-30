@@ -66,6 +66,26 @@
                 '    </li>';
     }
 
+    function addTareasjp(){
+        return '<li id="litareas"><!-- Tareas académicas -->'+
+                '        <a href="#" class="dropdown-toggle">'+
+                '            <i class="menu-icon fa fa-list-alt"></i>'+
+                '            <span class="menu-text"> Tareas académicas </span>'+
+                '            <b class="arrow fa fa-angle-down"></b>'+
+                '        </a>'+
+                '        <b class="arrow"></b>'+
+                '        <ul class="submenu">'+
+                '            <li id="linotas" class="">'+
+                '                <a href="ta_notas">'+
+                '                    <i class="menu-icon fa fa-caret-right"></i>'+
+                '                    Registro de notas'+
+                '                </a>'+
+                '                <b class="arrow"></b>'+
+                '            </li>'+
+                '        </ul>'+
+                '    </li>';
+    }
+
     function addTareasAumno(){
         return '<li id="litareas"><!-- Tareas académicas -->'+
                 '        <a href="#" class="dropdown-toggle">'+
@@ -234,11 +254,24 @@
                         }
 
                         // Docente y JP
-                        if(data.rol=='4' || data.rol=='5'){
+                        if(data.rol=='4'){
                             $('#list_of_menu').html(
                             addPrincipal()+
                             addCasos()+
                             addTareas()+
+                            addDirectorio()+
+                            addMapa()+
+                            addMantenimiento()+
+                            addReportes()
+                            )
+                          
+                        }
+
+                        if( data.rol=='5'){
+                            $('#list_of_menu').html(
+                            addPrincipal()+
+                            addCasos()+
+                            addTareasjp()+
                             addDirectorio()+
                             addMapa()+
                             addMantenimiento()+
