@@ -25,15 +25,20 @@
 						<td>{{ $alumno['alu_nombre'] }}</td>
 						@foreach ($rubrica['rubros'] as $rbo_key => $rubro)
 						<td>
-							{!! Form::text('rubro[' . $alumno['alu_id'] . '][' . $rubrica['rba_id'] . '][' . $rubro['rbo_id'] . ']', $alumno['notas'][$rba_key]['rubros'][$rbo_key]['nrb_puntaje'],
-								['class' => 'input-mini', 'placeholder' => 'Puntaje', 'onchange' => 'cambiarNota(' . $alumno["alu_id"] . ', ' . $rubrica["rba_id"] . ')']) !!}
+							@if ($editable)
+								{!! Form::text('rubro[' . $alumno['alu_id'] . '][' . $rubrica['rba_id'] . '][' . $rubro['rbo_id'] . ']', $alumno['notas'][$rba_key]['rubros'][$rbo_key]['nrb_puntaje'], ['class' => 'input-mini', 'placeholder' => 'Puntaje', 'onchange' => 'cambiarNota(' . $alumno["alu_id"] . ', ' . $rubrica["rba_id"] . ')']) !!}
+							@else
+								{{ $alumno['notas'][$rba_key]['rubros'][$rbo_key]['nrb_puntaje'] }}
+							@endif
 							&nbsp;/ {{ $rubro['rbo_maxpunt'] }}
 						</td>
 						@endforeach
 						<td>
-							{!! Form::text('rubrica[' . $alumno['alu_id'] . '][' . $rubrica['rba_id'] . ']',
-								$alumno['notas'][$rba_key]['nra_promparcial'],
-								['readonly', 'class' => 'input-mini', 'placeholder' => 'Total']) !!}
+							@if ($editable)
+								{!! Form::text('rubrica[' . $alumno['alu_id'] . '][' . $rubrica['rba_id'] . ']', $alumno['notas'][$rba_key]['nra_promparcial'], ['readonly', 'class' => 'input-mini', 'placeholder' => 'Total']) !!}
+							@else
+								{{ $alumno['notas'][$rba_key]['nra_promparcial'] }}
+							@endif
 							&nbsp;/ {{ $rubrica['rba_maxpunt'] }}
 						</td>
 						<td class="center">

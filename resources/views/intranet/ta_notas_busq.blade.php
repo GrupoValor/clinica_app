@@ -93,7 +93,7 @@
 								{!! Form::close() !!}
 
 								<!-- BÚSQUEDA -->
-								{!! Form::open(['route' => 'ta_notas_res.index', 'method' => 'GET', 'class' => "form-horizontal"]) !!}
+								{!! Form::open(['url' => 'ta_notas_res', 'method' => 'GET', 'class' => "form-horizontal"]) !!}
 									<div class="hidden">
 										{!! Form::text('periodo', $periodo['per_id'], ['id' => 'periodo']) !!}
 									</div>
@@ -264,37 +264,7 @@
 				});
 				/***************/
 			});
-			
-			//FUNCION PARA CAMBIAR RUBRICAS (SELECT DINAMICO)
-			function cambiarRubricas() {
-				var location = window.location.pathname;
-				var directoryPath = location.substring(0, location.lastIndexOf("/")+1);
-
-				$.get(directoryPath + "ta_notas_per?curso=" + $("#curso").val() + "&ciclo=" + $("#ciclo").val() + "",
-					function(response, state)
-					{
-						//Cambiar valor del periodo (oculto)
-						$('#periodo').attr('value', response[0].per_id);
-
-						//Cambiar opciones del select de las semanas
-						$("#semana").empty();
-						if (response[0].per_semanas == 0) {
-							$('#semana').append("<option value='" + 0 + "'>No existe</option>");
-						}
-						for (i = 1; i <= response[0].per_semanas; i++) {
-							$('#semana').append("<option value='" + i + "'>" + i + "</option>");
-						}
-						$('#num_semanas').text(response[0].per_semanas);
-
-						//Cambiar opciones del select de las rubricas
-						$("#rubrica").empty();
-						$.each(response[1], function(key, value) {
-							$("#rubrica").append("<option value='" + key + "'>" + value + "</option>");
-						});
-					}
-				);
-			}
-
 		</script>
+		<script src="js/rubricas.js"></script>
 	</body>
 </html>

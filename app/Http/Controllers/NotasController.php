@@ -59,7 +59,7 @@ class NotasController extends Controller {
 		}
 
 		//Obtener la relación de alumnos que llevan el curso
-			$alumnos = TAALUMNO::where('per_id', $periodo['per_id'])->get()->toArray();
+		$alumnos = TAALUMNO::where('per_id', $periodo['per_id'])->get()->toArray();
 		if (empty($alumnos)) {
 			print_r("ALUMNOS VACIOS");
 			Session::flash('msg-err', 'El periodo que esta buscando no tiene registrado ning&uacute;n alumno. Puede pedirle al administrador que incluya alumnado para este periodo.');
@@ -143,9 +143,14 @@ class NotasController extends Controller {
 			$alumno['notas'] = $alumno_rubricas;
 		}
 
+		//Verificar si las notas pueden ser editables
+		$ciclo = TaCiclo::find($periodo['cic_id']);
+		if (empty($ciclo)) $editable = null;
+		else $editable = (time($ciclo['cic_fechaini']) <= time($ciclo['cic_fechafin']));
+
 		//Ir a los resultados de la búsqueda del registro de notas
 		Log::info('El usuario ' . $usuario['userid'] . ' ingreso al registro de notas.');
-		return view('intranet.ta_notas_res', ['rubricas' => $rubricas, 'alumnos' => $alumnos, 'periodo' => $periodo['per_id'], 'semana' => $numSemana]);
+		return view('intranet.ta_notas_res', ['rubricas' => $rubricas, 'alumnos' => $alumnos, 'periodo' => $periodo['per_id'], 'semana' => $numSemana, 'editable' => $editable]);
 	}
 
 	/************************************** GUARDAR REGISTRO DE NOTAS **************************************/
