@@ -19,6 +19,11 @@
 			lang: 'es'  // or whatever language option you have.
 		});
 	});
+	$(document).keydown(function (e) {
+		if (e.keyCode == 27) {
+			$('.modal').modal('hide');
+		}
+	});
 </script>
 <script src="assets/js/html5shiv.min.js"></script>
 <script src="assets/js/respond.min.js"></script>
