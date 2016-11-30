@@ -14,8 +14,8 @@ class loginController extends Controller
 	
 	public function ImpressionCount(Request $request)
 	{
-		$input['ip'] = $request->ip();
-		var_dump($input);
+		echo $request->ip();
+		
 	}
 
 	public function session(Request $request){
