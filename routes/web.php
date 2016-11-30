@@ -21,6 +21,8 @@ Route::get('/login', function () {
     return view('login/login');
 });
 
+Route::get('/ip', 'loginController@ImpressionCount');
+
 Route::post('/login', 'loginController@login');
 Route::get('/session', 'loginController@session');
 Route::get('/user', 'loginController@user');
