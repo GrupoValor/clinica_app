@@ -2,6 +2,7 @@ var estado_alerta;
 var id_alerta;
 var marcadores_bd=[];
 var mapa = null;
+var marca_seleccionada;
 
 function initMap(){
     var marcadores_nuevos = [];
@@ -131,6 +132,7 @@ function listar(){
                 };
                 google.maps.event.addListener(marca, 'click', function(){
                     if((marca.estado !== 'vencida') && (marca.estado !== 'finalizada')) {
+                        marca_seleccionada = marca.idMarcador;
                         var infowindow = new google.maps.InfoWindow({
                             content: '<div style="font-size: 12px"> <h6>' + marca.titulo + '</h6>' +
                             '<h7>Dirección:</h7>'+
@@ -156,32 +158,29 @@ function listar(){
     }
 
 
+
 $(document).on('ready',function(){
         //initMap();
 
-        $('#botonSubmit').on("click", function(){ //del modal
-            estado_alerta = "espera";
-            var color_marca;
+        $("form").submit(function(event) {
+            event.preventDefault();
+            var f = $("#form_atender");
+            f[0].reset();
+            $('#modal_atender').modal('hide');
+            $('#modal-atender-respuesta').modal('show');
+        })
 
-            switch(estado_alerta){
-                case "registrada":
-                    color_marca = "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
-                    break;
-                case "espera":
-                    color_marca = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
-                    break;
-                case "finalizada":
-                    color_marca = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
-                    break;
-                case "vencida":
-                    color_marca = "http://maps.google.com/mapfiles/ms/icons/purple-dot.png";
-                    break;
-            }
+
+        $('#botonSubmit').on("click", function(){ //del modal
+
+            estado_alerta = "espera";
+            var color_marca = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png";
 
             $.ajax({
                 url:"ajax/actualiza-estado-alerta.ajax.php",
+                type: "GET",
                 data: {
-                    id_alerta: id_alerta,
+                    id_alerta: marca_seleccionada,
                     estado: estado_alerta
                 },
                 success:function(data){
@@ -189,6 +188,26 @@ $(document).on('ready',function(){
                     listar();
                 }
             });
+
+            var f = $("#form_atender");
+
+            $.ajax({
+                url:"ajax/actualiza-alerta-atencion.ajax.php",
+                type: "GET",
+                data: {
+                    id_alerta: marca_seleccionada,
+                    nombre: f.find("input[id='nombres']").val(),
+                    correo: f.find("input[id='correo']").val(),
+                    telefono: f.find("input[id='telef']").val(),
+                    mensaje: f.find("textarea[id='descripcion']").val(),
+                },
+                success:function(data){
+                }
+            });
+
+
+
+
         });
 
     });

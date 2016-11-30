@@ -132,7 +132,19 @@ function initMap(){
         $('#modal-cambia-estado').modal();
     });
 
-
+    $('#btn-ver-reacciones').on("click",function(){
+        $('#modal-listar-atenciones').modal('show');
+        $.ajax({
+             url:"ajax/lista-intenciones-alerta.ajax.php",
+             method:"GET",
+             data:{'ale_id': id_alerta},
+             dataType:"text",
+             success:function(data)
+             {
+                  $('#resultados-listar-intenciones-alerta').html(data);
+             }
+        });
+    });
 
 }
 
@@ -154,7 +166,10 @@ function listar(){
                     titulo: item.ale_titulo,
                     cx: item.ale_cx,
                     cy: item.ale_cy,
-                    estado: item.ale_estado
+                    estado: item.ale_estado,
+                    direccion: item.ale_direccion,
+                    descripcion: item.ale_descrip
+
                 });
                 var color_marca;
                 switch(marca.estado){
@@ -179,6 +194,8 @@ function listar(){
                     formulario_edicion.find("input[name='titulo']").val(marca.titulo);
                     formulario_edicion.find("input[name='cx']").val(marca.cx);
                     formulario_edicion.find("input[name='cy']").val(marca.cy);
+                    formulario_edicion.find("input[name='direccion']").val(marca.direccion);
+                    formulario_edicion.find("textarea[name='cy']").val(marca.descripcion);
                     estado_alerta = marca.estado;
                     id_alerta = marca.idMarcador;
                 });
@@ -234,6 +251,8 @@ $(document).on('ready',function(){
             }
         });
     });
+
+
 
 });
 

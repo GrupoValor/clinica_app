@@ -5,16 +5,16 @@
     <link rel="icon" type="image/png" href="icono/valor.png" />
     <!-- google fonts  -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Metal+Mania' rel='stylesheet' type='text/css'> 
+    <link href='http://fonts.googleapis.com/css?family=Metal+Mania' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
     {!! Html::style('css/web_eventos/font-awesome.min.css') !!}
-    
+
     <!-- Magazine -->
-    
-    
+
+
     <!-- Flex Template -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-    
+
 	{!! Html::style('css/web_eventos/bootstrap.min.css') !!}
 	{!! Html::style('css/web_eventos/animate.css') !!}
 	{!! Html::style('css/web_eventos/templatemo_misc.css') !!}
@@ -30,40 +30,40 @@
 	{!! Html::style('css/web_eventos/bootstrap.css') !!}
 	{!! Html::style('css/web_eventos/style.css') !!}
 	{!! Html::style('css/web_eventos/index.css') !!}
-	
 
-    
-    
+
+
+
 <link rel="canonical" href="inicio" />
 <meta property="og:locale" content="es_ES" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Clinica juridica  - Facultad de Derecho" />
-    
-    
-    
-<meta property="og:description" content="La formación en Derecho en la PUCP fomenta la conciliación entre personas e instituciones a través de la aplicación de las normas legales y teniendo en 
 
-cuenta criterios como la justicia y la equidad. El egresado de la Facultad dispondrá de las herramientas para iniciarse profesionalmente y desempeñarse con integridad y responsabilidad social, a 
+
+
+<meta property="og:description" content="La formación en Derecho en la PUCP fomenta la conciliación entre personas e instituciones a través de la aplicación de las normas legales y teniendo en
+
+cuenta criterios como la justicia y la equidad. El egresado de la Facultad dispondrá de las herramientas para iniciarse profesionalmente y desempeñarse con integridad y responsabilidad social, a
 
 partir &hellip;" />
 <meta property="og:url" content="http://www.pucp.edu.pe/carrera/derecho/" />
 <meta property="og:site_name" content="PUCP | Pontificia Universidad Católica del Perú" />
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:description" content="La formación en Derecho en la PUCP fomenta la conciliación entre personas e instituciones a través de la aplicación de las normas legales y teniendo en 
+<meta name="twitter:description" content="La formación en Derecho en la PUCP fomenta la conciliación entre personas e instituciones a través de la aplicación de las normas legales y teniendo en
 
-cuenta criterios como la justicia y la equidad. El egresado de la Facultad dispondrá de las herramientas para iniciarse profesionalmente y desempeñarse con integridad y responsabilidad social, a 
+cuenta criterios como la justicia y la equidad. El egresado de la Facultad dispondrá de las herramientas para iniciarse profesionalmente y desempeñarse con integridad y responsabilidad social, a
 
 partir [&hellip;]" />
 <meta name="twitter:title" content="Derecho - PUCP | Pontificia Universidad Católica del Perú" />
 <!-- / Yoast SEO plugin. -->
 
-    
 
 
 
 
 
-   
+
+
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="http://www.pucp.edu.pe/wp-content/themes/home-theme/images/favicons/mstile-144x144.png">
 
@@ -134,7 +134,7 @@ partir [&hellip;]" />
     </style>
 
 </head>
-    
+
 <body class="single single-carrera postid-1478">
 
 <header>
@@ -149,7 +149,7 @@ partir [&hellip;]" />
                         <!--<a target="_blank" href="http://intranet.pucp.edu.pe">Intranet</a>-->
                     </li>
 
-                  </ul>	
+                  </ul>
                  </div>
                 <div class="col-sm-12 menu-acce top-mov text-right visible-xs">
                     <a target="_blank" aria-expanded="true"  role="button" class="dropdown-toggle" href="../login"> Iniciar Sesión   </a>
@@ -170,12 +170,12 @@ partir [&hellip;]" />
 						<a href="inicio" class="logo-pucp" alt="Clínica Juridica " title="Pontificia Universidad Católica del Perú"></a>
 					</h1>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>
 
-	
+
 	<div class="wrapper-menu-prin">
 		<div class="container">
 			<div class="row">
@@ -196,25 +196,25 @@ partir [&hellip;]" />
                                     </span>
                                 </form>
                                 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-                                
+
 							</div>
 						</div>
 				<div class="navbar-collapse collapse navbar-responsive-collapse">
 				<ul class="nav navbar-nav">
                     <li class="dos-lineas ">
                         <a href="inicio">Inicio</a>
-                    </li>    
+                    </li>
 					<li class="dos-lineas">
                         <a href="nosotros">Nosotros</a>
                     </li>
                     <li class="dos-lineas ">
                     	<a href="noticias">Noticias</a>
                     </li>
-                    
+
                     <li class="dos-lineas ">
                         <a href="eventos">Eventos</a>
                     </li>
-                    <li class="dos-lineas">  
+                    <li class="dos-lineas">
                         <a href="mapaweb"> Mapa</a>
                     </li>
 
@@ -226,7 +226,7 @@ partir [&hellip;]" />
 		</div>
 	</div>
 
-    
+
 </header>
 
 
@@ -240,13 +240,13 @@ partir [&hellip;]" />
 			</div>
 		</div>
 	</div>
-  
+
    <article>
 		{!! HTML::script('css/web_eventos/js/jquery.min.js') !!}
 		{!! HTML::script('css/web_eventos/js/jquery.carouFredSel-6.2.0.js') !!}
         <!--script type="text/javascript" src="css/wp-content/themes/home-theme/jquery.min.js"></script>
         <script type="text/javascript" src="css/wp-content/themes/home-theme/assets/carouFredSel/jquery.carouFredSel-6.2.0.js"></script-->
-      
+
        <!--<div class="bloque-sombra"></div>-->
         <div class="bloque-sombra"></div>
         <div class="wrapper-cuerpo-interna direc-unid alt50">
@@ -268,13 +268,13 @@ partir [&hellip;]" />
                         <div id="mapa" style="width:100%;height:500px"></div>
                         <div id="legend"><h3>Leyenda</h3></div>
                         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOwKYLMGElTWMO7Qf_QEGgNVgOMp2Ucgs&libraries=places&callback=initMap"></script>
-                    </div>  
+                    </div>
                 </div>
             </div>
         </div>
-	   
-    </article>    
-	
+
+    </article>
+
 
 </section>
 
@@ -335,6 +335,27 @@ partir [&hellip;]" />
 </form>
 
 
+<!-- Modal for responding attending alert -->
+
+<div class="modal fade bs-modal-sm" tabindex="-1" id="modal-atender-respuesta" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm" role="document" style="width: 500px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Gracias!</h4>
+      </div>
+      <div class="modal-body">
+        <h5>Has manifestado tu intención de atender esta alerta de pedido de documento, nuestro equipo se comunicará contigo en breve...</h6>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" id="boton-cambia-estado" data-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 
 <footer>
 
@@ -356,7 +377,7 @@ partir [&hellip;]" />
 	{!! HTML::script('css/web_eventos/js/jquery.matchHeight-min.js') !!}
 	{!! HTML::script('css/web_eventos/js/masonry.pkgd.min.js') !!}
 	{!! HTML::script('css/web_eventos/js/jquery-home.js') !!}
-	
+
     <!--script src="css/wp-content/themes/home-theme/bootstrap.min.js"></script>
     <script src="js/index.js"></script>
     <script src="css/wp-content/themes/home-theme/jquery.easing.min.js"></script>
@@ -365,12 +386,12 @@ partir [&hellip;]" />
     <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
     <script type="text/javascript" src="http://www.youtube.com/iframe_api"></script>
     <!--script src="css/wp-content/themes/home-theme/jquery-home.js"></script-->
-	
+
     <script type="text/javascript">
         jQuery(document).ready(function($) {
-            
-            
-            
+
+
+
                         $('div.submenu.submenu-8 div.col-sm-6.submenu-bloque div.row div.col-md-6.submenu-bloque').matchHeight();
             $('#carousel-pricipal').on('slide.bs.carousel', function (e) {
                 var nextH = $(e.relatedTarget).height();
@@ -384,7 +405,7 @@ partir [&hellip;]" />
             }
         });
     </script>
-    
+
 <script type='text/javascript' src='../../wp-includes/js/wp-embed.min.js?ver=4.6'></script>
 </body>
 </html>

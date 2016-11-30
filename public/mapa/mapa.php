@@ -107,6 +107,18 @@
                                                         <td>Coordenada Y </td>
                                                         <td><input type="text" class="form-control" readonly name="cy" autocomplete="off" /></td>
                                                     </tr>
+                                                    <tr>
+                                                        <td>Dirección </td>
+                                                        <td><input type="text" class="form-control" readonly name="direccion" autocomplete="off" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Descripción</td>
+                                                        <td><textarea class="form-control" rows="3" readonly name="descripcion" autocomplete="off" required></textarea></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Reacciones</td>
+                                                        <td><button type="button" class="btn btn-info btn-sm" id="btn-ver-reacciones" >Ver</button></td>
+                                                    </tr>
                                                     <tr><td>&nbsp;</td></tr>
                                                     <tr>
                                                         <td></td>
@@ -134,10 +146,10 @@
           </div>
           <div class="modal-body">
             <form id="lista_estados">
-              <input type="radio" name="radio" value="registrada" class="hide"><!--Registrada<br>-->
+              <input type="radio" name="radio" value="registrada">Registrada<br>
               <input type="radio" name="radio" value="espera">En espera<br>
               <input type="radio" name="radio" value="finalizada">Finalizada<br>
-              <input type="radio" name="radio" value="vencida">Vencida<br>
+              <!--<input type="radio" name="radio" value="vencida">Vencida<br>-->
             </form>
           </div>
           <div class="modal-footer">
@@ -147,4 +159,23 @@
         </div>
       </div>
 </div>
+
+<div class="modal fade bs-modal-lg" tabindex="-1" id="modal-listar-atenciones" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Intenciones de atención:</h4>
+      </div>
+      <div class="modal-body">
+          <div id="resultados-listar-intenciones-alerta"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 </html>
