@@ -12,6 +12,11 @@ use App\Models\Encrypter;
 class loginController extends Controller
 {
 	
+	public function ImpressionCount(Request $request)
+	{
+		echo $request->ip();
+		
+	}
 
 	public function session(Request $request){
 		
@@ -23,6 +28,7 @@ class loginController extends Controller
 
 	}
 
+	
 	public function user(Request $request){
 
 		$data = $request->session()->get('user');
@@ -43,8 +49,10 @@ class loginController extends Controller
     $user = $request['user'];
     $password = $request['pass'];
 
+  
+
     $log_type ="Inicio session ";
-    $log ="Usuario : ";
+    $log = "IP :".$request->ip()." - Usuario : ";
     $log .= $user ;
    
     if (!isset($password))
