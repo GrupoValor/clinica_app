@@ -1,9 +1,13 @@
 
 <?php
+if(!isset($_COOKIE['current_user']) || $_COOKIE['current_user'] == "0")
+  return 0;
 //Conexion a la BD
 require_once '../php-includes/connect.inc.php';
 require_once 'classes/classes.php';
 $display = new Display($db);
+
+
 ?>
 
 <!DOCTYPE html>

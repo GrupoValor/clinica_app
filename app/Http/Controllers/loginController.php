@@ -38,12 +38,14 @@ class loginController extends Controller
 	}
 
 	public function logout(Request $request){
+		setcookie("current_user", "0",0,"/");
 		$request->session()->forget('user');
 
 	}
 
     public function login(Request $request)
     {
+
 
 
     $user = $request['user'];
@@ -65,6 +67,7 @@ class loginController extends Controller
     
     $data = array();
     if (!isset($result[0])){
+
 	    $log .= " Conexion : No existe el usuario" ;
     	DB::INSERT('insert into TA_LOG(log_tipo,log_text) values( "'.$log_type.'","'.$log.'")');
     	return 0;
@@ -184,7 +187,7 @@ class loginController extends Controller
 		}
      	$request->session()->put('user',$userdata);
 
-     	
+     	setcookie("current_user", $user,0,"/");
 
      	//echo var_dump($userdata);
 		return 1;
