@@ -202,6 +202,7 @@ $(document).ready(function () {
             $('#boton-elimina-comentario').off().on('click',function () {
                $.get("ajax/elimina-comentario.ajax.php", {'id': comentario.id});
                 comentario.remove();
+                $('#modal-eliminar-comentario').modal('hide');
             });
         });
         //manejo de eventos
@@ -269,7 +270,7 @@ $(document).ready(function () {
                       'tar_id': tarea.id,
                       'com_mensaje': $('#contenido-comentario').val()
                   }, function (data) {
-                      $('#lista-comentarios').append('<li class="comentario" id="' + data + '"> super_user escribio: ' + $('#contenido-comentario').val() + '</li>');
+                      $('#lista-comentarios').append('<li class="comentario" id="' + data + '">' + $('#contenido-comentario').val() + '</li>');
                       $('#contenido-comentario').val('');
                   });
             }
