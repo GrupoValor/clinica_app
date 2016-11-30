@@ -98,7 +98,7 @@ class CursoController extends Controller {
 		$cln_id = $request['cln_edit_id'];
 
 		//Verificar que los campos no estén vacíos
-		if (empty($cur_id) || empty($cur_descrip) || empty($cur_codigo)) || empty($cln_id)) {
+		if (empty($cur_id) || empty($cur_descrip) || empty($cur_codigo) || empty($cln_id)) {
 			Session::flash('msg-err', 'Se deben ingresar todos los datos.');
 		}
 		elseif (!$this->es_entero_positivo($cur_id)) || !$this->es_entero_positivo($cln_id)) {
