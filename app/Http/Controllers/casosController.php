@@ -66,6 +66,27 @@ class casosController extends Controller
         echo json_encode($data);
     }
 
+
+      public function getalertas(Request $request){
+        $data = $request->session()->get('user');
+
+        $casos =DB::select('select count(*) as nincide, TA_ALERTA.cas_id, TA_CASO.cas_objact from TA_ALERTA join TA_ALERTA_ATENCION on TA_ALERTA.ale_id = TA_ALERTA_ATENCION.ale_id  join TA_CASO on TA_CASO.cas_id = TA_ALERTA.cas_id join TA_USUARIO_CASO on TA_USUARIO_CASO.cas_id = TA_ALERTA.cas_id where ale_estado = "espera" and TA_USUARIO_CASO.usu_id ="'.$data['userid'].'" group by TA_ALERTA.cas_id ,  TA_CASO.cas_objact');
+
+
+
+        $data = array();
+
+        foreach ($casos as $caso) {
+            array_push($data,json_decode(json_encode($caso), true));
+            //echo var_dump($data);
+        }
+       
+        
+        echo json_encode($data);
+    }
+
+
+
     public function index()
     {
       

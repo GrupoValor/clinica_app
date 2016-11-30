@@ -60,6 +60,7 @@ Route::get('/casos_busqueda', function () {
 
 Route::get('/miscasos', 'casosController@miscasos');
 Route::get('/mispendientes', 'casosController@getpendientes');
+Route::get('/misalertas', 'casosController@getalertas');
 
 //perfil
 Route::get('/perfil', function (Request $request) {

@@ -296,6 +296,7 @@
     } 
 
 
+var num_notifieds = 0;
 
 $.ajax({
                    
@@ -305,10 +306,8 @@ $.ajax({
                         
                         
                         var data = jQuery.parseJSON(result);
-             
-                        $("#count_notify").html(data.length);
-                        $("#num_notify").html('<i class="ace-icon fa fa-exclamation-triangle"></i>'+data.length+
-                                    '  Notifications');
+                        num_notifieds += data.length;
+                      
        
                         var column ='<span class="pull-left">'+
                                                                 '<i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>'+
@@ -320,6 +319,55 @@ $.ajax({
                         $("#tareas_notify").html(column);
 
                         
+                       // $("#tbodycontent").html (rows);
+                    }
+                        
+                            
+            
+                        //alert(Response);
+                         
+            
+                });
+
+function mapa_onclick(id){
+            window.open("mapa/mapa.php?cas_id="+id, "Detalle del Caso", "directories=no, location=no, menubar=no, scrollbars=no, statusbar=no, tittlebar=no, width=1200, height=700,resizable=no,toolbar=no,dependent");
+        }
+
+$.ajax({
+                   
+                    type: "GET",
+                    url:'misalertas',
+                    success: function(result){
+                        
+                        
+                        var data = jQuery.parseJSON(result);
+             
+                        num_notifieds += data.length;
+                       
+
+                        var columns = $("#total_notifies").html();
+                        for(var i = 0; i<data.length ;i++)
+                        {
+                        columns += ' <li>'+   
+                         '                   <a  href="" onclick="mapa_onclick('+ data[i].cas_id+')">'+
+                         '                    <div class="clearfix">'+
+                         '                           <span class="pull-left">'+
+                         '                       <i class="btn btn-xs btn-primary fa fa-flag"></i>'+
+                         '                        <p style="    float: right; margin-left: 5px; max-width: 150px;"> '+
+                         '<b style="color: #337ab7;"> Documentos encontrados </b> <br> '+data[i].cas_objact+' </p>'+
+                         '                       </span>'+
+                         '                           <span class="pull-right badge badge-info">+'+data[i].nincide+'</span>'+
+                         '                       </div>'+
+                         '                   </a> </li>';
+                            }
+                        
+
+
+                         $("#total_notifies").html(columns)
+                         $("#count_notify").html(num_notifieds);
+                         $("#num_notify").html('<i class="ace-icon fa fa-exclamation-triangle"></i>'+num_notifieds+
+                                    '  Notifications');
+
                        // $("#tbodycontent").html (rows);
                     }
                         
@@ -360,7 +408,7 @@ $.ajax({
                                 <span class="badge badge-important" id="count_notify" ></span>
                             </a>
 
-                            <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+                            <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close" id ="total_notifies">
                                 <li class="dropdown-header" id="num_notify">
                                     <i class="ace-icon fa fa-exclamation-triangle"></i>
                                     8 Notifications
@@ -379,14 +427,13 @@ $.ajax({
                                                 </div>
                                             </a>
                                         </li>
-
+                                        <li >
                                         
+                                        </li>
                                     </ul>
                                 </li>
 
-                                <li class="dropdown-footer">
-                                    
-                                </li>
+                                
                             </ul>
                         </li>
                         <li class="light-blue dropdown-modal"> <!-- Bienvenido, Luis -->
