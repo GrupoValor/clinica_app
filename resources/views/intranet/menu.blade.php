@@ -48,6 +48,21 @@
                 '        </a>'+
                 '        <b class="arrow"></b>'+
                 '        <ul class="submenu">'+
+
+                '            <li id ="licursos" >'+
+                '                <a href="mant_curso">'+
+                '                    <i class="menu-icon fa fa-caret-right"></i>'+
+                '                    Mantenimiento de curso'+
+                '                </a>'+
+                '                <b class="arrow"></b>'+
+                '            </li>'+
+                '            <li id ="liciclo" >'+
+                '                <a href="mant_ciclo">'+
+                '                    <i class="menu-icon fa fa-caret-right"></i>'+
+                '                    Mantenimiento de ciclo'+
+                '                </a>'+
+                '                <b class="arrow"></b>'+
+                '            </li>'+
                 '            <li id ="lirubricas" >'+
                 '                <a href="ta_registro">'+
                 '                    <i class="menu-icon fa fa-caret-right"></i>'+
