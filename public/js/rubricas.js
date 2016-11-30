@@ -78,31 +78,13 @@ function cambiarNota(alumno, rubrica) {
 	$('input[name="rubrica[' + alumno + '][' + rubrica + ']"]').attr('value', suma);
 }
 
-
-function enviarComentario() {
-	var direccion = window.location.pathname;
-	var directorio = location.substring(0, location.lastIndexOf("/")+1);
-	var ruta = directorio + "ta_comment";
-
-	$.ajax({
-		url: route,
-		type: 'POST',
-		dataType: 'json',
-		data: {
-			alumno: 0,
-			rubrica: 0,
-			semana: 0
-		},
-		success: function() {
-			alert("Success");
-			//$("#msg-ok").fadeIn();
-		},
-		fail: function() {
-			alert("Fail");
-		},
-		beforeSend: function() {
-			alert("beforeSend");
-		}
-
-	});
+function cambiarCheckbox(e) {
+	var valor = $('input[name^="alumno[' + e + ']"]').attr('value');
+	if (valor == 'true') {
+		alert('AAA');
+		$('input[name^="alumno[' + e + ']"]').attr('value', 'false');
+	} else {
+		alert('BBB');
+		$('input[name^="alumno[' + e + ']"]').attr('value', 'true');
+	}
 }

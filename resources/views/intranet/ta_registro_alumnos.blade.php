@@ -74,7 +74,7 @@
 						
 						<div class="row">
 							<div class="col-xs-12">
-								
+
 @include('intranet.ta_registro.alumnos')
 
 								<!-- PAGE CONTENT ENDS -->

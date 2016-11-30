@@ -84,7 +84,8 @@ Route::resource('ta_registro', 'PeriodoController', ['only' => ['index', 'store'
 Route::resource('rubrica', 'RubricaController', ['only' => ['index', 'store', 'update', 'destroy']]);
 Route::resource('rubro', 'RubroController', ['only' => ['store', 'update', 'destroy']]);
 //Selección de alumnos
-Route::get('ta_registro_alumno', 'PeriodoAlumnoController@index'); 
+Route::get('ta_registro_alumno', 'PeriodoAlumnoController@index');
+Route::post('ta_registro_alumno', 'PeriodoAlumnoController@store');
 //Registro de notas
 Route::get('ta_notas', 'PromedioController@index');
 Route::get('ta_notas_per', 'PromedioController@obtenerRubricas');

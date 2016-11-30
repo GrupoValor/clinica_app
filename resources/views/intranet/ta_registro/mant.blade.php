@@ -89,6 +89,13 @@
 										Eliminar periodo acad&eacute;mico
 									</button>
 									&nbsp;
+									<a href="ta_registro_alumno?periodo={{$periodo['per_id']}}">
+										<button class="btn btn-inverse" type="button">
+											<i class="ace-icon fa fa-undo bigger-110"></i>
+											Editar alumnos
+										</button>
+									</a>
+									&nbsp;
 @endif
 									<a href="ta_registro">
 										<button class="btn" type="reset">

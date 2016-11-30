@@ -52,11 +52,17 @@ class PeriodoAlumnoController extends Controller {
 			$usu_alumno = TAUSUARIO::find($db_alumno['usu_id']);
 			if (empty($usu_alumno) || ($usu_alumno['cln_id'] != $usuario['clinica'])) continue;
 			//Si ha cumplido todo lo anterior, registrarlo en el arreglo de alumnos
-			array_push($alumnos, ['alu_id' => $db_alumno['alu_id'], 'alu_nombre' => $db_alumno['alu_nombre'], 'alu_codigo' => $db_alumno['alu_codpuc']]);
+			array_push($alumnos, ['alu_id' => $db_alumno['alu_id'], 'alu_nombre' => $db_alumno['alu_nombre'], 'alu_codigo' => $db_alumno['alu_codpuc'], 'per_id' => $db_alumno['per_id']]);
 		}
 
 		//Ir a la pagina de selección de alumnos
 		Log::info('El usuario con id ' . $usuario['userid'] . ' entro a la pagina de seleccion de alumnos del mantenimiento de rubricas.');
-		return view('intranet.ta_registro_alumnos', ['alumnos' => $alumnos]);
+		return view('intranet.ta_registro_alumnos', ['alumnos' => $alumnos, 'periodo' => $periodo]);
+	}
+
+	public function store(Request $request) {
+		abort(404);
+		$asd = $request['alumno'];
+		print_r($asd);
 	}
 }
