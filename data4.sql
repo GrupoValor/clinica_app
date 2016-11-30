@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 29-11-2016 a las 22:41:04
+-- Tiempo de generación: 28-11-2016 a las 08:50:33
 -- Versión del servidor: 5.5.51-38.2
 -- Versión de PHP: 5.4.31
 
@@ -33,6 +33,20 @@ CREATE TABLE IF NOT EXISTS `TA_ACTIVIDAD` (
   `act_desc` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `act_fecreg` datetime DEFAULT NULL
 ) ENGINE=MyISAM AUTO_INCREMENT=142 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `TA_ACTIVIDAD`
+--
+
+INSERT INTO `TA_ACTIVIDAD` (`act_id`, `usu_id`, `cas_id`, `act_desc`, `act_fecreg`) VALUES
+(137, 1, 5, '<li class="actividad" style="background-color:#81C784 !important"><strong>11/27/2016, 1:55:16 PM</strong>:<br> <strong>Chiara</strong> agregó <strong>Presentar Solicitud de DNI</strong> a backlog</li>', '2016-11-27 12:55:16'),
+(136, 1, 5, '<li class="actividad"><strong>27/11/2016 14:00:40</strong>:<br> <strong>Chiara</strong> movió <strong>Recuperar Partida Original</strong> a pendientes</li>', '2016-11-27 12:54:54'),
+(135, 1, 5, '<li class="actividad" style="background-color:#81C784 !important"><strong>11/27/2016, 1:54:11 PM</strong>:<br> <strong>Chiara</strong> agregó <strong>Recuperar Partida Original</strong> a backlog</li>', '2016-11-27 12:54:11'),
+(134, 1, 1, '<li class="actividad"><strong>11/27/2016, 1:43:05 PM</strong>:<br> <strong>Chiara</strong> movió <strong>Busqueda Partida Nacimiento</strong> a pendientes</li>', '2016-11-27 12:43:05'),
+(138, 1, 5, '<li class="actividad"><strong>11/27/2016, 1:55:22 PM</strong>:<br> <strong>Chiara</strong> movió <strong>Presentar Solicitud de DNI</strong> a pendientes</li>', '2016-11-27 12:55:22'),
+(139, 1, 5, '<li class="actividad" style="background-color:#FF6E40"><strong>11/27/2016, 1:55:30 PM</strong>:<br> <strong>Chiara</strong> eliminó <strong>Presentar Solicitud de DNI</strong></li>', '2016-11-27 12:55:30'),
+(140, 1, 15, '<li class="actividad" style="background-color:#81C784 !important"><strong>11/28/2016, 1:08:17 AM</strong>:<br> <strong>Chiara</strong> agregó <strong>tarea 1</strong> a backlog</li>', '2016-11-28 00:08:18'),
+(141, 1, 15, '<li class="actividad" style="background-color:#81C784 !important"><strong>11/28/2016, 1:11:04 AM</strong>:<br> <strong>Chiara</strong> agregó <strong>tarea</strong> a backlog</li>', '2016-11-28 00:11:04');
 
 -- --------------------------------------------------------
 
@@ -192,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `TA_CLINICA` (
 --
 
 INSERT INTO `TA_CLINICA` (`cln_id`, `cln_nombre`, `cln_telefono`, `cln_email`, `cln_urlfbk`, `cln_urltwi`, `cln_urlgoo`, `cln_descri`, `cln_direcc`, `cln_mision`, `cln_vision`, `cln_prof`, `cln_activo`) VALUES
-(1, 'Clinica Identidad', NULL, NULL, 'https://www.facebook.com/', 'https://twitter.com/?lang=es', 'https://plus.google.com/explore', 'Clinica Identidad', 'PUCP', 'Mision Clinica Identidad', 'Vision Clinica Identidad', NULL, 1);
+(1, 'Clinica Identidad', NULL, NULL, 'www.facebook.com', 'www.twiter.com', 'www.google.com', 'Clinica Identidad', 'PUCP', 'Mision Clinica Identidad', 'Vision Clinica Identidad', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -331,7 +345,7 @@ CREATE TABLE IF NOT EXISTS `TA_EVENTO` (
   `link` varchar(200) DEFAULT NULL,
   `visible` int(1) DEFAULT '0',
   `dateModify` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `TA_EVENTO`
@@ -340,8 +354,7 @@ CREATE TABLE IF NOT EXISTS `TA_EVENTO` (
 INSERT INTO `TA_EVENTO` (`id`, `title`, `start`, `end`, `description`, `image`, `active`, `link`, `visible`, `dateModify`) VALUES
 (1, 'Prueba1.1', '2016-11-09 00:00:00', '2016-11-10 00:00:00', 'Prueba1', NULL, 1, 'Prueba1', 1, '2016/11/26 04:46:20'),
 (2, 'Evento week', '2016-11-22 07:30:00', '2016-11-22 12:30:00', 'Evento week', '/assets/images/eventos/imagen1.png', 1, 'Evento week', 1, '2016/11/27 20:59:54'),
-(3, 'Evento con imagen', '2016-11-10 00:00:00', '2016-11-11 00:00:00', 'Evento con imagen', '/assets/images/eventos/958a559a2a8d79753f4fafad7bb807d8.jpgl.jpg', 1, 'Evento con imagen', 1, '2016/11/26 04:51:34'),
-(4, 'Kari evento con imagen', '2016-11-04 00:00:00', '2016-11-05 00:00:00', 'Kari evento con imagen', '/assets/images/eventos/calcetin con rombos man.jpg', 1, 'Kari evento con imagen', 1, '2016/11/29 21:59:40');
+(3, 'Evento con imagen', '2016-11-10 00:00:00', '2016-11-11 00:00:00', 'Evento con imagen', '/assets/images/eventos/958a559a2a8d79753f4fafad7bb807d8.jpgl.jpg', 1, 'Evento con imagen', 1, '2016/11/26 04:51:34');
 
 -- --------------------------------------------------------
 
@@ -354,7 +367,109 @@ CREATE TABLE IF NOT EXISTS `TA_LOG` (
   `log_text` text,
   `log_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `log_tipo` varchar(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `TA_LOG`
+--
+
+INSERT INTO `TA_LOG` (`id`, `log_text`, `log_date`, `log_tipo`) VALUES
+(10, ' Inicio session :234234234 con el password :234234234 Resultado : Usuario  incorrecto', '2016-11-21 22:29:38', ''),
+(11, ' Inicio session :20166979 con el password :CURRENT_TIMESTAMP Resultado : Usuario  incorrecto', '2016-11-21 22:30:28', ''),
+(12, ' Inicio session :20166979 con el password :20166979 Resultado : Usuario  incorrecto', '2016-11-21 22:30:48', ''),
+(13, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-21 22:31:16', ''),
+(14, ' Inicio session :20163000 con el password :20163000 Resultado : Usuario  incorrecto', '2016-11-21 22:34:58', ''),
+(15, ' Inicio session :20163000 con el password :20163000 Resultado : Usuario existente  Rol : 1 Resultado : No se pudo encontrar su registro en TA_ALUMNO', '2016-11-21 22:35:51', ''),
+(16, ' Inicio session :20160000 con el password :eva_codpuc Resultado : Usuario  incorrecto', '2016-11-21 22:37:41', ''),
+(17, ' Inicio session :20160000 con el password :eva_codpuc Resultado : Usuario  incorrecto', '2016-11-21 22:38:01', ''),
+(18, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-21 22:38:15', ''),
+(19, ' Inicio session :20163000 con el password :20163000 Resultado : Usuario existente  Rol : 4', '2016-11-21 22:39:59', ''),
+(20, ' Inicio session :20164000 con el password :20164000 Resultado : Usuario existente  Rol : 5', '2016-11-21 22:42:56', ''),
+(21, ' Inicio session :20165000 con el password :20165000 Resultado : Usuario existente  Rol : 2', '2016-11-21 22:45:22', ''),
+(22, ' Inicio session :70000001 con el password :70000001 Resultado : Usuario existente  Rol : 7', '2016-11-21 22:55:45', ''),
+(23, ' Inicio session :70000001 con el password :70000001 Resultado : Usuario existente  Rol : 7 Resultado : No se pudo encontrar su registro en TA_CLIENTE', '2016-11-21 22:57:15', ''),
+(24, ' Inicio session :70000001 con el password :70000001 Resultado : Usuario existente  Rol : 7 Resultado : No se pudo encontrar su registro en TA_CLIENTE', '2016-11-21 22:57:54', ''),
+(25, ' Inicio session :70000001 con el password :70000001 Resultado : Usuario existente  Rol : 7 Resultado : No se pudo encontrar su registro en TA_CLIENTE', '2016-11-21 22:58:01', ''),
+(26, ' Inicio session :70000001 con el password :70000001 Resultado : Usuario existente  Rol : 7', '2016-11-21 22:59:28', ''),
+(27, ' Inicio session :20166979 con el password :20166979 Resultado : Usuario  incorrecto', '2016-11-21 23:00:53', ''),
+(28, ' Inicio session :20160002 con el password :20160002 Resultado : Usuario existente  Rol : 3 Resultado : No se pudo encontrar su registro en TA_ALUMNO', '2016-11-21 23:01:08', ''),
+(29, ' Inicio session :20160002 con el password :20160002 Resultado : Usuario existente  Rol : 3 Resultado : No se pudo encontrar su registro en TA_ALUMNO', '2016-11-21 23:01:51', ''),
+(30, ' Inicio session :20160001 con el password :20160002 Resultado : Usuario  incorrecto', '2016-11-21 23:02:16', ''),
+(31, ' Inicio session :20160001 con el password :20160001 Resultado : Usuario existente  Rol : 2', '2016-11-21 23:02:25', ''),
+(32, ' Inicio session :70000002 con el password :70000002 Resultado : Usuario existente  Rol : 7', '2016-11-21 23:04:02', ''),
+(33, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-21 23:17:03', ''),
+(34, ' Inicio session :20160001 con el password :20160001 Resultado : Usuario existente  Rol : 2', '2016-11-21 23:24:08', ''),
+(35, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-21 23:25:22', ''),
+(36, ' Inicio session :20160002 con el password :20160002 Resultado : Usuario existente  Rol : 3 Resultado : No se pudo encontrar su registro en TA_ALUMNO', '2016-11-21 23:45:52', ''),
+(37, ' Inicio session :20160001 con el password :20160001 Resultado : Usuario existente  Rol : 2', '2016-11-21 23:46:09', ''),
+(38, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-21 23:52:08', ''),
+(39, ' Inicio session :20160003 con el password :20160003 Resultado : Usuario existente  Rol : 4', '2016-11-22 00:01:01', ''),
+(40, ' Inicio session :20166979 con el password :20166979 Resultado : Usuario existente  Rol : 2', '2016-11-22 00:01:57', ''),
+(41, ' Inicio session :70000001 con el password :70000001 Resultado : Usuario existente  Rol : 7', '2016-11-22 00:20:14', ''),
+(42, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-22 00:27:12', ''),
+(43, ' Inicio session :20166979 con el password :20166979 Resultado : Usuario existente  Rol : 2', '2016-11-22 00:33:44', ''),
+(44, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-22 00:43:49', ''),
+(45, ' Inicio session :20166979 con el password :20166979 Resultado : Usuario existente  Rol : 2', '2016-11-22 00:57:04', ''),
+(46, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-22 01:00:13', ''),
+(47, ' Inicio session :20166979 con el password :20166979 Resultado : Usuario existente  Rol : 2', '2016-11-22 01:00:40', ''),
+(48, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-22 02:27:18', ''),
+(49, ' Inicio session :20166979 con el password :20160000 Resultado : Usuario  incorrecto', '2016-11-22 02:28:22', ''),
+(50, ' Inicio session :20166979 con el password :20166979 Resultado : Usuario existente  Rol : 2', '2016-11-22 02:28:28', ''),
+(51, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-22 23:15:21', ''),
+(52, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-23 03:18:50', ''),
+(53, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-23 03:38:29', ''),
+(54, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-23 07:55:12', ''),
+(55, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-23 21:43:40', ''),
+(56, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-23 21:45:25', ''),
+(57, ' Inicio session :20165000 con el password :20165000 Resultado : Usuario existente  Rol : 4', '2016-11-23 21:47:57', ''),
+(58, ' Inicio session :20165001 con el password :20165001 Resultado : Usuario existente  Rol : 2', '2016-11-23 21:49:03', ''),
+(59, ' Inicio session :20165001 con el password :20165001 Resultado : Usuario existente  Rol : 2', '2016-11-23 21:56:54', ''),
+(60, ' Inicio session :20160003 con el password :20160003 Resultado : Usuario existente  Rol : 4', '2016-11-23 21:57:11', ''),
+(61, ' Inicio session :20160001 con el password :20160001 Resultado : Usuario existente  Rol : 2', '2016-11-23 22:02:46', ''),
+(62, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-23 22:03:25', ''),
+(63, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-24 07:14:29', ''),
+(64, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-24 08:11:11', ''),
+(65, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-24 08:15:11', ''),
+(66, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-24 08:19:19', ''),
+(67, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-24 08:21:23', ''),
+(68, ' Inicio session :20160000 con el password :20160000 Resultado : Usuario existente  Rol : 1', '2016-11-25 05:55:07', ''),
+(69, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 02:20:17', 'Inicio session '),
+(70, 'Usuario: 20160003 Conexion : Exitosa -> Rol : 4', '2016-11-27 15:13:38', 'Inicio session '),
+(71, 'Usuario: 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 16:12:25', 'Inicio session '),
+(72, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 17:51:31', 'Inicio session '),
+(73, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 18:04:55', 'Inicio session '),
+(74, 'Usuario : 20160001 Conexion : Exitosa -> Rol : 2', '2016-11-27 18:12:05', 'Inicio session '),
+(75, 'Usuario : 0 Conexion : No existe el usuario', '2016-11-27 18:16:26', 'Inicio session '),
+(76, 'Usuario : 0 Conexion : No existe el usuario', '2016-11-27 18:16:33', 'Inicio session '),
+(77, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 18:16:41', 'Inicio session '),
+(78, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 18:16:44', 'Inicio session '),
+(79, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 18:24:46', 'Inicio session '),
+(80, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 18:35:36', 'Inicio session '),
+(81, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 18:37:17', 'Inicio session '),
+(82, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 18:41:54', 'Inicio session '),
+(83, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 18:49:18', 'Inicio session '),
+(84, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 18:50:09', 'Inicio session '),
+(85, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 18:50:17', 'Inicio session '),
+(86, 'Usuario : 20160000 Conexion : Password incorrecto', '2016-11-27 18:53:28', 'Inicio session '),
+(87, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 18:53:35', 'Inicio session '),
+(88, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 19:10:39', 'Inicio session '),
+(89, 'Usuario : 20160003 Conexion : Exitosa -> Rol : 4', '2016-11-27 19:10:51', 'Inicio session '),
+(90, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 19:11:27', 'Inicio session '),
+(91, 'Usuario : 14 Conexion : No existe el usuario', '2016-11-27 19:12:09', 'Inicio session '),
+(92, 'Usuario : 14 Conexion : No existe el usuario', '2016-11-27 19:12:13', 'Inicio session '),
+(93, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 19:12:27', 'Inicio session '),
+(94, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 19:33:24', 'Inicio session '),
+(95, 'Usuario : 20160005 Conexion : Exitosa -> Rol : 6', '2016-11-27 19:37:53', 'Inicio session '),
+(96, 'Usuario : 20160004 Conexion : Exitosa -> Rol : 5', '2016-11-27 19:39:14', 'Inicio session '),
+(97, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 19:39:32', 'Inicio session '),
+(98, 'Usuario : 20160000 Conexion : Password incorrecto', '2016-11-27 20:02:03', 'Inicio session '),
+(99, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 20:02:10', 'Inicio session '),
+(100, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 20:24:54', 'Inicio session '),
+(101, 'Usuario : 20160003 Conexion : Exitosa -> Rol : 4', '2016-11-27 22:46:11', 'Inicio session '),
+(102, 'Usuario : 20160000 Conexion : Password incorrecto', '2016-11-27 22:46:38', 'Inicio session '),
+(103, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 22:46:44', 'Inicio session '),
+(104, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-27 23:49:40', 'Inicio session '),
+(105, 'Usuario : 20160000 Conexion : Exitosa -> Rol : 1', '2016-11-28 12:34:24', 'Inicio session ');
 
 -- --------------------------------------------------------
 
@@ -402,7 +517,7 @@ CREATE TABLE IF NOT EXISTS `TA_NOTA_PROMEDIO` (
   `cur_id` int(10) NOT NULL,
   `cic_id` int(10) NOT NULL,
   `prm_notafinal` double NOT NULL,
-  `prm_estado` varchar(20) DEFAULT NULL
+  `prm_estado` varchar(20) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
@@ -496,6 +611,16 @@ CREATE TABLE IF NOT EXISTS `TA_NOTICIA` (
   `not_visible` int(1) NOT NULL,
   `not_dateModify` varchar(30) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `TA_NOTICIA`
+--
+
+INSERT INTO `TA_NOTICIA` (`not_id`, `not_titulo`, `not_autor`, `not_fecha`, `not_descr`, `not_imagen`, `not_linkNoticia`, `not_enweb`, `not_enpanel`, `not_visible`, `not_dateModify`) VALUES
+(1, 'PROBANDO 1', 'dan', '28/11/2016', 'hola mundo', '/assets/images/noticias/imagen1.png', 'http://elcomercio.pe/mundo/latinoamerica/cambio-cuba-luego-que-fidel-dejo-poder-raul-castro-noticia-1949445', 1, 0, 1, ''),
+(2, 'PROBANDO 2', 'dan2', '28/11/2016', 'hola mundo 2', '/assets/images/noticias/imagen1.png', 'http://elcomercio.pe/mundo/centroamerica/fidel-castro-che-guevara-contrastes-iconica-relacion-noticia-1949486?ref=nota_mundo&ft=mod_interesa&e=foto', 1, 0, 1, ''),
+(3, 'PROBANDO 3', 'dan3', '28/11/2016', 'hola mundo 3', '/assets/images/noticias/imagen1.png', 'http://elcomercio.pe/mundo/centroamerica/murio-fidel-castro-padre-revolucion-cubana-noticia-1949250?ref=nota_mundo&ft=mod_interesa&e=titulo', 1, 0, 1, ''),
+(4, 'Noticia1', 'Luis', '2016/11/22', 'Descripcion ', NULL, 'Link', 1, 1, 1, '2016/11/28 12:35:16');
 
 -- --------------------------------------------------------
 
@@ -653,7 +778,9 @@ INSERT INTO `TA_USUARIO` (`usu_id`, `cln_id`, `rol_id`, `usu_usenam`, `usu_passw
 (4, 1, 4, '20160003', 'mqHle31WKpFrxN690s9vZGIaThC87QbqOXqCiS4w3rQ=', 1),
 (5, 1, 5, '20160004', 'v3ps4+XuOoYpPCb2jZjPhBJ+5wWMbn7UzyAx0xLppEM=', 1),
 (6, 1, 6, '20160005', '3E+6o8lfcYhFbAagyefmssDhhg6Gg1IEo4Nrm8jsOGk=', 1),
-(7, 1, 7, '70000001', 'TpcETLw1O0Qz/jWK5Bv1GBUixaqLK4LoIXrNwCKwdbM=', 1);
+(7, 1, 7, '70000001', 'TpcETLw1O0Qz/jWK5Bv1GBUixaqLK4LoIXrNwCKwdbM=', 1),
+(11, 1, 7, '76368822', 'MBgtSxshoi3JSThq7WuLsvc7lINvEAJH9HP9Nw2Jpp4=', 1),
+(12, 1, 4, '20060000', 'PzFYCnjWwGRV5lMrjpj9VSH57UgsI+SvHbT57H4Wh5A=', 0);
 
 -- --------------------------------------------------------
 
@@ -917,12 +1044,12 @@ ALTER TABLE `TA_EVALUADOR`
 -- AUTO_INCREMENT de la tabla `TA_EVENTO`
 --
 ALTER TABLE `TA_EVENTO`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `TA_LOG`
 --
 ALTER TABLE `TA_LOG`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=163;
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=106;
 --
 -- AUTO_INCREMENT de la tabla `TA_NOTA_COMENTARIO`
 --
