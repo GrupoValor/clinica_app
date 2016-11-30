@@ -35,7 +35,7 @@ class RubroController extends Controller {
 		if (empty($rubrica))
 		{
 			Session::flash('msg-err', 'El rubro que se intent&oacute; crear tiene una r&uacute;brica no v&aacute;lida.');
-			Log::info('El usuario ' . $usuario['userid'] . ' intento crear un rubro en una rubrica inexistente.')
+			Log::info('El usuario ' . $usuario['userid'] . ' intento crear un rubro en una rubrica inexistente.');
 			return redirect()->action('PeriodoController@index');
 		}
 		try {
