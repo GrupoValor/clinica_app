@@ -44,14 +44,15 @@
 			<div class="breadcrumbs ace-save-state" id="breadcrumbs">
 				<ul class="breadcrumb">
 					<li> <i class="ace-icon fa fa-home home-icon"></i> <a href="index">Home</a> </li>
-					<li> Mantenimientos </li>
+					<li> Mantenimientos</li>
+					<li> Usuarios</li>
 				</ul>
 			</div>
 			<div class="page-content">
 				<div class="page-header">
 					<!-- /.page-header -->
 					<h1 id="mytitulo">
-                        Mantenimientos							
+                        Mantenimientos de usuarios
                     </h1> </div>
 				<div>
 					<select id='myOptions'>
@@ -120,7 +121,7 @@
                        if (data.rol == '1'){
                         $('#myOptions').html('<option selected="selected" disabled selected value="0" > -- Select an option -- </option>'+
                                 '<option value="1">Profesor</option>'+
-                                '<option value="2">Jefe de práctica</option>'+
+                                '<option value="2">Adjunto</option>'+
                                 '<option value="3">Alumno</option>'+
                                 '<option value="4">Cliente</option>')
                         }
@@ -131,7 +132,7 @@
                         }
                         if (data.rol == '4'){
                         $('#myOptions').html('<option selected="selected" disabled selected value="0" > -- Select an option -- </option>'+
-                            '<option value="2">Jefe de práctica</option>'+
+                            '<option value="2">Adjunto</option>'+
                             '<option value="3">Alumno</option>'+
                             '<option value="4">Cliente</option>')
                         }

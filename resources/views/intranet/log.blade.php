@@ -48,7 +48,7 @@
                     <a href="index">Home</a>
                 </li>
                 <li>
-                    Directorio
+                    Log
                 </li>
                 <!--<li class="active">Registro</li>-->
             </ul>
@@ -60,10 +60,14 @@
         <div class="page-content">
             <div class="page-header"><!-- /.page-header -->
                 <h1 id = "mytitulo" >
-                    Directorio
-                    <button type="button" class="btn btn-primary" style="float: right;margin-top: -8px;" onclick="add_onClick()" >Nuevo +</button>
+                    Log de inicio de sesión
+                    <button type="button" class="btn btn-primary hide" style="float: right;margin-top: -8px;" onclick="add_onClick()" >Nuevo +</button>
                 </h1>
 
+            </div>
+            <div class="space-10"></div>
+            <div class="col-xs-12"  id="tools">
+                <div class="pull-right tableTools-container"></div>
             </div>
 
             <div class="row">
@@ -99,99 +103,6 @@
 
 </div><!-- /.main-content -->
 
-<!-- Popup :  Agregar -->
-
-<div align="center">
-    <div class="modal fade" id="boton" role="dialog">
-        <div class="modal-dialog" style="width: 500px;">
-
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 type="button" class="close" data-dismiss="modal"></h1>
-                </div>
-                <!-- Modal content-->
-                <div class="page-header"><!-- /.page-header -->
-                    <h1 >  Contacto </h1>
-
-                    <form class="form-horizontal" role="form" style="padding-left: 66px;">
-                        <div class="space-20" ></div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Tipo </label>
-
-                            <div class="col-sm-9">
-                                <select id="dir_tipocon" class="col-xs-5 col-sm-7" data-placeholder="Click para elegir...">
-                                    <option value="p">Persona</option>
-                                    <option value="i">Institucion</option>
-
-                                </select>
-
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right" for="form-field-3"> Nombre </label>
-
-                            <div class="col-sm-9">
-                                <input id="dir_nombre" type="text" id="form-field-3"  class="col-xs-5 col-sm-7" placeholder="*obligatorio" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || event.charCode==45 || event.charCode == 193 || event.charCode == 201 || event.charCode == 205 || event.charCode == 211 || event.charCode == 218 || event.charCode == 221 || event.charCode == 225 || event.charCode == 233 || event.charCode == 237 || event.charCode == 243 || event.charCode == 252 || event.charCode==32)"/>
-                            </div>
-                        </div>
-                        <div class="space-4"></div>
-
-
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right" for="form-field-4"> Teléfono </label>
-
-                            <div class="col-sm-9">
-                                <input id="dir_telefono" type="text" id="form-field-4" class="col-xs-5 col-sm-7" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"/>
-                            </div>
-                        </div>
-                        <div class="space-4"></div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right" for="form-field-5" > E-mail </label>
-
-                            <div class="col-sm-9">
-                                <input id="dir_email" type="text"   class="col-xs-5 col-sm-7" placeholder="*obligatorio" />
-                            </div>
-                        </div>
-                        <div class="space-4"></div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right" for="form-field-5"> Direccion Web</label>
-
-                            <div class="col-sm-9">
-                                <input id="dir_web" type="text" id="form-field-5"  class="col-xs-5 col-sm-7" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right" for="form-field-5"> Direccion </label>
-
-                            <div class="col-sm-9">
-                                <input id="dir_direcc" type="text" id="form-field-5"  class="col-xs-5 col-sm-7" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-
-                        </div>
-
-                        <div class="space-20"></div>
-
-
-
-                    </form>
-
-
-                </div>
-
-                <div class="modal-footer">
-                    <div align="center">
-                        <button id="botonCliente" type="button" class="btn btn-default" data-dismiss="modal" onclick="close();">Aceptar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <?php  echo view('intranet/footer'); ?>
 
 
@@ -211,6 +122,9 @@
 <script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
 <script src="assets/js/dataTables.buttons.min.js"></script>
 <script src="assets/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 <script src="assets/js/buttons.html5.min.js"></script>
 <script src="assets/js/buttons.print.min.js"></script>
 <script src="assets/js/buttons.colVis.min.js"></script>
@@ -427,6 +341,55 @@
                                 style: 'single'
                             }
                         });
+        $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
+
+        new $.fn.dataTable.Buttons( myTable, {
+            buttons: [
+                {
+                    "extend": "copy",
+                    "text": "<i class='fa fa-copy bigger-110 pink'></i> <span class='hidden'>Copy to clipboard</span>",
+                    "className": "btn btn-white btn-primary btn-bold"
+                },
+                {
+                    "extend": "csv",
+                    "text": "<i class='fa fa-database bigger-110 orange'></i> <span class='hidden'>Export to CSV</span>",
+                    "className": "btn btn-white btn-primary btn-bold"
+                },
+                {
+                    "extend": "excel",
+                    "text": "<i class='fa fa-file-excel-o bigger-110 green'></i> <span class='hidden'>Export to Excel</span>",
+                    "className": "btn btn-white btn-primary btn-bold"
+                },
+                {
+                    "extend": "pdf",
+                    "text": "<i class='fa fa-file-pdf-o bigger-110 red'></i> <span class='hidden'>Export to PDF</span>",
+                    "className": "btn btn-white btn-primary btn-bold"
+                },
+                {
+                    "extend": "print",
+                    "text": "<i class='fa fa-print bigger-110 grey'></i> <span class='hidden'>Print</span>",
+                    "className": "btn btn-white btn-primary btn-bold",
+                    autoPrint: true
+                }
+            ]
+        } );
+
+        myTable.buttons().container().appendTo( $('#tools .tableTools-container ') );
+
+        //style the message box
+        var defaultCopyAction = myTable.button(1).action();
+        myTable.button(1).action(function (e, dt, button, config) {
+            defaultCopyAction(e, dt, button, config);
+            $('.dt-button-info').addClass('gritter-item-wrapper gritter-info gritter-center white');
+        });
+
+        setTimeout(function() {
+            $($('#tools .tableTools-container')).find('a.dt-button').each(function() {
+                var div = $(this).find(' > div').first();
+                if(div.length == 1) div.tooltip({container: 'body', title: div.parent().text()});
+                else $(this).tooltip({container: 'body', title: $(this).text()});
+            });
+        }, 500);
 
 
 

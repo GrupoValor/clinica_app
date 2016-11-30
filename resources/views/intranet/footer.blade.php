@@ -13,3 +13,19 @@
     <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 </a>
 </div><!-- /.main-container -->
+<script>
+	$(document).ready(function() {
+		$("form").validate({
+			lang: 'es'  // or whatever language option you have.
+		});
+	});
+	$(document).keydown(function (e) {
+		if (e.keyCode == 27) {
+			$('.modal').modal('hide');
+		}
+	});
+</script>
+<script src="assets/js/html5shiv.min.js"></script>
+<script src="assets/js/respond.min.js"></script>
+<script src="assets/js/jquery-2.1.4.min.js"></script>
+<script src="assets/js/jquery-1.11.3.min.js"></script>
