@@ -1,9 +1,3 @@
-# Cinica_app 
+# clinica_app 
 
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
-
-## Prototipo arquitectura
-
-http://localhost/clinica_app/public/prototipo/registro
-
+El propósito del proyecto es crear una página web y un intranet para las clínicas jurídicas de la Facultad de Derecho de la Pontificia Universidad Católica del Perú. La página web permite mostrar noticias y eventos relacionados a ellas, así como una breve información del trabajo de cada una de ellas. Además, en la página web se cuenta con un mapa donde se reflejan alertas de ayuda registradas por la Clínica Jurídica de Identidad. Por otra parte, la intranet permite gestionar la relación de las personas involucradas en las clínicas jurídicas, las notas de los alumnos del curso (cada clínica jurídica es un curso diferente), gestionar las alertas del mapa, y gestionar las noticias y eventos que se publicarán en la página web.
