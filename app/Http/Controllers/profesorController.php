@@ -20,13 +20,13 @@ class profesorController extends Controller
     public function index()
     {
         $profesores = TAPROFESOR::all();
-		$data = array();
-		
-		foreach ($profesores as $profesor){
-			array_push($data,$profesor['attributes']);
-		}
-		
-		echo json_encode($data);
+        $data = array();
+
+        foreach ($profesores as $profesor){
+            array_push($data,$profesor['attributes']);
+        }
+
+        echo json_encode($data);
     }
 
     /**
@@ -48,41 +48,42 @@ class profesorController extends Controller
     public function store(Request $request)
     {
         //sacar el siguiente ID
-		$query = mysql_query("SELECT MAX(usu_id) FROM TAUSUARIO");
-		$results = mysql_fetch_array($query);
-		//$actual_id = $results['MAX(usu_id)'];
-		$cur_auto_id = $results['MAX(usu_id)'] + 1;
-		
-		//
-		
-		//creo el usuario
-		$usuario = TAUSUARIO::create(['usu_id' => $cur_auto_id,
-									  'cln_id' => '1',
-									  'rol_id' => '1'
-		]);
-		
-		//saco el ultimo id de la tabla profesor
-		$queryAUX = mysql_query("SELECT MAX(pro_id) FROM TAPROFESOR");
-		$resultsAUX = mysql_fetch_array($query);
-		$cur_pro_id = $results['MAX(pro_id)'] + 1;
-		
-		
-		//creo el jefe de practica
-		
-		$profesor = TAPROFESOR::create([
-									'pro_id' => $cur_pro_id, 
-									'usu_id' => $cur_auto_id,
-									'pro_nombre' => $request['pro_nombre'],
-									'pro_apelpa' => $request['pro_apelpa'],
-									'pro_apelma' => $request['pro_apelma'],
-									'pro_dni' => $request['pro_dni'],
-									'pro_codpuc' => $request['pro_codpuc'],
-									'pro_telno1' => $request['pro_telno1'],
-									'pro_telno2' => $request['pro_telno2'],
-									'pro_correo' => $request['pro_correo']
-									]);
-		$profesor->save();
-		echo "Ingresado";
+        $query = mysql_query("SELECT MAX(usu_id) FROM TAUSUARIO");
+        $results = mysql_fetch_array($query);
+        //$actual_id = $results['MAX(usu_id)'];
+        $cur_auto_id = $results['MAX(usu_id)'] + 1;
+
+        //
+
+        //creo el usuario
+        $usuario = TAUSUARIO::create(['usu_id' => $cur_auto_id,
+            'cln_id' => $request['pro_clinica'],
+            'rol_id' => '1'
+        ]);
+
+        //saco el ultimo id de la tabla profesor
+        $queryAUX = mysql_query("SELECT MAX(pro_id) FROM TAPROFESOR");
+        $resultsAUX = mysql_fetch_array($query);
+        $cur_pro_id = $results['MAX(pro_id)'] + 1;
+
+
+        //creo el jefe de practica
+
+        $profesor = TAPROFESOR::create([
+            'pro_id' => $cur_pro_id,
+            'usu_id' => $cur_auto_id,
+            'pro_nombre' => $request['pro_nombre'],
+            'pro_apelpa' => $request['pro_apelpa'],
+            'pro_apelma' => $request['pro_apelma'],
+            'pro_dni' => $request['pro_dni'],
+            'pro_codpuc' => $request['pro_codpuc'],
+            'pro_telno1' => $request['pro_telno1'],
+            'pro_telno2' => $request['pro_telno2'],
+            'pro_correo' => $request['pro_correo'],
+            'pro_clinica' => $request['pro_clinica']
+        ]);
+        $profesor->save();
+        echo "Ingresado";
     }
 
     /**
@@ -124,21 +125,22 @@ class profesorController extends Controller
             pro_dni    = :dni ,
             pro_correo = :correo,
 			pro_telno1 = :telno1,
-			pro_telno2 = :telno2
-
+			pro_telno2 = :telno2,
+            pro_clinica = :clinica
 
             where pro_id = :id',
             ['nombre' => $request['pro_nombre'],
-            'apelpa' => $request['pro_apelpa'],
-            'apelma' => $request['pro_apelma'],
-            'codpuc' => $request['pro_codpuc'],
-            'dni' => $request['pro_dni'],
-            'correo' => $request['pro_correo'],
-			'telno1' => $request['pro_telno1'],
-			'telno2' => $request['pro_telno2'],
-            'id' => $id]);
-			
-			echo "Registro actualizado correctamente" ;
+                'apelpa' => $request['pro_apelpa'],
+                'apelma' => $request['pro_apelma'],
+                'codpuc' => $request['pro_codpuc'],
+                'dni' => $request['pro_dni'],
+                'correo' => $request['pro_correo'],
+                'telno1' => $request['pro_telno1'],
+                'telno2' => $request['pro_telno2'],
+                'clinica' => $request['pro_clinica'],
+                'id' => $id]);
+
+        echo "Registro actualizado correctamente" ;
     }
 
     /**
