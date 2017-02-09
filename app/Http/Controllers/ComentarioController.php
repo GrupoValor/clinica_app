@@ -44,6 +44,8 @@ class ComentarioController extends Controller {
 
 		//Obtener todos los comentarios
 
+		//Ir a la página de visualización de comentarios
+		return view('intranet.ta_comentarios');
 	}
 
 }

@@ -1,18 +1,13 @@
 <?php
-use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| This file is where you may define all of the routes that are handled
-| by your application. Just tell Laravel the URIs it should respond
-| to using a Closure or controller method. Build something great!
-|
+| Rutas para el aplicativo Web "clinica_app"
+|--------------------------------------------------------------------------|
 */
 
+use Illuminate\Http\Request;
+
 Route::get('/', function () {
-    //return view('welcome');
 	return view('web/indexWeb');
 });
 
@@ -91,6 +86,8 @@ Route::get('ta_notas', 'PromedioController@index');
 Route::get('ta_notas_per', 'PromedioController@obtenerRubricas');
 Route::get('ta_notas_res', 'NotasController@index');
 Route::post('ta_notas_res', 'NotasController@store');
+//Comentarios
+Route::get('ta_comentario', 'ComentarioController@index');
 
 /***************************************
  * MANTENIMIENTOS DE TAREAS ACADEMICAS *
